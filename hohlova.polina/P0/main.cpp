@@ -1,8 +1,8 @@
-#include <iostream> 
 
+#include <iostream>
 
 int main()
 {
-	std::cout << "hohlova.polina\n";
-	return 0;
-} 
+  std::cout << "hohlova.polina\n";
+  return 0;
+}
