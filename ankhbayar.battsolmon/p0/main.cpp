@@ -1,5 +1,6 @@
-#include  <iostream>
+#include <iostream>
 
-int main(){
-  std::cout <<"ankhbayar.battsolmon" << std::endl;
+int main()
+{
+  std::cout << "ankhbayar.battsolmon\n";
 }
