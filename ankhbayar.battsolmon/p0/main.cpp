@@ -2,5 +2,5 @@
 
 int main()
 {
-  std::cout << "ankhbayar.battsolmon\n";
+  std::cout << "ankhbayar.battsolmon1\n" ;
 }
