@@ -1,5 +1,4 @@
 #include <iostream>
-#include <limits>
 #include "main.hpp"
 
 int main()
@@ -20,7 +19,7 @@ int main()
      {
        findMaxEqualSequense(number);
      }
-     catch (const std::exception & e)
+     catch (const std::overflow_error & e)
      {
        std::cerr << "Error: " << e.what() << "\n";
        return 2;
