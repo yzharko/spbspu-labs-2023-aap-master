@@ -1,13 +1,11 @@
 #ifndef main_hpp
 #define main_hpp
-
 #include <iosfwd>
 
 class FindMaxEqualSequense
 {
 public:
   FindMaxEqualSequense() : count(0), max_count(0), previous_number(0) {}
-  
   void operator()(long long number)
   {
     const long long maximum = std::numeric_limits< long long >::max();
@@ -34,12 +32,10 @@ public:
       throw std::overflow_error("Too many sequence elements");
     }
   }
-  
   long long maxEqualSecuence()
   {
     return max_count;
   }
-  
 private:
   long long count;
   long long max_count;
@@ -47,4 +43,3 @@ private:
 };
 
 #endif
-
