@@ -7,8 +7,7 @@
 class FindMaxEqualSequense
 {
 public:
-  FindMaxEqualSequense() : count(1), max_count(0), previous_number(0) 
-{}
+  FindMaxEqualSequense() : count(1), max_count(0), previous_number(0) {}
   void operator()(long long number)
   {
     const long long maximum = std::numeric_limits< long long >::max();
