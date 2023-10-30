@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 int main()
 {
@@ -14,6 +15,12 @@ int main()
     }
     else if (number != 0)
     {
+       const size_t maxSize = std::numeric_limits< size_t >::max();
+       if (seqLength == maxSize)
+       {
+         std::cerr << "Sequence is too long.\n";
+         return 2;
+       }
        ++seqLength;
     }
   }
