@@ -9,7 +9,7 @@ public:
     seqLength_(0)
   {}
 
-  void count(int number)
+  void operator()(int number)
   {
      const size_t maxSize = std::numeric_limits< size_t >::max();
      if (seqLength_ == maxSize)
@@ -19,7 +19,7 @@ public:
      ++seqLength_;
   }
 
-  size_t getResult() const
+  size_t operator()() const
   {
     return seqLength_;
   }
@@ -44,7 +44,7 @@ int main()
     {
        try
        {
-         sequenceCounter.count(number);
+         sequenceCounter(number);
        }
        catch (const std::exception & e)
        {
@@ -53,5 +53,5 @@ int main()
     }
   }
   while (number != 0);
-  std::cout << sequenceCounter.getResult() << "\n";
+  std::cout << sequenceCounter() << "\n";
 }
