@@ -17,10 +17,6 @@ public:
     {
       ++count;
     }
-    if (thirdNum == 241274716471784)
-    {
-      throw std::logic_error("Not arguments enough.");
-    }
     firstNum = secondNum;
     secondNum = thirdNum;
   }
@@ -45,7 +41,8 @@ int main()
   int seqLen = 0;
   SequenceCounter sequenceCounter;
   do
-  {
+  { 
+    ++seqLen;
     std::cin >> thirdNum;
     if (!std::cin)
     {
@@ -80,5 +77,10 @@ int main()
     } 
   }
   while (thirdNum != 0);
+  if (seqLen <= 3)
+  {
+    std::cerr<<"Not enough arguments";
+    return 2;
+  }
   std::cout << sequenceCounter.getResult() << "\n";
 }
