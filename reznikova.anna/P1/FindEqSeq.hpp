@@ -1,4 +1,4 @@
-k#ifndef FINDEQSEQ_HPP
+#ifndef FINDEQSEQ_HPP
 #define FINDEQSEQ_HPP
 #include <cstddef>
 
