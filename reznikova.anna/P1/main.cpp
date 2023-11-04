@@ -1,5 +1,7 @@
 #include <iostream>
-#include "main.hpp"
+#include <stdexcept>
+#include "FindEqSeq.hpp"
+using namespace reznikova;
 
 int main()
 {
@@ -19,7 +21,7 @@ int main()
      {
        findMaxEqualSequense(number);
      }
-     catch (const std::overflow_error & e)
+     catch (const std::exception & e)
      {
        std::cerr << "Error: " << e.what() << "\n";
        return 2;
@@ -27,6 +29,5 @@ int main()
    }
   }
   while (number != 0);
-  std::cout << findMaxEqualSequense.maxEqualSecuence() << "\n";
+  std::cout << findMaxEqualSequense() << "\n";
 }
-
