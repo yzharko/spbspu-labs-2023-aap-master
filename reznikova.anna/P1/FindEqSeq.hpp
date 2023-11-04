@@ -1,13 +1,13 @@
-#ifndef FINDEQSEQ_HPP
+k#ifndef FINDEQSEQ_HPP
 #define FINDEQSEQ_HPP
 #include <cstddef>
 
 namespace reznikova
 {
-  class FindMaxEqualSequense
+  class MaxEqualSequense
   {
   public:
-    FindMaxEqualSequense();
+    MaxEqualSequense();
     void operator()(long long number);
     size_t operator()();
   private:

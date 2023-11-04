@@ -5,7 +5,7 @@ using namespace reznikova;
 
 int main()
 {
-  FindMaxEqualSequense findMaxEqualSequense;
+  MaxEqualSequense maxEqualSequense;
   long long number = 0;
   do
   {
@@ -19,7 +19,7 @@ int main()
    {
      try
      {
-       findMaxEqualSequense(number);
+       maxEqualSequense(number);
      }
      catch (const std::exception & e)
      {
@@ -29,5 +29,5 @@ int main()
    }
   }
   while (number != 0);
-  std::cout << findMaxEqualSequense() << "\n";
+  std::cout << maxEqualSequense() << "\n";
 }

@@ -3,9 +3,9 @@
 #include <stdexcept>
 #include "FindEqSeq.hpp"
 
-reznikova::FindMaxEqualSequense::FindMaxEqualSequense(): count(1), max_count(0), previous_number(0) {}
+reznikova::MaxEqualSequense::MaxEqualSequense(): count(1), max_count(0), previous_number(0) {}
 
-void reznikova::FindMaxEqualSequense::operator()(long long number)
+void reznikova::MaxEqualSequense::operator()(long long number)
 {
   const size_t maximum = std::numeric_limits< size_t >::max();
   if (count <= maximum)
@@ -30,7 +30,7 @@ void reznikova::FindMaxEqualSequense::operator()(long long number)
   }
 }
 
-size_t reznikova::FindMaxEqualSequense::operator()()
+size_t reznikova::MaxEqualSequense::operator()()
 {
   return max_count;
 }
