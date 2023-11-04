@@ -12,7 +12,7 @@ namespace reznikova
     size_t operator()();
   private:
     size_t count;
-    long long max_count;
+    size_t max_count;
     long long previous_number;
   };
 }
