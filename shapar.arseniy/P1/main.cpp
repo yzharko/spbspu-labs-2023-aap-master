@@ -6,20 +6,21 @@
 struct SequenceCounter
 {
 public:
-  void count_(int thirdNum)
+  void count_(int fourthNum)
   {
     const size_t maxSize = std::numeric_limits< size_t >::max();
     if (seqLen == maxSize)
     {
       throw std::logic_error("Sequence is too long.");
     }
-    if (thirdNum == secondNum + firstNum)
+    if (secondNum < firstNum && secondNum > thirdNum)
     {
       ++count;
     }
     firstNum = secondNum;
     secondNum = thirdNum;
-  }
+    thirdNum = fourthNum;
+    }
 
   size_t getResult() const
   {
@@ -30,30 +31,33 @@ private:
   size_t seqLen = 0;
   int secondNum = 0;
   int firstNum = 0;
+  int fourthNum = 0;
+  int thirdNum = 0;
   int count = 0;
 };
 
 int main()
 {
-  int thirdNum;
+  int thirdNum = 0;
   int secondNum = 0;
   int firstNum = 0;
   int seqLen = 0;
+  int fourthNum = 0;
   SequenceCounter sequenceCounter;
   do
   { 
     ++seqLen;
-    std::cin >> thirdNum;
+    std::cin >> fourthNum;
     if (!std::cin)
     {
       std::cerr << "Not a sequence.\n";
       return 1;
     }
-    else if (thirdNum != 0)
+    else if (fourthNum != 0)
     {
       try
       {
-        sequenceCounter.count_(thirdNum);
+        sequenceCounter.count_(fourthNum);
       }
       catch (const std::logic_error & e)
       {
@@ -76,11 +80,6 @@ int main()
       }
     } 
   }
-  while (thirdNum != 0);
-  if (seqLen <= 3)
-  {
-    std::cerr<<"Not enough arguments";
-    return 2;
-  }
+  while (fourthNum != 0);
   std::cout << sequenceCounter.getResult() << "\n";
 }
