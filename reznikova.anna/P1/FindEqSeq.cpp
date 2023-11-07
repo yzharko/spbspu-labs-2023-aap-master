@@ -1,9 +1,13 @@
+#include "FindEqSeq.hpp"
 #include <iostream>
 #include <limits>
 #include <stdexcept>
-#include "FindEqSeq.hpp"
 
-reznikova::MaxEqualSequense::MaxEqualSequense(): count(1), max_count(0), previous_number(0) {}
+reznikova::MaxEqualSequense::MaxEqualSequense():
+  count(1),
+  max_count(0),
+  previous_number(0)
+{}
 
 void reznikova::MaxEqualSequense::operator()(long long number)
 {
