@@ -1,6 +1,17 @@
 #include <iostream>
 #include <fstream>
 
+int readArray(int * matrix, int cols, int rows, std::ifstream & in)
+{
+  for (int i = 0; i < rows * cols; i++) {
+    in >> matrix[i];
+    if (!in) {
+      return 2;
+    }
+  }
+  return 0;
+}
+
 int main(int argc, char ** argv)
 {
   if (argc < 4) {
@@ -24,7 +35,7 @@ int main(int argc, char ** argv)
   }
 
   if (num == 1) {
-    int a[10000] = {};
+    int matrix[10000] = {};
     int rows = 0, cols = 0;
     std::ifstream input(argv[2]);
     input >> rows >> cols;
@@ -32,15 +43,20 @@ int main(int argc, char ** argv)
       std::cout << "Not a triangular matrix\n";
       return 0;
     }
-    for (int i = 0; i < rows * cols; i++) {
-      input >> a[i];
-      if (!input) {
-        std::cerr << "Not a matrix\n";
+    int result = readArray(matrix, cols, rows, input);
+    if (result == 2) {
+        std::cout << "Not a matrix\n";
         return 2;
-      }
     }
-    bool isZero = true;
-    
+    /*bool isZero = true;
+    for (int i = 0; i < rows && isZero; i++) {
+      for (int j = 0; j < cols && isZero; j++) {
+        if (j < i) {
+            isZero = (isZero && a[i * rows + j] == 0);
+        }
+      }
+    }*/
+
   }
   return 0;
 }
