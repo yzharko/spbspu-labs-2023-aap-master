@@ -12,6 +12,19 @@ int readArray(int * matrix, int cols, int rows, std::ifstream & in)
   return 0;
 }
 
+bool isLowerTriangularMatrix(int * matrix, int cols, int rows)
+{
+  bool isZero = true;
+  for (int i = 0; i < rows && isZero; i++) {
+    for (int j = 0; j < cols && isZero; j++) {
+      if (j < i) {
+        isZero = (isZero && matrix[i * rows + j] == 0);
+      }
+    }
+  }
+  return isZero;
+}
+
 int main(int argc, char ** argv)
 {
   if (argc < 4) {
@@ -48,15 +61,13 @@ int main(int argc, char ** argv)
         std::cout << "Not a matrix\n";
         return 2;
     }
-    /*bool isZero = true;
-    for (int i = 0; i < rows && isZero; i++) {
-      for (int j = 0; j < cols && isZero; j++) {
-        if (j < i) {
-            isZero = (isZero && a[i * rows + j] == 0);
-        }
-      }
-    }*/
-
+    if (isLowerTriangularMatrix(matrix, cols, rows)) {
+        std::cout << "Is a triangular matrix\n";
+    } else {
+        std::cout << "Not a triangular matrix\n";
+    }
+    return 0;
   }
+
   return 0;
 }
