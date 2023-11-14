@@ -1,4 +1,4 @@
-#include "changeCounter.cpp"
+#include "changeCounter.hpp"
 #include <limits>
 #include <stdexcept>
 
