@@ -1,6 +1,6 @@
 #include <iostream>
 
-int foo() 
+int main() 
 {
   int first = 123;
   int second = 123;

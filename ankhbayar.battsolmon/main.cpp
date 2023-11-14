@@ -38,12 +38,12 @@ int main()
         minValue = std::min(first, std::min(second, third));
         maxValue = std::max(first, std::max(second, third));
         averageValue = first + second + third - minValue - maxValue;
-        pifagor = (minValue * minValue + averageValue * averageValue == maxValue*maxValue);
+        pifagor = (minValue * minValue + averageValue * averageValue == maxValue * maxValue);
         if (pifagor)
         {
            cnt++;
 
-          std::cin >> first;
+           std::cin >> first;
 
            if (!std::cin)
            {
@@ -78,4 +78,5 @@ int main()
         std::cout << cnt << "\n";
         return 0;
     }
+
 
