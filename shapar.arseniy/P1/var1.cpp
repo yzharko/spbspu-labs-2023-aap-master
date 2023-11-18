@@ -1,3 +1,4 @@
+
 #include <limits>
 #include <stdexcept>
 #include "var1.hpp"
@@ -26,7 +27,7 @@ size_t shapar::SequenceCounter::operator()() const
 {
   if (seqLens < 3)
   {
-    throw std::logic_error("Not enough arguments");
+    throw std::logic_error("Not enough arguments\n");
   }
   else
   {
