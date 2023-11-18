@@ -9,15 +9,15 @@ namespace shapar
   public:
     SequenceCounter();
 
-    void operator()(int thirdNum);
+    void operator()(size_t thirdNum);
 
     size_t operator()() const;
 
   private:
     size_t seqLens;
-    int secondNum;
-    int firstNum;
-    int count = 0;
+    size_t secondNum;
+    size_t firstNum;
+    size_t count = 0;
   };
 }
 #endif

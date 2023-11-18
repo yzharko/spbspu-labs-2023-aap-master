@@ -5,7 +5,7 @@
 
 int main()
 {
-  int thirdNum;
+  size_t thirdNum;
   using namespace shapar;
   SequenceCounter sequenceCounter;
   do

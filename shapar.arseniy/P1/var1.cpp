@@ -1,4 +1,3 @@
-
 #include <limits>
 #include <stdexcept>
 #include "var1.hpp"
@@ -7,7 +6,8 @@ shapar::SequenceCounter::SequenceCounter():
   seqLens(0)
 {}
 
-void shapar::SequenceCounter::operator()(int thirdNum)
+void shapar::SequenceCounter::operator()(size_t 
+thirdNum)
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
   if (seqLens == maxSize)
