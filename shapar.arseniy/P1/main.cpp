@@ -5,13 +5,11 @@
 
 int main()
 {
-  int seqLen = 0;
   int thirdNum;
   using namespace shapar;
   SequenceCounter sequenceCounter;
   do
-  { 
-    ++seqLen;
+  {
     std::cin >> thirdNum;
     if (!std::cin)
     {
@@ -42,14 +40,10 @@ int main()
       catch (const std::exception & e)
       {
         std::cerr << "Error: " << e.what() << "\n";
+        return 2;
       }
-    } 
+    }
   }
   while (thirdNum != 0);
-  if (seqLen <= 3)
-  {
-    std::cerr<<"Not enough arguments";
-    return 2;
-  }
   std::cout << sequenceCounter() << "\n";
 }

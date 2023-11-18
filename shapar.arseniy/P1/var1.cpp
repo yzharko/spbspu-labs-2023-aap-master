@@ -19,9 +19,17 @@ void shapar::SequenceCounter::operator()(int thirdNum)
     }
   firstNum = secondNum;
   secondNum = thirdNum;
+  seqLens += (thirdNum != 0 ? 1 : 0);
 }
 
 size_t shapar::SequenceCounter::operator()() const
 {
-  return count;
+  if (seqLens < 3)
+  {
+    throw std::logic_error("Not enough arguments");
+  }
+  else
+  {
+    return count;
+  }
 }
