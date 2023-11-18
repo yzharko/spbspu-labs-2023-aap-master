@@ -17,7 +17,7 @@ namespace shapar
     size_t seqLens;
     size_t secondNum;
     size_t firstNum;
-    size_t count = 0;
+    size_t count;
   };
 }
 #endif

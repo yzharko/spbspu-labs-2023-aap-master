@@ -3,18 +3,18 @@
 #include "var1.hpp"
 
 shapar::SequenceCounter::SequenceCounter():
-  seqLens(0)
+  seqLens(0),
+  count(0)
 {}
 
-void shapar::SequenceCounter::operator()(size_t 
-thirdNum)
+void shapar::SequenceCounter::operator()(size_t thirdNum)
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
   if (seqLens == maxSize)
   {
     throw std::logic_error("Sequence is too long.");
   }
-  if (thirdNum == secondNum + firstNum)
+  if (thirdNum == firstNum + secondNum)
     {
       ++count;
     }
