@@ -1,48 +1,13 @@
-
 # include <iostream>
-# include <limits>
 # include <stdexcept>
 # include <exception>
-
-struct SequenceCounter
-{
-public:
-  SequenceCounter():
-    seqLens(0)
-  {}
-  void operator()(int thirdNum)
-  {
-    const size_t maxSize = std::numeric_limits< size_t >::max();
-    if (seqLens == maxSize)
-    {
-      throw std::logic_error("Sequence is too long.");
-    }
-    if (thirdNum == secondNum + firstNum)
-    {
-      ++count;
-    }
-    firstNum = secondNum;
-    secondNum = thirdNum;
-  }
-
-  size_t operator()() const
-  {
-    return count;
-  }
-
-private:
-  size_t seqLens;
-  int secondNum;
-  int firstNum;
-  int count = 0;
-};
+#include "var1.hpp"
 
 int main()
 {
-  int thirdNum;
-  int secondNum = 0;
-  int firstNum = 0;
   int seqLen = 0;
+  int thirdNum;
+  using namespace shapar;
   SequenceCounter sequenceCounter;
   do
   { 
