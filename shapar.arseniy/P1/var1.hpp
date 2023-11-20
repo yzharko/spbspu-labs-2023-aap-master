@@ -1,4 +1,4 @@
-#ifndef	SEQUENCECOUNTER_HPP
+#ifndef SEQUENCECOUNTER_HPP
 #define SEQUENCECOUNTER_HPP
 #include <cstddef>
 
