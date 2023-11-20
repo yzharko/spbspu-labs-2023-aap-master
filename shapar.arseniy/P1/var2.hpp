@@ -8,14 +8,14 @@ namespace shapar
   {
   public:
     SequenceCounter_();
-    void operator()(int fourthNum_);
+    void operator()(size_t fourthNum_);
     size_t operator()() const;
   private:
     size_t thirdNum_;
     size_t seqLens_;
     size_t secondNum_;
     size_t firstNum_;
-    size_t count_;
+    size_t count_ = 0;
   };
 }
 
