@@ -8,7 +8,7 @@ namespace shapar
   {
   public:
     SequenceCounter();
-    void operator()(size_t thirdNum);
+    void operator()(size_t thirdNum)
     size_t operator()() const;
   private:
     size_t seqLens;
