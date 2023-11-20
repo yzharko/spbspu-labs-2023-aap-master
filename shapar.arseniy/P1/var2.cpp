@@ -1,4 +1,5 @@
 #include <limits>
+#include <iostream>
 #include <stdexcept>
 #include "var2.hpp"
 
