@@ -1,3 +1,4 @@
+
 #include <limits>
 #include <stdexcept>
 #include "var1.hpp"
@@ -15,9 +16,9 @@ void shapar::SequenceCounter::operator()(size_t thirdNum)
     throw std::logic_error("Sequence is too long.");
   }
   if (thirdNum == firstNum + secondNum)
-    {
-      ++count;
-    }
+  {
+    ++count;
+  }
   firstNum = secondNum;
   secondNum = thirdNum;
   seqLens += (thirdNum != 0 ? 1 : 0);
