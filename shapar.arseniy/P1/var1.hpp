@@ -1,5 +1,5 @@
-#ifndef	SEQUENCE_COUNTER_HPP
-#define SEQUENCE_COUNTER_HPP
+#ifndef	SEQUENCECOUNTER_HPP
+#define SEQUENCECOUNTER_HPP
 #include <cstddef>
 
 namespace shapar
