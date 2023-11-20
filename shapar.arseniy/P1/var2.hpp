@@ -2,7 +2,7 @@
 #define SEQUENCE_COUNTER1_HPP
 #include <cstddef>
 
-namespace shaparr
+namespace shapar
 {
   struct SequenceCounter_
   {

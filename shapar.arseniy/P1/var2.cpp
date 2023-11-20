@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include "var2.hpp"
 
-shaparr::SequenceCounter_::SequenceCounter_():
+shapar::SequenceCounter_::SequenceCounter_():
   seqLens_(0),
   count_(0),
   secondNum_(0),
@@ -10,7 +10,7 @@ shaparr::SequenceCounter_::SequenceCounter_():
   thirdNum_(0)
 {}
 
-void shaparr::SequenceCounter_::operator()(int fourthNum_)
+void shapar::SequenceCounter_::operator()(int fourthNum_)
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
   if (seqLens_ == maxSize)
@@ -26,7 +26,7 @@ void shaparr::SequenceCounter_::operator()(int fourthNum_)
   }
 }
 
-size_t shaparr::SequenceCounter_::operator()() const
+size_t shapar::SequenceCounter_::operator()() const
 {
   return count_;
 }

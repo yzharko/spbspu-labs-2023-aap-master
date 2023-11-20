@@ -1,5 +1,6 @@
 
 
+
 #include <iostream>
 #include <exception>
 #include <cstddef>
@@ -11,7 +12,6 @@ int main()
   size_t thirdNum;
   int fourthNum_;
   using namespace shapar;
-  using namespace shaparr;
   SequenceCounter sequenceCounter;
   do
   {
