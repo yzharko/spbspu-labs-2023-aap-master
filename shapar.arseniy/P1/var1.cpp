@@ -5,10 +5,7 @@
 
 shapar::SequenceCounter::SequenceCounter():
   seqLens(0),
-  count(0),
-  thirdNum(0),
-  secondNum(0),
-  firstNum(0)
+  count(0)
 {}
 
 void shapar::SequenceCounter::operator()(size_t thirdNum)
