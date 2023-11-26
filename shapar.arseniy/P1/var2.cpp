@@ -3,28 +3,28 @@
 #include <stdexcept>
 #include "var2.hpp"
 
-shapar_::SequenceCounter_::SequenceCounter_():
-  seqLens_(0),
-  count_(0)
+shapar::SequenceCounter_::SequenceCounter_():
+  seqLens(0),
+  count(0)
 {}
 
-void shapar_::SequenceCounter_::operator()(size_t fourthNum_)
+void shapar::SequenceCounter_::operator()(size_t thirdNum)
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
-  if (seqLens_ == maxSize)
+  if (seqLens == maxSize)
   {
     throw std::logic_error("Sequence is too long.");
   }
-  firstNum_ = secondNum_;
-  secondNum_ = thirdNum_;
-  thirdNum_ = fourthNum_;
-  if (secondNum_ < firstNum_ && secondNum_ > thirdNum_)
+  if (secondNum < firstNum && secondNum > thirdNum)
   {
-    ++count_;
+    ++count;
   }
+  firstNum = secondNum;
+  secondNum = thirdNum;
+  seqLens += (thirdNum != 0 ? 1 : 0);
 }
 
-size_t shapar_::SequenceCounter_::operator()() const
+size_t shapar::SequenceCounter_::operator()() const
 {
-  return count_;
+  return count;
 }
