@@ -6,7 +6,6 @@
 int main()
 {
   size_t fourthNum_ = 0;
-  using namespace shapar;
   using namespace shapar_;
   SequenceCounter_ sequenceCounter_;
   do
