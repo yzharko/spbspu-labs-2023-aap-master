@@ -2,7 +2,7 @@
 #define SEQUENCE_COUNTER1_HPP
 #include <cstddef>
 
-namespace shapar
+namespace shapar_
 {
   struct SequenceCounter_
   {
@@ -11,10 +11,10 @@ namespace shapar
     void operator()(size_t fourthNum_);
     size_t operator()() const;
   private:
-    size_t thirdNum_;
-    size_t seqLens_;
-    size_t secondNum_;
-    size_t firstNum_;
+    size_t thirdNum_ = 0;
+    size_t seqLens_ = 0;
+    size_t secondNum_ = 0;
+    size_t firstNum_ = 0;
     size_t count_ = 0;
   };
 }
