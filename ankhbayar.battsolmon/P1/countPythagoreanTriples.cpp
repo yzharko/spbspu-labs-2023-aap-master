@@ -74,5 +74,5 @@ int countPhytagoreanTriples ()
       }
   }
   std::cout << cnt << "\n";
-  return 0;
+  return 1;
 }
