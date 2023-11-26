@@ -1,4 +1,3 @@
-
 #include <limits>
 #include <stdexcept>
 #include "var1.hpp"
