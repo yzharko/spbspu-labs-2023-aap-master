@@ -1,26 +1,26 @@
 #include <iostream>
 #include <exception>
 #include <cstddef>
-#include "var1.hpp"
+#include "var2.hpp"
 
 int main()
 {
-  size_t thirdNum = 0;
+  size_t fourthNum_ = 0;
   using namespace shapar;
-  SequenceCounter sequenceCounter;
+  SequenceCounter_ sequenceCounter_;
   do
   {
-    std::cin >> thirdNum;
+    std::cin >> fourthNum_;
     if (!std::cin)
     {
       std::cerr << "Not a sequence.\n";
       return 1;
     }
-    else if (thirdNum != 0)
+    else if (fourthNum_ != 0)
     {
       try
       {
-        sequenceCounter(thirdNum);
+        sequenceCounter_(fourthNum_);
       }
       catch (const std::logic_error & e)
       {
@@ -40,10 +40,10 @@ int main()
       catch (const std::exception & e)
       {
         std::cerr << "Error: " << e.what() << "\n";
-        return 2;
+        return  2;
       }
     }
   }
-  while (thirdNum != 0);
-  std::cout << sequenceCounter() << "\n";
+  while (fourthNum_ != 0);
+  std::cout << sequenceCounter_() << "\n";
 }
