@@ -1,7 +1,7 @@
 #ifndef FOO_HPP
-#define FOO_HPP  
+#define FOO_HPP
 
-#include <vector>  
+#include <vector>
 
 int countPythagoreanTriples(const
   std::vector<int>& sequence);

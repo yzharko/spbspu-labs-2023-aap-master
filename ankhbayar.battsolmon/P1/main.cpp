@@ -20,16 +20,13 @@ int countSignChanges(const std::vector<int>& sequence) {
 }
 
 
-
-int main() {
+int main(){
 
   std::vector<int> sequence{ -2, 1, -2, 0 };
 
   int signChanges = countSignChanges(sequence);
 
   std::cout << signChanges << std::endl;
-
-
 
   return 0;
 }
