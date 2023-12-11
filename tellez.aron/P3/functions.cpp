@@ -10,7 +10,7 @@ char* remplaceChar(const char* str, size_t size, char replaceFrom, char replaceT
     std::cerr << "Error: Input string is null\n";
     return nullptr;
   }
-  char* result = new char[size + 1];
+  char* result = new char[size + 1]();
   for (size_t i = 0; i < size; ++i)
   {
     result[i] = (str[i] == replaceFrom) ? replaceTo : str[i];
