@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <cctype>
+#include "newCapacityCstring.hpp"
 #include <limits>
 #include "functions.hpp"
 int main()
@@ -14,13 +15,18 @@ int main()
   {
     if (size == capacity)
     {
-      char* newString = new char[capacity + 10];
-      std::memcpy(newString, cstring, size);
+      char* newCString = makeNewCapacityCString(cstring, capacity, size);
+      if (newCString == nullptr)
+      {
+        std::cerr << "Error: Unable to allocate memory for new capacity\n";
+        delete[] cstring;
+        return 1;
+      }
       delete[] cstring;
-      cstring = newString;
-      capacity += 20;
-    }
-    std::cin >> cstring[size];
+      cstring = newCString;
+      newCString = nullptr;
+      }
+      std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
   if (cstring[0] == '\0' || cstring[0] == '\n')
@@ -37,7 +43,7 @@ int main()
   std::cin >> replaceTo;
   char* replacedResult = remplaceChar(cstring, size, replaceFrom, replaceTo);
   size_t hasRepResult = hasRepeatedChars(cstring, size);
-  std::cout << "new string: " <<replacedResult << "there are duplicate characters: " << hasRepResult << "\n";
+  std::cout << "New string: " <<replacedResult << "There are duplicate characters: " << hasRepResult << "\n";
   delete[] replacedResult;
   delete[] cstring;
   return 0;

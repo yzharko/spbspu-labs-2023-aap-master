@@ -1,5 +1,4 @@
 #include "functions.hpp"
-#include <cstring>
 #include <cctype>
 #include <algorithm>
 
