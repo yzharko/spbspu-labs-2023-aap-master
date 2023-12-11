@@ -4,6 +4,11 @@
 
 char* remplaceChar(const char* str, size_t size, char replaceFrom, char replaceTo)
 {
+  if (str == nullptr)
+  {
+    std::cerr << "Error: Input string is null\n";
+    return nullptr;
+  }
   char* result = new char[size + 1];
   for (size_t i = 0; i < size; ++i)
   {
