@@ -5,12 +5,13 @@
 
 char* remplaceChar(const char* str, size_t size, char replaceFrom, char replaceTo)
 {
-  char* result = new char[size];
+  char* result = new char[size + 1];
   for (size_t i = 0; i < size; ++i)
   {
     result[i] = (str[i] == replaceFrom) ? replaceTo : str[i];
   }
-    return result;
+  result[size] = '\0';
+  return result;
 }
 
 int hasRepeatedChars(const char* str, size_t size)

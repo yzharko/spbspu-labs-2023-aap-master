@@ -36,8 +36,9 @@ int main()
   std::cout << "Enter the second character for replacement: ";
   std::cin >> replaceTo;
   char* replacedResult = remplaceChar(cstring, size, replaceFrom, replaceTo);
-  int hasRepResult = hasRepeatedChars(cstring, size);
+  size_t hasRepResult = hasRepeatedChars(cstring, size);
   std::cout << "new string: " <<replacedResult << "there are duplicate characters: " << hasRepResult << "\n";
+  delete[] replacedResult;
   delete[] cstring;
   return 0;
 }
