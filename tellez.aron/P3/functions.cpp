@@ -3,12 +3,17 @@
 #include <cctype>
 #include <algorithm>
 
-char* remplaceChar(const char* str, size_t size, char replaceFrom, char replaceTo)
+char* remplaceChar(const char* str, char replaceFrom, char replaceTo)
 {
   if (str == nullptr)
   {
     std::cerr << "Error: Input string is null\n";
     return nullptr;
+  }
+  size_t size = 0;
+  while (str[size] != '\0')
+  {
+    ++size;
   }
   char* result = new char[size + 1]();
   for (size_t i = 0; i < size; ++i)
@@ -19,8 +24,13 @@ char* remplaceChar(const char* str, size_t size, char replaceFrom, char replaceT
   return result;
 }
 
-int hasRepeatedChars(const char* str, size_t size)
+int hasRepeatedChars(const char* str)
 {
+  size_t size = 0;
+  while (str[size] != '\0')
+  {
+    ++size;
+  }
   for (size_t i = 0; i < size; ++i)
   {
     if (std::count(str, str + size, str[i]) > 1)

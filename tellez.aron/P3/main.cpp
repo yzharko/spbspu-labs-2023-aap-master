@@ -41,8 +41,8 @@ int main()
   std::cin.ignore(std::numeric_limits< std::streamsize >::max(), '\n');
   std::cout << "Enter the second character for replacement: ";
   std::cin >> replaceTo;
-  char* replacedResult = remplaceChar(cstring, size, replaceFrom, replaceTo);
-  size_t hasRepResult = hasRepeatedChars(cstring, size);
+  char* replacedResult = remplaceChar(cstring, replaceFrom, replaceTo);
+  size_t hasRepResult = hasRepeatedChars(cstring);
   std::cout << "New string: " <<replacedResult << "There are duplicate characters: " << hasRepResult << "\n";
   delete[] replacedResult;
   delete[] cstring;
