@@ -53,7 +53,7 @@ void likhachev::Rectangle::scale(double multiplier)
 
 double likhachev::Rectangle::getWidth() const
 {
-  return upperRight_.x - lowerLeft_.x
+  return upperRight_.x - lowerLeft_.x;
 }
 
 double likhachev::Rectangle::getHeight() const
