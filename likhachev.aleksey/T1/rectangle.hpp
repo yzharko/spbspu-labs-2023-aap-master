@@ -15,6 +15,8 @@ namespace likhachev
       virtual void move(Point_t offset);
       virtual void move(double offsetX, double offsetY);
       virtual void scale(double multiplier);
+      double getWidth() const;
+      double getHeight() const;
     private:
       Point_t lowerLeft_;
       Point_t upperRight_;

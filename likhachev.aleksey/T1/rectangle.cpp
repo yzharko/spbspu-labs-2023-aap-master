@@ -16,17 +16,14 @@ likhachev::Rectangle::Rectangle(double lowerLeftX, double lowerLeftY, double upp
 {}
 
 double likhachev::Rectangle::getArea() const
-{
-  double width = upperRight_.x - lowerLeft_.x; // (1) Lavran TODO: заменить на метод 
-  double height = upperRight_.y - lowerLeft_.y;
-  
-  return width * height;
+{  
+  return getWidth() * getHeight();
 }
 
 likhachev::Rectangle_t likhachev::Rectangle::getFrameRect() const
 {
-  double width = upperRight_.x - lowerLeft_.x; // Lavran TODO: заменить при появлении метода из (1)
-  double height = upperRight_.y - lowerLeft_.y;
+  double width = getWidth();
+  double height = getHeight();
   Point_t pos((upperRight_.x + lowerLeft_.x) / 2, (upperRight_.y + lowerLeft_.y) / 2);
   
   return Rectangle_t(width, height, pos);
@@ -46,10 +43,20 @@ void likhachev::Rectangle::move(double offsetX, double offsetY)
 
 void likhachev::Rectangle::scale(double multiplier)
 {
-  double width = upperRight_.x - lowerLeft_.x; // Lavran TODO: заменить при появлении метода из (1)
-  double height = upperRight_.y - lowerLeft_.y;
+  double width = getWidth();
+  double height = getHeight();
   Point_t offset(((multiplier * width) - width) / 2, ((multiplier * height) - height) / 2);
 
   upperRight_ += offset;
   lowerLeft_ -= offset;
+}
+
+double likhachev::Rectangle::getWidth() const
+{
+  return upperRight_.x - lowerLeft_.x
+}
+
+double likhachev::Rectangle::getHeight() const
+{
+  return upperRight_.y - lowerLeft_.y;
 }
