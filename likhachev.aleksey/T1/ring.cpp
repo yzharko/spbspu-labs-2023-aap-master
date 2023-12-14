@@ -29,8 +29,8 @@ double likhachev::Ring::getArea() const
 
 likhachev::Rectangle_t likhachev::Ring::getFrameRect() const
 {
-  double width = outerRad_;
-  double height = outerRad_;
+  double width = outerRad_ * 2;
+  double height = outerRad_ * 2;
   Point_t pos(pos_);
   
   return Rectangle_t(width, height, pos);
