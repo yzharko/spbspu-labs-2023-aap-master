@@ -52,7 +52,7 @@ void likhachev::Parallelogram::scale(double multiplier)
   double height = getHeight();
   Point_t offset(((multiplier * width) - width) / 2, ((multiplier * height) - height) / 2);
 
-  if (pointA_.y == pointB_.y) { // Lavran TODO: Заменить код на слвоари, кода дадут добро. Ну или на множ-ли.
+  if (pointA_.y == pointB_.y) {
     bool xMultiplier = 1;
     bool yMultiplier = 1;
     if (pointA_.x < pointB_.x) {
@@ -62,7 +62,7 @@ void likhachev::Parallelogram::scale(double multiplier)
       yMultiplier = 1;
     }
 
-    pointA_.x += offset.x * xMultiplier;  // Lavran TODO: Заменить на массив и прогон по циклу, когда дадут добро
+    pointA_.x += offset.x * xMultiplier;
     pointD_.x += offset.x * xMultiplier;
     pointB_.x -= offset.x * xMultiplier;
 
@@ -80,7 +80,7 @@ void likhachev::Parallelogram::scale(double multiplier)
       yMultiplier = 1;
     }
 
-    pointA_.x += offset.x * xMultiplier;  // Lavran TODO: Заменить на массив и прогон по циклу, когда дадут добро
+    pointA_.x += offset.x * xMultiplier;
     pointB_.x += offset.x * xMultiplier;
     pointD_.x -= offset.x * xMultiplier;
 
