@@ -20,7 +20,7 @@ namespace likhachev
     private:
       double outerRad_;
       double innerRad_;
-      Point_t pos_; 
+      Point_t pos_;
   };
 }
 #endif

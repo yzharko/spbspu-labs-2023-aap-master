@@ -16,7 +16,7 @@ likhachev::Rectangle::Rectangle(double lowerLeftX, double lowerLeftY, double upp
 {}
 
 double likhachev::Rectangle::getArea() const
-{  
+{
   return getWidth() * getHeight();
 }
 
@@ -25,7 +25,7 @@ likhachev::Rectangle_t likhachev::Rectangle::getFrameRect() const
   double width = getWidth();
   double height = getHeight();
   Point_t pos((upperRight_.x + lowerLeft_.x) / 2, (upperRight_.y + lowerLeft_.y) / 2);
-  
+
   return Rectangle_t(width, height, pos);
 }
 

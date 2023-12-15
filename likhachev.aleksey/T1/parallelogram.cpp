@@ -4,7 +4,7 @@ likhachev::Parallelogram::Parallelogram():
   pointA_(Point_t(2.0, 1.0)),
   pointB_(Point_t(-1.0, 1.0)),
   pointD_(Point_t(1.0, -1.0))
-  
+
 {}
 
 likhachev::Parallelogram::Parallelogram(Point_t pointA, Point_t pointB, Point_t pointD):
@@ -29,7 +29,7 @@ likhachev::Rectangle_t likhachev::Parallelogram::getFrameRect() const
   double fullWidth = getWidth() + getSubWidth();
   double height = getHeight();
   Point_t pos((pointB_.x + pointD_.x) / 2, (pointB_.y + pointD_.y) / 2);
-  
+
   return Rectangle_t(fullWidth, height, pos);
 }
 

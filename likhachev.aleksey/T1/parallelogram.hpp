@@ -21,7 +21,7 @@ namespace likhachev
     private:
       Point_t pointA_;
       Point_t pointB_;
-      Point_t pointD_; 
+      Point_t pointD_;
   };
 }
 #endif

@@ -20,7 +20,7 @@ namespace likhachev
     private:
       Point_t lowerLeft_;
       Point_t upperRight_;
-      Point_t pos_; 
+      Point_t pos_;
   };
 }
 #endif
