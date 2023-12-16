@@ -1,10 +1,5 @@
 #include "rectangle.hpp"
 
-likhachev::Rectangle::Rectangle():
-  lowerLeft_(Point_t(-1.0, -1.0)),
-  upperRight_(Point_t(1.0, 1.0))
-{}
-
 likhachev::Rectangle::Rectangle(Point_t lowerLeft, Point_t upperRight):
   lowerLeft_(lowerLeft),
   upperRight_(upperRight)

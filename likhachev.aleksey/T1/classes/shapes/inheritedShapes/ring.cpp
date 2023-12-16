@@ -1,11 +1,5 @@
 #include "ring.hpp"
 
-likhachev::Ring::Ring():
-  pos_(Point_t(0.0, 0.0)),
-  outerRad_(1.0),
-  innerRad_(0.5)
-{}
-
 likhachev::Ring::Ring(Point_t pos, double outerRad, double innerRad):
   pos_(pos),
   outerRad_(outerRad),

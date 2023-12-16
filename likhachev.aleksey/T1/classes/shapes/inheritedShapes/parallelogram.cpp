@@ -1,12 +1,5 @@
 #include "parallelogram.hpp"
 
-likhachev::Parallelogram::Parallelogram():
-  pointA_(Point_t(2.0, 1.0)),
-  pointB_(Point_t(-1.0, 1.0)),
-  pointD_(Point_t(1.0, -1.0))
-
-{}
-
 likhachev::Parallelogram::Parallelogram(Point_t pointA, Point_t pointB, Point_t pointD):
   pointA_(pointA),
   pointB_(pointB),
@@ -92,7 +85,7 @@ void likhachev::Parallelogram::scale(double multiplier)
 
 double likhachev::Parallelogram::getWidth() const
 {
-  Point_t widthPoint;
+  Point_t widthPoint(0, 0);
   if (pointA_.y == pointB_.y) {
     widthPoint = pointB_;
   } else {
@@ -111,7 +104,7 @@ double likhachev::Parallelogram::getWidth() const
 
 double likhachev::Parallelogram::getSubWidth() const
 {
-  Point_t subWidthPoint;
+  Point_t subWidthPoint(0, 0);
   if (pointA_.y == pointB_.y) {
     subWidthPoint = pointD_;
   } else {

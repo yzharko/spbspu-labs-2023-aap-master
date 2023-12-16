@@ -7,7 +7,6 @@ namespace likhachev
 {
   class Parallelogram: public Shape {
     public:
-      Parallelogram();
       Parallelogram(Point_t pointA, Point_t pointB, Point_t pointD);
       Parallelogram(double pointAX, double pointAY, double pointBX, double pointBY, double pointDX, double pointDY);
       virtual double getArea() const;

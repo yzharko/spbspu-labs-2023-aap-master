@@ -7,7 +7,6 @@ namespace likhachev
 {
   class Rectangle: public Shape {
     public:
-      Rectangle();
       Rectangle(Point_t lowerLeft, Point_t upperRight);
       Rectangle(double lowerLeftX, double lowerLeftY, double upperRightX, double upperRightY);
       virtual double getArea() const;
@@ -20,7 +19,6 @@ namespace likhachev
     private:
       Point_t lowerLeft_;
       Point_t upperRight_;
-      Point_t pos_;
   };
 }
 #endif

@@ -7,7 +7,6 @@ namespace likhachev
     public:
       double x;
       double y;
-      Point_t();
       Point_t(double newX, double newY);
       void operator()(double newNumber);
       Point_t operator+(const Point_t& rhs);
@@ -18,7 +17,6 @@ namespace likhachev
 
   struct Rectangle_t {
     public:
-      Rectangle_t();
       Rectangle_t(double width, double height, Point_t pos);
       double getArea() const;
       double getWidth() const;

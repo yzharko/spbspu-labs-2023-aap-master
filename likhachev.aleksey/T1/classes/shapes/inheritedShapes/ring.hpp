@@ -7,7 +7,6 @@ namespace likhachev
 {
   class Ring: public Shape {
     public:
-      Ring();
       Ring(Point_t pos, double outerRad, double innerRad);
       Ring(double posX, double posY, double outerRad, double innerRad);
       virtual double getArea() const;

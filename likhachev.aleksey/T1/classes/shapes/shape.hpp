@@ -10,6 +10,7 @@ namespace likhachev
       virtual likhachev::Rectangle_t getFrameRect() const = 0;
       virtual void move(Point_t offset) = 0;
       virtual void move(double offsetX, double offsetY) = 0;
+      virtual void scale(double multiplier) = 0;
   };
 }
 #endif

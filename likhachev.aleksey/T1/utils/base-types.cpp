@@ -1,11 +1,6 @@
 #include "base-types.hpp"
 #include <iostream>
 
-likhachev::Point_t::Point_t():
-  x(0.0),
-  y(0.0)
-{}
-
 likhachev::Point_t::Point_t(double newX, double newY):
   x(newX),
   y(newY)
@@ -36,12 +31,6 @@ likhachev::Point_t& likhachev::Point_t::operator-=(const Point_t& rhs)
   *this = *this - rhs;
   return *this;
 }
-
-likhachev::Rectangle_t::Rectangle_t():
-  width_(0),
-  height_(0),
-  pos_(Point_t())
-{}
 
 likhachev::Rectangle_t::Rectangle_t(double width, double height, Point_t pos):
   width_(width),
