@@ -1,7 +1,7 @@
-#ifndef RECTANGLE_HPP
-#define RECTANGLE_HPP
-#include "base-types.hpp"
+#ifndef PARALLELOGRAM_HPP
+#define PARALLELOGRAM_HPP
 #include "shape.hpp"
+#include "../shapesCommon.hpp"
 
 namespace likhachev
 {
