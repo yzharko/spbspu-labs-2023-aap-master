@@ -52,7 +52,7 @@ void likhachev::Parallelogram::scale(double multiplier)
     if (pointA_.x < pointB_.x) {
       xMultiplier = 1;
     }
-    if(pointA_.y < pointD_.y) {
+    if (pointA_.y < pointD_.y) {
       yMultiplier = 1;
     }
 
@@ -70,7 +70,7 @@ void likhachev::Parallelogram::scale(double multiplier)
     if (pointA_.x < pointB_.x) {
       xMultiplier = 1;
     }
-    if(pointA_.y < pointD_.y) {
+    if (pointA_.y < pointD_.y) {
       yMultiplier = 1;
     }
 

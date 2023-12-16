@@ -1,6 +1,6 @@
 #ifndef RING_HPP
 #define RING_HPP
-#include "shape.hpp"
+#include "../shape.hpp"
 #include "../shapesCommon.hpp"
 
 namespace likhachev

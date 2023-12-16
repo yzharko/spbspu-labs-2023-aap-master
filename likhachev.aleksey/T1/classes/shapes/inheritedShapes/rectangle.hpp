@@ -1,6 +1,6 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
-#include "shape.hpp"
+#include "../shape.hpp"
 #include "../shapesCommon.hpp"
 
 namespace likhachev
