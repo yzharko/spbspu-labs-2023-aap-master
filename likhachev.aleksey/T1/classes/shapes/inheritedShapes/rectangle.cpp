@@ -26,14 +26,15 @@ likhachev::Rectangle_t likhachev::Rectangle::getFrameRect() const
 
 void likhachev::Rectangle::move(Point_t offset)
 {
-  upperRight_ += offset;
-  lowerLeft_ += offset;
+  Point_t pos((upperRight_.x + lowerLeft_.x) / 2, (upperRight_.y + lowerLeft_.y) / 2);
+  move(offset.x - pos.x, offset.y - pos.y);
 }
 
 void likhachev::Rectangle::move(double offsetX, double offsetY)
 {
-   Point_t offset(offsetX, offsetY);
-   move(offset);
+  Point_t offset(offsetX, offsetY);
+  upperRight_ += offset;
+  lowerLeft_ += offset;
 }
 
 void likhachev::Rectangle::scale(double multiplier)

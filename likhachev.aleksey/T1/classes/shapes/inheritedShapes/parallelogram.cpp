@@ -28,15 +28,16 @@ likhachev::Rectangle_t likhachev::Parallelogram::getFrameRect() const
 
 void likhachev::Parallelogram::move(Point_t offset)
 {
-  pointA_ += offset;
-  pointB_ += offset;
-  pointD_ += offset;
+  Point_t pos((pointB_.x + pointD_.x) / 2, (pointB_.y + pointD_.y) / 2);
+  move(offset.x - pos.x, offset.y - pos.y);
 }
 
 void likhachev::Parallelogram::move(double offsetX, double offsetY)
 {
-   Point_t offset(offsetX, offsetY);
-   move(offset);
+  Point_t offset(offsetX, offsetY);
+  pointA_ += offset;
+  pointB_ += offset;
+  pointD_ += offset;
 }
 
 void likhachev::Parallelogram::scale(double multiplier)

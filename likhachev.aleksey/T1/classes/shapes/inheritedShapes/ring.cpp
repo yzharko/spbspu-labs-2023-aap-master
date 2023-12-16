@@ -32,13 +32,13 @@ likhachev::Rectangle_t likhachev::Ring::getFrameRect() const
 
 void likhachev::Ring::move(Point_t offset)
 {
-  pos_ += offset;
+  move(offset.x - pos_.x, offset.y - pos_.y);
 }
 
 void likhachev::Ring::move(double offsetX, double offsetY)
 {
    Point_t offset(offsetX, offsetY);
-   move(offset);
+   pos_ += offset;
 }
 
 void likhachev::Ring::scale(double multiplier)
