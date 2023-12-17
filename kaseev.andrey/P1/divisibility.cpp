@@ -28,3 +28,4 @@ void kaseev::Divisibility::operator()(int count)
 {
   std::cout << count << "\n";
 }
+
