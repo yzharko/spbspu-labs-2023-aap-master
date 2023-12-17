@@ -26,4 +26,3 @@ void Square::scale(double k)
 {
   side_ *= k;
 }
-
