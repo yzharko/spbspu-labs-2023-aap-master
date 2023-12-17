@@ -14,7 +14,7 @@ zheleznyakov::Rectangle::Rectangle(const point_t leftTopPoint, const point_t rig
 
 double zheleznyakov::Rectangle::getArea()
 {
-  return 0.0;
+  return rectangle.height * rectangle.width;
 };
 
 zheleznyakov::rectangle_t zheleznyakov::Rectangle::getFrameRect()
