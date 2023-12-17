@@ -17,8 +17,4 @@ namespace kaseev
   };
 }
 
-<<<<<<< HEAD
 #endif
-=======
-#endif
->>>>>>> origin/kaseev.andrey/P4
