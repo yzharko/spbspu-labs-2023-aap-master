@@ -1,0 +1,5 @@
+#infdef USEFUL_FUNCTIONS
+#define USEFUL_FUNCTIONS
+
+
+#endif

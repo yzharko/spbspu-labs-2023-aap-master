@@ -1,3 +1,6 @@
+#ifndef SHAPE_HPP
+#define SHAPE_HPP
+
 namespace miheev
 {
   class Shape
@@ -9,3 +12,5 @@ namespace miheev
     virtual void scale() = 0;
   };
 }
+
+#endif
