@@ -16,8 +16,7 @@ namespace lisitsyna
       void move(point_t point) override;
       void scale(double k) override;
     private:
-      point_t one;
-      point_t two;
+      rectangle_t rectangle;
   };
 }
 #endif
