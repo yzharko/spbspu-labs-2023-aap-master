@@ -3,11 +3,11 @@
 Ring::Ring(double xCenter, double yCenter, double outSideRadius, double innerRadius) :
 	center{ xCenter,yCenter } {
 	if (outSideRadius < innerRadius || outSideRadius <= 0) {
-		throw std::invalid_argument("внешний радиус неверен\n");
+		throw std::invalid_argument("outside R error\n");
 	}
 	externalRadius = outSideRadius;
 	if (innerRadius <= 0) {
-		throw std::invalid_argument("внутренний радиус неверен\n");
+		throw std::invalid_argument("inner R error\n");
 	}
 	this->innerRadius = innerRadius;
 }
