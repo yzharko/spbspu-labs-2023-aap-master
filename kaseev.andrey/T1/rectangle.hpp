@@ -3,14 +3,15 @@
 #include "shape.hpp"
 #include " base-types.hpp"
 
-class Rectangle: public shape{
+class Rectangle: public shape
+    {
 public:
   Rectangle(point_t lPoint, point_t rPoint);
   virtual double getArea();
   virtual rectangle_t getFrameRect();
-  virtual void move(double x, double y);
+  virtual void move(double nx, double ny);
   virtual void move(point_t center);
-  virtual void scale(double k);
+  virtual void scale(double k, point_t pos);
 private:
   point_t lPoint;
   point_t rPoint;
