@@ -19,7 +19,7 @@ double zheleznyakov::Rectangle::getArea()
 
 zheleznyakov::rectangle_t zheleznyakov::Rectangle::getFrameRect()
 {
-  return zheleznyakov::rectangle_t();
+  return rectangle;
 };
 
 void move(double x, double y)
