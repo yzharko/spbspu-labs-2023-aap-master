@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "matrix.hpp"
+#include "InputOutput.hpp"
 
 int main(int argc, char **argv)
 {
@@ -39,31 +40,37 @@ int main(int argc, char **argv)
   }
   try
   {
-    int matrix[n * m];
+    int matrix[10000];
     int *matrixPointer = matrix;
     if (num == 2)
     {
       int *matrixD = new int[n * m];
       matrixPointer = matrixD;
     }
-      int matrixCheck = MatrixStuff::readMatrix(input, matrixPointer, n, m);
-      if (matrixCheck != m * n)
+    int matrixCheck = MatrixStuff::readMatrix(input, matrixPointer, n, m);
+    if (matrixCheck != m * n)
+    {
+      if (num == 2)
       {
         delete[] matrixPointer;
-        throw std::logic_error("invalid input");
       }
-      size_t count = MatrixStuff::NumberOfDiagonals(matrixPointer, n, m);
-      bool UpperTriangularMatrix = MatrixStuff::upperTriangularMatrix(matrixPointer, n, m);
-      delete[] matrixPointer;
-      if (output.is_open())
-      {
-        MatrixStuff::writeResult(output, count, UpperTriangularMatrix);
-        output.close();
-      }
+      throw std::logic_error("invalid matix input");
     }
+    size_t count = MatrixStuff::NumberOfDiagonals(matrixPointer, n, m);
+    bool UpperTriangularMatrix = MatrixStuff::upperTriangularMatrix(matrixPointer, n, m);
+    if (num == 2)
+    {
+      delete[] matrixPointer;
+    }
+    if (output.is_open())
+    {
+      MatrixStuff::writeResult(output, count, UpperTriangularMatrix);
+    }
+  }
   catch (const std::exception &err)
   {
     std::cerr << err.what() << "\n";
     return 2;
   }
+
 }
