@@ -22,16 +22,17 @@ zheleznyakov::rectangle_t zheleznyakov::Rectangle::getFrameRect()
   return rectangle;
 };
 
-void move(double x, double y)
+void zheleznyakov::Rectangle::move(double x, double y)
+{
+  rectangle.pos.x += x;
+  rectangle.pos.y += y;
+};
+
+void zheleznyakov::Rectangle::move(zheleznyakov::point_t destinationPoint)
 {
 
 };
 
-void move(zheleznyakov::point_t destinationPoint)
-{
-
-};
-
-void scale(double k){
+void zheleznyakov::Rectangle::scale(double k){
 
 };
