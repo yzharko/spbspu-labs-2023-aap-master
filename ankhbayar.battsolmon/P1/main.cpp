@@ -1,27 +1,36 @@
+#include "count.hpp"
 #include <iostream>
-#include <vector>
 
-int main() {
-    std::vector<int> sequence;
-    int num;
+int main()
+{
+  size_t value = 0;
+  using namespace tsomo;
+  FindingCount findingCount;
 
-    while (std::cin >> num && num != 0) {
-        sequence.push_back(num);
+  do
+  {
+    std::cin >> value;
+
+    if (!std::cin)
+    {
+      std::cerr << "Неверный ввод\n";
+      return 1;
     }
-
-    int positiveCount = 0;
-    int negativeCount = 0;
-
-    for (int i = 0; i < sequence.size(); i++) {
-        if (sequence[i] > 0) {
-            positiveCount++;
-        } else if (sequence[i] < 0) {
-            negativeCount++;
-        }
+    else if (value != 0)
+    {
+      findingCount(value);
     }
+  } while (value != 0);
 
-    std::cout << "Positive Count: " << positiveCount << std::endl;
-    std::cout << "Negative Count: " << negativeCount << std::endl;
+  try
+  {
+    std::cout << findingCount() << "\n";
+  }
+  catch (const std::exception& e)
+  {
+    std::cerr << e.what() << "\n";
+    return 2;
+  }
 
-    return 0;
+  return 0;
 }
