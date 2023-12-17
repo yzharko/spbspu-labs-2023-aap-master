@@ -8,4 +8,3 @@ public:
 	virtual void move(const base_types::point_t& point) = 0;
 	virtual void scale(double k) = 0;
 };
-
