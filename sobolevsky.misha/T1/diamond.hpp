@@ -1,10 +1,10 @@
-#ifndef RECTANGLE_HPP
-#define RECTANGLE_HPP
+#ifndef DIAMOND_HPP
+#define DIAMOND_HPP
 #include "base-types.hpp"
 
 namespace sobolevsky
 {
-  class Rectangle
+  class Diamond
   {
   public:
 
