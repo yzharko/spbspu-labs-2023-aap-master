@@ -30,7 +30,8 @@ void zheleznyakov::Rectangle::move(double x, double y)
 
 void zheleznyakov::Rectangle::move(zheleznyakov::point_t destinationPoint)
 {
-
+  rectangle.pos.x = destinationPoint.x;
+  rectangle.pos.y = destinationPoint.y;
 };
 
 void zheleznyakov::Rectangle::scale(double k){
