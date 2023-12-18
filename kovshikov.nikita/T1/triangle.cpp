@@ -21,10 +21,10 @@ rectangle_t Triangle::getFrameRect()
   frame.height = normal;
   return frame;
 }
-void Triangle::move(point_t p)
+void Triangle::move(point_t newPos)
 {
-  pos.x = p.x;
-  pos.y = p.y;
+  pos.x = newPos.x;
+  pos.y = newPos.y;
 }
 void Triangle::move(double xPlus, double yPlus)
 {
