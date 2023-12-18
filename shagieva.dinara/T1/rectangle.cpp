@@ -38,9 +38,3 @@ void shagieva::Rectangle::move(double dX, double dY)
   cornerC.y += dY;
   center = { center.x += dX, center.y += dY };
 }
-
-
-
-
-
-
