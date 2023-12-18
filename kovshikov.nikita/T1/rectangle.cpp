@@ -40,6 +40,3 @@ void Rectangle::scale(double multiplier)
   upperRight_.x += changeX;
   upperRight_.y += changeY;
 }
-
-
-

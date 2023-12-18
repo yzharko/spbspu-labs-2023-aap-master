@@ -1,40 +1,52 @@
 #include "triangle.hpp"
+#include "rectangle.hpp"
 
-normalH.x = vertexC.x;
-normalH.y = vertexA.y;
-normal = sqrt(pow(normalH.x - vertexC.x, 2) + pow(normalH.y - vertexC.y, 2));
-sideAb = sqrt(pow(vertexA.x - vertexB.x, 2) + pow(vertexA.y - vertexB.y, 2));
-mindO.x = (vertexC.x + vertexB.x) / 2;
-mindO.y = (vertexC.y + vertexB.y) / 2;
-sectionAo = sqrt(pow(mindO.x - vertexA.x, 2) + pow(mindO.y - vertexA.y, 2));
-pos.x = vertexA.x * 2 / 3 * sectionAo;
-pos.y = vertexA.y * 2 / 3 * sectionAo;
+Triangle::Triangle(point_t vertexA, point_t vertexB, point_t vertexC):
+  vertexA_(vertexA),
+  vertexB_(vertexB),
+  vertexC_(vertexC)
+{};
 
 double Triangle::getArea()
 {
-  return (0,5 * normal * sideAb);
+  double sideAb = sqrt(pow(vertexA_.x - vertexB_.x, 2) + pow(vertexA_.y - vertexB_.y, 2));
+  double sideBc = sqrt(pow(vertexB_.x - vertexC_.x, 2) + pow(vertexB_.y - vertexC_.y, 2));
+  double sideCa = sqrt(pow(vertexC_.x - vertexA_.x, 2) + pow(vertexC_.y - vertexA_.y, 2));
+  double p = (sideAb + sideBc + sideCa) / 2;
+  return sqrt(p * (p - sideAb) * (p - sideBc) * (p - sideCa));
 }
 rectangle_t Triangle::getFrameRect()
 {
-  rectangle_t frame;
-  frame.width = sideAb;
-  frame.height = normal;
-  return frame;
+  double minX = std::min({vertexA_.x, vertexB_.x, vertexC_.x});
+  double minY = std::min({vertexA_.y, vertexB_.y, vertexC_.y});
+  double maxX = std::max({vertexA_.x, vertexB_.x, vertexC_.x});
+  double maxY = std::max({vertexA_.y, vertexB_.y, vertexC_.y});
+  point_t lowerLeft = {minX, minY};
+  point_t upperRight = {maxX, maxY};
+  Rectangle rectangle(lowerLeft, upperRight);
+  return rect.getFrameRect();
 }
 void Triangle::move(point_t newPos)
 {
-  pos.x = newPos.x;
-  pos.y = newPos.y;
+  posX = (vertexA_.x + vertexB_.x + vertexC_.x) / 3;
+  posY = (vertexA_.y + vertexB_.y + vertexC_.y) / 3;
+  double xPlus = newPos.x - posX;
+  double yPlus = newPos.y - posY;
+  move(xPlus, yPlus);
 }
 void Triangle::move(double xPlus, double yPlus)
 {
-  pos.x += xPlus;
-  pos.y += yPlus;
+  vertexA.x += xPlus;
+  vertexA.y += yPlus;
+  vertexB.x += xPlus;
+  vertexB.y += yPlus;
+  vertexC.x += xPlus;
+  vertexC.y += yPlus;
 }
 void Triangle::scale(double multiplier)
 {
   vertexA.x *= multiplier;
-  vertexA.y *= multiplier;
+  vertexA.y *= multip lier;
   vertexB.x *= multiplier;
   vertexB.y *= multiplier;
   vertexC.x *= multiplier;
