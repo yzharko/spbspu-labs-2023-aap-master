@@ -18,13 +18,10 @@ namespace miheev
     virtual void move(double dx, double dy);
     virtual void scale(double);
 
-    void calcParams();
-
   private:
     double width_;
     double height_;
     point_t points_[4];
-    bool isValid;
   };
 }
 

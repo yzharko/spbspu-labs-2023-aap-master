@@ -26,6 +26,12 @@ miheev::point_t miheev::point_t::findMiddle(point_t rhs) const
   return miheev::point_t(middleX, middleY);
 }
 
+void miheev::point_t::move(double dx, double dy)
+{
+  x_ += dx;
+  y_ += dy;
+}
+
 miheev::rectangle_t::rectangle_t(point_t pos, double width, double height):
   width_(width),
   height_(height),

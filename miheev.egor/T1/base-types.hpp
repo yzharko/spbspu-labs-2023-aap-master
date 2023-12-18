@@ -11,6 +11,7 @@ namespace miheev
     double y_;
     double distTo(point_t) const;
     point_t findMiddle(point_t rhs) const;
+    void move(double dx, double dy);
   };
 
   struct rectangle_t

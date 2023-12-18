@@ -1,5 +1,6 @@
 #include "rectangle.hpp"
 #include <cmath>
+#include <iostream>
 
 miheev::Rectangle::Rectangle(point_t* points):
   width_(-1),
@@ -29,6 +30,10 @@ miheev::Rectangle::Rectangle(point_t* points):
   // I suppose it's rectangle without validating
   width_ = points_[0].distTo(points_[1]);
   height_ = points_[1].distTo(points_[2]);
+  if (points_[0].distTo(points_[2]) != points_[1].distTo(points_[3])) // check diagonals equality
+  {
+    std::cerr << "you've got wrong rect. I don't stop init only for you to be able to destruct it\n";
+  }
 }
 
 double miheev::Rectangle::getArea() const
@@ -76,4 +81,25 @@ void miheev::Rectangle::move(double dx, double dy)
     points_[i].x_ += dx;
     points_[i].y_ += dy;
   }
+}
+
+void miheev::Rectangle::move(point_t p)
+{
+  point_t center(points_[0].findMiddle(points_[2]));
+  double dx = p.x_ - center.x_;
+  double dy = p.y_ - center.y_;
+  move(dx, dy);
+}
+
+void miheev::Rectangle::scale(double k)
+{
+  point_t center(points_[0].findMiddle(points_[2]));
+  for (size_t i = 0; i < 4; i++)
+  {
+    double dx = points_[i].x_ - center.x_;
+    double dy = points_[i].y_ - center.y_;
+    points_[i].move(dx * k, dy * k);
+  }
+  width_*= k; //cheating a lil bit
+  height_*=k;
 }
