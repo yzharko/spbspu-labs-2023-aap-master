@@ -1,4 +1,4 @@
-#infdef USEFUL_FUNCTIONS
+#ifndef USEFUL_FUNCTIONS
 #define USEFUL_FUNCTIONS
 
 

@@ -5,17 +5,22 @@ namespace miheev
 {
   struct point_t
   {
-    double x;
-    double y;
-    distTo(point_t);
+    point_t();
+    point_t(double x, double y);
+    double x_;
+    double y_;
+    double distTo(point_t) const;
+    point_t findMiddle(point_t rhs) const;
   };
 
   struct rectangle_t
   {
+  public:
+    rectangle_t(point_t pos, double width, double height);
   private:
-    double width;
-    double height;
-    point_t pos;
+    double width_;
+    double height_;
+    point_t pos_;
   };
 }
 

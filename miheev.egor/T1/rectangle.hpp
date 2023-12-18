@@ -13,9 +13,10 @@ namespace miheev
     Rectangle(point_t* points);
 
     virtual double getArea() const;
-    virtual Shape getFrameRect() const;
-    virtual void move();
-    virtual void scale();
+    virtual rectangle_t getFrameRect() const;
+    virtual void move(point_t);
+    virtual void move(double dx, double dy);
+    virtual void scale(double);
 
     void calcParams();
 
@@ -23,6 +24,7 @@ namespace miheev
     double width_;
     double height_;
     point_t points_[4];
+    bool isValid;
   };
 }
 
