@@ -1,21 +1,21 @@
-#ifndef RECTANGLE_HPP
-#define RECTANGLE_HPP
+#ifndef RING_HPP
+#define RING_HPP
 #include "shape.hpp"
 
 namespace psarev
 {
-  class Rectangle : public Shape
+  class Ring : public Shape
   {
   public:
-    Rectangle(point_t firPoint, point_t secPoint);
+    Ring(point_t point, double firRad, double secRad);
     virtual double getArea() override;
     virtual rectangle_t getFrameRect() override;
     virtual void move(point_t newCenter) override;
     virtual void move(double xCh, double yCh) override;
     virtual void scale(double coef) override;
   private:
-    point_t llCorner;
-    point_t urCorner;
+    double exterRad;
+    double interRad;
     point_t center;
   };
 }
