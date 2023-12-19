@@ -10,7 +10,7 @@ shagieva::Rectangle::Rectangle(point_t firstPoint, point_t secondPoint) :
 
 rectangle_t shagieva::Rectangle::getFrameRect()
 {
-  return { abs(cornerA.x - cornerC.x), abs(cornerA.y - cornerC.y), center };
+  return { fabs(cornerA.x - cornerC.x), fabs(cornerA.y - cornerC.y), center };
 }
 
 double shagieva::Rectangle::getArea()
