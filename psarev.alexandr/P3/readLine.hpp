@@ -1,9 +1,9 @@
 #ifndef READ_LINE_HPP
 #define READ_LINE_HPP
-#include <cstddef>
+#include <iostream>
 
 namespace psarev
 {
-  size_t readLine(char*& line);
+  char* readLine(std::istream& input, size_t extSize, size_t& maxElemNum);
 };
 #endif

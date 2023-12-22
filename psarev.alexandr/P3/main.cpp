@@ -1,37 +1,32 @@
-#include <iostream>
 #include "readLine.hpp"
 #include "createLine.hpp"
+#include "expandLine.hpp"
 
 int main()
 {
-  try
-  {
-    char* line1 = new char[10] {};
-    const char* line2 = "abc ef";
+  size_t maxElemNum = 10;
+  size_t extSize = 10;
+  const char* presetLine = "abc ef";
+  char* userLine = psarev::readLine(std::cin, extSize, maxElemNum);
 
-    size_t len1 = psarev::readLine(line1);
-    if (len1 == 0) {
-      std::cerr << "Error: At least ONE value need!\n";
-      delete[] line1;
-      return 1;
-    }
-    size_t len2 = 6;
+  size_t presetLen = strlen(presetLine);
+  size_t userLen = strlen(userLine);
 
-    char* lineRes = new char[10] {};
-    size_t resMarker = psarev::createTaskLine(line1, line2, len1, len2, lineRes);
-
-    delete[] line1;
-
-    for (size_t i = 0; i < resMarker; i++) {
-      std::cout << lineRes[i];
-    }
-    std::cout << '\n';
-    delete[] lineRes;
-    return 0;
-  }
-  catch (const std::bad_alloc& e)
-  {
-    std::cerr << "Error: Can't allocate memory!\n";
+  if (userLen == 0) {
+    std::cerr << "Error: Not enough values or memory to allocate!\n";
+    delete[] userLine;
     return 1;
   }
+
+  char* resLine = psarev::createTaskLine(userLine, presetLine, userLen, presetLen);
+  size_t resLen = strlen(resLine);
+
+  delete[] userLine;
+
+  for (size_t i = 0; i < resLen; i++) {
+    std::cout << resLine[i];
+  }
+  std::cout << '\n';
+  delete[] resLine;
+  return 0;
 }
