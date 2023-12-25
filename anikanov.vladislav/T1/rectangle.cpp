@@ -68,7 +68,8 @@ std::istream &operator>>(std::istream &in, Rectangle &rec)
 {
   PointT leftBottom, rightTop;
   in >> leftBottom >> rightTop;
-  rec.cPoint = PointT((rightTop.x - leftBottom.x) / 2, (rightTop.y - leftBottom.y) / 2);
+  rec.cPoint = PointT(leftBottom.x + (rightTop.x - leftBottom.x) / 2,
+                      leftBottom.y + (rightTop.y - leftBottom.y) / 2);
   rec.width = rightTop.x - leftBottom.x;
   rec.height = rightTop.y - leftBottom.y;
   return in;
