@@ -1,8 +1,8 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
-#include "shape.h"
 #include <iosfwd>
+#include "shape.h"
 
 class Rectangle : Shape {
 private:
@@ -20,19 +20,17 @@ public:
 
   double getHeight() const;
 
-  void setCPoint(PointT);
-
   PointT getCPoint() const;
 
-  long long getArea();
+  long long getArea() override;
 
-  RectangleT getFrameRect();
+  RectangleT getFrameRect() override;
 
-  void move(PointT);
+  void move(PointT) override;
 
-  void move(double x, double y);
+  void move(double x, double y) override;
 
-  void scale(double);
+  void scale(double) override;
 
   friend std::istream &operator>>(std::istream &, Rectangle &);
 };

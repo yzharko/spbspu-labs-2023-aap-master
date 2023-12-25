@@ -5,15 +5,15 @@
 
 class Shape {
 public:
-  long long getArea();
+  virtual long long getArea() = 0;
 
-  RectangleT getFrameRect();
+  virtual RectangleT getFrameRect() = 0;
 
-  void move(PointT);
+  virtual void move(PointT) = 0;
 
-  void move(double x, double y);
+  virtual void move(double x, double y) = 0;
 
-  void scale(double);
+  virtual void scale(double) = 0;
 };
 
 #endif

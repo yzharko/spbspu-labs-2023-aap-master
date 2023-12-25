@@ -28,11 +28,6 @@ double Rectangle::getHeight() const
   return height;
 }
 
-void Rectangle::setCPoint(PointT newCPoint)
-{
-  cPoint = newCPoint;
-}
-
 PointT Rectangle::getCPoint() const
 {
   return cPoint;
