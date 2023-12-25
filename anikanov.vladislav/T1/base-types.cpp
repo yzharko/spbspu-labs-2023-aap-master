@@ -16,7 +16,7 @@ PointT::PointT(double x, double y)
 
 PointT &PointT::operator=(const PointT another_point)
 {
-  if (this == &another_point){
+  if (this == &another_point) {
     return *this;
   }
   this->x = another_point.x;
@@ -24,10 +24,19 @@ PointT &PointT::operator=(const PointT another_point)
   return *this;
 }
 
-std::ostream& operator<<(std::ostream &out, const PointT& point) {
+std::ostream &operator<<(std::ostream &out, const PointT &point)
+{
   out << std::fixed << std::setprecision(5);
   out << point.x << " " << point.y;
   return out;
+}
+
+std::istream &operator>>(std::istream &in, PointT &point)
+{
+  if (!(in >> point.x >> point.y)){
+    throw std::runtime_error("Invalid Input");
+  }
+  return in;
 }
 
 RectangleT::RectangleT(PointT pos, double width, double height)
@@ -37,7 +46,8 @@ RectangleT::RectangleT(PointT pos, double width, double height)
   this->height = height;
 }
 
-std::ostream& operator<<(std::ostream &out, const RectangleT& rec) {
+std::ostream &operator<<(std::ostream &out, const RectangleT &rec)
+{
   out << PointT(rec.pos.x - rec.width / 2, rec.pos.y - rec.height / 2);
   out << " ";
   out << PointT(rec.pos.x + rec.width / 2, rec.pos.y + rec.height / 2);
