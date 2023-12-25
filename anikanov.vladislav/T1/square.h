@@ -5,9 +5,6 @@
 #include "shape.h"
 
 class Square : Shape {
-private:
-  double side;
-  PointT cPoint;
 public:
   explicit Square();
 
@@ -28,6 +25,9 @@ public:
   void scale(double) override;
 
   friend std::istream &operator>>(std::istream &, Square &);
+private:
+  double side;
+  PointT cPoint;
 };
 
 #endif

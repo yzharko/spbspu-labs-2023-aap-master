@@ -2,9 +2,10 @@
 #include "base-types.cpp"
 #include "rectangle.cpp"
 #include "square.cpp"
+#include "complexquad.cpp"
 
 int main(){
-  Square square;
-  std::cin >> square;
-  std::cout << square.getFrameRect();
+  Complexquad complexquad;
+  std::cin >> complexquad;
+  std::cout << complexquad.getFrameRect();
 }

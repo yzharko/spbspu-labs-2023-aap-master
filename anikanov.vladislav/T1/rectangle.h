@@ -5,10 +5,6 @@
 #include "shape.h"
 
 class Rectangle : Shape {
-private:
-  double width;
-  double height;
-  PointT cPoint;
 public:
   explicit Rectangle();
 
@@ -33,6 +29,10 @@ public:
   void scale(double) override;
 
   friend std::istream &operator>>(std::istream &, Rectangle &);
+private:
+  double width;
+  double height;
+  PointT cPoint;
 };
 
 #endif
