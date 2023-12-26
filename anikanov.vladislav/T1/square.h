@@ -4,7 +4,7 @@
 #include <iosfwd>
 #include "shape.h"
 
-class Square : Shape {
+class Square : public Shape {
 public:
   explicit Square();
 

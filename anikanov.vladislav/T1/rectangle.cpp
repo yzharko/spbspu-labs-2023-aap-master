@@ -55,6 +55,9 @@ void Rectangle::move(double x, double y)
 
 void Rectangle::scale(double k)
 {
+  if (k < 0){
+    throw std::logic_error("Invalid scale argument");
+  }
   width *= 2;
   height *= 2;
 }
@@ -62,7 +65,9 @@ void Rectangle::scale(double k)
 std::istream &operator>>(std::istream &in, Rectangle &rec)
 {
   PointT leftBottom, rightTop;
-  in >> leftBottom >> rightTop;
+  if (!(in >> leftBottom >> rightTop)){
+    throw std::overflow_error("Invalid Input Rectangle");
+  }
   rec.cPoint = PointT(leftBottom.x + (rightTop.x - leftBottom.x) / 2,
                       leftBottom.y + (rightTop.y - leftBottom.y) / 2);
   rec.width = rightTop.x - leftBottom.x;

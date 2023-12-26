@@ -36,13 +36,16 @@ void Square::move(double x, double y){
 }
 
 void Square::scale(double k){
+  if (k < 0){
+    throw std::logic_error("Invalid scale argument");
+  }
   side *= k;
 }
 
 std::istream &operator>>(std::istream &in, Square &square){
   PointT leftBottom;
   if (!(in >> leftBottom >> square.side)){
-    throw std::runtime_error("Invalid Input");
+    throw std::overflow_error("Invalid Input Square");
   }
   square.cPoint = PointT(leftBottom.x + square.side / 2,
                          leftBottom.y + square.side / 2);

@@ -4,7 +4,7 @@
 #include <iosfwd>
 #include "shape.h"
 
-class Complexquad : Shape {
+class Complexquad : public Shape {
 public:
   PointT getCPoint() const;
 

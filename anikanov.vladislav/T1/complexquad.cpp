@@ -66,6 +66,9 @@ void Complexquad::move(double x, double y)
 
 void Complexquad::scale(double k)
 {
+  if (k < 0){
+    throw std::logic_error("Invalid scale argument");
+  }
   leftBottom.x = cPoint.x + k * getDX(leftBottom, cPoint);
   leftBottom.y = cPoint.y + k * getDY(leftBottom, cPoint);
 
@@ -82,7 +85,7 @@ void Complexquad::scale(double k)
 std::istream &operator>>(std::istream &in, Complexquad &complexquad)
 {
   if (!(in >> complexquad.leftBottom >> complexquad.leftTop >> complexquad.rightBottom >> complexquad.rightTop)) {
-    throw std::runtime_error("Invalid Input");
+    throw std::overflow_error("Invalid Input Complexquad");
   }
   double x1 = complexquad.leftBottom.x;
   double y1 = complexquad.leftBottom.y;

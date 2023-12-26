@@ -39,6 +39,13 @@ std::istream &operator>>(std::istream &in, PointT &point)
   return in;
 }
 
+RectangleT::RectangleT()
+{
+  this->pos = PointT(0, 0);
+  this->width = 0;
+  this->height = 0;
+}
+
 RectangleT::RectangleT(PointT pos, double width, double height)
 {
   this->pos = pos;

@@ -22,6 +22,7 @@ struct RectangleT {
   double height;
   PointT pos;
 
+  explicit RectangleT();
   explicit RectangleT(PointT pos, double width, double height);
 
   friend std::ostream &operator<<(std::ostream &, const RectangleT &);
