@@ -12,6 +12,7 @@ struct PointT {
   explicit PointT(double x, double y);
 
   PointT &operator=(PointT another_point);
+  PointT &operator+(PointT another_point);
 
   friend std::istream &operator>>(std::istream &, PointT &);
   friend std::ostream &operator<<(std::ostream &, const PointT &);

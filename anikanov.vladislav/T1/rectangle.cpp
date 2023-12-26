@@ -68,9 +68,9 @@ std::istream &operator>>(std::istream &in, Rectangle &rec)
   if (!(in >> leftBottom >> rightTop)){
     throw std::overflow_error("Invalid Input Rectangle");
   }
-  rec.cPoint = PointT(leftBottom.x + (rightTop.x - leftBottom.x) / 2,
-                      leftBottom.y + (rightTop.y - leftBottom.y) / 2);
   rec.width = rightTop.x - leftBottom.x;
   rec.height = rightTop.y - leftBottom.y;
+  rec.cPoint = PointT(leftBottom.x + rec.width / 2,
+                      leftBottom.y + rec.height / 2);
   return in;
 }

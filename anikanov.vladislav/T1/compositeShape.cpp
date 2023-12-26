@@ -5,9 +5,9 @@
 
 CompositeShape::CompositeShape()
 {
-  size_t shapes = 0;
-  size_t capacity = 1;
-  Shape **shapeptrs = new Shape *[capacity];
+  shapes = 0;
+  capacity = 1;
+  shapeptrs = new Shape *[capacity];
 }
 
 CompositeShape::CompositeShape(const CompositeShape &another)
@@ -48,7 +48,7 @@ void CompositeShape::add(Shape *shape)
   shapeptrs[shapes++] = shape;
 }
 
-Shape* CompositeShape::pop(size_t n)
+Shape *CompositeShape::pop(size_t n)
 {
   if (n == -1) {
     Shape *shape = shapeptrs[shapes];
@@ -117,7 +117,7 @@ void CompositeShape::move(double x, double y)
   move(point);
 }
 
-void CompositeShape::scale(std::istream &in, std::ostream &out)
+void CompositeShape::scale(std::ostream &out, PointT center, unsigned int k)
 {
   out << getArea();
   RectangleT *points = getFrameRect();
@@ -126,12 +126,13 @@ void CompositeShape::scale(std::istream &in, std::ostream &out)
   }
   out << "\n";
   delete[] points;
-  double k;
+  PointT pos;
   for (int i = 0; i < shapes; ++i) {
-    if(!(in >> k) || k < 0){
-      throw std::runtime_error("Invalid Input");
-    }
     shapeptrs[i]->scale(k);
+    pos = shapeptrs[i]->getCPoint();
+    double dx = getDX(pos, center);
+    double dy = getDY(pos, center);
+    shapeptrs[i]->move(pos + PointT(pos.x + dx, pos.y + dy));
   }
   out << getArea();
   points = getFrameRect();
@@ -140,4 +141,14 @@ void CompositeShape::scale(std::istream &in, std::ostream &out)
   }
   out << "\n";
   delete[] points;
+}
+
+double CompositeShape::getDX(PointT fp, PointT sp)
+{
+  return fp.x - sp.x;
+}
+
+double CompositeShape::getDY(PointT fp, PointT sp)
+{
+  return fp.y - sp.y;
 }

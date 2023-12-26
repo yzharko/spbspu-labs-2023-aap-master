@@ -44,7 +44,7 @@ void Square::scale(double k){
 
 std::istream &operator>>(std::istream &in, Square &square){
   PointT leftBottom;
-  if (!(in >> leftBottom >> square.side)){
+  if (!(in >> leftBottom >> square.side) || square.side <= 0){
     throw std::overflow_error("Invalid Input Square");
   }
   square.cPoint = PointT(leftBottom.x + square.side / 2,

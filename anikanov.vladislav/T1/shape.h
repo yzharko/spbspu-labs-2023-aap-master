@@ -13,6 +13,8 @@ public:
 
   virtual void move(double x, double y) = 0;
 
+  virtual PointT getCPoint() const = 0;
+
   virtual void scale(double) = 0;
 };
 
