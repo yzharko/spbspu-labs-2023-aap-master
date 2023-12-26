@@ -34,7 +34,7 @@ std::ostream &operator<<(std::ostream &out, const PointT &point)
 std::istream &operator>>(std::istream &in, PointT &point)
 {
   if (!(in >> point.x >> point.y)){
-    throw std::runtime_error("Invalid Input");
+    throw std::overflow_error("Invalid Input");
   }
   return in;
 }
