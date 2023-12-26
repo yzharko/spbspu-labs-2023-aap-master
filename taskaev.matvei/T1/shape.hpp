@@ -14,5 +14,4 @@ namespace taskaev
       virtual void scale(double c) = 0;
   };
 }
-
 #endif
