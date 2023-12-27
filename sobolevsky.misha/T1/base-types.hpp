@@ -3,16 +3,14 @@
 
 namespace sobolevsky
 {
-  class Point_t
+  struct Point_t
   {
-  private:
     double x;
     double y;
   };
 
-  class Rectangle_t
+  struct Rectangle_t
   {
-  private:
     double width;
     double height;
     Point_t pos;
