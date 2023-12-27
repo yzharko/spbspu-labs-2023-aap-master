@@ -8,8 +8,8 @@ namespace sobolevsky
     center.x = (leftDownPoint.x - rightUpPoint.x) / 2;
     center.y = (leftDownPoint.y - rightUpPoint.y) / 2;
     rectangle.pos = center;
-    rectangle.width = leftDownPoint.x - rightUpPoint.x;
-    rectangle.height = leftDownPoint.y - rightUpPoint.y;
+    rectangle.width = rightUpPoint.x - leftDownPoint.x;
+    rectangle.height = rightUpPoint.y - leftDownPoint.y;
   }
 
   double Rectangle::getArea()
