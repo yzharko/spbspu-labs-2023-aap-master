@@ -9,8 +9,8 @@ namespace popov
     virtual float getArea();
     virtual rectangle_t getFrameRect();
     virtual void move(point_t pos);
-    virtual void move(point_t x, point_t y);
-    virtual void scale(n);
+    virtual void move(float x, float y);
+    virtual void scale(float n);
   };
 }
 
