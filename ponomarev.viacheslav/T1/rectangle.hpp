@@ -10,9 +10,9 @@ namespace ponomarev
     Rectangle(point_t lowerLeft, point_t upperRight);
     virtual double getArea();
     virtual rectangle_t getFrameRect();
-    virtual void move(point_t destination);
-    virtual void move(double moveX, double moveY);
-    virtual void scale(point_t pos, double coefficient);
+    virtual void move(point_t toThePoint);
+    virtual void move(double aX, double aY);
+    virtual void scale(point_t pos, double k);
   private:
     point_t lowerLeft;
     point_t upperRight;

@@ -19,29 +19,29 @@ rectangle_t ponomarev::Rectangle::getFrameRect()
   return rectangle_t{ width, height, pos };
 }
 
-void ponomarev::Rectangle::move(point_t destination)
+void ponomarev::Rectangle::move(point_t toThePoint)
 {
   rectangle_t frame = getFrameRect();
-  double moveX = destination.x - frame.pos.x;
-  double moveY = destination.y - frame.pos.y;
-  lowerLeft.x += moveX;
-  lowerLeft.y += moveY;
-  upperRight.x += moveX;
-  upperRight.y += moveY;
+  double aX = destination.x - frame.pos.x;
+  double aY = destination.y - frame.pos.y;
+  lowerLeft.x += aX;
+  lowerLeft.y += aY;
+  upperRight.x += aX;
+  upperRight.y += aY;
 }
 
-void ponomarev::Rectangle::move(double moveX, double moveY)
+void ponomarev::Rectangle::move(double aX, double aY)
 {
-  lowerLeft.x += moveX;
-  lowerLeft.y += moveY;
-  upperRight.x += moveX;
-  upperRight.y += moveY;
+  lowerLeft.x += aX;
+  lowerLeft.y += aY;
+  upperRight.x += aX;
+  upperRight.y += aY;
 }
 
-void ponomarev::Rectangle::scale(point_t pos, double coefficient)
+void ponomarev::Rectangle::scale(point_t pos, double k)
 {
-  lowerLeft.x *= coefficient;
-  lowerLeft.y *= coefficient;
-  upperRight.x *= coefficient;
-  upperRight.y *= coefficient;
+  lowerLeft.x *= k;
+  lowerLeft.y *= k;
+  upperRight.x *= k;
+  upperRight.y *= k;
 }
