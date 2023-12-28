@@ -1,5 +1,7 @@
 #include <iostream>
 #include "rectangle.hpp"
+#include "diamond.hpp"
+#include "parallelogram.hpp"
 
 int main()
 {

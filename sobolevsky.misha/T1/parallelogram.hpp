@@ -1,6 +1,6 @@
 #ifndef PARALLELOGRAM_HPP
 #define PARALLELOGRAM_HPP
-#include "base-types.hpp"
+#include "shape.hpp"
 
 namespace sobolevsky
 {
