@@ -19,23 +19,40 @@ namespace sobolevsky
 
   Rectangle_t Diamond::getFrameRect()
   {
-    Point_t leftDownPoint;
-    Point_t rightUpPoint;
-    
+    rectangle.pos = centerPoint;
+    rectangle.height = firstDiagonal * 2;
+    rectangle.width = secondDiagonal * 2;
+    return rectangle;
   }
 
   void Diamond::move(Point_t newCenter)
   {
-
+    double dx = centerPoint.x - newCenter.x;
+    double dy = centerPoint.y - newCenter.y;
+    centerPoint = newCenter;
+    rightPoint.x += dx;
+    upPoint.x += dx;
+    rightPoint.y += dy;
+    upPoint.y += dy;
   }
 
   void Diamond::move(double moveX, double moveY)
   {
-
+    centerPoint.x += moveX;
+    centerPoint.y += moveY;
+    rightPoint.x += moveX;
+    upPoint.x += moveX;
+    rightPoint.y += moveY;
+    upPoint.y += moveY;
   }
 
   void Diamond::scale(double n)
   {
-
+    rightPoint.x *= n;
+    upPoint.x *= n;
+    rightPoint.y *= n;
+    upPoint.y *= n;
+    firstDiagonal *= n;
+    secondDiagonal *= n;
   }
 }
