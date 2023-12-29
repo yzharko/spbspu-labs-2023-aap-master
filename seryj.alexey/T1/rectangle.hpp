@@ -26,5 +26,4 @@ private:
   double width_ = 0;
   double height_ = 0;
 };
-
 #endif
