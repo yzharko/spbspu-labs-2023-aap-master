@@ -14,9 +14,9 @@ namespace psarev
     virtual void move(double xCh, double yCh) override;
     virtual void scale(double coef) override;
   private:
+    point_t center;
     double exterRad;
     double interRad;
-    point_t center;
   };
 }
 
