@@ -9,7 +9,7 @@ psarev::Rectangle::Rectangle(point_t firPoint, point_t secPoint) :
 
 rectangle_t psarev::Rectangle::getFrameRect()
 {
-  return { abs(llCorner.x - urCorner.x), abs(llCorner.y - urCorner.y), center };
+  return { fabs(llCorner.x - urCorner.x), fabs(llCorner.y - urCorner.y), center };
 }
 
 double psarev::Rectangle::getArea()
