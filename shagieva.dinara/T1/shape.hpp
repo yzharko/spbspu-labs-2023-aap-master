@@ -7,11 +7,11 @@ namespace shagieva
   class Shape
   {
   public:
-    virtual double getArea() = 0;
-    virtual rectangle_t getFrameRect() = 0;
-    virtual void move(point_t newCenter) = 0;
-    virtual void move(double dX, double dY) = 0;
-    virtual void scale(point_t pos, double k) = 0;
+    virtual double getArea() const = 0;
+    virtual rectangle_t getFrameRect() const = 0;
+    virtual void move(const point_t & newPos) = 0;
+    virtual void move(const double dx, const double dy) = 0;
+    virtual void scale(const double scakeFactor) = 0;
   };
 }
 

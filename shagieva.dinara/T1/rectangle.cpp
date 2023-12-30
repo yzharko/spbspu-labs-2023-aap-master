@@ -1,40 +1,47 @@
 #include "rectangle.hpp"
 #include <cmath>
 
-shagieva::Rectangle::Rectangle(point_t firstPoint, point_t secondPoint) :
+shagieva::Rectangle::Rectangle(const point_t  & firstPoint, const point_t & secondPoint) :
   cornerA(firstPoint),
   cornerC(secondPoint)
 {
-  center = { (cornerA.x + cornerC.x) / 2, (cornerA.y + cornerC.y) /2 };
+  pos = { (cornerA.x + cornerC.x) / 2, (cornerA.y + cornerC.y) / 2 };
 }
 
-rectangle_t shagieva::Rectangle::getFrameRect()
+double shagieva::Rectangle::getArea() const
 {
-  return { fabs(cornerA.x - cornerC.x), fabs(cornerA.y - cornerC.y), center };
+  double width = cornerC.x - cornerA.x;
+  double height = cornerC.y - cornerA.y;
+  return width * height;
 }
 
-double shagieva::Rectangle::getArea()
+rectangle_t shagieva::Rectangle::getFrameRect() const
 {
-  rectangle_t frameRect = getFrameRect();
-  return (frameRect.width * frameRect.height);
+  double width = cornerA.x - cornerC.x;
+  double height = cornerA.y - cornerC.y;
+  return { width, height, pos };
 }
 
-void shagieva::Rectangle::move(point_t newCenter)
+void shagieva::Rectangle::move(const double dx, const double dy)
 {
-  double dX = newCenter.x - center.x;
-  double dY = newCenter.y - center.y;
-  cornerA.x += dX;
-  cornerA.y += dY;
-  cornerC.x += dX;
-  cornerC.y += dY;
-  center = newCenter;
+  cornerA.x += dx;
+  cornerA.y += dy;
+  cornerC.x += dx;
+  cornerC.y += dy;
+  pos = { pos.x += dX, pos.y += dY };
 }
 
-void shagieva::Rectangle::move(double dX, double dY)
+void shagieva::Rectangle::move(const point_t & newPos)
 {
-  cornerA.x += dX;
-  cornerA.y += dY;
-  cornerC.x += dX;
-  cornerC.y += dY;
-  center = { center.x += dX, center.y += dY };
+  double dx = newPos.x - pos.x;
+  double dy = newPos.y - pos.y;
+  move(dx, dy);
+}
+
+void shagieva::Rectangle::scale(const double scaleFactor)
+{
+  cornerA.x = pos.x + (cornerA.x - pos.x) * scaleFactor;
+  cornerA.y = pos.y + (cornerA.y - pos.y) * scaleFactor;
+  cornerC.x = pos.x  + (cornerC.x - pos.x) * scaleFactor;
+  cornerC.y = pos.y + (cornerC.y - pos.y) * scaleFactor;
 }

@@ -1,6 +1,5 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
-#include "base-types.hpp"
 #include "shape.hpp"
 
 namespace shagieva
@@ -8,17 +7,17 @@ namespace shagieva
   class Rectangle: public Shape
   {
   public:
-    Rectangle(const point_t firstPoint, const point_t secondPoint);
-    virtual rectangle_t getFrameRect();
-    virtual double getArea();
-    virtual void move(point_t newCenter);
-    virtual void move(double dX, double dY);
-    virtual void scale(point_t pos, double k);
+    Rectangle(const point_t & firstPoint, const point_t & secondPoint);
+    virtual double getArea() const;
+    virtual rectangle_t getFrameRect() const;
+    virtual void move(const point_t & newPos);
+    virtual void move(const double dx, const double dy);
+    virtual void scale(const double scaleFactor);
 
   private:
     point_t cornerA;
     point_t cornerC;
-    point_t center;
+    point_t pos;
   };
 }
 
