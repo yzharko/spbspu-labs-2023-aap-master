@@ -1,47 +1,46 @@
 #include "rectangle.hpp"
-#include <cmath>
 
-shagieva::Rectangle::Rectangle(const point_t & firstPoint, const point_t & secondPoint) :
-  cornerA(firstPoint),
-  cornerC(secondPoint)
+shagieva::Rectangle::Rectangle(const point_t & point1, const point_t & point2) :
+  pointA(point1),
+  pointC(point2)
 {
-  pos = { (cornerA.x + cornerC.x) / 2, (cornerA.y + cornerC.y) / 2 };
+  center = { (pointA.x + pointC.x) / 2, (pointA.y + pointC.y) / 2 };
 }
 
 double shagieva::Rectangle::getArea() const
 {
-  double width = cornerC.x - cornerA.x;
-  double height = cornerC.y - cornerA.y;
+  double width = pointC.x - pointA.x;
+  double height = pointC.y - pointA.y;
   return width * height;
 }
 
 rectangle_t shagieva::Rectangle::getFrameRect() const
 {
-  double width = cornerC.x - cornerA.x;
-  double height = cornerC.y - cornerA.y;
-  return { width, height, pos };
+  double width = pointC.x - pointA.x;
+  double height = pointC.y - pointA.y;
+  return { width, height, center };
 }
 
 void shagieva::Rectangle::move(const double dx, const double dy)
 {
-  cornerA.x += dx;
-  cornerA.y += dy;
-  cornerC.x += dx;
-  cornerC.y += dy;
-  pos = { pos.x += dx, pos.y += dy };
+  pointA.x += dx;
+  pointA.y += dy;
+  pointC.x += dx;
+  pointC.y += dy;
+  center = { center.x += dx, center.y += dy };
 }
 
-void shagieva::Rectangle::move(const point_t & newPos)
+void shagieva::Rectangle::move(const point_t & newCenter)
 {
-  double dx = newPos.x - pos.x;
-  double dy = newPos.y - pos.y;
+  double dx = newCenter.x - center.x;
+  double dy = newCenter.y - center.y;
   move(dx, dy);
 }
 
 void shagieva::Rectangle::scale(const double scaleFactor)
 {
-  cornerA.x = (cornerA.x - pos.x) * scaleFactor + pos.x;
-  cornerA.y = (cornerA.y - pos.y) * scaleFactor + pos.y;
-  cornerC.x = (cornerC.x - pos.x) * scaleFactor + pos.x;
-  cornerC.y = (cornerC.y - pos.y) * scaleFactor + pos.y;
+  pointA.x = (pointA.x - center.x) * scaleFactor + center.x;
+  pointA.y = (pointA.y - center.y) * scaleFactor + center.y;
+  pointC.x = (pointC.x - center.x) * scaleFactor + center.x;
+  pointC.y = (pointC.y - center.y) * scaleFactor + center.y;
 }
