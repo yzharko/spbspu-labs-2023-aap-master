@@ -21,7 +21,7 @@ rectangle_t shagieva::Rectangle::getFrameRect() const
   return { width, height, center };
 }
 
-void shagieva::Rectangle::move(const double dx, const double dy)
+void shagieva::Rectangle::move(const double & dx, const double & dy)
 {
   pointA.x += dx;
   pointA.y += dy;
@@ -37,7 +37,7 @@ void shagieva::Rectangle::move(const point_t & newCenter)
   move(dx, dy);
 }
 
-void shagieva::Rectangle::scale(const double scaleFactor)
+void shagieva::Rectangle::scale(const double & scaleFactor)
 {
   pointA.x = (pointA.x - center.x) * scaleFactor + center.x;
   pointA.y = (pointA.y - center.y) * scaleFactor + center.y;
