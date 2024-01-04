@@ -14,7 +14,7 @@ namespace khomichenko
       void move (point_t dPos);
       void move (double dX, double dY);
       void scale (point_t pos, double k);
-    private:
+
       point_t leftBottom;
       point_t rightTop;
   };

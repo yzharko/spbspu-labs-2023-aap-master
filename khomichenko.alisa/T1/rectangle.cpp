@@ -2,7 +2,7 @@
 
 khomichenko::Rectangle::Rectangle(point_t leftBottom, point_t rightTop):
   leftBottom(leftBottom),
-  rightTop(upperRight)
+  rightTop(rightTop)
 {}
 
 double khomichenko::Rectangle::getArea()
@@ -13,11 +13,13 @@ double khomichenko::Rectangle::getArea()
 }
 
 rectangle_t khomichenko::Rectangle::getFrameRect()
+
 {
-   return rectangle_t {leftBottom, rightTop};
+Rectangle* rectangle1 = new Rectangle (leftBottom, rightTop);
+return rectangle1;
 }
 
-void khomichenko::Rectangle::move(double dX, double dY)
+/*/void khomichenko::Rectangle::move(double dX, double dY)
 {
   point_t pos = { 0.5 * (rigtTop.x + leftBottom.x), 0.5 * (rightTop.y + leftBottom.y) };
   pos.x+=dX;
@@ -28,14 +30,14 @@ void khomichenko::Rectangle::move(double dX, double dY)
   rightTop.y+=dY;
 }
 
-void khomichenko::Rectangle::move(point_t dPos)
+//void khomichenko::Rectangle::move(point_t dPos)
 {
   rectangle_t rect = getFrameRect();
   point_t delta = {dPos.x - rect.pos.x, dPos.y - rect.pos.y};
   khomichenko::Rectangle::move(delta.x, delta.y);
 }
 
-void khomichenko::Rectangle::scale(point_t pos, double k)
+//void khomichenko::Rectangle::scale(point_t pos, double k)
 {
   point_t changed = {0.5 * (rightTop.x - leftBottom.x),0.5 * (rightTop.y - leftBottom.y)};
   point_t newCoordinates = {changed.x * k, changed.y * k};
@@ -44,3 +46,4 @@ void khomichenko::Rectangle::scale(point_t pos, double k)
   rightTop.y = pos.y + newCoordinates.y;
   leftBottom.y = pos.y + newCoordinates.y;
 }
+*/

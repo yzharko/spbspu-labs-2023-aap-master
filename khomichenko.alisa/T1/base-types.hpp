@@ -5,15 +5,14 @@ namespace khomichenko
 {
   struct point_t
   {
-    size_t x;
-    size_t y;
+    double x;
+    double y;
   };
 
   struct rectangle_t
   {
-    size_t width;
-    size_t height;
-    point_t pos;
+    point_t leftBottom;
+    point_t rightTop;
   };
 }
 
