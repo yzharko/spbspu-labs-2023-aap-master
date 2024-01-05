@@ -21,4 +21,4 @@ struct CompositeShape
   void move(double x, double y);
   void scale(point_t, double);
 };
-#endif 
+#endif

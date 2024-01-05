@@ -59,7 +59,12 @@ do
   if (shape_name == "RECTANGLE")
    ptr = new Rectangle({ std::stod(inp[1]) , std::stod(inp[2]) }, { std::stod(inp[3]), std::stod(inp[4]) });
   if (shape_name == "REGULAR")
-    ptr = new Regular({ std::stod(inp[1]), std::stod(inp[2]) }, { std::stod(inp[3]), std::stod(inp[4]) }, { std::stod(inp[5]),std::stod(inp[6]) });
+  {
+    double arr[6];
+    for (int i = 1; i <= 6; i++)
+      arr[i - 1] = std::stod(inp[i]);
+    ptr = new Regular({ arr[1], arr[2]}, {arr[3],arr[4]}, {arr[5],arr[6]});
+  }
   if (shape_name != "SCALE")
     seryj::skipShape(inp);
 } while (shape_name != "SCALE");
