@@ -132,7 +132,7 @@ void CompositeShape::scale(std::ostream &out, PointT center, unsigned int k)
     pos = shapeptrs[i]->getCPoint();
     double dx = getDX(pos, center) * (k - 1);
     double dy = getDY(pos, center) * (k - 1);
-    shapeptrs[i]->move(pos + PointT(pos.x + dx, pos.y + dy));
+    shapeptrs[i]->move(pos + PointT(dx, dy));
   }
   out << getArea();
   points = getFrameRect();
