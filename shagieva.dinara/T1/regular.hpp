@@ -16,7 +16,10 @@ namespace shagieva
 
   private:
     point_t points[3];
-    double getLength(const point_t & point1, const point_t & point2) const;
+    point_t getCoordinates(const point_t & point1, const point_t & point2) const
+    double getLength(const point_t & seg) const
+    double getCos(const point_t & seg1, const point_t & seg2, const double & lenSeg1, const double & lenSeg2) const
+    double getSin(const double & cos) const
   };
 }
 

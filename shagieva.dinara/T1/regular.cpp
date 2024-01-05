@@ -10,7 +10,19 @@ shagieva::Regular::Regular(const point_t & point1, const point_t & point2, const
 
 double shagieva::Regular::getArea() const
 {
+  point_t smallR = getCoordinates(points[0], points[1]);
+  point_t bigR = getCoordinats(points[0], points[2]);
 
+  double lenSmallR = getLength(smallR);
+  double lenBigR = getLength(bigR);
+
+  double cos = getCos(smallR, bigR, lenSmallR, lenBigR);
+  double sin = getSin(cos);
+
+  double triangleArea = getTriangleArea(lenSmallR, lenBigR, sin);
+  double angle = asin(sin);
+
+  return triangleArea * (360 / angle);
 }
 
 rectangle_t shagieva::Regular::getFrameRect() const
@@ -43,7 +55,22 @@ void shagieva::Regular::scale(const double & scaleFactor)
   }
 }
 
-double shagieva::Rectangle::getLength(const point_t & point1, const point_t & point2) const
+point_t shagieva::Regular::getCoordinates(const point_t & point1, const point_t & point2) const
 {
-  return std::hypot(point2.x - point1.x, point2.y - point1.y);
+  return { point2.x - point1.x, points2.y - points1.y }
+}
+
+double shagieva::Regular::getLength(const point_t & seg) const
+{
+  return std::hypot(seg.x, seg.y);
+}
+
+double shagieva::Regular::getCos(const point_t & seg1, const point_t & seg2, const double & lenSeg1, const double & lenSeg2) const
+{
+  return (seg1.x * seg2.x + seg1.y * seg2.y) / (lenSeg1 * lenSeg2);
+}
+
+double shagieva::Regular::getSin(const double & cos) const
+{
+  return std::sqrt(1 - cos * cos);
 }
