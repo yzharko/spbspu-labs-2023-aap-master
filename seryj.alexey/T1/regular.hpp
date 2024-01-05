@@ -1,7 +1,6 @@
 #ifndef REGULAR_HPP
 #define REGULAR_HPP
 #include "shape.hpp"
-#include "square.hpp"
 class Regular : public Shape
 {
 public:
@@ -12,6 +11,9 @@ public:
   virtual void move(double x, double y);
   virtual void scale(double k);
 private:
-  Square square_;
+  double n_ = 0;
+  double hypotenuse_ = 0;
+  double cathetus_ = 0;
+  point_t pos_ = { 0,0 };
 };
 #endif

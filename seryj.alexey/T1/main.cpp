@@ -1,17 +1,12 @@
 #include <iostream>
-#include "rectangle.hpp"
-#include "regular.hpp"
-#include "square.hpp"
-#include "shape.hpp"
+#include "input_output.hpp"
 int main()
 {
-  Rectangle rect({ 0, 0 }, { 2, 2 });
-  Square sqar({ 0, 0 }, 3);
-  Regular regu({ 0,0 }, { 0,1 }, { 1,1 });
-  Shape* shape = &rect;
-  std::cout << shape->getArea() << "\n";
-  shape = &sqar;
-  std::cout << shape->getArea() << "\n";
-  shape = &rect;
-  std::cout << shape->getArea() << "\n";
+  std::vector<std::string> text = seryj::readText(std::cin);
+  CompositeShape cs(seryj::analyseText(text));
+  seryj::writeAnswer(std::cout, cs);
+  text.erase(text.begin(), text.end() - 3);
+  cs.scale({ std::stod(text[0]), std::stod(text[1]) }, std::stod(text[2]));
+  seryj::writeAnswer(std::cout, cs);
+  return 0;
 }

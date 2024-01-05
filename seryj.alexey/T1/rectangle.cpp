@@ -1,4 +1,14 @@
 #include "rectangle.hpp"
+#include <cmath>
+Rectangle::Rectangle(point_t lp, point_t rp)
+{
+  left_point_ = lp;
+  right_point_ = rp;
+  pos_.x = (left_point_.x + right_point_.x) / 2;
+  pos_.y = (left_point_.y + right_point_.y) / 2;
+  width_ = abs(left_point_.x - right_point_.x);
+  height_ = abs(left_point_.y - right_point_.y);
+}
 double Rectangle::getArea()
 {
   return height_ * width_;
