@@ -10,11 +10,9 @@ struct CompositeShape
   CompositeShape(CompositeShape&&);
   void operator+=(Shape*);
   void operator-=(Shape*);
-
   std::vector<Shape*> shapeptrs;
   size_t shapes;
   size_t capacity;
-  
   double getArea();
   std::vector<rectangle_t> getFrameRect();
   void move(std::vector<point_t>);
