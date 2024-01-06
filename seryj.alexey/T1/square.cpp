@@ -1,9 +1,6 @@
 #include "square.hpp"
-#include <exception>
 Square::Square(point_t pos, double side)
 {
-  if (side < 0)
-    throw std::exception("Cant have a negative side\n");
   point_ = pos;
   side_ = side;
 }

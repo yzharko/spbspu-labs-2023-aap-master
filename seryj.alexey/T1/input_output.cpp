@@ -9,7 +9,7 @@ void seryj::writeAnswer(std::ostream& out, CompositeShape& cs)
   std::vector<rectangle_t> rec_vec = cs.getFrameRect();
   double area = cs.getArea();
   out << area << " ";
-  for (int i = 0; i < cs.shapes; i++)
+  for (size_t i = 0; i < cs.shapes; i++)
   {
     out << rec_vec[i].pos.x - rec_vec[i].width / 2 << " ";
     out << rec_vec[i].pos.y - rec_vec[i].height / 2 << " ";
@@ -51,11 +51,7 @@ do
     v.push_back(ptr);
   shape_name = inp[0];
   if (shape_name == "SQUARE")
-  try
-  {
     ptr = new Square({ std::stod(inp[1]) ,std::stod(inp[2]) }, std::stod(inp[3]));
-  }
-  catch (std::exception const& e) { ptr = nullptr; }
   if (shape_name == "RECTANGLE")
    ptr = new Rectangle({ std::stod(inp[1]) , std::stod(inp[2]) }, { std::stod(inp[3]), std::stod(inp[4]) });
   if (shape_name == "REGULAR")
