@@ -1,4 +1,6 @@
 #include "composite_shape.hpp"
+#include <exception>
+#include <iostream>
 CompositeShape::CompositeShape()
 {
   this->shapes = 0;
@@ -87,6 +89,10 @@ void CompositeShape::move(double x, double y)
 }
 void CompositeShape::scale(point_t p, double k)
 {
+  if (k < 0)
+    throw std::invalid_argument("Negative scale is no \n");
+  if (this->shapes == 0)
+    throw std::invalid_argument("Nothing to scale\n");
   for (size_t i = 0; i < this->shapes; i++)
   {
     point_t shape_pos = this->shapeptrs[i]->getFrameRect().pos;

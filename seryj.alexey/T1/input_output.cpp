@@ -54,24 +54,24 @@ do
   if (ptr)
     cs += ptr;
   shape_name = inp[0];
-  if (shape_name == "SQUARE")
-    try
-    {
-      ptr = new Square({ std::stod(inp[1]) ,std::stod(inp[2]) }, std::stod(inp[3]));
-    }
-    catch(std::logic_error const & e)
-    {
-      error = e.what();
-      ptr = nullptr;
-    }
-  if (shape_name == "RECTANGLE")
-   ptr = new Rectangle({ std::stod(inp[1]) , std::stod(inp[2]) }, { std::stod(inp[3]), std::stod(inp[4]) });
-  if (shape_name == "REGULAR")
+  try
   {
-    double arr[6];
-    for (int i = 1; i <= 6; i++)
-      arr[i - 1] = std::stod(inp[i]);
-    ptr = new Regular({ arr[0], arr[1]}, {arr[2],arr[3]}, {arr[4],arr[5]});
+    if (shape_name == "SQUARE")
+    ptr = new Square({ std::stod(inp[1]) ,std::stod(inp[2]) }, std::stod(inp[3]));
+    if (shape_name == "RECTANGLE")
+      ptr = new Rectangle({ std::stod(inp[1]) , std::stod(inp[2]) }, { std::stod(inp[3]), std::stod(inp[4]) });
+    if (shape_name == "REGULAR")
+    {
+      double arr[6];
+      for (int i = 1; i <= 6; i++)
+        arr[i - 1] = std::stod(inp[i]);
+      ptr = new Regular({ arr[0], arr[1] }, { arr[2],arr[3] }, { arr[4],arr[5] });
+    }
+  }
+  catch (std::logic_error const& e)
+  {
+    error = e.what();
+    ptr = nullptr;
   }
   if (shape_name != "SCALE")
     seryj::skipShape(inp);
@@ -90,5 +90,7 @@ void seryj::skipShape(std::vector<std::string>& v)
 void seryj::writeDouble(std::ostream& out, double d, char after)
 {
   int i = std::round(d * 10);
-  out << (i/10) << "." << abs(i % 10) << after;
+  if (d >= 0)
+    out << i / 10 << '.' << i % 10 << after;
+  else out << '-' << abs(i / 10) << '.' << abs(i % 10) << after;
 }
