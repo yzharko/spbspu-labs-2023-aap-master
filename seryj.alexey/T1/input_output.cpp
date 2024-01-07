@@ -6,16 +6,15 @@
 #include <iostream>
 void seryj::writeAnswer(std::ostream& out, CompositeShape& cs)
 {
-  out.precision(2);
   std::vector<rectangle_t> rec_vec = cs.getFrameRect();
   double area = cs.getArea();
-  out << area << " ";
+  writeDouble(out, area);
   for (size_t i = 0; i < cs.shapes; i++)
   {
-    out << rec_vec[i].pos.x - rec_vec[i].width / 2 << " ";
-    out << rec_vec[i].pos.y - rec_vec[i].height / 2 << " ";
-    out << rec_vec[i].pos.x + rec_vec[i].width / 2 << " ";
-    out << rec_vec[i].pos.y + rec_vec[i].height / 2 << " ";
+    writeDouble(out, rec_vec[i].pos.x - rec_vec[i].width / 2);
+    writeDouble(out, rec_vec[i].pos.y - rec_vec[i].height / 2);
+    writeDouble(out, rec_vec[i].pos.x + rec_vec[i].width / 2);
+    writeDouble(out, rec_vec[i].pos.y + rec_vec[i].height / 2);
   }
   out << "\n";
 }
@@ -86,4 +85,10 @@ void seryj::skipShape(std::vector<std::string>& v)
   {
     v.erase(v.begin(), v.begin() + 1);
   } while (v[0] != "SQUARE" && v[0] != "RECTANGLE" && v[0] != "REGULAR" && v[0] != "SCALE");
+}
+
+void seryj::writeDouble(std::ostream& out, double d)
+{
+  int i = round(d * 10);
+  out << (i/10) << "." << abs(i % 10) << " ";
 }
