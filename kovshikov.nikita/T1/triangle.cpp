@@ -28,29 +28,37 @@ rectangle_t Triangle::getFrameRect()
 }
 void Triangle::move(point_t newPos)
 {
-  posX = (vertexA_.x + vertexB_.x + vertexC_.x) / 3;
-  posY = (vertexA_.y + vertexB_.y + vertexC_.y) / 3;
-  double xPlus = newPos.x - posX;
-  double yPlus = newPos.y - posY;
+  point_t pos = getPos();
+  double xPlus = newPos.x - pos.x;
+  double yPlus = newPos.y - pos.y;
   move(xPlus, yPlus);
 }
 void Triangle::move(double xPlus, double yPlus)
 {
-  vertexA.x += xPlus;
-  vertexA.y += yPlus;
-  vertexB.x += xPlus;
-  vertexB.y += yPlus;
-  vertexC.x += xPlus;
-  vertexC.y += yPlus;
+  vertexA_.x += xPlus;
+  vertexA_.y += yPlus;
+  vertexB_.x += xPlus;
+  vertexB_.y += yPlus;
+  vertexC_.x += xPlus;
+  vertexC_.y += yPlus;
 }
 void Triangle::scale(double multiplier)
 {
-  vertexA.x *= multiplier;
-  vertexA.y *= multip lier;
-  vertexB.x *= multiplier;
-  vertexB.y *= multiplier;
-  vertexC.x *= multiplier;
-  vertexC.y *= multiplier;
-  pos.x *= multiplier;
-  pos.y *= multiplier;
+  point_t pos = getPos();
+  changeVertex(multiplier, pos, vertexA_);
+  changeVertex(multiplier, pos, vertexB_);
+  changeVertex(multiplier, pos, vertexC_);
+}
+point_t Triangle::getPos()
+{
+  posX = (vertexA_.x + vertexB_.x + vertexC_.x) / 3;
+  posY = (vertexA_.y + vertexB_.y + vertexC_.y) / 3;
+  return point_t(posX, posY);
+}
+double Triangle::changeVertex(const double multiplier, const point_t pos, point_t &vertex)
+{
+  double changeX = (vertex.x - pos.x) * multiplier;
+  vertex.x += changeX;
+  double changeY = (vertex.y - pos.y) * multiplier;
+  vertex.y += changeY;
 }
