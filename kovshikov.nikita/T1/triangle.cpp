@@ -24,7 +24,7 @@ rectangle_t Triangle::getFrameRect()
   point_t lowerLeft = {minX, minY};
   point_t upperRight = {maxX, maxY};
   Rectangle rectangle(lowerLeft, upperRight);
-  return rect.getFrameRect();
+  return rectangle.getFrameRect();
 }
 void Triangle::move(point_t newPos)
 {
@@ -53,7 +53,7 @@ point_t Triangle::getPos()
 {
   posX = (vertexA_.x + vertexB_.x + vertexC_.x) / 3;
   posY = (vertexA_.y + vertexB_.y + vertexC_.y) / 3;
-  return point_t(posX, posY);
+  return point_t{ posX, posY };
 }
 double Triangle::changeVertex(const double multiplier, const point_t pos, point_t &vertex)
 {
