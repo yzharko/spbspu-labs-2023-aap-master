@@ -7,7 +7,7 @@ struct CompositeShape
   CompositeShape();
   CompositeShape(std::vector<Shape*>);
   CompositeShape(const CompositeShape&);
-  CompositeShape(CompositeShape&&);
+  ~CompositeShape();
   void operator+=(Shape*);
   void operator-=(Shape*);
   std::vector<Shape*> shapeptrs;

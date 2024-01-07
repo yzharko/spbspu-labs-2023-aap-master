@@ -22,11 +22,13 @@ CompositeShape::CompositeShape(const CompositeShape& cs)
     this->shapeptrs[i] = cs.shapeptrs[i];
   }
 }
-CompositeShape::CompositeShape(CompositeShape&& cs)
+CompositeShape::~CompositeShape()
 {
-  this->shapes = cs.shapes;
-  this->capacity = cs.capacity;
-  this->shapeptrs = cs.shapeptrs;
+  for (size_t i = 0; i < this->shapes; i++)
+  {
+    delete this->shapeptrs[i];
+  }
+  this->shapeptrs.clear();
 }
 void CompositeShape::operator+=(Shape* s)
 {
@@ -43,6 +45,7 @@ void CompositeShape::operator-=(Shape* s)
   {
     if (this->shapeptrs[i] == s)
     {
+      delete this->shapeptrs[i];
       iter = this->shapeptrs.begin() + i;
       break;
     }

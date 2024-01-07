@@ -3,6 +3,7 @@
 #include "square.hpp"
 #include "rectangle.hpp"
 #include "regular.hpp"
+#include <iostream>
 void seryj::writeAnswer(std::ostream& out, CompositeShape& cs)
 {
   out.precision(2);
@@ -23,7 +24,7 @@ std::vector<std::string> seryj::readText(std::istream& inp)
   std::vector<std::string> text;
   int scale_args = 0;
   bool is_after_scale = 0;
-  while (scale_args < 3)
+  while (!inp.eof() && scale_args < 3)
   {
     std::string line;
     std::getline(inp, line, '\n');
@@ -38,20 +39,32 @@ std::vector<std::string> seryj::readText(std::istream& inp)
       text.push_back(word);
     }
   }
+  if (scale_args == 0)
+    throw std::invalid_argument("No scale command\n");
+  if (scale_args < 3)
+    throw std::invalid_argument("Not enough scale arguments\n");
   return text;
 }
-std::vector<Shape*> seryj::analyseText(std::vector<std::string> inp)
+void seryj::textToCompositeShape(std::vector<std::string> inp, CompositeShape& cs)
 {
 std::string shape_name;
 Shape* ptr = nullptr;
-std::vector<Shape*> v;
+std::string error = "";
 do
 {
   if (ptr)
-    v.push_back(ptr);
+    cs += ptr;
   shape_name = inp[0];
   if (shape_name == "SQUARE")
-    ptr = new Square({ std::stod(inp[1]) ,std::stod(inp[2]) }, std::stod(inp[3]));
+    try
+    {
+      ptr = new Square({ std::stod(inp[1]) ,std::stod(inp[2]) }, std::stod(inp[3]));
+    }
+    catch(std::logic_error const & e)
+    {
+      error = e.what();
+      ptr = nullptr;
+    }
   if (shape_name == "RECTANGLE")
    ptr = new Rectangle({ std::stod(inp[1]) , std::stod(inp[2]) }, { std::stod(inp[3]), std::stod(inp[4]) });
   if (shape_name == "REGULAR")
@@ -59,12 +72,13 @@ do
     double arr[6];
     for (int i = 1; i <= 6; i++)
       arr[i - 1] = std::stod(inp[i]);
-    ptr = new Regular({ arr[1], arr[2]}, {arr[3],arr[4]}, {arr[5],arr[6]});
+    ptr = new Regular({ arr[0], arr[1]}, {arr[2],arr[3]}, {arr[4],arr[5]});
   }
   if (shape_name != "SCALE")
     seryj::skipShape(inp);
 } while (shape_name != "SCALE");
-return v;
+if (error.length() > 0)
+  throw std::logic_error(error);
 }
 void seryj::skipShape(std::vector<std::string>& v)
 {

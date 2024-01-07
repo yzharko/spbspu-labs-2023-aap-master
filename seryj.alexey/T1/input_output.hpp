@@ -6,7 +6,7 @@ namespace seryj
 {
   void writeAnswer(std::ostream& out, CompositeShape& cs);
   std::vector<std::string> readText(std::istream&);
-  std::vector<Shape*> analyseText(std::vector<std::string>);
+  void textToCompositeShape(std::vector<std::string>, CompositeShape&);
   void skipShape(std::vector<std::string>&);
 }
 #endif

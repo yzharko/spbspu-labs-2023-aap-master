@@ -1,6 +1,10 @@
 #include "square.hpp"
+#include <exception>
+#include <iostream>
 Square::Square(point_t pos, double side)
 {
+  if (side < 0)
+    throw std::logic_error("Square side cant be negative\n");
   point_ = pos;
   side_ = side;
 }
