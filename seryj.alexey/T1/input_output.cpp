@@ -4,6 +4,7 @@
 #include "rectangle.hpp"
 #include "regular.hpp"
 #include <iostream>
+#include <cmath>
 void seryj::writeAnswer(std::ostream& out, CompositeShape& cs)
 {
   std::vector<rectangle_t> rec_vec = cs.getFrameRect();
@@ -89,6 +90,6 @@ void seryj::skipShape(std::vector<std::string>& v)
 
 void seryj::writeDouble(std::ostream& out, double d)
 {
-  int i = round(d * 10);
-  out << (i/10) << "." << abs(i % 10) << " ";
+  int i = std::round(d * 10);
+  out << (i/10) << "." << std::abs(i % 10) << " ";
 }
