@@ -132,7 +132,14 @@ void Polygon::move(xPlus, yPlus)
 }
 void Polygon::scale(double multiplier)
 {
-                                                 
+  point_t pos = getPos();
+  for(size_t i = 0; i < num_; i++)
+  {
+    double changeX = (points_[i].x - pos.x) * multiplier;
+    points_[i].x += changeX;
+    double changeY = (points_[i].y - pos.y) * multiolier;
+    points_[i].y += changeY;
+  }
 }
 point_t Polygon::getPos()
 {
