@@ -32,9 +32,6 @@ int main()
   }
   seryj::writeAnswer(std::cout, cs);
   if (error.length() > 0)
-  {
     std::cerr << error << '\n';
-    return 1;
-  }
   return 0;
 }
