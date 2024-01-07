@@ -54,4 +54,3 @@ void Rectangle::scale(double n)
   rp_x += width/2*(n-1);
   rp_y += height/2*(n-1);
 }
-
