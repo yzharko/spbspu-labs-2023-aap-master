@@ -3,7 +3,7 @@
 int main()
 {
   std::string error = "";
-  std::vector<std::string> text; 
+  std::vector<std::string> text;
   CompositeShape cs;
   try
   {
