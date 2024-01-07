@@ -8,6 +8,6 @@ namespace seryj
   std::vector<std::string> readText(std::istream&);
   void textToCompositeShape(std::vector<std::string>, CompositeShape&);
   void skipShape(std::vector<std::string>&);
-  void writeDouble(std::ostream&, double);
+  void writeDouble(std::ostream&, double, char);
 }
 #endif
