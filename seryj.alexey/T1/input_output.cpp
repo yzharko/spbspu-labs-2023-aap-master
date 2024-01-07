@@ -15,9 +15,8 @@ void seryj::writeAnswer(std::ostream& out, CompositeShape& cs)
     writeDouble(out, rec_vec[i].pos.x - rec_vec[i].width / 2, ' ');
     writeDouble(out, rec_vec[i].pos.y - rec_vec[i].height / 2, ' ');
     writeDouble(out, rec_vec[i].pos.x + rec_vec[i].width / 2, ' ');
-    writeDouble(out, rec_vec[i].pos.y + rec_vec[i].height / 2, i == cs.shapes - 1 ? 0 : ' ');
+    writeDouble(out, rec_vec[i].pos.y + rec_vec[i].height / 2, i == cs.shapes - 1 ? '\n' : ' ');
   }
-  out << "\n";
 }
 std::vector<std::string> seryj::readText(std::istream& inp)
 {
