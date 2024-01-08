@@ -1,13 +1,11 @@
 #include "polygon.hpp"
 #include "rectangle.hpp"
 #include "triangle.hpp"
+#include <functional>
 
-Polygon::Polygon(size_t num, point_t points[num]):
+Polygon::Polygon(size_t num, point_t * points):
   num_(num),
-  for(size_t i = 0; i < num_; i++)
-  {
-    points_[i](points[i]),
-  }
+  points_(points)
 {};
 double Polygon::getArea()
 {
@@ -32,7 +30,7 @@ double Polygon::getArea()
     {
       upper[read++] = points_[i];
     }
-    if(points_[i].y <= start.y && start != points_[i])
+    if(points_[i].y <= start.y && start.y != points_[i].y && start.x != points_[i].x)
     {
       lower[count++] = points_[i];
     }
@@ -65,7 +63,7 @@ double Polygon::getArea()
   {
     lowerX[i] = lower[i].x;
   }
-  std::sort(lowerX, lowerX + count, std::greater<>());
+  std::sort(lowerX, lowerX + count, std::greater<double>());
   for(size_t i = 0; i < count; i++)
   {
     for(size_t j = 0; j < count; j++)
@@ -122,7 +120,7 @@ void Polygon::move(point_t newPos)
   double yPlus = newPos.y - pos.y;
   move(xPlus, yPlus);
 }
-void Polygon::move(xPlus, yPlus)
+void Polygon::move(double xPlus, double yPlus)
 {
   for(size_t i; i < num_; i++)
   {
@@ -137,7 +135,7 @@ void Polygon::scale(double multiplier)
   {
     double changeX = (points_[i].x - pos.x) * multiplier;
     points_[i].x += changeX;
-    double changeY = (points_[i].y - pos.y) * multiolier;
+    double changeY = (points_[i].y - pos.y) * multiplier;
     points_[i].y += changeY;
   }
 }
@@ -150,7 +148,7 @@ point_t Polygon::getPos()
     summaX += points_[i].x;
     summaY += points_[i].y;
   }
-  posX = summaX / num_;
-  posY = summaY / num_;
+  double posX = summaX / num_;
+  double posY = summaY / num_;
   return point_t{ posX, posY };
 }

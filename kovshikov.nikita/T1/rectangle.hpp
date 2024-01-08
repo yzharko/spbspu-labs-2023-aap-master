@@ -15,6 +15,6 @@ public:
 private:
   point_t lowerLeft_;
   point_t upperRight_;
-}
+};
 
 #endif

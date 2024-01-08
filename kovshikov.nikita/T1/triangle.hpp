@@ -19,6 +19,6 @@ private:
   point_t vertexA_;
   point_t vertexB_;
   point_t vertexC_;
-}
+};
 
 #endif

@@ -51,8 +51,8 @@ void Triangle::scale(double multiplier)
 }
 point_t Triangle::getPos()
 {
-  posX = (vertexA_.x + vertexB_.x + vertexC_.x) / 3;
-  posY = (vertexA_.y + vertexB_.y + vertexC_.y) / 3;
+  double posX = (vertexA_.x + vertexB_.x + vertexC_.x) / 3;
+  double posY = (vertexA_.y + vertexB_.y + vertexC_.y) / 3;
   return point_t{ posX, posY };
 }
 double Triangle::changeVertex(const double multiplier, const point_t pos, point_t &vertex)
