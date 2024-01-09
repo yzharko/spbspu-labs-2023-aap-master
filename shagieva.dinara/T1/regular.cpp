@@ -1,76 +1,77 @@
 #include "regular.hpp"
 #include <cmath>
+#include <algorithm>
 
-shagieva::Regular::Regular(const point_t & point1, const point_t & point2, const point_t & point3)
+namespace shagieva
 {
-  points[0] = point1;
-  points[1] = point2;
-  points[2] = point3;
-}
-
-double shagieva::Regular::getArea() const
-{
-  point_t smallR = getCoordinates(points[0], points[1]);
-  point_t bigR = getCoordinats(points[0], points[2]);
-
-  double lenSmallR = getLength(smallR);
-  double lenBigR = getLength(bigR);
-
-  double cos = getCos(smallR, bigR, lenSmallR, lenBigR);
-  double sin = getSin(cos);
-
-  double triangleArea = getTriangleArea(lenSmallR, lenBigR, sin);
-  double angle = asin(sin);
-
-  return triangleArea * (360 / angle);
-}
-
-rectangle_t shagieva::Regular::getFrameRect() const
-{
-
-}
-
-void shagieva::Regular::move(const double & dx, const double & dy)
-{
-  for (int i = 0; i < 3; ++i)
+  Regular::Regular(const point_t & point1, const point_t & point2, const point_t & point3)
   {
-    points[i].x += dx;
-    points[i].y += dy;
+    points[0] = point1;
+    points[1] = point2;
+    points[2] = point3;
   }
-}
 
-void shagieva::Regular::move(const point_t & newCenter)
-{
-  double dx = newCenter.x - points[0].x;
-  double dy = newCenter.y - points[0].y;
-  move(dx, dy);
-}
-
-void shagieva::Regular::scale(const double & scaleFactor)
-{
-  for (int i = 1; i < 3; ++i)
+  double Regular::getArea() const
   {
-    points[i].x = (points[i].x - points[0].x) * scaleFactor + points[0].x;
-    points[i].y = (points[i].y - points[0].y) * scaleFactor + points[0].y;
+    double baseOfTriangle = getLength(points[1], points[2]);
+    double heightOfTriangle = getLength(points[0], points[1]);
+
+    int numberOfSides = getNumberOfSides();
+    double triangleArea = (baseOfTriangle * heightOfTriangle) / 2;
+
+    return numberOfSides * triangleArea * 2;
   }
-}
 
-point_t shagieva::Regular::getCoordinates(const point_t & point1, const point_t & point2) const
-{
-  return { point2.x - point1.x, points2.y - points1.y }
-}
+  rectangle_t Regular::getFrameRect() const
+  {
+    return { 0, 0, 0 };
+  }
 
-double shagieva::Regular::getLength(const point_t & seg) const
-{
-  return std::hypot(seg.x, seg.y);
-}
+  void Regular::move(const double & dx, const double & dy)
+  {
+    for (int i = 0; i < 3; ++i)
+    {
+      points[i].x += dx;
+      points[i].y += dy;
+    }
+  }
 
-double shagieva::Regular::getCos(const point_t & seg1, const point_t & seg2, const double & lenSeg1, const double & lenSeg2) const
-{
-  return (seg1.x * seg2.x + seg1.y * seg2.y) / (lenSeg1 * lenSeg2);
-}
+  void Regular::move(const point_t & newCenter)
+  {
+    double dx = newCenter.x - points[0].x;
+    double dy = newCenter.y - points[0].y;
+    move(dx, dy);
+  }
 
-double shagieva::Regular::getSin(const double & cos) const
-{
-  return std::sqrt(1 - cos * cos);
+  void Regular::scale(const point_t & scaleCenter, const double & scaleFactor)
+  {
+    for (int i = 1; i < 3; ++i)
+    {
+      points[i].x = (points[i].x - scaleCenter.x) * scaleFactor + scaleCenter.x;
+      points[i].y = (points[i].y - scaleCenter.y) * scaleFactor + scaleCenter.y;
+    }
+  }
+
+  double Regular::getLength(const point_t & point1, const point_t & point2) const
+  {
+    return std::hypot(point2.x - point1.x, point2.y - point1.y);
+  }
+
+  int Regular::getNumberOfSides() const
+  {
+    point_t a = { points[1].x - points[0].x, points[1].y - points[0].y };
+    point_t b = { points[2].x - points[0].x, points[2].y - points[0].y };
+
+    double scalarProduct = fabs(a.x * b.x + a.y + b.y);
+    double lenA = std::hypot(a.x, a.y);
+    double lenB = std::hypot(b.x, b.y);
+
+    double angle = std::acos(scalarProduct / (lenA * lenB));
+
+    angle *= (180.0 / 3.1415926);
+
+    double numberOfSides = 180.0 / angle;
+
+    return static_cast<int>(round(numberOfSides));
+  }
 }
