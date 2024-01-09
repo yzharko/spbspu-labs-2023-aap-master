@@ -2,7 +2,7 @@
 #include <cmath>
 #include <algorithm>
 
-khoroshkin::Complexquad::Complexquad(point_t first, point_t second, point_t third,point_t fourth) :
+khoroshkin::Complexquad::Complexquad(point_t first, point_t second, point_t third,point_t fourth):
  pointA(first), pointB(second), pointC(third), pointD(fourth)
 {
   double k1 = (pointB.y - pointA.y) / (pointB.x - pointA.x);
@@ -30,12 +30,18 @@ rectangle_t khoroshkin::Complexquad::getFrameRect()
   point_t vector1 = {pointB.x - pointA.x, pointB.y - pointA.y};
   point_t vector2 = {pointD.x - pointC.x, pointD.y - pointC.y};
   double side = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
-  point_t upPoint1 = {centerPoint.x + side * vector1.x / sqrt(pow(vector1.x,2) + pow(vector1.y,2)), centerPoint.y + side * vector1.y / sqrt(pow(vector1.x,2) + pow(vector1.y,2))};
-  point_t downPoint1 = {centerPoint.x - side * vector1.x / sqrt(pow(vector1.x,2) + pow(vector1.y,2)), centerPoint.y - side * vector1.y / sqrt(pow(vector1.x,2) + pow(vector1.y,2))};
-  point_t upPoint2 = {centerPoint.x + side * vector2.x / sqrt(pow(vector2.x,2) + pow(vector2.y,2)), centerPoint.y - side * vector2.y / sqrt(pow(vector2.x,2) + pow(vector2.y,2))};
-  point_t downPoint2 = {centerPoint.x - side * vector2.x / sqrt(pow(vector2.x,2) + pow(vector2.y,2)), centerPoint.y + side * vector2.y / sqrt(pow(vector2.x,2) + pow(vector2.y,2))};
-  point_t pointOfRec1 = {std::min({upPoint1.x, downPoint1.x, upPoint2.x, downPoint2.x}),std::min({upPoint1.y, downPoint1.y, upPoint2.y, downPoint2.y})};
-  point_t pointOfRec2 = {std::max({upPoint1.x, downPoint1.x, upPoint2.x, downPoint2.x}),std::max({upPoint1.y, downPoint1.y, upPoint2.y, downPoint2.y})};
+  point_t upPoint1 = {centerPoint.x + side * vector1.x / sqrt(pow(vector1.x,2) + pow(vector1.y,2)),\
+  centerPoint.y + side * vector1.y / sqrt(pow(vector1.x,2) + pow(vector1.y,2))};
+  point_t downPoint1 = {centerPoint.x - side * vector1.x / sqrt(pow(vector1.x,2) + pow(vector1.y,2)),\
+  centerPoint.y - side * vector1.y / sqrt(pow(vector1.x,2) + pow(vector1.y,2))};
+  point_t upPoint2 = {centerPoint.x + side * vector2.x / sqrt(pow(vector2.x,2) + pow(vector2.y,2)),\
+  centerPoint.y - side * vector2.y / sqrt(pow(vector2.x,2) + pow(vector2.y,2))};
+  point_t downPoint2 = {centerPoint.x - side * vector2.x / sqrt(pow(vector2.x,2) + pow(vector2.y,2)),\
+  centerPoint.y + side * vector2.y / sqrt(pow(vector2.x,2) + pow(vector2.y,2))};
+  point_t pointOfRec1 = {std::min({upPoint1.x, downPoint1.x, upPoint2.x, downPoint2.x}),\
+  std::min({upPoint1.y, downPoint1.y, upPoint2.y, downPoint2.y})};
+  point_t pointOfRec2 = {std::max({upPoint1.x, downPoint1.x, upPoint2.x, downPoint2.x}),\
+  std::max({upPoint1.y, downPoint1.y, upPoint2.y, downPoint2.y})};
   return {abs(pointOfRec1.x - pointOfRec2.x), abs(pointOfRec1.y - pointOfRec2.y), centerPoint};
 }
 
