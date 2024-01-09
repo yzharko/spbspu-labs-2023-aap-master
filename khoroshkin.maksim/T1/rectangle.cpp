@@ -4,7 +4,7 @@
 khoroshkin::Rectangle::Rectangle(point_t newLeftPoint, point_t newRightPoint) :
   leftPoint(newLeftPoint), rightPoint(newRightPoint)
 {
-  rectangle = {fabs(leftPoint.x-rightPoint.x), fabs(leftPoint.y - rightPoint.y), {(leftPoint.x+rightPoint.x)/2, (leftPoint.y+rightPoint.y)/2}};
+  rectangle = {fabs(leftPoint.x-rightPoint.x),fabs(leftPoint.y-rightPoint.y), {(leftPoint.x+rightPoint.x)/2,(leftPoint.y+rightPoint.y)/2}};
 }
 double khoroshkin::Rectangle::getArea()
 {
@@ -13,7 +13,7 @@ double khoroshkin::Rectangle::getArea()
 
 rectangle_t khoroshkin::Rectangle::getFrameRect()
 {
-  return {fabs(leftPoint.x - rightPoint.x), fabs(leftPoint.y - rightPoint.y), {(leftPoint.x+rightPoint.x)/2, (leftPoint.y+rightPoint.y)/2}};
+  return {fabs(leftPoint.x-rightPoint.x), fabs(leftPoint.y-rightPoint.y), {(leftPoint.x+rightPoint.x)/2, (leftPoint.y+rightPoint.y)/2}};
 }
 
 void khoroshkin::Rectangle::move(point_t newPoint)
