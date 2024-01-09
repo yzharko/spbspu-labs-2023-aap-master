@@ -90,7 +90,7 @@ int main()
   }
   for (size_t i = 0; i < figuresCounter; ++i)
   {
-    delete[] allFigures[i];
+    delete allFigures[i];
   }
   return 0;
 }
