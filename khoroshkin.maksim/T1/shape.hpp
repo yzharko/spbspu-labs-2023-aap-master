@@ -5,6 +5,8 @@
 class Shape
 {
 public:
+  virtual ~Shape() = default;
+
   virtual double getArea() = 0;
   virtual rectangle_t getFrameRect() = 0;
   virtual void move(point_t newPoint) = 0;
