@@ -1,5 +1,5 @@
-#include "concave.h"
-#include "baseTypes.h"
+#include "concave.hpp"
+#include "baseTypes.hpp"
 
 taskaev::Concave::Concave(point_t left, point_t right, point_t inner, point_t upper) :
   p1(left), p2(right), p3(inner), p4(upper)
