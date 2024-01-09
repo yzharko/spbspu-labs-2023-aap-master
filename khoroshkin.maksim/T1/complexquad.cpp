@@ -11,7 +11,6 @@ khoroshkin::Complexquad::Complexquad(point_t first, point_t second, point_t thir
   double b2 = pointC.y - k2 * pointC.x;
   centerPoint.x = (b2 - b1) / (k1 - k2);
   centerPoint.y = k1 * centerPoint.x + b1;
-
   double side = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
 }
 
