@@ -1,12 +1,13 @@
 #include<iostream>
-namespace base_types {
-
-	struct point_t {
+namespace base_types
+{
+	struct point_t
+	{
 		double x;
 		double y;
 	};
-
-	struct rectangle_t {
+	struct rectangle_t
+	{
 		double width;
 		double height;
 		point_t pos;
