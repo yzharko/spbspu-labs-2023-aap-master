@@ -1,9 +1,9 @@
 #include <iostream>
-#include "ellipse.h"
-#include "Shape.h"
-#include "concave.h"
-#include "rectangle.h"
-#include "baseTypes.h"
+#include "ellipse.hpp"
+#include "Shape.hpp"
+#include "concave.hpp"
+#include "rectangle.hpp"
+#include "baseTypes.hpp"
 using namespace taskaev;
 
 int main()
