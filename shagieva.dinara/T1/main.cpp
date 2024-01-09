@@ -41,12 +41,16 @@ int main()
     else if (figureType == "COMPLEXQUAD")
     {
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
-      shapes[shapeCount++] = new shagieva::Complexquad(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 }, shagieva::point_t{ x3, y3 }, shagieva::point_t{ x4, y4 });
+      shapes[shapeCount++] = new shagieva::Complexquad(shagieva::point_t{ x1, y1 },
+        shagieva::point_t{ x2, y2 },
+        shagieva::point_t{ x3, y3 },
+        shagieva::point_t{ x4, y4 });
     }
     else if (figureType == "REGULAR")
     {
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
-      shapes[shapeCount++] = new shagieva::Regular(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 }, shagieva::point_t{ x3, y3 });
+      shapes[shapeCount++] = new shagieva::Regular(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 },
+        shagieva::point_t{ x3, y3 });
     }
   }
 
@@ -63,8 +67,10 @@ int main()
   for (size_t i = 0; i < shapeCount; ++i)
   {
     shagieva::rectangle_t frame = shapes[i]->getFrameRect();
-    std::cout << frame.pos.x - frame.width / 2 << " " << frame.pos.y - frame.height / 2
-      << " " << frame.pos.x + frame.width / 2 << " " << frame.pos.y + frame.height / 2 << " ";
+    std::cout << frame.pos.x - frame.width / 2 << " "
+              << frame.pos.y - frame.height / 2 << " "
+              << frame.pos.x + frame.width / 2 << " "
+              << frame.pos.y + frame.height / 2 << " ";
   }
   std::cout << "\n";
 
@@ -94,8 +100,10 @@ int main()
   for (size_t i = 0; i < shapeCount; ++i)
   {
     shagieva::rectangle_t frame = shapes[i]->getFrameRect();
-    std::cout << frame.pos.x - frame.width / 2 << " " << frame.pos.y - frame.height / 2
-      << " " << frame.pos.x + frame.width / 2 << " " << frame.pos.y + frame.height / 2 << " ";
+    std::cout << frame.pos.x - frame.width / 2 << " "
+              << frame.pos.y - frame.height / 2 << " "
+              << frame.pos.x + frame.width / 2 << " "
+              << frame.pos.y + frame.height / 2 << " ";
   }
   std::cout << "\n";
 

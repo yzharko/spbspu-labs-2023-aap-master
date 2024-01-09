@@ -5,7 +5,8 @@
 
 namespace shagieva
 {
-  Complexquad::Complexquad(const point_t & point1, const point_t & point2, const point_t & point3, const point_t & point4)
+  Complexquad::Complexquad(const point_t & point1, const point_t & point2,
+      const point_t & point3, const point_t & point4)
   {
     points[0] = point1;
     points[1] = point2;

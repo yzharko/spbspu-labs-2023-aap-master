@@ -2,7 +2,7 @@
 
 namespace shagieva
 {
-  Rectangle::Rectangle(const point_t & point1, const point_t & point2) :
+  Rectangle::Rectangle(const point_t & point1, const point_t & point2):
     pointA(point1),
     pointC(point2)
   {}
