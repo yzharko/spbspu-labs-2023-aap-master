@@ -14,7 +14,7 @@ rectangle_t khoroshkin::Circle::getFrameRect()
 {
   point_t leftPoint = {Point.x - radius, Point.y - radius};
   point_t rightPoint = {Point.x + radius, Point.y + radius};
-  return {abs(leftPoint.x - rightPoint.x), abs(leftPoint.y - rightPoint.y),
+  return {fabs(leftPoint.x - rightPoint.x), fabs(leftPoint.y - rightPoint.y),
   {(leftPoint.x + rightPoint.x)/2, (leftPoint.y + rightPoint.y)/2}};
 }
 
