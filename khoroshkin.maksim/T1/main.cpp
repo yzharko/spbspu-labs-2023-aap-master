@@ -20,6 +20,10 @@ int main()
       initialSize += initialSize;
       Shape ** tempStorage = new Shape * [initialSize];
       std::copy(allFigures, allFigures + figuresCounter, tempStorage);
+      for (size_t i = 0; i < figuresCounter; ++i)
+      {
+        delete allFigures[i];
+      }
       delete[] allFigures;
       allFigures = tempStorage;
     }
