@@ -1,5 +1,6 @@
 #include"Rectangle.hpp"
-Rectangle::Rectangle(const rectangle_t& framework) {
+Rectangle::Rectangle(const rectangle_t& framework)
+{
   if (framework.height <= 0 || framework.width <= 0)
   {
     throw std::exception("Ќеверена€ характеристика длины или высоты");
