@@ -59,7 +59,6 @@ int main()
   double totalAreaBeforeScaling = 0.0;
   for (size_t i = 0; i < shapeCount; ++i)
   {
-    shagieva::rectangle_t frame = shapes[i]->getFrameRect();
     totalAreaBeforeScaling += shapes[i]->getArea();
   }
   std::cout << totalAreaBeforeScaling << " ";
@@ -93,7 +92,6 @@ int main()
   double totalAreaAfterScaling = 0.0;
   for (size_t i = 0; i < shapeCount; ++i)
   {
-    shagieva::rectangle_t frame = shapes[i]->getFrameRect();
     totalAreaAfterScaling += shapes[i]->getArea();
   }
   std::cout << totalAreaAfterScaling << " ";
