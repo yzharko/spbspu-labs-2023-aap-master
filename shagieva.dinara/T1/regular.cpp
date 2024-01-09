@@ -13,11 +13,11 @@ namespace shagieva
 
   double Regular::getArea() const
   {
-    double baseOfTriangle = getLength(points[1], points[2]);
-    double heightOfTriangle = getLength(points[0], points[1]);
+    double triangleBase = getLength(points[1], points[2]);
+    double triangleHeight = getLength(points[0], points[1]);
 
     int numberOfSides = getNumberOfSides();
-    double triangleArea = (baseOfTriangle * heightOfTriangle) / 2;
+    double triangleArea = (triangleBase * triangleHeight) / 2;
 
     return numberOfSides * triangleArea * 2;
   }
@@ -62,13 +62,13 @@ namespace shagieva
     point_t a = { points[1].x - points[0].x, points[1].y - points[0].y };
     point_t b = { points[2].x - points[0].x, points[2].y - points[0].y };
 
-    double scalarProduct = fabs(a.x * b.x + a.y + b.y);
+    double scalarProduct = a.x * b.x + a.y * b.y;
     double lenA = std::hypot(a.x, a.y);
     double lenB = std::hypot(b.x, b.y);
 
-    double angle = std::acos(scalarProduct / (lenA * lenB));
+    double angle = std::acos(std::fabs(scalarProduct) / (lenA * lenB));
 
-    angle *= (180.0 / 3.1415926);
+    angle *= (180.00 / 3.14);
 
     double numberOfSides = 180.0 / angle;
 
