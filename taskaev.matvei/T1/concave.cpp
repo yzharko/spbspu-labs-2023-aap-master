@@ -1,3 +1,4 @@
+#include <iostream>
 #include "concave.hpp"
 #include "baseTypes.hpp"
 
@@ -21,7 +22,7 @@ rectangle_t taskaev::Concave::getFrameRect()
   return rectangle_t(rightX - leftX, upperY - lowerY, { (leftX + rightX) * 0.5, (upperY + lowerY) * 0.5 });
 }
 
-void taskaev::Concave::move(douvle x, double y)
+void taskaev::Concave::move(double x, double y)
 {
   p1.X += x;
   p1.Y += y;
