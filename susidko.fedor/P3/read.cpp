@@ -2,8 +2,6 @@
 #include <iostream>
 #include "exp.hpp"
 
-
-
 char * susidko::getString(std::istream & in, int & len)
 {
   int add = 10;

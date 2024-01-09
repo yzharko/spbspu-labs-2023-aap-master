@@ -28,7 +28,10 @@ int main()
     return 1;
   }
   delete[] str;
-  std::cout << strResult;
+  for (int i = 0; strResult[i] != '\0' ;i++)
+  {
+    std::cout << strResult[i];
+  }
   std::cout << '\n';
   delete[] strResult;
   std::cout << countChars;
