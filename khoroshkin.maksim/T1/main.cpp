@@ -9,12 +9,24 @@
 
 int main()
 {
-  size_t initialSize = 100;
+  size_t initialSize = 10;
   Shape ** allFigures = new Shape * [initialSize];
   size_t figuresCounter = 0;
   std::string type;
   while (std::cin >> type)
   {
+    if (figuresCounter == initialSize)
+    {
+      initialSize += initialSize;
+      Shape ** tempStorage = new Shape * [initialSize];
+      std::copy(allFigures, allFigures + figuresCounter, tempStorage);
+      for (size_t i = 0; i < figuresCounter; ++i)
+      {
+        delete allFigures[i];
+      }
+      delete[] allFigures;
+      allFigures = tempStorage;
+    }
 
     if (type == "RECTANGLE")
     {
@@ -84,5 +96,6 @@ int main()
   {
     delete allFigures[i];
   }
+  delete[] allFigures;
   return 0;
 }
