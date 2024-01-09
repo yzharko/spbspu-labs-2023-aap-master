@@ -5,7 +5,7 @@
 
 char * susidko::replaceUpLow(char * src, int add)
 {
-  char * res = new char[add];
+  char * res = new char[add+1];
   if (!res)
   {
     return nullptr;
