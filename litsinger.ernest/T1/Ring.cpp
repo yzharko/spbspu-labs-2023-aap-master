@@ -32,7 +32,7 @@ void Ring::move(const base_types::point_t& point) {
 }
 
 void Ring::scale(double k) {
-	if (k <= 0) 
+  if (k <= 0)
   {
     throw std::invalid_argument("incorrect k");
   }
@@ -42,15 +42,15 @@ void Ring::scale(double k) {
 
 bool Ring::operator==(const Shape& other) const {
 	const Ring* otherRing = dynamic_cast<const Ring*>(&other);
-	if (otherRing) 
+	if (otherRing)
   {
-    if (this == otherRing) 
+    if (this == otherRing)
     {
       return true;
     }
     if (this->center == otherRing->center &&
 			this->externalRadius == otherRing->externalRadius &&
-			this->innerRadius == otherRing->innerRadius) 
+			this->innerRadius == otherRing->innerRadius)
     {
       return true;
     }

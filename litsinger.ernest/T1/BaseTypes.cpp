@@ -1,6 +1,6 @@
 #include "BaseTypes.hpp"
 
-bool base_types::operator==(const point_t& lhs, const point_t& rhs) 
+bool base_types::operator==(const point_t& lhs, const point_t& rhs)
 {
   return lhs.x == rhs.x && lhs.y == rhs.y;
 }

@@ -1,7 +1,7 @@
 #include"Shape.hpp"
 #include"BaseTypes.hpp"
 #include<exception>
-class Ring :public Shape 
+class Ring :public Shape
 {
 public:
   Ring(double xCenter, double yCenter, double outSideRadius, double innerRadius);
