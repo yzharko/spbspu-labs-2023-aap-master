@@ -20,7 +20,7 @@ char * susidko::replaceUpLow(char * src, int add)
     }
     i++;
   }
-  res[i] = '\0';
+  res[add] = '\0';
   return res;
 }
 
