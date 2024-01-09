@@ -1,7 +1,7 @@
 #include "funcs.hpp"
 #include <iostream>
 #include <cctype>
-#1include <set>
+#include <set>
 
 char * susidko::replaceUpLow(char * src, int add)
 {
