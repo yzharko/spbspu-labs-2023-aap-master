@@ -1,10 +1,22 @@
 #include "findRplSym.hpp"
+#include "formingString.hpp"
 
-char * taskaev::findRplSym(char * string)
+char* taskaev::findRplSym(const char* string, int size, int newSize, char simbolOld, char simbolNew)
 {
-  for (int i = 0; string[i] != '\0' ; i++)
+  char* resultString = new char[size + 1];
+  int sizeNum = 0;
+  while (string[sizeNum] != '\0')
   {
-    string[i] = (string[i] == 'c' ? 'b' : string[i]);
+    if (size == sizeNum)
+    {
+      char* newString = taskaev::formingString(resultString, sizeNum, newSize);
+      delete[] resultString;
+      resultString = newString;
+      size += newSize;
+    }
+    resultString[sizeNum] = (string[sizeNum] == simbolOld ? simbolNew : string[sizeNum]);
+    ++sizeNum;
   }
-  return string;
+  resultString[sizeNum] = '\0';
+  return resultString;
 }

@@ -1,10 +1,11 @@
 #ifndef FORMINGSTRING_HPP
 #define FORMINGSTRING_HPP
-#include <cstddef>
+#include <istream>
+#include <iostream>
 
 namespace taskaev
 {
-  char * formingString(const char * string, int & size, int & newSize);
+  char * formingString(const char * string, int & sizeNum, int & newSize);
 }
 #endif
 

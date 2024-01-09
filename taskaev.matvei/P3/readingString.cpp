@@ -1,37 +1,35 @@
 #include "readingString.hpp"
 #include "formingString.hpp"
-#include <iostream>
-#include <iomanip>
 
-char * taskaev::readingString(std::istream& input)
+char * taskaev::readingString(std::istream& input, int size, int newSize)
 {
-  int size = 10;
-  int newSize = 0;
   char* string = new char[size];
+  int sizeNum = 0;
   input >> std::noskipws;
   do
   {
-    if (size == newSize)
+    if (size == sizeNum)
     {
       try
       {
-        char * newString = taskaev::formingString(string, size, newSize);
+        char * newString = taskaev::formingString(string, sizeNum, newSize);
         delete[] string;
         string = newString;
+        size += newSize;
       }
-      catch (const std::exception& e)
+      catch(const std::exception& e)
       {
         delete[] string;
-        throw std::logic_error("Error: forming string, couldn't reed the string.");
+        throw std::logic_error("Error forming string, couldn't reed the string.");
       }
     }
   }
-  while ((input >> string[newSize] ) && (string[newSize++] != '\n'));
-  string[newSize != 0 ? newSize - 1 : newSize] = '\0';
-  if (!string[0])
+  while ((input >> string[sizeNum] ) && (string[sizeNum++] != '\n'));
+  string[sizeNum != 0 ? sizeNum - 1 : sizeNum] = '\0';
+  if (string[0] == '\0')
   {
     delete[] string;
-    throw std::logic_error("Error: nothing was entered, an empty input.");
+    throw std::logic_error("Error: nothing was entered, an empty input");
   }
   input >> std::skipws;
   return string;
