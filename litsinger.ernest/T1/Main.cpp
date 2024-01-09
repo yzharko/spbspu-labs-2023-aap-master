@@ -12,7 +12,7 @@ int main() {
 	test1.move(1, 1);
 	test1.scale(10);
 	std::cout << "\n";
-	Ring test2(2, 3, 15, 16);
+	Ring test2(2, 3, 17, 16);
 	std::cout << test2.getArea() << " ";
 	rectangle_t frameRect2 = test2.getFrameRect();
 	std::cout << frameRect2.width << " " << frameRect2.height << " " << frameRect2.pos.x << " " << frameRect2.pos.y;

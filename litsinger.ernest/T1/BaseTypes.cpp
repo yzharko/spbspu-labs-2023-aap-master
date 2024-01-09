@@ -6,7 +6,6 @@ bool base_types::operator==(const point_t& lhs, const point_t& rhs) {
 
 std::ostream& base_types::operator<<(std::ostream& os, const base_types::point_t& point) {
 	return os << '(' << point.x << ';' << point.y << ')';
-
 }
 
 std::ostream& base_types::operator<<(std::ostream& os, const base_types::rectangle_t& rectangle) {

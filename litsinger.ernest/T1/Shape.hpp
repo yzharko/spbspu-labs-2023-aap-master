@@ -1,4 +1,3 @@
-#pragma once
 #include"BaseTypes.hpp"
 class Shape {
 public:
