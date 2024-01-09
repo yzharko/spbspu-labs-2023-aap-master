@@ -18,7 +18,7 @@ namespace khoroshkin
     point_t pointB;
     point_t pointC;
     point_t pointD;
-    point_t centerPoint;
+    point_t cPoint;
     double side;
   };
 }

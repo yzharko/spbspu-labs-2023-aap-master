@@ -73,9 +73,9 @@ int main()
 
         for (size_t i = 0; i < figuresCounter; ++i)
         {
-          std::cout << allFigures[i]->getArea() << " " << allFigures[i]->getFrameRect().pos.x \
-          << " " << allFigures[i]->getFrameRect().pos.y << " " << allFigures[i]->getFrameRect().width \
-          << " " << allFigures[i]->getFrameRect().height << "\n";
+          std::cout << allFigures[i]->getArea() << " " << allFigures[i]->getFrameRect().pos.x << " ";
+          std::cout << allFigures[i]->getFrameRect().pos.y << " ";
+          std::cout << allFigures[i]->getFrameRect().width << " " << allFigures[i]->getFrameRect().height << "\n";
         }
       }
       else
