@@ -9,14 +9,7 @@ namespace hohlova
   class Rectangle : public Shape
   {
   public:
-    Rectangle() {};
-    Rectangle(point_t lp, point_t rp) : left_point_(lp), right_point_(rp)
-    {
-      pos_.x = (left_point_.x + right_point_.x) / 2;
-      pos_.y = (left_point_.y + right_point_.y) / 2;
-      width_ = abs(left_point_.x - right_point_.x);
-      height_ = abs(left_point_.y - right_point_.y);
-    }
+    Rectangle(point_t lp, point_t rp) : left_point_(lp), right_point_(rp) {};
     virtual double getArea();
     virtual rectangle_t getFrameRect();
     virtual void move(point_t);

@@ -14,13 +14,9 @@ namespace hohlova
     virtual void move(double x, double y);
     virtual void scale(double k);
   private:
-    point_t pos1_ = { 0,0 };
-    point_t pos2_ = { 0,0 };
-    point_t pos3_ = { 0,0 };
-    point_t pos_ = { 0,0 };
-    double a_ = 0;
-    double b_ = 0;
-    double c_ = 0;
+    point_t pos1_;
+    point_t pos2_;
+    point_t pos3_;
   };
 }
 #endif
