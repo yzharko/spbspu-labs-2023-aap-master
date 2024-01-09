@@ -16,12 +16,10 @@ khoroshkin::Complexquad::Complexquad(point_t first, point_t second, point_t thir
 
 double khoroshkin::Complexquad::getArea()
 {
-  point_t vector1 = {pointB.x - pointA.x, pointB.y - pointA.y};
-  point_t vector2 = {pointD.x - pointC.x, pointD.y - pointC.y};
-  double angleCos = abs(vector1.x * vector2.x + vector1.y * vector2.y) / \
-  (sqrt(pow(vector1.x,2) + pow(vector1.y,2)) * sqrt(pow(vector2.x,2) \
-  + pow(vector2.y,2)));
-  return side * side * sin(acos(angleCos));
+  point_t vec1 = {pointB.x - pointA.x, pointB.y - pointA.y};
+  point_t vec2 = {pointD.x - pointC.x, pointD.y - pointC.y};
+  double cos = abs(vec1.x * vec2.x + vec1.y * vec2.y) / (sqrt(pow(vec1.x,2) + pow(vec1.y,2)) * sqrt(pow(vec2.x,2) + pow(vec2.y,2)));
+  return side * side * sin(acos(cos));
 }
 
 rectangle_t khoroshkin::Complexquad::getFrameRect()
@@ -30,33 +28,33 @@ rectangle_t khoroshkin::Complexquad::getFrameRect()
   point_t vec1 = {pointB.x - pointA.x, pointB.y - pointA.y};
   point_t vec2 = {pointD.x - pointC.x, pointD.y - pointC.y};
 
-  double side = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
+  double s = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
 
-  point_t upPoint1 = {cPoint.x + side * vec1.x / sqrt(pow(vec1.x,2) + pow(vec1.y,2)),cPoint.y + side * vec1.y / sqrt(pow(vec1.x,2) + pow(vec1.y,2))};
+  point_t up1 = {cPoint.x + s * vec1.x / sqrt(pow(vec1.x,2) + pow(vec1.y,2)),cPoint.y + s * vec1.y / sqrt(pow(vec1.x,2) + pow(vec1.y,2))};
 
-  point_t downPoint1 = {cPoint.x - side * vec1.x / sqrt(pow(vec1.x,2) + pow(vec1.y,2)), cPoint.y - side * vec1.y / sqrt(pow(vec1.x,2) + pow(vec1.y,2))};
+  point_t down1 = {cPoint.x - s * vec1.x / sqrt(pow(vec1.x,2) + pow(vec1.y,2)), cPoint.y - s * vec1.y / sqrt(pow(vec1.x,2) + pow(vec1.y,2))};
 
-  point_t upPoint2 = {cPoint.x + side * vec2.x / sqrt(pow(vec2.x,2) + pow(vec2.y,2)), cPoint.y - side * vec2.y / sqrt(pow(vec2.x,2) + pow(vec2.y,2))};
+  point_t up2 = {cPoint.x + s * vec2.x / sqrt(pow(vec2.x,2) + pow(vec2.y,2)), cPoint.y - s * vec2.y / sqrt(pow(vec2.x,2) + pow(vec2.y,2))};
 
-  point_t downPoint2 = {cPoint.x - side * vec2.x / sqrt(pow(vec2.x,2) + pow(vec2.y,2)),cPoint.y + side * vec2.y / sqrt(pow(vec2.x,2) + pow(vec2.y,2))};
+  point_t down2 = {cPoint.x - s * vec2.x / sqrt(pow(vec2.x,2) + pow(vec2.y,2)),cPoint.y + s * vec2.y / sqrt(pow(vec2.x,2) + pow(vec2.y,2))};
 
-  point_t pointOfRec1 = {std::min({upPoint1.x, downPoint1.x, upPoint2.x, downPoint2.x}), std::min({upPoint1.y, downPoint1.y, upPoint2.y, downPoint2.y})};
+  point_t pointOfRec1 = {std::min({up1.x, down1.x, up2.x, down2.x}), std::min({up1.y, down1.y, up2.y, down2.y})};
 
-  point_t pointOfRec2 = {std::max({upPoint1.x, downPoint1.x, upPoint2.x, downPoint2.x}), std::max({upPoint1.y, downPoint1.y, upPoint2.y, downPoint2.y})};
+  point_t pointOfRec2 = {std::max({up1.x, down1.x, up2.x, down2.x}), std::max({up1.y, down1.y, up2.y, down2.y})};
 
   return {abs(pointOfRec1.x - pointOfRec2.x),abs(pointOfRec1.y - pointOfRec2.y), cPoint};
 }
 
 void khoroshkin::Complexquad::move(point_t newPoint)
 {
-  pointA = {pointA.x + (newPoint.x - cPoint.x),\
-  pointA.y + (newPoint.y - cPoint.y)};
-  pointB = {pointB.x + (newPoint.x - cPoint.x),\
-  pointB.y + (newPoint.y - cPoint.y)};
-  pointC = {pointC.x + (newPoint.x - cPoint.x),\
-  pointC.y + (newPoint.y - cPoint.y)};
-  pointD = {pointD.x + (newPoint.x - cPoint.x),\
-  pointD.y + (newPoint.y - cPoint.y)};
+  pointA = {pointA.x + (newPoint.x - cPoint.x), pointA.y + (newPoint.y - cPoint.y)};
+
+  pointB = {pointB.x + (newPoint.x - cPoint.x), pointB.y + (newPoint.y - cPoint.y)};
+
+  pointC = {pointC.x + (newPoint.x - cPoint.x), pointC.y + (newPoint.y - cPoint.y)};
+
+  pointD = {pointD.x + (newPoint.x - cPoint.x), pointD.y + (newPoint.y - cPoint.y)};
+  
   cPoint = newPoint;
 }
 
