@@ -71,5 +71,6 @@ const base_types::point_t& Ring::getCenter() const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Ring& ring) {
-  return os << "Ring:\n external R = " << ring.getExternalRadius() << "\n inner R = " << ring.getInnerRadius() << "\n center = " << ring.getCenter();
+  return os << "Ring:\n external R = " << ring.getExternalRadius() << "\n inner R = "
+    << ring.getInnerRadius() << "\n center = " << ring.getCenter();
 }
