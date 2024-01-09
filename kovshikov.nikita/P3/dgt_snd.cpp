@@ -1,17 +1,17 @@
 #include "dgt_snd.hpp"
 
-void kovshikov::withDigits(char * string1, char * string2, char * output, size_t readStr2, size_t readStr1)
+void kovshikov::withDigits(char * userString, const char * myString, char * output, size_t length, size_t read)
 {
-  for(size_t i = 0; i < readStr1; i++)
+  for(size_t i = 0; i < read; i++)
   {
-    output[i] = string1[i];
+    output[i] = userString[i];
   }
-  size_t num = readStr1 - 1;
-  for(size_t i = 0; i < readStr2; i++)
+  size_t num = read - 1;
+  for(size_t i = 0; i < length; i++)
   {
-    if(std::isdigit(string2[i]))
+    if(std::isdigit(myString[i]))
     {
-      output[num++] = string2[i];
+      output[num++] = myString[i];
     }
   }
 };

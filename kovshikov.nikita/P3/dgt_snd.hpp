@@ -5,7 +5,7 @@
 
 namespace kovshikov
 {
-  void withDigits(char * string1, char * string2, char * output, size_t readStr2, size_t readStr1);
+  void withDigits(char * userString, const char * myString, char * output, size_t length, size_t read);
 }
 
 #endif

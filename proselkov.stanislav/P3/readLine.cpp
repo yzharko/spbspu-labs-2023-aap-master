@@ -1,16 +1,17 @@
-#include "read_input.hpp"
+#include "readLine.hpp"
+#include <iostream>
+#include <cstddef>
 
-char * kovshikov::readInput(size_t &size, size_t &read)
+size_t readLine(char * input)
 {
   char symbol = 0;
-  int add = 25;
-  char * array = new char[size];
-  char * newArray = nullptr;
+  size_t read = 0;
+  std::cin >> std::noskipws;
   while ((std::cin >> symbol) && (symbol != '\n'))
   {
-    if (read == size)
+    if (read == 10)
     {
-      newArray = new char[size + add];
+      newArray = new char[size + 10];
       for(size_t i = 0; i < size; i++)
       {
         newArray[i] = array[i];
@@ -18,9 +19,10 @@ char * kovshikov::readInput(size_t &size, size_t &read)
       delete[] array;
       array = newArray;
       newArray = nullptr;
-      size += add;
+      size += 10;
     }
     array[read++] = symbol;
   }
-  return array;
+  std::cin >> std::skipws;
+  return read;
 }

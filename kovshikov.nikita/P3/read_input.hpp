@@ -5,7 +5,7 @@
 
 namespace kovshikov
 {
-  size_t readInput(char * array);
+  char * readInput(size_t &size, size_t &read);
 }
 
 #endif

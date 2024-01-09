@@ -8,11 +8,11 @@ void kovshikov::missingChar(char * array, char * output, const size_t read)
    {
      for(size_t j = 0; j < read; j++)
      {
-       if(char(i) == (char)tolower(array[j]))
+       if(char(i) == static_cast<char>(tolower(array[j])))
        {
          flag = true;
        }
-       else if((j == read - 1) && char(i) != (char)tolower(array[j]) && flag == false)
+       else if((j == read - 1) && char(i) != static_cast<char>(tolower(array[j])) && flag == false)
        {
          output[element++] = char(i);
        }
