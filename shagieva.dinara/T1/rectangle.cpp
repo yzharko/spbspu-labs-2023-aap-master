@@ -37,11 +37,12 @@ namespace shagieva
     move(dx, dy);
   }
 
-  void Rectangle::scale(const point_t & scaleCenter, const double & scaleFactor)
+  void Rectangle::scale(const double & scaleFactor)
   {
-    pointA.x = (pointA.x - scaleCenter.x) * scaleFactor + scaleCenter.x;
-    pointA.y = (pointA.y - scaleCenter.y) * scaleFactor + scaleCenter.y;
-    pointC.x = (pointC.x - scaleCenter.x) * scaleFactor + scaleCenter.x;
-    pointC.y = (pointC.y - scaleCenter.y) * scaleFactor + scaleCenter.y;
+    point_t center = { (pointA.x + pointC.x) / 2, (pointA.y + pointC.y) / 2 };
+    pointA.x = (pointA.x - center.x) * scaleFactor + center.x;
+    pointA.y = (pointA.y - center.y) * scaleFactor + center.y;
+    pointC.x = (pointC.x - center.x) * scaleFactor + center.x;
+    pointC.y = (pointC.y - center.y) * scaleFactor + center.y;
   }
 }

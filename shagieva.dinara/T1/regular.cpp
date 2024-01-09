@@ -43,12 +43,12 @@ namespace shagieva
     move(dx, dy);
   }
 
-  void Regular::scale(const point_t & scaleCenter, const double & scaleFactor)
+  void Regular::scale(const double & scaleFactor)
   {
     for (int i = 1; i < 3; ++i)
     {
-      points[i].x = (points[i].x - scaleCenter.x) * scaleFactor + scaleCenter.x;
-      points[i].y = (points[i].y - scaleCenter.y) * scaleFactor + scaleCenter.y;
+      points[i].x = (points[i].x - points[0].x) * scaleFactor + points[0].x;
+      points[i].y = (points[i].y - points[0].y) * scaleFactor + points[0].y;
     }
   }
 

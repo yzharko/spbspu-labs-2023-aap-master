@@ -86,7 +86,8 @@ int main()
   for (size_t i = 0; i < shapeCount; ++i)
   {
     shagieva::Shape * shape = shapes[i];
-    shape->scale({ scaleCenterX, scaleCenterY }, scaleFactor);
+    shape->move({ scaleCenterX, scaleCenterY });
+    shape->scale(scaleFactor);
   }
 
   double totalAreaAfterScaling = 0.0;

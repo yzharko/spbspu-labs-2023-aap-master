@@ -46,12 +46,13 @@ namespace shagieva
     move(dx, dy);
   }
 
-  void Complexquad::scale(const point_t & scaleCenter, const double & scaleFactor)
+  void Complexquad::scale(const double & scaleFactor)
   {
+    point_t center = getCenter();
     for (int i = 0; i < 4; ++i)
     {
-      points[i].x = (points[i].x - scaleCenter.x) * scaleFactor + scaleCenter.x;
-      points[i].y = (points[i].y - scaleCenter.y) * scaleFactor + scaleCenter.y;
+      points[i].x = (points[i].x - center.x) * scaleFactor + center.x;
+      points[i].y = (points[i].y - center.y) * scaleFactor + center.y;
     }
   }
 
@@ -66,11 +67,6 @@ namespace shagieva
     double c2 = points[1].x * points[3].y - points[3].x * points[1].y;
 
     double determinant = a1 * b2 - a2 * b1;
-
-    if (determinant == 0)
-    {
-      throw std::invalid_argument("Lines do not intersect");
-    }
 
     return { (b1 * c2 - b2 * c1) / determinant, (a1 * c2 - a2 * c1) / determinant };
   }
