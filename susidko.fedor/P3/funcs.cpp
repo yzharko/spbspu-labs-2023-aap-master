@@ -1,7 +1,7 @@
 #include "funcs.hpp"
 #include <iostream>
 #include <cctype>
-#include <set>
+#1include <set>
 
 char * susidko::replaceUpLow(char * src, int add)
 {
@@ -21,7 +21,7 @@ char * susidko::replaceUpLow(char * src, int add)
   return res;
 }
 
-int susidko::countDiffLetters(char * src, int add)
+int susidko::countDiffLetters(char * src)
 {
   std::set<char> letters;
   for (int i = 0; src[i] != '\0'; i++)
