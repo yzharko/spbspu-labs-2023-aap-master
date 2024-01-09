@@ -6,7 +6,6 @@ char * sukacheva::inputString(std::istream& in, size_t& read)
 {
   size_t len = 10;
   char* input = new char[len] {};
-  read = 0;
   char c = 0;
   in >> std::noskipws;
   while (in.get(c))

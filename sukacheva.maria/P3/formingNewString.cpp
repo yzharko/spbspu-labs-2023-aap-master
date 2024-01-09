@@ -1,7 +1,7 @@
 #include "formingNewString.hpp"
 #include <iostream>
 
-char* sukacheva::formingNewString(char* first, char* second, size_t firstStringSize, size_t secondStringSize)
+char* sukacheva::formingNewString(char* first, const char* second, size_t firstStringSize, const size_t secondStringSize)
 {
   size_t count = 0;
   for (size_t i = 0; i < secondStringSize; ++i)

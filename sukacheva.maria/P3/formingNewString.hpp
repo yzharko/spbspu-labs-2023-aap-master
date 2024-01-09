@@ -4,6 +4,6 @@
 
 namespace sukacheva
 {
-  char* formingNewString(char* first, char* second, size_t firstStringSize, size_t secondStringSize);
+  char* formingNewString(char* first, const char* second, size_t firstStringSize, const size_t secondStringSize);
 }
 #endif

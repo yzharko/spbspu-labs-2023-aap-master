@@ -1,7 +1,6 @@
 #ifndef INPUTSTRING_HPP
 #define INPUTSTRING_HPP
 #include <iosfwd>
-#include <cstddef>
 
 namespace sukacheva
 {
