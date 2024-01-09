@@ -18,8 +18,9 @@ double khoroshkin::Complexquad::getArea()
 {
   point_t vector1 = {pointB.x - pointA.x, pointB.y - pointA.y};
   point_t vector2 = {pointD.x - pointC.x, pointD.y - pointC.y};
-  double angleCos = abs(vector1.x * vector2.x + vector1.y * vector2.y)/(sqrt(pow(vector1.x,2) + 
-  pow(vector1.y,2)) * sqrt(pow(vector2.x,2) + pow(vector2.y,2)));
+  double angleCos = abs(vector1.x * vector2.x + vector1.y * vector2.y) / \
+  (sqrt(pow(vector1.x,2) + pow(vector1.y,2)) * sqrt(pow(vector2.x,2) \
+  + pow(vector2.y,2)));
   return side * side * sin(acos(angleCos));
 }
 
@@ -46,10 +47,14 @@ rectangle_t khoroshkin::Complexquad::getFrameRect()
 
 void khoroshkin::Complexquad::move(point_t newPoint)
 {
-  pointA = {pointA.x + (newPoint.x - centerPoint.x), pointA.y + (newPoint.y - centerPoint.y)};
-  pointB = {pointB.x + (newPoint.x - centerPoint.x), pointB.y + (newPoint.y - centerPoint.y)};
-  pointC = {pointC.x + (newPoint.x - centerPoint.x), pointC.y + (newPoint.y - centerPoint.y)};
-  pointD = {pointD.x + (newPoint.x - centerPoint.x), pointD.y + (newPoint.y - centerPoint.y)};
+  pointA = {pointA.x + (newPoint.x - centerPoint.x),\
+  pointA.y + (newPoint.y - centerPoint.y)};
+  pointB = {pointB.x + (newPoint.x - centerPoint.x),\
+  pointB.y + (newPoint.y - centerPoint.y)};
+  pointC = {pointC.x + (newPoint.x - centerPoint.x),\
+  pointC.y + (newPoint.y - centerPoint.y)};
+  pointD = {pointD.x + (newPoint.x - centerPoint.x),\
+  pointD.y + (newPoint.y - centerPoint.y)};
   centerPoint = newPoint;
 }
 

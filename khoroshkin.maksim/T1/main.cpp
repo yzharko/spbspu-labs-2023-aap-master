@@ -53,8 +53,8 @@ int main()
       double x1, y1, x2, y2, x3, y3, x4, y4;
       if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4)
       {
-        allFigures[figuresCounter++] = new khoroshkin::Complexquad(point_t{x1, y1}, point_t{x2, y2},\
-        point_t{x3, y3}, point_t{x4, y4});
+        allFigures[figuresCounter++] = new khoroshkin::Complexquad(point_t{x1, y1},\
+        point_t{x2, y2}, point_t{x3, y3}, point_t{x4, y4});
       }
       else
       {
@@ -73,9 +73,9 @@ int main()
 
         for (size_t i = 0; i < figuresCounter; ++i)
         {
-          std::cout << allFigures[i]->getArea() << " " << allFigures[i]->getFrameRect().pos.x << " " \
-                    << allFigures[i]->getFrameRect().pos.y << " " << allFigures[i]->getFrameRect().width << " " \
-                    << allFigures[i]->getFrameRect().height << "\n";
+          std::cout << allFigures[i]->getArea() << " " << allFigures[i]->getFrameRect().pos.x \
+          << " " << allFigures[i]->getFrameRect().pos.y << " " << allFigures[i]->getFrameRect().width \
+          << " " << allFigures[i]->getFrameRect().height << "\n";
         }
       }
       else
