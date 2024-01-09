@@ -20,7 +20,7 @@ int main()
     return 1;
   }
   char * strResult = susidko::replaceUpLow(str, lenght);
-  int countChars = susidko::countDiffLetters(str, lenght);
+  int countChars = susidko::countDiffLetters(str);
   if (!strResult)
   {
     std::cerr << "Error: can't allocate memory for result\n";
