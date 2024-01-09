@@ -1,24 +1,24 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
-#include "shape.hpp"
 #include "baseTypes.hpp"
+#include "Shape.hpp"
 
 namespace taskaev
 {
-  class Rectangle : public virtual Shape
+  class Rectangle : public Shape
   {
   public:
-    Rectangle(point_t rx ,point_t ry, point_t lx, point_t ly);
+    Rectangle(point_t leftpoint, point_t rightpoint);
     double getArea();
     rectangle_t getFrameRect();
-    void move(double dx, double dy);
-    void move (point_t new_center);
-    void scale(double c);
+    void move(double x, double y);
+    void move( point_t center);
+    void scale(double k);
+
+
   private:
-    point_t rp_x;
-    point_t rp_y;
-    point_t lp_x;
-    point_t lp_y;
+    point_t leftPoint_;
+    point_t rightPoint_;
   };
 }
 #endif

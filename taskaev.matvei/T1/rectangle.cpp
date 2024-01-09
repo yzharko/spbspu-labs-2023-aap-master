@@ -1,54 +1,43 @@
-#include "rectangle.hpp"
 #include <iostream>
+#include "rectangle.hpp"
 
-taskaev::Rectangle::Rectangle(point_t rx, point_t ry, point_t lx ,point_t ly):
-  rp_x(rx),
-  rp_y(ry),
-  lp_x(lx),
-  lp_y(ly)
+taskaev::Rectangle::Rectangle(point_t leftpoint, point_t rightpoint) :
+  leftPoint_(leftpoint), rightPoint_(rightpoint)
 {}
+
 double taskaev::Rectangle::getArea()
 {
-  return std::abs(rp_x - lp_x) * std::abs(rp_x - rp_y);
+  return (rightPoint_.X - leftPoint_.X) * (rightPoint_.Y - leftPoint_.Y);
 }
 
 rectangle_t taskaev::Rectangle::getFrameRect()
 {
-  double height = std::abs(rp_y - lp_y);
-  double width = std::abs(rp_x - lp_x);
-  point_t pos(((rp_x + lp_x)/2),((rp_y - lp_y)/2));
+  double width = std::abs(rightPoint_.X - leftPoint_.X);
+  double height = std::abs(rightPoint_.Y - leftPoint_.Y);
+  point_t pos(((rightPoint_.X + leftPoint_.X) / 2), ((rightPoint_.Y + leftPoint_.Y)));
   return rectangle_t(width, height, pos);
+ }
+
+void taskaev::Rectangle::move(double x, double y)
+{
+  rightPoint_ = point_t(rightPoint_.X + x, rightPoint_.Y + y);
+  leftPoint_ = point_t(leftPoint_.X + x, leftPoint_.Y + y);
 }
 
-void taskaev::Rectangle::move(double dx , double dy)
+void taskaev::Rectangle::move(point_t center)
 {
-  rp_x = rp_x + dx;
-  rp_y = rp_y + dy;
-  lp_x = lp_x + dx;
-  lp_y = lp_y + dy;
+  double d_x = (center.X - ((rightPoint_.X + leftPoint_.X) / 2));
+  double d_y = (center.Y - ((rightPoint_.Y + leftPoint_.Y) / 2));
+  move(d_x, d_y);
+
 }
 
-void taskaev::Rectangle::move(point_t new_center)
+void taskaev::Rectangle::scale(double k)
 {
-  double new_x = new_center.x;
-  double new_y = new_center.y;
-  double old_x = (rp_x + lp_x)/2;
-  double old_y = (rp_y + lp_y)/2;
-  double dx = (new_x - old_x);
-  double dy = (new_y - old_y);
-  move(dx, dy);
-}
-
-void taskaev::Rectangle::move(double c)
-{
-  double center_x = (rp_x + lp_x)/2;
-  double center_y = (rp_y + lp_y)/2;
-  double height = std::abs(rp_y - lp_y);
-  double width = std::abs(rp_x - lp_x);
-  double new_widht = (width * c)/2;
-  double new_height = (height * c)/2;
-  rp_x = center_x - new_width;
-  rp_y = center_y - new_height;
-  lp_x = center_x + new_width;
-  lp_y = center_y + new_height;
+  double width = std::abs(rightPoint_.X - leftPoint_.X);
+  double height = std::abs(rightPoint_. Y- leftPoint_.Y);
+  rightPoint_.X = ((rightPoint_.X + leftPoint_.X) / 2) - (width * k) / 2;
+  rightPoint_.Y = ((rightPoint_.Y + leftPoint_.Y) / 2) - (height * k) / 2;
+  leftPoint_.X = ((rightPoint_.X + leftPoint_.X) / 2) + (width * k) / 2;
+  leftPoint_.Y = ((rightPoint_.Y + leftPoint_.Y) / 2) + (height * k) / 2;
 }

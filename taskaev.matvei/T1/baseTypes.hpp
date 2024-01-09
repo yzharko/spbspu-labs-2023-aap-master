@@ -4,9 +4,10 @@
 struct point_t
 {
   point_t(double x, double y);
-  double x_;
-  double y_;
+  double X;
+  double Y;
 };
+
 struct rectangle_t
 {
   rectangle_t(double width, double height, point_t pos);
@@ -14,4 +15,6 @@ struct rectangle_t
   double height_;
   point_t pos_;
 };
+
 #endif
+
