@@ -16,10 +16,10 @@ namespace taskaev
     void scale(double k);
 
   private:
-    point_t left_;
-    point_t right_;
-    point_t inner_;
-    point_t upper_;
+    point_t p1;
+    point_t p2;
+    point_t p3;
+    point_t p4;
   };
 }
 #endif
