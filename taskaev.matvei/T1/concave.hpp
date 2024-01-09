@@ -11,11 +11,11 @@ namespace taskaev
   {
   public:
     Concave(point_t left, point_t right, point_t inner, point_t upper);
-    double getArea();
-    rectangle_t getFrameRect();
-    void move(double x, double y);
-    void move(point_t newCenter);
-    void scale(double k);
+    virtual double getArea();
+    virtual rectangle_t getFrameRect();
+    virtual void move(double x, double y);
+    virtual void move(point_t newCenter);
+    virtual void scale(double k);
 
   private:
     point_t p1;
