@@ -11,7 +11,7 @@ namespace doroshenko
     virtual rectangle_t getFrameRect() = 0;
     virtual void move(point_t destination) = 0;
     virtual void move(double moveX, double moveY) = 0;
-    virtual void scale(point_t pos, double coefficient) = 0;
+    virtual void scale(double coefficient) = 0;
   };
 }
 

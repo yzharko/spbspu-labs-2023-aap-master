@@ -24,10 +24,7 @@ void doroshenko::Rectangle::move(point_t destination)
   rectangle_t frame = getFrameRect();
   double moveX = destination.x_ - frame.pos_.x_;
   double moveY = destination.y_ - frame.pos_.y_;
-  lowerLeft_.x_ += moveX;
-  lowerLeft_.y_ += moveY;
-  upperRight_.x_ += moveX;
-  upperRight_.y_ += moveY;
+  move(moveX, moveY);
 }
 
 void doroshenko::Rectangle::move(double moveX, double moveY)
@@ -38,10 +35,13 @@ void doroshenko::Rectangle::move(double moveX, double moveY)
   upperRight_.y_ += moveY;
 }
 
-void doroshenko::Rectangle::scale(point_t pos, double coefficient)
+void doroshenko::Rectangle::scale(double coefficient)
 {
-  lowerLeft_.x_ *= coefficient;
-  lowerLeft_.y_ *= coefficient;
-  upperRight_.x_ *= coefficient;
-  upperRight_.y_ *= coefficient;
+  rectangle_t frame = getFrameRect();
+  double moveX = frame.width_ * (coefficient - 1) * 0.5;
+  double moveY = frame.height_ * (coefficient - 1) * 0.5;
+  lowerLeft_.x_ -= moveX;
+  lowerLeft_.y_ -= moveY;
+  upperRight_.x_ += moveX;
+  upperRight_.y_ += moveY;
 }

@@ -12,7 +12,7 @@ namespace doroshenko
     virtual rectangle_t getFrameRect();
     virtual void move(point_t destination);
     virtual void move(double moveX, double moveY);
-    virtual void scale(point_t pos, double coefficient);
+    virtual void scale(double coefficient);
   private:
     point_t firstPoint_;
     point_t secondPoint_;

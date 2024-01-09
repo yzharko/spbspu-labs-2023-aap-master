@@ -49,14 +49,7 @@ void doroshenko::Concave::move(point_t destination)
 {
   double moveX = destination.x_ - fourthPoint_.x_;
   double moveY = destination.y_ - fourthPoint_.y_;
-  firstPoint_.x_ += moveX;
-  firstPoint_.y_ += moveY;
-  secondPoint_.x_ += moveX;
-  secondPoint_.y_ += moveY;
-  thirdPoint_.x_ += moveX;
-  thirdPoint_.y_ += moveY;
-  fourthPoint_.x_ += moveX;
-  fourthPoint_.y_ += moveY;
+  move(moveX, moveY);
 }
 
 void doroshenko::Concave::move(double moveX, double moveY)
@@ -71,14 +64,15 @@ void doroshenko::Concave::move(double moveX, double moveY)
   fourthPoint_.y_ += moveY;
 }
 
-void doroshenko::Concave::scale(point_t pos, double coefficient)
+void doroshenko::Concave::scale(double coefficient)
 {
-  firstPoint_.x_ *= coefficient;
-  firstPoint_.y_ *= coefficient;
-  secondPoint_.x_ *= coefficient;
-  secondPoint_.y_ *= coefficient;
-  thirdPoint_.x_ *= coefficient;
-  thirdPoint_.y_ *= coefficient;
-  fourthPoint_.x_ *= coefficient;
-  fourthPoint_.y_ *= coefficient;
+  point_t pos;
+  pos.x_ = fourthPoint_.x_;
+  pos.y_ = fourthPoint_.y_;
+  firstPoint_.x_ += (firstPoint_.x_ - pos.x_) * (coefficient - 1);
+  firstPoint_.y_ += (firstPoint_.y_ - pos.y_) * (coefficient - 1);
+  secondPoint_.x_ += (secondPoint_.x_ - pos.x_) * (coefficient - 1);
+  secondPoint_.y_ += (secondPoint_.y_ - pos.y_) * (coefficient - 1);
+  thirdPoint_.x_ += (thirdPoint_.x_ - pos.x_) * (coefficient - 1);
+  thirdPoint_.y_ += (thirdPoint_.y_ - pos.y_) * (coefficient - 1);
 }

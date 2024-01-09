@@ -40,12 +40,7 @@ void doroshenko::Triangle::move(point_t destination)
 {
   double moveX = destination.x_ - (firstPoint_.x_ + secondPoint_.x_ + thirdPoint_.x_) / 3;
   double moveY = destination.y_ - (firstPoint_.y_ + secondPoint_.y_ + thirdPoint_.y_) / 3;
-  firstPoint_.x_ += moveX;
-  firstPoint_.y_ += moveY;
-  secondPoint_.x_ += moveX;
-  secondPoint_.y_ += moveY;
-  thirdPoint_.x_ += moveX;
-  thirdPoint_.y_ += moveY;
+  move(moveX, moveY);
 }
 
 void doroshenko::Triangle::move(double moveX, double moveY)
@@ -58,12 +53,15 @@ void doroshenko::Triangle::move(double moveX, double moveY)
   thirdPoint_.y_ += moveY;
 }
 
-void doroshenko::Triangle::scale(point_t pos, double coefficient)
+void doroshenko::Triangle::scale(double coefficient)
 {
-  firstPoint_.x_ *= coefficient;
-  firstPoint_.y_ *= coefficient;
-  secondPoint_.x_ *= coefficient;
-  secondPoint_.y_ *= coefficient;
-  thirdPoint_.x_ *= coefficient;
-  thirdPoint_.y_ *= coefficient;
+  point_t pos;
+  pos.x_ = (firstPoint_.x_ + secondPoint_.x_ + thirdPoint_.x_) / 3;
+  pos.y_ = (firstPoint_.y_ + secondPoint_.y_ + thirdPoint_.y_) / 3;
+  firstPoint_.x_ += (firstPoint_.x_ - pos.x_) * (coefficient - 1);
+  firstPoint_.y_ += (firstPoint_.y_ - pos.y_) * (coefficient - 1);
+  secondPoint_.x_ += (secondPoint_.x_ - pos.x_) * (coefficient - 1);
+  secondPoint_.y_ += (secondPoint_.y_ - pos.y_) * (coefficient - 1);
+  thirdPoint_.x_ += (thirdPoint_.x_ - pos.x_) * (coefficient - 1);
+  thirdPoint_.y_ += (thirdPoint_.y_ - pos.y_) * (coefficient - 1);
 }
