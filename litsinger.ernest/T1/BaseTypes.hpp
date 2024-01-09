@@ -1,3 +1,5 @@
+#ifndef BASETYPES_HPP
+#define BASETYPES_HPP
 #include<iostream>
 namespace base_types
 {
@@ -16,3 +18,4 @@ namespace base_types
   std::ostream& operator << (std::ostream& os, const base_types::point_t& point);
   std::ostream& operator << (std::ostream& os, const base_types::rectangle_t& rectangle);
 }
+#endif
