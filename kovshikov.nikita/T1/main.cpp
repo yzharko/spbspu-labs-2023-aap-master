@@ -25,7 +25,6 @@ int main()
   triangle.scale(3.5);
 
   int num = 5;
-  std::cin >> num;
   point_t points[num] = {};
   points[0] = {5.0, 9.0};
   points[1] = {12.0, 5.0};
