@@ -19,7 +19,6 @@ namespace khoroshkin
     point_t pointC;
     point_t pointD;
     point_t cPoint;
-    double s;
   };
 }
 #endif
