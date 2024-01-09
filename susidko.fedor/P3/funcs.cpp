@@ -10,14 +10,17 @@ char * susidko::replaceUpLow(char * src, int add)
   {
     return nullptr;
   }
-  for (int i = 0; src[i] != '\0'; i++)
+  int i = 0;
+  while (src[i] != '\0')
   {
     res[i] = tolower(src[i]);
     if (!res)
     {
       return nullptr;
     }
+    i++;
   }
+  res[i] = '\0';
   return res;
 }
 
