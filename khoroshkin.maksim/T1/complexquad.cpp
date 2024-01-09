@@ -11,7 +11,7 @@ khoroshkin::Complexquad::Complexquad(point_t first, point_t second, point_t thir
   double b2 = pointC.y - k2 * pointC.x;
   cPoint.x = (b2 - b1) / (k1 - k2);
   cPoint.y = k1 * cPoint.x + b1;
-  double side = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
+  double s = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
 }
 
 double khoroshkin::Complexquad::getArea()
@@ -19,14 +19,13 @@ double khoroshkin::Complexquad::getArea()
   point_t vec1 = {pointB.x - pointA.x, pointB.y - pointA.y};
   point_t vec2 = {pointD.x - pointC.x, pointD.y - pointC.y};
   double cos = fabs(vec1.x * vec2.x + vec1.y * vec2.y) / (sqrt(pow(vec1.x,2) + pow(vec1.y,2)) * sqrt(pow(vec2.x,2) + pow(vec2.y,2)));
-  return side * side * sin(acos(cos));
+  return s * s * sin(acos(cos));
 }
 
 rectangle_t khoroshkin::Complexquad::getFrameRect()
 {
   point_t vec1 = {pointB.x - pointA.x, pointB.y - pointA.y};
   point_t vec2 = {pointD.x - pointC.x, pointD.y - pointC.y};
-  double s = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
   point_t up1 = {cPoint.x + s * vec1.x / sqrt(pow(vec1.x,2) + pow(vec1.y,2)),cPoint.y + s * vec1.y / sqrt(pow(vec1.x,2) + pow(vec1.y,2))};
   point_t down1 = {cPoint.x - s * vec1.x / sqrt(pow(vec1.x,2) + pow(vec1.y,2)), cPoint.y - s * vec1.y / sqrt(pow(vec1.x,2) + pow(vec1.y,2))};
   point_t up2 = {cPoint.x + s * vec2.x / sqrt(pow(vec2.x,2) + pow(vec2.y,2)), cPoint.y - s * vec2.y / sqrt(pow(vec2.x,2) + pow(vec2.y,2))};
@@ -56,5 +55,5 @@ void khoroshkin::Complexquad::move(double dx, double dy)
 
 void khoroshkin::Complexquad::scale(double k)
 {
-  side *= k;
+  s *= k;
 }
