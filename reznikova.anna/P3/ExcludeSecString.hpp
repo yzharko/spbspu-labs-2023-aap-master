@@ -2,6 +2,9 @@
 #define EXCLUDESECSTRING_HPP
 #include <iosfwd>
 
-char * ExcludeSecString(char * first_str, char * sec_str, size_t first_size, size_t sec_size);
+namespace reznikova
+{
+  char * ExcludeSecString(char * first_str, char * sec_str, size_t first_size, size_t sec_size);
+}
 
 #endif

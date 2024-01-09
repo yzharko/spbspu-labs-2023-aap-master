@@ -2,6 +2,10 @@
 #define INPUTSTRING_HPP
 #include <iosfwd>
 
-char * inputString(std::istream & in, size_t & size, size_t & add_size);
+namespace reznikova
+{
+  char * readString(std::istream & in, size_t & size);
+  char * addCapacity(char * string, size_t size, size_t add_size);
+}
 
 #endif
