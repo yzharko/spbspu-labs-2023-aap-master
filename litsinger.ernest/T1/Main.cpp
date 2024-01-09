@@ -3,7 +3,7 @@
 #include "Rectangle.hpp"
 #include "Ring.hpp"
 
-int main() 
+int main()
 {
   Rectangle test1(2, 2, base_types::point_t{ 0,0 });
   std::cout << test1.getArea() << " ";

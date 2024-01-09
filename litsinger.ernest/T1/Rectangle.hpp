@@ -2,7 +2,7 @@
 #include"Shape.hpp"
 #include"BaseTypes.hpp"
 using namespace base_types;
-class Rectangle :public Shape 
+class Rectangle :public Shape
 {
 public:
   Rectangle(const rectangle_t& framework);
