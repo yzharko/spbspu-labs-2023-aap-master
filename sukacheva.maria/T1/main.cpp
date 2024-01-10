@@ -106,6 +106,7 @@ int main() {
         x4 = newFrameRect.pos_.x_ + newFrameRect.width_ / 2.0;
         y4 = newFrameRect.pos_.y_ + newFrameRect.height_/ 2.0;
         std::cout << std::fixed << std::setprecision(1) << x3 << " " << y3 << " " << x4 << " " << y4;
+        delete[] figures[i];
       }
     }
   };
