@@ -26,7 +26,6 @@ rectangle_t khoroshkin::Complexquad::getFrameRect()
 {
   point_t vec1 = {pointB.x - pointA.x, pointB.y - pointA.y};
   point_t vec2 = {pointD.x - pointC.x, pointD.y - pointC.y};
-  //double s = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
   point_t up1 = {cPoint.x + s * vec1.x / sqrt(pow(vec1.x,2) + pow(vec1.y,2)),cPoint.y + s * vec1.y / sqrt(pow(vec1.x,2) + pow(vec1.y,2))};
   point_t down1 = {cPoint.x - s * vec1.x / sqrt(pow(vec1.x,2) + pow(vec1.y,2)), cPoint.y - s * vec1.y / sqrt(pow(vec1.x,2) + pow(vec1.y,2))};
   point_t up2 = {cPoint.x + s * vec2.x / sqrt(pow(vec2.x,2) + pow(vec2.y,2)), cPoint.y - s * vec2.y / sqrt(pow(vec2.x,2) + pow(vec2.y,2))};
