@@ -118,6 +118,11 @@ int main()
         std::cout << std::fixed << std::setprecision(1) << xL << ' ' << yL << ' ' << xR << ' ' << yR << ' ';
       }
       std::cout << "\n";
+      for (size_t i = 0; i < size; i++)
+      {
+        delete[] geometricFigures[i];
+      }
+      delete[] geometricFigures;
     }
 
     if (countFig == size)
@@ -127,6 +132,7 @@ int main()
       for (size_t i = 0; i < size; i++)
       {
         newArray[i] = geometricFigures[i];
+        delete[] geometricFigures[i];
       }
       for (size_t j = size; j < newSize; j++)
       {
@@ -134,6 +140,7 @@ int main()
       }
       delete[] geometricFigures;
       geometricFigures = newArray;
+      size = newSize;
     }
   }
 }
