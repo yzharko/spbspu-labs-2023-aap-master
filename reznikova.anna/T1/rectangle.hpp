@@ -9,7 +9,11 @@ namespace reznikova
   class Rectangle : public Shape
   {
   public:
+    Rectangle() = delete;
     Rectangle(point_t leftpoint, point_t rightpoint);
+    Rectangle(const Rectangle &) = delete;
+    Rectangle(Rectangle &&) = delete;
+    ~Rectangle() = default;
     double getArea();
     rectangle_t getFrameRect();
     void move(double dx, double dy);

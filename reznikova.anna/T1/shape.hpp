@@ -8,6 +8,7 @@ namespace reznikova
   class Shape
   {
   public:
+    virtual ~Shape() {}
     virtual double getArea() = 0;
     virtual rectangle_t getFrameRect() = 0;
     virtual void move(double dx, double dy) = 0;

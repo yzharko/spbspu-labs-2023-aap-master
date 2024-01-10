@@ -11,7 +11,11 @@ namespace reznikova
   class Regular : public Shape
   {
   public:
+    Regular() = delete;
     Regular(point_t center, point_t point1, point_t point2);
+    Regular(const Regular &) = delete;
+    Regular(Regular &&) = delete;
+    ~Regular() = default;
     double getArea();
     rectangle_t getFrameRect();
     void move(double dx, double dy);

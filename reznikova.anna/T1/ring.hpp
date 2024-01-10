@@ -9,7 +9,11 @@ namespace reznikova
   class Ring : public Shape
   {
   public:
+    Ring() = delete;
     Ring(point_t center, double r1, double r2);
+    Ring(const Ring &) = delete;
+    Ring(Ring &&) = delete;
+    ~Ring() = default;
     double getArea();
     rectangle_t getFrameRect();
     void move(double dx, double dy);

@@ -9,6 +9,8 @@
 int main()
 {
   bool scale_command = 0;
+  reznikova::Shape ** figures = new reznikova::Shape*[1000]();
+  int stored = 0;
   while (!std::cin.eof())
   {
     std::string name = "";
@@ -22,6 +24,8 @@ int main()
       try
       {
         reznikova::Ring ring(center, r1, r2);
+        figures[stored] = &ring;
+        stored++;
       }
       catch(const std::runtime_error &e)
       {
@@ -40,6 +44,7 @@ int main()
       try
       {
         reznikova::Regular regular(center, point1, point2);
+        figures[stored++] = &regular;
       }
       catch(const std::runtime_error &e)
       {
@@ -57,6 +62,7 @@ int main()
       try
       {
         reznikova::Rectangle rectangle(leftpoint, rightpoint);
+        figures[stored++] = &rectangle;
       }
       catch(const std::runtime_error &e)
       {
@@ -65,7 +71,7 @@ int main()
       }
     }
 
-    else if (name == "SCAlE")
+    else if (name == "SCALE")
     {
       scale_command = 1;
       double x, y, n;
@@ -75,11 +81,40 @@ int main()
         std::cerr << "Negative Coeff Scale";
         return 1;
       }
-    }
 
-    else
-    {
-      std::cerr << "this figure is not supported\n";
+      double sum_area = 0;
+      for (int i = 0; i < stored; i++)
+      {
+        sum_area += figures[i]->getArea();
+      }
+      std::cout << sum_area << " ";
+
+      for (int i = 0; i < stored; i++)
+      {
+        reznikova::rectangle_t frame_rect = figures[i]->getFrameRect();
+        std::cout << frame_rect.leftpoint.x << " " << frame_rect.leftpoint.y << " ";
+        std::cout << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << " ";
+      }
+      std::cout << "\n";
+
+      double new_sum_area = 0;
+      for (int i = 0; i < stored; i++)
+      {
+        figures[i]->scale(n);
+        new_sum_area += figures[i]->getArea();
+      }
+
+      std::cout << new_sum_area << " ";
+
+      for (int i = 0; i < stored; i++)
+      {
+        reznikova::rectangle_t frame_rect = figures[i]->getFrameRect();
+        std::cout << frame_rect.leftpoint.x << " " << frame_rect.leftpoint.y << " ";
+        std::cout << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << " ";
+      }
+      std::cout << "\n";
+      delete [] figures;
+      break;
     }
   }
 
