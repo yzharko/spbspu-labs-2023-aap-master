@@ -1,5 +1,5 @@
-#ifndef COMPOSITESHAPE_H
-#define COMPOSITESHAPE_H
+#ifndef COMPOSITESHAPE_HPP
+#define COMPOSITESHAPE_HPP
 
 #include <iosfwd>
 #include "shape.h"
