@@ -120,7 +120,7 @@ int main()
         std::cout << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << " ";
       }
       std::cout << "\n";
-      
+
       break;
     }
   }
