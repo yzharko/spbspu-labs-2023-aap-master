@@ -15,7 +15,9 @@ rectangle_t doroshenko::Rectangle::getFrameRect()
 {
   double width = upperRight_.x_ - lowerLeft_.x_;
   double height = upperRight_.y_ - lowerLeft_.y_;
-  point_t pos = { 0.5 * (upperRight_.x_ - lowerLeft_.x_), 0.5 * (upperRight_.y_ - lowerLeft_.y_) };
+  double posX = 0.5 * (upperRight_.x_ + lowerLeft_.x_);
+  double posY = 0.5 * (upperRight_.y_ + lowerLeft_.y_);
+  point_t pos = { posX, posY };
   return rectangle_t{ width, height, pos };
 }
 

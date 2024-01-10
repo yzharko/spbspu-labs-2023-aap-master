@@ -1,5 +1,6 @@
 #include "concave.hpp"
 #include <cmath>
+#include <stdexcept>
 
 doroshenko::Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, point_t fourthPoint) :
   firstPoint_(firstPoint),
@@ -13,6 +14,15 @@ double doroshenko::Concave::getArea()
   double aF = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
   double bF = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
   double cF = sqrt(pow((thirdPoint_.x_ - firstPoint_.x_), 2) + pow((thirdPoint_.y_ - firstPoint_.y_), 2));
+
+  double maxSide = aF >= bF ? aF : bF;
+  maxSide = maxSide >= cF ? maxSide : cF;
+
+  if (!(maxSide >= aF + bF + cF - maxSide))
+  {
+	  throw std::logic_error("There is no such triangle\n");
+  }
+
   double pF = 0.5 * (aF + bF + cF);
   double firstArea = sqrt(pF * (pF - aF) * (pF - bF) * (pF - cF));
 
@@ -41,7 +51,9 @@ rectangle_t doroshenko::Concave::getFrameRect()
 
   double width = maxX - minX;
   double height = maxY - minY;
-  point_t pos = { 0.5 * (maxX - minX), 0.5 * (maxY - minY) };
+  double posX = 0.5 * (maxX + minX);
+  double posY = 0.5 * (maxY + minY);
+  point_t pos = { posX, posY };
   return rectangle_t{ width, height, pos };
 }
 

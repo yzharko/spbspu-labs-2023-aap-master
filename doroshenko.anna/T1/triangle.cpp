@@ -1,5 +1,6 @@
 #include "triangle.hpp"
 #include <cmath>
+#include <stdexcept>
 
 doroshenko::Triangle::Triangle(point_t firstPoint, point_t secondPoint, point_t thirdPoint) :
   firstPoint_(firstPoint),
@@ -12,6 +13,15 @@ double doroshenko::Triangle::getArea()
   double a = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
   double b = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
   double c = sqrt(pow((thirdPoint_.x_ - firstPoint_.x_), 2) + pow((thirdPoint_.y_ - firstPoint_.y_), 2));
+
+  double maxSide = a >= b ? a : b;
+  maxSide = maxSide >= c ? maxSide : c;
+
+  if (!(maxSide >= a + b + c - maxSide))
+  {
+	  throw std::logic_error("There is no such triangle\n");
+  }
+
   double p = 0.5 * (a + b + c);
   return sqrt(p * (p - a) * (p - b) * (p - c));
 }
@@ -32,7 +42,9 @@ rectangle_t doroshenko::Triangle::getFrameRect()
 
   double width = maxX - minX;
   double height = maxY - minY;
-  point_t pos = { 0.5 * (maxX - minX), 0.5 * (maxY - minY) };
+  double posX = 0.5 * (maxX + minX);
+  double posY = 0.5 * (maxY + minY);
+  point_t pos = { posX, posY };
   return rectangle_t{ width, height, pos };
 }
 
