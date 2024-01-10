@@ -12,9 +12,10 @@ int main()
   size_t shapeCount = 0;
   std::string figureType;
   bool figureIsWrong = 0;
+  bool scaleIsEntered = 0;
   double x1, y1, x2, y2, x3, y3, x4, y4;
 
-  while (true)
+  while (std::cin)
   {
     if (shapeCount == capacity)
     {
@@ -30,8 +31,15 @@ int main()
 
     std::cin >> figureType;
 
+    if (figureType == "SCALE" && shapeCount == 0)
+    {
+      std::cerr << "Nothing to scale.\n";
+      return 1;
+    }
+
     if (figureType == "SCALE")
     {
+      scaleIsEntered = true;
       break;
     }
 
@@ -61,6 +69,12 @@ int main()
     {
       figureIsWrong = true;
     }
+  }
+
+  if (!scaleIsEntered)
+  {
+    std::cerr << "Scale command is not entered.\n";
+    return 1;
   }
 
   double scaleCenterX, scaleCenterY, scaleFactor;
