@@ -18,7 +18,7 @@ namespace mihalchenko
     void dinAppend(char elem);
     void dinOutput();
   };
-  size_t findString(char * str1, char * str2, size_t size1, size_t size2);
-  size_t stringAnalyz(char * strInput, size_t sizeStrInput);
+  size_t findString(char *str1, char *str2, size_t size1, size_t size2);
+  size_t stringAnalyz(char *strInput, size_t sizeStrInput);
 }
 #endif

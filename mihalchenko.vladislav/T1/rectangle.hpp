@@ -1,28 +1,24 @@
-#ifndef RESTANGLE_HPP
-#define RESTANGLE_HPP
-#include <cstring>
+#ifndef RECTANGLE_HPP
+#define RECTANGLE_HPP
 #include "shape.hpp"
 
 namespace mihalchenko
 {
-  class Restangle //: public Shape  // класс прямоугольника
+  class Rectangle : public Shape
   {
   public:
-    float x1_ = 7;
-    float y1_ = 7;
-    float x2_ = 10;
-    float y2_ = 20;
+    Rectangle(const point_t &pos1, const point_t &pos2);
+    virtual double getArea() const override;
+    virtual rectangle_t getFrameRect() const override;
 
-    Restangle();
-    Restangle(float x1, float y1, float x2, float y2);
-    ~Restangle();
+    virtual void move(const point_t &point) override;
+    virtual void move(const double dx, const double dy) override;
+    virtual double scale(double koef) override;
 
-    float getArea(float x1, float y1, float x2, float y2); //вычисление площади
-    //virtual float getFrameRect(); /*получение ограничивающего прямоугольника для фигуры (см. типы из предыдуще-
-                 //го пункта), стороны ограничивающего прямоугольника всегда параллельны осям*/
-    //virtual float move(); /*перемещение центра фигуры, 2 варианта: в конкретную точку и в виде смещений по осям
-                 //абсцисс и ординат*/
-    //virtual float scale(); //изотропное масштабирование фигуры относительно её центра с указанным коэффициентом
+  private:
+    point_t pos_;
+    double width_;
+    double height_;
   };
 }
 #endif

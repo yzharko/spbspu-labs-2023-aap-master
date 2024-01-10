@@ -26,14 +26,14 @@ mihalchenko::DinString::~DinString()
 
 void mihalchenko::DinString::dinResize()
 {
-  char* tmp = new char[size + addArr];
-  char * newInput = new char[size + addArr];
+  char *tmp = new char[size + addArr];
+  char *newInput = new char[size + addArr];
   for (size_t i = 0; i < size; i++)
   {
     newInput[i] = dinstr[i];
   }
   size = size + addArr;
-  delete [] dinstr;
+  delete[] dinstr;
   dinstr = newInput;
 }
 
@@ -47,30 +47,25 @@ void mihalchenko::DinString::dinOutput()
   std::cout << "Введена строка:" << std::endl;
   for (size_t i = 0; i < size; i++)
   {
-    //continue;
     std::cout << dinstr[i] << " ";
   }
   std::cout << std::endl;
 }
 
-//str1 - искомая подстрока в строке str2
-size_t mihalchenko::findString(char * str1, char * str2, size_t size1, size_t size2)
+size_t mihalchenko::findString(char *str1, char *str2, size_t size1, size_t size2)
 {
   if (size1 >= size2)
   {
-    //std::cerr("Принятая строка короче искомой подстроки");
     return 1;
   }
   size_t revers = 0;
   for (size_t i = 0; i < size1; i++)
   {
-    //std::cout << "str1[" << i << "]=" << str1[i] << "size1[" << i << "]=" << str2[i] << std::endl;
     if (str1[i] == str2[i])
     {
-      revers ++;
+      revers++;
     }
   }
-  //std::cout << "revers=" << revers << "size1=" << size1 << std::endl;
   if (revers == size1)
   {
     return 0;
@@ -78,12 +73,10 @@ size_t mihalchenko::findString(char * str1, char * str2, size_t size1, size_t si
   return 3;
 }
 
-//Считываем и анализируем принятую строку
-size_t mihalchenko::stringAnalyz(char * strInput, size_t sizeStrInput)
+size_t mihalchenko::stringAnalyz(char *strInput, size_t sizeStrInput)
 {
-  //Ищем в принятой строке SQUARE в самом начале. Если находим - обрабатываем
   char wremStr1[] = "SQUARE";
-  char * find_str = nullptr;
+  char *find_str = nullptr;
   find_str = new char[std::strlen(wremStr1)];
   for (size_t i = 0; i < strlen(wremStr1); i++)
   {
@@ -92,9 +85,8 @@ size_t mihalchenko::stringAnalyz(char * strInput, size_t sizeStrInput)
   size_t res = mihalchenko::findString(find_str, strInput, std::strlen(wremStr1), sizeStrInput);
   if (res == 0)
   {
-    std::cout <<"Ввели SQUARE" << std::endl;
-    //Restangle mySquare;
-    delete [] find_str;
+    std::cout << "Ввели SQUARE" << std::endl;
+    delete[] find_str;
     return 1;
   }
   char wremStr2[] = "POLIGON";
@@ -106,9 +98,9 @@ size_t mihalchenko::stringAnalyz(char * strInput, size_t sizeStrInput)
   res = mihalchenko::findString(find_str, strInput, std::strlen(wremStr2), sizeStrInput);
   if (res == 0)
   {
-    std::cout <<"Ввели POLIGON" << std::endl;
+    std::cout << "Ввели POLIGON" << std::endl;
 
-    delete [] find_str;
+    delete[] find_str;
     return 2;
   }
   char wremStr3[] = "RECTANGLE";
@@ -120,10 +112,8 @@ size_t mihalchenko::stringAnalyz(char * strInput, size_t sizeStrInput)
   res = mihalchenko::findString(find_str, strInput, std::strlen(wremStr3), sizeStrInput);
   if (res == 0)
   {
-    std::cout <<"Ввели RECTANGLE" << std::endl;
-    //Restangle myRestangle;
-    //std::cout << myRestangle.getArea(3, 1.0, 2.7) << std::endl;
-    delete [] find_str;
+    std::cout << "Ввели RECTANGLE" << std::endl;
+    delete[] find_str;
     return 3;
   }
   char wremStr4[] = "SCALE";
@@ -135,11 +125,11 @@ size_t mihalchenko::stringAnalyz(char * strInput, size_t sizeStrInput)
   res = mihalchenko::findString(find_str, strInput, std::strlen(wremStr4), sizeStrInput);
   if (res == 0)
   {
-    std::cout <<"Ввели SCALE" << std::endl;
+    std::cout << "Ввели SCALE" << std::endl;
 
-    delete [] find_str;
+    delete[] find_str;
     return 4;
   }
-  std::cout <<"Ввели некорректную строку" << std::endl;
+  std::cout << "Ввели некорректную строку" << std::endl;
   return 0;
 }
