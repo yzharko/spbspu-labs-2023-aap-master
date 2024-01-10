@@ -15,7 +15,7 @@ Complexquad::Complexquad(point_t first, point_t second, point_t third,point_t fo
   s = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
 }
 
-double Complexquad::getArea()
+double Complexquad::getArea() const
 {
   point_t vec1 = {pointB.x - pointA.x, pointB.y - pointA.y};
   point_t vec2 = {pointD.x - pointC.x, pointD.y - pointC.y};
@@ -23,7 +23,7 @@ double Complexquad::getArea()
   return s * s * sin(acos(cos));
 }
 
-rectangle_t Complexquad::getFrameRect()
+rectangle_t Complexquad::getFrameRect() const
 {
   point_t vec1 = {pointB.x - pointA.x, pointB.y - pointA.y};
   point_t vec2 = {pointD.x - pointC.x, pointD.y - pointC.y};

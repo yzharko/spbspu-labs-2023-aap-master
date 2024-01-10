@@ -6,12 +6,12 @@ Circle::Circle(point_t centerPoint, double r) :
   Point(centerPoint), radius(r)
 {}
 
-double Circle::getArea()
+double Circle::getArea() const
 {
   return PI * radius * radius;
 }
 
-rectangle_t Circle::getFrameRect()
+rectangle_t Circle::getFrameRect() const
 {
   point_t leftPoint = {Point.x - radius, Point.y - radius};
   point_t rightPoint = {Point.x + radius, Point.y + radius};

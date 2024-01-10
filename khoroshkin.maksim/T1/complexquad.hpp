@@ -8,8 +8,8 @@ namespace khoroshkin
   {
   public:
     Complexquad(point_t first, point_t second, point_t third, point_t fourth);
-    virtual double getArea() override;
-    virtual rectangle_t getFrameRect() override;
+    virtual double getArea() const override;
+    virtual rectangle_t getFrameRect() const override;
     virtual void move(point_t newPoint) override;
     virtual void move(double dx, double dy) override;
     virtual void scale(double k) override;

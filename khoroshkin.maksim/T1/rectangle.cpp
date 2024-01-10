@@ -7,12 +7,12 @@ Rectangle::Rectangle(point_t newLeftPoint, point_t newRightPoint) :
 {
   rectangle = {fabs(leftPoint.x-rightPoint.x),fabs(leftPoint.y-rightPoint.y), {(leftPoint.x+rightPoint.x)/2,(leftPoint.y+rightPoint.y)/2}};
 }
-double khoroshkin::Rectangle::getArea()
+double khoroshkin::Rectangle::getArea() const
 {
   return rectangle.height * rectangle.width;
 }
 
-rectangle_t Rectangle::getFrameRect()
+rectangle_t Rectangle::getFrameRect() const
 {
   return {fabs(leftPoint.x-rightPoint.x), fabs(leftPoint.y-rightPoint.y), {(leftPoint.x+rightPoint.x)/2, (leftPoint.y+rightPoint.y)/2}};
 }

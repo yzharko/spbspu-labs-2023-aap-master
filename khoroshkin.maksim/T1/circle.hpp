@@ -8,8 +8,8 @@ namespace khoroshkin
   {
   public:
     Circle(point_t centerPoint, double r);
-    virtual double getArea() override;
-    virtual rectangle_t getFrameRect() override;
+    virtual double getArea() const override;
+    virtual rectangle_t getFrameRect() const override;
     virtual void move(point_t newPoint) override;
     virtual void move(double dx, double dy) override;
     virtual void scale(double k) override;
