@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstring>
-#include "base-types.hpp"
-#include "rectangle.hpp"
-#include "square.hpp"
-#include "complexquad.hpp"
-#include "compositeShape.hpp"
+#include "base-types.cpp"
+#include "rectangle.cpp"
+#include "square.cpp"
+#include "complexquad.cpp"
+#include "compositeShape.cpp"
 
 using namespace anikanov;
 
@@ -63,7 +63,7 @@ int main()
         try{
           std::cin >> *rec;
           compositeShape.add(rec);
-        } catch (const std::exception &ex){
+        } catch (const std::overflow_error &ex){
           delete rec;
           throw ex;
         }
@@ -72,7 +72,7 @@ int main()
         try{
         std::cin >> *square;
         compositeShape.add(square);
-        } catch (const std::exception &ex){
+        } catch (const std::overflow_error &ex){
           delete square;
           throw ex;
         }
@@ -81,7 +81,7 @@ int main()
         try{
         std::cin >> *complexquad;
         compositeShape.add(complexquad);
-        } catch (const std::exception &ex){
+        } catch (const std::overflow_error &ex){
           delete complexquad;
           throw ex;
         }
