@@ -21,7 +21,9 @@ int main() {
       }
       else
       {
-        Shape* rectangle = new Rectangle({ x1, y1 }, { x2, y2 });
+        point_t point1 = { x1, y1 };
+        point_t point2 = { x2, y2 };
+        Shape* rectangle = new Rectangle(point1, point2);
         rectangle->getArea();
         rectangle->getFrameRect();
         delete[] rectangle;
@@ -37,7 +39,8 @@ int main() {
       }
       else
       {
-        Shape* circle = new Circle({ x, y }, radius);
+        point_t point1 = { x, y };
+        Shape* circle = new Circle(point1, radius);
         circle->getArea();
         circle->getFrameRect();
         delete[] circle;
@@ -53,7 +56,10 @@ int main() {
       }
       else
       {
-        Shape* parallelogram = new Parallelogram({ x1, y1 }, { x2, y2 }, { x3, y3 });
+        point_t point1 = { x1, y1 };
+        point_t point2 = { x2, y2 };
+        point_t point3 = { x3, y3 };
+        Shape* parallelogram = new Parallelogram(point1, point2, point3);
         parallelogram->getArea();
         parallelogram->getFrameRect();
         delete[] parallelogram;
