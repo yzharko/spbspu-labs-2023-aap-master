@@ -15,6 +15,7 @@ int main()
   size_t initialSize = 10;
   Shape ** allFigures = new Shape * [initialSize];
   size_t figuresCounter = 0;
+  bool scaleCommandWas = false;
   std::string type;
   while (std::cin >> type)
   {
@@ -107,6 +108,7 @@ int main()
           std::cout << allFigures[i]->getFrameRect().pos.x + allFigures[i]->getFrameRect().width / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << "\n";
         }
+        scaleCommandWas++;
       }
       else
       {
@@ -133,5 +135,10 @@ int main()
     delete allFigures[i];
   }
   delete[] allFigures;
+  if (!scaleCommandWas)
+  {
+    std::cerr << "Error: missing scale command";
+    return 1;
+  }
   return 0;
 }
