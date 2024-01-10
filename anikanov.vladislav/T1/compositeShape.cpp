@@ -1,6 +1,7 @@
 #include "compositeShape.hpp"
 
-#include "iostream"
+#include <iostream>
+#include <iomanip>
 #include "shape.hpp"
 
 CompositeShape::CompositeShape()
