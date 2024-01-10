@@ -133,3 +133,11 @@ double Complexquad::getTriangleArea(PointT fp, PointT sp, PointT tp)
   double s = (l1 + l2 + l3) / 2;
   return std::sqrt(s * (s - l1) * (s - l2) * (s - l3));
 }
+
+Complexquad::Complexquad()
+{
+  leftBottom = PointT();
+  leftTop = PointT();
+  rightBottom = PointT();
+  rightTop = PointT();
+}

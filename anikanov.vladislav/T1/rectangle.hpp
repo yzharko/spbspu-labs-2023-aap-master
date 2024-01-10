@@ -7,6 +7,7 @@
 class Rectangle : public Shape {
 public:
   explicit Rectangle();
+  ~Rectangle() override = default;
 
   void setWidth(double);
 

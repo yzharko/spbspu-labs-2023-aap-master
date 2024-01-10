@@ -7,6 +7,7 @@
 class Square : public Shape {
 public:
   explicit Square();
+  ~Square() override = default;
 
   void setSide(double);
 

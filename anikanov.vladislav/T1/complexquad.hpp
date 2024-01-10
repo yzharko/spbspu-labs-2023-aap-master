@@ -6,6 +6,9 @@
 
 class Complexquad : public Shape {
 public:
+  explicit Complexquad();
+  ~Complexquad() override = default;
+
   PointT getCPoint() const;
 
   long long getArea() override;
