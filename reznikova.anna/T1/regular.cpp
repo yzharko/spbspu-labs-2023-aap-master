@@ -12,6 +12,10 @@ Regular::Regular(point_t center, point_t point1, point_t point2):
   r = (r1 < r2 ? r1 : r2);
   R = (r1 > r2 ? r1 : r2);
   num_sides = M_PI / (acos(r/R));
+  if ((r*r + side3*side3) != R*R)
+  {
+    throw std::runtime_error("wrong parameters\n");
+  }
 }
 
 double Regular::getArea()
