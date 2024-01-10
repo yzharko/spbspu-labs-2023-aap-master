@@ -8,7 +8,7 @@ namespace anikanov {
 
   class Complexquad : public Shape {
   public:
-    PointT leftBottom, leftTop, rightTop, rightBottom, cPoint;
+    PointT point1, point2, point3, point4, cPoint;
 
     explicit Complexquad();
 
