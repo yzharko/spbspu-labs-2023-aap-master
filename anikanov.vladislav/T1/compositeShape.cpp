@@ -1,7 +1,7 @@
 #include "compositeShape.hpp"
 
 #include "iostream"
-#include "shape.h"
+#include "shape.hpp"
 
 CompositeShape::CompositeShape()
 {
@@ -122,6 +122,7 @@ void CompositeShape::move(float x, float y)
 
 void CompositeShape::scale(std::ostream &out, PointT center, float k)
 {
+  out << std::fixed << std::setprecision(1);
   out << getArea();
   RectangleT *points = getFrameRect();
   for (size_t i = 0; i < shapes; ++i) {

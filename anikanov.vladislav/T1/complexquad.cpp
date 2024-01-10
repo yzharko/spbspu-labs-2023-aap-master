@@ -10,7 +10,6 @@ PointT Complexquad::getCPoint() const
 
 long long Complexquad::getArea()
 {
-  std::cout << cPoint.x << " " << cPoint.y << "\n";
   return getTriangleArea(leftBottom, leftTop, cPoint) +
          getTriangleArea(rightTop, rightBottom, cPoint);
 }
@@ -105,9 +104,6 @@ std::istream &operator>>(std::istream &in, Complexquad &complexquad)
   if (complexquad.cPoint.x == -0){
     complexquad.cPoint.x = 0;
   }
-//  if (complexquad.cPoint.y == -0){
-//    complexquad.cPoint.y = 0;
-//  }
   return in;
 }
 

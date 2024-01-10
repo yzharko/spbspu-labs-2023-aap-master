@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstring>
-#include "base-types.hpp"
-#include "rectangle.hpp"
-#include "square.hpp"
-#include "complexquad.hpp"
-#include "compositeShape.hpp"
+#include "base-types.cpp"
+#include "rectangle.cpp"
+#include "square.cpp"
+#include "complexquad.cpp"
+#include "compositeShape.cpp"
 
 bool isNumber(const char *str);
 
@@ -15,6 +15,7 @@ int main()
   size_t bufferSize = 10;
   char *word = new char[bufferSize];
   size_t length = 0;
+  bool start_enter = true;
   do {
     try {
       char ch;
@@ -23,12 +24,17 @@ int main()
         length = 0;
       }
       while (std::cin.get(ch)) {
+        if (ch == '\n' && start_enter || ch == EOF) {
+          delete[] word;
+          return 2;
+        } else {
+          start_enter = false;
+        }
         if (ch == '\n' || ch == ' ' || ch == '\0') {
           break;
         }
 
         if (length == bufferSize - 1) {
-          // Расширяем буфер
           bufferSize *= 2;
           char *newBuffer = new char[bufferSize];
           std::copy(word, word + length, newBuffer);
@@ -39,6 +45,11 @@ int main()
         word[length++] = ch;
       }
       word[length] = '\0';
+      if (std::cin.eof()){
+        std::cerr << "EOF\n";
+        delete[] word;
+        return 1;
+      }
       if (std::strcmp(word, "") == 0){
         continue;
       }
@@ -60,11 +71,6 @@ int main()
       } else  {
         continue;
       }
-      if (std::cin.eof()){
-        std::cerr << "EOF\n";
-        delete[] word;
-        return 1;
-      }
     } catch (const std::overflow_error &ex) {
       std::cerr << ex.what() << "\n";
     } catch (const std::exception &ex) {
@@ -73,12 +79,13 @@ int main()
       return 1;
     }
   } while (std::strcmp(word, "SCALE") != 0);
+  delete[] word;
   PointT center;
   std::cin >> center;
   float k;
   std::cin >> k;
   compositeShape.scale(std::cout, center, k);
-  delete[] word;
+  return 0;
 }
 
 bool isNumber(const char *str)

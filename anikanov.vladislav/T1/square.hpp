@@ -2,7 +2,7 @@
 #define SQUARE_HPP
 
 #include <iosfwd>
-#include "shape.h"
+#include "shape.hpp"
 
 class Square : public Shape {
 public:

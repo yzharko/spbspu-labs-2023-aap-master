@@ -2,7 +2,7 @@
 #define COMPOSITESHAPE_HPP
 
 #include <iosfwd>
-#include "shape.h"
+#include "shape.hpp"
 
 class CompositeShape {
 public:

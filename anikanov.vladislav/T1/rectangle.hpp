@@ -2,7 +2,7 @@
 #define RECTANGLE_HPP
 
 #include <iosfwd>
-#include "shape.h"
+#include "shape.hpp"
 
 class Rectangle : public Shape {
 public:

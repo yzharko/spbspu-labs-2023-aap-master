@@ -2,7 +2,7 @@
 #define COMPLEXQUAD_HPP
 
 #include <iosfwd>
-#include "shape.h"
+#include "shape.hpp"
 
 class Complexquad : public Shape {
 public:
