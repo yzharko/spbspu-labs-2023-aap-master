@@ -8,7 +8,7 @@
 
 int main() {
   std::string nameOfFigure = "";
-  do
+  while (!std::cin.eof())
   {
     std::cin >> nameOfFigure;
     if (nameOfFigure == "RECTANGLE")
@@ -65,6 +65,6 @@ int main() {
         delete[] parallelogram;
       }
     }
-  } while (nameOfFigure != "SCALE");
+  }
   return 0;
 }
