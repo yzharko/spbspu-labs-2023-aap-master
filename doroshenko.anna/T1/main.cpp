@@ -13,9 +13,8 @@ int main()
   size_t plusSize = 20;
   size_t countFig = 0;
   Shape** geometricFigures = new Shape * [size];
-  while (!std::cin.eof())
+  while (std::cin>>figure && !std::cin.eof())
   {
-    std::cin >> figure;
     if (figure == "RECTANGLE")
     {
       double xL, yL, xR, yR;
@@ -26,9 +25,7 @@ int main()
       }
       else
       {
-        point_t pointL = { xL, yL };
-        point_t pointR = { xR, yR };
-        geometricFigures[countFig] = new Rectangle(pointL, pointR);
+        geometricFigures[countFig] = new Rectangle({ xL, yL }, { xR, yR });
         countFig++;
       }
     }
@@ -37,43 +34,50 @@ int main()
     {
       double xFir, yFir, xSec, ySec, xThi, yThi;
       std::cin >> xFir >> yFir >> xSec >> ySec >> xThi >> yThi;
-      point_t pointFir = { xFir, yFir };
-      point_t pointSec = { xSec, ySec };
-      point_t pointThi = { xThi, yThi };
-      geometricFigures[countFig] = new Triangle(pointFir, pointSec, pointThi);
-      try
+      if (!std::cin)
       {
-        geometricFigures[countFig]->getArea();
+        std::cerr << "Wrong input\n";
       }
-      catch (const std::logic_error&e)
+      else
       {
-        //std::cout << e.what();
-        delete[] geometricFigures[countFig];
-        countFig--;
+        geometricFigures[countFig] = new Triangle({ xFir, yFir }, { xSec, ySec }, { xThi, yThi });
+        try
+        {
+          geometricFigures[countFig]->getArea();
+        }
+        catch (const std::logic_error& e)
+        {
+          //std::cout << e.what();
+          delete[] geometricFigures[countFig];
+          countFig--;
+        }
+        countFig++;
       }
-      countFig++;
     }
 
     else if (figure == "CONCAVE")
     {
       double xFir, yFir, xSec, ySec, xThi, yThi, xFou, yFou;
       std::cin >> xFir >> yFir >> xSec >> ySec >> xThi >> yThi >> xFou >> yFou;
-      point_t pointFir = { xFir, yFir };
-      point_t pointSec = { xSec, ySec };
-      point_t pointThi = { xThi, yThi };
-      point_t pointFou = { xFou, yFou };
-      geometricFigures[countFig] = new Concave(pointFir, pointSec, pointThi, pointFou);
-      try
+      if (!std::cin)
       {
-        geometricFigures[countFig]->getArea();
+        std::cerr << "Wrong input\n";
       }
-      catch (const std::logic_error& e)
+      else
       {
-        //std::cout << e.what();
-        delete[] geometricFigures[countFig];
-        countFig--;
+        geometricFigures[countFig] = new Concave({ xFir, yFir }, { xSec, ySec }, { xThi, yThi }, { xFou, yFou });
+        try
+        {
+          geometricFigures[countFig]->getArea();
+        }
+        catch (const std::logic_error& e)
+        {
+          //std::cout << e.what();
+          delete[] geometricFigures[countFig];
+          countFig--;
+        }
+        countFig++;
       }
-      countFig++;
     }
 
     else if (figure == "SCALE")
@@ -100,6 +104,7 @@ int main()
       std::cout << "\n";
       for (size_t k = 0; k < countFig; k++)
       {
+        geometricFigures[k]->move({ posx, posy });
         geometricFigures[k]->scale(coefficient);
       }
       double sumAreaAfter = 0;
@@ -140,7 +145,7 @@ int main()
   }
   for (size_t i = 0; i < countFig; ++i)
   {
-    delete geometricFigures[i];
+    delete[] geometricFigures[i];
   }
   delete[] geometricFigures;
 }
