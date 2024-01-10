@@ -1,6 +1,5 @@
 #include "regular.hpp"
 #include <cmath>
-#include <iostream>
 #define PI 3.1415926535
 using namespace seryj;
 Regular::Regular(point_t a, point_t b, point_t c)
@@ -10,7 +9,6 @@ Regular::Regular(point_t a, point_t b, point_t c)
   hypotenuse_ = fmax(side_ab, side_ac);
   cathetus_ = fmin(side_ab, side_ac);
   n_ = round(PI / cos(cathetus_ / hypotenuse_));
-  std::cout << hypotenuse_ << " " << cathetus_ << " " << n_ << "\n";
   pos_ = a;
 }
 double Regular::getArea()
