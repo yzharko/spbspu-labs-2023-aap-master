@@ -10,9 +10,6 @@ int main()
   size_t capacity = 10;
   shagieva::Shape ** shapes = new shagieva::Shape * [capacity];
   size_t shapeCount = 0;
-  size_t rectangleCount = 0;
-  size_t complexquadCount = 0;
-  size_t regularCount = 0;
   bool figureIsWrong = 0;
   bool scaleIsEntered = 0;
 
@@ -50,38 +47,26 @@ int main()
     if (figureType == "RECTANGLE")
     {
       std::cin >> x1 >> y1 >> x2 >> y2;
-      if (rectangleCount == 0)
-      {
-        shapes[shapeCount++] = new shagieva::Rectangle(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 });
-        ++rectangleCount;
-      }
+      shapes[shapeCount++] = new shagieva::Rectangle(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 });
     }
 
     else if (figureType == "COMPLEXQUAD")
     {
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
-      if (complexquadCount == 0)
-      {
-        shapes[shapeCount++] = new shagieva::Complexquad(shagieva::point_t{ x1, y1 },
-          shagieva::point_t{ x2, y2 },
-          shagieva::point_t{ x3, y3 },
-          shagieva::point_t{ x4, y4 });
-        ++complexquadCount;
-      }
+      shapes[shapeCount++] = new shagieva::Complexquad(shagieva::point_t{ x1, y1 },
+        shagieva::point_t{ x2, y2 },
+        shagieva::point_t{ x3, y3 },
+        shagieva::point_t{ x4, y4 });
     }
 
     else if (figureType == "REGULAR")
     {
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
-      if (regularCount == 0)
-      {
-        shapes[shapeCount++] = new shagieva::Regular(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 },
-          shagieva::point_t{ x3, y3 });
-        ++regularCount;
-      }
+      shapes[shapeCount++] = new shagieva::Regular(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 },
+        shagieva::point_t{ x3, y3 });
     }
 
-    else if (figureType != "RECTANGLE" && figureType != "COMPLEXQUAD" && figureType != "REGULAR")
+    else
     {
       figureIsWrong = true;
     }
