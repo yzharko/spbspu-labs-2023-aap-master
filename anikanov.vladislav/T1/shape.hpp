@@ -5,7 +5,7 @@
 
 class Shape {
 public:
-  virtual ~Shape() = default;
+  virtual ~Shape()= default;
 
   virtual long long getArea() = 0;
 

@@ -24,7 +24,7 @@ int main()
         length = 0;
       }
       while (std::cin.get(ch)) {
-        if ((ch == '\n' || ch == EOF ) && start_enter) {
+        if ((ch == '\n' || ch == EOF) && start_enter) {
           delete[] word;
           return 2;
         } else {
@@ -45,15 +45,15 @@ int main()
         word[length++] = ch;
       }
       word[length] = '\0';
-      if (std::cin.eof()){
+      if (std::cin.eof()) {
         std::cerr << "EOF\n";
         delete[] word;
         return 1;
       }
-      if (std::strcmp(word, "") == 0){
+      if (std::strcmp(word, "") == 0) {
         continue;
       }
-      if (isNumber(word)){
+      if (isNumber(word)) {
         continue;
       }
       if (std::strcmp(word, "RECTANGLE") == 0) {
@@ -68,7 +68,7 @@ int main()
         auto *complexquad = new Complexquad();
         std::cin >> *complexquad;
         compositeShape.add(complexquad);
-      } else  {
+      } else {
         continue;
       }
     } catch (const std::overflow_error &ex) {
@@ -84,13 +84,18 @@ int main()
   std::cin >> center;
   float k;
   std::cin >> k;
-  compositeShape.scale(std::cout, center, k);
+  try {
+    compositeShape.scale(std::cout, center, k);
+  } catch (const std::exception &ex) {
+    std::cerr << ex.what();
+    return 1;
+  }
   return 0;
 }
 
 bool isNumber(const char *str)
 {
-  char* end;
+  char *end;
 
   std::strtod(str, &end);
   if (*end == '\0' && end != str) {
