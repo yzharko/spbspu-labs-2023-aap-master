@@ -26,7 +26,7 @@ namespace anikanov {
 
     void scale(float) override;
 
-    friend std::istream &operator>>(std::istream &, Complexquad &);
+//    friend std::istream &operator>>(std::istream &, Complexquad &);
 
     float getDX(PointT fp, PointT sp);
 

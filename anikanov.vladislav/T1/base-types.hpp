@@ -18,9 +18,9 @@ namespace anikanov {
 
     PointT &operator+(PointT another_point);
 
-    friend std::istream &operator>>(std::istream &, PointT &);
-
-    friend std::ostream &operator<<(std::ostream &, const PointT &);
+//    friend std::istream &operator>>(std::istream &, PointT &);
+//
+//    friend std::ostream &operator<<(std::ostream &, const PointT &);
   };
 
   struct RectangleT {
@@ -32,7 +32,7 @@ namespace anikanov {
 
     explicit RectangleT(PointT pos, float width, float height);
 
-    friend std::ostream &operator<<(std::ostream &, const RectangleT &);
+//    friend std::ostream &operator<<(std::ostream &, const RectangleT &);
   };
 }
 
