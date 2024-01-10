@@ -1,18 +1,17 @@
 #include <iostream>
 #include <cstring>
 #include <cctype>
-#include "base-types.hpp"
-#include "rectangle.hpp"
-#include "square.hpp"
-#include "complexquad.hpp"
-#include "compositeShape.hpp"
+#include "base-types.cpp"
+#include "rectangle.cpp"
+#include "square.cpp"
+#include "complexquad.cpp"
+#include "compositeShape.cpp"
 
 bool isNumber(const char *str);
 
 int main()
 {
   CompositeShape compositeShape;
-  bool badShape = false;
 
   size_t bufferSize = 10;
   char *word = new char[bufferSize];
@@ -41,7 +40,12 @@ int main()
         word[length++] = ch;
       }
       word[length] = '\0';
-
+      if (std::strcmp(word, "") == 0){
+        continue;
+      }
+      if (isNumber(word)){
+        continue;
+      }
       if (std::strcmp(word, "RECTANGLE") == 0) {
         auto *rec = new Rectangle();
         std::cin >> *rec;
@@ -51,16 +55,11 @@ int main()
         std::cin >> *square;
         compositeShape.add(square);
       } else if (std::strcmp(word, "COMPLEXQUAD") == 0) {
-        Complexquad complexquad;
-        std::cin >> complexquad;
-        compositeShape.add(&complexquad);
-      } else if (badShape) {
+        auto *complexquad = new Complexquad();
+        std::cin >> *complexquad;
+        compositeShape.add(complexquad);
+      } else  {
         continue;
-      } else if (isNumber(word)) {
-        badShape = true;
-      }
-      if (!isNumber(word)){
-        badShape = false;
       }
       if (std::cin.eof()){
         std::cerr << "EOF\n";
@@ -85,11 +84,13 @@ int main()
 
 bool isNumber(const char *str)
 {
-  for (int i = 0; str[i] != '\0'; ++i) {
-    if (!std::isdigit(static_cast<unsigned char>(str[i])) ||
-        std::strcmp(reinterpret_cast<const char *>(str[i]), ".") == 0) {
-      return false;
-    }
+  char* end;
+
+  // Проверяем, является ли строка числом с плавающей точкой
+  double doubleVal = std::strtod(str, &end);
+  if (*end == '\0' && end != str) {
+    return true; // Вся строка успешно преобразована в число с плавающей точкой
   }
-  return true;
+
+  return false;
 }
