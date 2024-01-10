@@ -4,20 +4,18 @@
 #include "shape.hpp"
 #include "base-types.hpp"
 
-class Rectangle : public virtual Shape
+class Rectangle : public Shape
 {
 public:
-  Rectangle(double lx, double ly, double rx, double ry);
+  Rectangle(point_t leftpoint, point_t rightpoint);
   double getArea();
   rectangle_t getFrameRect();
   void move(double dx, double dy);
   void move(point_t new_center);
   void scale(double n);
 private:
-  double lp_x;
-  double lp_y;
-  double rp_x;
-  double rp_y;
+  point_t leftpoint_;
+  point_t rightpoint_;
 };
 
 #endif
