@@ -138,4 +138,9 @@ int main()
       size = newSize;
     }
   }
+  for (size_t i = 0; i < countFig; ++i)
+  {
+    delete geometricFigures[i];
+  }
+  delete[] geometricFigures;
 }
