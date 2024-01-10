@@ -1,16 +1,17 @@
 #include "circle.hpp"
 #include <cmath>
 
-khoroshkin::Circle::Circle(point_t centerPoint, double r) :
+using namespace khoroshkin;
+Circle::Circle(point_t centerPoint, double r) :
   Point(centerPoint), radius(r)
 {}
 
-double khoroshkin::Circle::getArea()
+double Circle::getArea()
 {
   return PI * radius * radius;
 }
 
-rectangle_t khoroshkin::Circle::getFrameRect()
+rectangle_t Circle::getFrameRect()
 {
   point_t leftPoint = {Point.x - radius, Point.y - radius};
   point_t rightPoint = {Point.x + radius, Point.y + radius};
@@ -18,18 +19,18 @@ rectangle_t khoroshkin::Circle::getFrameRect()
   {(leftPoint.x + rightPoint.x)/2, (leftPoint.y + rightPoint.y)/2}};
 }
 
-void khoroshkin::Circle::move(point_t newPoint)
+void Circle::move(point_t newPoint)
 {
   Point = newPoint;
 }
 
-void khoroshkin::Circle::move(double dx, double dy)
+void Circle::move(double dx, double dy)
 {
   Point.x += dx;
   Point.y += dy;
 }
 
-void khoroshkin::Circle::scale(double k)
+void Circle::scale(double k)
 {
   radius *= k;
 }

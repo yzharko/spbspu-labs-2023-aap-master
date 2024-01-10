@@ -2,7 +2,8 @@
 #include <cmath>
 #include <algorithm>
 
-khoroshkin::Complexquad::Complexquad(point_t first, point_t second, point_t third,point_t fourth):
+using namespace khoroshkin;
+Complexquad::Complexquad(point_t first, point_t second, point_t third,point_t fourth):
  pointA(first), pointB(second), pointC(third), pointD(fourth)
 {
   double k1 = (pointB.y - pointA.y) / (pointB.x - pointA.x);
@@ -14,7 +15,7 @@ khoroshkin::Complexquad::Complexquad(point_t first, point_t second, point_t thir
   s = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
 }
 
-double khoroshkin::Complexquad::getArea()
+double Complexquad::getArea()
 {
   point_t vec1 = {pointB.x - pointA.x, pointB.y - pointA.y};
   point_t vec2 = {pointD.x - pointC.x, pointD.y - pointC.y};
@@ -22,7 +23,7 @@ double khoroshkin::Complexquad::getArea()
   return s * s * sin(acos(cos));
 }
 
-rectangle_t khoroshkin::Complexquad::getFrameRect()
+rectangle_t Complexquad::getFrameRect()
 {
   point_t vec1 = {pointB.x - pointA.x, pointB.y - pointA.y};
   point_t vec2 = {pointD.x - pointC.x, pointD.y - pointC.y};
@@ -35,7 +36,7 @@ rectangle_t khoroshkin::Complexquad::getFrameRect()
   return {fabs(pointOfRec1.x - pointOfRec2.x),fabs(pointOfRec1.y - pointOfRec2.y), cPoint};
 }
 
-void khoroshkin::Complexquad::move(point_t newPoint)
+void Complexquad::move(point_t newPoint)
 {
   pointA = {pointA.x + (newPoint.x - cPoint.x), pointA.y + (newPoint.y - cPoint.y)};
   pointB = {pointB.x + (newPoint.x - cPoint.x), pointB.y + (newPoint.y - cPoint.y)};
@@ -44,7 +45,7 @@ void khoroshkin::Complexquad::move(point_t newPoint)
   cPoint = newPoint;
 }
 
-void khoroshkin::Complexquad::move(double dx, double dy)
+void Complexquad::move(double dx, double dy)
 {
   pointA = {pointA.x + dx, pointA.y + dy};
   pointB = {pointB.x + dx, pointB.y + dy};
@@ -53,7 +54,7 @@ void khoroshkin::Complexquad::move(double dx, double dy)
   cPoint = {cPoint.x + dx, cPoint.y + dy};
 }
 
-void khoroshkin::Complexquad::scale(double k)
+void Complexquad::scale(double k)
 {
   s *= k;
 }

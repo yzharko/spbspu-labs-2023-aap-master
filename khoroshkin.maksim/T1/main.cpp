@@ -12,6 +12,7 @@
 
 int main()
 {
+  using namespace khoroshkin;
   size_t initialSize = 10;
   Shape ** allFigures = new Shape * [initialSize];
   size_t figuresCounter = 0;
