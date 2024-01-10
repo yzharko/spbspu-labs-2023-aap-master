@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Rectangle.hpp"
+#include "rectangle.hpp"
 #include "base-types.hpp"
 
 Rectangle::Rectangle(point_t rp, point_t lp) :
