@@ -3,6 +3,7 @@
 #include <sstream>
 #include <cctype>
 #include <algorithm>
+#include <iomanip>
 #include "base-types.hpp"
 #include "shape.hpp"
 #include "rectangle.hpp"
@@ -78,12 +79,19 @@ int main()
       if (figuresCounter == 0)
       {
         std::cerr << "Error: nothing to scale";
+        for (size_t i = 0; i < figuresCounter; ++i)
+        {
+          delete allFigures[i];
+        }
+        delete[] allFigures;
         return 1;
       }
       if (std::cin >> x >> y >> scale && scale > 0)
       {
         for (size_t i = 0; i < figuresCounter; ++i)
         {
+          std::cout << std::fixed << std::setprecision(1);
+
           std::cout << allFigures[i]->getArea() << " ";
           std::cout << allFigures[i]->getFrameRect().pos.x - allFigures[i]->getFrameRect().width / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.y - allFigures[i]->getFrameRect().height / 2 << " ";
