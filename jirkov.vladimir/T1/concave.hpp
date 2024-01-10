@@ -1,14 +1,14 @@
 #include "concave.hpp"
 #include <cmath>
 
-doroshenko::Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, point_t fourthPoint) :
+Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, point_t fourthPoint) :
   firstPoint_(firstPoint),
   secondPoint_(secondPoint),
   thirdPoint_(thirdPoint),
   fourthPoint_(fourthPoint)
 {}
 
-double doroshenko::Concave::getArea()
+double Concave::getArea()
 {
   double aF = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
   double bF = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
@@ -25,7 +25,7 @@ double doroshenko::Concave::getArea()
   return firstArea - secondArea;
 }
 
-rectangle_t doroshenko::Concave::getFrameRect()
+rectangle_t Concave::getFrameRect()
 {
   double maxX = firstPoint_.x_ >= secondPoint_.x_ ? firstPoint_.x_ : secondPoint_.x_;
   maxX = maxX >= thirdPoint_.x_ ? maxX : thirdPoint_.x_;
@@ -45,7 +45,7 @@ rectangle_t doroshenko::Concave::getFrameRect()
   return rectangle_t{ width, height, pos };
 }
 
-void doroshenko::Concave::move(point_t destination)
+void Concave::move(point_t destination)
 {
   double moveX = destination.x_ - fourthPoint_.x_;
   double moveY = destination.y_ - fourthPoint_.y_;
