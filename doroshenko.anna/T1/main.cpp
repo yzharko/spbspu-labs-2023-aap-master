@@ -143,7 +143,7 @@ int main()
       size = newSize;
     }
   }
-  for (size_t i = 0; i < countFig; i++)
+  for (size_t i = 0; i < size; i++)
   {
     delete[] geometricFigures[i];
   }
