@@ -1,11 +1,10 @@
 #include <iostream>
 #include <cstring>
-#include <cctype>
-#include "base-types.cpp"
-#include "rectangle.cpp"
-#include "square.cpp"
-#include "complexquad.cpp"
-#include "compositeShape.cpp"
+#include "base-types.hpp"
+#include "rectangle.hpp"
+#include "square.hpp"
+#include "complexquad.hpp"
+#include "compositeShape.hpp"
 
 bool isNumber(const char *str);
 
@@ -86,10 +85,9 @@ bool isNumber(const char *str)
 {
   char* end;
 
-  // Проверяем, является ли строка числом с плавающей точкой
   double doubleVal = std::strtod(str, &end);
   if (*end == '\0' && end != str) {
-    return true; // Вся строка успешно преобразована в число с плавающей точкой
+    return true;
   }
 
   return false;
