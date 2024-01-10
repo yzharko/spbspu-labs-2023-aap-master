@@ -6,7 +6,7 @@ Rectangle::Rectangle(point_t leftpoint, point_t rightpoint):
   leftpoint_(leftpoint),
   rightpoint_(rightpoint)
 {
-  if ((leftpoint.x < rightpoint.x) || (leftpoint.y > rightpoint.y))
+  if ((leftpoint.x > rightpoint.x) || (leftpoint.y > rightpoint.y))
   {
     throw std::runtime_error("wrong parameters\n");
   }
