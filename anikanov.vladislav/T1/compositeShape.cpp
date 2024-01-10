@@ -128,6 +128,9 @@ void CompositeShape::scale(std::ostream &out, PointT center, float k)
   if (k < 0) {
     throw std::logic_error("Invalid coeff scale");
   }
+  if (shapes == 0){
+    throw std::logic_error("No correct figures");
+  }
   out << std::fixed << std::setprecision(1);
   out << getArea();
   RectangleT *points = getFrameRect();
