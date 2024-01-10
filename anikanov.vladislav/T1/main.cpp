@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cstring>
 #include <cctype>
-#include "base-types.h"
-#include "rectangle.h"
-#include "square.h"
-#include "complexquad.h"
-#include "compositeShape.h"
+#include "base-types.cpp"
+#include "rectangle.cpp"
+#include "square.cpp"
+#include "complexquad.cpp"
+#include "compositeShape.cpp"
 
 bool isNumber(const char *str);
 
@@ -13,10 +13,35 @@ int main()
 {
   CompositeShape compositeShape;
   bool badShape = false;
-  char *word = new char[10];
+
+  size_t bufferSize = 10;
+  char *word = new char[bufferSize];
+  size_t length = 0;
   do {
     try {
-      std::cin >> word;
+      char ch;
+      for (size_t i = 0; i < bufferSize; ++i) {
+        word[i] = '\0';
+        length = 0;
+      }
+      while (std::cin.get(ch)) {
+        if (ch == '\n' || ch == ' ' || ch == '\0') {
+          break;
+        }
+
+        if (length == bufferSize - 1) {
+          // Расширяем буфер
+          bufferSize *= 2;
+          char *newBuffer = new char[bufferSize];
+          std::copy(word, word + length, newBuffer);
+          delete[] word;
+          word = newBuffer;
+        }
+
+        word[length++] = ch;
+      }
+      word[length] = '\0';
+
       if (std::strcmp(word, "RECTANGLE") == 0) {
         auto *rec = new Rectangle();
         std::cin >> *rec;
