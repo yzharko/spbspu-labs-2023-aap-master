@@ -26,7 +26,7 @@ namespace anikanov {
 
     friend std::istream &operator>>(std::istream &, Complexquad &);
 
-  private:
+  protected:
     PointT leftBottom, leftTop, rightTop, rightBottom, cPoint;
 
     float getDX(PointT fp, PointT sp);

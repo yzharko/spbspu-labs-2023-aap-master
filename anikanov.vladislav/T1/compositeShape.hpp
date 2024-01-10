@@ -32,7 +32,7 @@ namespace anikanov {
 
     void scale(std::ostream &, PointT, float);
 
-  private:
+  protected:
     size_t shapes{};
     size_t capacity{};
     Shape **shapeptrs{};

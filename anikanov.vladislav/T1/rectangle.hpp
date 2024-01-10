@@ -33,7 +33,7 @@ namespace anikanov {
 
     friend std::istream &operator>>(std::istream &, Rectangle &);
 
-  private:
+  protected:
     float width;
     float height;
     PointT cPoint;

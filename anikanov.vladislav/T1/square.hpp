@@ -29,7 +29,7 @@ namespace anikanov {
 
     friend std::istream &operator>>(std::istream &, Square &);
 
-  private:
+  protected:
     float side;
     PointT cPoint;
   };
