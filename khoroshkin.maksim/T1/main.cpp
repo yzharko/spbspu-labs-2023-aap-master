@@ -75,6 +75,11 @@ int main()
     else if (type == "SCALE")
     {
       double x, y, scale;
+      if (figuresCounter == 0)
+      {
+        std::cerr << "Error: nothing to scale";
+        return 1;
+      }
       if (std::cin >> x >> y >> scale && scale > 0)
       {
         for (size_t i = 0; i < figuresCounter; ++i)
@@ -85,6 +90,7 @@ int main()
           std::cout << allFigures[i]->getFrameRect().pos.x + allFigures[i]->getFrameRect().width / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << "\n";
 
+          allFigures[i]->move(x, y);
           allFigures[i]->scale(scale);
 
           std::cout << allFigures[i]->getArea() << " ";
@@ -97,6 +103,11 @@ int main()
       else
       {
         std::cerr << "Error: wrong scale input\n";
+        for (size_t i = 0; i < figuresCounter; ++i)
+        {
+          delete allFigures[i];
+        }
+        delete[] allFigures;
         return 1;
       }
     }
