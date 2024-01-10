@@ -18,9 +18,9 @@ double doroshenko::Concave::getArea()
   double maxSide = aF >= bF ? aF : bF;
   maxSide = maxSide >= cF ? maxSide : cF;
 
-  if (!(maxSide >= aF + bF + cF - maxSide))
+  if (maxSide >= aF + bF + cF - maxSide)
   {
-    throw std::logic_error("There is no such triangle\n");
+	  throw std::logic_error("There is no such triangle\n");
   }
 
   double pF = 0.5 * (aF + bF + cF);

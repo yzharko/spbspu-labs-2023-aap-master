@@ -17,9 +17,9 @@ double doroshenko::Triangle::getArea()
   double maxSide = a >= b ? a : b;
   maxSide = maxSide >= c ? maxSide : c;
 
-  if (!(maxSide >= a + b + c - maxSide))
+  if (maxSide >= a + b + c - maxSide)
   {
-    throw std::logic_error("There is no such triangle\n");
+	  throw std::logic_error("There is no such triangle\n");
   }
 
   double p = 0.5 * (a + b + c);

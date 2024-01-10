@@ -13,29 +13,41 @@ int main()
   size_t plusSize = 20;
   size_t countFig = 0;
   Shape** geometricFigures = new Shape * [size];
-  while (std::cin)
+  while (!std::cin.eof())
   {
     std::cin >> figure;
     if (figure == "RECTANGLE")
     {
       double xL, yL, xR, yR;
       std::cin >> xL >> yL >> xR >> yR;
-      geometricFigures[countFig] = new Rectangle({ xL, yL }, { xR, yR });
-      countFig++;
+      if (!std::cin)
+      {
+        std::cerr << "Wrong input\n";
+      }
+      else
+      {
+        point_t pointL = { xL, yL };
+        point_t pointR = { xR, yR };
+        geometricFigures[countFig] = new Rectangle(pointL, pointR);
+        countFig++;
+      }
     }
 
     else if (figure == "TRIANGLE")
     {
       double xFir, yFir, xSec, ySec, xThi, yThi;
       std::cin >> xFir >> yFir >> xSec >> ySec >> xThi >> yThi;
-      geometricFigures[countFig] = new Triangle({ xFir, yFir }, { xSec, ySec }, { xThi, yThi });
+      point_t pointFir = { xFir, yFir };
+      point_t pointSec = { xSec, ySec };
+      point_t pointThi = { xThi, yThi };
+      geometricFigures[countFig] = new Triangle(pointFir, pointSec, pointThi);
       try
       {
         geometricFigures[countFig]->getArea();
       }
       catch (const std::logic_error&e)
       {
-        std::cout << e.what();
+        //std::cout << e.what();
         delete[] geometricFigures[countFig];
         countFig--;
       }
@@ -46,14 +58,18 @@ int main()
     {
       double xFir, yFir, xSec, ySec, xThi, yThi, xFou, yFou;
       std::cin >> xFir >> yFir >> xSec >> ySec >> xThi >> yThi >> xFou >> yFou;
-      geometricFigures[countFig] = new Concave({ xFir, yFir }, { xSec, ySec }, { xThi, yThi }, { xFou, yFou });
+      point_t pointFir = { xFir, yFir };
+      point_t pointSec = { xSec, ySec };
+      point_t pointThi = { xThi, yThi };
+      point_t pointFou = { xFou, yFou };
+      geometricFigures[countFig] = new Concave(pointFir, pointSec, pointThi, pointFou);
       try
       {
         geometricFigures[countFig]->getArea();
       }
       catch (const std::logic_error& e)
       {
-        std::cout << e.what();
+        //std::cout << e.what();
         delete[] geometricFigures[countFig];
         countFig--;
       }
@@ -70,7 +86,7 @@ int main()
       {
         sumAreaBefore += geometricFigures[i]->getArea();
       }
-      std::cout << sumAreaBefore << ' ';
+      std::cout << std::fixed << std::setprecision(1) << sumAreaBefore << ' ';
       for (size_t j = 0; j < countFig; j++)
       {
         rectangle_t frame = geometricFigures[j]->getFrameRect();
@@ -79,8 +95,9 @@ int main()
         xR = frame.pos_.x_ + 0.5 * frame.width_;
         yR = frame.pos_.y_ + 0.5 * frame.height_;
         //std::cout << frame.pos_.x_ << ' ' << frame.pos_.y_ << ' ' << frame.width_ << ' ' << frame.height_;
-        std::cout << xL << ' ' << yL << ' ' << xR << ' ' << yR << '\n';
+        std::cout << std::fixed << std::setprecision(1) << xL << ' ' << yL << ' ' << xR << ' ' << yR << ' ';
       }
+      std::cout << "\n";
       for (size_t k = 0; k < countFig; k++)
       {
         geometricFigures[k]->scale(coefficient);
@@ -90,7 +107,7 @@ int main()
       {
         sumAreaAfter += geometricFigures[i]->getArea();
       }
-      std::cout << sumAreaAfter << ' ';
+      std::cout << std::fixed << std::setprecision(1) << sumAreaAfter << ' ';
       for (size_t j = 0; j < countFig; j++)
       {
         rectangle_t frame = geometricFigures[j]->getFrameRect();
@@ -98,8 +115,9 @@ int main()
         yL = frame.pos_.y_ - 0.5 * frame.height_;
         xR = frame.pos_.x_ + 0.5 * frame.width_;
         yR = frame.pos_.y_ + 0.5 * frame.height_;
-        std::cout << xL << ' ' << yL << ' ' << xR << ' ' << yR << '\n';
+        std::cout << std::fixed << std::setprecision(1) << xL << ' ' << yL << ' ' << xR << ' ' << yR << ' ';
       }
+      std::cout << "\n";
     }
 
     if (countFig == size)
