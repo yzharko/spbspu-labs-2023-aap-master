@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstring>
-#include "base-types.hpp"
-#include "rectangle.hpp"
-#include "square.hpp"
-#include "complexquad.hpp"
-#include "compositeShape.hpp"
+#include "base-types.cpp"
+#include "rectangle.cpp"
+#include "square.cpp"
+#include "complexquad.cpp"
+#include "compositeShape.cpp"
 
 using namespace anikanov;
 
@@ -17,7 +17,6 @@ int main()
   size_t bufferSize = 10;
   char *word = new char[bufferSize];
   size_t length = 0;
-  bool start_enter = true;
   do {
     try {
       char ch;
@@ -26,16 +25,9 @@ int main()
         length = 0;
       }
       while (std::cin.get(ch)) {
-        if ((ch == '\n' || ch == EOF) && start_enter) {
-          delete[] word;
-          return 12;
-        } else {
-          start_enter = false;
-        }
         if (ch == '\n' || ch == ' ' || ch == '\0') {
           break;
         }
-
         if (length == bufferSize - 1) {
           bufferSize *= 2;
           char *newBuffer = new char[bufferSize];
