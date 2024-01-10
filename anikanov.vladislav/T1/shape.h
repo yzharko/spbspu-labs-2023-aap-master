@@ -5,6 +5,8 @@
 
 class Shape {
 public:
+  virtual ~Shape() = default;
+
   virtual long long getArea() = 0;
 
   virtual RectangleT getFrameRect() = 0;
