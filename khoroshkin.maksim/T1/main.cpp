@@ -10,6 +10,11 @@
 #include "circle.hpp"
 #include "complexquad.hpp"
 
+bool isRectangleCorrect(double x1, double y1, double x2, double y2)
+{
+  return x1 < x2 && y1 < y2;
+}
+
 int main()
 {
   using namespace khoroshkin;
@@ -36,7 +41,7 @@ int main()
     if (type == "RECTANGLE")
     {
       double x1, y1, x2, y2;
-      if (std::cin >> x1 >> y1 >> x2 >> y2)
+      if (std::cin >> x1 >> y1 >> x2 >> y2 && isRectangleCorrect(x1,y1,x2,y2))
       {
         allFigures[figuresCounter++] = new khoroshkin::Rectangle(point_t{x1, y1}, point_t{x2, y2});
       }
