@@ -40,6 +40,9 @@ std::ostream &operator<<(std::ostream &out, const PointT &point)
 std::istream &operator>>(std::istream &in, PointT &point)
 {
   if (!(in >> point.x >> point.y)){
+    if (std::cin.eof()){
+      throw std::logic_error("EOF");
+    }
     throw std::overflow_error("Invalid Input");
   }
   return in;
