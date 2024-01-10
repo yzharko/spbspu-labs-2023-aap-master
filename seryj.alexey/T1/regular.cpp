@@ -11,11 +11,11 @@ Regular::Regular(point_t a, point_t b, point_t c)
   n_ = round(PI / cos(cathetus_ / hypotenuse_));
   pos_ = a;
 }
-double Regular::getArea()
+double Regular::getArea()const
 {
   return hypotenuse_ * hypotenuse_ * n_ * sin(PI / n_) / 2;
 }
-rectangle_t Regular::getFrameRect()
+rectangle_t Regular::getFrameRect()const
 {
   return rectangle_t{hypotenuse_ * 2, hypotenuse_ * 2, pos_ };
 }

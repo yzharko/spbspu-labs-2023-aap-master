@@ -1,5 +1,6 @@
 #include <iostream>
 #include "input_output.hpp"
+using namespace seryj;
 int main()
 {
   std::string error = "";

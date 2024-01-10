@@ -56,7 +56,7 @@ void CompositeShape::operator-=(Shape* s)
   this->shapeptrs.erase(iter);
 }
 
-double CompositeShape::getArea()
+double CompositeShape::getArea()const
 {
   double area = 0;
   for (size_t i = 0; i < this->shapes; i++)
@@ -65,7 +65,7 @@ double CompositeShape::getArea()
   }
   return area;
 }
-std::vector<rectangle_t> CompositeShape::getFrameRect()
+std::vector<rectangle_t> CompositeShape::getFrameRect()const
 {
   std::vector<rectangle_t> rec_vec;
   for (size_t i = 0; i < this->shapes; i++)

@@ -9,11 +9,11 @@ Square::Square(point_t pos, double side)
   point_ = pos;
   side_ = side;
 }
-double Square::getArea()
+double Square::getArea()const
 {
   return side_ * side_;
 }
-rectangle_t Square::getFrameRect()
+rectangle_t Square::getFrameRect()const
 {
   return rectangle_t{ side_, side_, {point_.x + side_ / 2, point_.y + side_ / 2} };
 }

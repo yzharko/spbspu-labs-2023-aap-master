@@ -14,11 +14,11 @@ Rectangle::Rectangle(point_t lp, point_t rp)
   width_ = abs(left_point_.x - right_point_.x);
   height_ = abs(left_point_.y - right_point_.y);
 }
-double Rectangle::getArea()
+double Rectangle::getArea()const
 {
   return height_ * width_;
 }
-rectangle_t Rectangle::getFrameRect()
+rectangle_t Rectangle::getFrameRect()const
 {
   return rectangle_t{ width_, height_, pos_ };
 }
