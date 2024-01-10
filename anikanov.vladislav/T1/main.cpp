@@ -85,7 +85,7 @@ bool isNumber(const char *str)
 {
   char* end;
 
-  double doubleVal = std::strtod(str, &end);
+  std::strtod(str, &end);
   if (*end == '\0' && end != str) {
     return true;
   }
