@@ -6,7 +6,12 @@ Ring::Ring(double x0, double y0, double rad1, double rad2):
   y(y0),
   r1(rad1),
   r2(rad2)
-{}
+{
+  if (rad1 < rad2)
+  {
+    throw std::runtime_error("wrong parameters\n");
+  }
+}
 
 double Ring::getArea()
 {

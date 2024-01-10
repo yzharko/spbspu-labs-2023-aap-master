@@ -6,7 +6,12 @@ Rectangle::Rectangle(double lx, double ly, double rx, double ry):
   lp_y(ly),
   rp_x(rx),
   rp_y(ry)
-{}
+{
+  if ((lx < rx) || (ly > ry))
+  {
+    throw std::runtime_error("wrong parameters\n");
+  }
+}
 
 double Rectangle::getArea()
 {

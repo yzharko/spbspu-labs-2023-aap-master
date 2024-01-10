@@ -17,18 +17,14 @@ int main()
     {
       double x, y, r1, r2;
       std::cin >> x >> y >> r1 >> r2;
-      if (!std::cin)
-      {
-        std::cerr << "empty ring";
-      }
-      std::cout << "ring done";
       try
       {
         Ring ring(x, y, r1, r2);
       }
-      catch(...)
+      catch(const std::runtime_error &e)
       {
-
+        std::cerr << e.what();
+        continue;
       }
     }
 
@@ -36,14 +32,14 @@ int main()
     {
       double x0, y0, x1, y1, x2, y2;
       std::cin >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
-      std::cout << "reg";
       try
       {
         Regular regular(x0, y0, x1, y1, x2, y2);
       }
-      catch(...)
+      catch(const std::runtime_error &e)
       {
-
+        std::cerr << e.what();
+        continue;
       }
     }
 
@@ -51,23 +47,22 @@ int main()
     {
       double lx, ly, rx, ry;
       std::cin >> lx >> ly >> rx >> ry;
-      std::cout << "rect";
       try
       {
         Rectangle rectangle(lx, ly, rx, ry);
       }
-      catch(...)
+      catch(const std::runtime_error &e)
       {
-
+        std::cerr << e.what();
+        continue;
       }
     }
 
     else
     {
-
+      std::cerr << "this figure is not supported\n";
     }
   }
-
 
   return 0;
 }
