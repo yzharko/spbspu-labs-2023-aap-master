@@ -9,7 +9,7 @@
 int main()
 {
   bool scale_command = 0;
-  reznikova::Shape ** figures = new reznikova::Shape*[1000]();
+  reznikova::Shape * figures[1000]{};
   int stored = 0;
   while (!std::cin.eof())
   {
@@ -113,11 +113,6 @@ int main()
         std::cout << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << " ";
       }
       std::cout << "\n";
-      for (int i = 0; i < stored; i++)
-      {
-        delete figures[i];
-      }
-      delete [] figures;
       break;
     }
   }
