@@ -87,7 +87,7 @@ void Complexquad::scale(float k)
 namespace anikanov {
   std::istream &operator>>(std::istream &in, Complexquad &complexquad)
   {
-    if (!(in >> complexquad.leftBottom >> complexquad.rightTop >> complexquad.leftTop >> complexquad.rightBottom)) {
+    if (!(in >> complexquad.leftBottom >> complexquad.leftTop >> complexquad.rightBottom >> complexquad.rightTop)) {
       throw std::overflow_error("Invalid Input Complexquad");
     }
     float x1 = complexquad.leftBottom.x;
