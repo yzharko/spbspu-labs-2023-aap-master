@@ -2,6 +2,5 @@
 #define INPUTSTRING_HPP
 #include <iostream>
 #include <cstddef>
-
-char* inputString(std::istream& input, size_t& size, size_t& scope);
+char* inputString(std::istream& input);
 #endif

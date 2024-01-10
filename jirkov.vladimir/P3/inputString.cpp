@@ -1,28 +1,40 @@
+#include "inputString.hpp"
 #include <iostream>
 #include <cstring>
-#include "inputString.hpp"
-char* inputString(std::istream& input, size_t& size, size_t& scope)
+
+char* increaseNewScope(const char* string, size_t newSize, size_t& newScope)
 {
+  newScope = newSize * 2;
+  char* newString = new char[newScope];
+  std::memcpy(newString, string, newSize);
+  return newString;
+}
+
+char* inputString(std::istream& input)
+{
+  size_t scope = 10;
+  size_t size = 0;
   char* string = new char[scope];
-  size = 0;
   string[0] = '\0';
-  input >> std::noskipws;
+  std::cin >> std::noskipws;
   do
   {
     if (size == scope)
     {
-      size_t newScope = scope * 2;
-      char* newString = new char[newScope];
-      for (size_t i = 0; i < scope; i++)
+      char* newstring = increaseNewScope(string, size, scope);
+      if (newstring == nullptr)
       {
-        newString[i] = string[i];
+        std::cerr << "Dynamic memory reading error\n";
+        delete[] string;
+        return nullptr;
       }
       delete[] string;
-      string = newString;
-      scope = newScope;
+      string = newstring;
+      newstring = nullptr;
     }
-    std::cin >> string[size];
-  } while (input && string[size++] != '\n');
+     std::cin >> string[size];
+  }
+  while (input && string[size++] != '\n');
   if (string[0] == '\0' || string[0] == '\n')
   {
     std::cerr << "Input error\n";
