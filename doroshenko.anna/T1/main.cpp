@@ -41,7 +41,7 @@ int main()
       point_t pointSec = { xSec, ySec };
       point_t pointThi = { xThi, yThi };
       geometricFigures[countFig] = new Triangle(pointFir, pointSec, pointThi);
-      try 
+      try
       {
         geometricFigures[countFig]->getArea();
       }
@@ -78,7 +78,7 @@ int main()
 
     else if (figure == "SCALE")
     {
-      double posx, posy, coefficient;		
+      double posx, posy, coefficient;
       double xL, yL, xR, yR;
       std::cin >> posx >> posy >> coefficient;
       double sumAreaBefore = 0;
