@@ -1,6 +1,7 @@
 #ifndef SQUARE_HPP
 #define SQUARE_HPP
 #include "shape.hpp"
+using namespace seryj;
 class Square : public Shape
 {
 public:

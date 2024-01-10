@@ -2,6 +2,7 @@
 #define COM_SHAPE_HPP
 #include "shape.hpp"
 #include <vector>
+using namespace seryj;
 struct CompositeShape
 {
   CompositeShape();

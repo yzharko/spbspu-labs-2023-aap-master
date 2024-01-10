@@ -1,6 +1,7 @@
 #include "square.hpp"
 #include <exception>
 #include <iostream>
+using namespace seryj;
 Square::Square(point_t pos, double side)
 {
   if (side <= 0)

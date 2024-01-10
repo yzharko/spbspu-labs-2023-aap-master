@@ -5,6 +5,7 @@
 #include "regular.hpp"
 #include <iostream>
 #include <cmath>
+using namespace seryj;
 void seryj::writeAnswer(std::ostream& out, CompositeShape& cs)
 {
   std::vector<rectangle_t> rec_vec = cs.getFrameRect();

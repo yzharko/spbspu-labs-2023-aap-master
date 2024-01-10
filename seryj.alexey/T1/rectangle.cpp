@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iostream>
 #include <exception>
+using namespace seryj;
 Rectangle::Rectangle(point_t lp, point_t rp)
 {
   if (lp.x > rp.x || lp.y > rp.y)
