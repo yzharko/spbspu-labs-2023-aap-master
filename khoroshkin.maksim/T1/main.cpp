@@ -44,6 +44,11 @@ int main()
     }
     else if (type == "CIRCLE")
     {
+      if (figuresCounter == 0)
+      {
+        std::cerr << "Error: nothing to scale";
+        return 1;
+      }
       double x, y, radius;
       if (std::cin >> x >> y >> radius && radius > 0)
       {
@@ -74,25 +79,25 @@ int main()
       {
         for (size_t i = 0; i < figuresCounter; ++i)
         {
-          std::cout << "BEFORE: " << allFigures[i]->getArea() << " " << allFigures[i]->getFrameRect().pos.x << " ";
-          std::cout << allFigures[i]->getFrameRect().pos.y << " ";
-          std::cout << allFigures[i]->getFrameRect().width << " " << allFigures[i]->getFrameRect().height << "\n";
-        }
-        for (size_t i = 0; i < figuresCounter; ++i)
-        {
-          allFigures[i]->scale(scale);
-        }
+          std::cout << allFigures[i]->getArea() << " ";
+          std::cout << allFigures[i]->getFrameRect().pos.x - allFigures[i]->getFrameRect().width / 2 << " ";
+          std::cout << allFigures[i]->getFrameRect().pos.y - allFigures[i]->getFrameRect().height / 2 << " ";
+          std::cout << allFigures[i]->getFrameRect().pos.x + allFigures[i]->getFrameRect().width / 2 << " ";
+          std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << "\n";
 
-        for (size_t i = 0; i < figuresCounter; ++i)
-        {
-          std::cout << "AFTER: " << allFigures[i]->getArea() << " " << allFigures[i]->getFrameRect().pos.x << " ";
-          std::cout << allFigures[i]->getFrameRect().pos.y << " ";
-          std::cout << allFigures[i]->getFrameRect().width << " " << allFigures[i]->getFrameRect().height << "\n";
+          allFigures[i]->scale(scale);
+
+          std::cout << allFigures[i]->getArea() << " ";
+          std::cout << allFigures[i]->getFrameRect().pos.x - allFigures[i]->getFrameRect().width / 2 << " ";
+          std::cout << allFigures[i]->getFrameRect().pos.y - allFigures[i]->getFrameRect().height / 2 << " ";
+          std::cout << allFigures[i]->getFrameRect().pos.x + allFigures[i]->getFrameRect().width / 2 << " ";
+          std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << "\n";
         }
       }
       else
       {
         std::cerr << "Error: wrong scale input\n";
+        return 1;
       }
     }
     else if (std::all_of(type.begin(), type.end(), [](char c) { return std::isalpha(c); }))
