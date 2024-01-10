@@ -29,7 +29,7 @@ namespace anikanov {
 
     void scale(float) override;
 
-//    friend std::istream &operator>>(std::istream &, Square &);
+    friend std::istream &operator>>(std::istream &, Square &);
   };
 }
 

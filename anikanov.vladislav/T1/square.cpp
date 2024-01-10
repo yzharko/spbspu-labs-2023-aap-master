@@ -9,47 +9,59 @@ Square::Square()
   cPoint = PointT();
 }
 
-void Square::setSide(float newSide){
+void Square::setSide(float newSide)
+{
   side = newSide;
 }
 
-float Square::getSide() const{
+float Square::getSide() const
+{
   return side;
 }
 
-PointT Square::getCPoint() const{
+PointT Square::getCPoint() const
+{
   return cPoint;
 }
 
-long long Square::getArea(){
+long long Square::getArea()
+{
   return side * side;
 }
 
-RectangleT Square::getFrameRect(){
+RectangleT Square::getFrameRect()
+{
   return RectangleT(cPoint, side, side);
 }
 
-void Square::move(PointT newCPoint){
+void Square::move(PointT newCPoint)
+{
   cPoint = newCPoint;
 }
 
-void Square::move(float x, float y){
+void Square::move(float x, float y)
+{
   cPoint = PointT(x, y);
 }
 
-void Square::scale(float k){
-  if (k < 0){
+void Square::scale(float k)
+{
+  if (k < 0) {
     throw std::logic_error("Invalid scale argument");
   }
   side *= k;
 }
 
-std::istream &operator>>(std::istream &in, Square &square){
-  PointT leftBottom;
-  if (!(in >> leftBottom >> square.side) || square.side <= 0){
-    throw std::overflow_error("Invalid Input Square");
+namespace anikanov {
+
+  std::istream &operator>>(std::istream &in, Square &square)
+  {
+    PointT leftBottom;
+    if (!(in >> leftBottom >> square.side) || square.side <= 0) {
+      throw std::overflow_error("Invalid Input Square");
+    }
+    square.cPoint = PointT(leftBottom.x + square.side / 2,
+                           leftBottom.y + square.side / 2);
+    return in;
   }
-  square.cPoint = PointT(leftBottom.x + square.side / 2,
-                         leftBottom.y + square.side / 2);
-  return in;
 }

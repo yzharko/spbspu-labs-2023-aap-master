@@ -57,25 +57,27 @@ void Rectangle::move(float x, float y)
 
 void Rectangle::scale(float k)
 {
-  if (k < 0){
+  if (k < 0) {
     throw std::logic_error("Invalid scale argument");
   }
   width *= 2;
   height *= 2;
 }
 
-std::istream &operator>>(std::istream &in, Rectangle &rec)
-{
-  PointT leftBottom, rightTop;
-  if (!(in >> leftBottom >> rightTop)){
-    throw std::overflow_error("Invalid Input Rectangle");
+namespace anikanov {
+  std::istream &operator>>(std::istream &in, Rectangle &rec)
+  {
+    PointT leftBottom, rightTop;
+    if (!(in >> leftBottom >> rightTop)) {
+      throw std::overflow_error("Invalid Input Rectangle");
+    }
+    if (rightTop.x <= leftBottom.x || rightTop.y <= leftBottom.y) {
+      throw std::overflow_error("Invalid Input Rectangle");
+    }
+    rec.width = rightTop.x - leftBottom.x;
+    rec.height = rightTop.y - leftBottom.y;
+    rec.cPoint = PointT(leftBottom.x + rec.width / 2,
+                        leftBottom.y + rec.height / 2);
+    return in;
   }
-  if (rightTop.x <= leftBottom.x || rightTop.y <= leftBottom.y) {
-    throw std::overflow_error("Invalid Input Rectangle");
-  }
-  rec.width = rightTop.x - leftBottom.x;
-  rec.height = rightTop.y - leftBottom.y;
-  rec.cPoint = PointT(leftBottom.x + rec.width / 2,
-                      leftBottom.y + rec.height / 2);
-  return in;
 }

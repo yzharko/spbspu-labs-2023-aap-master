@@ -18,10 +18,10 @@ long long Complexquad::getArea()
 
 RectangleT Complexquad::getFrameRect()
 {
-  float leftMax = std::numeric_limits<float>::max();
-  float topMax = std::numeric_limits<float>::min();
-  float rightMax = std::numeric_limits<float>::min();
-  float bottomMax = std::numeric_limits<float>::max();
+  float leftMax = std::numeric_limits< float >::max();
+  float topMax = std::numeric_limits< float >::min();
+  float rightMax = std::numeric_limits< float >::min();
+  float bottomMax = std::numeric_limits< float >::max();
   PointT points[] = {leftTop, leftBottom, rightTop, rightBottom};
   for (auto point: points) {
     leftMax = std::min(leftMax, point.x);
@@ -68,7 +68,7 @@ void Complexquad::move(float x, float y)
 
 void Complexquad::scale(float k)
 {
-  if (k < 0){
+  if (k < 0) {
     throw std::logic_error("Invalid scale argument");
   }
   leftBottom.x = cPoint.x + k * getDX(leftBottom, cPoint);
@@ -84,29 +84,31 @@ void Complexquad::scale(float k)
   rightBottom.y = cPoint.y + k * getDY(rightBottom, cPoint);
 }
 
-std::istream &operator>>(std::istream &in, Complexquad &complexquad)
-{
-  if (!(in >> complexquad.leftBottom >> complexquad.rightTop >> complexquad.leftTop >> complexquad.rightBottom)) {
-    throw std::overflow_error("Invalid Input Complexquad");
-  }
-  float x1 = complexquad.leftBottom.x;
-  float y1 = complexquad.leftBottom.y;
-  float x2 = complexquad.rightTop.x;
-  float y2 = complexquad.rightTop.y;
-  float x3 = complexquad.rightBottom.x;
-  float y3 = complexquad.rightBottom.y;
-  float x4 = complexquad.leftTop.x;
-  float y4 = complexquad.leftTop.y;
+namespace anikanov {
+  std::istream &operator>>(std::istream &in, Complexquad &complexquad)
+  {
+    if (!(in >> complexquad.leftBottom >> complexquad.rightTop >> complexquad.leftTop >> complexquad.rightBottom)) {
+      throw std::overflow_error("Invalid Input Complexquad");
+    }
+    float x1 = complexquad.leftBottom.x;
+    float y1 = complexquad.leftBottom.y;
+    float x2 = complexquad.rightTop.x;
+    float y2 = complexquad.rightTop.y;
+    float x3 = complexquad.rightBottom.x;
+    float y3 = complexquad.rightBottom.y;
+    float x4 = complexquad.leftTop.x;
+    float y4 = complexquad.leftTop.y;
 
-  complexquad.cPoint.x = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) /
-                         ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
+    complexquad.cPoint.x = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) /
+                           ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
 
-  complexquad.cPoint.y = ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) /
-                         ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
-  if (complexquad.cPoint.x == -0){
-    complexquad.cPoint.x = 0;
+    complexquad.cPoint.y = ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) /
+                           ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
+    if (complexquad.cPoint.x == -0) {
+      complexquad.cPoint.x = 0;
+    }
+    return in;
   }
-  return in;
 }
 
 float Complexquad::getDX(PointT fp, PointT sp)
