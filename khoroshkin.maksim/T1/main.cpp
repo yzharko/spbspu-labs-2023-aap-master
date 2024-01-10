@@ -108,7 +108,7 @@ int main()
           std::cout << allFigures[i]->getFrameRect().pos.x + allFigures[i]->getFrameRect().width / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << "\n";
         }
-        scaleCommandWas++;
+        scaleCommandWas = true;
       }
       else
       {
