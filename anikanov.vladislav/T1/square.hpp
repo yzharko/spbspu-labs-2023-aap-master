@@ -9,9 +9,9 @@ public:
   explicit Square();
   ~Square() override = default;
 
-  void setSide(double);
+  void setSide(float);
 
-  double getSide() const;
+  float getSide() const;
 
   PointT getCPoint() const;
 
@@ -21,13 +21,13 @@ public:
 
   void move(PointT) override;
 
-  void move(double x, double y) override;
+  void move(float x, float y) override;
 
-  void scale(double) override;
+  void scale(float) override;
 
   friend std::istream &operator>>(std::istream &, Square &);
 private:
-  double side;
+  float side;
   PointT cPoint;
 };
 

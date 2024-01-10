@@ -89,9 +89,9 @@ void CompositeShape::resize(size_t n)
   capacity = new_capacity;
 }
 
-long long CompositeShape::getArea()
+float CompositeShape::getArea()
 {
-  long long sum = 0;
+  float sum = 0;
   for (size_t i = 0; i < shapes; ++i) {
     sum += shapeptrs[i]->getArea();
   }
@@ -114,13 +114,13 @@ void CompositeShape::move(PointT point)
   }
 }
 
-void CompositeShape::move(double x, double y)
+void CompositeShape::move(float x, float y)
 {
   PointT point(x, y);
   move(point);
 }
 
-void CompositeShape::scale(std::ostream &out, PointT center, unsigned int k)
+void CompositeShape::scale(std::ostream &out, PointT center, float k)
 {
   out << getArea();
   RectangleT *points = getFrameRect();
@@ -133,8 +133,8 @@ void CompositeShape::scale(std::ostream &out, PointT center, unsigned int k)
   for (size_t i = 0; i < shapes; ++i) {
     shapeptrs[i]->scale(k);
     pos = shapeptrs[i]->getCPoint();
-    double dx = getDX(pos, center) * (k - 1);
-    double dy = getDY(pos, center) * (k - 1);
+    float dx = getDX(pos, center) * (k - 1);
+    float dy = getDY(pos, center) * (k - 1);
     shapeptrs[i]->move(pos + PointT(dx, dy));
   }
   out << getArea();
@@ -146,12 +146,12 @@ void CompositeShape::scale(std::ostream &out, PointT center, unsigned int k)
   delete[] points;
 }
 
-double CompositeShape::getDX(PointT fp, PointT sp)
+float CompositeShape::getDX(PointT fp, PointT sp)
 {
   return fp.x - sp.x;
 }
 
-double CompositeShape::getDY(PointT fp, PointT sp)
+float CompositeShape::getDY(PointT fp, PointT sp)
 {
   return fp.y - sp.y;
 }

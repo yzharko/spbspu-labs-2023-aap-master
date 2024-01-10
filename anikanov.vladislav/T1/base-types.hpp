@@ -4,12 +4,12 @@
 #include <iosfwd>
 
 struct PointT {
-  double x;
-  double y;
+  float x;
+  float y;
 
   explicit PointT();
 
-  explicit PointT(double x, double y);
+  explicit PointT(float x, float y);
   PointT(const PointT &);
 
   PointT &operator=(PointT another_point);
@@ -20,12 +20,12 @@ struct PointT {
 };
 
 struct RectangleT {
-  double width;
-  double height;
+  float width;
+  float height;
   PointT pos;
 
   explicit RectangleT();
-  explicit RectangleT(PointT pos, double width, double height);
+  explicit RectangleT(PointT pos, float width, float height);
 
   friend std::ostream &operator<<(std::ostream &, const RectangleT &);
 };

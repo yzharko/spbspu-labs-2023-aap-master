@@ -7,11 +7,11 @@ Square::Square()
   cPoint = PointT();
 }
 
-void Square::setSide(double newSide){
+void Square::setSide(float newSide){
   side = newSide;
 }
 
-double Square::getSide() const{
+float Square::getSide() const{
   return side;
 }
 
@@ -31,11 +31,11 @@ void Square::move(PointT newCPoint){
   cPoint = newCPoint;
 }
 
-void Square::move(double x, double y){
+void Square::move(float x, float y){
   cPoint = PointT(x, y);
 }
 
-void Square::scale(double k){
+void Square::scale(float k){
   if (k < 0){
     throw std::logic_error("Invalid scale argument");
   }

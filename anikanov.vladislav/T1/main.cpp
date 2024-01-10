@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstring>
-#include "base-types.hpp"
-#include "rectangle.hpp"
-#include "square.hpp"
-#include "complexquad.hpp"
-#include "compositeShape.hpp"
+#include "base-types.cpp"
+#include "rectangle.cpp"
+#include "square.cpp"
+#include "complexquad.cpp"
+#include "compositeShape.cpp"
 
 bool isNumber(const char *str);
 
@@ -75,7 +75,7 @@ int main()
   } while (std::strcmp(word, "SCALE") != 0);
   PointT center;
   std::cin >> center;
-  unsigned int k;
+  float k;
   std::cin >> k;
   compositeShape.scale(std::cout, center, k);
   delete[] word;

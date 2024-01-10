@@ -9,13 +9,13 @@ public:
   explicit Rectangle();
   ~Rectangle() override = default;
 
-  void setWidth(double);
+  void setWidth(float);
 
-  double getWidth() const;
+  float getWidth() const;
 
-  void setHeight(double);
+  void setHeight(float);
 
-  double getHeight() const;
+  float getHeight() const;
 
   PointT getCPoint() const;
 
@@ -25,14 +25,14 @@ public:
 
   void move(PointT) override;
 
-  void move(double x, double y) override;
+  void move(float x, float y) override;
 
-  void scale(double) override;
+  void scale(float) override;
 
   friend std::istream &operator>>(std::istream &, Rectangle &);
 private:
-  double width;
-  double height;
+  float width;
+  float height;
   PointT cPoint;
 };
 

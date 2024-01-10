@@ -17,22 +17,22 @@ public:
 
   void move(PointT) override;
 
-  void move(double x, double y) override;
+  void move(float x, float y) override;
 
-  void scale(double) override;
+  void scale(float) override;
 
   friend std::istream &operator>>(std::istream &, Complexquad &);
 
 private:
   PointT leftBottom, leftTop, rightTop, rightBottom, cPoint;
 
-  double getDX(PointT fp, PointT sp);
+  float getDX(PointT fp, PointT sp);
 
-  double getDY(PointT fp, PointT sp);
+  float getDY(PointT fp, PointT sp);
 
-  double getDistance(PointT fp, PointT sp);
+  float getDistance(PointT fp, PointT sp);
 
-  double getTriangleArea(PointT fp, PointT sp, PointT tp);
+  float getTriangleArea(PointT fp, PointT sp, PointT tp);
 };
 
 #endif

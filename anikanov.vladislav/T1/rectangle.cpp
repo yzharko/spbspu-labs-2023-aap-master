@@ -8,22 +8,22 @@ Rectangle::Rectangle()
   cPoint = PointT();
 }
 
-void Rectangle::setWidth(double newWidth)
+void Rectangle::setWidth(float newWidth)
 {
   width = newWidth;
 }
 
-double Rectangle::getWidth() const
+float Rectangle::getWidth() const
 {
   return width;
 }
 
-void Rectangle::setHeight(double newHeight)
+void Rectangle::setHeight(float newHeight)
 {
   height = newHeight;
 }
 
-double Rectangle::getHeight() const
+float Rectangle::getHeight() const
 {
   return height;
 }
@@ -48,12 +48,12 @@ void Rectangle::move(PointT newCPoint)
   cPoint = newCPoint;
 }
 
-void Rectangle::move(double x, double y)
+void Rectangle::move(float x, float y)
 {
   cPoint = PointT(x, y);
 }
 
-void Rectangle::scale(double k)
+void Rectangle::scale(float k)
 {
   if (k < 0){
     throw std::logic_error("Invalid scale argument");
@@ -66,6 +66,9 @@ std::istream &operator>>(std::istream &in, Rectangle &rec)
 {
   PointT leftBottom, rightTop;
   if (!(in >> leftBottom >> rightTop)){
+    throw std::overflow_error("Invalid Input Rectangle");
+  }
+  if (rightTop.x <= leftBottom.x || rightTop.y <= leftBottom.y) {
     throw std::overflow_error("Invalid Input Rectangle");
   }
   rec.width = rightTop.x - leftBottom.x;

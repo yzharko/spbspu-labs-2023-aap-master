@@ -10,16 +10,17 @@ PointT Complexquad::getCPoint() const
 
 long long Complexquad::getArea()
 {
+  std::cout << cPoint.x << " " << cPoint.y << "\n";
   return getTriangleArea(leftBottom, leftTop, cPoint) +
          getTriangleArea(rightTop, rightBottom, cPoint);
 }
 
 RectangleT Complexquad::getFrameRect()
 {
-  double leftMax = std::numeric_limits<double>::max();
-  double topMax = std::numeric_limits<double>::min();
-  double rightMax = std::numeric_limits<double>::min();
-  double bottomMax = std::numeric_limits<double>::max();
+  float leftMax = std::numeric_limits<float>::max();
+  float topMax = std::numeric_limits<float>::min();
+  float rightMax = std::numeric_limits<float>::min();
+  float bottomMax = std::numeric_limits<float>::max();
   PointT points[] = {leftTop, leftBottom, rightTop, rightBottom};
   for (auto point: points) {
     leftMax = std::min(leftMax, point.x);
@@ -33,15 +34,15 @@ RectangleT Complexquad::getFrameRect()
   for (auto point: points) {
     bottomMax = std::min(topMax, point.y);
   }
-  double width = rightMax - leftMax;
-  double height = topMax - bottomMax;
+  float width = rightMax - leftMax;
+  float height = topMax - bottomMax;
   return RectangleT(PointT(leftMax + width / 2, bottomMax + height / 2), width, height);
 }
 
 void Complexquad::move(PointT newCPoint)
 {
-  double dx = getDX(cPoint, newCPoint);
-  double dy = getDY(cPoint, newCPoint);
+  float dx = getDX(cPoint, newCPoint);
+  float dy = getDY(cPoint, newCPoint);
 
   leftBottom.x += dx;
   leftBottom.y += dy;
@@ -58,13 +59,13 @@ void Complexquad::move(PointT newCPoint)
   cPoint = newCPoint;
 }
 
-void Complexquad::move(double x, double y)
+void Complexquad::move(float x, float y)
 {
   PointT newCPoint(x, y);
   move(newCPoint);
 }
 
-void Complexquad::scale(double k)
+void Complexquad::scale(float k)
 {
   if (k < 0){
     throw std::logic_error("Invalid scale argument");
@@ -84,17 +85,17 @@ void Complexquad::scale(double k)
 
 std::istream &operator>>(std::istream &in, Complexquad &complexquad)
 {
-  if (!(in >> complexquad.leftBottom >> complexquad.leftTop >> complexquad.rightBottom >> complexquad.rightTop)) {
+  if (!(in >> complexquad.leftBottom >> complexquad.rightTop >> complexquad.leftTop >> complexquad.rightBottom)) {
     throw std::overflow_error("Invalid Input Complexquad");
   }
-  double x1 = complexquad.leftBottom.x;
-  double y1 = complexquad.leftBottom.y;
-  double x2 = complexquad.rightTop.x;
-  double y2 = complexquad.rightTop.y;
-  double x3 = complexquad.rightBottom.x;
-  double y3 = complexquad.rightBottom.y;
-  double x4 = complexquad.leftTop.x;
-  double y4 = complexquad.leftTop.y;
+  float x1 = complexquad.leftBottom.x;
+  float y1 = complexquad.leftBottom.y;
+  float x2 = complexquad.rightTop.x;
+  float y2 = complexquad.rightTop.y;
+  float x3 = complexquad.rightBottom.x;
+  float y3 = complexquad.rightBottom.y;
+  float x4 = complexquad.leftTop.x;
+  float y4 = complexquad.leftTop.y;
 
   complexquad.cPoint.x = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) /
                          ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
@@ -110,27 +111,27 @@ std::istream &operator>>(std::istream &in, Complexquad &complexquad)
   return in;
 }
 
-double Complexquad::getDX(PointT fp, PointT sp)
+float Complexquad::getDX(PointT fp, PointT sp)
 {
-  return fabs(fp.x - sp.x);
+  return fp.x - sp.x;
 }
 
-double Complexquad::getDY(PointT fp, PointT sp)
+float Complexquad::getDY(PointT fp, PointT sp)
 {
-  return fabs(fp.y - sp.y);
+  return fp.y - sp.y;
 }
 
-double Complexquad::getDistance(PointT fp, PointT sp)
+float Complexquad::getDistance(PointT fp, PointT sp)
 {
-  return sqrt(pow(getDX(fp, sp), 2) + pow(getDY(fp, sp), 2));
+  return std::sqrt(std::pow(getDX(fp, sp), 2) + std::pow(getDY(fp, sp), 2));
 }
 
-double Complexquad::getTriangleArea(PointT fp, PointT sp, PointT tp)
+float Complexquad::getTriangleArea(PointT fp, PointT sp, PointT tp)
 {
-  double l1 = getDistance(fp, sp);
-  double l2 = getDistance(sp, tp);
-  double l3 = getDistance(fp, tp);
-  double s = (l1 + l2 + l3) / 2;
+  float l1 = getDistance(fp, sp);
+  float l2 = getDistance(sp, tp);
+  float l3 = getDistance(fp, tp);
+  float s = (l1 + l2 + l3) / 2;
   return std::sqrt(s * (s - l1) * (s - l2) * (s - l3));
 }
 

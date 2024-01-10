@@ -8,7 +8,7 @@ PointT::PointT()
   y = 0;
 }
 
-PointT::PointT(double x, double y)
+PointT::PointT(float x, float y)
 {
   this->x = x;
   this->y = y;
@@ -62,7 +62,7 @@ RectangleT::RectangleT()
   this->height = 0;
 }
 
-RectangleT::RectangleT(PointT pos, double width, double height)
+RectangleT::RectangleT(PointT pos, float width, float height)
 {
   this->pos = pos;
   this->width = width;

@@ -20,24 +20,24 @@ public:
 
   void resize(size_t n = 0);
 
-  long long getArea();
+  float getArea();
 
   RectangleT *getFrameRect();
 
   void move(PointT);
 
-  void move(double x, double y);
+  void move(float x, float y);
 
-  void scale(std::ostream &, PointT, unsigned int);
+  void scale(std::ostream &, PointT, float);
 
 private:
   size_t shapes{};
   size_t capacity{};
   Shape **shapeptrs{};
 
-  double getDX(PointT fp, PointT sp);
+  float getDX(PointT fp, PointT sp);
 
-  double getDY(PointT fp, PointT sp);
+  float getDY(PointT fp, PointT sp);
 };
 
 #endif
