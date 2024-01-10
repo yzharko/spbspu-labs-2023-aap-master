@@ -132,7 +132,7 @@ int main()
       for (size_t i = 0; i < size; i++)
       {
         newArray[i] = geometricFigures[i];
-        delete geometricFigures[i];
+        delete[] geometricFigures[i];
       }
       for (size_t j = size; j < newSize; j++)
       {
@@ -143,9 +143,9 @@ int main()
       size = newSize;
     }
   }
-  for (size_t i = 0; i < countFig; ++i)
+  for (size_t i = 0; i < countFig; i++)
   {
-    delete geometricFigures[i];
+    delete[] geometricFigures[i];
   }
   delete[] geometricFigures;
 }
