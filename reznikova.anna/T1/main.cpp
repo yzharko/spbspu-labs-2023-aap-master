@@ -12,7 +12,7 @@ int main()
   {
     std::string name = "";
     std::cin >> name;
-    
+
     if (name == "RING")
     {
       double x, y, r1, r2;
@@ -28,7 +28,7 @@ int main()
         continue;
       }
     }
-    
+
     else if (name == "REGULAR")
     {
       double x0, y0, x1, y1, x2, y2;
@@ -46,7 +46,7 @@ int main()
         continue;
       }
     }
-    
+
     else if (name == "RECTANGLE")
     {
       double lx, ly, rx, ry;
@@ -63,12 +63,12 @@ int main()
         continue;
       }
     }
-    
+
     else
     {
       std::cerr << "this figure is not supported\n";
     }
   }
-  
+
   return 0;
 }
