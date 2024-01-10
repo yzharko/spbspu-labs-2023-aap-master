@@ -73,8 +73,11 @@ RectangleT::RectangleT(PointT pos, float width, float height)
 
 std::ostream &operator<<(std::ostream &out, const RectangleT &rec)
 {
-  out << PointT(rec.pos.x - rec.width / 2, rec.pos.y - rec.height / 2);
+  PointT point(rec.pos.x - rec.width / 2, rec.pos.y - rec.height / 2);
+  out << std::fixed << std::setprecision(1);
+  out << point.x << " " << point.y;
   out << " ";
-  out << PointT(rec.pos.x + rec.width / 2, rec.pos.y + rec.height / 2);
+  point = PointT(rec.pos.x + rec.width / 2, rec.pos.y + rec.height / 2);
+  out << point.x << " " << point.y;
   return out;
 }
