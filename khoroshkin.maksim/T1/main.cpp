@@ -47,11 +47,6 @@ int main()
     }
     else if (type == "CIRCLE")
     {
-      if (figuresCounter == 0)
-      {
-        std::cerr << "Error: nothing to scale";
-        return 1;
-      }
       double x, y, radius;
       if (std::cin >> x >> y >> radius && radius > 0)
       {
@@ -125,6 +120,7 @@ int main()
     else if (std::all_of(type.begin(), type.end(), [](char c) { return std::isalpha(c); }))
     {
       std::cerr << "Error: unsupported figure\n";
+      continue;
     }
     else
     {
