@@ -28,7 +28,7 @@ int main()
       while (std::cin.get(ch)) {
         if ((ch == '\n' || ch == EOF) && start_enter) {
           delete[] word;
-          return 2;
+          return 12;
         } else {
           start_enter = false;
         }
