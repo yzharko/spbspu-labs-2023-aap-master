@@ -22,6 +22,9 @@ CompositeShape::CompositeShape(const CompositeShape &another)
 
 CompositeShape::~CompositeShape()
 {
+  for (size_t i = 0; i < shapes; ++i) {
+    delete[] shapeptrs[i];
+  }
   delete[] shapeptrs;
 }
 
