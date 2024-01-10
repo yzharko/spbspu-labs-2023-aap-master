@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <cctype>
+#include <algorithm>
 #include "base-types.hpp"
 #include "shape.hpp"
 #include "rectangle.hpp"
@@ -72,12 +74,18 @@ int main()
       {
         for (size_t i = 0; i < figuresCounter; ++i)
         {
+          std::cout << "BEFORE: " << allFigures[i]->getArea() << " " << allFigures[i]->getFrameRect().pos.x << " ";
+          std::cout << allFigures[i]->getFrameRect().pos.y << " ";
+          std::cout << allFigures[i]->getFrameRect().width << " " << allFigures[i]->getFrameRect().height << "\n";
+        }
+        for (size_t i = 0; i < figuresCounter; ++i)
+        {
           allFigures[i]->scale(scale);
         }
 
         for (size_t i = 0; i < figuresCounter; ++i)
         {
-          std::cout << allFigures[i]->getArea() << " " << allFigures[i]->getFrameRect().pos.x << " ";
+          std::cout << "AFTER: " << allFigures[i]->getArea() << " " << allFigures[i]->getFrameRect().pos.x << " ";
           std::cout << allFigures[i]->getFrameRect().pos.y << " ";
           std::cout << allFigures[i]->getFrameRect().width << " " << allFigures[i]->getFrameRect().height << "\n";
         }
@@ -87,9 +95,13 @@ int main()
         std::cerr << "Error: wrong scale input\n";
       }
     }
-    else
+    else if (std::all_of(type.begin(), type.end(), [](char c) { return std::isalpha(c); }))
     {
       std::cerr << "Error: unsupported figure\n";
+    }
+    else
+    {
+      continue;
     }
   }
   for (size_t i = 0; i < figuresCounter; ++i)
