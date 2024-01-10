@@ -2,7 +2,7 @@
 #include <iostream>
 #include <exception>
 
-Rectangle::Rectangle(point_t leftpoint, point_t rightpoint):
+reznikova::Rectangle::Rectangle(point_t leftpoint, point_t rightpoint):
   leftpoint_(leftpoint),
   rightpoint_(rightpoint)
 {
@@ -12,7 +12,7 @@ Rectangle::Rectangle(point_t leftpoint, point_t rightpoint):
   }
 }
 
-double Rectangle::getArea()
+double reznikova::Rectangle::getArea()
 {
   double Area = 0;
   double width = std::abs(rightpoint_.x - leftpoint_.x);
@@ -21,7 +21,7 @@ double Rectangle::getArea()
   return Area;
 }
 
-rectangle_t Rectangle::getFrameRect()
+reznikova::rectangle_t reznikova::Rectangle::getFrameRect()
 {
   double width = std::abs(rightpoint_.x - leftpoint_.x);
   double height = std::abs(rightpoint_.y - leftpoint_.y);
@@ -30,7 +30,7 @@ rectangle_t Rectangle::getFrameRect()
   return rectangle;
 }
 
-void Rectangle::move(double dx, double dy)
+void reznikova::Rectangle::move(double dx, double dy)
 {
   leftpoint_.x += dx;
   rightpoint_.x += dx;
@@ -38,7 +38,7 @@ void Rectangle::move(double dx, double dy)
   rightpoint_.y += dy;
 }
 
-void Rectangle::move(point_t new_center)
+void reznikova::Rectangle::move(point_t new_center)
 {
   double new_x0 = new_center.x;
   double new_y0 = new_center.y;
@@ -49,7 +49,7 @@ void Rectangle::move(point_t new_center)
   move(dx, dy);
 }
 
-void Rectangle::scale(double n)
+void reznikova::Rectangle::scale(double n)
 {
   double width = std::abs(rightpoint_.x - leftpoint_.x);
   double height = std::abs(rightpoint_.y - leftpoint_.y);

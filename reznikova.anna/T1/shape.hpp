@@ -3,14 +3,17 @@
 #include <stdio.h>
 #include "base-types.hpp"
 
-class Shape
+namespace reznikova
 {
-public:
-  virtual double getArea() = 0;
-  virtual rectangle_t getFrameRect() = 0;
-  virtual void move(double dx, double dy) = 0;
-  virtual void move(point_t new_center) = 0;
-  virtual void scale(double n) = 0;
-};
+  class Shape
+  {
+  public:
+    virtual double getArea() = 0;
+    virtual rectangle_t getFrameRect() = 0;
+    virtual void move(double dx, double dy) = 0;
+    virtual void move(point_t new_center) = 0;
+    virtual void scale(double n) = 0;
+  };
+}
 
 #endif

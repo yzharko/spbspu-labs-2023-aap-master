@@ -2,7 +2,7 @@
 #include <cmath>
 #include <iostream>
 
-Regular::Regular(point_t center, point_t point1, point_t point2):
+reznikova::Regular::Regular(point_t center, point_t point1, point_t point2):
   center_(center),
   point1_(point1),
   point2_(point2)
@@ -18,13 +18,15 @@ Regular::Regular(point_t center, point_t point1, point_t point2):
     throw std::runtime_error("wrong parameters\n");
   }
 }
-double Regular::getArea()
+
+double reznikova::Regular::getArea()
 {
-  double Area = pow((pow((point1_.x-point2_.x), 2) + pow((point1_.y-point2_.y), 2)), 0.5) * num_sides * r;
+  double Area = pow((pow((point1_.x-point2_.x), 2) + pow((point1_.y-point2_.y), 2)), 0.5) * num_sides * 
+r;
   return Area;
 }
 
-rectangle_t Regular::getFrameRect()
+reznikova::rectangle_t reznikova::Regular::getFrameRect()
 {
   double width = 2 * R;
   double height = 2 * R;
@@ -32,19 +34,19 @@ rectangle_t Regular::getFrameRect()
   return rectangle;
 }
 
-void Regular::move(double dx, double dy)
+void reznikova::Regular::move(double dx, double dy)
 {
   center_.x += dx;
   center_.y += dy;
 }
 
-void Regular::move(point_t new_center)
+void reznikova::Regular::move(point_t new_center)
 {
   center_.x = new_center.x;
   center_.y = new_center.y;
 }
 
-void Regular::scale(double n)
+void reznikova::Regular::scale(double n)
 {
   point1_.x *= n;
   point1_.y *= n;

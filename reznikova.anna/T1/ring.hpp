@@ -4,19 +4,22 @@
 #include "shape.hpp"
 #include "base-types.hpp"
 
-class Ring : public Shape
+namespace reznikova
 {
-public:
-  Ring(point_t center, double r1, double r2);
-  double getArea();
-  rectangle_t getFrameRect();
-  void move(double dx, double dy);
-  void move(point_t new_center);
-  void scale(double n);
-private:
-  point_t center_;
-  double r1_;
-  double r2_;
-};
+  class Ring : public Shape
+  {
+  public:
+    Ring(point_t center, double r1, double r2);
+    double getArea();
+    rectangle_t getFrameRect();
+    void move(double dx, double dy);
+    void move(point_t new_center);
+    void scale(double n);
+  private:
+    point_t center_;
+    double r1_;
+    double r2_;
+  };
+}
 
 #endif

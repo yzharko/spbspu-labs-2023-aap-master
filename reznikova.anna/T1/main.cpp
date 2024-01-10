@@ -8,6 +8,7 @@
 
 int main()
 {
+  bool scale_command = 0;
   while (!std::cin.eof())
   {
     std::string name = "";
@@ -17,10 +18,10 @@ int main()
     {
       double x, y, r1, r2;
       std::cin >> x >> y >> r1 >> r2;
-      point_t center(x, y);
+      reznikova::point_t center(x, y);
       try
       {
-        Ring ring(center, r1, r2);
+        reznikova::Ring ring(center, r1, r2);
       }
       catch(const std::runtime_error &e)
       {
@@ -33,12 +34,12 @@ int main()
     {
       double x0, y0, x1, y1, x2, y2;
       std::cin >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
-      point_t center(x0, y0);
-      point_t point1(x1, y1);
-      point_t point2(x2, y2);
+      reznikova::point_t center(x0, y0);
+      reznikova::point_t point1(x1, y1);
+      reznikova::point_t point2(x2, y2);
       try
       {
-        Regular regular(center, point1, point2);
+        reznikova::Regular regular(center, point1, point2);
       }
       catch(const std::runtime_error &e)
       {
@@ -51,11 +52,11 @@ int main()
     {
       double lx, ly, rx, ry;
       std::cin >> lx >> ly >> rx >> ry;
-      point_t leftpoint(lx, ly);
-      point_t rightpoint(rx, ry);
+      reznikova::point_t leftpoint(lx, ly);
+      reznikova::point_t rightpoint(rx, ry);
       try
       {
-        Rectangle rectangle(leftpoint, rightpoint);
+        reznikova::Rectangle rectangle(leftpoint, rightpoint);
       }
       catch(const std::runtime_error &e)
       {
@@ -64,10 +65,28 @@ int main()
       }
     }
 
+    else if (name == "SCAlE")
+    {
+      scale_command = 1;
+      double x, y, n;
+      std::cin >> x >> y >> n;
+      if (n <= 0)
+      {
+        std::cerr << "Negative Coeff Scale";
+        return 1;
+      }
+    }
+
     else
     {
       std::cerr << "this figure is not supported\n";
     }
+  }
+
+  if (scale_command == 0)
+  {
+    std::cerr << "no scale command\n";
+    return 1;
   }
 
   return 0;
