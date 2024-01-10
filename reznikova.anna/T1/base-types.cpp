@@ -1,4 +1,4 @@
-k#include "base-types.hpp"
+#include "base-types.hpp"
 
 reznikova::point_t::point_t(double X, double Y):
   x(X),
