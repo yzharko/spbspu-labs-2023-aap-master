@@ -1,5 +1,4 @@
 #include "input_output.hpp"
-#include <sstream>
 #include "square.hpp"
 #include "rectangle.hpp"
 #include "regular.hpp"
@@ -28,15 +27,20 @@ std::vector<std::string> seryj::readText(std::istream& inp)
   {
     std::string line;
     std::getline(inp, line, '\n');
-    std::stringstream ss(line);
-    while (ss.good())
+    std::string word = "";
+    for(int i = 0; i < line.length(); i++)
     {
-      std::string word;
-      std::getline(ss, word, ' ');
-      scale_args += is_after_scale ? 1 : 0;
-      if (word == "SCALE")
-        is_after_scale = true;
-      text.push_back(word);
+      if (line[i] == ' ' || i == line.length() - 1)
+      {
+        word += (i == line.length()) ? line[i] : 0;
+        scale_args += is_after_scale ? 1 : 0;
+        if (word == "SCALE")
+          is_after_scale = true;
+        text.push_back(word);
+        word = "";
+      }
+      else
+        word += line[i];
     }
   }
   if (scale_args == 0)
