@@ -14,6 +14,12 @@ PointT::PointT(double x, double y)
   this->y = y;
 }
 
+PointT::PointT(const PointT &other)
+{
+  x = other.x;
+  y = other.y;
+}
+
 PointT &PointT::operator=(const PointT another_point)
 {
   if (this == &another_point) {

@@ -10,6 +10,7 @@ struct PointT {
   explicit PointT();
 
   explicit PointT(double x, double y);
+  PointT(const PointT &);
 
   PointT &operator=(PointT another_point);
   PointT &operator+(PointT another_point);
