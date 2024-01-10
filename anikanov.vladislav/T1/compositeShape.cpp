@@ -4,6 +4,8 @@
 #include <iomanip>
 #include "shape.hpp"
 
+using namespace anikanov;
+
 CompositeShape::CompositeShape()
 {
   shapes = 0;

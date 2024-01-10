@@ -1,6 +1,8 @@
 #include "rectangle.hpp"
 #include <iostream>
 
+using namespace anikanov;
+
 Rectangle::Rectangle()
 {
   width = 0;

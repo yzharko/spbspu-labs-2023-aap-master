@@ -4,36 +4,39 @@
 #include <iosfwd>
 #include "shape.hpp"
 
-class Rectangle : public Shape {
-public:
-  explicit Rectangle();
-  ~Rectangle() override = default;
+namespace anikanov {
+  class Rectangle : public Shape {
+  public:
+    explicit Rectangle();
 
-  void setWidth(float);
+    ~Rectangle() override = default;
 
-  float getWidth() const;
+    void setWidth(float);
 
-  void setHeight(float);
+    float getWidth() const;
 
-  float getHeight() const;
+    void setHeight(float);
 
-  PointT getCPoint() const;
+    float getHeight() const;
 
-  long long getArea() override;
+    PointT getCPoint() const;
 
-  RectangleT getFrameRect() override;
+    long long getArea() override;
 
-  void move(PointT) override;
+    RectangleT getFrameRect() override;
 
-  void move(float x, float y) override;
+    void move(PointT) override;
 
-  void scale(float) override;
+    void move(float x, float y) override;
 
-  friend std::istream &operator>>(std::istream &, Rectangle &);
-private:
-  float width;
-  float height;
-  PointT cPoint;
-};
+    void scale(float) override;
 
+    friend std::istream &operator>>(std::istream &, Rectangle &);
+
+  private:
+    float width;
+    float height;
+    PointT cPoint;
+  };
+}
 #endif

@@ -3,6 +3,8 @@
 #include <cmath>
 #include <limits>
 
+using namespace anikanov;
+
 PointT Complexquad::getCPoint() const
 {
   return cPoint;

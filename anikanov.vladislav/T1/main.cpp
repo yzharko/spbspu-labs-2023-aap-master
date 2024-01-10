@@ -6,6 +6,8 @@
 #include "complexquad.hpp"
 #include "compositeShape.hpp"
 
+using namespace anikanov;
+
 bool isNumber(const char *str);
 
 int main()

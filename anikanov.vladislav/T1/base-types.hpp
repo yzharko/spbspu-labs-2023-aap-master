@@ -3,31 +3,37 @@
 
 #include <iosfwd>
 
-struct PointT {
-  float x;
-  float y;
+namespace anikanov {
+  struct PointT {
+    float x;
+    float y;
 
-  explicit PointT();
+    explicit PointT();
 
-  explicit PointT(float x, float y);
-  PointT(const PointT &);
+    explicit PointT(float x, float y);
 
-  PointT &operator=(PointT another_point);
-  PointT &operator+(PointT another_point);
+    PointT(const PointT &);
 
-  friend std::istream &operator>>(std::istream &, PointT &);
-  friend std::ostream &operator<<(std::ostream &, const PointT &);
-};
+    PointT &operator=(PointT another_point);
 
-struct RectangleT {
-  float width;
-  float height;
-  PointT pos;
+    PointT &operator+(PointT another_point);
 
-  explicit RectangleT();
-  explicit RectangleT(PointT pos, float width, float height);
+    friend std::istream &operator>>(std::istream &, PointT &);
 
-  friend std::ostream &operator<<(std::ostream &, const RectangleT &);
-};
+    friend std::ostream &operator<<(std::ostream &, const PointT &);
+  };
+
+  struct RectangleT {
+    float width;
+    float height;
+    PointT pos;
+
+    explicit RectangleT();
+
+    explicit RectangleT(PointT pos, float width, float height);
+
+    friend std::ostream &operator<<(std::ostream &, const RectangleT &);
+  };
+}
 
 #endif

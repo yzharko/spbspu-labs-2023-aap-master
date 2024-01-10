@@ -4,31 +4,35 @@
 #include <iosfwd>
 #include "shape.hpp"
 
-class Square : public Shape {
-public:
-  explicit Square();
-  ~Square() override = default;
+namespace anikanov {
+  class Square : public Shape {
+  public:
+    explicit Square();
 
-  void setSide(float);
+    ~Square() override = default;
 
-  float getSide() const;
+    void setSide(float);
 
-  PointT getCPoint() const;
+    float getSide() const;
 
-  long long getArea() override;
+    PointT getCPoint() const;
 
-  RectangleT getFrameRect() override;
+    long long getArea() override;
 
-  void move(PointT) override;
+    RectangleT getFrameRect() override;
 
-  void move(float x, float y) override;
+    void move(PointT) override;
 
-  void scale(float) override;
+    void move(float x, float y) override;
 
-  friend std::istream &operator>>(std::istream &, Square &);
-private:
-  float side;
-  PointT cPoint;
-};
+    void scale(float) override;
+
+    friend std::istream &operator>>(std::istream &, Square &);
+
+  private:
+    float side;
+    PointT cPoint;
+  };
+}
 
 #endif

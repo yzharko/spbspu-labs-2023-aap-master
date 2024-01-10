@@ -2,6 +2,8 @@
 #include <iostream>
 #include <iomanip>
 
+using namespace anikanov;
+
 PointT::PointT()
 {
   x = 0;

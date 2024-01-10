@@ -4,40 +4,43 @@
 #include <iosfwd>
 #include "shape.hpp"
 
-class CompositeShape {
-public:
-  CompositeShape();
+namespace anikanov {
 
-  CompositeShape(const CompositeShape &);
+  class CompositeShape {
+  public:
+    CompositeShape();
 
-  ~CompositeShape();
+    CompositeShape(const CompositeShape &);
 
-  CompositeShape &operator=(CompositeShape another_cs);
+    ~CompositeShape();
 
-  void add(Shape *);
+    CompositeShape &operator=(CompositeShape another_cs);
 
-  Shape *pop(long long n = -1);
+    void add(Shape *);
 
-  void resize(size_t n = 0);
+    Shape *pop(long long n = -1);
 
-  float getArea();
+    void resize(size_t n = 0);
 
-  RectangleT *getFrameRect();
+    float getArea();
 
-  void move(PointT);
+    RectangleT *getFrameRect();
 
-  void move(float x, float y);
+    void move(PointT);
 
-  void scale(std::ostream &, PointT, float);
+    void move(float x, float y);
 
-private:
-  size_t shapes{};
-  size_t capacity{};
-  Shape **shapeptrs{};
+    void scale(std::ostream &, PointT, float);
 
-  float getDX(PointT fp, PointT sp);
+  private:
+    size_t shapes{};
+    size_t capacity{};
+    Shape **shapeptrs{};
 
-  float getDY(PointT fp, PointT sp);
-};
+    float getDX(PointT fp, PointT sp);
+
+    float getDY(PointT fp, PointT sp);
+  };
+}
 
 #endif

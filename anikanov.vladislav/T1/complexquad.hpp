@@ -4,35 +4,39 @@
 #include <iosfwd>
 #include "shape.hpp"
 
-class Complexquad : public Shape {
-public:
-  explicit Complexquad();
-  ~Complexquad() override = default;
+namespace anikanov {
 
-  PointT getCPoint() const;
+  class Complexquad : public Shape {
+  public:
+    explicit Complexquad();
 
-  long long getArea() override;
+    ~Complexquad() override = default;
 
-  RectangleT getFrameRect() override;
+    PointT getCPoint() const;
 
-  void move(PointT) override;
+    long long getArea() override;
 
-  void move(float x, float y) override;
+    RectangleT getFrameRect() override;
 
-  void scale(float) override;
+    void move(PointT) override;
 
-  friend std::istream &operator>>(std::istream &, Complexquad &);
+    void move(float x, float y) override;
 
-private:
-  PointT leftBottom, leftTop, rightTop, rightBottom, cPoint;
+    void scale(float) override;
 
-  float getDX(PointT fp, PointT sp);
+    friend std::istream &operator>>(std::istream &, Complexquad &);
 
-  float getDY(PointT fp, PointT sp);
+  private:
+    PointT leftBottom, leftTop, rightTop, rightBottom, cPoint;
 
-  float getDistance(PointT fp, PointT sp);
+    float getDX(PointT fp, PointT sp);
 
-  float getTriangleArea(PointT fp, PointT sp, PointT tp);
-};
+    float getDY(PointT fp, PointT sp);
+
+    float getDistance(PointT fp, PointT sp);
+
+    float getTriangleArea(PointT fp, PointT sp, PointT tp);
+  };
+}
 
 #endif

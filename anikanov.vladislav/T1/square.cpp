@@ -1,6 +1,8 @@
 #include "square.hpp"
 #include <iostream>
 
+using namespace anikanov;
+
 Square::Square()
 {
   side = 0;
