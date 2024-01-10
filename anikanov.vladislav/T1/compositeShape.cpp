@@ -15,7 +15,7 @@ CompositeShape::CompositeShape(const CompositeShape &another)
   shapes = another.shapes;
   capacity = another.capacity;
   shapeptrs = new Shape *[capacity];
-  for (int i = 0; i < shapes; ++i) {
+  for (size_t i = 0; i < shapes; ++i) {
     shapeptrs[i] = another.shapeptrs[i];
   }
 }
@@ -34,7 +34,7 @@ CompositeShape &CompositeShape::operator=(const CompositeShape another)
   capacity = another.capacity;
   delete[] shapeptrs;
   shapeptrs = new Shape *[capacity];
-  for (int i = 0; i < shapes; ++i) {
+  for (size_t i = 0; i < shapes; ++i) {
     shapeptrs[i] = another.shapeptrs[i];
   }
   return *this;
@@ -57,7 +57,7 @@ Shape *CompositeShape::pop(size_t n)
   }
   Shape *shape = shapeptrs[n];
   shapeptrs[n] = nullptr;
-  for (int i = n; i < --shapes; ++i) {
+  for (size_t i = n; i < --shapes; ++i) {
     shapeptrs[i] = shapeptrs[i + 1];
     shapeptrs[i + 1] = nullptr;
   }
@@ -75,12 +75,12 @@ void CompositeShape::resize(size_t n)
     new_capacity = n;
   }
   Shape *new_shapeptrs[new_capacity];
-  for (int i = 0; i < shapes; ++i) {
+  for (size_t i = 0; i < shapes; ++i) {
     new_shapeptrs[i] = shapeptrs[i];
   }
   delete[] shapeptrs;
   shapeptrs = new Shape *[new_capacity];
-  for (int i = 0; i < shapes; ++i) {
+  for (size_t i = 0; i < shapes; ++i) {
     shapeptrs[i] = new_shapeptrs[i];
   }
   capacity = new_capacity;
@@ -89,7 +89,7 @@ void CompositeShape::resize(size_t n)
 long long CompositeShape::getArea()
 {
   long long sum = 0;
-  for (int i = 0; i < shapes; ++i) {
+  for (size_t i = 0; i < shapes; ++i) {
     sum += shapeptrs[i]->getArea();
   }
   return sum;
@@ -98,7 +98,7 @@ long long CompositeShape::getArea()
 RectangleT *CompositeShape::getFrameRect()
 {
   RectangleT *recs = new RectangleT[shapes];
-  for (int i = 0; i < shapes; ++i) {
+  for (size_t i = 0; i < shapes; ++i) {
     recs[i] = shapeptrs[i]->getFrameRect();
   }
   return recs;
@@ -106,7 +106,7 @@ RectangleT *CompositeShape::getFrameRect()
 
 void CompositeShape::move(PointT point)
 {
-  for (int i = 0; i < shapes; ++i) {
+  for (size_t i = 0; i < shapes; ++i) {
     shapeptrs[i]->move(point);
   }
 }
@@ -121,13 +121,13 @@ void CompositeShape::scale(std::ostream &out, PointT center, unsigned int k)
 {
   out << getArea();
   RectangleT *points = getFrameRect();
-  for (int i = 0; i < shapes; ++i) {
+  for (size_t i = 0; i < shapes; ++i) {
     out << " " << points[i];
   }
   out << "\n";
   delete[] points;
   PointT pos;
-  for (int i = 0; i < shapes; ++i) {
+  for (size_t i = 0; i < shapes; ++i) {
     shapeptrs[i]->scale(k);
     pos = shapeptrs[i]->getCPoint();
     double dx = getDX(pos, center) * (k - 1);
@@ -136,7 +136,7 @@ void CompositeShape::scale(std::ostream &out, PointT center, unsigned int k)
   }
   out << getArea();
   points = getFrameRect();
-  for (int i = 0; i < shapes; ++i) {
+  for (size_t i = 0; i < shapes; ++i) {
     out << " " << points[i];
   }
   out << "\n";
