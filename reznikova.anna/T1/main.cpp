@@ -9,11 +9,11 @@
 int main()
 {
   bool scale_command = 0;
+  std::string name = "";
   reznikova::Shape * figures[1000]{};
   int stored = 0;
   while (!std::cin.eof())
   {
-    std::string name = "";
     std::cin >> name;
 
     if (name == "RING")
@@ -24,14 +24,14 @@ int main()
       try
       {
         reznikova::Ring ring(center, r1, r2);
-        figures[stored] = &ring;
-        stored++;
       }
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
         continue;
       }
+      reznikova::Ring ring(center, r1, r2);
+      figures[stored++] = &ring;
     }
 
     else if (name == "REGULAR")
@@ -44,13 +44,14 @@ int main()
       try
       {
         reznikova::Regular regular(center, point1, point2);
-        figures[stored++] = &regular;
       }
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
         continue;
       }
+      reznikova::Regular regular(center, point1, point2);
+      figures[stored++] = &regular;
     }
 
     else if (name == "RECTANGLE")
@@ -62,13 +63,14 @@ int main()
       try
       {
         reznikova::Rectangle rectangle(leftpoint, rightpoint);
-        figures[stored++] = &rectangle;
       }
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
         continue;
       }
+      reznikova::Rectangle rectangle(leftpoint, rightpoint);
+      figures[stored++] = &rectangle;
     }
 
     else if (name == "SCALE")
@@ -82,6 +84,11 @@ int main()
         return 1;
       }
 
+      if (stored == 0)
+      {
+        std::cerr << "nothing to scale\n";
+        return 1;
+      }
       double sum_area = 0;
       for (int i = 0; i < stored; i++)
       {
@@ -113,6 +120,7 @@ int main()
         std::cout << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << " ";
       }
       std::cout << "\n";
+      
       break;
     }
   }
