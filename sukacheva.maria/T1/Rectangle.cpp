@@ -5,7 +5,12 @@
 Rectangle::Rectangle(point_t rp, point_t lp) :
   right_point(rp),
   left_point(lp)
-{}
+{
+  if ((left_point.x_ > right_point.x_) || (left_point.y_ > right_point.y_))
+  {
+    throw std::logic_error("wrong parameters\n");
+  }
+}
 
 double Rectangle::getArea() {
   double first_side = std::abs(right_point.x_ - left_point.x_);

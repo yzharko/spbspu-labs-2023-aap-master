@@ -9,7 +9,7 @@
 
 int main() {
   std::string nameOfFigure = "";
-  Shape** figures = new Shape*[1000];
+  Shape* figures[1000]{};
   int index = 0;
   while (!std::cin.eof())
   {
@@ -18,11 +18,7 @@ int main() {
     {
       double x1, y1, x2, y2 = 0;
       std::cin >> x1 >> y1 >> x2 >> y2;
-      if (!std::cin)
-      {
-        std::cerr << "Wrong input";
-      }
-      else
+      try
       {
         point_t point1 = { x1, y1 };
         point_t point2 = { x2, y2 };
@@ -30,32 +26,32 @@ int main() {
         figures[index] = rectangle;
         index += 1;
       }
+      catch (const std::logic_error& e)
+      {
+        std::cerr << e.what();
+      }
     }
     else if (nameOfFigure == "CIRCLE")
     {
       double x, y, radius = 0;
       std::cin >> x >> y >> radius;
-      if (!std::cin || radius < 0)
-      {
-        std::cerr << "Wrong input";
-      }
-      else
+      try
       {
         point_t point1 = { x, y };
         Shape* circle = new Circle(point1, radius);
         figures[index] = circle;
         index += 1;
       }
+      catch (const std::logic_error& e)
+      {
+        std::cerr << e.what();
+      }
     }
     else if (nameOfFigure == "PARALLELOGRAM")
     {
       double x1, y1, x2, y2, x3, y3 = 0;
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
-      if (!std::cin)
-      {
-        std::cerr << "Wrong input";
-      }
-      else
+      try
       {
         point_t point1 = { x1, y1 };
         point_t point2 = { x2, y2 };
@@ -63,6 +59,10 @@ int main() {
         Shape* parallelogram = new Parallelogram(point1, point2, point3);
         figures[index] = parallelogram;
         index += 1;
+      }
+      catch (const std::logic_error& e)
+      {
+        std::cerr << e.what();
       }
     }
     else if (nameOfFigure == "SCALE")
@@ -106,8 +106,8 @@ int main() {
         x4 = newFrameRect.pos_.x_ + newFrameRect.width_ / 2.0;
         y4 = newFrameRect.pos_.y_ + newFrameRect.height_/ 2.0;
         std::cout << std::fixed << std::setprecision(1) << x3 << " " << y3 << " " << x4 << " " << y4 << " ";
-        std::cout << "\n";
       }
+      std::cout << "\n";
     }
   };
   return 0;

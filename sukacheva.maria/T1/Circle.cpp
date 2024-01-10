@@ -1,10 +1,15 @@
 #include "Circle.hpp"
 #include "base-types.hpp"
+#include <iostream>
 
 Circle::Circle(point_t center, double radius) :
   center_(center),
   radius_(radius)
-{}
+{
+  if (radius_ <= 0) {
+    throw std::logic_error("wrong parameters\n");
+  }
+}
 
 double Circle::getArea() {
   return (3.14 * radius_ * radius_);
