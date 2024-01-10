@@ -7,6 +7,9 @@
 namespace anikanov {
   class Rectangle : public Shape {
   public:
+    float width;
+    float height;
+    PointT cPoint;
     explicit Rectangle();
 
     ~Rectangle() override = default;
@@ -32,11 +35,6 @@ namespace anikanov {
     void scale(float) override;
 
     friend std::istream &operator>>(std::istream &, Rectangle &);
-
-  private:
-    float width;
-    float height;
-    PointT cPoint;
   };
 }
 #endif

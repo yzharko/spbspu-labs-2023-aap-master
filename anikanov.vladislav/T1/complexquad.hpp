@@ -8,6 +8,8 @@ namespace anikanov {
 
   class Complexquad : public Shape {
   public:
+    PointT leftBottom, leftTop, rightTop, rightBottom, cPoint;
+
     explicit Complexquad();
 
     ~Complexquad() override = default;
@@ -26,9 +28,6 @@ namespace anikanov {
 
     friend std::istream &operator>>(std::istream &, Complexquad &);
 
-  private:
-    PointT leftBottom, leftTop, rightTop, rightBottom, cPoint;
-
     float getDX(PointT fp, PointT sp);
 
     float getDY(PointT fp, PointT sp);
@@ -36,6 +35,7 @@ namespace anikanov {
     float getDistance(PointT fp, PointT sp);
 
     float getTriangleArea(PointT fp, PointT sp, PointT tp);
+
   };
 }
 

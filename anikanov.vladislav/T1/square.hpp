@@ -7,6 +7,8 @@
 namespace anikanov {
   class Square : public Shape {
   public:
+    PointT cPoint;
+    float side;
     explicit Square();
 
     ~Square() override = default;
@@ -28,10 +30,6 @@ namespace anikanov {
     void scale(float) override;
 
     friend std::istream &operator>>(std::istream &, Square &);
-
-  private:
-    float side;
-    PointT cPoint;
   };
 }
 

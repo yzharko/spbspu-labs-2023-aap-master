@@ -8,6 +8,10 @@ namespace anikanov {
 
   class CompositeShape {
   public:
+    size_t shapes{};
+    size_t capacity{};
+    Shape **shapeptrs{};
+
     CompositeShape();
 
     CompositeShape(const CompositeShape &);
@@ -32,14 +36,10 @@ namespace anikanov {
 
     void scale(std::ostream &, PointT, float);
 
-  private:
-    size_t shapes{};
-    size_t capacity{};
-    Shape **shapeptrs{};
-
     float getDX(PointT fp, PointT sp);
 
     float getDY(PointT fp, PointT sp);
+
   };
 }
 
