@@ -19,8 +19,6 @@ private:
   point_t center_;
   point_t point1_;
   point_t point2_;
-  double r1;
-  double r2;
   double r;
   double R;
   double num_sides;
