@@ -48,7 +48,7 @@ void CompositeShape::add(Shape *shape)
   shapeptrs[shapes++] = shape;
 }
 
-Shape *CompositeShape::pop(size_t n)
+Shape *CompositeShape::pop(long long n)
 {
   if (n == -1) {
     Shape *shape = shapeptrs[shapes];

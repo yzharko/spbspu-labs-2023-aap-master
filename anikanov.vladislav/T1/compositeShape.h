@@ -16,7 +16,7 @@ public:
 
   void add(Shape *);
 
-  Shape *pop(size_t n = -1);
+  Shape *pop(long long n = -1);
 
   void resize(size_t n = 0);
 
