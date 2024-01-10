@@ -60,16 +60,31 @@ int main()
       }
       if (std::strcmp(word, "RECTANGLE") == 0) {
         auto *rec = new Rectangle();
-        std::cin >> *rec;
-        compositeShape.add(rec);
+        try{
+          std::cin >> *rec;
+          compositeShape.add(rec);
+        } catch (const std::exception &ex){
+          delete rec;
+          throw ex;
+        }
       } else if (std::strcmp(word, "SQUARE") == 0) {
         auto *square = new Square();
+        try{
         std::cin >> *square;
         compositeShape.add(square);
+        } catch (const std::exception &ex){
+          delete square;
+          throw ex;
+        }
       } else if (std::strcmp(word, "COMPLEXQUAD") == 0) {
         auto *complexquad = new Complexquad();
+        try{
         std::cin >> *complexquad;
         compositeShape.add(complexquad);
+        } catch (const std::exception &ex){
+          delete complexquad;
+          throw ex;
+        }
       } else {
         continue;
       }
