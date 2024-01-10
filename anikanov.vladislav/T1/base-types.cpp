@@ -32,7 +32,7 @@ PointT &PointT::operator=(const PointT another_point)
 
 std::ostream &operator<<(std::ostream &out, const PointT &point)
 {
-  out << std::fixed << std::setprecision(5);
+  out << std::fixed << std::setprecision(1);
   out << point.x << " " << point.y;
   return out;
 }
@@ -74,6 +74,5 @@ std::ostream &operator<<(std::ostream &out, const RectangleT &rec)
   out << PointT(rec.pos.x - rec.width / 2, rec.pos.y - rec.height / 2);
   out << " ";
   out << PointT(rec.pos.x + rec.width / 2, rec.pos.y + rec.height / 2);
-  out << "\n";
   return out;
 }
