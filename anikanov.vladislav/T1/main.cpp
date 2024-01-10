@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cstring>
 #include <cctype>
-#include "base-types.cpp"
-#include "rectangle.cpp"
-#include "square.cpp"
-#include "complexquad.cpp"
-#include "compositeShape.cpp"
+#include "base-types.h"
+#include "rectangle.h"
+#include "square.h"
+#include "complexquad.h"
+#include "compositeShape.h"
 
 bool isNumber(const char *str);
 
