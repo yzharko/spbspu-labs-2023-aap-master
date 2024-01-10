@@ -114,10 +114,6 @@ int main()
       {
         newArray[j] = nullptr;
       }
-      for (size_t k = 0; k < countFig; k++)
-      {
-        delete geometricFigures[k];
-      }
       delete[] geometricFigures;
       geometricFigures = newArray;
     }
