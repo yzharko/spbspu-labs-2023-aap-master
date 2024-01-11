@@ -7,7 +7,7 @@ reznikova::Ring::Ring(point_t center, double r1, double r2):
   r1_(r1),
   r2_(r2)
 {
-  if ((r1 < r2) || (r1 < 0) || (r2 < 0))
+  if ((r1 <= r2) || (r1 <= 0) || (r2 <= 0))
   {
     throw std::runtime_error("wrong parameters\n");
   }
