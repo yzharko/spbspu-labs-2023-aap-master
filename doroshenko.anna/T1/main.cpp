@@ -12,8 +12,8 @@ int main()
   size_t size = 20;
   size_t plusSize = 20;
   size_t countFig = 0;
-  Shape** geometricFigures = new Shape *[size];
-  while (std::cin>>figure && !std::cin.eof())
+  Shape* geometricFigures[1000] = { 0 };
+  while (std::cin>>figure)
   {
     if (figure == "RECTANGLE")
     {
@@ -131,24 +131,6 @@ int main()
         std::cout << "\n";
       }
     }
-
-    if (countFig == size)
-    {
-      size_t newSize = size + plusSize;
-      Shape** newArray = new Shape * [newSize];
-      for (size_t i = 0; i < size; i++)
-      {
-        newArray[i] = geometricFigures[i];
-        delete[] geometricFigures[i];
-      }
-      for (size_t j = size; j < newSize; j++)
-      {
-        newArray[j] = nullptr;
-      }
-      delete[] geometricFigures;
-      geometricFigures = newArray;
-      size = newSize;
-    }
   }
   if(countFig > 0)
   {
@@ -156,10 +138,5 @@ int main()
     {
       delete[] geometricFigures[i];
     }
-    delete[] geometricFigures;
-  }
-  else
-  {
-    delete[] geometricFigures;
   }
 }

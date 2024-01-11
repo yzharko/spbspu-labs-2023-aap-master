@@ -26,7 +26,7 @@ double doroshenko::Triangle::getArea()
   return sqrt(p * (p - a) * (p - b) * (p - c));
 }
 
-rectangle_t doroshenko::Triangle::getFrameRect()
+doroshenko::rectangle_t doroshenko::Triangle::getFrameRect()
 {
   double maxX = firstPoint_.x_ >= secondPoint_.x_ ? firstPoint_.x_ : secondPoint_.x_;
   maxX = maxX >= thirdPoint_.x_ ? maxX : thirdPoint_.x_;
@@ -44,8 +44,8 @@ rectangle_t doroshenko::Triangle::getFrameRect()
   double height = maxY - minY;
   double posX = 0.5 * (maxX + minX);
   double posY = 0.5 * (maxY + minY);
-  point_t pos = { posX, posY };
-  return rectangle_t{ width, height, pos };
+  doroshenko::point_t pos = { posX, posY };
+  return doroshenko::rectangle_t{ width, height, pos };
 }
 
 void doroshenko::Triangle::move(point_t destination)

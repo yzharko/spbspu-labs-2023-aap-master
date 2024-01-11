@@ -35,7 +35,7 @@ double doroshenko::Concave::getArea()
   return firstArea - secondArea;
 }
 
-rectangle_t doroshenko::Concave::getFrameRect()
+doroshenko::rectangle_t doroshenko::Concave::getFrameRect()
 {
   double maxX = firstPoint_.x_ >= secondPoint_.x_ ? firstPoint_.x_ : secondPoint_.x_;
   maxX = maxX >= thirdPoint_.x_ ? maxX : thirdPoint_.x_;
@@ -53,8 +53,8 @@ rectangle_t doroshenko::Concave::getFrameRect()
   double height = maxY - minY;
   double posX = 0.5 * (maxX + minX);
   double posY = 0.5 * (maxY + minY);
-  point_t pos = { posX, posY };
-  return rectangle_t{ width, height, pos };
+  doroshenko::point_t pos = { posX, posY };
+  return doroshenko::rectangle_t{ width, height, pos };
 }
 
 void doroshenko::Concave::move(point_t destination)
@@ -78,7 +78,7 @@ void doroshenko::Concave::move(double moveX, double moveY)
 
 void doroshenko::Concave::scale(double coefficient)
 {
-  point_t pos;
+  doroshenko::point_t pos;
   pos.x_ = fourthPoint_.x_;
   pos.y_ = fourthPoint_.y_;
   firstPoint_.x_ += (firstPoint_.x_ - pos.x_) * (coefficient - 1);
