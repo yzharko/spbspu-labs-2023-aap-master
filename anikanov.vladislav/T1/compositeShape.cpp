@@ -140,7 +140,7 @@ void CompositeShape::scale(std::ostream &out, point_t center, float k)
   out << "\n";
   delete[] points;
   for (size_t i = 0; i < shapes; ++i) {
-    shapeptrs[i]->scale(k, center);
+    shapeptrs[i]->myscale(k, center);
   }
   out << getArea();
   points = getFrameRect();
