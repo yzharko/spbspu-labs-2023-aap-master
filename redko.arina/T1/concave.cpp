@@ -1,7 +1,7 @@
 #include "concave.hpp"
 #include <algorithm>
 
-redko::Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, point_t fourthPoint) :
+redko::Concave::Concave(redko::point_t firstPoint, redko::point_t secondPoint, redko::point_t thirdPoint, redko::point_t fourthPoint) :
   firstPoint_(firstPoint), secondPoint_(secondPoint), thirdPoint_(thirdPoint), fourthPoint_(fourthPoint)
 {}
 
@@ -14,7 +14,7 @@ double redko::Concave::getArea() const
   return bigTriangle - smallTriangle;
 }
 
-rectangle_t redko::Concave::getFrameRect() const
+redko::rectangle_t redko::Concave::getFrameRect() const
 {
   double maxX = std::max(std::max(firstPoint_.x_, secondPoint_.x_), thirdPoint_.x_);
   double minX = std::min(std::min(firstPoint_.x_, secondPoint_.x_), thirdPoint_.x_);
@@ -25,9 +25,9 @@ rectangle_t redko::Concave::getFrameRect() const
   return { width, height, fourthPoint_ };
 }
 
-void redko::Concave::move(point_t dest)
+void redko::Concave::move(redko::point_t dest)
 {
-  rectangle_t frame = getFrameRect();
+  redko::rectangle_t frame = getFrameRect();
   double xDist = dest.x_ - frame.pos_.x_;
   double yDist = dest.y_ - frame.pos_.y_;
   firstPoint_.x_ += xDist;
@@ -52,7 +52,7 @@ void redko::Concave::move(double xDist, double yDist)
   fourthPoint_.y_ += yDist;
 }
 
-void redko::Concave::scale(point_t pos, double coefficient)
+void redko::Concave::scale(redko::point_t pos, double coefficient)
 {
   firstPoint_.x_ = (firstPoint_.x_ - pos.x_) * coefficient;
   firstPoint_.y_ = (firstPoint_.y_ - pos.y_) * coefficient;

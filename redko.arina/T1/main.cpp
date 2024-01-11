@@ -10,7 +10,7 @@
 int main()
 {
   redko::Shape** shapes = new redko::Shape * [1000] {};
-  point_t* points = nullptr;
+  redko::point_t* points = nullptr;
   int shapesCounter = 0;
   std::string shape, type = "";
   bool some_descr_is_wrong = false;
@@ -28,6 +28,7 @@ int main()
       if (shapesCounter == 0)
       {
         std::cerr << "no shapes to scale\n";
+        delete[] shapes;
         return 2;
       }
       double coefficient;
@@ -38,7 +39,7 @@ int main()
       }
       double areasSum = 0;
       double scaledAreasSum = 0;
-      rectangle_t frame = {};
+      redko::rectangle_t frame = {};
       double* frameXY = new double[shapesCounter * 4];
       double* scaledFrameXY = new double[shapesCounter * 4];
       for (int i = 0; i < shapesCounter; i++)
@@ -74,12 +75,16 @@ int main()
       {
         std::cerr << "errors in the description of supported shapes\n";
       }
+      for (int i = 0; i < shapesCounter; i++)
+      {
+        delete shapes[i];
+      }
       delete[] shapes;
       delete[] frameXY;
       delete[] scaledFrameXY;
       return 0;
     }
-    points = new point_t[4];
+    points = new redko::point_t[4];
     int i = 0;
     bool descr_is_wrong = false;
 
@@ -158,6 +163,11 @@ int main()
   if (!shapes_are_scaled)
   {
     std::cerr << "shapes was not scaled\n";
+    for (int i = 0; i < shapesCounter; i++)
+    {
+      delete shapes[i];
+    }
+    delete[] shapes;
     return 2;
   }
 }

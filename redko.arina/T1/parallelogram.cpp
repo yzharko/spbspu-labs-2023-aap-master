@@ -1,13 +1,13 @@
 #include "parallelogram.hpp"
 #include <cmath>
 
-redko::Parallelogram::Parallelogram(point_t firstPoint, point_t secondPoint, point_t thirdPoint) :
+redko::Parallelogram::Parallelogram(redko::point_t firstPoint, redko::point_t secondPoint, redko::point_t thirdPoint) :
   firstPoint_(firstPoint), secondPoint_(secondPoint), thirdPoint_(thirdPoint)
 {}
 
 double redko::Parallelogram::getArea() const
 {
-  rectangle_t frame = getFrameRect();
+  redko::rectangle_t frame = getFrameRect();
   if (firstPoint_.y_ == secondPoint_.y_)
   {
     return (abs(firstPoint_.x_ - secondPoint_.x_) * frame.height_);
@@ -18,7 +18,7 @@ double redko::Parallelogram::getArea() const
   }
 }
 
-rectangle_t redko::Parallelogram::getFrameRect() const
+redko::rectangle_t redko::Parallelogram::getFrameRect() const
 {
   double width = abs(firstPoint_.x_ - secondPoint_.x_) + abs(firstPoint_.x_ - thirdPoint_.x_);
 
@@ -59,9 +59,9 @@ rectangle_t redko::Parallelogram::getFrameRect() const
   return { width, height, { x, y } };
 }
 
-void redko::Parallelogram::move(point_t dest)
+void redko::Parallelogram::move(redko::point_t dest)
 {
-  rectangle_t frame = getFrameRect();
+  redko::rectangle_t frame = getFrameRect();
   double xDist = dest.x_ - frame.pos_.x_;
   double yDist = dest.y_ - frame.pos_.y_;
   firstPoint_.x_ += xDist;
@@ -82,7 +82,7 @@ void redko::Parallelogram::move(double xDist, double yDist)
   thirdPoint_.y_ += yDist;
 }
 
-void redko::Parallelogram::scale(point_t pos, double coefficient)
+void redko::Parallelogram::scale(redko::point_t pos, double coefficient)
 {
   firstPoint_.x_ = (firstPoint_.x_ - pos.x_) * coefficient;
   firstPoint_.y_ = (firstPoint_.y_ - pos.y_) * coefficient;
