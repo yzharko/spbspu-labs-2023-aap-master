@@ -108,6 +108,7 @@ int main() {
         std::cout << std::fixed << std::setprecision(1) << x3 << " " << y3 << " " << x4 << " " << y4 << " ";
       }
       std::cout << "\n";
+      break;
     }
   };
   return 0;
