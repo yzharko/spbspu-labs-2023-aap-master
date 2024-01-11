@@ -6,7 +6,7 @@ using namespace anikanov;
 Square::Square()
 {
   side = 0;
-  cPoint = PointT();
+  cPoint = point_t();
 }
 
 void Square::setSide(float newSide)
@@ -19,7 +19,7 @@ float Square::getSide() const
   return side;
 }
 
-PointT Square::getCPoint() const
+point_t Square::getCPoint() const
 {
   return cPoint;
 }
@@ -29,22 +29,22 @@ float Square::getArea()
   return side * side;
 }
 
-RectangleT Square::getFrameRect()
+rectangle_t Square::getFrameRect()
 {
-  return RectangleT(cPoint, side, side);
+  return rectangle_t(cPoint, side, side);
 }
 
-void Square::move(PointT newCPoint)
+void Square::move(point_t newCPoint)
 {
   cPoint = newCPoint;
 }
 
 void Square::move(float x, float y)
 {
-  cPoint = PointT(x, y);
+  cPoint = point_t(x, y);
 }
 
-void Square::scale(float k, PointT center)
+void Square::scale(float k, point_t center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
@@ -58,11 +58,11 @@ namespace anikanov {
 
   std::istream &operator>>(std::istream &in, Square &square)
   {
-    PointT leftBottom;
+    point_t leftBottom;
     if (!(in >> leftBottom >> square.side) || square.side <= 0) {
       throw std::overflow_error("Invalid Input Square");
     }
-    square.cPoint = PointT(leftBottom.x + square.side / 2,
+    square.cPoint = point_t(leftBottom.x + square.side / 2,
                            leftBottom.y + square.side / 2);
     return in;
   }

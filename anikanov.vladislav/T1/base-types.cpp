@@ -4,25 +4,25 @@
 
 using namespace anikanov;
 
-PointT::PointT()
+point_t::point_t()
 {
   x = 0;
   y = 0;
 }
 
-PointT::PointT(float x, float y)
+point_t::point_t(float x, float y)
 {
   this->x = x;
   this->y = y;
 }
 
-PointT::PointT(const PointT &other)
+point_t::point_t(const point_t &other)
 {
   x = other.x;
   y = other.y;
 }
 
-PointT &PointT::operator=(const PointT another_point)
+point_t &point_t::operator=(const point_t another_point)
 {
   if (this == &another_point) {
     return *this;
@@ -33,14 +33,14 @@ PointT &PointT::operator=(const PointT another_point)
 }
 
 namespace anikanov {
-  std::ostream &operator<<(std::ostream &out, const PointT &point)
+  std::ostream &operator<<(std::ostream &out, const point_t &point)
   {
     out << std::fixed << std::setprecision(1);
     out << point.x << " " << point.y;
     return out;
   }
 
-  std::istream &operator>>(std::istream &in, PointT &point)
+  std::istream &operator>>(std::istream &in, point_t &point)
   {
     if (!(in >> point.x >> point.y)) {
       if (std::cin.eof()) {
@@ -52,21 +52,21 @@ namespace anikanov {
   }
 }
 
-PointT &PointT::operator+(PointT another_point)
+point_t &point_t::operator+(point_t another_point)
 {
   x += another_point.x;
   y += another_point.y;
   return *this;
 }
 
-RectangleT::RectangleT()
+rectangle_t::rectangle_t()
 {
-  this->pos = PointT(0, 0);
+  this->pos = point_t(0, 0);
   this->width = 0;
   this->height = 0;
 }
 
-RectangleT::RectangleT(PointT pos, float width, float height)
+rectangle_t::rectangle_t(point_t pos, float width, float height)
 {
   this->pos = pos;
   this->width = width;
@@ -74,13 +74,13 @@ RectangleT::RectangleT(PointT pos, float width, float height)
 }
 
 namespace anikanov {
-  std::ostream &operator<<(std::ostream &out, const RectangleT &rec)
+  std::ostream &operator<<(std::ostream &out, const rectangle_t &rec)
   {
-    PointT point(rec.pos.x - rec.width / 2.0f, rec.pos.y - rec.height / 2.0f);
+    point_t point(rec.pos.x - rec.width / 2.0f, rec.pos.y - rec.height / 2.0f);
     out << std::fixed << std::setprecision(1);
     out << point.x << " " << point.y;
     out << " ";
-    point = PointT(rec.pos.x + rec.width / 2.0f, rec.pos.y + rec.height / 2.0f);
+    point = point_t(rec.pos.x + rec.width / 2.0f, rec.pos.y + rec.height / 2.0f);
     out << point.x << " " << point.y;
     return out;
   }

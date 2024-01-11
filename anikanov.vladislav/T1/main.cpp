@@ -89,7 +89,7 @@ int main()
     }
   } while (std::strcmp(word, "SCALE") != 0);
   delete[] word;
-  PointT center;
+  point_t center;
   std::cin >> center;
   float k;
   std::cin >> k;

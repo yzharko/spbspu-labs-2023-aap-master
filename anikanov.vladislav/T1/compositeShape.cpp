@@ -101,16 +101,16 @@ float CompositeShape::getArea()
   return sum;
 }
 
-RectangleT *CompositeShape::getFrameRect()
+rectangle_t *CompositeShape::getFrameRect()
 {
-  RectangleT *recs = new RectangleT[shapes];
+  rectangle_t *recs = new rectangle_t[shapes];
   for (size_t i = 0; i < shapes; ++i) {
     recs[i] = shapeptrs[i]->getFrameRect();
   }
   return recs;
 }
 
-void CompositeShape::move(PointT point)
+void CompositeShape::move(point_t point)
 {
   for (size_t i = 0; i < shapes; ++i) {
     shapeptrs[i]->move(point);
@@ -119,11 +119,11 @@ void CompositeShape::move(PointT point)
 
 void CompositeShape::move(float x, float y)
 {
-  PointT point(x, y);
+  point_t point(x, y);
   move(point);
 }
 
-void CompositeShape::scale(std::ostream &out, PointT center, float k)
+void CompositeShape::scale(std::ostream &out, point_t center, float k)
 {
   if (k < 0) {
     throw std::logic_error("Invalid coeff scale");
@@ -133,7 +133,7 @@ void CompositeShape::scale(std::ostream &out, PointT center, float k)
   }
   out << std::fixed << std::setprecision(1);
   out << getArea();
-  RectangleT *points = getFrameRect();
+  rectangle_t *points = getFrameRect();
   for (size_t i = 0; i < shapes; ++i) {
     out << " " << points[i];
   }
@@ -151,12 +151,12 @@ void CompositeShape::scale(std::ostream &out, PointT center, float k)
   delete[] points;
 }
 
-float CompositeShape::getDX(PointT fp, PointT sp)
+float CompositeShape::getDX(point_t fp, point_t sp)
 {
   return fp.x - sp.x;
 }
 
-float CompositeShape::getDY(PointT fp, PointT sp)
+float CompositeShape::getDY(point_t fp, point_t sp)
 {
   return fp.y - sp.y;
 }

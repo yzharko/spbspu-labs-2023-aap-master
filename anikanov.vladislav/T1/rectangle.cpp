@@ -7,7 +7,7 @@ Rectangle::Rectangle()
 {
   width = 0;
   height = 0;
-  cPoint = PointT();
+  cPoint = point_t();
 }
 
 void Rectangle::setWidth(float newWidth)
@@ -30,7 +30,7 @@ float Rectangle::getHeight() const
   return height;
 }
 
-PointT Rectangle::getCPoint() const
+point_t Rectangle::getCPoint() const
 {
   return cPoint;
 }
@@ -40,22 +40,22 @@ float Rectangle::getArea()
   return width * height;
 }
 
-RectangleT Rectangle::getFrameRect()
+rectangle_t Rectangle::getFrameRect()
 {
-  return RectangleT(cPoint, width, height);
+  return rectangle_t(cPoint, width, height);
 }
 
-void Rectangle::move(PointT newCPoint)
+void Rectangle::move(point_t newCPoint)
 {
   cPoint = newCPoint;
 }
 
 void Rectangle::move(float x, float y)
 {
-  cPoint = PointT(x, y);
+  cPoint = point_t(x, y);
 }
 
-void Rectangle::scale(float k, PointT center)
+void Rectangle::scale(float k, point_t center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
@@ -69,7 +69,7 @@ void Rectangle::scale(float k, PointT center)
 namespace anikanov {
   std::istream &operator>>(std::istream &in, Rectangle &rec)
   {
-    PointT leftBottom, rightTop;
+    point_t leftBottom, rightTop;
     if (!(in >> leftBottom >> rightTop)) {
       throw std::overflow_error("Invalid Input Rectangle");
     }
@@ -78,7 +78,7 @@ namespace anikanov {
     }
     rec.width = rightTop.x - leftBottom.x;
     rec.height = rightTop.y - leftBottom.y;
-    rec.cPoint = PointT(leftBottom.x + rec.width / 2,
+    rec.cPoint = point_t(leftBottom.x + rec.width / 2,
                         leftBottom.y + rec.height / 2);
     return in;
   }

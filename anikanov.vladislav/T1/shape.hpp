@@ -11,22 +11,22 @@ namespace anikanov {
 
     virtual float getArea() = 0;
 
-    virtual RectangleT getFrameRect() = 0;
+    virtual rectangle_t getFrameRect() = 0;
 
-    virtual void move(PointT) = 0;
+    virtual void move(point_t) = 0;
 
     virtual void move(float x, float y) = 0;
 
-    virtual PointT getCPoint() const = 0;
+    virtual point_t getCPoint() const = 0;
 
-    virtual void scale(float, PointT) = 0;
+    virtual void scale(float, point_t) = 0;
 
-    float getDX(PointT fp, PointT sp)
+    float getDX(point_t fp, point_t sp)
     {
       return fp.x - sp.x;
     };
 
-    float getDY(PointT fp, PointT sp)
+    float getDY(point_t fp, point_t sp)
     {
       return fp.y - sp.y;
     };

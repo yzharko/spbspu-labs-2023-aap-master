@@ -9,7 +9,7 @@ namespace anikanov {
   public:
     float width;
     float height;
-    PointT cPoint;
+    point_t cPoint;
     explicit Rectangle();
 
     ~Rectangle() override = default;
@@ -22,17 +22,17 @@ namespace anikanov {
 
     float getHeight() const;
 
-    PointT getCPoint() const;
+    point_t getCPoint() const;
 
     float getArea() override;
 
-    RectangleT getFrameRect() override;
+    rectangle_t getFrameRect() override;
 
-    void move(PointT) override;
+    void move(point_t) override;
 
     void move(float x, float y) override;
 
-    void scale(float, PointT center = PointT(0, 0)) override;
+    void scale(float, point_t center = point_t(0, 0)) override;
 
     friend std::istream &operator>>(std::istream &, Rectangle &);
   };

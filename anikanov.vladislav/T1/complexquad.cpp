@@ -6,7 +6,7 @@
 
 using namespace anikanov;
 
-PointT Complexquad::getCPoint() const
+point_t Complexquad::getCPoint() const
 {
   return cPoint;
 }
@@ -17,13 +17,13 @@ float Complexquad::getArea()
          getTriangleArea(rightTop, rightBottom, cPoint);
 }
 
-RectangleT Complexquad::getFrameRect()
+rectangle_t Complexquad::getFrameRect()
 {
   float leftMax = std::numeric_limits< float >::max();
   float topMax = std::numeric_limits< float >::min();
   float rightMax = std::numeric_limits< float >::min();
   float bottomMax = std::numeric_limits< float >::max();
-  PointT points[] = {leftTop, leftBottom, rightTop, rightBottom};
+  point_t points[] = {leftTop, leftBottom, rightTop, rightBottom};
   for (auto point: points) {
     leftMax = std::min(leftMax, point.x);
   }
@@ -38,10 +38,10 @@ RectangleT Complexquad::getFrameRect()
   }
   float width = rightMax - leftMax;
   float height = topMax - bottomMax;
-  return RectangleT(PointT(leftMax + width / 2.0f, bottomMax + height / 2.0f), width, height);
+  return rectangle_t(point_t(leftMax + width / 2.0f, bottomMax + height / 2.0f), width, height);
 }
 
-void Complexquad::move(PointT newCPoint)
+void Complexquad::move(point_t newCPoint)
 {
   float dx = getDX(cPoint, newCPoint);
   float dy = getDY(cPoint, newCPoint);
@@ -64,16 +64,16 @@ void Complexquad::move(PointT newCPoint)
 
 void Complexquad::move(float x, float y)
 {
-  PointT newCPoint(x, y);
+  point_t newCPoint(x, y);
   move(newCPoint);
 }
 
-void Complexquad::scale(float k, PointT center)
+void Complexquad::scale(float k, point_t center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
   }
-  PointT *points[] = {&leftBottom, &leftTop, &rightTop, &rightBottom, &cPoint};
+  point_t *points[] = {&leftBottom, &leftTop, &rightTop, &rightBottom, &cPoint};
   for (auto point: points) {
     (*point).x += (k - 1) * getDX(*point, center);
     (*point).y += (k - 1) * getDY(*point, center);
@@ -86,11 +86,11 @@ namespace anikanov {
     if (!(in >> complexquad.leftBottom >> complexquad.rightTop >> complexquad.rightBottom >> complexquad.leftTop)) {
       throw std::overflow_error("Invalid Input Complexquad");
     }
-    PointT p1 = complexquad.leftBottom;
-    PointT p2 = complexquad.rightTop;
-    PointT p3 = complexquad.rightBottom;
-    PointT p4 = complexquad.leftTop;
-    auto st = [complexquad](PointT &a, PointT &b, PointT &c) {
+    point_t p1 = complexquad.leftBottom;
+    point_t p2 = complexquad.rightTop;
+    point_t p3 = complexquad.rightBottom;
+    point_t p4 = complexquad.leftTop;
+    auto st = [complexquad](point_t &a, point_t &b, point_t &c) {
       return Complexquad().getTriangleArea(a, b, c);
     };
     if (!(st(p1, p2, p3) != 0.0f &&
@@ -123,24 +123,24 @@ namespace anikanov {
   }
 }
 
-float Complexquad::getDistance(PointT fp, PointT sp)
+float Complexquad::getDistance(point_t fp, point_t sp)
 {
   return std::sqrt(std::pow(getDX(fp, sp), 2) + std::pow(getDY(fp, sp), 2));
 }
 
-float Complexquad::getTriangleArea(PointT a, PointT b, PointT c)
+float Complexquad::getTriangleArea(point_t a, point_t b, point_t c)
 {
-  PointT ab(b.x - a.x, b.y - a.y);
-  PointT ac(c.x - a.x, c.y - a.y);
+  point_t ab(b.x - a.x, b.y - a.y);
+  point_t ac(c.x - a.x, c.y - a.y);
   return std::sqrt(powf(ab.x * ac.y - ac.x * ab.y, 2)) / 2.0f;
 }
 
 Complexquad::Complexquad()
 {
-  leftBottom = PointT();
-  leftTop = PointT();
-  rightBottom = PointT();
-  rightTop = PointT();
+  leftBottom = point_t();
+  leftTop = point_t();
+  rightBottom = point_t();
+  rightTop = point_t();
 }
 
 //COMPLEXQUAD -1.0 -2.0 1.0 2.0 1.0 -1.0 -2.0 2.0

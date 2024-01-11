@@ -28,17 +28,17 @@ namespace anikanov {
 
     float getArea();
 
-    RectangleT *getFrameRect();
+    rectangle_t *getFrameRect();
 
-    void move(PointT);
+    void move(point_t);
 
     void move(float x, float y);
 
-    void scale(std::ostream &, PointT, float);
+    void scale(std::ostream &, point_t, float);
 
-    float getDX(PointT fp, PointT sp);
+    float getDX(point_t fp, point_t sp);
 
-    float getDY(PointT fp, PointT sp);
+    float getDY(point_t fp, point_t sp);
 
   };
 }
