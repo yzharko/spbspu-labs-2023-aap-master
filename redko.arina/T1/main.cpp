@@ -1,11 +1,11 @@
-#include "shape.hpp"
-#include "parallelogram.hpp"
-#include "rectangle.hpp"
-#include "concave.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <iomanip>
+#include "shape.hpp"
+#include "parallelogram.hpp"
+#include "rectangle.hpp"
+#include "concave.hpp"
 
 int main()
 {
@@ -29,13 +29,18 @@ int main()
       {
         std::cerr << "no shapes to scale\n";
         delete[] shapes;
-        return 2;
+        return 1;
       }
       double coefficient;
       if (!(shapeStream >> x >> y >> coefficient) || coefficient <= 0)
       {
         std::cerr << "wrong scale parameters\n";
-        return 2;
+        for (int i = 0; i < shapesCounter; i++)
+        {
+          delete shapes[i];
+        }
+        delete[] shapes;
+        return 1;
       }
       double areasSum = 0;
       double scaledAreasSum = 0;
@@ -49,24 +54,24 @@ int main()
       {
         areasSum += shapes[i]->getArea();
         frame = shapes[i]->getFrameRect();
-        frameXY[4 * i] = frame.pos_.x_ - frame.width_ / 2.0;
-        frameXY[4 * i + 1] = frame.pos_.y_ - frame.height_ / 2.0;
-        frameXY[4 * i + 2] = frame.pos_.x_ + frame.width_ / 2.0;
-        frameXY[4 * i + 3] = frame.pos_.y_ + frame.height_ / 2.0;
+        frameXY[4 * i] = frame.pos.x - frame.width / 2.0;
+        frameXY[4 * i + 1] = frame.pos.y - frame.height / 2.0;
+        frameXY[4 * i + 2] = frame.pos.x + frame.width / 2.0;
+        frameXY[4 * i + 3] = frame.pos.y + frame.height / 2.0;
 
         shapes[i]->move({ x, y });
         movedFrame = shapes[i]->getFrameRect();
-        distanceX = (frame.pos_.x_ - movedFrame.pos_.x_) * coefficient;
-        distanceY = (frame.pos_.y_ - movedFrame.pos_.y_) * coefficient;
+        distanceX = (frame.pos.x - movedFrame.pos.x) * coefficient;
+        distanceY = (frame.pos.y - movedFrame.pos.y) * coefficient;
         shapes[i]->scale(coefficient);
         shapes[i]->move(distanceX, distanceY);
 
         scaledAreasSum += shapes[i]->getArea();
         frame = shapes[i]->getFrameRect();
-        scaledFrameXY[4 * i] = frame.pos_.x_ - frame.width_ / 2.0;
-        scaledFrameXY[4 * i + 1] = frame.pos_.y_ - frame.height_ / 2.0;
-        scaledFrameXY[4 * i + 2] = frame.pos_.x_ + frame.width_ / 2.0;
-        scaledFrameXY[4 * i + 3] = frame.pos_.y_ + frame.height_ / 2.0;
+        scaledFrameXY[4 * i] = frame.pos.x - frame.width / 2.0;
+        scaledFrameXY[4 * i + 1] = frame.pos.y - frame.height / 2.0;
+        scaledFrameXY[4 * i + 2] = frame.pos.x + frame.width / 2.0;
+        scaledFrameXY[4 * i + 3] = frame.pos.y + frame.height / 2.0;
       }
       std::cout << std::fixed << std::setprecision(1) << areasSum;
       for (int i = 0; i < shapesCounter * 4; i++)
@@ -92,7 +97,7 @@ int main()
       delete[] scaledFrameXY;
       return 0;
     }
-    points = new redko::point_t[4];
+    points = new redko::point_t[4] {};
     int i = 0;
     bool descr_is_wrong = false;
 
@@ -108,7 +113,7 @@ int main()
         }
         points[i++] = { x, y };
       }
-      if (points[0].x_ > points[1].x_ || points[0].y_ > points[1].y_)
+      if (points[0].x > points[1].x || points[0].y > points[1].y)
       {
         some_descr_is_wrong = true;
       }
@@ -129,7 +134,7 @@ int main()
         }
         points[i++] = { x, y };
       }
-      if (points[0].y_ != points[1].y_ && points[2].y_ != points[0].y_)
+      if (points[0].y != points[1].y && points[2].y != points[0].y)
       {
         some_descr_is_wrong = true;
       }
@@ -150,14 +155,14 @@ int main()
         }
         points[i++] = { x, y };
       }
-      double firstTriangle = points[0].x_ * (points[1].y_ - points[3].y_) + points[1].x_ * (points[3].y_ - points[0].y_);
-      firstTriangle = std::abs((firstTriangle + points[3].x_ * (points[0].y_ - points[1].y_)) / 2.0);
-      double secondTriangle = points[0].x_ * (points[3].y_ - points[2].y_) + points[3].x_ * (points[2].y_ - points[0].y_);
-      secondTriangle = std::abs((secondTriangle + points[2].x_ * (points[0].y_ - points[3].y_)) / 2.0);
-      double thirdTriangle = points[3].x_ * (points[1].y_ - points[2].y_) + points[1].x_ * (points[2].y_ - points[3].y_);
-      thirdTriangle = std::abs((thirdTriangle + points[2].x_ * (points[3].y_ - points[1].y_)) / 2.0);
-      double fourthTriangle = points[0].x_ * (points[1].y_ - points[2].y_) + points[1].x_ * (points[2].y_ - points[0].y_);
-      fourthTriangle = std::abs((fourthTriangle + points[2].x_ * (points[0].y_ - points[1].y_)) / 2.0);
+      double firstTriangle = points[0].x * (points[1].y - points[3].y) + points[1].x * (points[3].y - points[0].y);
+      firstTriangle = std::abs((firstTriangle + points[3].x * (points[0].y - points[1].y)) / 2.0);
+      double secondTriangle = points[0].x * (points[3].y - points[2].y) + points[3].x * (points[2].y - points[0].y);
+      secondTriangle = std::abs((secondTriangle + points[2].x * (points[0].y - points[3].y)) / 2.0);
+      double thirdTriangle = points[3].x * (points[1].y - points[2].y) + points[1].x * (points[2].y - points[3].y);
+      thirdTriangle = std::abs((thirdTriangle + points[2].x * (points[3].y - points[1].y)) / 2.0);
+      double fourthTriangle = points[0].x * (points[1].y - points[2].y) + points[1].x * (points[2].y - points[0].y);
+      fourthTriangle = std::abs((fourthTriangle + points[2].x * (points[0].y - points[1].y)) / 2.0);
       double sumOfTriangles = firstTriangle + secondTriangle + thirdTriangle;
       if (firstTriangle * secondTriangle * thirdTriangle * fourthTriangle == 0 || sumOfTriangles != fourthTriangle)
       {
@@ -180,6 +185,6 @@ int main()
       delete shapes[i];
     }
     delete[] shapes;
-    return 2;
+    return 1;
   }
 }

@@ -2,58 +2,60 @@
 #include <cmath>
 
 redko::Parallelogram::Parallelogram(redko::point_t firstPoint, redko::point_t secondPoint, redko::point_t thirdPoint) :
-  firstPoint_(firstPoint), secondPoint_(secondPoint), thirdPoint_(thirdPoint)
+  firstPoint_(firstPoint),
+  secondPoint_(secondPoint),
+  thirdPoint_(thirdPoint)
 {}
 
 double redko::Parallelogram::getArea() const
 {
   redko::rectangle_t frame = getFrameRect();
-  if (firstPoint_.y_ == secondPoint_.y_)
+  if (firstPoint_.y == secondPoint_.y)
   {
-    return (abs(firstPoint_.x_ - secondPoint_.x_) * frame.height_);
+    return (std::abs(firstPoint_.x - secondPoint_.x) * frame.height);
   }
   else
   {
-    return (abs(firstPoint_.x_ - thirdPoint_.x_) * frame.height_);
+    return (std::abs(firstPoint_.x - thirdPoint_.x) * frame.height);
   }
 }
 
 redko::rectangle_t redko::Parallelogram::getFrameRect() const
 {
-  double width = abs(firstPoint_.x_ - secondPoint_.x_) + abs(firstPoint_.x_ - thirdPoint_.x_);
+  double width = abs(firstPoint_.x - secondPoint_.x) + abs(firstPoint_.x - thirdPoint_.x);
 
   double height = 0;
-  if (firstPoint_.y_ == secondPoint_.y_)
+  if (firstPoint_.y == secondPoint_.y)
   {
-    height = abs(firstPoint_.y_ - thirdPoint_.y_);
+    height = std::abs(firstPoint_.y - thirdPoint_.y);
   }
   else
   {
-    height = abs(firstPoint_.y_ - secondPoint_.y_);
+    height = std::abs(firstPoint_.y - secondPoint_.y);
   }
 
   double x = 0;
-  if (firstPoint_.x_ <= secondPoint_.x_ && firstPoint_.x_ <= thirdPoint_.x_)
+  if (firstPoint_.x <= secondPoint_.x && firstPoint_.x <= thirdPoint_.x)
   {
-    x = firstPoint_.x_ + (width / 2.0);
+    x = firstPoint_.x + (width / 2.0);
   }
-  else if (secondPoint_.x_ <= firstPoint_.x_ && secondPoint_.x_ <= thirdPoint_.x_)
+  else if (secondPoint_.x <= firstPoint_.x && secondPoint_.x <= thirdPoint_.x)
   {
-    x = secondPoint_.x_ + (width / 2.0);
+    x = secondPoint_.x + (width / 2.0);
   }
   else
   {
-    x = thirdPoint_.x_ + (width / 2.0);
+    x = thirdPoint_.x + (width / 2.0);
   }
 
   double y = 0;
-  if (firstPoint_.y_ > secondPoint_.y_ || firstPoint_.y_ > thirdPoint_.y_)
+  if (firstPoint_.y > secondPoint_.y || firstPoint_.y > thirdPoint_.y)
   {
-    y = firstPoint_.y_ - (height / 2.0);
+    y = firstPoint_.y - (height / 2.0);
   }
   else
   {
-    y = firstPoint_.y_ + (height / 2.0);
+    y = firstPoint_.y + (height / 2.0);
   }
 
   return { width, height, { x, y } };
@@ -62,33 +64,33 @@ redko::rectangle_t redko::Parallelogram::getFrameRect() const
 void redko::Parallelogram::move(redko::point_t dest)
 {
   redko::rectangle_t frame = getFrameRect();
-  double xDist = dest.x_ - frame.pos_.x_;
-  double yDist = dest.y_ - frame.pos_.y_;
-  firstPoint_.x_ += xDist;
-  firstPoint_.y_ += yDist;
-  secondPoint_.x_ += xDist;
-  secondPoint_.y_ += yDist;
-  thirdPoint_.x_ += xDist;
-  thirdPoint_.y_ += yDist;
+  double xDist = dest.x - frame.pos.x;
+  double yDist = dest.y - frame.pos.y;
+  firstPoint_.x += xDist;
+  firstPoint_.y += yDist;
+  secondPoint_.x += xDist;
+  secondPoint_.y += yDist;
+  thirdPoint_.x += xDist;
+  thirdPoint_.y += yDist;
 }
 
 void redko::Parallelogram::move(double xDist, double yDist)
 {
-  firstPoint_.x_ += xDist;
-  firstPoint_.y_ += yDist;
-  secondPoint_.x_ += xDist;
-  secondPoint_.y_ += yDist;
-  thirdPoint_.x_ += xDist;
-  thirdPoint_.y_ += yDist;
+  firstPoint_.x += xDist;
+  firstPoint_.y += yDist;
+  secondPoint_.x += xDist;
+  secondPoint_.y += yDist;
+  thirdPoint_.x += xDist;
+  thirdPoint_.y += yDist;
 }
 
 void redko::Parallelogram::scale(double coefficient)
 {
-  rectangle_t frame = getFrameRect();
-  firstPoint_.x_ = frame.pos_.x_ + (firstPoint_.x_ - frame.pos_.x_) * coefficient;
-  firstPoint_.y_ = frame.pos_.y_ + (firstPoint_.y_ - frame.pos_.y_) * coefficient;
-  secondPoint_.x_ = frame.pos_.x_ + (secondPoint_.x_ - frame.pos_.x_) * coefficient;
-  secondPoint_.y_ = frame.pos_.y_ + (secondPoint_.y_ - frame.pos_.y_) * coefficient;
-  thirdPoint_.x_ = frame.pos_.x_ + (thirdPoint_.x_ - frame.pos_.x_) * coefficient;
-  thirdPoint_.y_ = frame.pos_.y_ + (thirdPoint_.y_ - frame.pos_.y_) * coefficient;
+  redko::rectangle_t frame = getFrameRect();
+  firstPoint_.x = frame.pos.x + (firstPoint_.x - frame.pos.x) * coefficient;
+  firstPoint_.y = frame.pos.y + (firstPoint_.y - frame.pos.y) * coefficient;
+  secondPoint_.x = frame.pos.x + (secondPoint_.x - frame.pos.x) * coefficient;
+  secondPoint_.y = frame.pos.y + (secondPoint_.y - frame.pos.y) * coefficient;
+  thirdPoint_.x = frame.pos.x + (thirdPoint_.x - frame.pos.x) * coefficient;
+  thirdPoint_.y = frame.pos.y + (thirdPoint_.y - frame.pos.y) * coefficient;
 }
