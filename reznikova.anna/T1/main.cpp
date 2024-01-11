@@ -98,7 +98,7 @@ int main()
 
       for (int i = 0; i < stored; i++)
       {
-        rectangle_t frame_rect = figures[i]->getFrameRect();
+        reznikova::rectangle_t frame_rect = figures[i]->getFrameRect();
         double lx = frame_rect.pos.x - frame_rect.width/2;
         double ly = frame_rect.pos.y - frame_rect.height/2;
         double rx = frame_rect.pos.x + frame_rect.width/2;
@@ -118,7 +118,7 @@ int main()
 
       for (int i = 0; i < stored; i++)
       {
-        rectangle_t new_frame_rect = figures[i]->getFrameRect();
+        reznikova::rectangle_t new_frame_rect = figures[i]->getFrameRect();
         double lx = new_frame_rect.pos.x - new_frame_rect.width/2;
         double ly = new_frame_rect.pos.y - new_frame_rect.height/2;
         double rx = new_frame_rect.pos.x + new_frame_rect.width/2;
