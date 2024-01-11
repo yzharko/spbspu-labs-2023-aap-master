@@ -17,7 +17,6 @@ int main()
   bool errMark = false;
   size_t figIndex = 0;
 
-  
   if (!scaleMark) {
     std::cerr << "Error: Scale command is missing or incorrect!\n";
     delete[] queue;
