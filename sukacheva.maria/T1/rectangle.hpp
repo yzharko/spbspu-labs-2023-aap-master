@@ -13,7 +13,7 @@ namespace sukacheva
     rectangle_t getFrameRect();
     void move(double x, double y);
     void move(point_t center);
-    void scale(double k);
+    void scale(point_t center, double k);
   private:
     point_t right_point;
     point_t left_point;

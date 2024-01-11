@@ -24,7 +24,7 @@ void sukacheva::Circle::move(point_t center) {
   center_ = center;
 }
 
-void sukacheva::Circle::scale(double k) {
+void sukacheva::Circle::scale(point_t center, double k) {
   radius_ = radius_ * k;
 }
 

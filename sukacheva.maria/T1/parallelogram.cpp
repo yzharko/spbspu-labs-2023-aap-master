@@ -32,7 +32,7 @@ void sukacheva::Parallelogram::move(point_t center) {
 }
 
 
-void sukacheva::Parallelogram::scale(double k)
+void sukacheva::Parallelogram::scale(point_t center, double k)
 {
   double centerX = (A_.x_ + B_.x_) / 2;
   double centerY = (A_.y_ + C_.y_) / 2;
