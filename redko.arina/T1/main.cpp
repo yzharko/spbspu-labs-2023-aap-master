@@ -39,7 +39,10 @@ int main()
       }
       double areasSum = 0;
       double scaledAreasSum = 0;
+      double distanceX = 0;
+      double distanceY = 0;
       redko::rectangle_t frame = {};
+      redko::rectangle_t movedFrame = {};
       double* frameXY = new double[shapesCounter * 4];
       double* scaledFrameXY = new double[shapesCounter * 4];
       for (int i = 0; i < shapesCounter; i++)
@@ -51,7 +54,12 @@ int main()
         frameXY[4 * i + 2] = frame.pos_.x_ + frame.width_ / 2.0;
         frameXY[4 * i + 3] = frame.pos_.y_ + frame.height_ / 2.0;
 
-        shapes[i]->scale({ x, y }, coefficient);
+        shapes[i]->move({ x, y });
+        movedFrame = shapes[i]->getFrameRect();
+        distanceX = (frame.pos_.x_ - movedFrame.pos_.x_) * coefficient;
+        distanceY = (frame.pos_.y_ - movedFrame.pos_.y_) * coefficient;
+        shapes[i]->scale(coefficient);
+        shapes[i]->move(distanceX, distanceY);
 
         scaledAreasSum += shapes[i]->getArea();
         frame = shapes[i]->getFrameRect();
@@ -100,7 +108,11 @@ int main()
         }
         points[i++] = { x, y };
       }
-      if (!descr_is_wrong && i == 2)
+      if (points[0].x_ > points[1].x_ || points[0].y_ > points[1].y_)
+      {
+        some_descr_is_wrong = true;
+      }
+      else if (!descr_is_wrong && i == 2)
       {
         shapes[shapesCounter++] = new redko::Rectangle(points[0], points[1]);
       }

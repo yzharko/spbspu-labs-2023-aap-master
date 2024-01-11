@@ -22,14 +22,15 @@ redko::rectangle_t redko::Concave::getFrameRect() const
   double maxY = std::max(std::max(firstPoint_.y_, secondPoint_.y_), thirdPoint_.y_);
   double minY = std::min(std::min(firstPoint_.y_, secondPoint_.y_), thirdPoint_.y_);
   double height = maxY - minY;
-  return { width, height, fourthPoint_ };
+  double x = minX + width / 2.0;
+  double y = minY + height / 2.0;
+  return { width, height, { x, y } };
 }
 
 void redko::Concave::move(redko::point_t dest)
 {
-  redko::rectangle_t frame = getFrameRect();
-  double xDist = dest.x_ - frame.pos_.x_;
-  double yDist = dest.y_ - frame.pos_.y_;
+  double xDist = dest.x_ - fourthPoint_.x_;
+  double yDist = dest.y_ - fourthPoint_.y_;
   firstPoint_.x_ += xDist;
   firstPoint_.y_ += yDist;
   secondPoint_.x_ += xDist;
@@ -52,14 +53,12 @@ void redko::Concave::move(double xDist, double yDist)
   fourthPoint_.y_ += yDist;
 }
 
-void redko::Concave::scale(redko::point_t pos, double coefficient)
+void redko::Concave::scale(double coefficient)
 {
-  firstPoint_.x_ = (firstPoint_.x_ - pos.x_) * coefficient;
-  firstPoint_.y_ = (firstPoint_.y_ - pos.y_) * coefficient;
-  secondPoint_.x_ = (secondPoint_.x_ - pos.x_) * coefficient;
-  secondPoint_.y_ = (secondPoint_.y_ - pos.y_) * coefficient;
-  thirdPoint_.x_ = (thirdPoint_.x_ - pos.x_) * coefficient;
-  thirdPoint_.y_ = (thirdPoint_.y_ - pos.y_) * coefficient;
-  fourthPoint_.x_ = (fourthPoint_.x_ - pos.x_) * coefficient;
-  fourthPoint_.y_ = (fourthPoint_.y_ - pos.y_) * coefficient;
+  firstPoint_.x_ = fourthPoint_.x_ + (firstPoint_.x_ - fourthPoint_.x_) * coefficient;
+  firstPoint_.y_ = fourthPoint_.y_ + (firstPoint_.y_ - fourthPoint_.y_) * coefficient;
+  secondPoint_.x_ = fourthPoint_.x_ + (secondPoint_.x_ - fourthPoint_.x_) * coefficient;
+  secondPoint_.y_ = fourthPoint_.y_ + (secondPoint_.y_ - fourthPoint_.y_) * coefficient;
+  thirdPoint_.x_ = fourthPoint_.x_ + (thirdPoint_.x_ - fourthPoint_.x_) * coefficient;
+  thirdPoint_.y_ = fourthPoint_.y_ + (thirdPoint_.y_ - fourthPoint_.y_) * coefficient;
 }

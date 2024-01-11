@@ -12,7 +12,7 @@ namespace redko
     rectangle_t getFrameRect() const;
     void move(point_t dest);
     void move(double xDist, double yDist);
-    void scale(point_t pos, double coefficient);
+    void scale(double coefficient);
   protected:
     point_t firstPoint_;
     point_t secondPoint_;

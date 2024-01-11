@@ -82,12 +82,13 @@ void redko::Parallelogram::move(double xDist, double yDist)
   thirdPoint_.y_ += yDist;
 }
 
-void redko::Parallelogram::scale(redko::point_t pos, double coefficient)
+void redko::Parallelogram::scale(double coefficient)
 {
-  firstPoint_.x_ = (firstPoint_.x_ - pos.x_) * coefficient;
-  firstPoint_.y_ = (firstPoint_.y_ - pos.y_) * coefficient;
-  secondPoint_.x_ = (secondPoint_.x_ - pos.x_) * coefficient;
-  secondPoint_.y_ = (secondPoint_.y_ - pos.y_) * coefficient;
-  thirdPoint_.x_ = (thirdPoint_.x_ - pos.x_) * coefficient;
-  thirdPoint_.y_ = (thirdPoint_.y_ - pos.y_) * coefficient;
+  rectangle_t frame = getFrameRect();
+  firstPoint_.x_ = frame.pos_.x_ + (firstPoint_.x_ - frame.pos_.x_) * coefficient;
+  firstPoint_.y_ = frame.pos_.y_ + (firstPoint_.y_ - frame.pos_.y_) * coefficient;
+  secondPoint_.x_ = frame.pos_.x_ + (secondPoint_.x_ - frame.pos_.x_) * coefficient;
+  secondPoint_.y_ = frame.pos_.y_ + (secondPoint_.y_ - frame.pos_.y_) * coefficient;
+  thirdPoint_.x_ = frame.pos_.x_ + (thirdPoint_.x_ - frame.pos_.x_) * coefficient;
+  thirdPoint_.y_ = frame.pos_.y_ + (thirdPoint_.y_ - frame.pos_.y_) * coefficient;
 }
