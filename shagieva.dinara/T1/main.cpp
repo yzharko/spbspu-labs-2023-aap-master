@@ -1,9 +1,31 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cmath>
 #include "rectangle.hpp"
 #include "complexquad.hpp"
 #include "regular.hpp"
+
+bool rectangleIsCorrect(double x1, double y1, double x2, double y2)
+{
+  return x1 < x2 && y1 < y2;
+}
+
+bool complexquadIsCorrect(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4)
+{
+  return ((x3 - x1) / (x2 - x3)) != ((y3 - y1) / (y2 - y3))
+    && ((x4 - x1) / (x2 - x4)) != ((y4 - y1) / (y2 - y4))
+    && ((x1 - x3) / (x4 - x1)) != ((y1 - y3) / (y4 - y1))
+    && ((x2 - x3) / (x4 - x2)) != ((y2 - y3) / (y4 - y2));
+}
+
+bool regularIsCorrect(double x1, double y1, double x2, double y2, double x3, double y3)
+{
+  double a = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
+  double b = (x3 - x2) * (x3 - x2) + (y3 - y2) * (y3 - y2);
+  double c = (x3 - x1) * (x3 - x1) + (y3 - y1) * (y3 - y1);
+  return c == a + b;
+}
 
 int main()
 {
@@ -48,7 +70,7 @@ int main()
     {
       double x1, y1, x2, y2;
       std::cin >> x1 >> y1 >> x2 >> y2;
-      if (x1 < x2 && y1 < y2)
+      if (rectangleIsCorrect(x1, y1, x2, y2))
       {
         shapes[shapeCount++] = new shagieva::Rectangle(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 });
       }
@@ -62,18 +84,32 @@ int main()
     {
       double x1, y1, x2, y2, x3, y3, x4, y4;
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
-      shapes[shapeCount++] = new shagieva::Complexquad(shagieva::point_t{ x1, y1 },
-        shagieva::point_t{ x2, y2 },
-        shagieva::point_t{ x3, y3 },
-        shagieva::point_t{ x4, y4 });
+      if (complexquadIsCorrect(x1, y1, x2, y2, x3, y3, x4, y4))
+      {
+        shapes[shapeCount++] = new shagieva::Complexquad(shagieva::point_t{ x1, y1 },
+          shagieva::point_t{ x2, y2 },
+          shagieva::point_t{ x3, y3 },
+          shagieva::point_t{ x4, y4 });
+      }
+      else
+      {
+        figureIsWrong = true;
+      }
     }
 
     else if (figureType == "REGULAR")
     {
       double x1, y1, x2, y2, x3, y3;
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
-      shapes[shapeCount++] = new shagieva::Regular(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 },
-        shagieva::point_t{ x3, y3 });
+      if (regularIsCorrect(x1, y1, x2, y2, x3, y3))
+      {
+        shapes[shapeCount++] = new shagieva::Regular(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 },
+          shagieva::point_t{ x3, y3 });
+      }
+      else
+      {
+        figureIsWrong = true;
+      }
     }
 
     else
