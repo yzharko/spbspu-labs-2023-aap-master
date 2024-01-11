@@ -135,6 +135,5 @@ int main() {
     std::cerr << "No scale command";
     return 2;
   }
-  };
   return 0;
 }
