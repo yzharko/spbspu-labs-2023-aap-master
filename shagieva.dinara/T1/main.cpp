@@ -22,6 +22,7 @@ int main()
       for (size_t i = 0; i < shapeCount; ++i)
       {
         newShapes[i] = shapes[i];
+        delete[] shapes[i];
       }
       delete[] shapes;
       shapes = newShapes;
@@ -33,6 +34,7 @@ int main()
     if (figureType == "SCALE" && shapeCount == 0)
     {
       std::cerr << "Nothing to scale.\n";
+      delete[] shapes;
       return 1;
     }
 
@@ -83,6 +85,11 @@ int main()
   if (!scaleIsEntered)
   {
     std::cerr << "Scale command is not entered.\n";
+    for (size_t i = 0; i < shapeCount; ++i)
+    {
+      delete shapes[i];
+    }
+    delete[] shapes;
     return 1;
   }
 
