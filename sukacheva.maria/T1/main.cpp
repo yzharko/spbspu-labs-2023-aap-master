@@ -69,6 +69,7 @@ int main() {
     else if (nameOfFigure == "SCALE")
     {
       double x, y, k = 0;
+      std::cin >> x >> y >> k;
       if ( k < 0 || index == 0)
       {
         std::cerr << "Incorrect input of figures";
@@ -77,7 +78,6 @@ int main() {
       else {
         double x1, y1, x2, y2 = 0;
         double x3, y3, x4, y4 = 0;
-        std::cin >> x >> y >> k;
         point_t center{ x, y };
         double firstArea = 0;
         double newArea = 0;
