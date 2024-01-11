@@ -7,8 +7,7 @@ sukacheva::Parallelogram::Parallelogram(point_t A, point_t B, point_t C) :
   B_(B),
   C_(C)
 {
-  double sum = A_.x + A_.y + B_.x + B_.y + C_.x + C_.y;
-  if (sum == 0 || !(A_.y == B_.y || B_.y == C_.y))
+  if ((A_.x == B_.x && A_.y == B_.y && C_.x == A_.x && C_.y == A_.y) || !(A_.y == B_.y || B_.y == C_.y))
   {
     throw std::logic_error("wrong parameters\n");
   }
