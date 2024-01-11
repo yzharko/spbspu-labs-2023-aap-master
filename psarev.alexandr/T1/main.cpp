@@ -37,22 +37,7 @@ int main()
         errMark = true;
       }
     }
-    // else if (keyWord == "TRIANGLE") {
-    //   if ((std::cin >> trianData[0] >> trianData[1] >> trianData[2] >> trianData[3] >> trianData[4] >> trianData[5])) {
-    //     double firEdge = (sqrt(pow(trianData[2] - trianData[0], 2) + pow(trianData[3] - trianData[1], 2)));
-    //     double secEdge = (sqrt(pow(trianData[4] - trianData[2], 2) + pow(trianData[5] - trianData[3], 2)));
-    //     double thirEdge = (sqrt(pow(trianData[4] - trianData[0], 2) + pow(trianData[5] - trianData[1], 2)));
-    //     bool result = 0;
-    //     result = (firEdge + secEdge > thirEdge) && (firEdge + thirEdge > secEdge) && (secEdge + secEdge > firEdge);
-    //     if (result) {
-    //       queue[figIndex++] = 't';
-    //     } else {
-    //       errMark = true;
-    //     }
-    //   } else {
-    //     errMark = true;
-    //   }
-    // }
+    
     else if (keyWord == "SCALE") {
       if (figIndex == 0) {
         std::cerr << "Error: There is no descriptions of the supported figures!\n";
