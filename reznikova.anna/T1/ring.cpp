@@ -47,7 +47,7 @@ void reznikova::Ring::scale(double n)
   r2_ *= n;
 }
 
-void reznikova::Ring::newscale(point_t scale_center, double n)
+void reznikova::Ring::scale(point_t scale_center, double n)
 {
   r1_ *= n;
   r2_ *= n;

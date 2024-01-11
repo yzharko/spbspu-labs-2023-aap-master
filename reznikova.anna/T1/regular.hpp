@@ -18,7 +18,7 @@ namespace reznikova
     void move(double dx, double dy) override;
     void move(point_t new_center) override;
     void scale(double n) override;
-    void newscale(point_t center, double n) override;
+    void scale(point_t center, double n) override;
   private:
     point_t center_;
     point_t point1_;

@@ -59,7 +59,7 @@ void reznikova::Rectangle::scale(double n)
   rightpoint_.y += height/2*(n-1);
 }
 
-void reznikova::Rectangle::newscale(point_t scale_center, double n)
+void reznikova::Rectangle::scale(point_t scale_center, double n)
 {
   double lp_dx = leftpoint_.x - scale_center.x;
   double lp_dy = leftpoint_.y - scale_center.y;

@@ -53,7 +53,7 @@ void reznikova::Regular::scale(double n)
   point2_.y *= n;
 }
 
-void reznikova::Regular::newscale(point_t center, double n)
+void reznikova::Regular::scale(point_t center, double n)
 {
   double p1_dx = point1_.x - center.x;
   double p1_dy = point1_.y - center.y;
