@@ -21,9 +21,6 @@ int main()
       {
         std::cerr << "cannot read an input\n";
       }
-      point_t lpos(lx, ly);
-      point_t rpos(rx, ry);
-      Rectangle rectangle(lpos, rpos);
     }
     else if (figure == "SQUARE")
     {
