@@ -18,10 +18,13 @@ int main()
   size_t figIndex = 0;
 
   while (std::cin >> keyWord) {
-    if (keyWord == "RING") {
-      if ((std::cin >> ringData[0] >> ringData[1] >> ringData[2] >> ringData[3])\
-      && ((ringData[2] > 0) && (ringData[3] > 0) && (ringData[2] > ringData[3]))) {
-        queue[figIndex++] = 'i';
+    if (keyWord == "RECTANGLE") {
+      if ((std::cin >> rectData[0] >> rectData[1] >> rectData[2] >> rectData[3])) {
+        if ((rectData[0] < rectData[2]) && (rectData[1] < rectData[3])) {
+          queue[figIndex++] = 'r';
+        } else {
+          errMark = true;
+        }
       } else {
         errMark = true;
       }
