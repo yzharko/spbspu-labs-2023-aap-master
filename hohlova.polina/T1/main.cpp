@@ -17,9 +17,17 @@ int main()
     {
       double lx, ly, rx, ry;
       std::cin >> lx >> ly >> rx >> ry;
-      if (!std::cin)
+      try
       {
-        std::cerr << "cannot read an input\n";
+        point_t lpos = { lx, ly };
+        point_t rpos = { rx, ry };
+        Shape* rectangle = new Rectangle(lpos, rpos);
+        figures[figuresCount] = rectangle;
+        figuresCount++;
+      }
+      catch (const std::exception& ex)
+      {
+        std::cerr << ex.what();
       }
     }
     else if (figure == "SQUARE")
