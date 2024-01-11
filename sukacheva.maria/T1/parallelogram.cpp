@@ -34,12 +34,19 @@ void sukacheva::Parallelogram::move(point_t center) {
 
 void sukacheva::Parallelogram::scale(point_t center, double k)
 {
-  double centerX = (A_.x_ + B_.x_) / 2;
-  double centerY = (A_.y_ + C_.y_) / 2;
+  double xSideA = A_.x_ - center.x_;
+  double ySideA = A_.y_ - center.y_;
+  double xSideB = B_.x_ - center.x_;
+  double ySideB = B_.y_ - center.y_;
+  double xSideC = C_.x_ - center.x_;
+  double ySideC = C_.y_ - center.y_;
 
-  A_ = point_t((centerX + (A_.x_ - centerX) * k), (centerY + (A_.y_ - centerY) * k));
-  B_ = point_t((centerX + (B_.x_ - centerX) * k), (centerY + (B_.y_ - centerY) * k));
-  C_ = point_t((centerX + (C_.x_ - centerX) * k), (centerY + (C_.y_ - centerY) * k));
+  A_.x_ += xSideA * k;
+  A_.y_ += ySideA * k;
+  B_.x_ += xSideB * k;
+  B_.y_ += ySideB * k;
+  C_.x_ += xSideC * k;
+  C_.y_ += ySideC * k;
 }
 
 sukacheva::rectangle_t sukacheva::Parallelogram::getFrameRect()
