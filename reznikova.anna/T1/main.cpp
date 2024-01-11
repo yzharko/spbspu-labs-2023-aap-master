@@ -98,9 +98,12 @@ int main()
 
       for (int i = 0; i < stored; i++)
       {
-        reznikova::rectangle_t frame_rect = figures[i]->getFrameRect();
-        std::cout << frame_rect.leftpoint.x << " " << frame_rect.leftpoint.y << " ";
-        std::cout << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << " ";
+        rectangle_t frame_rect = figures[i]->getFrameRect();
+        double lx = frame_rect.pos.x - frame_rect.width/2;
+        double ly = frame_rect.pos.y - frame_rect.height/2;
+        double rx = frame_rect.pos.x + frame_rect.width/2;
+        double ry = frame_rect.pos.y + frame_rect.height/2;
+        std::cout << lx << " " << ly << " " << rx << " " << ry << " ";
       }
       std::cout << "\n";
 
@@ -115,9 +118,12 @@ int main()
 
       for (int i = 0; i < stored; i++)
       {
-        reznikova::rectangle_t frame_rect = figures[i]->getFrameRect();
-        std::cout << frame_rect.leftpoint.x << " " << frame_rect.leftpoint.y << " ";
-        std::cout << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << " ";
+        rectangle_t new_frame_rect = figures[i]->getFrameRect();
+        double lx = new_frame_rect.pos.x - new_frame_rect.width/2;
+        double ly = new_frame_rect.pos.y - new_frame_rect.height/2;
+        double rx = new_frame_rect.pos.x + new_frame_rect.width/2;
+        double ry = new_frame_rect.pos.y + new_frame_rect.height/2;
+        std::cout << lx << " " << ly << " " << rx << " " << ry << " ";
       }
       std::cout << "\n";
 
