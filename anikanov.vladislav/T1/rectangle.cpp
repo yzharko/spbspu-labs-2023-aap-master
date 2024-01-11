@@ -35,7 +35,7 @@ PointT Rectangle::getCPoint() const
   return cPoint;
 }
 
-long long Rectangle::getArea()
+float Rectangle::getArea()
 {
   return width * height;
 }
@@ -55,7 +55,7 @@ void Rectangle::move(float x, float y)
   cPoint = PointT(x, y);
 }
 
-void Rectangle::scale(float k)
+void Rectangle::scale(float k, PointT)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");

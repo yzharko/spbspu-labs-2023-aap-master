@@ -76,11 +76,11 @@ RectangleT::RectangleT(PointT pos, float width, float height)
 namespace anikanov {
   std::ostream &operator<<(std::ostream &out, const RectangleT &rec)
   {
-    PointT point(rec.pos.x - rec.width / 2, rec.pos.y - rec.height / 2);
+    PointT point(rec.pos.x - rec.width / 2.0f, rec.pos.y - rec.height / 2.0f);
     out << std::fixed << std::setprecision(1);
     out << point.x << " " << point.y;
     out << " ";
-    point = PointT(rec.pos.x + rec.width / 2, rec.pos.y + rec.height / 2);
+    point = PointT(rec.pos.x + rec.width / 2.0f, rec.pos.y + rec.height / 2.0f);
     out << point.x << " " << point.y;
     return out;
   }

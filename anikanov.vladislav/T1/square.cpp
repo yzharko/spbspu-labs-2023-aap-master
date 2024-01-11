@@ -24,7 +24,7 @@ PointT Square::getCPoint() const
   return cPoint;
 }
 
-long long Square::getArea()
+float Square::getArea()
 {
   return side * side;
 }
@@ -44,7 +44,7 @@ void Square::move(float x, float y)
   cPoint = PointT(x, y);
 }
 
-void Square::scale(float k)
+void Square::scale(float k, PointT point)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");

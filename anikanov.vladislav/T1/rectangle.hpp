@@ -24,7 +24,7 @@ namespace anikanov {
 
     PointT getCPoint() const;
 
-    long long getArea() override;
+    float getArea() override;
 
     RectangleT getFrameRect() override;
 
@@ -32,7 +32,7 @@ namespace anikanov {
 
     void move(float x, float y) override;
 
-    void scale(float) override;
+    void scale(float, PointT point = PointT(0, 0)) override;
 
     friend std::istream &operator>>(std::istream &, Rectangle &);
   };

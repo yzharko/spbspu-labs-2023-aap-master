@@ -8,7 +8,7 @@ namespace anikanov {
 
   class Complexquad : public Shape {
   public:
-    PointT point1, point2, point3, point4, cPoint;
+    PointT leftBottom, leftTop, rightTop, rightBottom, cPoint;
 
     explicit Complexquad();
 
@@ -16,7 +16,7 @@ namespace anikanov {
 
     PointT getCPoint() const;
 
-    long long getArea() override;
+    float getArea() override;
 
     RectangleT getFrameRect() override;
 
@@ -24,7 +24,7 @@ namespace anikanov {
 
     void move(float x, float y) override;
 
-    void scale(float) override;
+    void scale(float, PointT point) override;
 
     friend std::istream &operator>>(std::istream &, Complexquad &);
 

@@ -9,7 +9,7 @@ namespace anikanov {
   public:
     virtual ~Shape() = default;
 
-    virtual long long getArea() = 0;
+    virtual float getArea() = 0;
 
     virtual RectangleT getFrameRect() = 0;
 
@@ -19,7 +19,7 @@ namespace anikanov {
 
     virtual PointT getCPoint() const = 0;
 
-    virtual void scale(float) = 0;
+    virtual void scale(float, PointT) = 0;
   };
 }
 
