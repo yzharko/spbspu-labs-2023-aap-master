@@ -12,11 +12,11 @@ namespace miheev
   public:
     Rectangle(point_t* points);
 
-    virtual double getArea() const;
-    virtual rectangle_t getFrameRect() const;
-    virtual void move(point_t);
-    virtual void move(double dx, double dy);
-    virtual void scale(double);
+    double getArea() const override;
+    rectangle_t getFrameRect() const override;
+    void move(point_t) override;
+    void move(double dx, double dy) override;
+    void scale(double) override;
 
   private:
     point_t* points[4];
