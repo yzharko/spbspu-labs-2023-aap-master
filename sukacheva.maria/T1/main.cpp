@@ -73,6 +73,10 @@ int main() {
       if ( k < 0 || index == 0)
       {
         std::cerr << "Incorrect input of figures";
+        for (int i = 0; i < index; i++)
+        {
+          delete figures[i];
+        }
         return 2;
       }
       else {
