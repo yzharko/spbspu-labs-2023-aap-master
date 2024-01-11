@@ -18,7 +18,26 @@ int main()
   size_t figIndex = 0;
 
   while (std::cin >> keyWord) {
-    if (keyWord == "TRIANGLE") {
+    if (keyWord == "RECTANGLE") {
+      if ((std::cin >> rectData[0] >> rectData[1] >> rectData[2] >> rectData[3])) {
+        if ((rectData[0] < rectData[2]) && (rectData[1] < rectData[3])) {
+          queue[figIndex++] = 'r';
+        } else {
+          errMark = true;
+        }
+      } else {
+        errMark = true;
+      }
+    }
+    else if (keyWord == "RING") {
+      if ((std::cin >> ringData[0] >> ringData[1] >> ringData[2] >> ringData[3])\
+      && ((ringData[2] > 0) && (ringData[3] > 0) && (ringData[2] > ringData[3]))) {
+        queue[figIndex++] = 'i';
+      } else {
+        errMark = true;
+      }
+    }
+    else if (keyWord == "TRIANGLE") {
       if ((std::cin >> trianData[0] >> trianData[1] >> trianData[2] >> trianData[3] >> trianData[4] >> trianData[5])) {
         double firEdge = (sqrt(pow(trianData[2] - trianData[0], 2) + pow(trianData[3] - trianData[1], 2)));
         double secEdge = (sqrt(pow(trianData[4] - trianData[2], 2) + pow(trianData[5] - trianData[3], 2)));
@@ -55,8 +74,45 @@ int main()
         size_t newCoosNum = 0;
 
         for (size_t i = 0; i < figIndex; i++) {
+          if (queue[i] == 'r') {
+            psarev::Rectangle taskRect({ rectData[0], rectData[1]}, { rectData[2], rectData[3] });
+            psarev::rectangle_t taskRectFrame = taskRect.getFrameRect();
+            prevAreaSum += taskRectFrame.width * taskRectFrame.height;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.x - (taskRectFrame.width / 2);
+            prevCoosNum++;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.y - (taskRectFrame.height / 2);
+            prevCoosNum++;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.x + (taskRectFrame.width / 2);
+            prevCoosNum++;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.y + (taskRectFrame.height / 2);
+            prevCoosNum++;
+            taskRect.move(0 - scaleCenter.x, 0 - scaleCenter.y);
+            taskRect.scale(coef);
+            taskRectFrame = taskRect.getFrameRect();
+            newAreaSum += taskRectFrame.width * taskRectFrame.height;
+            newFramesData[newCoosNum] = taskRectFrame.pos.x - (taskRectFrame.width / 2);
+            newCoosNum++;
+            newFramesData[newCoosNum] = taskRectFrame.pos.y - (taskRectFrame.height / 2);
+            newCoosNum++;
+            newFramesData[newCoosNum] = taskRectFrame.pos.x + (taskRectFrame.width / 2);
+            newCoosNum++;
+            newFramesData[newCoosNum] = taskRectFrame.pos.y + (taskRectFrame.height / 2);
+            newCoosNum++;
+          }
         }
         std::cout << std::fixed << std::setprecision(1);
+        std::cout << prevAreaSum << ' ';
+        for (size_t i = 0; i < prevCoosNum; i++) {
+          std::cout << prevFramesData[i] << ' ';
+        }
+        std::cout << '\n';
+        std::cout << newAreaSum << ' ';
+        for (size_t i = 0; i < newCoosNum; i++) {
+          std::cout << newFramesData[i] << ' ';
+        }
+        std::cout << '\n';
+        delete[] prevFramesData;
+        delete[] newFramesData;
       }
     }
   }
