@@ -41,7 +41,7 @@ rectangle_t Complexquad::getFrameRect() const
   return rectangle_t(point_t(leftMax + width / 2.0f, bottomMax + height / 2.0f), width, height);
 }
 
-void Complexquad::move(const point_t const newCPoint)
+void Complexquad::move(const point_t newCPoint)
 {
   float dx = getDX(cPoint, newCPoint);
   float dy = getDY(cPoint, newCPoint);

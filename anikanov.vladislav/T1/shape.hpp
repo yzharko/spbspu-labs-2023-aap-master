@@ -17,7 +17,7 @@ namespace anikanov {
 
     virtual void move(const float x, const float y) = 0;
 
-    virtual point_t getCPoint() = 0;
+    virtual point_t getCPoint() const = 0;
 
     virtual void scale(const float, const point_t) = 0;
 
