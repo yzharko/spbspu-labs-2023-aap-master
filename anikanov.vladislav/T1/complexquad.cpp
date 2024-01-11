@@ -68,7 +68,7 @@ void Complexquad::move(const float x, const float y)
   move(newCPoint);
 }
 
-void Complexquad::scale(const float k, const point_t center)
+void Complexquad::scale(const double k, const point_t center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");

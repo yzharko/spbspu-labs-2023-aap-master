@@ -27,7 +27,7 @@ namespace anikanov {
 
     void move(const float x, const float y) override;
 
-    void scale(const float, const point_t center = point_t(0, 0)) override;
+    void scale(const double, const point_t center = point_t(0, 0)) override;
 
     friend std::istream &operator>>(std::istream &, Square &);
   };

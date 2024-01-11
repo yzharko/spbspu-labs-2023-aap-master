@@ -24,7 +24,7 @@ namespace anikanov {
 
     void move(const float x, const float y) override;
 
-    void scale(const float, const point_t point) override;
+    void scale(const double, const point_t point) override;
 
     friend std::istream &operator>>(std::istream &, Complexquad &);
 
