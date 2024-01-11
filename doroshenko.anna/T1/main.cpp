@@ -8,7 +8,7 @@
 int main()
 {
   using namespace doroshenko;
-  std::string figure;
+  std::string figure = "";
   size_t countFig = 0;
   Shape* geometricFigures[1000] = { 0 };
   while (std::cin>>figure)
@@ -129,12 +129,13 @@ int main()
         std::cout << "\n";
       }
     }
+    break;
   }
   if(countFig > 0)
   {
     for (size_t i = 0; i < countFig; i++)
     {
-      delete[] geometricFigures[i];
+      delete geometricFigures[i];
     }
   }
 }
