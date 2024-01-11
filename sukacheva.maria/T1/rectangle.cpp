@@ -39,10 +39,10 @@ void sukacheva::Rectangle::scale(point_t center, double k) {
   double xSideRight = right_point.x_ - center.x_;
   double ySideRight = right_point.y_ - center.y_;
 
-  right_point.x_ += xSideRight * k;
-  right_point.y_ += ySideRight * k;
-  left_point.x_ += xSideLeft * k;
-  left_point.y_ += ySideLeft * k;
+  right_point.x_ = center.x_ + xSideRight * k;
+  right_point.y_ = center.y_ + ySideRight * k;
+  left_point.x_ = center.x_ + xSideLeft * k;
+  left_point.y_ = center.y_ + ySideLeft * k;
 
 }
 

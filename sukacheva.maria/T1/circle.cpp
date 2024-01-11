@@ -27,8 +27,8 @@ void sukacheva::Circle::move(point_t center) {
 void sukacheva::Circle::scale(point_t scaleCenter, double k) {
   double xSide = center_.x_ - scaleCenter.x_;
   double ySide = center_.y_ - scaleCenter.y_;
-  center_.x_ += xSide * k;
-  center_.y_ += ySide * k;
+  center_.x_ = scaleCenter.x_ + xSide * k;
+  center_.y_ = scaleCenter.y_ + ySide * k;
   radius_ = radius_ * k;
 }
 
