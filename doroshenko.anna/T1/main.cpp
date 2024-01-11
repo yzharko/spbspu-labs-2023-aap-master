@@ -12,7 +12,7 @@ int main()
   size_t size = 20;
   size_t plusSize = 20;
   size_t countFig = 0;
-  Shape** geometricFigures = new Shape * [size];
+  Shape** geometricFigures = new Shape *[size];
   while (std::cin>>figure && !std::cin.eof())
   {
     if (figure == "RECTANGLE")
@@ -85,44 +85,51 @@ int main()
       double posx, posy, coefficient;
       double xL, yL, xR, yR;
       std::cin >> posx >> posy >> coefficient;
-      double sumAreaBefore = 0;
-      for (size_t i = 0; i < countFig; i++)
+      if (!std::cin || coefficient < 0)
       {
-        sumAreaBefore += geometricFigures[i]->getArea();
+        std::cerr << "Wrong scale parameters\n";
+        return 1;
       }
-      std::cout << std::fixed << std::setprecision(1) << sumAreaBefore << ' ';
-      for (size_t j = 0; j < countFig; j++)
+      else
       {
-        rectangle_t frame = geometricFigures[j]->getFrameRect();
-        xL = frame.pos_.x_ - 0.5 * frame.width_;
-        yL = frame.pos_.y_ - 0.5 * frame.height_;
-        xR = frame.pos_.x_ + 0.5 * frame.width_;
-        yR = frame.pos_.y_ + 0.5 * frame.height_;
-        //std::cout << frame.pos_.x_ << ' ' << frame.pos_.y_ << ' ' << frame.width_ << ' ' << frame.height_;
-        std::cout << std::fixed << std::setprecision(1) << xL << ' ' << yL << ' ' << xR << ' ' << yR << ' ';
+        double sumAreaBefore = 0;
+        for (size_t i = 0; i < countFig; i++)
+        {
+          sumAreaBefore += geometricFigures[i]->getArea();
+        }
+        std::cout << std::fixed << std::setprecision(1) << sumAreaBefore << ' ';
+        for (size_t j = 0; j < countFig; j++)
+        {
+          rectangle_t frame = geometricFigures[j]->getFrameRect();
+          xL = frame.pos_.x_ - 0.5 * frame.width_;
+          yL = frame.pos_.y_ - 0.5 * frame.height_;
+          xR = frame.pos_.x_ + 0.5 * frame.width_;
+          yR = frame.pos_.y_ + 0.5 * frame.height_;
+          std::cout << std::fixed << std::setprecision(1) << xL << ' ' << yL << ' ' << xR << ' ' << yR << ' ';
+        }
+        std::cout << "\n";
+        for (size_t k = 0; k < countFig; k++)
+        {
+          geometricFigures[k]->move({ 0 - posx, 0 - posy });
+          geometricFigures[k]->scale(coefficient);
+        }
+        double sumAreaAfter = 0;
+        for (size_t i = 0; i < countFig; i++)
+        {
+          sumAreaAfter += geometricFigures[i]->getArea();
+        }
+        std::cout << std::fixed << std::setprecision(1) << sumAreaAfter << ' ';
+        for (size_t j = 0; j < countFig; j++)
+        {
+          rectangle_t frame = geometricFigures[j]->getFrameRect();
+          xL = frame.pos_.x_ - 0.5 * frame.width_;
+          yL = frame.pos_.y_ - 0.5 * frame.height_;
+          xR = frame.pos_.x_ + 0.5 * frame.width_;
+          yR = frame.pos_.y_ + 0.5 * frame.height_;
+          std::cout << std::fixed << std::setprecision(1) << xL << ' ' << yL << ' ' << xR << ' ' << yR << ' ';
+        }
+        std::cout << "\n";
       }
-      std::cout << "\n";
-      for (size_t k = 0; k < countFig; k++)
-      {
-        geometricFigures[k]->move({ posx, posy });
-        geometricFigures[k]->scale(coefficient);
-      }
-      double sumAreaAfter = 0;
-      for (size_t i = 0; i < countFig; i++)
-      {
-        sumAreaAfter += geometricFigures[i]->getArea();
-      }
-      std::cout << std::fixed << std::setprecision(1) << sumAreaAfter << ' ';
-      for (size_t j = 0; j < countFig; j++)
-      {
-        rectangle_t frame = geometricFigures[j]->getFrameRect();
-        xL = frame.pos_.x_ - 0.5 * frame.width_;
-        yL = frame.pos_.y_ - 0.5 * frame.height_;
-        xR = frame.pos_.x_ + 0.5 * frame.width_;
-        yR = frame.pos_.y_ + 0.5 * frame.height_;
-        std::cout << std::fixed << std::setprecision(1) << xL << ' ' << yL << ' ' << xR << ' ' << yR << ' ';
-      }
-      std::cout << "\n";
     }
 
     if (countFig == size)
@@ -143,9 +150,16 @@ int main()
       size = newSize;
     }
   }
-  for (size_t i = 0; i < size; i++)
+  if(countFig > 0)
   {
-    delete[] geometricFigures[i];
+    for (size_t i = 0; i < countFig; i++)
+    {
+      delete[] geometricFigures[i];
+    }
+    delete[] geometricFigures;
   }
-  delete[] geometricFigures;
+  else
+  {
+    delete[] geometricFigures;
+  }
 }
