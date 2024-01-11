@@ -1,52 +1,124 @@
 #include <iostream>
+#include <sstream>
+#include <vector>
+#include <iomanip>
 #include "rectangle.hpp"
 #include "ring.hpp"
 #include "triangle.hpp"
 
 int main()
 {
-  psarev::Rectangle testRect({ 1.0, 1.0 }, { 3.0, 4.0 });
-  rectangle_t testRectFrame = testRect.getFrameRect();
-  std::cout << "Area - " << testRect.getArea() << '\n';
+  std::string keyWord = "";
+  std::vector<double> rectData(4);
+  std::vector<double> ringData(4);
+  std::vector<double> trianData(6);
+  char* queue = new char[3] {};
+  bool scaleMark = false;
+  bool errMark = false;
+  size_t figIndex = 0;
 
-  testRect.move({ 5.0, 2.0 });
-  testRectFrame = testRect.getFrameRect();
-  std::cout << "New center in { " << testRectFrame.pos.x << ", " << testRectFrame.pos.y << " }\n";
+  while (std::cin >> keyWord) {
+    if (keyWord == "RECTANGLE") {
+      if ((std::cin >> rectData[0] >> rectData[1] >> rectData[2] >> rectData[3]) && ((rectData[0] < rectData[2]) && (rectData[1] < rectData[3]))) {
+        queue[figIndex++] = 'r';
+      } else {
+        errMark = true;
+      }
+    }
+    else if (keyWord == "RING") {
+      if ((std::cin >> ringData[0] >> ringData[1] >> ringData[2] >> ringData[3]) && ((ringData[2] > 0) && (ringData[3] > 0) && (ringData[2] > ringData[3]))) {
+        queue[figIndex++] = 'i';
+      } else {
+        errMark = true;
+      }
+    }
+    else if (keyWord == "TRIANGLE") {
+      if ((std::cin >> trianData[0] >> trianData[1] >> trianData[2] >> trianData[3] >> trianData[4] >> trianData[5])) {
+        double firEdge = (sqrt(pow(trianData[2] - trianData[0], 2) + pow(trianData[3] - trianData[1], 2)));
+        double secEdge = (sqrt(pow(trianData[4] - trianData[2], 2) + pow(trianData[5] - trianData[3], 2)));
+        double thirEdge = (sqrt(pow(trianData[4] - trianData[0], 2) + pow(trianData[5] - trianData[1], 2)));
+        bool result = 0;
+        result = (firEdge + secEdge > thirEdge) && (firEdge + thirEdge > secEdge) && (secEdge + secEdge > firEdge);
+        if (result) {
+          queue[figIndex++] = 't';
+        } else {
+          errMark = true;
+        }
+      } else {
+        errMark = true;
+      }
+    }
+    else if (keyWord == "SCALE") {
+      if (figIndex == 0) {
+        std::cerr << "Error: There is no descriptions of the supported figures!\n";
+        delete[] queue;
+        return 1;
+      }
 
-  testRect.move(4, -3);
-  testRectFrame = testRect.getFrameRect();
-  std::cout << "New center in { " << testRectFrame.pos.x << ", " << testRectFrame.pos.y << " }\n";
+      psarev::point_t scaleCenter = {};
+      double coef = 0.0;
 
-  testRect.scale(4.0);
-  std::cout << "New area - " << testRect.getArea() << '\n';
+      if ((std::cin >> scaleCenter.x >> scaleCenter.y >> coef) && (coef > 0)) {
+        scaleMark = true;
 
-  psarev::Ring testRing({ 2.0, 3.0 }, 20.0, 15.0);
-  rectangle_t testRingFrame = testRing.getFrameRect();
-  std::cout << "Area - " << testRing.getArea() << '\n';
+        double prevAreaSum = 0.0;
+        double newAreaSum = 0.0;
+        double* prevFramesData = new double[12] {};
+        double* newFramesData = new double[12] {};
+        size_t prevCoosNum = 0;
+        size_t newCoosNum = 0;
 
-  testRing.move({ 5.0, 2.0 });
-  testRingFrame = testRing.getFrameRect();
-  std::cout << "New center in { " << testRingFrame.pos.x << ", " << testRingFrame.pos.y << " }\n";
-
-  testRing.move(4, -3);
-  testRingFrame = testRing.getFrameRect();
-  std::cout << "New center in { " << testRingFrame.pos.x << ", " << testRingFrame.pos.y << " }\n";
-
-  testRing.scale(4.0);
-  std::cout << "New area - " << testRing.getArea() << '\n';
-
-  psarev::Triangle testTrian({ 0.0, 0.0 }, { 1.0, 1.0 }, { 0.0, 1.0 });
-  rectangle_t testTrianFrame = testTrian.getFrameRect();
-  std::cout << "Area - " << testTrian.getArea() << '\n';
-
-  testTrian.move({ 5.0, 2.0 });
-  testTrianFrame = testTrian.getFrameRect();
-  std::cout << "New center in { " << testTrianFrame.pos.x << ", " << testTrianFrame.pos.y << " }\n";
-
-  testTrian.move(4, -3);
-  testTrianFrame = testTrian.getFrameRect();
-  std::cout << "New center in { " << testTrianFrame.pos.x << ", " << testTrianFrame.pos.y << " }\n";
-
-  testTrian.scale(4.0);
-  std::cout << "New area - " << testTrian.getArea() << '\n';
+        for (size_t i = 0; i < figIndex; i++) {
+          if (queue[i] == 'r') {
+            psarev::Rectangle taskRect({ rectData[0], rectData[1]}, { rectData[2], rectData[3] });
+            psarev::rectangle_t taskRectFrame = taskRect.getFrameRect();
+            prevAreaSum += taskRectFrame.width * taskRectFrame.height;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.x - (taskRectFrame.width / 2);
+            prevCoosNum++;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.y - (taskRectFrame.height / 2);
+            prevCoosNum++;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.x + (taskRectFrame.width / 2);
+            prevCoosNum++;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.y + (taskRectFrame.height / 2);
+            prevCoosNum++;
+            taskRect.move(0 - scaleCenter.x, 0 - scaleCenter.y);
+            taskRect.scale(coef);
+            taskRectFrame = taskRect.getFrameRect();
+            newAreaSum += taskRectFrame.width * taskRectFrame.height;
+            newFramesData[newCoosNum] = taskRectFrame.pos.x - (taskRectFrame.width / 2);
+            newCoosNum++;
+            newFramesData[newCoosNum] = taskRectFrame.pos.y - (taskRectFrame.height / 2);
+            newCoosNum++;
+            newFramesData[newCoosNum] = taskRectFrame.pos.x + (taskRectFrame.width / 2);
+            newCoosNum++;
+            newFramesData[newCoosNum] = taskRectFrame.pos.y + (taskRectFrame.height / 2);
+            newCoosNum++;
+          }
+        }
+        std::cout << std::fixed << std::setprecision(1);
+        std::cout << prevAreaSum << ' ';
+        for (size_t i = 0; i < prevCoosNum; i++) {
+          std::cout << prevFramesData[i] << ' ';
+        }
+        std::cout << '\n';
+        std::cout << newAreaSum << ' ';
+        for (size_t i = 0; i < newCoosNum; i++) {
+          std::cout << newFramesData[i] << ' ';
+        }
+        std::cout << '\n';
+        delete[] prevFramesData;
+        delete[] newFramesData;
+      }
+    }
+  }
+  if (!scaleMark) {
+    std::cerr << "Error: Scale command is missing or incorrect!\n";
+    delete[] queue;
+    return 1;
+  }
+  if (errMark) {
+    std::cerr << "Error: One or more supported shapes are not specified correctly!\n";
+  }
+  delete[] queue;
+  return 0;
 }

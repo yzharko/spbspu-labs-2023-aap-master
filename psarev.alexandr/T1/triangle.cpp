@@ -1,13 +1,14 @@
 #include "triangle.hpp"
-#include <cmath>
 
-psarev::Triangle::Triangle(point_t firPoint, point_t secPoint, point_t thirPoint) :
+using namespace psarev;
+
+Triangle::Triangle(point_t firPoint, point_t secPoint, point_t thirPoint) :
   firCorner(firPoint), secCorner(secPoint), thirCorner(thirPoint)
 {
   center = { ((firCorner.x + secCorner.x + thirCorner.x) / 3), ((firCorner.y + secCorner.y + thirCorner.y) / 3) };
 }
 
-rectangle_t psarev::Triangle::getFrameRect()
+rectangle_t Triangle::getFrameRect()
 {
   double maxX = 0;
   maxX = fmax(firCorner.x, secCorner.x);
@@ -28,12 +29,12 @@ rectangle_t psarev::Triangle::getFrameRect()
   return { width, height, { (maxX - minX) * 0.5, (maxY - minY) * 0.5 } };
 }
 
-double psarev::Triangle::getArea()
+double Triangle::getArea()
 {
   return (0.5 * abs((secCorner.x - firCorner.x) * (thirCorner.y - firCorner.y) - (thirCorner.x - firCorner.x) * (secCorner.y - firCorner.y)));
 }
 
-void psarev::Triangle::move(point_t newCenter)
+void Triangle::move(point_t newCenter)
 {
   double xCh = newCenter.x - ((firCorner.x + secCorner.x + thirCorner.x) / 3);
   double yCh = newCenter.y - ((firCorner.y + secCorner.y + thirCorner.y) / 3);
@@ -43,7 +44,7 @@ void psarev::Triangle::move(point_t newCenter)
   center = newCenter;
 }
 
-void psarev::Triangle::move(double xCh, double yCh)
+void Triangle::move(double xCh, double yCh)
 {
   firCorner = { firCorner.x + xCh, firCorner.y + yCh };
   secCorner = { secCorner.x + xCh, secCorner.y + yCh };
@@ -51,7 +52,7 @@ void psarev::Triangle::move(double xCh, double yCh)
   center = { ((firCorner.x + secCorner.x + thirCorner.x) / 3), ((firCorner.y + secCorner.y + thirCorner.y) / 3) };
 }
 
-void psarev::Triangle::scale(double coef)
+void Triangle::scale(double coef)
 {
   firCorner = { firCorner.x * coef, firCorner.y * coef };
   secCorner = { secCorner.x * coef, secCorner.y * coef };
