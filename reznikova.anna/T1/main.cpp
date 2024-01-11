@@ -111,7 +111,7 @@ int main()
         new_sum_area += figures[i]->getArea();
       }
 
-      std::cout << std::fixed << std::setprecision(1) << new_sum_area << " \0";
+      std::cout << std::fixed << std::setprecision(1) << new_sum_area;
 
       for (int i = 0; i < stored; i++)
       {
