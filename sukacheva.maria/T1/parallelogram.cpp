@@ -7,7 +7,7 @@ sukacheva::Parallelogram::Parallelogram(point_t A, point_t B, point_t C) :
   B_(B),
   C_(C)
 {
-  if ((A_.x == B_.x && A_.y == B_.y && C_.x == A_.x && C_.y == A_.y) || !(A_.y == B_.y || B_.y == C_.y))
+  if ((A_.x == B_.x && A_.y == B_.y && C_.x == A_.x && C_.y == A_.y && C_.y == B_.y && C_.x == B_.x) || !(A_.y == B_.y || B_.y == C_.y))
   {
     throw std::logic_error("wrong parameters\n");
   }
