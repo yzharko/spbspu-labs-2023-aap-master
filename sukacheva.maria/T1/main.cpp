@@ -69,6 +69,7 @@ int main() {
     }
     else if (nameOfFigure == "SCALE")
     {
+      ifScale = 1;
       double x, y, k = 0;
       std::cin >> x >> y >> k;
       if ( k < 0 || index == 0)
@@ -122,7 +123,6 @@ int main() {
           delete figures[i];
         }
         std::cout << "\n";
-        ifScale = 1;
         break;
       }
     }
