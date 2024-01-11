@@ -9,11 +9,12 @@ namespace sukacheva
   {
   public:
     Rectangle(point_t rp, point_t lp);
-    double getArea();
-    rectangle_t getFrameRect();
+    double getArea() const;
+    rectangle_t getFrameRect() const;
     void move(double x, double y);
     void move(point_t center);
-    void scale(point_t center, double k);
+    void scale(double k);
+    void newScale(point_t center, double k);
   private:
     point_t right_point;
     point_t left_point;

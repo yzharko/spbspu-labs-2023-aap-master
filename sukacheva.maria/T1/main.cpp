@@ -107,7 +107,7 @@ int main() {
 
         for (int i = 0; i < index; i++)
         {
-          figures[i]->scale(center, k);
+          figures[i]->newScale(center, k);
           newArea += figures[i]->getArea();
         }
         std::cout << std::fixed << std::setprecision(1) << newArea;

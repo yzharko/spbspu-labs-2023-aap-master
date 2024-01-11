@@ -12,7 +12,7 @@ sukacheva::Rectangle::Rectangle(point_t rp, point_t lp) :
   }
 }
 
-double sukacheva::Rectangle::getArea() {
+double sukacheva::Rectangle::getArea() const {
   double first_side = std::abs(right_point.x_ - left_point.x_);
   double second_side = std::abs(right_point.y_ - left_point.y_);
   return first_side * second_side;
@@ -33,7 +33,22 @@ void sukacheva::Rectangle::move(point_t center) {
   move(dX, dY);
 }
 
-void sukacheva::Rectangle::scale(point_t center, double k) {
+void sukacheva::Rectangle::scale(double k) {
+  double center_x = (right_point.x_ + left_point.x_) / 2;
+  double center_y = (right_point.y_ + left_point.y_) / 2;
+  double width = std::abs(right_point.x_ - left_point.x_);
+  double height = std::abs(right_point.y_ - left_point.y_);
+
+  double newWidth = width * k;
+  double newHeight = height * k;
+  right_point.x_ = center_x - newWidth / 2;
+  right_point.y_ = center_y - newHeight / 2;
+  left_point.x_ = center_x + newWidth / 2;
+  left_point.y_ = center_y + newHeight / 2;
+}
+
+
+void sukacheva::Rectangle::newScale(point_t center, double k) {
   double xSideLeft = left_point.x_ - center.x_;
   double ySideLeft = left_point.y_ - center.y_;
   double xSideRight = right_point.x_ - center.x_;
@@ -46,7 +61,7 @@ void sukacheva::Rectangle::scale(point_t center, double k) {
 
 }
 
-sukacheva::rectangle_t sukacheva::Rectangle::getFrameRect() {
+sukacheva::rectangle_t sukacheva::Rectangle::getFrameRect() const {
   double width = std::abs(right_point.x_ - left_point.x_);
   double height = std::abs(right_point.y_ - left_point.y_);
   point_t pos(((right_point.x_ + left_point.x_) / 2), ((right_point.y_ + left_point.y_) / 2));
