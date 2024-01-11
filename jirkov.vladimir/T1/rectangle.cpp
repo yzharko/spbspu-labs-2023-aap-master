@@ -1,54 +1,49 @@
-#include <iostream>
-
 #include "rectangle.hpp"
-#include "base-types.hpp"
 
-Rectangle::Rectangle(point_t rp, point_t lp) :
-  right_point(rp),
-  left_point(lp)
+jirkov::Rectangle::Rectangle(point_t bottomLeft, point_t topRight) :
+  bottomLeft_(bottomLeft),
+  topRight_(topRight)
 {}
 
-double Rectangle::getArea() {
-  double first_side = std::abs(right_point.x_ - left_point.x_);
-  double second_side = std::abs(right_point.y_ - left_point.y_);
-  return first_side * second_side;
+double jirkov::Rectangle::getArea()
+{
+  jirkov::rectangle_t frame = getFrameRect();
+  return frame.width_ * frame.height_;
 }
 
-void Rectangle::move(double x, double y) {
-  right_point = point_t(right_point.x_ + x, right_point.y_ + y);
-  left_point = point_t(left_point.x_ + x, left_point.y_ + y);
+jirkov::rectangle_t jirkov::Rectangle::getFrameRect()
+{
+  double width = topRight_.x_ - bottomLeft_.x_;
+  double height = topRight_.y_ - bottomLeft_.y_;
+  double posX = (topRight_.x_ + bottomLeft_.x_) / 2.0;
+  double posY = (topRight_.y_ + bottomLeft_.y_) / 2.0;
+  jirkov::point_t pos = { posX, posY };
+  return jirkov::rectangle_t{ width, height, pos };
 }
 
-void Rectangle::move(point_t center) {
-  double newX = center.x_;
-  double newY = center.y_;
-  double oldX = (right_point.x_ + left_point.x_) / 2;
-  double oldY = (right_point.y_ + left_point.y_) / 2;
-  double dX = newX - oldX;
-  double dY = newY - oldY;
-  move(dX, dY);
+void jirkov::Rectangle::move(point_t destination)
+{
+  jirkov::rectangle_t frame = getFrameRect();
+  double moveX = destination.x_ - frame.pos_.x_;
+  double moveY = destination.y_ - frame.pos_.y_;
+  move(moveX, moveY);
 }
 
-void Rectangle::scale(double k) {
-  double center_x = (right_point.x_ + left_point.x_) / 2;
-  double center_y = (right_point.y_ + left_point.y_) / 2;
-
-  double width = std::abs(right_point.x_ - left_point.x_);
-  double height = std::abs(right_point.y_ - left_point.y_);
-
-  double newWidth = width * k;
-  double newHeight = height * k;
-
-  right_point.x_ = center_x - newWidth / 2;
-  right_point.y_ = center_y - newHeight / 2;
-  left_point.x_ = center_x + newWidth / 2;
-  left_point.y_ = center_y + newHeight / 2;
+void jirkov::Rectangle::move(double moveX, double moveY)
+{
+  bottomLeft_.x_ += moveX;
+  bottomLeft_.y_ += moveY;
+  topRight_.x_ += moveX;
+  topRight_.y_ += moveY;
 }
 
-rectangle_t Rectangle::getFrameRect() {
-  double width = std::abs(right_point.x_ - left_point.x_);
-  double height = std::abs(right_point.y_ - left_point.y_);
-  point_t pos(((right_point.x_ + left_point.x_) / 2), ((right_point.y_ + left_point.y_) / 2));
-  rectangle_t FrameRect = rectangle_t(width, height, pos);
-  return FrameRect;
+void jirkov::Rectangle::scale(double k)
+{
+  jirkov::rectangle_t frame = getFrameRect();
+  double moveX = frame.width_ * (k - 1) / 2.0;
+  double moveY = frame.height_ * (k - 1) / 2.0;
+  bottomLeft_.x_ -= moveX;
+  bottomLeft_.y_ -= moveY;
+  topRight_.x_ += moveX;
+  topRight_.y_ += moveY;
 }

@@ -1,19 +1,22 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
 #include "shape.hpp"
-#include "base-types.hpp"
 
-class Rectangle : public Shape
+namespace jirkov
 {
-public:
-  Rectangle(point_t rp, point_t lp);
-  double getArea();
-  rectangle_t getFrameRect();
-  void move(double x, double y);
-  void move(point_t center);
-  void scale(double k);
-private:
-  point_t right_point;
-  point_t left_point;
-};
+  class Rectangle : public Shape
+  {
+  public:
+    Rectangle(point_t bottomLeft, point_t topRight);
+    virtual double getArea();
+    virtual rectangle_t getFrameRect();
+    virtual void move(point_t destination);
+    virtual void move(double moveX, double moveY);
+    virtual void scale(double k);
+  private:
+    point_t bottomLeft_;
+    point_t topRight_;
+  };
+}
+
 #endif
