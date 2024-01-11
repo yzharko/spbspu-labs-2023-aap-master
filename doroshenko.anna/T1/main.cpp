@@ -9,17 +9,19 @@ int main()
 {
   using namespace doroshenko;
   std::string figure = "";
+  bool wrIn = false;
+  bool scale = false;
   size_t countFig = 0;
   Shape* geometricFigures[1000] = { 0 };
-  while (std::cin>>figure)
+  while (std::cin>>figure && !std::cin.eof())
   {
     if (figure == "RECTANGLE")
     {
       double xL, yL, xR, yR;
       std::cin >> xL >> yL >> xR >> yR;
-      if (!std::cin)
+      if (!std::cin || xL > xR || yL > yR)
       {
-        std::cerr << "Wrong input\n";
+        wrIn = true;
       }
       else
       {
@@ -34,7 +36,7 @@ int main()
       std::cin >> xFir >> yFir >> xSec >> ySec >> xThi >> yThi;
       if (!std::cin)
       {
-        std::cerr << "Wrong input\n";
+        wrIn = true;
       }
       else
       {
@@ -45,7 +47,7 @@ int main()
         }
         catch (const std::logic_error& e)
         {
-          //std::cout << e.what();
+          wrIn = true;
           delete[] geometricFigures[countFig];
           countFig--;
         }
@@ -59,7 +61,7 @@ int main()
       std::cin >> xFir >> yFir >> xSec >> ySec >> xThi >> yThi >> xFou >> yFou;
       if (!std::cin)
       {
-        std::cerr << "Wrong input\n";
+        wrIn = true;
       }
       else
       {
@@ -70,7 +72,7 @@ int main()
         }
         catch (const std::logic_error& e)
         {
-          //std::cout << e.what();
+          wrIn = true;
           delete[] geometricFigures[countFig];
           countFig--;
         }
@@ -127,9 +129,19 @@ int main()
           std::cout << std::fixed << std::setprecision(1) << xL << ' ' << yL << ' ' << xR << ' ' << yR << ' ';
         }
         std::cout << "\n";
+        scale = true;
+        break;
       }
     }
-    break;
+  }
+  if (std::cin.eof() && scale == false)
+  {
+    std::cerr << "Figures were not scaled\n";
+    return 1;
+  }
+  if (wrIn == true)
+  {
+    std::cerr << "Wrong input\n";
   }
   if(countFig > 0)
   {
