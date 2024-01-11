@@ -17,6 +17,29 @@ int main()
   bool errMark = false;
   size_t figIndex = 0;
 
+  while (std::cin >> keyWord) {
+    if (keyWord == "SCALE") {
+      if (figIndex == 0) {
+        std::cerr << "Error: There is no descriptions of the supported figures!\n";
+        delete[] queue;
+        return 1;
+      }
+
+      psarev::point_t scaleCenter = {};
+      double coef = 0.0;
+
+      if ((std::cin >> scaleCenter.x >> scaleCenter.y >> coef) && (coef > 0)) {
+        scaleMark = true;
+
+        double prevAreaSum = 0.0;
+        double newAreaSum = 0.0;
+        double* prevFramesData = new double[12] {};
+        double* newFramesData = new double[12] {};
+        size_t prevCoosNum = 0;
+        size_t newCoosNum = 0;
+      }
+    }
+  }
   if (!scaleMark) {
     std::cerr << "Error: Scale command is missing or incorrect!\n";
     delete[] queue;
