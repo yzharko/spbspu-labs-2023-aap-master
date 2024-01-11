@@ -55,13 +55,15 @@ void Rectangle::move(float x, float y)
   cPoint = PointT(x, y);
 }
 
-void Rectangle::scale(float k, PointT)
+void Rectangle::scale(float k, PointT center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
   }
   width *= 2;
   height *= 2;
+  cPoint.x += (k - 1) * getDX(cPoint, center);
+  cPoint.y += (k - 1) * getDY(cPoint, center);
 }
 
 namespace anikanov {
