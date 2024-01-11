@@ -90,15 +90,23 @@ int main()
       }
       if (std::cin >> x >> y >> scale && scale > 0)
       {
+        std::cout << std::fixed << std::setprecision(1);
+        double summOfFigures = 0;
         for (size_t i = 0; i < figuresCounter; ++i)
         {
-          std::cout << std::fixed << std::setprecision(1);
-
-          std::cout << allFigures[i]->getArea() << " ";
+          summOfFigures += allFigures[i]->getArea();
+        }
+        std::cout << summOfFigures << " ";
+        for (size_t i = 0; i < figuresCounter; ++i)
+        {
           std::cout << allFigures[i]->getFrameRect().pos.x - allFigures[i]->getFrameRect().width / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.y - allFigures[i]->getFrameRect().height / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.x + allFigures[i]->getFrameRect().width / 2 << " ";
-          std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << "\n";
+          std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << " ";
+        }  
+        std::cout << "\n";
+        for (size_t i = 0; i < figuresCounter; ++i)
+        {
           point_t initialPos = allFigures[i]->getFrameRect().pos;
           allFigures[i]->move(x, y);
           point_t diffPos;
@@ -106,12 +114,21 @@ int main()
           diffPos.y = (initialPos.y - allFigures[i]->getFrameRect().pos.y) * scale;
           allFigures[i]->scale(scale);
           allFigures[i]->move(diffPos.x, diffPos.y);
-          std::cout << allFigures[i]->getArea() << " ";
+        }
+        summOfFigures = 0;
+        for (size_t i = 0; i < figuresCounter; ++i)
+        {
+          summOfFigures += allFigures[i]->getArea();
+        }
+        std::cout << summOfFigures << " ";
+        for (size_t i = 0; i < figuresCounter; ++i)
+        {
           std::cout << allFigures[i]->getFrameRect().pos.x - allFigures[i]->getFrameRect().width / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.y - allFigures[i]->getFrameRect().height / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.x + allFigures[i]->getFrameRect().width / 2 << " ";
-          std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << "\n";
-        }
+          std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << " ";
+        }  
+        std::cout << "\n";
         scaleCommandWas = true;
       }
       else
