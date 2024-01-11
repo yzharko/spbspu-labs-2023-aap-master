@@ -3,11 +3,11 @@
 #include "triangle.hpp"
 #include <functional>
 
-Polygon::Polygon(size_t num, point_t * points):
+kovshikov::Polygon::Polygon(size_t num, point_t * points):
   num_(num),
   points_(points)
 {};
-double Polygon::getArea()
+double kovshikov::Polygon::getArea()
 {
   double area = 0;
   double minX = points_[0].x;
@@ -92,7 +92,7 @@ double Polygon::getArea()
   }
   return area;
 }
-rectangle_t Polygon::getFrameRect()
+rectangle_t kovshikov::Polygon::getFrameRect()
 {
   double arrayX[num_] = {};
   double arrayY[num_] = {};
@@ -113,14 +113,14 @@ rectangle_t Polygon::getFrameRect()
   Rectangle rectangle(lowerLeft, upperRight);
   return rectangle.getFrameRect();
 }
-void Polygon::move(point_t newPos)
+void kovshikov::Polygon::move(point_t newPos)
 {
   point_t pos = getPos();
   double xPlus = newPos.x - pos.x;
   double yPlus = newPos.y - pos.y;
   move(xPlus, yPlus);
 }
-void Polygon::move(double xPlus, double yPlus)
+void kovshikov::Polygon::move(double xPlus, double yPlus)
 {
   for(size_t i; i < num_; i++)
   {
@@ -128,7 +128,7 @@ void Polygon::move(double xPlus, double yPlus)
     points_[i].y += yPlus;
   }
 }
-void Polygon::scale(double multiplier)
+void kovshikov::Polygon::scale(double multiplier)
 {
   point_t pos = getPos();
   for(size_t i = 0; i < num_; i++)
@@ -139,7 +139,7 @@ void Polygon::scale(double multiplier)
     points_[i].y += changeY;
   }
 }
-point_t Polygon::getPos()
+point_t kovshikov::Polygon::getPos()
 {
   double summaX = 0;
   double summaY = 0;

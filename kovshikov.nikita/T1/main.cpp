@@ -6,6 +6,7 @@
 
 int main()
 {
+  using namespace kovshikov;
   Rectangle rectangle({3.0, 2.0}, {7.0, 5.0});
   std::cout << rectangle.getArea() << "\n";
   rectangle_t frameRectangle = rectangle.getFrameRect();

@@ -1,36 +1,36 @@
 #include "rectangle.hpp"
 
-Rectangle::Rectangle(point_t lowerLeft, point_t upperRight):
+kovshikov::Rectangle::Rectangle(point_t lowerLeft, point_t upperRight):
   lowerLeft_(lowerLeft),
   upperRight_(upperRight)
 {};
-double Rectangle::getArea()
+double kovshikov::Rectangle::getArea()
 {
   rectangle_t rectangle = getFrameRect();
   return rectangle.width * rectangle.height;
 }
-rectangle_t Rectangle::getFrameRect()
+rectangle_t kovshikov::Rectangle::getFrameRect()
 {
   double width = upperRight_.x - lowerLeft_.x;
   double height = upperRight_.y - lowerLeft_.y;
   point_t pos = {lowerLeft_.x + 0.5 * width, lowerLeft_.y + 0.5 * height};
   return rectangle_t{ width, height, pos };
 }
-void Rectangle::move(point_t newPos)
+void kovshikov::Rectangle::move(point_t newPos)
 {
   rectangle_t rectangle = getFrameRect();
   double xPlus = newPos.x - rectangle.pos.x;
   double yPlus = newPos.y - rectangle.pos.y;
   move(xPlus, yPlus);
 }
-void Rectangle::move(double xPlus, double yPlus)
+void kovshikov::Rectangle::move(double xPlus, double yPlus)
 {
   lowerLeft_.x += xPlus;
   lowerLeft_.y += yPlus;
   upperRight_.x += xPlus;
   upperRight_.y += yPlus;
 }
-void Rectangle::scale(double multiplier)
+void kovshikov::Rectangle::scale(double multiplier)
 {
   rectangle_t rectangle = getFrameRect();
   double changeY = rectangle.height * (multiplier - 1) / 2;
