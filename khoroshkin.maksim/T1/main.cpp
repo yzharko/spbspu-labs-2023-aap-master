@@ -117,8 +117,8 @@ int main()
           point_t initialPos = allFigures[i]->getFrameRect().pos;
           allFigures[i]->move({x, y});
           point_t diffPos;
-          diffPos.x = fabs(initialPos.x - allFigures[i]->getFrameRect().pos.x) * scale;
-          diffPos.y = fabs(initialPos.y - allFigures[i]->getFrameRect().pos.y) * scale;
+          diffPos.x = initialPos.x - allFigures[i]->getFrameRect().pos.x * scale;
+          diffPos.y = initialPos.y - allFigures[i]->getFrameRect().pos.y * scale;
           allFigures[i]->scale(scale);
           allFigures[i]->move(diffPos.x, diffPos.y);
         }
