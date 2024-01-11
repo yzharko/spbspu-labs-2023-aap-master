@@ -17,7 +17,6 @@ namespace shagieva
   private:
     point_t points[4];
     point_t getCenter() const;
-    double getLength(const point_t point1, const point_t point2) const;
     double getTriangleArea(const point_t pointA, const point_t pointB, const point_t pointC) const;
   };
 }

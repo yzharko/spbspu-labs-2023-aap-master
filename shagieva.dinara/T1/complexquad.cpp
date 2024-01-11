@@ -59,28 +59,19 @@ void Complexquad::scale(const double scaleFactor)
 point_t Complexquad::getCenter() const
 {
   double a1 = points[0].y - points[1].y;
-  double b1 = points[1].x - points[0].x;
+  double b1 = points[0].x - points[1].x;
   double c1 = points[0].x * points[1].y - points[1].x * points[0].y;
 
   double a2 = points[2].y - points[3].y;
-  double b2 = points[3].x - points[2].x;
+  double b2 = points[2].x - points[3].x;
   double c2 = points[2].x * points[3].y - points[3].x * points[2].y;
 
-  double determinant = a1 * b2 - a2 * b1;
+  double determinant = b1 * a2 - a1 * b2;
 
-  return { (b1 * c2 - b2 * c1) / determinant, (a1 * c2 - a2 * c1) / determinant };
-}
-
-double Complexquad::getLength(const point_t point1, const point_t point2) const
-{
-  return std::hypot(point2.x - point1.x, point2.y - point1.y);
+  return { (b2 * c1 - b1 * c2) / determinant, (a2 * c1 - a1 * c2) / determinant };
 }
 
 double Complexquad::getTriangleArea(const point_t pointA, const point_t pointB, const point_t pointC) const
 {
-  double a = getLength(pointA, pointB);
-  double b = getLength(pointB, pointC);
-  double c = getLength(pointC, pointA);
-  double semiPerimeter = (a + b + c) / 2;
-  return std::sqrt(semiPerimeter * (semiPerimeter - a) * (semiPerimeter - b) * (semiPerimeter - c));
+  return std::fabs((pointB.x - pointA.x) * (pointC.y - pointA.y) - (pointC.x - pointA.x) * (pointB.y - pointA.y)) / 2;
 }
