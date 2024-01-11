@@ -18,9 +18,7 @@ Complexquad::Complexquad(point_t first, point_t second, point_t third,point_t fo
 double Complexquad::getArea() const
 {
   double ABC = 0.25*fabs((pointA.x*(pointB.y - pointC.y) + pointB.x*(pointC.y - pointA.y) + pointC.x*(pointA.y - pointB.y)));
-    
   double ACD = 0.25*fabs((pointA.x*(pointC.y - pointD.y) + pointC.x*(pointD.y - pointA.y) + pointD.x*(pointA.y - pointC.y)));
-    
   return ABC + ACD;
 }
 
