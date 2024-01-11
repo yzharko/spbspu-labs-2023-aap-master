@@ -18,7 +18,15 @@ int main()
   size_t figIndex = 0;
 
   while (std::cin >> keyWord) {
-    if (keyWord == "TRIANGLE") {
+    if (keyWord == "RING") {
+      if ((std::cin >> ringData[0] >> ringData[1] >> ringData[2] >> ringData[3])\
+      && ((ringData[2] > 0) && (ringData[3] > 0) && (ringData[2] > ringData[3]))) {
+        queue[figIndex++] = 'i';
+      } else {
+        errMark = true;
+      }
+    }
+    else if (keyWord == "TRIANGLE") {
       if ((std::cin >> trianData[0] >> trianData[1] >> trianData[2] >> trianData[3] >> trianData[4] >> trianData[5])) {
         double firEdge = (sqrt(pow(trianData[2] - trianData[0], 2) + pow(trianData[3] - trianData[1], 2)));
         double secEdge = (sqrt(pow(trianData[4] - trianData[2], 2) + pow(trianData[5] - trianData[3], 2)));
