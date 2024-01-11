@@ -11,8 +11,9 @@ namespace khomichenko
 
   struct rectangle_t
   {
-    point_t leftBottom;
-    point_t rightTop;
+    double width;
+    double height;
+    point_t pos;
   };
 }
 

@@ -13,7 +13,7 @@ namespace khomichenko
       rectangle_t getFrameRect();
       void move (point_t dPos);
       void move (double dX, double dY);
-      void scale (point_t pos, double k);
+      void scale (double k);
 
       point_t leftBottom;
       point_t rightTop;
