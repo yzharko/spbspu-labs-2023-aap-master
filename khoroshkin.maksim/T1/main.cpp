@@ -11,9 +11,20 @@
 #include "circle.hpp"
 #include "complexquad.hpp"
 
+
 bool isRectangleCorrect(double x1, double y1, double x2, double y2)
 {
   return x1 < x2 && y1 < y2;
+}
+
+bool isComplexquad(double x1,double y1,double x2,double y2,double x3,double y3,double x4,double y4)
+{
+  int quadrantA = (x1 > 0) ? ((y1 >= 0) ? 1 : 4) : ((y1 > 0) ? 2 : 3);
+  int quadrantB = (x2 > 0) ? ((y2 >= 0) ? 1 : 4) : ((y2 > 0) ? 2 : 3);
+  int quadrantC = (x3 > 0) ? ((y3 >= 0) ? 1 : 4) : ((y3 > 0) ? 2 : 3);
+  int quadrantD = (x4 > 0) ? ((y4 >= 0) ? 1 : 4) : ((y4 > 0) ? 2 : 3);
+
+  return (quadrantA != quadrantB && quadrantB != quadrantC && quadrantC != quadrantD && quadrantD != quadrantA);
 }
 
 int main()
@@ -66,7 +77,7 @@ int main()
     else if (type == "COMPLEXQUAD")
     {
       double x1, y1, x2, y2, x3, y3, x4, y4;
-      if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4)
+      if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4 && isComplexquad(x1,y1,x2,y2,x3,y3,x4,y4))
       {
         allFigures[figuresCounter++] = new khoroshkin::Complexquad(point_t{x1, y1},\
         point_t{x2, y2}, point_t{x3, y3}, point_t{x4, y4});
