@@ -103,7 +103,7 @@ int main()
           std::cout << allFigures[i]->getFrameRect().pos.y - allFigures[i]->getFrameRect().height / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.x + allFigures[i]->getFrameRect().width / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << " ";
-        }  
+        }
         std::cout << "\n";
         for (size_t i = 0; i < figuresCounter; ++i)
         {
@@ -127,7 +127,7 @@ int main()
           std::cout << allFigures[i]->getFrameRect().pos.y - allFigures[i]->getFrameRect().height / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.x + allFigures[i]->getFrameRect().width / 2 << " ";
           std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << " ";
-        }  
+        }
         std::cout << "\n";
         scaleCommandWas = true;
       }
