@@ -11,7 +11,7 @@ int main() {
   std::string nameOfFigure = "";
   Shape* figures[1000]{};
   int index = 0;
-  while (std::cin>>nameOfFigure && !std::cin.eof())
+  while (!std::cin.eof())
   {
     std::cin >> nameOfFigure;
     if (nameOfFigure == "RECTANGLE")
