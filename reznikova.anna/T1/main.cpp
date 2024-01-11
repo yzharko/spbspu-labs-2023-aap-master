@@ -112,7 +112,7 @@ int main()
       double new_sum_area = 0;
       for (int i = 0; i < stored; i++)
       {
-        figures[i]->scale(center, n);
+        figures[i]->newscale(center, n);
         new_sum_area += figures[i]->getArea();
       }
 
