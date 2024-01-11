@@ -10,12 +10,12 @@ namespace reznikova
   {
   public:
     Rectangle(point_t leftpoint, point_t rightpoint);
-    ~Rectangle() = default;
-    double getArea();
-    rectangle_t getFrameRect();
-    void move(double dx, double dy);
-    void move(point_t new_center);
-    void scale(double n);
+    virtual ~Rectangle() = default;
+    virtual double getArea();
+    virtual rectangle_t getFrameRect();
+    virtual void move(double dx, double dy);
+    virtual void move(point_t new_center);
+    virtual void scale(double n);
   private:
     point_t leftpoint_;
     point_t rightpoint_;

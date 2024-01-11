@@ -10,12 +10,12 @@ namespace reznikova
   {
   public:
     Ring(point_t center, double r1, double r2);
-    ~Ring() = default;
-    double getArea();
-    rectangle_t getFrameRect();
-    void move(double dx, double dy);
-    void move(point_t new_center);
-    void scale(double n);
+    virtual ~Ring() = default;
+    virtual double getArea();
+    virtual rectangle_t getFrameRect();
+    virtual void move(double dx, double dy);
+    virtual void move(point_t new_center);
+    virtual void scale(double n);
   private:
     point_t center_;
     double r1_;
