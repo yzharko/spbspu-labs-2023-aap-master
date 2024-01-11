@@ -17,7 +17,7 @@ namespace shagieva
   double Complexquad::getArea() const
   {
     point_t center = getCenter();
-    return getTriangleArea(points[0], center, points[4]) + getTriangleArea(points[1], center, points[2]);
+    return getTriangleArea(points[0], center, points[3]) + getTriangleArea(points[1], center, points[2]);
   }
 
   rectangle_t Complexquad::getFrameRect() const
@@ -58,13 +58,13 @@ namespace shagieva
 
   point_t Complexquad::getCenter() const
   {
-    double a1 = points[0].y - points[2].y;
-    double b1 = points[2].x - points[0].x;
-    double c1 = points[0].x * points[2].y - points[2].x * points[0].y;
+    double a1 = points[0].y - points[1].y;
+    double b1 = points[1].x - points[0].x;
+    double c1 = points[0].x * points[1].y - points[1].x * points[0].y;
 
-    double a2 = points[1].y - points[3].y;
-    double b2 = points[3].x - points[1].x;
-    double c2 = points[1].x * points[3].y - points[3].x * points[1].y;
+    double a2 = points[2].y - points[3].y;
+    double b2 = points[3].x - points[2].x;
+    double c2 = points[2].x * points[3].y - points[3].x * points[2].y;
 
     double determinant = a1 * b2 - a2 * b1;
 
