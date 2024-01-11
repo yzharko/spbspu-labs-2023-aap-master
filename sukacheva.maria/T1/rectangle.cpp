@@ -1,4 +1,4 @@
-#include "Rectangle.hpp"
+#include "rectangle.hpp"
 #include "base-types.hpp"
 #include <iostream>
 
@@ -6,7 +6,7 @@ sukacheva::Rectangle::Rectangle(point_t rp, point_t lp) :
   right_point(rp),
   left_point(lp)
 {
-  if ((left_point.x_ > right_point.x_) || (left_point.y_ > right_point.y_))
+  if ((left_point.x_ < right_point.x_) || (left_point.y_ < right_point.y_))
   {
     throw std::logic_error("wrong parameters\n");
   }
