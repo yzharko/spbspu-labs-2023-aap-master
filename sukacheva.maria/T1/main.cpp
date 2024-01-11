@@ -78,7 +78,7 @@ int main() {
       {
         firstArea += figures[i]->getArea();
       }
-      std::cout << std::fixed << std::setprecision(1) << firstArea << ' ';
+      std::cout << std::fixed << std::setprecision(1) << firstArea;
 
       for (int i = 0; i < index; i++)
       {
@@ -87,7 +87,7 @@ int main() {
         y1 = frameRect.pos_.y_ - frameRect.height_ / 2.0;
         x2 = frameRect.pos_.x_ + frameRect.width_ / 2.0;
         y2 = frameRect.pos_.y_ + frameRect.height_ / 2.0;
-        std::cout << std::fixed << std::setprecision(1) << x1 << ' ' << y1 << ' ' << x2 << ' ' << y2;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << x1 << ' ' << y1 << ' ' << x2 << ' ' << y2;
       }
 
       std::cout << "\n";
@@ -97,7 +97,7 @@ int main() {
         figures[i]->scale(k);
         newArea += figures[i]->getArea();
       }
-      std::cout << std::fixed << std::setprecision(1) << newArea << ' ';
+      std::cout << std::fixed << std::setprecision(1) << newArea;
 
       for (int i = 0; i < index; i++)
       {
@@ -106,7 +106,7 @@ int main() {
         y3 = newFrameRect.pos_.y_ - newFrameRect.height_ / 2.0;
         x4 = newFrameRect.pos_.x_ + newFrameRect.width_ / 2.0;
         y4 = newFrameRect.pos_.y_ + newFrameRect.height_/ 2.0;
-        std::cout << std::fixed << std::setprecision(1) << x3 << ' ' << y3 << ' ' << x4 << ' ' << y4;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << x3 << ' ' << y3 << ' ' << x4 << ' ' << y4;
         delete figures[i];
       }
       break;
