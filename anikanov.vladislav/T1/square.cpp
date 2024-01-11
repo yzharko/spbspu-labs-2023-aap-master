@@ -44,7 +44,7 @@ void Square::move(const float x, const float y)
   cPoint = point_t(x, y);
 }
 
-void Square::scaleCorrect(const double k, const point_t center)
+void Square::scale(const double k, const point_t center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
@@ -63,12 +63,7 @@ namespace anikanov {
       throw std::overflow_error("Invalid Input Square");
     }
     square.cPoint = point_t(leftBottom.x + square.side / 2,
-                            leftBottom.y + square.side / 2);
+                           leftBottom.y + square.side / 2);
     return in;
-  }
-
-  void Square::scale(const double k)
-  {
-    (*this).scaleCorrect(k, point_t(0, 0));
   }
 }

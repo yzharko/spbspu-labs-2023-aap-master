@@ -10,7 +10,6 @@ namespace anikanov {
     float width;
     float height;
     point_t cPoint;
-
     explicit Rectangle();
 
     ~Rectangle() override = default;
@@ -33,9 +32,7 @@ namespace anikanov {
 
     void move(const float x, const float y) override;
 
-    void scale(const double) override;
-
-    void scaleCorrect(const double, const point_t center = point_t(0, 0));
+    void scale(const double, const point_t center = point_t(0, 0)) override;
 
     friend std::istream &operator>>(std::istream &, Rectangle &);
   };

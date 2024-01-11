@@ -68,7 +68,7 @@ void Complexquad::move(const float x, const float y)
   move(newCPoint);
 }
 
-void Complexquad::scaleCorrect(const double k, const point_t center)
+void Complexquad::scale(const double k, const point_t center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
@@ -141,11 +141,6 @@ Complexquad::Complexquad()
   leftTop = point_t();
   rightBottom = point_t();
   rightTop = point_t();
-}
-
-void Complexquad::scale(const double k)
-{
-  (*this).scaleCorrect(k, point_t(0, 0));
 }
 
 //COMPLEXQUAD -1.0 -2.0 1.0 2.0 1.0 -1.0 -2.0 2.0
