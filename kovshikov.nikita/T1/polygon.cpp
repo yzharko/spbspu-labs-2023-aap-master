@@ -45,10 +45,10 @@ double Polygon::getArea()
   {
     for(size_t j = 0; j < read; j++)
     {
-      if(upperX[i] = upper[j].x)
+      if(upperX[i] == upper[j].x)
       {
         upper[j].x = upperX[i];
-        if(upperX[i] = upperX[i - 1] && upper[j].y > upper[j - 1].y)
+        if(upperX[i] == upperX[i - 1] && upper[j].y > upper[j - 1].y)
         {
           point_t change = upper[j];
           upper[j] = upper[j - 1];
