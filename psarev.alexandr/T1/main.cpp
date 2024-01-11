@@ -75,6 +75,29 @@ int main()
 
         for (size_t i = 0; i < figIndex; i++) {
           if (queue[i] == 'r') {
+            psarev::Rectangle taskRect({ rectData[0], rectData[1]}, { rectData[2], rectData[3] });
+            psarev::rectangle_t taskRectFrame = taskRect.getFrameRect();
+            prevAreaSum += taskRectFrame.width * taskRectFrame.height;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.x - (taskRectFrame.width / 2);
+            prevCoosNum++;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.y - (taskRectFrame.height / 2);
+            prevCoosNum++;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.x + (taskRectFrame.width / 2);
+            prevCoosNum++;
+            prevFramesData[prevCoosNum] = taskRectFrame.pos.y + (taskRectFrame.height / 2);
+            prevCoosNum++;
+            taskRect.move(0 - scaleCenter.x, 0 - scaleCenter.y);
+            taskRect.scale(coef);
+            taskRectFrame = taskRect.getFrameRect();
+            newAreaSum += taskRectFrame.width * taskRectFrame.height;
+            newFramesData[newCoosNum] = taskRectFrame.pos.x - (taskRectFrame.width / 2);
+            newCoosNum++;
+            newFramesData[newCoosNum] = taskRectFrame.pos.y - (taskRectFrame.height / 2);
+            newCoosNum++;
+            newFramesData[newCoosNum] = taskRectFrame.pos.x + (taskRectFrame.width / 2);
+            newCoosNum++;
+            newFramesData[newCoosNum] = taskRectFrame.pos.y + (taskRectFrame.height / 2);
+            newCoosNum++;
           }
         }
         std::cout << std::fixed << std::setprecision(1);
@@ -93,14 +116,5 @@ int main()
       }
     }
   }
-  if (!scaleMark) {
-    std::cerr << "Error: Scale command is missing or incorrect!\n";
-    delete[] queue;
-    return 1;
-  }
-  if (errMark) {
-    std::cerr << "Error: One or more supported shapes are not specified correctly!\n";
-  }
-  delete[] queue;
   return 0;
 }
