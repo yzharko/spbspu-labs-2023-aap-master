@@ -19,9 +19,10 @@ namespace miheev
     virtual void scale(double);
 
   private:
+    point_t* points[4];
     double width_;
     double height_;
-    point_t points_[4];
+    point_t center_;
   };
 }
 
