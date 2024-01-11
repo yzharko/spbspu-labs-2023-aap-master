@@ -19,6 +19,8 @@ namespace reznikova
     double width;
     double height;
     point_t pos;
+    point_t leftpoint;
+    point_t rightpoint;
   };
 }
 
