@@ -1,27 +1,10 @@
 #include "concave.hpp"
 #include <algorithm>
-#include <stdexcept>
 
 redko::Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, point_t fourthPoint) :
   firstPoint_(firstPoint), secondPoint_(secondPoint), thirdPoint_(thirdPoint), fourthPoint_(fourthPoint)
-{
-  double firstTriangle = abs((firstPoint_.x_ * (secondPoint_.y_ - fourthPoint_.y_) + \
-    secondPoint_.x_ * (fourthPoint_.y_ - firstPoint_.y_) + fourthPoint_.x_ * (firstPoint_.y_ - secondPoint_.y_)) / 2);
-  double secondTriangle = abs((firstPoint_.x_ * (fourthPoint_.y_ - thirdPoint_.y_) + \
-    fourthPoint_.x_ * (thirdPoint_.y_ - firstPoint_.y_) + thirdPoint_.x_ * (firstPoint_.y_ - fourthPoint_.y_)) / 2);
-  double thirdTriangle = abs((fourthPoint_.x_ * (secondPoint_.y_ - thirdPoint_.y_) + \
-    secondPoint_.x_ * (thirdPoint_.y_ - fourthPoint_.y_) + thirdPoint_.x_ * (fourthPoint_.y_ - secondPoint_.y_)) / 2);
-  double fourthTriangle = abs((firstPoint_.x_ * (secondPoint_.y_ - thirdPoint_.y_) + \
-    secondPoint_.x_ * (thirdPoint_.y_ - firstPoint_.y_) + thirdPoint_.x_ * (firstPoint_.y_ - secondPoint_.y_)) / 2);
-  if (firstTriangle == 0 || secondTriangle == 0 || thirdTriangle == 0 || fourthTriangle == 0)
-  {
-    throw std::invalid_argument("CONCAVE: does not satisfy the triangle condition\n");
-  }
-  if (firstTriangle + secondTriangle + thirdTriangle != fourthTriangle)
-  {
-    throw std::invalid_argument("CONCAVE: last point outside triangle\n");
-  }
-}
+{}
+
 double redko::Concave::getArea() const
 {
   double bigTriangle = abs((firstPoint_.x_ * (secondPoint_.y_ - thirdPoint_.y_) + \
@@ -30,6 +13,7 @@ double redko::Concave::getArea() const
     secondPoint_.x_ * (thirdPoint_.y_ - fourthPoint_.y_) + thirdPoint_.x_ * (fourthPoint_.y_ - secondPoint_.y_)) / 2);
   return bigTriangle - smallTriangle;
 }
+
 rectangle_t redko::Concave::getFrameRect() const
 {
   double maxX = std::max(std::max(firstPoint_.x_, secondPoint_.x_), thirdPoint_.x_);
@@ -40,6 +24,7 @@ rectangle_t redko::Concave::getFrameRect() const
   double height = maxY - minY;
   return { width, height, fourthPoint_ };
 }
+
 void redko::Concave::move(point_t dest)
 {
   rectangle_t frame = getFrameRect();
@@ -54,6 +39,7 @@ void redko::Concave::move(point_t dest)
   fourthPoint_.x_ += xDist;
   fourthPoint_.y_ += yDist;
 }
+
 void redko::Concave::move(double xDist, double yDist)
 {
   firstPoint_.x_ += xDist;
@@ -68,10 +54,6 @@ void redko::Concave::move(double xDist, double yDist)
 
 void redko::Concave::scale(point_t pos, double coefficient)
 {
-  if (coefficient < 0)
-  {
-    throw std::invalid_argument("negative coefficient\n");
-  }
   firstPoint_.x_ = (firstPoint_.x_ - pos.x_) * coefficient;
   firstPoint_.y_ = (firstPoint_.y_ - pos.y_) * coefficient;
   secondPoint_.x_ = (secondPoint_.x_ - pos.x_) * coefficient;

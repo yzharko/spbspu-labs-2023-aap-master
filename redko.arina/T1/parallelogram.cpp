@@ -1,21 +1,9 @@
 #include "parallelogram.hpp"
 #include <cmath>
-#include <stdexcept>
 
 redko::Parallelogram::Parallelogram(point_t firstPoint, point_t secondPoint, point_t thirdPoint) :
   firstPoint_(firstPoint), secondPoint_(secondPoint), thirdPoint_(thirdPoint)
-{
-  if (firstPoint_.y_ != secondPoint_.y_ && thirdPoint_.y_ != firstPoint_.y_)
-  {
-    throw std::invalid_argument("PARALLELOGRAM: neither side is parallel to the x-axis\n");
-  }
-  double triangle = abs((firstPoint_.x_ * (secondPoint_.y_ - thirdPoint_.y_) + \
-    secondPoint_.x_ * (thirdPoint_.y_ - firstPoint_.y_) + thirdPoint_.x_ * (firstPoint_.y_ - secondPoint_.y_)) / 2);
-  if (triangle == 0)
-  {
-    throw std::invalid_argument("PARALLELOGRAM: does not satisfy the triangle condition\n");
-  }
-}
+{}
 
 double redko::Parallelogram::getArea() const
 {
@@ -33,6 +21,7 @@ double redko::Parallelogram::getArea() const
 rectangle_t redko::Parallelogram::getFrameRect() const
 {
   double width = abs(firstPoint_.x_ - secondPoint_.x_) + abs(firstPoint_.x_ - thirdPoint_.x_);
+
   double height = 0;
   if (firstPoint_.y_ == secondPoint_.y_)
   {
@@ -42,16 +31,13 @@ rectangle_t redko::Parallelogram::getFrameRect() const
   {
     height = abs(firstPoint_.y_ - secondPoint_.y_);
   }
+
   double x = 0;
-  if (firstPoint_.x_ > secondPoint_.x_ && firstPoint_.x_ > thirdPoint_.x_)
-  {
-    x = firstPoint_.x_ - (width / 2);
-  }
-  else if (firstPoint_.x_ < secondPoint_.x_ && firstPoint_.x_ < thirdPoint_.x_)
+  if (firstPoint_.x_ <= secondPoint_.x_ && firstPoint_.x_ <= thirdPoint_.x_)
   {
     x = firstPoint_.x_ + (width / 2);
   }
-  else if (secondPoint_.x_ < firstPoint_.x_ && secondPoint_.x_ < thirdPoint_.x_)
+  else if (secondPoint_.x_ <= firstPoint_.x_ && secondPoint_.x_ <= thirdPoint_.x_)
   {
     x = secondPoint_.x_ + (width / 2);
   }
@@ -59,6 +45,7 @@ rectangle_t redko::Parallelogram::getFrameRect() const
   {
     x = thirdPoint_.x_ + (width / 2);
   }
+
   double y = 0;
   if (firstPoint_.y_ > secondPoint_.y_ || firstPoint_.y_ > thirdPoint_.y_)
   {
@@ -68,6 +55,7 @@ rectangle_t redko::Parallelogram::getFrameRect() const
   {
     y = firstPoint_.y_ + (height / 2);
   }
+
   return { width, height, { x, y } };
 }
 
@@ -96,10 +84,6 @@ void redko::Parallelogram::move(double xDist, double yDist)
 
 void redko::Parallelogram::scale(point_t pos, double coefficient)
 {
-  if (coefficient < 0)
-  {
-    throw std::invalid_argument("negative coefficient\n");
-  }
   firstPoint_.x_ = (firstPoint_.x_ - pos.x_) * coefficient;
   firstPoint_.y_ = (firstPoint_.y_ - pos.y_) * coefficient;
   secondPoint_.x_ = (secondPoint_.x_ - pos.x_) * coefficient;

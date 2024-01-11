@@ -1,5 +1,4 @@
 #include "rectangle.hpp"
-#include <stdexcept>
 
 redko::Rectangle::Rectangle(point_t firstPoint, point_t secondPoint) :
   firstPoint_(firstPoint), secondPoint_(secondPoint)
@@ -7,13 +6,17 @@ redko::Rectangle::Rectangle(point_t firstPoint, point_t secondPoint) :
 
 double redko::Rectangle::getArea() const
 {
-  rectangle_t frame_ = getFrameRect();
-  return (frame_.height_ * frame_.width_);
+  rectangle_t frame = getFrameRect();
+  return (frame.height_ * frame.width_);
 }
 
 rectangle_t redko::Rectangle::getFrameRect() const
 {
-  return { secondPoint_.x_ - firstPoint_.x_, secondPoint_.y_ - firstPoint_.y_, { (firstPoint_.x_ + secondPoint_.x_) / 2, ((firstPoint_.y_ + secondPoint_.y_) / 2) } };
+  double width = secondPoint_.x_ - firstPoint_.x_;
+  double height = secondPoint_.y_ - firstPoint_.y_;
+  double x = firstPoint_.x_ + ((secondPoint_.x_ - firstPoint_.x_) / 2);
+  double y = firstPoint_.y_ + ((secondPoint_.y_ - firstPoint_.y_) / 2);
+  return { width, height, { x, y } };
 }
 
 void redko::Rectangle::move(point_t dest)
@@ -37,10 +40,6 @@ void redko::Rectangle::move(double xDist, double yDist)
 
 void redko::Rectangle::scale(point_t pos, double coefficient)
 {
-  if (coefficient < 0)
-  {
-    throw std::invalid_argument("negative coefficient\n");
-  }
   firstPoint_.x_ = (firstPoint_.x_ - pos.x_) * coefficient;
   firstPoint_.y_ = (firstPoint_.y_ - pos.y_) * coefficient;
   secondPoint_.x_ = (secondPoint_.x_ - pos.x_) * coefficient;
