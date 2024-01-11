@@ -1,40 +1,28 @@
-#include <iostream>
 #include <cstddef>
+#include <stdexcept>
+#include <iostream>
+#include "readString.hpp"
 #include "uppLow.hpp"
 
 int main()
 {
-  char * inputStr = new char[10]{};
-  size_t add = 30;
-  char cur = 0;
+  char * inputStr = nullptr;
   size_t read = 0;
 
-  std::cin >> std::noskipws;
-  do
+  try
   {
-    std::cin >> cur;
-    if (read == 0 && cur == '\n')
-    {
-      std::cerr << "Empty line entered.\n";
-      return 1;
-    }
-    inputStr[read++] = cur;
-    if (read % add == 0)
-    {
-      char * newInputStr = new char[read + add];
-      for (size_t i = 0; i < read; i++)
-      {
-        newInputStr[i] = inputStr[i];
-      }
-      delete [] inputStr;
-      inputStr = newInputStr;
-    }
+    inputStr = shagieva::readString(std::cin, read);
   }
-  while (cur != '\n');
-  std::cin >> std::skipws;
+  catch (const std::invalid_argument & e)
+  {
+    std::cerr << e.what() << "\n";
+    return 1;
+  }
 
   char * changedStr = new char[read]{};
   shagieva::uppLow(inputStr, changedStr, read);
+
+  delete[] inputStr;
 
   for (size_t i = 0; i < read; i++)
   {
@@ -42,7 +30,7 @@ int main()
   }
   std::cout << "\n";
 
-  delete[] inputStr;
   delete[] changedStr;
+
   return 0;
 }

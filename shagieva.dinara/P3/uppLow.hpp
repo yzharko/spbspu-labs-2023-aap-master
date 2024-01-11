@@ -6,4 +6,5 @@ namespace shagieva
 {
   void uppLow(const char * inputStr, char * changedStr, const size_t read);
 };
+
 #endif
