@@ -55,7 +55,7 @@ void Rectangle::move(const float x, const float y)
   cPoint = point_t(x, y);
 }
 
-void Rectangle::scale(const double k, const point_t center)
+void Rectangle::scaleCorrect(const double k, const point_t center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
@@ -85,6 +85,6 @@ namespace anikanov {
 
   void Rectangle::scale(const double k)
   {
-    (*this).scale(k, point_t(0, 0));
+    (*this).scaleCorrect(k, point_t(0, 0));
   }
 }

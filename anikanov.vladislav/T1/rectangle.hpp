@@ -35,7 +35,7 @@ namespace anikanov {
 
     void scale(const double) override;
 
-    void scale(const double, const point_t center = point_t(0, 0)) override;
+    void scaleCorrect(const double, const point_t center = point_t(0, 0));
 
     friend std::istream &operator>>(std::istream &, Rectangle &);
   };
