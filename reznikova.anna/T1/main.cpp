@@ -8,9 +8,10 @@
 
 int main()
 {
+  using namespace reznikova;
   bool scale_command = 0;
   std::string name = "";
-  reznikova::Shape * figures[1000]{};
+  Shape* figures[1000] = {0};
   int stored = 0;
   while (!std::cin.eof())
   {
@@ -20,57 +21,54 @@ int main()
     {
       double x, y, r1, r2;
       std::cin >> x >> y >> r1 >> r2;
-      reznikova::point_t center(x, y);
+      point_t center(x, y);
       try
       {
-        reznikova::Ring ring(center, r1, r2);
+        Ring ring(center, r1, r2);
       }
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
         continue;
       }
-      reznikova::Ring ring(center, r1, r2);
-      figures[stored++] = &ring;
+      figures[stored++] = new Ring(center, r1, r2);
     }
 
     else if (name == "REGULAR")
     {
       double x0, y0, x1, y1, x2, y2;
       std::cin >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
-      reznikova::point_t center(x0, y0);
-      reznikova::point_t point1(x1, y1);
-      reznikova::point_t point2(x2, y2);
+      point_t center(x0, y0);
+      point_t point1(x1, y1);
+      point_t point2(x2, y2);
       try
       {
-        reznikova::Regular regular(center, point1, point2);
+        Regular regular(center, point1, point2);
       }
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
         continue;
       }
-      reznikova::Regular regular(center, point1, point2);
-      figures[stored++] = &regular;
+      figures[stored++] = new Regular(center, point1, point2);
     }
 
     else if (name == "RECTANGLE")
     {
       double lx, ly, rx, ry;
       std::cin >> lx >> ly >> rx >> ry;
-      reznikova::point_t leftpoint(lx, ly);
-      reznikova::point_t rightpoint(rx, ry);
+      point_t leftpoint(lx, ly);
+      point_t rightpoint(rx, ry);
       try
       {
-        reznikova::Rectangle rectangle(leftpoint, rightpoint);
+        Rectangle rectangle(leftpoint, rightpoint);
       }
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
         continue;
       }
-      reznikova::Rectangle rectangle(leftpoint, rightpoint);
-      figures[stored++] = &rectangle;
+      figures[stored++] = new Rectangle(leftpoint, rightpoint);
     }
 
     else if (name == "SCALE")
@@ -78,6 +76,7 @@ int main()
       scale_command = 1;
       double x, y, n;
       std::cin >> x >> y >> n;
+      point_t center(x, y);
       if (n <= 0)
       {
         std::cerr << "Negative Coeff Scale";
@@ -98,7 +97,7 @@ int main()
 
       for (int i = 0; i < stored; i++)
       {
-        reznikova::rectangle_t frame_rect = figures[i]->getFrameRect();
+        rectangle_t frame_rect = figures[i]->getFrameRect();
         std::cout << frame_rect.leftpoint.x << " " << frame_rect.leftpoint.y << " ";
         std::cout << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << " ";
       }
@@ -107,7 +106,7 @@ int main()
       double new_sum_area = 0;
       for (int i = 0; i < stored; i++)
       {
-        figures[i]->scale(n);
+        figures[i]->scale(center, n);
         new_sum_area += figures[i]->getArea();
       }
 
@@ -115,9 +114,10 @@ int main()
 
       for (int i = 0; i < stored; i++)
       {
-        reznikova::rectangle_t frame_rect = figures[i]->getFrameRect();
+        rectangle_t frame_rect = figures[i]->getFrameRect();
         std::cout << frame_rect.leftpoint.x << " " << frame_rect.leftpoint.y << " ";
         std::cout << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << " ";
+        delete figures[i];
       }
       std::cout << "\n";
 

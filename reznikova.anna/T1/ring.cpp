@@ -46,3 +46,13 @@ void reznikova::Ring::scale(double n)
   r1_ *= n;
   r2_ *= n;
 }
+
+void reznikova::Ring::scale(point_t scale_center, double n)
+{
+  r1_ *= n;
+  r2_ *= n;
+  double dx = center_.x - scale_center.x;
+  double dy = center_.y - scale_center.y;
+  center_.x = scale_center.x + dx * n;
+  center_.y = scale_center.y + dy * n;
+}
