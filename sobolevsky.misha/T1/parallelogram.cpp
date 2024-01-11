@@ -23,19 +23,39 @@ namespace sobolevsky
     rectangle.width = (Point2.x - Point1.x);
     return rectangle;
   }
-  
-  void Parallelogram::move(Point_t newCenter)
-  {
-    
-  }
-  
+
   void Parallelogram::move(double moveX, double moveY)
   {
-
+    Point1.x += moveX;
+    Point1.y += moveY;
+    Point2.x += moveX;
+    Point2.y += moveY;
+    Point3.x += moveX;
+    Point3.y += moveY;
+    centerPoint.x += moveX;
+    centerPoint.y += moveY;
   }
-  
+
+  void Parallelogram::move(Point_t newCenter)
+  {
+    double moveX = centerPoint.x - newCenter.x;
+    double moveY = centerPoint.y - newCenter.y;
+    centerPoint = newCenter;
+    Point1.x += moveX;
+    Point1.y += moveY;
+    Point2.x += moveX;
+    Point2.y += moveY;
+    Point3.x += moveX;
+    Point3.y += moveY;
+  }
+
   void Parallelogram::scale(double n)
   {
-
+    Point1.x *= n;
+    Point1.y *= n;
+    Point2.x *= n;
+    Point2.y *= n;
+    Point3.x *= n;
+    Point3.y *= n;
   }
 }
