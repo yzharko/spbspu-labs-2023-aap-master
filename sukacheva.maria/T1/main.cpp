@@ -9,6 +9,7 @@
 
 int main() {
   using namespace sukacheva;
+  bool ifScale = 0;
   std::string nameOfFigure = "";
   Shape* figures[1000]{};
   int index = 0;
@@ -121,8 +122,18 @@ int main() {
           delete figures[i];
         }
         std::cout << "\n";
+        scale = 1;
         break;
       }
+    }
+    if (!scale)
+    {
+      for (int i = 0; i < index; i++)
+      {
+        delete figures[i];
+      }
+      std::cerr << "No scale command";
+      return 2;
     }
   };
   return 0;
