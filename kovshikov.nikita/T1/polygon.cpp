@@ -68,7 +68,7 @@ double Polygon::getArea()
   {
     for(size_t j = 0; j < count; j++)
     {
-      if(lowerX[i] = lower[j].x)
+      if(lowerX[i] == lower[j].x)
       {
         lower[j].x = lowerX[i];
         continue;
