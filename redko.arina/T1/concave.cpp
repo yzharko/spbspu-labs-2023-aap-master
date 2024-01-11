@@ -7,10 +7,10 @@ redko::Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPo
 
 double redko::Concave::getArea() const
 {
-  double bigTriangle = abs((firstPoint_.x_ * (secondPoint_.y_ - thirdPoint_.y_) + \
-    secondPoint_.x_ * (thirdPoint_.y_ - firstPoint_.y_) + thirdPoint_.x_ * (firstPoint_.y_ - secondPoint_.y_)) / 2);
-  double smallTriangle = abs((fourthPoint_.x_ * (secondPoint_.y_ - thirdPoint_.y_) + \
-    secondPoint_.x_ * (thirdPoint_.y_ - fourthPoint_.y_) + thirdPoint_.x_ * (fourthPoint_.y_ - secondPoint_.y_)) / 2);
+  double bigTriangle = firstPoint_.x_ * (secondPoint_.y_ - thirdPoint_.y_) + secondPoint_.x_ * (thirdPoint_.y_ - firstPoint_.y_);
+  bigTriangle = std::abs((bigTriangle + thirdPoint_.x_ * (firstPoint_.y_ - secondPoint_.y_)) / 2.0);
+  double smallTriangle = fourthPoint_.x_ * (secondPoint_.y_ - thirdPoint_.y_) + secondPoint_.x_ * (thirdPoint_.y_ - fourthPoint_.y_);
+  smallTriangle = std::abs((smallTriangle + thirdPoint_.x_ * (fourthPoint_.y_ - secondPoint_.y_)) / 2.0);
   return bigTriangle - smallTriangle;
 }
 

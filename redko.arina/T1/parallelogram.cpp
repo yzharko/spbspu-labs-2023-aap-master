@@ -35,25 +35,25 @@ rectangle_t redko::Parallelogram::getFrameRect() const
   double x = 0;
   if (firstPoint_.x_ <= secondPoint_.x_ && firstPoint_.x_ <= thirdPoint_.x_)
   {
-    x = firstPoint_.x_ + (width / 2);
+    x = firstPoint_.x_ + (width / 2.0);
   }
   else if (secondPoint_.x_ <= firstPoint_.x_ && secondPoint_.x_ <= thirdPoint_.x_)
   {
-    x = secondPoint_.x_ + (width / 2);
+    x = secondPoint_.x_ + (width / 2.0);
   }
   else
   {
-    x = thirdPoint_.x_ + (width / 2);
+    x = thirdPoint_.x_ + (width / 2.0);
   }
 
   double y = 0;
   if (firstPoint_.y_ > secondPoint_.y_ || firstPoint_.y_ > thirdPoint_.y_)
   {
-    y = firstPoint_.y_ - (height / 2);
+    y = firstPoint_.y_ - (height / 2.0);
   }
   else
   {
-    y = firstPoint_.y_ + (height / 2);
+    y = firstPoint_.y_ + (height / 2.0);
   }
 
   return { width, height, { x, y } };

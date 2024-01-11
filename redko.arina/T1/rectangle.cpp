@@ -14,8 +14,8 @@ rectangle_t redko::Rectangle::getFrameRect() const
 {
   double width = secondPoint_.x_ - firstPoint_.x_;
   double height = secondPoint_.y_ - firstPoint_.y_;
-  double x = firstPoint_.x_ + ((secondPoint_.x_ - firstPoint_.x_) / 2);
-  double y = firstPoint_.y_ + ((secondPoint_.y_ - firstPoint_.y_) / 2);
+  double x = firstPoint_.x_ + ((secondPoint_.x_ - firstPoint_.x_) / 2.0);
+  double y = firstPoint_.y_ + ((secondPoint_.y_ - firstPoint_.y_) / 2.0);
   return { width, height, { x, y } };
 }
 

@@ -45,19 +45,19 @@ int main()
       {
         areasSum += shapes[i]->getArea();
         frame = shapes[i]->getFrameRect();
-        frameXY[4 * i] = frame.pos_.x_ - frame.width_ / 2;
-        frameXY[4 * i + 1] = frame.pos_.y_ - frame.height_ / 2;
-        frameXY[4 * i + 2] = frame.pos_.x_ + frame.width_ / 2;
-        frameXY[4 * i + 3] = frame.pos_.y_ + frame.height_ / 2;
+        frameXY[4 * i] = frame.pos_.x_ - frame.width_ / 2.0;
+        frameXY[4 * i + 1] = frame.pos_.y_ - frame.height_ / 2.0;
+        frameXY[4 * i + 2] = frame.pos_.x_ + frame.width_ / 2.0;
+        frameXY[4 * i + 3] = frame.pos_.y_ + frame.height_ / 2.0;
 
         shapes[i]->scale({ x, y }, coefficient);
 
         scaledAreasSum += shapes[i]->getArea();
         frame = shapes[i]->getFrameRect();
-        scaledFrameXY[4 * i] = frame.pos_.x_ - frame.width_ / 2;
-        scaledFrameXY[4 * i + 1] = frame.pos_.y_ - frame.height_ / 2;
-        scaledFrameXY[4 * i + 2] = frame.pos_.x_ + frame.width_ / 2;
-        scaledFrameXY[4 * i + 3] = frame.pos_.y_ + frame.height_ / 2;
+        scaledFrameXY[4 * i] = frame.pos_.x_ - frame.width_ / 2.0;
+        scaledFrameXY[4 * i + 1] = frame.pos_.y_ - frame.height_ / 2.0;
+        scaledFrameXY[4 * i + 2] = frame.pos_.x_ + frame.width_ / 2.0;
+        scaledFrameXY[4 * i + 3] = frame.pos_.y_ + frame.height_ / 2.0;
       }
       std::cout << std::fixed << std::setprecision(1) << areasSum;
       for (int i = 0; i < shapesCounter * 4; i++)
@@ -133,16 +133,16 @@ int main()
         }
         points[i++] = { x, y };
       }
-      double firstTriangle = abs((points[0].x_ * (points[1].y_ - points[3].y_) + \
-        points[1].x_ * (points[3].y_ - points[0].y_) + points[3].x_ * (points[0].y_ - points[1].y_)) / 2);
-      double secondTriangle = abs((points[0].x_ * (points[3].y_ - points[2].y_) + \
-        points[3].x_ * (points[2].y_ - points[0].y_) + points[2].x_ * (points[0].y_ - points[3].y_)) / 2);
-      double thirdTriangle = abs((points[3].x_ * (points[1].y_ - points[2].y_) + \
-        points[1].x_ * (points[2].y_ - points[3].y_) + points[2].x_ * (points[3].y_ - points[1].y_)) / 2);
-      double fourthTriangle = abs((points[0].x_ * (points[1].y_ - points[2].y_) + \
-        points[1].x_ * (points[2].y_ - points[0].y_) + points[2].x_ * (points[0].y_ - points[1].y_)) / 2);
-      if (firstTriangle == 0 || secondTriangle == 0 || thirdTriangle == 0 || fourthTriangle == 0 || \
-        firstTriangle + secondTriangle + thirdTriangle != fourthTriangle)
+      double firstTriangle = points[0].x_ * (points[1].y_ - points[3].y_) + points[1].x_ * (points[3].y_ - points[0].y_);
+      firstTriangle = std::abs((firstTriangle + points[3].x_ * (points[0].y_ - points[1].y_)) / 2.0);
+      double secondTriangle = points[0].x_ * (points[3].y_ - points[2].y_) + points[3].x_ * (points[2].y_ - points[0].y_);
+      secondTriangle = std::abs((secondTriangle + points[2].x_ * (points[0].y_ - points[3].y_)) / 2.0);
+      double thirdTriangle = points[3].x_ * (points[1].y_ - points[2].y_) + points[1].x_ * (points[2].y_ - points[3].y_);
+      thirdTriangle = std::abs((thirdTriangle + points[2].x_ * (points[3].y_ - points[1].y_)) / 2.0);
+      double fourthTriangle = points[0].x_ * (points[1].y_ - points[2].y_) + points[1].x_ * (points[2].y_ - points[0].y_);
+      fourthTriangle = std::abs((fourthTriangle + points[2].x_ * (points[0].y_ - points[1].y_)) / 2.0);
+      double sumOfTriangles = firstTriangle + secondTriangle + thirdTriangle;
+      if (firstTriangle * secondTriangle * thirdTriangle * fourthTriangle == 0 || sumOfTriangles != fourthTriangle)
       {
         some_descr_is_wrong = true;
       }
