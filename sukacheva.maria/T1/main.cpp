@@ -9,7 +9,7 @@
 
 int main() {
   using namespace sukacheva;
-  bool ifScale = 0;
+  int ifScale = 0;
   std::string nameOfFigure = "";
   Shape* figures[1000]{};
   int index = 0;
@@ -69,7 +69,7 @@ int main() {
     }
     else if (nameOfFigure == "SCALE")
     {
-      ifScale == 1;
+      ifScale = 1;
       double x, y, k = 0;
       std::cin >> x >> y >> k;
       if ( k < 0 || index == 0)
