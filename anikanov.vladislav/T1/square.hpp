@@ -9,7 +9,6 @@ namespace anikanov {
   public:
     point_t cPoint;
     float side;
-
     explicit Square();
 
     ~Square() override = default;
@@ -27,8 +26,6 @@ namespace anikanov {
     void move(const point_t) override;
 
     void move(const float x, const float y) override;
-
-    void scale(const double) override;
 
     void scale(const double, const point_t center = point_t(0, 0)) override;
 

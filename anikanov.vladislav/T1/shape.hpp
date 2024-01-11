@@ -19,8 +19,6 @@ namespace anikanov {
 
     virtual point_t getCPoint() const = 0;
 
-    virtual void scale(const double) = 0;
-
     virtual void scale(const double, const point_t) = 0;
 
     float getDX(point_t fp, point_t sp)

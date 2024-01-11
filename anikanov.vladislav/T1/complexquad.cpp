@@ -143,11 +143,6 @@ Complexquad::Complexquad()
   rightTop = point_t();
 }
 
-void Complexquad::scale(const double k)
-{
-  (*this).scale(k, point_t(0, 0));
-}
-
 //COMPLEXQUAD -1.0 -2.0 1.0 2.0 1.0 -1.0 -2.0 2.0
 //SCALE 0.0 0.0 2.0
 
