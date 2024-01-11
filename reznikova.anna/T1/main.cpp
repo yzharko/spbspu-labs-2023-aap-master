@@ -84,12 +84,20 @@ int main()
       if (n <= 0)
       {
         std::cerr << "Negative Coeff Scale";
+        for (int i = 0; i < stored; i++)
+        {
+          delete figures[i];
+        }
         return 1;
       }
 
       if (stored == 0)
       {
         std::cerr << "nothing to scale\n";
+        for (int i = 0; i < stored; i++)
+        {
+          delete figures[i];
+        }
         return 1;
       }
       double sum_area = 0;
