@@ -115,10 +115,10 @@ int main()
         for (size_t i = 0; i < figuresCounter; ++i)
         {
           point_t initialPos = allFigures[i]->getFrameRect().pos;
-          allFigures[i]->move(x, y);
+          allFigures[i]->move({x, y});
           point_t diffPos;
-          diffPos.x = (initialPos.x - allFigures[i]->getFrameRect().pos.x) * scale;
-          diffPos.y = (initialPos.y - allFigures[i]->getFrameRect().pos.y) * scale;
+          diffPos.x = fabs(initialPos.x - allFigures[i]->getFrameRect().pos.x) * scale;
+          diffPos.y = fabs(initialPos.y - allFigures[i]->getFrameRect().pos.y) * scale;
           allFigures[i]->scale(scale);
           allFigures[i]->move(diffPos.x, diffPos.y);
         }
