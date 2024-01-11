@@ -94,13 +94,13 @@ int main()
       {
         sum_area += figures[i]->getArea();
       }
-      std::cout << std::fixed << std::setprecision(1) << sum_area << "\0" << " ";
+      std::cout << std::fixed << std::setprecision(1) << sum_area;
 
       for (int i = 0; i < stored; i++)
       {
         rectangle_t frame_rect = figures[i]->getFrameRect();
-        std::cout << std::fixed << std::setprecision(1) << frame_rect.leftpoint.x << "\0" << " " << frame_rect.leftpoint.y << "\0" << " ";
-        std::cout << std::fixed << std::setprecision(1) << frame_rect.rightpoint.x << "\0" << " " << frame_rect.rightpoint.y << "\0";
+        std::cout << std::fixed << std::setprecision(1) << ' ' << frame_rect.leftpoint.x << ' ' << frame_rect.leftpoint.y;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << frame_rect.rightpoint.x << ' ' << frame_rect.rightpoint.y;
       }
       std::cout << "\n";
 
@@ -111,15 +111,16 @@ int main()
         new_sum_area += figures[i]->getArea();
       }
 
-      std::cout << std::fixed << std::setprecision(1) << new_sum_area << "\0" << " ";
+      std::cout << std::fixed << std::setprecision(1) << new_sum_area << " \0";
 
       for (int i = 0; i < stored; i++)
       {
         rectangle_t frame_rect = figures[i]->getFrameRect();
-        std::cout << std::fixed << std::setprecision(1) << frame_rect.leftpoint.x << "\0" << " " << frame_rect.leftpoint.y << "\0" << " ";
-        std::cout << std::fixed << std::setprecision(1) << frame_rect.rightpoint.x << "\0" << " " << frame_rect.rightpoint.y << "\0";
+        std::cout << std::fixed << std::setprecision(1) << ' ' << frame_rect.leftpoint.x << ' ' << frame_rect.leftpoint.y;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << frame_rect.rightpoint.x << ' ' << frame_rect.rightpoint.y;
         delete figures[i];
       }
+      std::cout << "\n";
       break;
     }
   }
