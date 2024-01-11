@@ -3,19 +3,18 @@
 
 namespace sadofeva
 {
-	struct Point_t
-	{
-	public:
-		double x;
-		double y;
-	}; 
-	
-	struct Rectangle_t
-	{
-	public:
-		Point_t pos;
-		double width; 
-		double height;
-	};
+  struct Point_t
+  {
+  public:
+    double x;
+    double y;
+  };
+  struct Rectangle_t
+  {
+  public:
+    Point_t pos;
+    double width;
+    double height;
+  };
 }
 #endif
