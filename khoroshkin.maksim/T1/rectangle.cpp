@@ -38,7 +38,6 @@ void Rectangle::move(double dx, double dy)
 void Rectangle::scale(double k)
 {
   leftPoint = {rectangle.pos.x + k * (leftPoint.x - rectangle.pos.x), rectangle.pos.y + k * (leftPoint.y - rectangle.pos.y)};
-
   rightPoint = {rectangle.pos.x + k * (rightPoint.x - rectangle.pos.x), rectangle.pos.y + k * (rightPoint.y - rectangle.pos.y)};
 
   rectangle.height *= k;
