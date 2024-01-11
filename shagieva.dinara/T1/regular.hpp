@@ -16,8 +16,9 @@ namespace shagieva
 
   private:
     point_t points[3];
-    int getNumberOfSides() const;
     double getLength(const point_t point1, const point_t point2) const;
+    double getCenterAngle() const;
+    int getNumberOfSides() const;
   };
 }
 

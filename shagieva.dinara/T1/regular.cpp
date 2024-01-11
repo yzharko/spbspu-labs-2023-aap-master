@@ -24,7 +24,13 @@ double Regular::getArea() const
 
 rectangle_t Regular::getFrameRect() const
 {
-  return { 0, 0, 0 };
+  int numberOfSides = getNumberOfSides();
+  double regularAngle = (numberOfSides - 2) * 180 / numberOfSides;
+  double externalAngle = 180 - regularAngle;
+  double regularSide = getLength(points[1], points[2]) * 2;
+  double extraWidth = regularSide * std::cos(externalAngle * 3.14 / 180);
+  double extraHeight = regularSide * std::sin(externalAngle * 3.14 / 180);
+  return { extraWidth * 2 + regularSide, extraHeight + extraWidth , points[0] };
 }
 
 void Regular::move(const double dx, const double dy)
@@ -57,7 +63,7 @@ double Regular::getLength(const point_t point1, const point_t point2) const
   return std::hypot(point2.x - point1.x, point2.y - point1.y);
 }
 
-int Regular::getNumberOfSides() const
+double Regular::getCenterAngle() const
 {
   point_t a = { points[1].x - points[0].x, points[1].y - points[0].y };
   point_t b = { points[2].x - points[0].x, points[2].y - points[0].y };
@@ -66,11 +72,17 @@ int Regular::getNumberOfSides() const
   double lenA = std::hypot(a.x, a.y);
   double lenB = std::hypot(b.x, b.y);
 
-  double angle = std::acos(std::fabs(scalarProduct) / (lenA * lenB));
+  double centerAngle = std::acos(std::fabs(scalarProduct) / (lenA * lenB));
+  centerAngle *= (180 / 3.14);
 
-  angle *= (180.00 / 3.14);
+  return centerAngle;
+}
 
-  double numberOfSides = 180.0 / angle;
+int Regular::getNumberOfSides() const
+{
+
+  double angle = getCenterAngle();
+  double numberOfSides = 180 / angle;
 
   return static_cast<int>(round(numberOfSides));
 }

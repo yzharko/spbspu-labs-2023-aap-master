@@ -21,9 +21,9 @@ bool complexquadIsCorrect(double x1, double y1, double x2, double y2, double x3,
 
 bool regularIsCorrect(double x1, double y1, double x2, double y2, double x3, double y3)
 {
-  double a = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
-  double b = (x3 - x2) * (x3 - x2) + (y3 - y2) * (y3 - y2);
-  double c = (x3 - x1) * (x3 - x1) + (y3 - y1) * (y3 - y1);
+  double a = std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2);
+  double b = std::pow(x3 - x2, 2) + std::pow(y3 - y2, 2);
+  double c = std::pow(x3 - x1, 2) + std::pow(y3 - y1, 2);
   return c == a + b;
 }
 
