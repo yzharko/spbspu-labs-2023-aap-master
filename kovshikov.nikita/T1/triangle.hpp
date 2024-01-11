@@ -14,7 +14,7 @@ public:
   virtual void move(double xPlus, double yPlus);
   virtual void scale(double multiplier);
   point_t getPos();
-  double changeVertex(const double multiplier, const point_t pos, point_t &vertex);
+  void changeVertex(const double multiplier, const point_t pos, point_t &vertex);
 private:
   point_t vertexA_;
   point_t vertexB_;

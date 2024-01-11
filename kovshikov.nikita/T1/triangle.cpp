@@ -55,7 +55,7 @@ point_t Triangle::getPos()
   double posY = (vertexA_.y + vertexB_.y + vertexC_.y) / 3;
   return point_t{ posX, posY };
 }
-double Triangle::changeVertex(const double multiplier, const point_t pos, point_t &vertex)
+void Triangle::changeVertex(const double multiplier, const point_t pos, point_t &vertex)
 {
   double changeX = (vertex.x - pos.x) * multiplier;
   vertex.x += changeX;
