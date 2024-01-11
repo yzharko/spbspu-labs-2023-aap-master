@@ -123,16 +123,6 @@ namespace anikanov {
   }
 }
 
-float Complexquad::getDX(PointT fp, PointT sp)
-{
-  return fp.x - sp.x;
-}
-
-float Complexquad::getDY(PointT fp, PointT sp)
-{
-  return fp.y - sp.y;
-}
-
 float Complexquad::getDistance(PointT fp, PointT sp)
 {
   return std::sqrt(std::pow(getDX(fp, sp), 2) + std::pow(getDY(fp, sp), 2));
