@@ -2,7 +2,7 @@
 
 using namespace shagieva;
 
-Rectangle::Rectangle(const point_t & point1, const point_t & point2):
+Rectangle::Rectangle(const point_t point1, const point_t point2):
   pointA(point1),
   pointC(point2)
 {}
@@ -22,7 +22,7 @@ rectangle_t Rectangle::getFrameRect() const
   return { width, height, center };
 }
 
-void Rectangle::move(const double & dx, const double & dy)
+void Rectangle::move(const double dx, const double dy)
 {
   pointA.x += dx;
   pointA.y += dy;
@@ -30,14 +30,14 @@ void Rectangle::move(const double & dx, const double & dy)
   pointC.y += dy;
 }
 
-void Rectangle::move(const point_t & newCenter)
+void Rectangle::move(const point_t newCenter)
 {
   double dx = newCenter.x - (pointA.x + pointC.x) / 2;
   double dy = newCenter.y - (pointA.y + pointC.y) / 2;
   move(dx, dy);
 }
 
-void Rectangle::scale(const double & scaleFactor)
+void Rectangle::scale(const double scaleFactor)
 {
   point_t center = { (pointA.x + pointC.x) / 2, (pointA.y + pointC.y) / 2 };
   pointA.x = (pointA.x - center.x) * scaleFactor + center.x;
