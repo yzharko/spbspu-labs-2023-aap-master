@@ -106,12 +106,21 @@ int main()
         std::cout << std::fixed << std::setprecision(1);
         std::cout << prevAreaSum << ' ';
         for (size_t i = 0; i < prevCoosNum; i++) {
-          std::cout << prevFramesData[i] << ' ';
+          if (prevCoosNum - i == 1) {
+            std::cout << prevFramesData[i];
+          } else {
+            std::cout << prevFramesData[i] << ' ';
+          }
         }
         std::cout << '\n';
         std::cout << newAreaSum << ' ';
         for (size_t i = 0; i < newCoosNum; i++) {
-          std::cout << newFramesData[i] << ' ';
+          if (prevCoosNum - i == 1) {
+            std::cout << newFramesData[i];
+          }
+          else {
+            std::cout << newFramesData[i] << ' ';
+          }
         }
         std::cout << '\n';
         delete[] prevFramesData;
