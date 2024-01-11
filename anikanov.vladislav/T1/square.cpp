@@ -66,4 +66,9 @@ namespace anikanov {
                            leftBottom.y + square.side / 2);
     return in;
   }
+
+  void Square::scale(double k)
+  {
+    (*this).scale(k, point_t());
+  }
 }

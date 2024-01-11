@@ -82,4 +82,9 @@ namespace anikanov {
                         leftBottom.y + rec.height / 2);
     return in;
   }
+
+  void Rectangle::scale(double k)
+  {
+    (*this).scale(k, point_t());
+  }
 }
