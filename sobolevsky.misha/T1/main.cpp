@@ -1,15 +1,38 @@
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <stdio.h>
+#include <string.h>
+#include "base-types.hpp"
+#include "shape.hpp"
 #include "rectangle.hpp"
 #include "diamond.hpp"
 #include "parallelogram.hpp"
 
 int main()
 {
-  sobolevsky::Rectangle rectangle({ 1.0, 1.0 }, { 3.0, 4.0 });
-  std::cout << rectangle.getArea() << '\n';
-  std::cout << "width: " << rectangle.getFrameRect().width << '\n';
-  std::cout << "height: " << rectangle.getFrameRect().height << '\n';
-  rectangle.move(3, 4);
-  std::cout << rectangle.getFrameRect().pos.x << ' ' << rectangle.getFrameRect().pos.y << '\n';
-  return 0;
+  struct CompositeShape
+  {
+    size_t shapes;
+    size_t capacity;
+    sobolevsky::Shape * shapeptrs;
+  };
+
+  std::string figureType; 
+  while (std::cin >> figureType)
+  {
+    if (figureType == "RECTANGLE")
+    {
+      double x1, x2, y1, y2;
+      if ((std::cin >> x1 >> y1 >> x2 >> y2) && (x1 < x2) && (y1 < y2))
+      {
+        
+      }
+      else
+      {
+        std::cerr << "Wrong rectanglr\n";
+      }
+    }
+  }
 }
