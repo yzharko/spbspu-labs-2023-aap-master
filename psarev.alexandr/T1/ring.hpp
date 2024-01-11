@@ -8,8 +8,8 @@ namespace psarev
   {
   public:
     Ring(point_t point, double firRad, double secRad);
-    virtual double getArea() override;
-    virtual rectangle_t getFrameRect() override;
+    virtual double getArea() const override;
+    virtual rectangle_t getFrameRect() const override;
     virtual void move(point_t newCenter) override;
     virtual void move(double xCh, double yCh) override;
     virtual void scale(double coef) override;

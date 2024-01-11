@@ -8,7 +8,7 @@ Triangle::Triangle(point_t firPoint, point_t secPoint, point_t thirPoint) :
   center = { ((firCorner.x + secCorner.x + thirCorner.x) / 3), ((firCorner.y + secCorner.y + thirCorner.y) / 3) };
 }
 
-rectangle_t Triangle::getFrameRect()
+rectangle_t Triangle::getFrameRect() const
 {
   double maxX = 0;
   maxX = fmax(firCorner.x, secCorner.x);
@@ -29,7 +29,7 @@ rectangle_t Triangle::getFrameRect()
   return { width, height, { (maxX - minX) * 0.5, (maxY - minY) * 0.5 } };
 }
 
-double Triangle::getArea()
+double Triangle::getArea() const
 {
   return (0.5 * abs((secCorner.x - firCorner.x) * (thirCorner.y - firCorner.y) - (thirCorner.x - firCorner.x) * (secCorner.y - firCorner.y)));
 }

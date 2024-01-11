@@ -9,8 +9,8 @@ namespace psarev
   {
   public:
     Triangle(point_t firCorner, point_t secCorner, point_t thirCorner);
-    virtual double getArea() override;
-    virtual rectangle_t getFrameRect() override;
+    virtual double getArea() const override;
+    virtual rectangle_t getFrameRect() const override;
     virtual void move(point_t newCenter) override;
     virtual void move(double xCh, double yCh) override;
     virtual void scale(double coef) override;

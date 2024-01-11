@@ -7,12 +7,12 @@ Ring::Ring(point_t point, double firRad, double secRad) :
   center(point), exterRad(firRad), interRad(secRad)
 {}
 
-rectangle_t Ring::getFrameRect()
+rectangle_t Ring::getFrameRect() const
 {
   return { exterRad * 2, exterRad * 2, center };
 }
 
-double Ring::getArea()
+double Ring::getArea() const
 {
   return ((3.14 * pow(exterRad, 2)) - (3.14 * pow(interRad, 2)));
 }

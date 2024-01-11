@@ -7,11 +7,12 @@ namespace psarev
   class Shape
   {
   public:
-    virtual double getArea() = 0;
-    virtual rectangle_t getFrameRect() = 0;
+    virtual double getArea() const = 0;
+    virtual rectangle_t getFrameRect() const = 0;
     virtual void move(point_t newCenter) = 0;
     virtual void move(double xCh, double yCh) = 0;
     virtual void scale(double coef) = 0;
+    virtual ~Shape() = default;
   };
 }
 

@@ -9,12 +9,12 @@ Rectangle::Rectangle(point_t firPoint, point_t secPoint) :
   center = { (llCorner.x + urCorner.x) / 2, (llCorner.y + urCorner.y) / 2 };
 }
 
-rectangle_t Rectangle::getFrameRect()
+rectangle_t Rectangle::getFrameRect() const
 {
   return { fabs(llCorner.x - urCorner.x), fabs(llCorner.y - urCorner.y), center };
 }
 
-double Rectangle::getArea()
+double Rectangle::getArea() const
 {
   rectangle_t frameRect = getFrameRect();
   return (frameRect.width * frameRect.height);
