@@ -9,8 +9,6 @@ int main()
 {
   using namespace doroshenko;
   std::string figure;
-  size_t size = 20;
-  size_t plusSize = 20;
   size_t countFig = 0;
   Shape* geometricFigures[1000] = { 0 };
   while (std::cin>>figure)
