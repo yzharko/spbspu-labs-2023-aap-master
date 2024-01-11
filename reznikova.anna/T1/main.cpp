@@ -120,7 +120,7 @@ int main()
         delete figures[i];
       }
       std::cout << "\n";
-      
+
       break;
     }
   }
