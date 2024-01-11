@@ -97,7 +97,7 @@ int main()
         {
           sumAreaBefore += geometricFigures[i]->getArea();
         }
-        std::cout << std::fixed << std::setprecision(1) << sumAreaBefore << ' ';
+        std::cout << std::fixed << std::setprecision(1) << sumAreaBefore;
         for (size_t j = 0; j < countFig; j++)
         {
           rectangle_t frame = geometricFigures[j]->getFrameRect();
@@ -105,7 +105,7 @@ int main()
           yL = frame.pos_.y_ - 0.5 * frame.height_;
           xR = frame.pos_.x_ + 0.5 * frame.width_;
           yR = frame.pos_.y_ + 0.5 * frame.height_;
-          std::cout << std::fixed << std::setprecision(1) << xL << ' ' << yL << ' ' << xR << ' ' << yR << ' ';
+          std::cout << std::fixed << std::setprecision(1) << ' ' << xL << ' ' << yL << ' ' << xR << ' ' << yR;
         }
         std::cout << "\n";
         for (size_t k = 0; k < countFig; k++)
@@ -118,7 +118,7 @@ int main()
         {
           sumAreaAfter += geometricFigures[i]->getArea();
         }
-        std::cout << std::fixed << std::setprecision(1) << sumAreaAfter << ' ';
+        std::cout << std::fixed << std::setprecision(1) << sumAreaAfter;
         for (size_t j = 0; j < countFig; j++)
         {
           rectangle_t frame = geometricFigures[j]->getFrameRect();
@@ -126,7 +126,7 @@ int main()
           yL = frame.pos_.y_ - 0.5 * frame.height_;
           xR = frame.pos_.x_ + 0.5 * frame.width_;
           yR = frame.pos_.y_ + 0.5 * frame.height_;
-          std::cout << std::fixed << std::setprecision(1) << xL << ' ' << yL << ' ' << xR << ' ' << yR << ' ';
+          std::cout << std::fixed << std::setprecision(1) << ' ' << xL << ' ' << yL << ' ' << xR << ' ' << yR;
         }
         std::cout << "\n";
         scale = true;
