@@ -54,6 +54,9 @@ int main()
         size_t prevCoosNum = 0;
         size_t newCoosNum = 0;
 
+        for (size_t i = 0; i < figIndex; i++) {
+        }
+        std::cout << std::fixed << std::setprecision(1);
       }
     }
   }
