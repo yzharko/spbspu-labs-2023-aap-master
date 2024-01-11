@@ -16,23 +16,23 @@ namespace sobolevsky
   {
     return rectangle.width * rectangle.height;
   }
-  
+
   Rectangle_t Rectangle::getFrameRect()
   {
     return rectangle;
   }
-  
+
   void Rectangle::move(Point_t newCenter)
   {
     rectangle.pos = newCenter;
   }
-  
+
   void Rectangle::move(double moveX, double moveY)
   {
     rectangle.pos.x += moveX;
     rectangle.pos.y += moveY;
   }
-  
+
   void Rectangle::scale(double n)
   {
     rectangle.width *= n;
