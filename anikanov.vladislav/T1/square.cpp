@@ -63,7 +63,12 @@ namespace anikanov {
       throw std::overflow_error("Invalid Input Square");
     }
     square.cPoint = point_t(leftBottom.x + square.side / 2,
-                           leftBottom.y + square.side / 2);
+                            leftBottom.y + square.side / 2);
     return in;
+  }
+
+  void Square::scale(const double k)
+  {
+    (*this).scale(k, point_t(0, 0));
   }
 }
