@@ -30,7 +30,7 @@ int main()
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
-        delete figures[stored];
+        delete figures[stored-1];
         stored -= 1;
         continue;
       }
@@ -50,7 +50,7 @@ int main()
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
-        delete figures[stored];
+        delete figures[stored-1];
         stored -= 1;
         continue;
       }
@@ -69,7 +69,7 @@ int main()
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
-        delete figures[stored];
+        delete figures[stored-1];
         stored -= 1;
         continue;
       }
