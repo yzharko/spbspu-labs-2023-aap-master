@@ -4,6 +4,7 @@
 #include "triangle.hpp"
 #include "concave.hpp"
 #include <iomanip>
+#include <cmath>
 
 int main()
 {
@@ -110,8 +111,13 @@ int main()
         std::cout << "\n";
         for (size_t k = 0; k < countFig; k++)
         {
-          geometricFigures[k]->move({ 0 - posx, 0 - posy });
+          rectangle_t frameBefore = geometricFigures[k]->getFrameRect();
+          geometricFigures[k]->move({posx, posy});
+          rectangle_t frameAfter = geometricFigures[k]->getFrameRect();
+          double moveX = fabs(frameAfter.pos_.x_ - frameBefore.pos_.x_)*coefficient;
+          double moveY = fabs(frameAfter.pos_.y_ - frameBefore.pos_.y_)*coefficient;
           geometricFigures[k]->scale(coefficient);
+          geometricFigures[k]->move(moveX, moveY);
         }
         double sumAreaAfter = 0;
         for (size_t i = 0; i < countFig; i++)

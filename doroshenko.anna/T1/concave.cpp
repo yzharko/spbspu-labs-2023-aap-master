@@ -1,4 +1,4 @@
-#include "concave.hpp"
+0~#include "concave.hpp"
 #include <cmath>
 #include <stdexcept>
 
@@ -11,6 +11,7 @@ doroshenko::Concave::Concave(point_t firstPoint, point_t secondPoint, point_t th
 
 double doroshenko::Concave::getArea()
 {
+  //большой треугольник 123
   double aF = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
   double bF = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
   double cF = sqrt(pow((thirdPoint_.x_ - firstPoint_.x_), 2) + pow((thirdPoint_.y_ - firstPoint_.y_), 2));
@@ -25,13 +26,44 @@ double doroshenko::Concave::getArea()
 
   double pF = 0.5 * (aF + bF + cF);
   double firstArea = sqrt(pF * (pF - aF) * (pF - bF) * (pF - cF));
-
+  //маленький треугольник 234
   double aS = sqrt(pow((fourthPoint_.x_ - secondPoint_.x_), 2) + pow((fourthPoint_.y_ - secondPoint_.y_), 2));
   double bS = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
   double cS = sqrt(pow((thirdPoint_.x_ - fourthPoint_.x_), 2) + pow((thirdPoint_.y_ - fourthPoint_.y_), 2));
   double pS = 0.5 * (aS + bS + cS);
   double secondArea = sqrt(pS * (pS - aS) * (pS - bS) * (pS - cS));
 
+  maxSide = aS >= bS ? aS : bS;
+  maxSide = maxSide >= cS ? maxSide : cS;
+
+  if (maxSide >= aS + bS + cS - maxSide)
+  {
+    throw std::logic_error("There is no such triangle\n");
+  }
+  //маленький треугольник 124
+  double a = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
+  double b = sqrt(pow((secondPoint_.x_ - fourthPoint_.x_), 2) + pow((secondPoint_.y_ - fourthPoint_.y_), 2));
+  double c = sqrt(pow((fourthPoint_.x_ - firstPoint_.x_), 2) + pow((fourthPoint_.y_ - firstPoint_.y_), 2));
+
+  maxSide = a >= b ? a : b;
+  maxSide = maxSide >= c ? maxSide : c;
+
+  if (maxSide >= a + b + c - maxSide)
+  {
+    throw std::logic_error("There is no such triangle\n");
+  }
+  //маленький треугольник 134
+  a = sqrt(pow((firstPoint_.x_ - thirdPoint_.x_), 2) + pow((firstPoint_.y_ - thirdPoint_.y_), 2));
+  b = sqrt(pow((thirdPoint_.x_ - fourthPoint_.x_), 2) + pow((thirdPoint_.y_ - fourthPoint_.y_), 2));
+  c = sqrt(pow((fourthPoint_.x_ - firstPoint_.x_), 2) + pow((fourthPoint_.y_ - firstPoint_.y_), 2));
+
+  maxSide = a >= b ? a : b;
+  maxSide = maxSide >= c ? maxSide : c;
+
+  if (maxSide >= a + b + c - maxSide)
+  {
+    throw std::logic_error("There is no such triangle\n");
+  }
   return firstArea - secondArea;
 }
 
