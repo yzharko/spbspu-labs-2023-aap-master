@@ -1,26 +1,27 @@
 #pragma once
 #include "Shape.h"
-#include <string>
+#include "Point.h"
 
 class Circle : public Shape
 {
 private:
   Point center_;
-  double radius_;
-
+  double rad_;
 public:
   Circle();
-  Circle(const Point& center, double radius);
+  Circle(Point& center, double rad_);
+  Circle(const Circle& circle);
+  Circle(Circle&& ring) noexcept;
+  Circle(double x, double y, double rad_);
   ~Circle();
-
+  Circle& operator=(const Circle& circle);
+  Circle& operator=(Circle&& circle) noexcept;
   Point getCenter();
-  double getRadius();
-  double getArea();
-  FrameRectangle getFrameRectangle();
-  void move(double dx, double dy);
-  void scale(double size);
-  Shape* clone();
-  std::string getName();
-
-
+  double getRad();
+  virtual double getArea();
+  virtual FrameRectangle getFrameRectangle();
+  virtual void move(double xdist, double ydist);
+  virtual void scale(double k);
+  virtual Shape* clone();
+  virtual std::string getName() const;
 };

@@ -1,39 +1,35 @@
 #include "FrameRectangle.h"
+#include "Point.h"
 
 FrameRectangle::FrameRectangle() {
-  width_ = 0.0;
-  height_ = 0.0;
-  pos_ = Point(0.0, 0.0);
+  pos_ = Point();
+  width_ = 0;
+  height_ = 0;
 }
-
-FrameRectangle::FrameRectangle(double width, double height, const Point& pos) {
+FrameRectangle::FrameRectangle(Point& pos, double width, double height) {
+  pos_ = pos;
   width_ = width;
   height_ = height;
-  pos_ = pos;
 }
-
 FrameRectangle::~FrameRectangle() {}
-
-void FrameRectangle::setWidth(double width) {
-  width_ = width;
+Point FrameRectangle::getLeftCorner() {
+  Point corner;
+  corner.setX(pos_.getX() - (width_ / 2));
+  corner.setY(pos_.getY() - (height_ / 2));
+  return corner;
 }
-
-void FrameRectangle::setHeight(double height) {
-  height_ = height;
+Point FrameRectangle::getRightCorner() {
+  Point corner2;
+  corner2.setX(pos_.getX() + (width_ / 2));
+  corner2.setY(pos_.getY() + (height_ / 2));
+  return corner2;
 }
-
-void FrameRectangle::setPos(const Point& pos) {
-  pos_ = pos;
+Point FrameRectangle::getCenter() {
+  return pos_;
 }
-
 double FrameRectangle::getWidth() {
   return width_;
 }
-
 double FrameRectangle::getHeight() {
   return height_;
-}
-
-Point FrameRectangle::getPos() {
-  return pos_;
 }
