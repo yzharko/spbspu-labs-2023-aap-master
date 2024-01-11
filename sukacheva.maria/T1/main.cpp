@@ -23,7 +23,7 @@ int main() {
       {
         point_t point1 = { x1, y1 };
         point_t point2 = { x2, y2 };
-        Shape* rectangle = new Rectangle(point1, point2);
+        Shape* rectangle = new Rectangle(point2, point1);
         figures[index] = rectangle;
         index += 1;
       }
