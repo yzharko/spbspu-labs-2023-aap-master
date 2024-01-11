@@ -44,12 +44,14 @@ void Square::move(float x, float y)
   cPoint = PointT(x, y);
 }
 
-void Square::scale(float k, PointT point)
+void Square::scale(float k, PointT center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
   }
   side *= k;
+  cPoint.x += (k - 1) * getDX(cPoint, center);
+  cPoint.y += (k - 1) * getDY(cPoint, center);
 }
 
 namespace anikanov {

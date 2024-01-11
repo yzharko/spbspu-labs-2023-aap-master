@@ -20,6 +20,16 @@ namespace anikanov {
     virtual PointT getCPoint() const = 0;
 
     virtual void scale(float, PointT) = 0;
+
+    float getDX(PointT fp, PointT sp)
+    {
+      return fp.x - sp.x;
+    };
+
+    float getDY(PointT fp, PointT sp)
+    {
+      return fp.y - sp.y;
+    };
   };
 }
 
