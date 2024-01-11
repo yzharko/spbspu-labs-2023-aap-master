@@ -25,14 +25,15 @@ int main()
       point_t center(x, y);
       try
       {
-        Ring ring(center, r1, r2);
+        figures[stored++] = new Ring(center, r1, r2);
       }
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
+        delete figures[stored];
+        stored -= 1;
         continue;
       }
-      figures[stored++] = new Ring(center, r1, r2);
     }
 
     else if (name == "REGULAR")
@@ -44,14 +45,15 @@ int main()
       point_t point2(x2, y2);
       try
       {
-        Regular regular(center, point1, point2);
+        figures[stored++] = new Regular(center, point1, point2);
       }
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
+        delete figures[stored];
+        stored -= 1;
         continue;
       }
-      figures[stored++] = new Regular(center, point1, point2);
     }
 
     else if (name == "RECTANGLE")
@@ -62,14 +64,15 @@ int main()
       point_t rightpoint(rx, ry);
       try
       {
-        Rectangle rectangle(leftpoint, rightpoint);
+        figures[stored++] = new Rectangle(leftpoint, rightpoint);
       }
       catch(const std::runtime_error &e)
       {
         std::cerr << e.what();
+        delete figures[stored];
+        stored -= 1;
         continue;
       }
-      figures[stored++] = new Rectangle(leftpoint, rightpoint);
     }
 
     else if (name == "SCALE")
@@ -130,7 +133,5 @@ int main()
     std::cerr << "no scale command\n";
     return 1;
   }
-
   return 0;
 }
-
