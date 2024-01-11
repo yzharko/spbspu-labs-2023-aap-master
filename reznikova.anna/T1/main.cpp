@@ -12,12 +12,11 @@ int main()
   using namespace reznikova;
   bool scale_command = 0;
   std::string name = "";
+  std::cin >> name;
   Shape* figures[1000] = {0};
   int stored = 0;
   while (!std::cin.eof())
   {
-    std::cin >> name;
-
     if (name == "RING")
     {
       double x, y, r1, r2;
@@ -128,6 +127,7 @@ int main()
       std::cout << "\n";
       break;
     }
+    std::cin >> name;
   }
 
   if (scale_command == 0)
