@@ -25,7 +25,8 @@ int main()
       point_t center(x, y);
       try
       {
-        figures[stored++] = new Ring(center, r1, r2);
+        figures[stored] = new Ring(center, r1, r2);
+        stored += 1;
       }
       catch(const std::runtime_error &e)
       {
@@ -45,7 +46,8 @@ int main()
       point_t point2(x2, y2);
       try
       {
-        figures[stored++] = new Regular(center, point1, point2);
+        figures[stored] = new Regular(center, point1, point2);
+        stored += 1;
       }
       catch(const std::runtime_error &e)
       {
@@ -64,7 +66,8 @@ int main()
       point_t rightpoint(rx, ry);
       try
       {
-        figures[stored++] = new Rectangle(leftpoint, rightpoint);
+        figures[stored] = new Rectangle(leftpoint, rightpoint);
+        stored += 1;
       }
       catch(const std::runtime_error &e)
       {
@@ -83,7 +86,7 @@ int main()
       point_t center(x, y);
       if (n <= 0)
       {
-        std::cerr << "Negative Coeff Scale";
+        std::cerr << "Negative Coeff Scale\n";
         for (int i = 0; i < stored; i++)
         {
           delete figures[i];
