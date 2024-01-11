@@ -2,7 +2,7 @@
 #include "base-types.hpp"
 #include <iostream>
 
-Circle::Circle(point_t center, double radius) :
+sukacheva::Circle::Circle(point_t center, double radius) :
   center_(center),
   radius_(radius)
 {
@@ -11,23 +11,23 @@ Circle::Circle(point_t center, double radius) :
   }
 }
 
-double Circle::getArea() {
+double sukacheva::Circle::getArea() {
   return (3.14 * radius_ * radius_);
 }
 
-void Circle::move(double x, double y) {
+void sukacheva::Circle::move(double x, double y) {
   center_.x_ += x;
   center_.y_ += y;
 }
 
-void Circle::move(point_t center) {
+void sukacheva::Circle::move(point_t center) {
   center_ = center;
 }
 
-void Circle::scale(double k) {
+void sukacheva::Circle::scale(double k) {
   radius_ = radius_ * k;
 }
 
-rectangle_t Circle::getFrameRect() {
+sukacheva::rectangle_t sukacheva::Circle::getFrameRect() {
   return rectangle_t(2 * radius_, 2 * radius_, center_);
 }

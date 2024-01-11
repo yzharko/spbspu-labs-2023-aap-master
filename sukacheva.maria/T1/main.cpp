@@ -8,6 +8,7 @@
 #include "Rectangle.hpp"
 
 int main() {
+  using namespace sukacheva;
   std::string nameOfFigure = "";
   Shape* figures[1000]{};
   int index = 0;

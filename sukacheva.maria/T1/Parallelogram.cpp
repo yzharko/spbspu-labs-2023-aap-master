@@ -2,26 +2,26 @@
 #include "base-types.hpp"
 #include <iostream>
 
-Parallelogram::Parallelogram(point_t A, point_t B, point_t C) :
+sukacheva::Parallelogram::Parallelogram(point_t A, point_t B, point_t C) :
   A_(A),
   B_(B),
   C_(C)
 {}
 
-double Parallelogram::getArea()
+double sukacheva::Parallelogram::getArea()
 {
   double height = std::abs(A_.y_ - C_.y_);
   double lenght = std::abs(B_.x_ - C_.y_);
   return height * lenght;
 }
 
-void Parallelogram::move(double x, double y) {
+void sukacheva::Parallelogram::move(double x, double y) {
   A_ = point_t(A_.x_ + x, A_.y_ + y);
   B_ = point_t(B_.x_ + x, B_.y_ + y);
   C_ = point_t(C_.x_ + x, C_.y_ + y);
 }
 
-void Parallelogram::move(point_t center) {
+void sukacheva::Parallelogram::move(point_t center) {
   double newX = center.x_;
   double newY = center.y_;
   double oldX = (A_.x_ + B_.x_) / 2;
@@ -32,7 +32,7 @@ void Parallelogram::move(point_t center) {
 }
 
 
-void Parallelogram::scale(double k)
+void sukacheva::Parallelogram::scale(double k)
 {
   double centerX = (A_.x_ + B_.x_) / 2;
   double centerY = (A_.y_ + C_.y_) / 2;
@@ -42,7 +42,7 @@ void Parallelogram::scale(double k)
   C_ = point_t((centerX + (C_.x_ - centerX) * k), (centerY + (C_.y_ - centerY) * k));
 }
 
-rectangle_t Parallelogram::getFrameRect()
+sukacheva::rectangle_t sukacheva::Parallelogram::getFrameRect()
 {
   double height = std::abs(A_.y_ - C_.y_);
   double width = std::abs(B_.x_ - C_.y_);
