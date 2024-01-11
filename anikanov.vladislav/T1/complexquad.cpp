@@ -19,10 +19,10 @@ float Complexquad::getArea()
 
 rectangle_t Complexquad::getFrameRect()
 {
-  float leftMax = std::numeric_limits< float >::max();
-  float topMax = std::numeric_limits< float >::min();
-  float rightMax = std::numeric_limits< float >::min();
-  float bottomMax = std::numeric_limits< float >::max();
+  double leftMax = std::numeric_limits< double >::max();
+  double topMax = std::numeric_limits< double >::min();
+  double rightMax = std::numeric_limits< double >::min();
+  double bottomMax = std::numeric_limits< double >::max();
   point_t points[] = {leftTop, leftBottom, rightTop, rightBottom};
   for (auto point: points) {
     leftMax = std::min(leftMax, point.x);
