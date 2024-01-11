@@ -1,12 +1,12 @@
 #include "base-types.hpp"
 
-sukacheva::point_t::point_t(double x, double y):
-  x_(x),
-  y_(y)
+sukacheva::point_t::point_t(double x_, double y_):
+  x(x_),
+  y(y_)
 {}
 
-sukacheva::rectangle_t::rectangle_t(double width, double height, point_t pos):
-  width_(width),
-  height_(height),
-  pos_(pos)
+sukacheva::rectangle_t::rectangle_t(double width_, double height_, point_t pos_):
+  width(width_),
+  height(height_),
+  pos(pos_)
 {}
