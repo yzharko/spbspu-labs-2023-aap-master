@@ -126,6 +126,7 @@ int main() {
         break;
       }
     }
+  }
   if (ifScale == 0)
   {
     for (int i = 0; i < index; i++)
