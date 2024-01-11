@@ -138,6 +138,10 @@ int main()
 
   if (scale_command == 0)
   {
+    for (int i = 0; i < stored; i++)
+    {
+      delete figures[i];
+    }
     std::cerr << "no scale command\n";
     return 1;
   }
