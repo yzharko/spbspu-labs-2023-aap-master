@@ -100,7 +100,7 @@ int main()
       {
         rectangle_t frame_rect = figures[i]->getFrameRect();
         std::cout << std::fixed << std::setprecision(1) << frame_rect.leftpoint.x << " " << frame_rect.leftpoint.y << " ";
-        std::cout << std::fixed << std::setprecision(1) << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y;
+        std::cout << std::fixed << std::setprecision(1) << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << "\0";
       }
       std::cout << "\n";
 
@@ -117,7 +117,7 @@ int main()
       {
         rectangle_t frame_rect = figures[i]->getFrameRect();
         std::cout << std::fixed << std::setprecision(1) << frame_rect.leftpoint.x << " " << frame_rect.leftpoint.y << " ";
-        std::cout << std::fixed << std::setprecision(1) << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y;
+        std::cout << std::fixed << std::setprecision(1) << frame_rect.rightpoint.x << " " << frame_rect.rightpoint.y << "\0";
         delete figures[i];
       }
       break;
