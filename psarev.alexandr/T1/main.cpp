@@ -37,7 +37,22 @@ int main()
         errMark = true;
       }
     }
-    
+    else if (keyWord == "TRIANGLE") {
+      if ((std::cin >> trianData[0] >> trianData[1] >> trianData[2] >> trianData[3] >> trianData[4] >> trianData[5])) {
+        double firEdge = (sqrt(pow(trianData[2] - trianData[0], 2) + pow(trianData[3] - trianData[1], 2)));
+        double secEdge = (sqrt(pow(trianData[4] - trianData[2], 2) + pow(trianData[5] - trianData[3], 2)));
+        double thirEdge = (sqrt(pow(trianData[4] - trianData[0], 2) + pow(trianData[5] - trianData[1], 2)));
+        bool result = 0;
+        result = (firEdge + secEdge > thirEdge) && (firEdge + thirEdge > secEdge) && (secEdge + secEdge > firEdge);
+        if (result) {
+          queue[figIndex++] = 't';
+        } else {
+          errMark = true;
+        }
+      } else {
+        errMark = true;
+      }
+    }
     else if (keyWord == "SCALE") {
       if (figIndex == 0) {
         std::cerr << "Error: There is no descriptions of the supported figures!\n";
@@ -60,29 +75,6 @@ int main()
 
         for (size_t i = 0; i < figIndex; i++) {
           if (queue[i] == 'r') {
-            psarev::Rectangle taskRect({ rectData[0], rectData[1]}, { rectData[2], rectData[3] });
-            psarev::rectangle_t taskRectFrame = taskRect.getFrameRect();
-            prevAreaSum += taskRectFrame.width * taskRectFrame.height;
-            prevFramesData[prevCoosNum] = taskRectFrame.pos.x - (taskRectFrame.width / 2);
-            prevCoosNum++;
-            prevFramesData[prevCoosNum] = taskRectFrame.pos.y - (taskRectFrame.height / 2);
-            prevCoosNum++;
-            prevFramesData[prevCoosNum] = taskRectFrame.pos.x + (taskRectFrame.width / 2);
-            prevCoosNum++;
-            prevFramesData[prevCoosNum] = taskRectFrame.pos.y + (taskRectFrame.height / 2);
-            prevCoosNum++;
-            taskRect.move(0 - scaleCenter.x, 0 - scaleCenter.y);
-            taskRect.scale(coef);
-            taskRectFrame = taskRect.getFrameRect();
-            newAreaSum += taskRectFrame.width * taskRectFrame.height;
-            newFramesData[newCoosNum] = taskRectFrame.pos.x - (taskRectFrame.width / 2);
-            newCoosNum++;
-            newFramesData[newCoosNum] = taskRectFrame.pos.y - (taskRectFrame.height / 2);
-            newCoosNum++;
-            newFramesData[newCoosNum] = taskRectFrame.pos.x + (taskRectFrame.width / 2);
-            newCoosNum++;
-            newFramesData[newCoosNum] = taskRectFrame.pos.y + (taskRectFrame.height / 2);
-            newCoosNum++;
           }
         }
         std::cout << std::fixed << std::setprecision(1);
