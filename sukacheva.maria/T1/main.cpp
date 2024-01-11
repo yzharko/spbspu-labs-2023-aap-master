@@ -122,11 +122,11 @@ int main() {
           delete figures[i];
         }
         std::cout << "\n";
-        scale = 1;
+        ifScale = 1;
         break;
       }
     }
-    if (!scale)
+    if (!ifScale)
     {
       for (int i = 0; i < index; i++)
       {
