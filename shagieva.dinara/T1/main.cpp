@@ -122,9 +122,8 @@ int main()
     std::cout << frame.pos.x - frame.width / 2 << " "
               << frame.pos.y - frame.height / 2 << " "
               << frame.pos.x + frame.width / 2 << " "
-              << frame.pos.y + frame.height / 2 << " ";
+              << frame.pos.y + frame.height / 2 << "\n";
   }
-  std::cout << "\n";
 
   for (size_t i = 0; i < shapeCount; ++i)
   {
@@ -150,9 +149,8 @@ int main()
     std::cout << frame.pos.x - frame.width / 2 << " "
               << frame.pos.y - frame.height / 2 << " "
               << frame.pos.x + frame.width / 2 << " "
-              << frame.pos.y + frame.height / 2 << " ";
+              << frame.pos.y + frame.height / 2 << "\n";
   }
-  std::cout << "\n";
 
   if (figureIsWrong)
   {
