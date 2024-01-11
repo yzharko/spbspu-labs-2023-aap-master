@@ -126,15 +126,15 @@ int main() {
         break;
       }
     }
-    if (ifScale == 0)
+  if (ifScale == 0)
+  {
+    for (int i = 0; i < index; i++)
     {
-      for (int i = 0; i < index; i++)
-      {
-        delete figures[i];
-      }
-      std::cerr << "No scale command";
-      return 2;
+      delete figures[i];
     }
+    std::cerr << "No scale command";
+    return 2;
+  }
   };
   return 0;
 }
