@@ -24,27 +24,27 @@ point_t Square::getCPoint() const
   return cPoint;
 }
 
-float Square::getArea()
+double Square::getArea() const
 {
   return side * side;
 }
 
-rectangle_t Square::getFrameRect()
+rectangle_t Square::getFrameRect() const
 {
   return rectangle_t(cPoint, side, side);
 }
 
-void Square::move(point_t newCPoint)
+void Square::move(const point_t newCPoint)
 {
   cPoint = newCPoint;
 }
 
-void Square::move(float x, float y)
+void Square::move(const float x, const float y)
 {
   cPoint = point_t(x, y);
 }
 
-void Square::scale(float k, point_t center)
+void Square::scale(const float k, const point_t center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");

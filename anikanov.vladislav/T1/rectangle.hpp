@@ -24,15 +24,15 @@ namespace anikanov {
 
     point_t getCPoint() const;
 
-    float getArea() override;
+    double getArea() const override;
 
-    rectangle_t getFrameRect() override;
+    rectangle_t getFrameRect() const override;
 
-    void move(point_t) override;
+    void move(const point_t) override;
 
-    void move(float x, float y) override;
+    void move(const float x, const float y) override;
 
-    void scale(float, point_t center = point_t(0, 0)) override;
+    void scale(const float, const point_t center = point_t(0, 0)) override;
 
     friend std::istream &operator>>(std::istream &, Rectangle &);
   };

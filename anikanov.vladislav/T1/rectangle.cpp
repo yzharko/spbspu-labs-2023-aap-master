@@ -35,27 +35,27 @@ point_t Rectangle::getCPoint() const
   return cPoint;
 }
 
-float Rectangle::getArea()
+double Rectangle::getArea() const
 {
   return width * height;
 }
 
-rectangle_t Rectangle::getFrameRect()
+rectangle_t Rectangle::getFrameRect() const
 {
   return rectangle_t(cPoint, width, height);
 }
 
-void Rectangle::move(point_t newCPoint)
+void Rectangle::move(const point_t newCPoint)
 {
   cPoint = newCPoint;
 }
 
-void Rectangle::move(float x, float y)
+void Rectangle::move(const float x, const float y)
 {
   cPoint = point_t(x, y);
 }
 
-void Rectangle::scale(float k, point_t center)
+void Rectangle::scale(const float k, const point_t center)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
