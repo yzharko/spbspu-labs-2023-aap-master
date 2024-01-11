@@ -12,7 +12,7 @@ reznikova::Rectangle::Rectangle(point_t leftpoint, point_t rightpoint):
   }
 }
 
-double reznikova::Rectangle::getArea()
+double reznikova::Rectangle::getArea() const
 {
   double Area = 0;
   double width = std::abs(rightpoint_.x - leftpoint_.x);
@@ -21,7 +21,7 @@ double reznikova::Rectangle::getArea()
   return Area;
 }
 
-reznikova::rectangle_t reznikova::Rectangle::getFrameRect()
+reznikova::rectangle_t reznikova::Rectangle::getFrameRect() const
 {
   double width = std::abs(rightpoint_.x - leftpoint_.x);
   double height = std::abs(rightpoint_.y - leftpoint_.y);

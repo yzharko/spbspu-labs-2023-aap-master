@@ -19,13 +19,13 @@ reznikova::Regular::Regular(point_t center, point_t point1, point_t point2):
   }
 }
 
-double reznikova::Regular::getArea()
+double reznikova::Regular::getArea() const
 {
   double Area = pow((pow((point1_.x-point2_.x), 2) + pow((point1_.y-point2_.y), 2)), 0.5) * num_sides * r;
   return Area;
 }
 
-reznikova::rectangle_t reznikova::Regular::getFrameRect()
+reznikova::rectangle_t reznikova::Regular::getFrameRect() const
 {
   double width = 2 * R;
   double height = 2 * R;

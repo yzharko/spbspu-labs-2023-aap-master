@@ -13,18 +13,18 @@ reznikova::Ring::Ring(point_t center, double r1, double r2):
   }
 }
 
-double reznikova::Ring::getArea()
+double reznikova::Ring::getArea() const
 {
   double Area1 = M_PI * r1_ * r1_;
   double Area2 = M_PI * r2_ * r2_;
   return std::abs(Area1 - Area2);
 }
 
-reznikova::rectangle_t reznikova::Ring::getFrameRect()
+reznikova::rectangle_t reznikova::Ring::getFrameRect() const
 {
   double width = 0;
   double height = 0;
-  width = height = 2 * r2_;
+  width = height = 2 * r1_;
   rectangle_t rectangle(width, height, center_);
   return rectangle;
 }

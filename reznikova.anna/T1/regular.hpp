@@ -13,8 +13,8 @@ namespace reznikova
   public:
     Regular(point_t center, point_t point1, point_t point2);
     ~Regular() override = default;
-    double getArea() override;
-    rectangle_t getFrameRect() override;
+    double getArea() const override;
+    rectangle_t getFrameRect() const override;
     void move(double dx, double dy) override;
     void move(point_t new_center) override;
     void scale(double n) override;

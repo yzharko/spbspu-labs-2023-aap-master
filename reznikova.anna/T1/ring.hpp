@@ -11,8 +11,8 @@ namespace reznikova
   public:
     Ring(point_t center, double r1, double r2);
     ~Ring() override = default;
-    double getArea() override;
-    rectangle_t getFrameRect() override;
+    double getArea() const override;
+    rectangle_t getFrameRect() const override;
     void move(double dx, double dy) override;
     void move(point_t new_center) override;
     void scale(double n) override;
