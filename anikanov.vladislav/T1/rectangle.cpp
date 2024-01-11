@@ -85,6 +85,6 @@ namespace anikanov {
 
   void Rectangle::scale(const double k)
   {
-    (*this).scale(k, point_t(0, 0));
+    (*this).scaleCorrect(k, point_t(0, 0));
   }
 }

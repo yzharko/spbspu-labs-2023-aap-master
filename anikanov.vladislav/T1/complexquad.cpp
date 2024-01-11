@@ -145,7 +145,7 @@ Complexquad::Complexquad()
 
 void Complexquad::scale(const double k)
 {
-  (*this).scale(k, point_t(0, 0));
+  (*this).scaleCorrect(k, point_t(0, 0));
 }
 
 //COMPLEXQUAD -1.0 -2.0 1.0 2.0 1.0 -1.0 -2.0 2.0

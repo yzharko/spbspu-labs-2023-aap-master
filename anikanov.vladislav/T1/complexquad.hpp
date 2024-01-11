@@ -26,7 +26,7 @@ namespace anikanov {
 
     void scale(const double) override;
 
-    void scale(const double, const point_t point) override;
+    void scaleCorrect(const double, const point_t point);
 
     friend std::istream &operator>>(std::istream &, Complexquad &);
 
