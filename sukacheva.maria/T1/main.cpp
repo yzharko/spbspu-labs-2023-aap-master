@@ -22,8 +22,8 @@ int main() {
       {
         point_t point1 = { x1, y1 };
         point_t point2 = { x2, y2 };
-        Rectangle rectangle(point1, point2);
-        figures[index] = &rectangle;
+        Shape* rectangle = new Rectangle(point1, point2);
+        figures[index] = rectangle;
         index += 1;
       }
       catch (const std::logic_error& e)
@@ -38,8 +38,8 @@ int main() {
       try
       {
         point_t point1 = { x, y };
-        Circle circle(point1, radius);
-        figures[index] = &circle;
+        Shape* circle = new Circle(point1, radius);
+        figures[index] = circle;
         index += 1;
       }
       catch (const std::logic_error& e)
@@ -56,8 +56,8 @@ int main() {
         point_t point1 = { x1, y1 };
         point_t point2 = { x2, y2 };
         point_t point3 = { x3, y3 };
-        Parallelogram parallelogram(point1, point2, point3);
-        figures[index] = &parallelogram;
+        Shape* parallelogram = new Parallelogram(point1, point2, point3);
+        figures[index] = parallelogram;
         index += 1;
       }
       catch (const std::logic_error& e)
@@ -106,6 +106,7 @@ int main() {
         x4 = newFrameRect.pos_.x_ + newFrameRect.width_ / 2.0;
         y4 = newFrameRect.pos_.y_ + newFrameRect.height_/ 2.0;
         std::cout << std::fixed << std::setprecision(1) << x3 << " " << y3 << " " << x4 << " " << y4 << " ";
+        delete figures[i];
       }
       std::cout << "\n";
       break;
