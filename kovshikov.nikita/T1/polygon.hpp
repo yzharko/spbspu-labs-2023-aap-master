@@ -13,7 +13,7 @@ namespace kovshikov
     virtual ~Polygon(); // нужны ли еще какие то специальные методы?
     virtual double getArea() const;
     virtual rectangle_t getFrameRect() const;
-    virtual void move(const &point_t newPos);
+    virtual void move(const point_t &newPos);
     virtual void move(double xPlus, double yPlus);
     virtual void scale(double multiplier);
     point_t getPos();

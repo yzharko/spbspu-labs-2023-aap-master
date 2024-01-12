@@ -26,7 +26,7 @@ rectangle_t kovshikov::Triangle::getFrameRect() const
   Rectangle rectangle(lowerLeft, upperRight);
   return rectangle.getFrameRect();
 }
-void kovshikov::Triangle::move(const &point_t newPos)
+void kovshikov::Triangle::move(const point_t &newPos)
 {
   point_t pos = getPos();
   double xPlus = newPos.x - pos.x;

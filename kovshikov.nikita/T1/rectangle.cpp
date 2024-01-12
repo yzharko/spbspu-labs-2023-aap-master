@@ -16,7 +16,7 @@ rectangle_t kovshikov::Rectangle::getFrameRect() const
   point_t pos = {lowerLeft_.x + 0.5 * width, lowerLeft_.y + 0.5 * height};
   return rectangle_t{ width, height, pos };
 }
-void kovshikov::Rectangle::move(const &point_t newPos)
+void kovshikov::Rectangle::move(const point_t &newPos)
 {
   rectangle_t rectangle = getFrameRect();
   double xPlus = newPos.x - rectangle.pos.x;

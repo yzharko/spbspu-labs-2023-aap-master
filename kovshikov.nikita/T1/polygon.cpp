@@ -123,7 +123,7 @@ rectangle_t kovshikov::Polygon::getFrameRect() const
   delete[] arrayY;
   return rectangle.getFrameRect();
 }
-void kovshikov::Polygon::move(const &point_t newPos)
+void kovshikov::Polygon::move(const point_t &newPos)
 {
   point_t pos = getPos();
   double xPlus = newPos.x - pos.x;
