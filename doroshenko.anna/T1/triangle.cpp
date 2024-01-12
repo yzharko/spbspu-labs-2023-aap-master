@@ -2,13 +2,15 @@
 #include <cmath>
 #include <stdexcept>
 
-doroshenko::Triangle::Triangle(point_t firstPoint, point_t secondPoint, point_t thirdPoint) :
+using namespace doroshenko;
+
+Triangle::Triangle(point_t firstPoint, point_t secondPoint, point_t thirdPoint) :
   firstPoint_(firstPoint),
   secondPoint_(secondPoint),
   thirdPoint_(thirdPoint)
 {}
 
-double doroshenko::Triangle::getArea()
+double Triangle::getArea()
 {
   double a = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
   double b = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
@@ -26,7 +28,7 @@ double doroshenko::Triangle::getArea()
   return sqrt(p * (p - a) * (p - b) * (p - c));
 }
 
-doroshenko::rectangle_t doroshenko::Triangle::getFrameRect()
+rectangle_t Triangle::getFrameRect()
 {
   double maxX = firstPoint_.x_ >= secondPoint_.x_ ? firstPoint_.x_ : secondPoint_.x_;
   maxX = maxX >= thirdPoint_.x_ ? maxX : thirdPoint_.x_;
@@ -44,18 +46,18 @@ doroshenko::rectangle_t doroshenko::Triangle::getFrameRect()
   double height = maxY - minY;
   double posX = 0.5 * (maxX + minX);
   double posY = 0.5 * (maxY + minY);
-  doroshenko::point_t pos = { posX, posY };
-  return doroshenko::rectangle_t{ width, height, pos };
+  point_t pos = { posX, posY };
+  return rectangle_t{ width, height, pos };
 }
 
-void doroshenko::Triangle::move(point_t destination)
+void Triangle::move(point_t destination)
 {
   double moveX = destination.x_ - (firstPoint_.x_ + secondPoint_.x_ + thirdPoint_.x_) / 3;
   double moveY = destination.y_ - (firstPoint_.y_ + secondPoint_.y_ + thirdPoint_.y_) / 3;
   move(moveX, moveY);
 }
 
-void doroshenko::Triangle::move(double moveX, double moveY)
+void Triangle::move(double moveX, double moveY)
 {
   firstPoint_.x_ += moveX;
   firstPoint_.y_ += moveY;
@@ -65,7 +67,7 @@ void doroshenko::Triangle::move(double moveX, double moveY)
   thirdPoint_.y_ += moveY;
 }
 
-void doroshenko::Triangle::scale(double coefficient)
+void Triangle::scale(double coefficient)
 {
   point_t pos;
   pos.x_ = (firstPoint_.x_ + secondPoint_.x_ + thirdPoint_.x_) / 3;

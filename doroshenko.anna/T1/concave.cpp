@@ -2,31 +2,30 @@
 #include <cmath>
 #include <stdexcept>
 
-doroshenko::Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, point_t fourthPoint) :
+using namespace doroshenko;
+
+Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, point_t fourthPoint) :
   firstPoint_(firstPoint),
   secondPoint_(secondPoint),
   thirdPoint_(thirdPoint),
   fourthPoint_(fourthPoint)
 {}
 
-double doroshenko::Concave::getArea()
+double Concave::getArea()
 {
-  //большой треугольник 123
   double aF = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
   double bF = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
   double cF = sqrt(pow((thirdPoint_.x_ - firstPoint_.x_), 2) + pow((thirdPoint_.y_ - firstPoint_.y_), 2));
+  double pF = 0.5 * (aF + bF + cF);
+  double firstArea = sqrt(pF * (pF - aF) * (pF - bF) * (pF - cF));
 
   double maxSide = aF >= bF ? aF : bF;
   maxSide = maxSide >= cF ? maxSide : cF;
-
   if (maxSide >= aF + bF + cF - maxSide)
   {
     throw std::logic_error("There is no such triangle\n");
   }
 
-  double pF = 0.5 * (aF + bF + cF);
-  double firstArea = sqrt(pF * (pF - aF) * (pF - bF) * (pF - cF));
-  //маленький треугольник 234
   double aS = sqrt(pow((fourthPoint_.x_ - secondPoint_.x_), 2) + pow((fourthPoint_.y_ - secondPoint_.y_), 2));
   double bS = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
   double cS = sqrt(pow((thirdPoint_.x_ - fourthPoint_.x_), 2) + pow((thirdPoint_.y_ - fourthPoint_.y_), 2));
@@ -35,31 +34,28 @@ double doroshenko::Concave::getArea()
 
   maxSide = aS >= bS ? aS : bS;
   maxSide = maxSide >= cS ? maxSide : cS;
-
   if (maxSide >= aS + bS + cS - maxSide)
   {
     throw std::logic_error("There is no such triangle\n");
   }
-  //маленький треугольник 124
+
   double a = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
   double b = sqrt(pow((secondPoint_.x_ - fourthPoint_.x_), 2) + pow((secondPoint_.y_ - fourthPoint_.y_), 2));
   double c = sqrt(pow((fourthPoint_.x_ - firstPoint_.x_), 2) + pow((fourthPoint_.y_ - firstPoint_.y_), 2));
 
   maxSide = a >= b ? a : b;
   maxSide = maxSide >= c ? maxSide : c;
-
   if (maxSide >= a + b + c - maxSide)
   {
     throw std::logic_error("There is no such triangle\n");
   }
-  //маленький треугольник 134
+
   a = sqrt(pow((firstPoint_.x_ - thirdPoint_.x_), 2) + pow((firstPoint_.y_ - thirdPoint_.y_), 2));
   b = sqrt(pow((thirdPoint_.x_ - fourthPoint_.x_), 2) + pow((thirdPoint_.y_ - fourthPoint_.y_), 2));
   c = sqrt(pow((fourthPoint_.x_ - firstPoint_.x_), 2) + pow((fourthPoint_.y_ - firstPoint_.y_), 2));
 
   maxSide = a >= b ? a : b;
   maxSide = maxSide >= c ? maxSide : c;
-
   if (maxSide >= a + b + c - maxSide)
   {
     throw std::logic_error("There is no such triangle\n");
@@ -67,7 +63,7 @@ double doroshenko::Concave::getArea()
   return firstArea - secondArea;
 }
 
-doroshenko::rectangle_t doroshenko::Concave::getFrameRect()
+rectangle_t Concave::getFrameRect()
 {
   double maxX = firstPoint_.x_ >= secondPoint_.x_ ? firstPoint_.x_ : secondPoint_.x_;
   maxX = maxX >= thirdPoint_.x_ ? maxX : thirdPoint_.x_;
@@ -85,18 +81,18 @@ doroshenko::rectangle_t doroshenko::Concave::getFrameRect()
   double height = maxY - minY;
   double posX = 0.5 * (maxX + minX);
   double posY = 0.5 * (maxY + minY);
-  doroshenko::point_t pos = { posX, posY };
-  return doroshenko::rectangle_t{ width, height, pos };
+  point_t pos = { posX, posY };
+  return rectangle_t{ width, height, pos };
 }
 
-void doroshenko::Concave::move(point_t destination)
+void Concave::move(point_t destination)
 {
   double moveX = destination.x_ - fourthPoint_.x_;
   double moveY = destination.y_ - fourthPoint_.y_;
   move(moveX, moveY);
 }
 
-void doroshenko::Concave::move(double moveX, double moveY)
+void Concave::move(double moveX, double moveY)
 {
   firstPoint_.x_ += moveX;
   firstPoint_.y_ += moveY;
@@ -108,9 +104,9 @@ void doroshenko::Concave::move(double moveX, double moveY)
   fourthPoint_.y_ += moveY;
 }
 
-void doroshenko::Concave::scale(double coefficient)
+void Concave::scale(double coefficient)
 {
-  doroshenko::point_t pos;
+  point_t pos;
   pos.x_ = fourthPoint_.x_;
   pos.y_ = fourthPoint_.y_;
   firstPoint_.x_ += (firstPoint_.x_ - pos.x_) * (coefficient - 1);
