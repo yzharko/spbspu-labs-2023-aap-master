@@ -19,8 +19,8 @@ void hohlova::Square::move(point_t p)
 }
 void hohlova::Square::move(double x, double y)
 {
-  pos.x += x;
-  pos.y += y;
+  pos_.x += x;
+  pos_.y += y;
 }
 void hohlova::Square::scale(double k)
 {
