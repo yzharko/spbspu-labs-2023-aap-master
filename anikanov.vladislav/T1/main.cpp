@@ -1,8 +1,9 @@
 #include <iostream>
 #include <cstring>
 #include "base-types.hpp"
-#include "rectangle.hpp"
+#include "base-types-ff.hpp"
 #include "square.hpp"
+#include "rectangle.hpp"
 #include "complexquad.hpp"
 #include "compositeShape.hpp"
 

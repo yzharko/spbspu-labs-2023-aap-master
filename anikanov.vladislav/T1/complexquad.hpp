@@ -6,15 +6,8 @@
 
 namespace anikanov {
 
-  class Complexquad : public Shape {
-  public:
+  struct Complexquad : public Shape {
     point_t leftBottom, leftTop, rightTop, rightBottom, cPoint;
-
-    explicit Complexquad();
-
-    ~Complexquad() override = default;
-
-    point_t getCPoint() const;
 
     double getArea() const override;
 
@@ -22,17 +15,21 @@ namespace anikanov {
 
     void move(const point_t) override;
 
-    void move(const float x, const float y) override;
+    void move(const double x, const double y) override;
 
     void scale(const double) override;
 
-    void myscale(const double, const point_t point) override;
+    point_t getCPoint() override;
 
     friend std::istream &operator>>(std::istream &, Complexquad &);
 
-    float getDistance(point_t fp, point_t sp);
+    double getDistance(point_t fp, point_t sp);
 
-    float getTriangleArea(point_t fp, point_t sp, point_t tp) const;
+    double getTriangleArea(point_t fp, point_t sp, point_t tp) const;
+
+    double getDX(point_t fp, point_t sp);
+
+    double getDY(point_t fp, point_t sp);
 
   };
 }

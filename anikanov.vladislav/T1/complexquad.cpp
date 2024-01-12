@@ -6,11 +6,6 @@
 
 using namespace anikanov;
 
-point_t Complexquad::getCPoint() const
-{
-  return cPoint;
-}
-
 double Complexquad::getArea() const
 {
   return getTriangleArea(leftBottom, leftTop, cPoint) +
@@ -36,47 +31,40 @@ rectangle_t Complexquad::getFrameRect() const
   for (auto point: points) {
     bottomMax = std::min(bottomMax, point.y);
   }
-  float width = rightMax - leftMax;
-  float height = topMax - bottomMax;
-  return rectangle_t(point_t(leftMax + width / 2.0f, bottomMax + height / 2.0f), width, height);
+  double width = rightMax - leftMax;
+  double height = topMax - bottomMax;
+  return rectangle_t{point_t{leftMax + width / 2.0f, bottomMax + height / 2.0f}, width, height};
 }
 
 void Complexquad::move(const point_t newCPoint)
 {
-  float dx = getDX(cPoint, newCPoint);
-  float dy = getDY(cPoint, newCPoint);
-  std::cerr << dx << "\n";
+  double dx = getDX(newCPoint, cPoint);
+  double dy = getDY(newCPoint, cPoint);
 
-  leftBottom.x += dx;
-  leftBottom.y += dy;
-
-  leftTop.x += dx;
-  leftTop.y += dy;
-
-  rightTop.x += dx;
-  rightTop.y += dy;
-
-  rightBottom.x += dx;
-  rightBottom.y += dy;
+  point_t *points[] = {&leftBottom, &leftTop, &rightTop, &rightBottom};
+  for (auto point: points) {
+    (*point).x += dx;
+    (*point).y += dy;
+  }
 
   cPoint = newCPoint;
 }
 
-void Complexquad::move(const float x, const float y)
+void Complexquad::move(const double x, const double y)
 {
-  point_t newCPoint(x, y);
-  move(newCPoint);
-}
 
-void Complexquad::myscale(const double k, const point_t center)
+};
+
+void Complexquad::scale(const double k)
 {
+//  (*this).move(point_t(k * getDX(cPoint, center), k * getDY(cPoint, center)));
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
   }
-  point_t *points[] = {&leftBottom, &leftTop, &rightTop, &rightBottom, &cPoint};
+  point_t *points[] = {&leftBottom, &leftTop, &rightTop, &rightBottom};
   for (auto point: points) {
-    (*point).x += (k - 1) * getDX(*point, center);
-    (*point).y += (k - 1) * getDY(*point, center);
+    (*point).x = cPoint.x + k * getDX(*point, cPoint);
+    (*point).y = cPoint.y + k * getDY(*point, cPoint);
   }
 }
 
@@ -99,14 +87,14 @@ namespace anikanov {
           st(p2, p3, p4) != 0.0f)) {
       throw std::overflow_error("Invalid Input Complexquad");
     }
-    float x1 = complexquad.leftBottom.x;
-    float y1 = complexquad.leftBottom.y;
-    float x2 = complexquad.rightTop.x;
-    float y2 = complexquad.rightTop.y;
-    float x3 = complexquad.rightBottom.x;
-    float y3 = complexquad.rightBottom.y;
-    float x4 = complexquad.leftTop.x;
-    float y4 = complexquad.leftTop.y;
+    double x1 = complexquad.leftBottom.x;
+    double y1 = complexquad.leftBottom.y;
+    double x2 = complexquad.rightTop.x;
+    double y2 = complexquad.rightTop.y;
+    double x3 = complexquad.rightBottom.x;
+    double y3 = complexquad.rightBottom.y;
+    double x4 = complexquad.leftTop.x;
+    double y4 = complexquad.leftTop.y;
 
     complexquad.cPoint.x = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) /
                            ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
@@ -123,29 +111,31 @@ namespace anikanov {
   }
 }
 
-float Complexquad::getDistance(point_t fp, point_t sp)
+double Complexquad::getDistance(point_t fp, point_t sp)
 {
   return std::sqrt(std::pow(getDX(fp, sp), 2) + std::pow(getDY(fp, sp), 2));
 }
 
-float Complexquad::getTriangleArea(point_t a, point_t b, point_t c) const
+double Complexquad::getTriangleArea(point_t a, point_t b, point_t c) const
 {
-  point_t ab(b.x - a.x, b.y - a.y);
-  point_t ac(c.x - a.x, c.y - a.y);
-  return std::sqrt(powf(ab.x * ac.y - ac.x * ab.y, 2)) / 2.0f;
+  point_t ab{b.x - a.x, b.y - a.y};
+  point_t ac{c.x - a.x, c.y - a.y};
+  return std::sqrt(pow(ab.x * ac.y - ac.x * ab.y, 2)) / 2.;
 }
 
-Complexquad::Complexquad()
+double Complexquad::getDX(point_t fp, point_t sp)
 {
-  leftBottom = point_t();
-  leftTop = point_t();
-  rightBottom = point_t();
-  rightTop = point_t();
+  return fp.x - sp.x;
+};
+
+double Complexquad::getDY(point_t fp, point_t sp)
+{
+  return fp.y - sp.y;
 }
 
-void Complexquad::scale(double k)
+point_t Complexquad::getCPoint()
 {
-  (*this).myscale(k, point_t());
+  return cPoint;
 }
 
 //COMPLEXQUAD -1.0 -2.0 1.0 2.0 1.0 -1.0 -2.0 2.0

@@ -5,25 +5,10 @@
 #include "shape.hpp"
 
 namespace anikanov {
-  class Rectangle : public Shape {
-  public:
-    float width;
-    float height;
+  struct Rectangle : public Shape {
     point_t cPoint;
-
-    explicit Rectangle();
-
-    ~Rectangle() override = default;
-
-    void setWidth(float);
-
-    float getWidth() const;
-
-    void setHeight(float);
-
-    float getHeight() const;
-
-    point_t getCPoint() const;
+    double width;
+    double height;
 
     double getArea() const override;
 
@@ -31,11 +16,15 @@ namespace anikanov {
 
     void move(const point_t) override;
 
-    void move(const float x, const float y) override;
+    void move(const double, const double) override;
 
     void scale(const double) override;
 
-    void myscale(const double, const point_t center = point_t(0, 0));
+    point_t getCPoint() override;
+
+    static double getDX(point_t fp, point_t sp);
+
+    static double getDY(point_t fp, point_t sp);
 
     friend std::istream &operator>>(std::istream &, Rectangle &);
   };

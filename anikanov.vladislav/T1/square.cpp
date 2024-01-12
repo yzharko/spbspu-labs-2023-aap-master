@@ -3,23 +3,7 @@
 
 using namespace anikanov;
 
-Square::Square()
-{
-  side = 0;
-  cPoint = point_t();
-}
-
-void Square::setSide(float newSide)
-{
-  side = newSide;
-}
-
-float Square::getSide() const
-{
-  return side;
-}
-
-point_t Square::getCPoint() const
+point_t Square::getCPoint()
 {
   return cPoint;
 }
@@ -31,7 +15,7 @@ double Square::getArea() const
 
 rectangle_t Square::getFrameRect() const
 {
-  return rectangle_t(cPoint, side, side);
+  return rectangle_t{cPoint, side, side};
 }
 
 void Square::move(const point_t newCPoint)
@@ -39,19 +23,17 @@ void Square::move(const point_t newCPoint)
   cPoint = newCPoint;
 }
 
-void Square::move(const float x, const float y)
+void Square::move(const double x, const double y)
 {
-  cPoint = point_t(x, y);
+  cPoint = point_t{x, y};
 }
 
-void Square::myscale(const double k, const point_t center)
+void Square::scale(const double k)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
   }
   side *= k;
-  cPoint.x += (k - 1) * getDX(cPoint, center);
-  cPoint.y += (k - 1) * getDY(cPoint, center);
 }
 
 namespace anikanov {
@@ -62,13 +44,17 @@ namespace anikanov {
     if (!(in >> leftBottom >> square.side) || square.side <= 0) {
       throw std::overflow_error("Invalid Input Square");
     }
-    square.cPoint = point_t(leftBottom.x + square.side / 2,
-                           leftBottom.y + square.side / 2);
+    square.cPoint = point_t{leftBottom.x + square.side / 2, leftBottom.y + square.side / 2};
     return in;
   }
-
-  void Square::scale(double k)
-  {
-    (*this).myscale(k, point_t());
-  }
 }
+
+double Square::getDX(point_t fp, point_t sp)
+{
+  return fp.x - sp.x;
+};
+
+double Square::getDY(point_t fp, point_t sp)
+{
+  return fp.y - sp.y;
+};

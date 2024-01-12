@@ -6,8 +6,7 @@
 
 namespace anikanov {
 
-  class CompositeShape {
-  public:
+  struct CompositeShape {
     size_t shapes{};
     size_t capacity{};
     Shape **shapeptrs{};
@@ -26,20 +25,19 @@ namespace anikanov {
 
     void resize(size_t n = 0);
 
-    float getArea();
+    double getArea();
 
     rectangle_t *getFrameRect();
 
     void move(point_t);
 
-    void move(float x, float y);
+    void move(const double x, const double y);
 
-    void scale(std::ostream &, point_t, float);
+    void scale(std::ostream &, point_t, double);
 
-    float getDX(point_t fp, point_t sp);
+    double getDX(point_t fp, point_t sp);
 
-    float getDY(point_t fp, point_t sp);
-
+    double getDY(point_t fp, point_t sp);
   };
 }
 

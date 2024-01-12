@@ -5,20 +5,11 @@
 #include "shape.hpp"
 
 namespace anikanov {
-  class Square : public Shape {
-  public:
+  struct Square : public Shape {
     point_t cPoint;
-    float side;
+    double side;
 
-    explicit Square();
-
-    ~Square() override = default;
-
-    void setSide(float);
-
-    float getSide() const;
-
-    point_t getCPoint() const;
+    point_t getCPoint() override;
 
     double getArea() const override;
 
@@ -26,13 +17,15 @@ namespace anikanov {
 
     void move(const point_t) override;
 
-    void move(const float x, const float y) override;
+    void move(const double x, const double y) override;
 
     void scale(double) override;
 
-    void myscale(const double, const point_t center = point_t(0, 0)) override;
-
     friend std::istream &operator>>(std::istream &, Square &);
+
+    static double getDX(point_t fp, point_t sp);
+
+    static double getDY(point_t fp, point_t sp);
   };
 }
 

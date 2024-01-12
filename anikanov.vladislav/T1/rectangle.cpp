@@ -3,38 +3,6 @@
 
 using namespace anikanov;
 
-Rectangle::Rectangle()
-{
-  width = 0;
-  height = 0;
-  cPoint = point_t();
-}
-
-void Rectangle::setWidth(float newWidth)
-{
-  width = newWidth;
-}
-
-float Rectangle::getWidth() const
-{
-  return width;
-}
-
-void Rectangle::setHeight(float newHeight)
-{
-  height = newHeight;
-}
-
-float Rectangle::getHeight() const
-{
-  return height;
-}
-
-point_t Rectangle::getCPoint() const
-{
-  return cPoint;
-}
-
 double Rectangle::getArea() const
 {
   return width * height;
@@ -42,7 +10,7 @@ double Rectangle::getArea() const
 
 rectangle_t Rectangle::getFrameRect() const
 {
-  return rectangle_t(cPoint, width, height);
+  return rectangle_t{cPoint, width, height};
 }
 
 void Rectangle::move(const point_t newCPoint)
@@ -50,20 +18,20 @@ void Rectangle::move(const point_t newCPoint)
   cPoint = newCPoint;
 }
 
-void Rectangle::move(const float x, const float y)
+void Rectangle::move(const double x, const double y)
 {
-  cPoint = point_t(x, y);
+  cPoint = point_t{x, y};
 }
 
-void Rectangle::myscale(const double k, const point_t center)
+void Rectangle::scale(const double k)
 {
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
   }
   width *= 2;
   height *= 2;
-  cPoint.x += (k - 1) * getDX(cPoint, center);
-  cPoint.y += (k - 1) * getDY(cPoint, center);
+  cPoint.x += (k - 1) * getDX(cPoint, point_t{0, 0});
+  cPoint.y += (k - 1) * getDY(cPoint, point_t{0, 0});
 }
 
 namespace anikanov {
@@ -78,13 +46,22 @@ namespace anikanov {
     }
     rec.width = rightTop.x - leftBottom.x;
     rec.height = rightTop.y - leftBottom.y;
-    rec.cPoint = point_t(leftBottom.x + rec.width / 2,
-                        leftBottom.y + rec.height / 2);
+    rec.cPoint = point_t{leftBottom.x + rec.width / 2, leftBottom.y + rec.height / 2};
     return in;
   }
 
-  void Rectangle::scale(double k)
+  point_t Rectangle::getCPoint()
   {
-    (*this).myscale(k, point_t());
+    return cPoint;
   }
 }
+
+double Rectangle::getDX(point_t fp, point_t sp)
+{
+  return fp.x - sp.x;
+};
+
+double Rectangle::getDY(point_t fp, point_t sp)
+{
+  return fp.y - sp.y;
+};

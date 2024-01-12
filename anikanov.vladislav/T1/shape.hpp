@@ -5,8 +5,7 @@
 
 namespace anikanov {
 
-  class Shape {
-  public:
+  struct Shape {
     virtual ~Shape() = default;
 
     virtual double getArea() const = 0;
@@ -15,23 +14,11 @@ namespace anikanov {
 
     virtual void move(const point_t) = 0;
 
-    virtual void move(const float x, const float y) = 0;
-
-    virtual point_t getCPoint() const = 0;
+    virtual void move(const double x, const double y) = 0;
 
     virtual void scale(const double) = 0;
 
-    virtual void myscale(const double, const point_t) = 0;
-
-    float getDX(point_t fp, point_t sp)
-    {
-      return fp.x - sp.x;
-    };
-
-    float getDY(point_t fp, point_t sp)
-    {
-      return fp.y - sp.y;
-    };
+    virtual point_t getCPoint() = 0;
   };
 }
 
