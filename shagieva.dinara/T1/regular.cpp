@@ -1,6 +1,7 @@
 #include "regular.hpp"
 #include <cmath>
 #include <algorithm>
+#include <stdexcept>
 
 using namespace shagieva;
 
@@ -9,14 +10,21 @@ Regular::Regular(const point_t point1, const point_t point2, const point_t point
   points[0] = point1;
   points[1] = point2;
   points[2] = point3;
+
+  double angle = getCenterAngle();
+  numberOfSides = 180 / angle;
+
+  if (std::abs(std::round(numberOfSides) - numberOfSides) > 0.01)
+  {
+    throw std::invalid_argument("Regular does not exist");
+  }
+  numberOfSides = std::round(numberOfSides);
 }
 
 double Regular::getArea() const
 {
   double triangleBase = getLength(points[1], points[2]);
   double triangleHeight = getLength(points[0], points[1]);
-
-  int numberOfSides = getNumberOfSides();
   double triangleArea = (triangleBase * triangleHeight) / 2;
 
   return numberOfSides * triangleArea * 2;
@@ -91,14 +99,5 @@ double Regular::getCenterAngle() const
   centerAngle *= (180 / 3.14);
 
   return centerAngle;
-}
-
-int Regular::getNumberOfSides() const
-{
-
-  double angle = getCenterAngle();
-  double numberOfSides = 180 / angle;
-
-  return static_cast<int>(round(numberOfSides));
 }
 

@@ -2,6 +2,7 @@
 #include <string>
 #include <iomanip>
 #include <cmath>
+#include <stdexcept>
 #include "rectangle.hpp"
 #include "complexquad.hpp"
 #include "regular.hpp"
@@ -103,8 +104,15 @@ int main()
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
       if (regularIsCorrect(x1, y1, x2, y2, x3, y3))
       {
-        shapes[shapeCount++] = new shagieva::Regular(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 },
-          shagieva::point_t{ x3, y3 });
+        try
+        {
+          shapes[shapeCount++] = new shagieva::Regular(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 },
+            shagieva::point_t{ x3, y3 });
+        }
+        catch(const std::invalid_argument & e)
+        {
+          figureIsWrong = true;
+        }
       }
       else
       {
