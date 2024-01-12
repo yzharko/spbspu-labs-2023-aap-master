@@ -104,8 +104,8 @@ int main()
       for (size_t i = 0; i < figuresCount; i++)
       {
         rectangle_t frameOfRect = figures[i]->getFrameRect();
-        std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos_.x_ << ' ' << frameOfRect.pos_.y_;
-        std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos_.x_ << ' ' << frameOfRect.pos_.y_;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos.x << ' ' << frameOfRect.pos.y;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos.x << ' ' << frameOfRect.pos.y;
       }
       std::cout << "\n";
       for (size_t i = 0; i < figuresCount; i++)
@@ -113,8 +113,8 @@ int main()
         rectangle_t firstFrame = figures[i]->getFrameRect();
         figures[i]->move({ xp, yp });
         rectangle_t secFrame = figures[i]->getFrameRect();
-        double replaceX = fabs(secFrame.pos_.x_ - firstFrame.pos_.x_);
-        double replaceY = fabs(secFrame.pos_.y_ - firstFrame.pos_.y_);
+        double replaceX = fabs(secFrame.pos.x - firstFrame.pos.x);
+        double replaceY = fabs(secFrame.pos.y - firstFrame.pos.y);
         figures[i]->scale(k);
         figures[i]->move(replaceX, replaceY);
       }
@@ -127,8 +127,8 @@ int main()
       for (size_t i = 0; i < figuresCount; i++)
       {
         rectangle_t frameOfRect = figures[i]->getFrameRect();
-        std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos_.x_ << ' ' << frameOfRect.pos_.y_;
-        std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos_.x_ << ' ' << frameOfRect.pos_.y_;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos.x << ' ' << frameOfRect.pos.y;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos.x << ' ' << frameOfRect.pos.y;
       }
       std::cout << "\n";
       checkScale = true;
