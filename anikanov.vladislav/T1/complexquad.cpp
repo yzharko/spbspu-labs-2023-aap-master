@@ -52,7 +52,11 @@ void Complexquad::move(const point_t newCPoint)
 
 void Complexquad::move(const double x, const double y)
 {
-
+  point_t *points[] = {&leftBottom, &leftTop, &rightTop, &rightBottom, &cPoint};
+  for (auto point: points) {
+    (*point).x += x;
+    (*point).y += y;
+  }
 };
 
 void Complexquad::scale(const double k)
