@@ -49,7 +49,7 @@ int main()
         catch (const std::logic_error& e)
         {
           wrIn = true;
-          delete[] geometricFigures[countFig];
+          delete geometricFigures[countFig];
           countFig--;
         }
         countFig++;
@@ -97,6 +97,11 @@ int main()
       }
       else
       {
+        if (countFig == 0)
+        {
+          std::cerr << "There is nothing to scale";
+          return 1;
+        }
         double sumAreaBefore = 0;
         for (size_t i = 0; i < countFig; i++)
         {
@@ -144,6 +149,13 @@ int main()
       }
     }
   }
+  if(countFig > 0)
+  {
+    for (size_t i = 0; i < countFig; i++)
+    {
+      delete geometricFigures[i];
+    }
+  }
   if (std::cin.eof() && scale == false)
   {
     std::cerr << "Figures were not scaled\n";
@@ -152,12 +164,5 @@ int main()
   if (wrIn == true)
   {
     std::cerr << "Wrong input\n";
-  }
-  if(countFig > 0 || scale == false)
-  {
-    for (size_t i = 0; i < countFig; i++)
-    {
-      delete geometricFigures[i];
-    }
   }
 }
