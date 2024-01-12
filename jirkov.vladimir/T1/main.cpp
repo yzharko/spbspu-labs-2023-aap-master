@@ -120,7 +120,7 @@ int main()
         for (size_t l = 0; l < count; l++)
         {
           rectangle_t begin = figureArray[l]->getFrameRect();
-          figureArray[l]->move({ 0 - posx, 0 - posy });
+          figureArray[l]->move({ posx, posy });
           rectangle_t end = figureArray[l]->getFrameRect();
           double moveX = fabs(begin.pos.x - end.pos.x) * k;
           double moveY = fabs(begin.pos.y - end.pos.y) * k;
