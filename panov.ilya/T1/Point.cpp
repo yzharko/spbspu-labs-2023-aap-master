@@ -1,6 +1,8 @@
 #include "Point.h"
 #include <iostream>
 #include <locale.h>
+#include <cmath>
+#include <limits>
 
 Point::Point() {
   x_ = 0.0;
@@ -86,7 +88,7 @@ std::istream& operator>>(std::istream& in, Point& p) {
     catch (std::exception& ex) {
       std::cerr << ex.what();
       in.clear();
-      in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      in.ignore(std::numeric_limits < std::streamsize>::max(), '\n');
     }
   }
   return in;

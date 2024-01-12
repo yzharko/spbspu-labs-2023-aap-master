@@ -1,4 +1,5 @@
-#pragma once
+#ifndef POINT_H
+#define POINT_H
 #include <iostream>
 
 class Point
@@ -25,3 +26,4 @@ private:
   double x_;
   double y_;
 };
+#endif

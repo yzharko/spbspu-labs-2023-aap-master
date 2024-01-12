@@ -1,7 +1,7 @@
-#pragma once
+#ifndef SHAPE_H
+#define SHAPE_H
 #include "FrameRectangle.h"
 #include <string>
-
 template <typename T>
 void FigInfo(T figure);
 class Shape
@@ -14,3 +14,4 @@ public:
   virtual Shape* clone() = 0;
   virtual std::string getName() const = 0;
 };
+#endif

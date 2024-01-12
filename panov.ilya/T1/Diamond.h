@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIAMOND_H
+#define DIAMOND_H
 #include "Shape.h"
 #include "Point.h"
 
@@ -27,3 +28,4 @@ public:
   virtual Shape* clone();
   virtual std::string getName() const;
 };
+#endif

@@ -63,6 +63,7 @@ int main() {
   std::cout << "\n";
   std::cout << "Clone of shape  \n";
   Shape* c_rho = diamond.clone();
+  Shape* c_cir = circle.clone();
   ShapeInfo(circle);
   ShapeInfo(diamond);
   std::cout << "\n";

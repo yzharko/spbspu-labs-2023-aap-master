@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FRAMERECTANGLE_H
+#define FRAMERECTANGLE_H
 #include "Point.h"
 
 class FrameRectangle
@@ -17,3 +18,4 @@ public:
   Point getRightCorner();
   Point getCenter();
 };
+#endif
