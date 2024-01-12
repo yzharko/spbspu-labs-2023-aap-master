@@ -52,7 +52,6 @@ int main()
             startFrames.push_back(rectFrame.pos.y - (rectFrame.height / 2));
             startFrames.push_back(rectFrame.pos.x + (rectFrame.width / 2));
             startFrames.push_back(rectFrame.pos.y + (rectFrame.height / 2));
-            psarev::point_t startPos = rectFrame.pos;
             rect.move({ scaleCenter.x, scaleCenter.y });
             psarev::point_t newPos;
             newPos.x = fabs(rectFrame.pos.x - scaleCenter.x) * coef;
