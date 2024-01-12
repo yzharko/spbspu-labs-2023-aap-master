@@ -10,7 +10,7 @@ namespace kovshikov
   {
   public:
     Polygon(size_t num, point_t * points);
-    virtual ~Polygon(); // нужны ли еще какие то специальные методы?
+    override ~Polygon(); // нужны ли еще какие то специальные методы?
     override double getArea() const;
     override rectangle_t getFrameRect() const;
     override void move(const point_t &newPos);

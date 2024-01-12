@@ -8,7 +8,7 @@ namespace kovshikov
   class Rectangle: public Shape
   {
   public:
-    virtual ~Rectangle() = default;
+    override ~Rectangle() = default;
     Rectangle(point_t lowerLeft, point_t upperRight);
     override double getArea() const;  //const
     override rectangle_t getFrameRect() const;  // const
