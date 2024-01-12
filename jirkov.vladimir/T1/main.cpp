@@ -10,7 +10,7 @@ int main()
 {
   using namespace jirkov;
   size_t count = 0;
-  Shape* figureArray[1000] = { nullptr };
+  Shape* figureArray[1000] = { 0 };
   bool wrongInput = false;
   std::string geometryFigure = "";
   bool scale = false;
@@ -83,7 +83,7 @@ int main()
       double posx, posy, k;
       double LeftA, LeftB, RightA, RightB;
       std::cin >> posx >> posy >> k;
-      if (!std::cin || k <= 0)
+      if (!std::cin || k < 0)
       {
         std::cerr << "Scale error\n";
         for (size_t i = 0; i < count; i++)
