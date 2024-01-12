@@ -28,40 +28,15 @@ int main()
 
     if (type == "RECTANGLE")
     {
-      double x1, y1, x2, y2;
-      if (std::cin >> x1 >> y1 >> x2 >> y2 && isRectangleCorrect(x1,y1,x2,y2))
-      {
-        allFigures[figuresCounter++] = new khoroshkin::Rectangle(point_t{x1, y1}, point_t{x2, y2});
-      }
-      else
-      {
-        std::cerr << "Error: wrong rectangle input\n";
-      }
+      implementRectangle(allFigures, figuresCounter);
     }
     else if (type == "CIRCLE")
     {
-      double x, y, radius;
-      if (std::cin >> x >> y >> radius && radius > 0)
-      {
-        allFigures[figuresCounter++] = new khoroshkin::Circle(point_t{x, y}, radius);
-      }
-      else
-      {
-        std::cerr << "Error: wrong circle input\n";
-      }
+      implementCircle(allFigures, figuresCounter);
     }
     else if (type == "COMPLEXQUAD")
     {
-      double x1, y1, x2, y2, x3, y3, x4, y4;
-      if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4 && isComplexquad(x1,y1,x2,y2,x3,y3,x4,y4))
-      {
-        allFigures[figuresCounter++] = new khoroshkin::Complexquad(point_t{x1, y1},\
-        point_t{x2, y2}, point_t{x3, y3}, point_t{x4, y4});
-      }
-      else
-      {
-        std::cerr << "Error: wrong complexquad input\n";
-      }
+      implementComplexquad(allFigures, figuresCounter);
     }
     else if (type == "SCALE")
     {
