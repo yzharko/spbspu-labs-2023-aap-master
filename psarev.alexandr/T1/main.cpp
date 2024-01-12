@@ -8,8 +8,6 @@
 int main()
 {
   std::string keyWord = "";
-  int iCnt = 0;
-  int tCnt = 0;
   std::vector<double> rectData;
   std::vector<double> ringData;
   std::vector<double> triData;
@@ -44,8 +42,6 @@ int main()
         std::vector<double> startFrames;
         std::vector<double> newFrames;
         int rCtr = 0;
-        int iCtr = 0;
-        int tCtr = 0;
 
         for (size_t i = 0; i < queue.size(); i++) {
           if (queue[i] == 'r') {

@@ -7,7 +7,7 @@ bool psarev::rectDataRework(std::istream& input, std::vector<double>& data, std:
   size_t iter = 0;
   bool result = false;
   for (size_t i = 0; i < 4; i++) {
-    if (std::cin >> coo) {
+    if (input >> coo) {
       data.push_back(coo);
       iter++;
     } else {
@@ -32,7 +32,7 @@ bool psarev::ringDataRework(std::istream& input, std::vector<double>& data, std:
   size_t iter = 0;
   bool result = false;
   for (size_t i = 0; i < 4; i++) {
-    if (std::cin >> coo) {
+    if (input >> coo) {
       data.push_back(coo);
       iter++;
     } else {
@@ -57,7 +57,7 @@ bool psarev::triDataRework(std::istream& input, std::vector<double>& data, std::
   size_t iter = 0;
   bool result = false;
   for (size_t i = 0; i < 6; i++) {
-    if (std::cin >> coo) {
+    if (input >> coo) {
       data.push_back(coo);
       iter++;
     }
