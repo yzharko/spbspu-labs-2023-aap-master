@@ -58,8 +58,8 @@ double kovshikov::Polygon::getArea()
           upper[j] = upper[j - 1];
           upper[j - 1] = change;
         }
+        break;
       }
-      break;
     }
   }
   double * lowerX = new double[count];
