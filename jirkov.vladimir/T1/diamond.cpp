@@ -8,12 +8,12 @@ jirkov::Diamond::Diamond(point_t topPoint, point_t rightPoint, point_t centerPoi
     secondSide_(std::abs(rightPoint.y_ - centerPoint.y_))
 {}
 
-double jirkov::Diamond::getArea()
+double jirkov::Diamond::getArea() const
 {
     return (2 * firstSide_ * secondSide_);
 }
 
-jirkov::rectangle_t jirkov::Diamond::getFrameRect()
+jirkov::rectangle_t jirkov::Diamond::getFrameRect() const
 {
     jirkov::point_t pos = centerPoint_;
     double height = firstSide_ * 2;
