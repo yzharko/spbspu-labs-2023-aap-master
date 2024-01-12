@@ -19,7 +19,7 @@ int main()
     {
        double lowerLeftX, lowerLeftY, upperRightX, upperRightY;
        std::cin >> lowerLeftX >> lowerLeftY >> upperRightX >> upperRightY;
-       if (!std::cin || lowerLeftX >= upperRight || lowerLeft >= upperRight)
+       if (!std::cin || lowerLeftX >= upperRightX || lowerLeftY >= upperRightY)
        {
          isCorrectlyDescribe = false;
          continue;
