@@ -58,7 +58,7 @@ double kovshikov::Polygon::getArea()
           upper[j] = upper[j - 1];
           upper[j - 1] = change;
         }
-        continue;
+        break;
       }
     }
   }
@@ -75,7 +75,7 @@ double kovshikov::Polygon::getArea()
       if(lowerX[i] == lower[j].x)
       {
         lower[j].x = lowerX[i];
-        continue;
+        break;
       }
     }
   }
