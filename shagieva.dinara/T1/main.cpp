@@ -6,6 +6,7 @@
 #include "increaseData.hpp"
 #include "parseFigure.hpp"
 #include "deleteData.hpp"
+#include "printFramePoints.hpp"
 #include "rectangle.hpp"
 #include "complexquad.hpp"
 #include "regular.hpp"
@@ -70,22 +71,14 @@ int main()
 
   std::cout << std::fixed << std::setprecision(1);
 
-  double totalAreaBeforeScaling = 0.0;
+  double totalAreaBeforeScaling = 0;
   for (size_t i = 0; i < shapeCount; ++i)
   {
     totalAreaBeforeScaling += shapes[i]->getArea();
   }
   std::cout << totalAreaBeforeScaling << " ";
 
-  for (size_t i = 0; i < shapeCount; ++i)
-  {
-    shagieva::rectangle_t frame = shapes[i]->getFrameRect();
-    std::cout << frame.pos.x - frame.width / 2 << " "
-              << frame.pos.y - frame.height / 2 << " "
-              << frame.pos.x + frame.width / 2 << " "
-              << frame.pos.y + frame.height / 2
-              << ((i == (shapeCount - 1)) ? "\n" : " ");
-  }
+  shagieva::printFramePoints(shapes, shapeCount);
 
   for (size_t i = 0; i < shapeCount; ++i)
   {
@@ -105,15 +98,7 @@ int main()
   }
   std::cout << totalAreaAfterScaling << " ";
 
-  for (size_t i = 0; i < shapeCount; ++i)
-  {
-    shagieva::rectangle_t frame = shapes[i]->getFrameRect();
-    std::cout << frame.pos.x - frame.width / 2 << " "
-              << frame.pos.y - frame.height / 2 << " "
-              << frame.pos.x + frame.width / 2 << " "
-              << frame.pos.y + frame.height / 2
-              << ((i == (shapeCount - 1)) ? "\n" : " ");
-  }
+  shagieva::printFramePoints(shapes, shapeCount);
 
   if (invalidFigureEntered)
   {
