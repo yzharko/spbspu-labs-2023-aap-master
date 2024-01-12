@@ -1,4 +1,5 @@
 #include "square.hpp"
+#include <iosfwd>
 
 using namespace anikanov;
 
