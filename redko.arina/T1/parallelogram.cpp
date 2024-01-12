@@ -16,22 +16,22 @@ double redko::Parallelogram::getArea() const
   }
   else
   {
-    return (std::abs(firstPoint_.x - thirdPoint_.x) * frame.height);
+    return (std::abs(secondPoint_.x - thirdPoint_.x) * frame.height);
   }
 }
 
 redko::rectangle_t redko::Parallelogram::getFrameRect() const
 {
-  double width = abs(firstPoint_.x - secondPoint_.x) + abs(firstPoint_.x - thirdPoint_.x);
+  double width = abs(secondPoint_.x - firstPoint_.x) + abs(secondPoint_.x - thirdPoint_.x);
 
   double height = 0;
-  if (firstPoint_.y == secondPoint_.y)
+  if (secondPoint_.y == firstPoint_.y)
   {
-    height = std::abs(firstPoint_.y - thirdPoint_.y);
+    height = std::abs(secondPoint_.y - thirdPoint_.y);
   }
   else
   {
-    height = std::abs(firstPoint_.y - secondPoint_.y);
+    height = std::abs(secondPoint_.y - firstPoint_.y);
   }
 
   double x = 0;
@@ -49,13 +49,13 @@ redko::rectangle_t redko::Parallelogram::getFrameRect() const
   }
 
   double y = 0;
-  if (firstPoint_.y > secondPoint_.y || firstPoint_.y > thirdPoint_.y)
+  if (secondPoint_.y > firstPoint_.y || secondPoint_.y > thirdPoint_.y)
   {
-    y = firstPoint_.y - (height / 2.0);
+    y = secondPoint_.y - (height / 2.0);
   }
   else
   {
-    y = firstPoint_.y + (height / 2.0);
+    y = secondPoint_.y + (height / 2.0);
   }
 
   return { width, height, { x, y } };

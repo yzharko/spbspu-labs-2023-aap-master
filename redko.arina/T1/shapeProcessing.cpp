@@ -15,7 +15,7 @@ bool redko::isParallelogramCorrect(redko::point_t * points)
 {
   double triangle = points[0].x * (points[1].y - points[2].y) + points[1].x * (points[2].y - points[0].y);
   triangle = std::abs((triangle + points[2].x * (points[0].y - points[1].y)) / 2.0);
-  return (points[0].y == points[1].y || points[2].y == points[0].y || points[1].y == points[2].y) && (triangle != 0);
+  return (points[0].y == points[1].y || points[1].y == points[2].y) && (triangle != 0);
 }
 
 bool redko::isConcaveCorrect(redko::point_t * points)
