@@ -75,3 +75,21 @@ void miheev::Parallelogram::scale(double k)
     points_[i].move(dx * k, dy * k);
   }
 }
+
+point_t* getPoints() const
+{
+  return points_;
+}
+
+void miheev::Parallelogram::operator==(Parallelogram p)
+{
+  point_t* pPoints = p.getPoints();
+  for (size_t i = 0; i < 4; i++)
+  {
+    if (pPoints[i] != points_[i])
+    {
+      return 0;
+    }
+  }
+  return 1;
+}

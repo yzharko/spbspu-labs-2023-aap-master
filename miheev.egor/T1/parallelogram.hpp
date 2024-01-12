@@ -11,14 +11,14 @@ namespace miheev
   public:
     Parallelogram(point_t center, point_t p1, point_t p2);
 
-    virtual double getArea() const;
-    virtual rectangle_t getFrameRect() const;
-    virtual move(point_t);
-    virtual move(double dx, double dy);
-    virtual void scale(double);
+    double getArea() const override;
+    rectangle_t getFrameRect() const override;
+    void move(point_t) override;
+    void move(double dx, double dy) override;
+    void scale(double) override;
 
   private:
-    point_t points_[4];
+    point_t* points_[4];
     point_t center_;
   }
 }

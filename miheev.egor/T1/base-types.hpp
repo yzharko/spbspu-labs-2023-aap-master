@@ -16,12 +16,11 @@ namespace miheev
 
   struct rectangle_t
   {
-  public:
+    double width;
+    double height;
+    point_t pos;
+
     rectangle_t(point_t pos, double width, double height);
-  private:
-    double width_;
-    double height_;
-    point_t pos_;
   };
 }
 

@@ -2,12 +2,13 @@
 #include <cmath>
 #include <iostream>
 
-miheev::Rectangle::Rectangle(point_t bottomLeft, point_t topRight):
+miheev::Rectangle::Rectangle(miheev::point_t bottomLeft, miheev::point_t topRight)
 {
-  points[0] = bottomLeft;
-  points[1] = point_t(bottomLeft.x, topRight.y);
-  points[2] = topRight;
-  points[3] = point_t(topRight.x, bottomLeft.y);
+  points_ = new point_t[4];
+  points_[0] = point_t(bottomLeft.x, bottomLeft.y);
+  points_[1] = point_t(bottomLeft.x, topRight.y);
+  points_[2] = point_t(topRight.x, topRight.y);
+  points_[3] = point_t(topRight.x, bottomLeft.y);
   center_ = bottomLeft.findMiddle(topRight);
   width_ = topRight.x - bottomLeft.x;
   height_ = topRight.y - bottomLeft.y;
@@ -27,7 +28,7 @@ void miheev::Rectangle::move(double dx, double dy)
 {
   for(size_t i = 0; i < 4; i++)
   {
-    points[i].move(dx, dy);
+    points_[i].move(dx, dy);
   }
   center_.move(dx, dy);
 }

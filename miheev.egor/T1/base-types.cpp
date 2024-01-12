@@ -33,7 +33,7 @@ void miheev::point_t::move(double dx, double dy)
 }
 
 miheev::rectangle_t::rectangle_t(point_t pos, double width, double height):
-  width_(width),
-  height_(height),
-  pos_(pos)
+  width(width),
+  height(height),
+  pos(pos)
 {}
