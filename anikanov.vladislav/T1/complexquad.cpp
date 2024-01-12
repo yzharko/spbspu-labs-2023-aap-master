@@ -1,7 +1,5 @@
 #include "complexquad.hpp"
 #include <cmath>
-#include <iostream>
-#include <cmath>
 #include <limits>
 
 using namespace anikanov;
@@ -85,26 +83,27 @@ namespace anikanov {
     auto st = [&complexquad](point_t &a, point_t &b, point_t &c) {
       return complexquad.getTriangleArea(a, b, c);
     };
-    if (!(st(p1, p2, p3) != 0.0f &&
-          st(p1, p2, p4) != 0.0f &&
-          st(p1, p3, p4) != 0.0f &&
-          st(p2, p3, p4) != 0.0f)) {
+    bool p1p2p3S = st(p1, p2, p3) != 0.0f;
+    bool p1p2p4S = st(p1, p2, p4) != 0.0f;
+    bool p1p3p4S = st(p1, p3, p4) != 0.0f;
+    bool p2p3p4S = st(p2, p3, p4) != 0.0f;
+    if (!(p1p2p3S && p1p2p4S && p1p3p4S && p2p3p4S)) {
       throw std::overflow_error("Invalid Input Complexquad");
     }
-    double x1 = complexquad.leftBottom.x;
-    double y1 = complexquad.leftBottom.y;
-    double x2 = complexquad.rightTop.x;
-    double y2 = complexquad.rightTop.y;
-    double x3 = complexquad.rightBottom.x;
-    double y3 = complexquad.rightBottom.y;
-    double x4 = complexquad.leftTop.x;
-    double y4 = complexquad.leftTop.y;
+    double lbx = complexquad.leftBottom.x;
+    double lby = complexquad.leftBottom.y;
+    double rtx = complexquad.rightTop.x;
+    double rty = complexquad.rightTop.y;
+    double rbx = complexquad.rightBottom.x;
+    double rby = complexquad.rightBottom.y;
+    double ltx = complexquad.leftTop.x;
+    double lty = complexquad.leftTop.y;
 
-    complexquad.cPoint.x = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) /
-                           ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
+    complexquad.cPoint.x = ((lbx * rty - lby * rtx) * (rbx - ltx) - (lbx - rtx) * (rbx * lty - rby * ltx)) /
+                           ((lbx - rtx) * (rby - lty) - (lby - rty) * (rbx - ltx));
 
-    complexquad.cPoint.y = ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) /
-                           ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4));
+    complexquad.cPoint.y = ((lbx * rty - lby * rtx) * (rby - lty) - (lby - rty) * (rbx * lty - rby * ltx)) /
+                           ((lbx - rtx) * (rby - lty) - (lby - rty) * (rbx - ltx));
     if (complexquad.cPoint.x == -0) {
       complexquad.cPoint.x = 0;
     }

@@ -1,5 +1,4 @@
 #include "rectangle.hpp"
-#include <iostream>
 
 using namespace anikanov;
 
