@@ -23,18 +23,15 @@ int main()
     std::cin >> name;
     if (name == "RING")
     {
-      figures[stored] = setRing(std::cin, ifNoErrors);
-      stored++;
+      figures[stored++] = setRing(std::cin, ifNoErrors);
     }
     else if (name == "REGULAR")
     {
-      figures[stored] = setRegular(std::cin, ifNoErrors);
-      stored++;
+      figures[stored++] = setRegular(std::cin, ifNoErrors);
     }
     else if (name == "RECTANGLE")
     {
-      figures[stored] = setRectangle(std::cin, ifNoErrors);
-      stored++;
+      figures[stored++] = setRectangle(std::cin, ifNoErrors);
     }
     else if (name == "SCALE")
     {
@@ -48,10 +45,8 @@ int main()
         std::cerr << e.what();
         return 1;
       }
-      freeArray(figures, stored);
       break;
     }
-
     if (ifNoErrors == 0)
     {
       ifNoErrors = 1;
@@ -60,10 +55,9 @@ int main()
     }
   }
 
+  freeArray(figures, stored);
   if (scale_command == 0)
   {
-    stored++;
-    freeArray(figures, stored);
     std::cerr << "no scale command\n";
     return 1;
   }
