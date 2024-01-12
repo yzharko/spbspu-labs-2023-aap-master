@@ -141,7 +141,7 @@ int main()
   }
   for (size_t i = 0; i < count; i++)
   {
-    delete[] geometricShapes[i];
+    delete geometricShapes[i];
   }
   return 0;
 }
