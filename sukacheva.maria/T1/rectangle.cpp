@@ -2,7 +2,7 @@
 #include "base-types.hpp"
 #include <iostream>
 
-sukacheva::Rectangle::Rectangle(const point_t& rightPoint, const point_t& leftPoint):
+sukacheva::Rectangle::Rectangle(point_t rightPoint, point_t leftPoint):
   right_point(rightPoint),
   left_point(leftPoint)
 {

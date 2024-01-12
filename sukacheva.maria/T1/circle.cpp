@@ -2,7 +2,7 @@
 #include "base-types.hpp"
 #include <iostream>
 
-sukacheva::Circle::Circle(const point_t& center, const double& radius) :
+sukacheva::Circle::Circle(point_t center, double radius) :
   center_(center),
   radius_(radius)
 {

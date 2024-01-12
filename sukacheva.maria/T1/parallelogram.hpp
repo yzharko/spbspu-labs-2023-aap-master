@@ -8,7 +8,7 @@ namespace sukacheva
   class Parallelogram : public Shape
   {
   public:
-    Parallelogram(const point_t& A, const point_t& B, const point_t& C);
+    Parallelogram(point_t A, point_t B, point_t C);
     double getArea() const;
     rectangle_t getFrameRect() const;
     void move(const double& x, const double& y);

@@ -8,7 +8,7 @@ namespace sukacheva
   class Rectangle : public Shape
   {
   public:
-    Rectangle(const point_t& rightPoint, const point_t& leftPoint);
+    Rectangle(point_t rightPoint, point_t leftPoint);
     double getArea() const;
     rectangle_t getFrameRect() const;
     void move(const double& x, const double& y);
