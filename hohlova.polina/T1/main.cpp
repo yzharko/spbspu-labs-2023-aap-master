@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "shape.hpp"
 #include "rectangle.hpp"
 #include "square.hpp"
@@ -106,8 +107,10 @@ int main()
         rectangle_t frameOfRect = figures[i]->getFrameRect();
         std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos_.x_ << ' ' << frameOfRect.pos_.y_;
         std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos_.x_ << ' ' << frameOfRect.pos_.y_;
-      }
+        delete figures[i];
+}
       std::cout << "\n";
+      break;
     }
   }
   if (checkInput == true)
