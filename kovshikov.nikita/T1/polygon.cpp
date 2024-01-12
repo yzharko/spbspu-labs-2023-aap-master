@@ -52,14 +52,14 @@ double kovshikov::Polygon::getArea()
       if(upperX[i] == upper[j].x)
       {
         upper[j].x = upperX[i];
-        if(upperX[i] == upperX[i - 1] && upper[j].y > upper[j - 1].y)
+        if(i > 0 && j > 0 && upperX[i] == upperX[i - 1] && upper[j].y > upper[j - 1].y)
         {
           point_t change = upper[j];
           upper[j] = upper[j - 1];
           upper[j - 1] = change;
         }
-        break;
       }
+      break;
     }
   }
   double * lowerX = new double[count];
