@@ -10,8 +10,8 @@ namespace jirkov
     Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, point_t fourtPoint);
     virtual double getArea() const;
     virtual rectangle_t getFrameRect() const;
-    virtual void move(point_t destination);
-    virtual void move(double moveX, double moveY);
+    virtual void move(const point_t & center);
+    virtual void move(const double moveX, const double moveY);
     virtual void scale(double k);
   private:
     point_t firstPoint_;
