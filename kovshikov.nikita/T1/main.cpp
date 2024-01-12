@@ -139,7 +139,7 @@ int main()
       return 1;
     }
   }
-  for (size_t i; i < count; i++)
+  for (size_t i = 0; i < count; i++)
   {
     delete[] geometricShapes[i];
   }
