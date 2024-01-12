@@ -75,7 +75,7 @@ int main()
       if (std::cin >> x >> y >> scale && scale > 0)
       {
         std::cout << std::fixed << std::setprecision(1);
-        printResult(std::cin, allFigures, figuresCounter);
+        printResult(allFigures, figuresCounter);
         for (size_t i = 0; i < figuresCounter; ++i)
         {
           point_t initialPos = allFigures[i]->getFrameRect().pos;
@@ -86,7 +86,7 @@ int main()
           allFigures[i]->scale(scale);
           allFigures[i]->move(diffPos.x, diffPos.y);
         }
-        printResult(std::cin, allFigures, figuresCounter);
+        printResult(allFigures, figuresCounter);
         scaleCommandWas = true;
       }
       else

@@ -44,7 +44,7 @@ void khoroshkin::deleteFigures(khoroshkin::Shape ** allFigures, size_t figuresCo
   delete[] allFigures;
 }
 
-void khoroshkin::printResult(std::istream & input, khoroshkin::Shape ** allFigures, size_t figuresCounter)
+void khoroshkin::printResult(khoroshkin::Shape ** allFigures, size_t figuresCounter)
 {
   double summOfFigures = 0;
   for (size_t i = 0; i < figuresCounter; ++i)
