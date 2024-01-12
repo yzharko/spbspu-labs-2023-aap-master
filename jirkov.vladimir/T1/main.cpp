@@ -31,7 +31,6 @@ int main()
     }
     else if (figure == "DIAMOND")
     {
-      double xA, yA, xC, yC;
       if (!std::cin)
       {
         wrIn = true;
