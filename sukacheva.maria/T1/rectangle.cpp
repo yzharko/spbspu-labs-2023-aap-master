@@ -54,7 +54,7 @@ void sukacheva::Rectangle::newScale(const point_t& center, const double& k) {
 
 }
 
-void sukacheva::Rectangle::scale(const double& k) {
+void sukacheva::Rectangle::scale(double k) {
   double center_x = (right_point.x + left_point.x) / 2;
   double center_y = (right_point.y + left_point.y) / 2;
   double width = std::abs(right_point.x - left_point.x);

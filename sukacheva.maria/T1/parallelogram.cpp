@@ -54,15 +54,6 @@ void sukacheva::Parallelogram::move(const point_t& center) {
   move(dX, dY);
 }
 
-void sukacheva::Parallelogram::scale(const double& k)
-{
-  double centerX = (A_.x + B_.x) / 2;
-  double centerY = (A_.y + C_.y) / 2;
-  A_ = { (centerX + (A_.x - centerX) * k), (centerY + (A_.y - centerY) * k) };
-  B_ = { (centerX + (B_.x - centerX) * k), (centerY + (B_.y - centerY) * k) };
-  C_ = { (centerX + (C_.x - centerX) * k), (centerY + (C_.y - centerY) * k) };
-}
-
 void sukacheva::Parallelogram::newScale(const point_t& center, const double& k)
 {
   double xSideA = A_.x - center.x;
@@ -78,4 +69,13 @@ void sukacheva::Parallelogram::newScale(const point_t& center, const double& k)
   B_.y = center.y + ySideB * k;
   C_.x = center.x + xSideC * k;
   C_.y = center.y + ySideC * k;
+}
+
+void sukacheva::Parallelogram::scale(double k)
+{
+  double centerX = (A_.x + B_.x) / 2;
+  double centerY = (A_.y + C_.y) / 2;
+  A_ = { (centerX + (A_.x - centerX) * k), (centerY + (A_.y - centerY) * k) };
+  B_ = { (centerX + (B_.x - centerX) * k), (centerY + (B_.y - centerY) * k) };
+  C_ = { (centerX + (C_.x - centerX) * k), (centerY + (C_.y - centerY) * k) };
 }

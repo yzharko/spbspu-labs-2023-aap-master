@@ -38,6 +38,6 @@ void sukacheva::Circle::newScale(const point_t& scaleCenter, const double& k) {
   radius_ = radius_ * k;
 }
 
-void sukacheva::Circle::scale(const double& k) {
+void sukacheva::Circle::scale(double k) {
   radius_ = radius_ * k;
 }
