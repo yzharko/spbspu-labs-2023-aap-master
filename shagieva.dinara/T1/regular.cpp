@@ -5,7 +5,7 @@
 
 using namespace shagieva;
 
-Regular::Regular(const point_t point1, const point_t point2, const point_t point3)
+Regular::Regular(const point_t & point1, const point_t & point2, const point_t & point3)
 {
   points[0] = point1;
   points[1] = point2;
@@ -69,7 +69,7 @@ rectangle_t Regular::getFrameRect() const
   return { rectSide, rectSide, points[0] };
 }
 
-void Regular::move(const double dx, const double dy)
+void Regular::move(const double & dx, const double & dy)
 {
   for (int i = 0; i < 3; ++i)
   {
@@ -78,14 +78,14 @@ void Regular::move(const double dx, const double dy)
   }
 }
 
-void Regular::move(const point_t newCenter)
+void Regular::move(const point_t & newCenter)
 {
   double dx = newCenter.x - points[0].x;
   double dy = newCenter.y - points[0].y;
   move(dx, dy);
 }
 
-void Regular::scale(const double scaleFactor)
+void Regular::scale(const double & scaleFactor)
 {
   for (int i = 1; i < 3; ++i)
   {
@@ -94,7 +94,7 @@ void Regular::scale(const double scaleFactor)
   }
 }
 
-double Regular::getLength(const point_t point1, const point_t point2) const
+double Regular::getLength(const point_t & point1, const point_t & point2) const
 {
   return std::hypot(point2.x - point1.x, point2.y - point1.y);
 }

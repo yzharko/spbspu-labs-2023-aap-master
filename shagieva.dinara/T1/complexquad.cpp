@@ -5,8 +5,8 @@
 
 using namespace shagieva;
 
-Complexquad::Complexquad(const point_t point1, const point_t point2,
-    const point_t point3, const point_t point4)
+Complexquad::Complexquad(const point_t & point1, const point_t & point2,
+    const point_t & point3, const point_t & point4)
 {
   points[0] = point1;
   points[1] = point2;
@@ -46,7 +46,7 @@ rectangle_t Complexquad::getFrameRect() const
   return { maxX - minX, maxY - minY, {(minX + maxX) / 2, (minY + maxY) / 2} };
 }
 
-void Complexquad::move(const double dx, const double dy)
+void Complexquad::move(const double & dx, const double & dy)
 {
   for (int i = 0; i < 4; ++i)
   {
@@ -55,7 +55,7 @@ void Complexquad::move(const double dx, const double dy)
   }
 }
 
-void Complexquad::move(const point_t newCenter)
+void Complexquad::move(const point_t & newCenter)
 {
   point_t center = getCenter();
   double dx = newCenter.x - center.x;
@@ -63,7 +63,7 @@ void Complexquad::move(const point_t newCenter)
   move(dx, dy);
 }
 
-void Complexquad::scale(const double scaleFactor)
+void Complexquad::scale(const double & scaleFactor)
 {
   point_t center = getCenter();
   for (int i = 0; i < 4; ++i)
@@ -88,7 +88,7 @@ point_t Complexquad::getCenter() const
   return { (b2 * c1 - b1 * c2) / determinant, (a2 * c1 - a1 * c2) / determinant };
 }
 
-double Complexquad::getTriangleArea(const point_t pointA, const point_t pointB, const point_t pointC) const
+double Complexquad::getTriangleArea(const point_t & pointA, const point_t & pointB, const point_t & pointC) const
 {
   return std::fabs((pointB.x - pointA.x) * (pointC.y - pointA.y) - (pointC.x - pointA.x) * (pointB.y - pointA.y)) / 2;
 }
