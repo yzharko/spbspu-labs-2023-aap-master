@@ -54,23 +54,6 @@ void sukacheva::Parallelogram::move(const point_t& center) {
   move(dX, dY);
 }
 
-void sukacheva::Parallelogram::newScale(const point_t& center, const double& k)
-{
-  double xSideA = A_.x - center.x;
-  double ySideA = A_.y - center.y;
-  double xSideB = B_.x - center.x;
-  double ySideB = B_.y - center.y;
-  double xSideC = C_.x - center.x;
-  double ySideC = C_.y - center.y;
-
-  A_.x = center.x + xSideA * k;
-  A_.y = center.y + ySideA * k;
-  B_.x = center.x + xSideB * k;
-  B_.y = center.y + ySideB * k;
-  C_.x = center.x + xSideC * k;
-  C_.y = center.y + ySideC * k;
-}
-
 void sukacheva::Parallelogram::scale(double k)
 {
   double centerX = (A_.x + B_.x) / 2;

@@ -12,7 +12,6 @@ namespace sukacheva
     virtual rectangle_t getFrameRect() const = 0;
     virtual void move(const double& x, const double& y) = 0;
     virtual void move(const point_t& center) = 0;
-    virtual void newScale(const point_t& center, const double& k) = 0;
     virtual void scale(double k) = 0;
   };
 }

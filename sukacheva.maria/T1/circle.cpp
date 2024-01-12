@@ -30,14 +30,6 @@ void sukacheva::Circle::move(const point_t& center) {
   center_ = center;
 }
 
-void sukacheva::Circle::newScale(const point_t& scaleCenter, const double& k) {
-  double xSide = center_.x - scaleCenter.x;
-  double ySide = center_.y - scaleCenter.y;
-  center_.x = scaleCenter.x + xSide * k;
-  center_.y = scaleCenter.y + ySide * k;
-  radius_ = radius_ * k;
-}
-
 void sukacheva::Circle::scale(double k) {
   radius_ = radius_ * k;
 }

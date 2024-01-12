@@ -102,7 +102,7 @@ int main() {
 
         for (int i = 0; i < index; i++)
         {
-          figures[i]->newScale(center, k);
+          figures[i]->scale(k);
           newArea += figures[i]->getArea();
         }
         std::cout << std::fixed << std::setprecision(1) << newArea;
@@ -110,6 +110,8 @@ int main() {
         for (int i = 0; i < index; i++)
         {
           rectangle_t newFrameRect = figures[i]->getFrameRect();
+          newFrameRect.pos.x = (newFrameRect.pos.x - center.x) * k + center.x;
+          newFrameRect.pos.y = (newFrameRect.pos.y - center.y) * k + center.y;
           getCoordinates(newFrameRect);
           delete figures[i];
         }
