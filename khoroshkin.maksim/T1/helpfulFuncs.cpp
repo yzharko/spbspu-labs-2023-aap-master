@@ -1,5 +1,6 @@
 #include "helpfulFuncs.hpp"
 #include <algorithm>
+#include <cmath>
 #include "base-types.hpp"
 #include "rectangle.hpp"
 #include "circle.hpp"
