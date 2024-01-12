@@ -1,12 +1,12 @@
-#ifndef RECTANGLE_HPP
-#define RECTANGLE_HPP
+#ifndef ELLIPSE_HPP
+#define ELLIPSE_HPP
 #include "shape.hpp"
 #include " base-types.hpp"
 
 namespace kaseev {
-  class Rectangle : public shape {
+  class Ellipce : public shape {
   public:
-    Rectangle(point_t lPoint, point_t rPoint);
+    Ellipce(point_t center, double verticalRad, double gorisontRad);
     virtual double getArea();
     virtual rectangle_t getFrameRect();
     virtual void move(double nx, double ny);
