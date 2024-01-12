@@ -1,6 +1,6 @@
 #ifndef HELPFULFUNCS_HPP
 #define HELPFULFUNCS_HPP
-#include <cctype>
+#include <cstddef>
 #include "shape.hpp"
 
 namespace khoroshkin
