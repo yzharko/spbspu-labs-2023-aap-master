@@ -27,8 +27,8 @@ sukacheva::rectangle_t sukacheva::Rectangle::getFrameRect() const {
 }
 
 void sukacheva::Rectangle::move(const double& x, const double& y) {
-  point_t right_point = { right_point.x + x, right_point.y + y };
-  point_t left_point = { left_point.x + x, left_point.y + y };
+  right_point = { right_point.x + x, right_point.y + y };
+  left_point = { left_point.x + x, left_point.y + y };
 }
 
 void sukacheva::Rectangle::move(const point_t& center) {
