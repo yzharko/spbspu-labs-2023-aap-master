@@ -12,6 +12,11 @@ miheev::Parallelogram::Parallelogram(point_t p1, point_t p2, point_t p3)
   points_[3] = point_t(p3.x - dx, p3.y - dy);
 }
 
+miheev::Parallelogram::~Parallelogram()
+{
+  delete[] points_;
+}
+
 double miheev::Parallelogram::getArea() const
 {
   return abs((points_[1].x - points_[0].x) * (points_[3].y - points_[0].y) - (points_[1].y - points_[0].y) * (points_[3].x - points_[0].x));

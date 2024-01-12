@@ -17,7 +17,6 @@ int main()
   {
     std::string figName = "";
     std::cin >> figName;
-    std::cout << figName << '\n';
     if (figsNow >= shapesSize)
     {
       const size_t extraSize = 5;
@@ -87,6 +86,15 @@ int main()
         }
         miheev::printCurrentState(sumAreaBefore, rectsBefore, figsNow);
         miheev::printCurrentState(sumAreaAfter, rectsAfter, figsNow);
+        delete[] rectsBefore;
+        delete[] rectsAfter;
+        for (size_t i = 0; i < figsNow; i++)
+        {
+          std::cout << i << '\n';
+          //std::cout << shapes[i]->getArea();
+          delete shapes[i];
+        }
+        delete[] shapes;
         return 0;
       }
     }

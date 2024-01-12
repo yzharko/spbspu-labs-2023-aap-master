@@ -9,6 +9,7 @@ namespace miheev
   {
   public:
     Triangle(point_t p1, point_t p2, point_t p3);
+    ~Triangle() override;
 
     double getArea() const override;
     rectangle_t getFrameRect() const override;

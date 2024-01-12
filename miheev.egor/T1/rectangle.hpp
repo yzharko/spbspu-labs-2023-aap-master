@@ -17,6 +17,7 @@ namespace miheev
 
   public:
     Rectangle(point_t bottomLeft, point_t topRight);
+    ~Rectangle() override;
 
     double getArea() const override;
     rectangle_t getFrameRect() const override;

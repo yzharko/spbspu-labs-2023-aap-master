@@ -18,6 +18,11 @@ miheev::Triangle::Triangle(point_t p1, point_t p2, point_t p3)
   center_ = point_t(sumX/3, sumY/3);
 }
 
+miheev::Triangle::~Triangle()
+{
+  delete[] points_;
+}
+
 double miheev::Triangle::getArea() const
 {
   return std::abs((points_[1].x - points_[0].x) * (points_[2].y - points_[0].y)

@@ -10,6 +10,7 @@ namespace miheev
   {
   public:
     Parallelogram(point_t center, point_t p1, point_t p2);
+    ~Parallelogram();
 
     double getArea() const override;
     rectangle_t getFrameRect() const override;

@@ -14,6 +14,12 @@ miheev::Rectangle::Rectangle(miheev::point_t bottomLeft, miheev::point_t topRigh
   height_ = topRight.y - bottomLeft.y;
 }
 
+miheev::Rectangle::~Rectangle()
+{
+  std::cout << "disruption\n";
+  delete[] points_;
+}
+
 double miheev::Rectangle::getArea() const
 {
   return width_*height_;
