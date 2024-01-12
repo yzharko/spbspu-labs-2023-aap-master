@@ -59,56 +59,24 @@ int main() {
       if ( k <= 0 || index == 0)
       {
         std::cerr << "Incorrect input of figures";
-        for (int i = 0; i < index; i++)
-        {
-          delete figures[i];
-        }
+        deleteArray(figures, index);
         return 2;
       }
       else {
         point_t center{ x, y };
         double firstArea = 0;
         double newArea = 0;
-        for (int i = 0; i < index; i++)
-        {
-          firstArea += figures[i]->getArea();
-        }
-        std::cout << std::fixed << std::setprecision(1) << firstArea;
-
-        for (int i = 0; i < index; i++)
-        {
-          rectangle_t frameRect = figures[i]->getFrameRect();
-          getCoordinates(frameRect);
-        }
-
-        std::cout << "\n";
-
-        for (int i = 0; i < index; i++)
-        {
-          figures[i]->scale(k);
-          newArea += figures[i]->getArea();
-        }
-        std::cout << std::fixed << std::setprecision(1) << newArea;
-
-        for (int i = 0; i < index; i++)
-        {
-          rectangle_t newFrameRect = figures[i]->getFrameRect();
-          newFrameRect.pos.x = (newFrameRect.pos.x - center.x) * k + center.x;
-          newFrameRect.pos.y = (newFrameRect.pos.y - center.y) * k + center.y;
-          getCoordinates(newFrameRect);
-          delete figures[i];
-        }
-        std::cout << "\n";
+        getFirstArea(figures, index, firstArea);
+        getCoordinatesBefore(figures, index);
+        getScaledArea(figures, index, newArea, k);
+        getCoordinatesAfter(figures, index, center, k);
         break;
       }
     }
   }
   if (ifScale == 0)
   {
-    for (int i = 0; i < index; i++)
-    {
-      delete figures[i];
-    }
+    deleteArray(figures, index);
     std::cerr << "No scale command";
     return 2;
   }
