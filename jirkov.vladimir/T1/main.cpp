@@ -29,17 +29,32 @@ int main()
         countFig++;
       }
     }
+
     else if (figure == "DIAMOND")
     {
+      double xA, yA, xC, yC, xD, yD;
+      std::cin >> xA >> yA >> xC >> yC >> xD >> yD;
       if (!std::cin)
       {
         wrIn = true;
       }
       else
       {
+        geometricFigures[countFig] = new Diamond({xA, yA}, {xC, yC}, {xD, yD});
+        try
+        {
+          geometricFigures[countFig]->getArea();
+        }
+        catch (const std::logic_error& e)
+        {
+          wrIn = true;
+          delete[] geometricFigures[countFig];
+          countFig--;
+        }
         countFig++;
       }
     }
+
     else if (figure == "CONCAVE")
     {
       double xFir, yFir, xSec, ySec, xThi, yThi, xFou, yFou;
