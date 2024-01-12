@@ -12,7 +12,6 @@ Complexquad::Complexquad(point_t first, point_t second, point_t third,point_t fo
   double b2 = pointC.y - k2 * pointC.x;
   cPoint.x = (b2 - b1) / (k1 - k2);
   cPoint.y = k1 * cPoint.x + b1;
-  s = sqrt(pow(pointA.x - pointD.x, 2) + pow(pointA.y - pointD.y, 2));
 }
 
 double Complexquad::getArea() const
@@ -35,7 +34,7 @@ rectangle_t Complexquad::getFrameRect() const
   return {width, height, pos};
 }
 
-void Complexquad::move(point_t newPoint)
+void Complexquad::move(const point_t & newPoint)
 {
   double dx = newPoint.x - cPoint.x;
   double dy = newPoint.y - cPoint.y;
@@ -61,5 +60,4 @@ void Complexquad::scale(double k)
   pointC.y = cPoint.y + k * (pointC.y - cPoint.y);
   pointD.x = cPoint.x + k * (pointD.x - cPoint.x);
   pointD.y = cPoint.y + k * (pointD.y - cPoint.y);
-  s *= k;
 }

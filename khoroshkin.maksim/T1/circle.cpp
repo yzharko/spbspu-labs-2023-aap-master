@@ -19,7 +19,7 @@ rectangle_t Circle::getFrameRect() const
   {(leftPoint.x + rightPoint.x)/2, (leftPoint.y + rightPoint.y)/2}};
 }
 
-void Circle::move(point_t newPoint)
+void Circle::move(const point_t & newPoint)
 {
   Point = newPoint;
 }

@@ -1,6 +1,5 @@
 #ifndef BASE_TYPE_HPP
 #define BASE_TYPE_HPP
-#include <iostream>
 
 namespace khoroshkin
 {

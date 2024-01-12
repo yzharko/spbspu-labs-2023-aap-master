@@ -5,8 +5,12 @@ using namespace khoroshkin;
 Rectangle::Rectangle(point_t newLeftPoint, point_t newRightPoint) :
   leftPoint(newLeftPoint), rightPoint(newRightPoint)
 {
-  rectangle = {fabs(leftPoint.x-rightPoint.x),fabs(leftPoint.y-rightPoint.y), {(leftPoint.x+rightPoint.x)/2,(leftPoint.y+rightPoint.y)/2}};
+  double width = fabs(leftPoint.x-rightPoint.x);
+  double height = fabs(leftPoint.y-rightPoint.y);
+  point_t pos = {(leftPoint.x + rightPoint.x) / 2,(leftPoint.y + rightPoint.y) / 2};
+  rectangle = {width, height, pos};
 }
+
 double khoroshkin::Rectangle::getArea() const
 {
   return rectangle.height * rectangle.width;
@@ -17,7 +21,7 @@ rectangle_t Rectangle::getFrameRect() const
   return {fabs(leftPoint.x-rightPoint.x), fabs(leftPoint.y-rightPoint.y), {(leftPoint.x+rightPoint.x)/2, (leftPoint.y+rightPoint.y)/2}};
 }
 
-void Rectangle::move(point_t newPoint)
+void Rectangle::move(const point_t & newPoint)
 {
   leftPoint = {leftPoint.x + (newPoint.x - rectangle.pos.x), leftPoint.y + (newPoint.y - rectangle.pos.y)};
 
