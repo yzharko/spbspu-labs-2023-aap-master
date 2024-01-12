@@ -3,7 +3,7 @@
 #include "triangle.hpp"
 #include <functional>
 
-kovshikov::Polygon::Polygon(size_t num, point_t * points):
+kovshikov::Polygon::Polygon(size_t num, point_t * points): // заменить все статические массивы на динамические(их шесть)
   num_(num),
   points_(points)
 {};
@@ -16,7 +16,7 @@ double kovshikov::Polygon::getArea()
   double area = 0;
   double minX = points_[0].x;
   point_t start = points_[0];
-  for(size_t i; i < num_; i++)
+  for(size_t i = 0; i < num_; i++)
   {
     if(points_[i].x < minX)
     {
@@ -24,11 +24,11 @@ double kovshikov::Polygon::getArea()
       start = points_[i];
     }
   }
-  point_t upper[num_] = {};
+  point_t * upper = new point_t[num_];
   size_t read = 0;
-  point_t lower[num_] = {};
+  point_t * lower = new point_t[num_];
   size_t count = 0;
-  for(size_t i; i < num_; i++)
+  for(size_t i = 0; i < num_; i++)
   {
     if(points_[i].y > start.y)
     {
@@ -39,7 +39,7 @@ double kovshikov::Polygon::getArea()
       lower[count++] = points_[i];
     }
   }
-  double upperX[read] = {};
+  double * upperX = new double[read];
   for(size_t i = 0; i < read; i++)
   {
     upperX[i] = upper[i].x;
@@ -62,7 +62,7 @@ double kovshikov::Polygon::getArea()
       }
     }
   }
-  double lowerX[count] = {};
+  double * lowerX = new double[count];
   for(size_t i = 0; i < count; i++)
   {
     lowerX[i] = lower[i].x;
@@ -94,12 +94,16 @@ double kovshikov::Polygon::getArea()
       area += triangle.getArea();
     }
   }
+  delete[] lowerX;
+  delete[] upperX;
+  delete[] lower;
+  delete[] upper;
   return area;
 }
 rectangle_t kovshikov::Polygon::getFrameRect()
 {
-  double arrayX[num_] = {};
-  double arrayY[num_] = {};
+  double * arrayX = new double[num_];
+  double * arrayY = new double[num_];
   for(size_t i = 0; i < num_; i++)
   {
     arrayX[i] = points_[i].x;
@@ -115,6 +119,8 @@ rectangle_t kovshikov::Polygon::getFrameRect()
   point_t lowerLeft = {minX, minY};
   point_t upperRight = {maxX, maxY};
   Rectangle rectangle(lowerLeft, upperRight);
+  delete[] arrayX;
+  delete[] arrayY;
   return rectangle.getFrameRect();
 }
 void kovshikov::Polygon::move(point_t newPos)
@@ -147,7 +153,7 @@ point_t kovshikov::Polygon::getPos()
 {
   double summaX = 0;
   double summaY = 0;
-  for(size_t i; i < num_; i++)
+  for(size_t i = 0; i < num_; i++)
   {
     summaX += points_[i].x;
     summaY += points_[i].y;

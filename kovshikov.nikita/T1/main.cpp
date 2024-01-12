@@ -25,6 +25,7 @@ int main()
          continue;
        }
        *geometricShapes[count++] = Rectangle({lowerLeftX, lowerLeftY}, {upperRightX, upperRightY});
+       std::cout << count;
     }
     else if (shape == "TRIANGLE") // в классе треугольник проверить существует ли он
     {
@@ -36,6 +37,7 @@ int main()
         continue;
       }
       *geometricShapes[count++] = Triangle({vertexAX, vertexAY}, {vertexBX, vertexBY}, {vertexCX, vertexCY});
+      std::cout << count;
     }
     else if (shape == "POLYGON")
     {
@@ -64,18 +66,24 @@ int main()
           points = newArray;
           newArray = nullptr;
         }
+        if(std::cin.peek() == '\n')
+        {
+          *geometricShapes[count++] = Polygon(nPointsPolygon, points);
+          std::cout << count;
+          continue;
+        }
       }
-      *geometricShapes[count++] = Polygon(nPointsPolygon, points);
     }
     else if (shape == "SCALE")
     {
+      std::cout << "ura";
+      std::cout << count; /////////////////
       double posX, posY, multiplier;
       std::cin >> posX >> posY >> multiplier;
       if (!std::cin || multiplier < 0)
       {
         continue;
       }
-
       double totalAreaBefore = 0;
       for (size_t i = 0; i < count; i++)
       {
@@ -97,7 +105,7 @@ int main()
         }
       }
       std::cout << "\n";
-      for (size_t i; i < count; i++)
+      for (size_t i = 0; i < count; i++)
       {
         geometricShapes[i]->move(posX, posY);
         geometricShapes[i]->scale(multiplier);
