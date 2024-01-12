@@ -1,4 +1,5 @@
 #include "diamond.hpp"
+#include "base-types.hpp"
 
 khomichenko::Diamond::Diamond(point_t first, point_t second, point_t third):
   first(first),
@@ -8,16 +9,14 @@ khomichenko::Diamond::Diamond(point_t first, point_t second, point_t third):
 
 double khomichenko::Diamond::getArea()
 {
-  return (second.y - third.y)*(third.x - first.x);
+  return 2*(second.y - third.y)*(third.x - first.x);
 }
 
-rectangle_t khomichenko::Diamond::getFrameRect()
+khomichenko::rectangle_t khomichenko::Diamond::getFrameRect()
 {
-  point_t topX = third.x + (third.x-first.x);
-  double topY = second.y;
-  point_t botX = first.x;
-  double botY = third.y - (second.y - third.y);
-  return rectangle_t {{botX, botY}, {topX, topY}};
+  double width = 2*(third.x - first.x);
+  double height = 2*(second.y - third.y);
+  return {width, height, third};
 }
 
 void khomichenko::Diamond::move(double dX, double dY)
@@ -33,10 +32,10 @@ void khomichenko::Diamond::move(double dX, double dY)
 void khomichenko::Diamond::move(point_t dPos)
 {
   point_t delta = {third.x-dPos.x, third.y - dPos.y};
-  khomichenko::Rectangle::move(delta.x, delta.y);
+  khomichenko::Diamond::move(delta.x, delta.y);
 }
 
-void khomichenko::Diamond::scale(point_t pos, double k)
+void khomichenko::Diamond::scale(double k)
 {
   double height = (second.y - third.y) * k;
   double widht = (third.x - first.x) * k;
