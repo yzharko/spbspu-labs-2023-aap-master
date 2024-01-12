@@ -46,7 +46,7 @@ point_t &point_t::operator+(point_t another_point)
 namespace anikanov {
   std::ostream &operator<<(std::ostream &out, const rectangle_t &rec)
   {
-    point_t point{0, 0};
+    point_t point;
     point.x = rec.pos.x - rec.width / 2.0;
     point.y = rec.pos.y - rec.height / 2.0;
     out << std::fixed << std::setprecision(1);
