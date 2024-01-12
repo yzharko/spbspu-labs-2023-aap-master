@@ -13,9 +13,8 @@ int main()
   Shape* figures[1000] = { 0 };
   bool checkInput = false;
   bool checkScale = false;
-  while (!std::cin.eof())
+  while (!std::cin.eof() && std::cin >> figure)
   {
-    std::cin >> figure;
     if (figure == "RECTANGLE")
     {
       double lx, ly, rx, ry;
@@ -24,17 +23,10 @@ int main()
       {
         checkInput = true;
       }
-      try
+      else
       {
-        point_t lpos = { lx, ly };
-        point_t rpos = { rx, ry };
-        Shape* rectangle = new Rectangle(lpos, rpos);
-        figures[figuresCount] = rectangle;
+        figures[figuresCount] = new Rectangle({ lx, ly }, { rx, ry });
         figuresCount++;
-      }
-      catch (const std::exception& ex)
-      {
-        checkInput = true;
       }
     }
     else if (figure == "SQUARE")
@@ -45,18 +37,21 @@ int main()
       {
         checkInput = true;
       }
+    else
+    {
       figures[figuresCount] = new Square({ x, y }, side);
       try
       {
         figures[figuresCount]->getArea();
       }
-      catch (const std::exception& ex)
+      catch (const std::logic_error& ex)
       {
-        std::cerr << ex.what();
+        checkInput = true;
         delete[] figures[figuresCount];
         figuresCount--;
       }
-      figuresCount++;
+        figuresCount++;
+      }
     }
     else if (figure == "TRIANGLE")
     {
@@ -66,18 +61,21 @@ int main()
       {
         checkInput = true;
       }
-      figures[figuresCount] = new Triangle({ x1, y1 }, { x2, y2 }, { x3, y3 });
-      try
+      else
       {
-        figures[figuresCount]->getArea();
+        figures[figuresCount] = new Triangle({ x1, y1 }, { x2, y2 }, { x3, y3 });
+        try
+        {
+          figures[figuresCount]->getArea();
+        }
+        catch (const std::logic_error& ex)
+        {
+          checkInput = true;
+          delete[] figures[figuresCount];
+          figuresCount--;
+        }
+        figuresCount++;
       }
-      catch (const std::exception& ex)
-      {
-        checkInput = true;
-        delete[] figures[figuresCount];
-        figuresCount--;
-      }
-      figuresCount++;
     }
     else if (figure == "SCALE")
     {
