@@ -111,10 +111,10 @@ int main()
         for (size_t j = 0; j < countFig; j++)
         {
           rectangle_t frame = geometricFigures[j]->getFrameRect();
-          xL = frame.pos_.x_ - 0.5 * frame.width_;
-          yL = frame.pos_.y_ - 0.5 * frame.height_;
-          xR = frame.pos_.x_ + 0.5 * frame.width_;
-          yR = frame.pos_.y_ + 0.5 * frame.height_;
+          xL = frame.pos.x - 0.5 * frame.width;
+          yL = frame.pos.y - 0.5 * frame.height;
+          xR = frame.pos.x + 0.5 * frame.width;
+          yR = frame.pos.y + 0.5 * frame.height;
           std::cout << std::fixed << std::setprecision(1) << ' ' << xL << ' ' << yL << ' ' << xR << ' ' << yR;
         }
         std::cout << "\n";
@@ -123,8 +123,8 @@ int main()
           rectangle_t frameBefore = geometricFigures[k]->getFrameRect();
           geometricFigures[k]->move({posx, posy});
           rectangle_t frameAfter = geometricFigures[k]->getFrameRect();
-          double moveX = fabs(frameAfter.pos_.x_ - frameBefore.pos_.x_)*coefficient;
-          double moveY = fabs(frameAfter.pos_.y_ - frameBefore.pos_.y_)*coefficient;
+          double moveX = fabs(frameAfter.pos.x - frameBefore.pos.x)*coefficient;
+          double moveY = fabs(frameAfter.pos.y - frameBefore.pos.y)*coefficient;
           geometricFigures[k]->scale(coefficient);
           geometricFigures[k]->move(moveX, moveY);
         }
@@ -137,10 +137,10 @@ int main()
         for (size_t j = 0; j < countFig; j++)
         {
           rectangle_t frame = geometricFigures[j]->getFrameRect();
-          xL = frame.pos_.x_ - 0.5 * frame.width_;
-          yL = frame.pos_.y_ - 0.5 * frame.height_;
-          xR = frame.pos_.x_ + 0.5 * frame.width_;
-          yR = frame.pos_.y_ + 0.5 * frame.height_;
+          xL = frame.pos.x - 0.5 * frame.width;
+          yL = frame.pos.y - 0.5 * frame.height;
+          xR = frame.pos.x + 0.5 * frame.width;
+          yR = frame.pos.y + 0.5 * frame.height;
           std::cout << std::fixed << std::setprecision(1) << ' ' << xL << ' ' << yL << ' ' << xR << ' ' << yR;
         }
         std::cout << "\n";

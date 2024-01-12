@@ -12,9 +12,9 @@ Triangle::Triangle(point_t firstPoint, point_t secondPoint, point_t thirdPoint) 
 
 double Triangle::getArea()
 {
-  double a = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
-  double b = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
-  double c = sqrt(pow((thirdPoint_.x_ - firstPoint_.x_), 2) + pow((thirdPoint_.y_ - firstPoint_.y_), 2));
+  double a = sqrt(pow((firstPoint_.x - secondPoint_.x), 2) + pow((firstPoint_.y - secondPoint_.y), 2));
+  double b = sqrt(pow((secondPoint_.x - thirdPoint_.x), 2) + pow((secondPoint_.y - thirdPoint_.y), 2));
+  double c = sqrt(pow((thirdPoint_.x - firstPoint_.x), 2) + pow((thirdPoint_.y - firstPoint_.y), 2));
 
   double maxSide = a >= b ? a : b;
   maxSide = maxSide >= c ? maxSide : c;
@@ -30,17 +30,17 @@ double Triangle::getArea()
 
 rectangle_t Triangle::getFrameRect()
 {
-  double maxX = firstPoint_.x_ >= secondPoint_.x_ ? firstPoint_.x_ : secondPoint_.x_;
-  maxX = maxX >= thirdPoint_.x_ ? maxX : thirdPoint_.x_;
+  double maxX = firstPoint_.x >= secondPoint_.x ? firstPoint_.x : secondPoint_.x;
+  maxX = maxX >= thirdPoint_.x ? maxX : thirdPoint_.x;
 
-  double minX = firstPoint_.x_ <= secondPoint_.x_ ? firstPoint_.x_ : secondPoint_.x_;
-  minX = minX <= thirdPoint_.x_ ? minX : thirdPoint_.x_;
+  double minX = firstPoint_.x <= secondPoint_.x ? firstPoint_.x : secondPoint_.x;
+  minX = minX <= thirdPoint_.x ? minX : thirdPoint_.x;
 
-  double maxY = firstPoint_.y_ >= secondPoint_.y_ ? firstPoint_.y_ : secondPoint_.y_;
-  maxY = maxY >= thirdPoint_.y_ ? maxY : thirdPoint_.y_;
+  double maxY = firstPoint_.y >= secondPoint_.y ? firstPoint_.y : secondPoint_.y;
+  maxY = maxY >= thirdPoint_.y ? maxY : thirdPoint_.y;
 
-  double minY = firstPoint_.y_ <= secondPoint_.y_ ? firstPoint_.y_ : secondPoint_.y_;
-  minY = minY <= thirdPoint_.y_ ? minY : thirdPoint_.y_;
+  double minY = firstPoint_.y <= secondPoint_.y ? firstPoint_.y : secondPoint_.y;
+  minY = minY <= thirdPoint_.y ? minY : thirdPoint_.y;
 
   double width = maxX - minX;
   double height = maxY - minY;
@@ -52,30 +52,30 @@ rectangle_t Triangle::getFrameRect()
 
 void Triangle::move(point_t destination)
 {
-  double moveX = destination.x_ - (firstPoint_.x_ + secondPoint_.x_ + thirdPoint_.x_) / 3;
-  double moveY = destination.y_ - (firstPoint_.y_ + secondPoint_.y_ + thirdPoint_.y_) / 3;
+  double moveX = destination.x - (firstPoint_.x + secondPoint_.x + thirdPoint_.x) / 3;
+  double moveY = destination.y - (firstPoint_.y + secondPoint_.y + thirdPoint_.y) / 3;
   move(moveX, moveY);
 }
 
 void Triangle::move(double moveX, double moveY)
 {
-  firstPoint_.x_ += moveX;
-  firstPoint_.y_ += moveY;
-  secondPoint_.x_ += moveX;
-  secondPoint_.y_ += moveY;
-  thirdPoint_.x_ += moveX;
-  thirdPoint_.y_ += moveY;
+  firstPoint_.x += moveX;
+  firstPoint_.y += moveY;
+  secondPoint_.x += moveX;
+  secondPoint_.y += moveY;
+  thirdPoint_.x += moveX;
+  thirdPoint_.y += moveY;
 }
 
 void Triangle::scale(double coefficient)
 {
   point_t pos;
-  pos.x_ = (firstPoint_.x_ + secondPoint_.x_ + thirdPoint_.x_) / 3;
-  pos.y_ = (firstPoint_.y_ + secondPoint_.y_ + thirdPoint_.y_) / 3;
-  firstPoint_.x_ += (firstPoint_.x_ - pos.x_) * (coefficient -1);
-  firstPoint_.y_ += (firstPoint_.y_ - pos.y_) * (coefficient - 1);
-  secondPoint_.x_ += (secondPoint_.x_ - pos.x_) * (coefficient - 1);
-  secondPoint_.y_ += (secondPoint_.y_ - pos.y_) * (coefficient - 1);
-  thirdPoint_.x_ += (thirdPoint_.x_ - pos.x_) * (coefficient - 1);
-  thirdPoint_.y_ += (thirdPoint_.y_ - pos.y_) * (coefficient - 1);
+  pos.x = (firstPoint_.x + secondPoint_.x + thirdPoint_.x) / 3;
+  pos.y = (firstPoint_.y + secondPoint_.y + thirdPoint_.y) / 3;
+  firstPoint_.x += (firstPoint_.x - pos.x) * (coefficient -1);
+  firstPoint_.y += (firstPoint_.y - pos.y) * (coefficient - 1);
+  secondPoint_.x += (secondPoint_.x - pos.x) * (coefficient - 1);
+  secondPoint_.y += (secondPoint_.y - pos.y) * (coefficient - 1);
+  thirdPoint_.x += (thirdPoint_.x - pos.x) * (coefficient - 1);
+  thirdPoint_.y += (thirdPoint_.y - pos.y) * (coefficient - 1);
 }

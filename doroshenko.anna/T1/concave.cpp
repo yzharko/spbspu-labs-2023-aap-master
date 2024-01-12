@@ -13,9 +13,9 @@ Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, po
 
 double Concave::getArea()
 {
-  double aF = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
-  double bF = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
-  double cF = sqrt(pow((thirdPoint_.x_ - firstPoint_.x_), 2) + pow((thirdPoint_.y_ - firstPoint_.y_), 2));
+  double aF = sqrt(pow((firstPoint_.x - secondPoint_.x), 2) + pow((firstPoint_.y - secondPoint_.y), 2));
+  double bF = sqrt(pow((secondPoint_.x - thirdPoint_.x), 2) + pow((secondPoint_.y - thirdPoint_.y), 2));
+  double cF = sqrt(pow((thirdPoint_.x - firstPoint_.x), 2) + pow((thirdPoint_.y - firstPoint_.y), 2));
   double pF = 0.5 * (aF + bF + cF);
   double firstArea = sqrt(pF * (pF - aF) * (pF - bF) * (pF - cF));
 
@@ -26,9 +26,9 @@ double Concave::getArea()
     throw std::logic_error("There is no such triangle\n");
   }
 
-  double aS = sqrt(pow((fourthPoint_.x_ - secondPoint_.x_), 2) + pow((fourthPoint_.y_ - secondPoint_.y_), 2));
-  double bS = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
-  double cS = sqrt(pow((thirdPoint_.x_ - fourthPoint_.x_), 2) + pow((thirdPoint_.y_ - fourthPoint_.y_), 2));
+  double aS = sqrt(pow((fourthPoint_.x - secondPoint_.x), 2) + pow((fourthPoint_.y - secondPoint_.y), 2));
+  double bS = sqrt(pow((secondPoint_.x - thirdPoint_.x), 2) + pow((secondPoint_.y - thirdPoint_.y), 2));
+  double cS = sqrt(pow((thirdPoint_.x - fourthPoint_.x), 2) + pow((thirdPoint_.y - fourthPoint_.y), 2));
   double pS = 0.5 * (aS + bS + cS);
   double secondArea = sqrt(pS * (pS - aS) * (pS - bS) * (pS - cS));
 
@@ -39,9 +39,9 @@ double Concave::getArea()
     throw std::logic_error("There is no such triangle\n");
   }
 
-  double a = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
-  double b = sqrt(pow((secondPoint_.x_ - fourthPoint_.x_), 2) + pow((secondPoint_.y_ - fourthPoint_.y_), 2));
-  double c = sqrt(pow((fourthPoint_.x_ - firstPoint_.x_), 2) + pow((fourthPoint_.y_ - firstPoint_.y_), 2));
+  double a = sqrt(pow((firstPoint_.x - secondPoint_.x), 2) + pow((firstPoint_.y - secondPoint_.y), 2));
+  double b = sqrt(pow((secondPoint_.x - fourthPoint_.x), 2) + pow((secondPoint_.y - fourthPoint_.y), 2));
+  double c = sqrt(pow((fourthPoint_.x - firstPoint_.x), 2) + pow((fourthPoint_.y - firstPoint_.y), 2));
 
   maxSide = a >= b ? a : b;
   maxSide = maxSide >= c ? maxSide : c;
@@ -50,9 +50,9 @@ double Concave::getArea()
     throw std::logic_error("There is no such triangle\n");
   }
 
-  a = sqrt(pow((firstPoint_.x_ - thirdPoint_.x_), 2) + pow((firstPoint_.y_ - thirdPoint_.y_), 2));
-  b = sqrt(pow((thirdPoint_.x_ - fourthPoint_.x_), 2) + pow((thirdPoint_.y_ - fourthPoint_.y_), 2));
-  c = sqrt(pow((fourthPoint_.x_ - firstPoint_.x_), 2) + pow((fourthPoint_.y_ - firstPoint_.y_), 2));
+  a = sqrt(pow((firstPoint_.x - thirdPoint_.x), 2) + pow((firstPoint_.y - thirdPoint_.y), 2));
+  b = sqrt(pow((thirdPoint_.x - fourthPoint_.x), 2) + pow((thirdPoint_.y - fourthPoint_.y), 2));
+  c = sqrt(pow((fourthPoint_.x - firstPoint_.x), 2) + pow((fourthPoint_.y - firstPoint_.y), 2));
 
   maxSide = a >= b ? a : b;
   maxSide = maxSide >= c ? maxSide : c;
@@ -65,17 +65,17 @@ double Concave::getArea()
 
 rectangle_t Concave::getFrameRect()
 {
-  double maxX = firstPoint_.x_ >= secondPoint_.x_ ? firstPoint_.x_ : secondPoint_.x_;
-  maxX = maxX >= thirdPoint_.x_ ? maxX : thirdPoint_.x_;
+  double maxX = firstPoint_.x >= secondPoint_.x ? firstPoint_.x : secondPoint_.x;
+  maxX = maxX >= thirdPoint_.x ? maxX : thirdPoint_.x;
 
-  double minX = firstPoint_.x_ <= secondPoint_.x_ ? firstPoint_.x_ : secondPoint_.x_;
-  minX = minX <= thirdPoint_.x_ ? minX : thirdPoint_.x_;
+  double minX = firstPoint_.x <= secondPoint_.x ? firstPoint_.x : secondPoint_.x;
+  minX = minX <= thirdPoint_.x ? minX : thirdPoint_.x;
 
-  double maxY = firstPoint_.y_ >= secondPoint_.y_ ? firstPoint_.y_ : secondPoint_.y_;
-  maxY = maxY >= thirdPoint_.y_ ? maxY : thirdPoint_.y_;
+  double maxY = firstPoint_.y >= secondPoint_.y ? firstPoint_.y : secondPoint_.y;
+  maxY = maxY >= thirdPoint_.y ? maxY : thirdPoint_.y;
 
-  double minY = firstPoint_.y_ <= secondPoint_.y_ ? firstPoint_.y_ : secondPoint_.y_;
-  minY = minY <= thirdPoint_.y_ ? minY : thirdPoint_.y_;
+  double minY = firstPoint_.y <= secondPoint_.y ? firstPoint_.y : secondPoint_.y;
+  minY = minY <= thirdPoint_.y ? minY : thirdPoint_.y;
 
   double width = maxX - minX;
   double height = maxY - minY;
@@ -87,32 +87,32 @@ rectangle_t Concave::getFrameRect()
 
 void Concave::move(point_t destination)
 {
-  double moveX = destination.x_ - fourthPoint_.x_;
-  double moveY = destination.y_ - fourthPoint_.y_;
+  double moveX = destination.x - fourthPoint_.x;
+  double moveY = destination.y - fourthPoint_.y;
   move(moveX, moveY);
 }
 
 void Concave::move(double moveX, double moveY)
 {
-  firstPoint_.x_ += moveX;
-  firstPoint_.y_ += moveY;
-  secondPoint_.x_ += moveX;
-  secondPoint_.y_ += moveY;
-  thirdPoint_.x_ += moveX;
-  thirdPoint_.y_ += moveY;
-  fourthPoint_.x_ += moveX;
-  fourthPoint_.y_ += moveY;
+  firstPoint_.x += moveX;
+  firstPoint_.y += moveY;
+  secondPoint_.x += moveX;
+  secondPoint_.y += moveY;
+  thirdPoint_.x += moveX;
+  thirdPoint_.y += moveY;
+  fourthPoint_.x += moveX;
+  fourthPoint_.y += moveY;
 }
 
 void Concave::scale(double coefficient)
 {
   point_t pos;
-  pos.x_ = fourthPoint_.x_;
-  pos.y_ = fourthPoint_.y_;
-  firstPoint_.x_ += (firstPoint_.x_ - pos.x_) * (coefficient - 1);
-  firstPoint_.y_ += (firstPoint_.y_ - pos.y_) * (coefficient - 1);
-  secondPoint_.x_ += (secondPoint_.x_ - pos.x_) * (coefficient - 1);
-  secondPoint_.y_ += (secondPoint_.y_ - pos.y_) * (coefficient - 1);
-  thirdPoint_.x_ += (thirdPoint_.x_ - pos.x_) * (coefficient - 1);
-  thirdPoint_.y_ += (thirdPoint_.y_ - pos.y_) * (coefficient - 1);
+  pos.x = fourthPoint_.x;
+  pos.y = fourthPoint_.y;
+  firstPoint_.x += (firstPoint_.x - pos.x) * (coefficient - 1);
+  firstPoint_.y += (firstPoint_.y - pos.y) * (coefficient - 1);
+  secondPoint_.x += (secondPoint_.x - pos.x) * (coefficient - 1);
+  secondPoint_.y += (secondPoint_.y - pos.y) * (coefficient - 1);
+  thirdPoint_.x += (thirdPoint_.x - pos.x) * (coefficient - 1);
+  thirdPoint_.y += (thirdPoint_.y - pos.y) * (coefficient - 1);
 }
