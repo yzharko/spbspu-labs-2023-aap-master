@@ -8,124 +8,124 @@
 int main()
 {
   using namespace jirkov;
-  std::string figure = "";
-  bool wrIn = false;
+  size_t count = 0;
+  Shape* figureArray[1000] = { 0 };
+  bool wrongInput = false;
+  std::string geometryFigure = "";
   bool scale = false;
-  size_t countFig = 0;
-  Shape* geometricFigures[1000] = { 0 };
-  while (std::cin>>figure && !std::cin.eof())
+  while (std::cin>>geometryFigure && !std::cin.eof())
   {
-    if (figure == "RECTANGLE")
+    if (geometryFigure == "RECTANGLE")
     {
-      double xL, yL, xR, yR;
-      std::cin >> xL >> yL >> xR >> yR;
-      if (!std::cin || xL > xR || yL > yR)
+      double firstLeft, secondLeft, firstRight, secondRight;
+      std::cin >> firstLeft >> secondLeft >> firstRight >> secondRight;
+      if (!std::cin || firstLeft > firstRight || secondLeft > secondRight)
       {
-        wrIn = true;
+        wrongInput = true;
       }
       else
       {
-        geometricFigures[countFig] = new Rectangle({ xL, yL }, { xR, yR });
-        countFig++;
+        figureArray[count] = new Rectangle({ firstLeft, secondLeft }, { firstRight, secondRight });
+        count++;
       }
     }
 
-    else if (figure == "DIAMOND")
+    else if (geometryFigure == "DIAMOND")
     {
-      double xA, yA, xC, yC, xD, yD;
-      std::cin >> xA >> yA >> xC >> yC >> xD >> yD;
+      double firstTop, secondTop, firstMedium, secondMedium, firstUnder, secondUnder;
+      std::cin >> firstTop >> secondTop >> firstMedium >> secondMedium >> firstUnder >> secondUnder;
       if (!std::cin)
       {
-        wrIn = true;
+        wrongInput = true;
       }
       else
       {
-        geometricFigures[countFig] = new Diamond({xA, yA}, {xC, yC}, {xD, yD});
+        figureArray[count] = new Diamond({firstTop, secondTop}, {firstMedium, secondMedium}, {firstUnder, secondUnder});
         try
         {
-          geometricFigures[countFig]->getArea();
+          figureArray[count]->getArea();
         }
         catch (const std::logic_error& e)
         {
-          wrIn = true;
-          delete[] geometricFigures[countFig];
-          countFig--;
+          wrongInput = true;
+          delete[] figureArray[count];
+          count--;
         }
-        countFig++;
+        count++;
       }
     }
 
-    else if (figure == "CONCAVE")
+    else if (geometryFigure == "CONCAVE")
     {
-      double xFir, yFir, xSec, ySec, xThi, yThi, xFou, yFou;
-      std::cin >> xFir >> yFir >> xSec >> ySec >> xThi >> yThi >> xFou >> yFou;
+      double FirstA, FirstB, SecondA, SecondB, ThirdA, ThirdB, FourthA, FourthB;
+      std::cin >> FirstA >> FirstB >> SecondA >> SecondB >> ThirdA >> ThirdB >> FourthA >> FourthB;
       if (!std::cin)
       {
-        wrIn = true;
+        wrongInput = true;
       }
       else
       {
-        geometricFigures[countFig] = new Concave({ xFir, yFir }, { xSec, ySec }, { xThi, yThi }, { xFou, yFou });
+        figureArray[count] = new Concave({FirstA, FirstB}, {SecondA, SecondB}, {ThirdA, ThirdB}, {FourthA, FourthB});
         try
         {
-          geometricFigures[countFig]->getArea();
+          figureArray[count]->getArea();
         }
         catch (const std::logic_error& e)
         {
-          wrIn = true;
-          delete[] geometricFigures[countFig];
-          countFig--;
+          wrongInput = true;
+          delete[] figureArray[count];
+          count--;
         }
-        countFig++;
+        count++;
       }
     }
-    else if (figure == "SCALE")
+    else if (geometryFigure == "SCALE")
     {
-      double posx, posy, coefficient;
-      double xL, yL, xR, yR;
-      std::cin >> posx >> posy >> coefficient;
-      if (!std::cin || coefficient < 0)
+      double posx, posy, k;
+      double LeftA, LeftB, RightA, RightB;
+      std::cin >> posx >> posy >> k;
+      if (!std::cin || k < 0)
       {
-        std::cerr << "Wrong scale parameters\n";
+        std::cerr << "Scale error\n";
         return 1;
       }
       else
       {
         double sumAreaBefore = 0;
-        for (size_t i = 0; i < countFig; i++)
+        for (size_t i = 0; i < count; i++)
         {
-          sumAreaBefore += geometricFigures[i]->getArea();
+          sumAreaBefore += figureArray[i]->getArea();
         }
         std::cout << std::fixed << std::setprecision(1) << sumAreaBefore;
-        for (size_t j = 0; j < countFig; j++)
+        for (size_t j = 0; j < count; j++)
         {
-          rectangle_t frame = geometricFigures[j]->getFrameRect();
-          xL = frame.pos_.x_ - 0.5 * frame.width_;
-          yL = frame.pos_.y_ - 0.5 * frame.height_;
-          xR = frame.pos_.x_ + 0.5 * frame.width_;
-          yR = frame.pos_.y_ + 0.5 * frame.height_;
-          std::cout << std::fixed << std::setprecision(1) << ' ' << xL << ' ' << yL << ' ' << xR << ' ' << yR;
+          rectangle_t frame = figureArray[j]->getFrameRect();
+          LeftA = frame.pos_.x_ - 0.5 * frame.width_;
+          LeftB = frame.pos_.y_ - 0.5 * frame.height_;
+          RightA = frame.pos_.x_ + 0.5 * frame.width_;
+          RightB = frame.pos_.y_ + 0.5 * frame.height_;
+          std::cout << std::fixed << std::setprecision(1) << ' ' << LeftA << ' ' << LeftB << ' ' << RightA << ' ' << RightB;
         }
         std::cout << "\n";
-        for (size_t k = 0; k < countFig; k++)
+        for (size_t l = 0; l < count; l++)
         {
-          geometricFigures[k]->move({ 0 - posx, 0 - posy });
-          geometricFigures[k]->scale(coefficient);
+          figureArray[l]->move({ 0 - posx, 0 - posy });
+          figureArray[l]->scale(k);
         }
         double sumAreaAfter = 0;
-        for (size_t i = 0; i < countFig; i++)
+        for (size_t i = 0; i < count; i++)
         {
-          sumAreaAfter += geometricFigures[i]->getArea();
+          sumAreaAfter += figureArray[i]->getArea();
         }
         std::cout << std::fixed << std::setprecision(1) << sumAreaAfter;
-        for (size_t j = 0; j < countFig; j++)
+        for (size_t j = 0; j < count; j++)
         {
-          rectangle_t frame = geometricFigures[j]->getFrameRect();
-          xL = frame.pos_.x_ - 0.5 * frame.width_;
-          yL = frame.pos_.y_ - 0.5 * frame.height_;
-          xR = frame.pos_.x_ + 0.5 * frame.width_;
-          yR = frame.pos_.y_ + 0.5 * frame.height_;
-          std::cout << std::fixed << std::setprecision(1) << ' ' << xL << ' ' << yL << ' ' << xR << ' ' << yR;
+          rectangle_t frame = figureArray[j]->getFrameRect();
+          LeftA = frame.pos_.x_ - 0.5 * frame.width_;
+          LeftB = frame.pos_.y_ - 0.5 * frame.height_;
+          RightA = frame.pos_.x_ + 0.5 * frame.width_;
+          RightB = frame.pos_.y_ + 0.5 * frame.height_;
+          std::cout << std::fixed << std::setprecision(1) << ' ' << LeftA << ' ' << LeftB << ' ' << RightA << ' ' << RightB;
         }
         std::cout << "\n";
         scale = true;
@@ -135,18 +135,18 @@ int main()
   }
   if (std::cin.eof() && scale == false)
   {
-    std::cerr << "Figures were not scaled\n";
+    std::cerr << "Geometry error\n";
     return 1;
   }
-  if (wrIn == true)
+  if (wrongInput == true)
   {
     std::cerr << "Wrong input\n";
   }
-  if(countFig > 0)
+  if(count > 0)
   {
-    for (size_t i = 0; i < countFig; i++)
+    for (size_t i = 0; i < count; i++)
     {
-      delete geometricFigures[i];
+      delete figureArray[i];
     }
   }
 }
