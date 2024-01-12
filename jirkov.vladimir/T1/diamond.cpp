@@ -8,13 +8,12 @@ Diamond::Diamond(point_t topPoint, point_t rightPoint, point_t centerPoint) :
     firstSide_(std::abs(topPoint.y - centerPoint.y)),
     secondSide_(std::abs(rightPoint.y - centerPoint.y))
 {}
-
 double Diamond::getArea() const
 {
     return (2 * firstSide_ * secondSide_);
 }
 
-rectangle_t Diamond::getFrameRect() const
+rectangle_t jirkov::Diamond::getFrameRect() const
 {
     point_t pos = centerPoint_;
     double height = firstSide_ * 2;
@@ -22,18 +21,18 @@ rectangle_t Diamond::getFrameRect() const
     return rectangle_t{ width, height, pos };
 }
 
-void Diamond::move(const point_t & center)
+void Diamond::move(point_t destination)
 {
-    double dx = centerPoint_.x - center.x;
-    double dy = centerPoint_.y - center.y;
-    centerPoint_ = center;
+    double dx = centerPoint_.x - destination.x;
+    double dy = centerPoint_.y - destination.y;
+    centerPoint_ = destination;
     rightPoint_.x += dx;
     topPoint_.x += dx;
     rightPoint_.y += dy;
     topPoint_.y += dy;
 }
 
-void Diamond::move(const double moveX, const double moveY)
+void Diamond::move(double moveX, double moveY)
 {
     centerPoint_.x += moveX;
     centerPoint_.y += moveY;
@@ -42,7 +41,6 @@ void Diamond::move(const double moveX, const double moveY)
     rightPoint_.y += moveY;
     topPoint_.y += moveY;
 }
-
 void Diamond::scale(double k)
 {
     rightPoint_.x *= k;

@@ -10,11 +10,11 @@ int main()
 {
   using namespace jirkov;
   size_t count = 0;
-  Shape* figureArray[1000] = { 0 };
+  Shape* figureArray[1000] = { nullptr };
   bool wrongInput = false;
   std::string geometryFigure = "";
   bool scale = false;
-  while (std::cin>>geometryFigure && !std::cin.eof())
+  while (std::cin >> geometryFigure && !std::cin.eof())
   {
     if (geometryFigure == "RECTANGLE")
     {
@@ -30,7 +30,6 @@ int main()
         count++;
       }
     }
-
     else if (geometryFigure == "DIAMOND")
     {
       double firstTop, secondTop, firstMedium, secondMedium, firstUnder, secondUnder;
@@ -41,7 +40,7 @@ int main()
       }
       else
       {
-        figureArray[count] = new Diamond({firstTop, secondTop}, {firstMedium, secondMedium}, {firstUnder, secondUnder});
+        figureArray[count] = new Diamond({ firstTop, secondTop }, { firstMedium, secondMedium }, { firstUnder, secondUnder });
         try
         {
           figureArray[count]->getArea();
@@ -55,7 +54,6 @@ int main()
         count++;
       }
     }
-
     else if (geometryFigure == "CONCAVE")
     {
       double FirstA, FirstB, SecondA, SecondB, ThirdA, ThirdB, FourthA, FourthB;
@@ -85,7 +83,7 @@ int main()
       double posx, posy, k;
       double LeftA, LeftB, RightA, RightB;
       std::cin >> posx >> posy >> k;
-      if (!std::cin || k < 0)
+      if (!std::cin || k <= 0)
       {
         std::cerr << "Scale error\n";
         for (size_t i = 0; i < count; i++)
@@ -125,7 +123,7 @@ int main()
           double moveX = fabs(end.pos.x - begin.pos.x) * k;
           double moveY = fabs(end.pos.y - begin.pos.y) * k;
           figureArray[l]->scale(k);
-          figureArray[l]->move( moveX, moveY );
+          figureArray[l]->move(moveX, moveY);
         }
         double sumAreaAfter = 0;
         for (size_t i = 0; i < count; i++)
@@ -148,7 +146,7 @@ int main()
       }
     }
   }
-  if(count > 0)
+  if (count > 0)
   {
     for (size_t i = 0; i < count; i++)
     {
