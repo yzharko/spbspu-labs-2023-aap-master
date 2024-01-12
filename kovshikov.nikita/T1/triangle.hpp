@@ -9,7 +9,7 @@ namespace kovshikov
   class Triangle: public Shape
   {
   public:
-    virtual ~Shape() = default;
+    virtual ~Triangle() = default;
     Triangle(point_t vertexA, point_t vertexB, point_t vertexC);
     virtual double getArea();
     virtual rectangle_t getFrameRect();

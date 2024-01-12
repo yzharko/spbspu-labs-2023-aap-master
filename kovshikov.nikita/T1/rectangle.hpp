@@ -8,7 +8,7 @@ namespace kovshikov
   class Rectangle: public Shape
   {
   public:
-    virtual ~Shape() = default;
+    virtual ~Rectangle() = default;
     Rectangle(point_t lowerLeft, point_t upperRight);
     virtual double getArea();
     virtual rectangle_t getFrameRect();
