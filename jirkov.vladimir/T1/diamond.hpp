@@ -7,7 +7,7 @@ namespace jirkov
   class Diamond : public Shape
   {
   public:
-    Diamond(point_t topPointSec, point_t rightPointSec, point_t centerPointSec);
+    Diamond(point_t topPoint, point_t rightPoint, point_t centerPoint);
     virtual double getArea();
     virtual rectangle_t getFrameRect();
     virtual void move(point_t destination);
