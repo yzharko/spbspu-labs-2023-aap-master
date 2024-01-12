@@ -6,7 +6,7 @@
 namespace kaseev {
   class Ellipce : public shape {
   public:
-    Ellipce(point_t center, double verticalRad, double gorisontRad);
+    Ellipce(point_t center, double vertRad, double gorRad);
     virtual double getArea();
     virtual rectangle_t getFrameRect();
     virtual void move(double nx, double ny);
@@ -14,8 +14,8 @@ namespace kaseev {
     virtual void scale(double k, point_t pos);
   private:
     point_t center;
-    double verticalRad;
-    double gorisontRad;
+    double vertRad;
+    double gorRad;
   };
 }
 #endif
