@@ -12,7 +12,7 @@
 int main()
 {
   using namespace reznikova;
-  bool scale_command = 0;
+  int scale_command = 0;
   Shape * figures[1000] = {0};
   std::string name = "";
   int stored = 0;
@@ -57,6 +57,7 @@ int main()
   }
   if (scale_command == 0)
   {
+    freeArray(figures, stored);
     std::cerr << "no scale command\n";
     return 1;
   }
