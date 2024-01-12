@@ -12,6 +12,7 @@ int main()
   size_t figuresCount = 0;
   Shape* figures[1000] = { 0 };
   bool checkInput = false;
+  bool checkScale = false;
   while (!std::cin.eof())
   {
     std::cin >> figure;
@@ -110,8 +111,14 @@ int main()
         delete[] figures[i];
 }
       std::cout << "\n";
+      checkScalse = true;
       break;
     }
+  }
+  if (checkScale = true)
+  {
+    std::cerr << "cannot scale\n";
+    return 1;
   }
   if (checkInput == true)
   {
