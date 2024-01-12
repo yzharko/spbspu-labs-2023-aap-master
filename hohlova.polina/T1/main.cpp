@@ -111,7 +111,7 @@ int main()
         delete[] figures[i];
 }
       std::cout << "\n";
-      checkScalse = true;
+      checkScale = true;
       break;
     }
   }
