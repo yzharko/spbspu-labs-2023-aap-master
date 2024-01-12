@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include "scaleFunc.hpp"
 #include "base-types.hpp"
 #include "shape.hpp"
 #include "circle.hpp"
@@ -72,7 +73,7 @@ int main() {
       ifScale = 1;
       double x, y, k = 0;
       std::cin >> x >> y >> k;
-      if ( k < 0 || index == 0)
+      if ( k <= 0 || index == 0)
       {
         std::cerr << "Incorrect input of figures";
         for (int i = 0; i < index; i++)
@@ -96,11 +97,7 @@ int main() {
         for (int i = 0; i < index; i++)
         {
           rectangle_t frameRect = figures[i]->getFrameRect();
-          x1 = frameRect.pos.x - frameRect.width / 2.0;
-          y1 = frameRect.pos.y - frameRect.height / 2.0;
-          x2 = frameRect.pos.x + frameRect.width / 2.0;
-          y2 = frameRect.pos.y + frameRect.height / 2.0;
-          std::cout << std::fixed << std::setprecision(1) << ' ' << x1 << ' ' << y1 << ' ' << x2 << ' ' << y2;
+          getCoordinates(frameRect);
         }
 
         std::cout << "\n";
@@ -115,11 +112,7 @@ int main() {
         for (int i = 0; i < index; i++)
         {
           rectangle_t newFrameRect = figures[i]->getFrameRect();
-          x3 = newFrameRect.pos.x - newFrameRect.width / 2.0;
-          y3 = newFrameRect.pos.y - newFrameRect.height / 2.0;
-          x4 = newFrameRect.pos.x + newFrameRect.width / 2.0;
-          y4 = newFrameRect.pos.y + newFrameRect.height / 2.0;
-          std::cout << std::fixed << std::setprecision(1) << ' ' << x3 << ' ' << y3 << ' ' << x4 << ' ' << y4;
+          getCoordinates(newFrameRect);
           delete figures[i];
         }
         std::cout << "\n";

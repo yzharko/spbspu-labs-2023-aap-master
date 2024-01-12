@@ -11,8 +11,13 @@ sukacheva::Circle::Circle(point_t center, double radius) :
   }
 }
 
+sukacheva::rectangle_t sukacheva::Circle::getFrameRect() const {
+  return rectangle_t(2 * radius_, 2 * radius_, center_);
+}
+
 double sukacheva::Circle::getArea() const {
-  return (3.14 * radius_ * radius_);
+  const double piNumber = 3.14;
+  return (piNumber * radius_ * radius_);
 }
 
 void sukacheva::Circle::move(double x, double y) {
@@ -34,8 +39,4 @@ void sukacheva::Circle::newScale(point_t scaleCenter, double k) {
 
 void sukacheva::Circle::scale(double k) {
   radius_ = radius_ * k;
-}
-
-sukacheva::rectangle_t sukacheva::Circle::getFrameRect() const {
-  return rectangle_t(2 * radius_, 2 * radius_, center_);
 }
