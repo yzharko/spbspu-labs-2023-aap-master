@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include "base-types.xpp"
+#include "base-types.hpp"
 #include "base-types-ff.hpp"
 #include "square.hpp"
 #include "rectangle.hpp"
