@@ -4,6 +4,7 @@
 #include <cmath>
 #include <stdexcept>
 #include "increaseData.hpp"
+#include "parseFigure.hpp"
 #include "rectangle.hpp"
 #include "complexquad.hpp"
 #include "regular.hpp"
@@ -13,8 +14,8 @@ int main()
   size_t capacity = 10;
   shagieva::Shape ** shapes = new shagieva::Shape * [capacity];
   size_t shapeCount = 0;
-  bool figureIsWrong = 0;
-  bool scaleIsEntered = 0;
+  bool invalidFigureEntered = 0;
+  bool scaleEntered = 0;
 
   while (std::cin)
   {
@@ -35,63 +36,21 @@ int main()
 
     if (figureType == "SCALE")
     {
-      scaleIsEntered = true;
+      scaleEntered = true;
       break;
     }
 
-    if (figureType == "RECTANGLE")
+    try
     {
-      double x1, y1, x2, y2;
-      std::cin >> x1 >> y1 >> x2 >> y2;
-      try
-      {
-        shapes[shapeCount++] = new shagieva::Rectangle(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 });
-      }
-      catch(const std::invalid_argument & e)
-      {
-        figureIsWrong = true;
-      }
+      shagieva::parseFigure(figureType, std::cin, shapes, shapeCount);
     }
-
-    else if (figureType == "COMPLEXQUAD")
+    catch(const std::invalid_argument & e)
     {
-      double x1, y1, x2, y2, x3, y3, x4, y4;
-      std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
-      try
-      {
-        shapes[shapeCount++] = new shagieva::Complexquad(shagieva::point_t{ x1, y1 },
-          shagieva::point_t{ x2, y2 },
-          shagieva::point_t{ x3, y3 },
-          shagieva::point_t{ x4, y4 });
-      }
-      catch(const std::invalid_argument & e)
-      {
-        figureIsWrong = true;
-      }
-    }
-
-    else if (figureType == "REGULAR")
-    {
-      double x1, y1, x2, y2, x3, y3;
-      std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
-      try
-      {
-        shapes[shapeCount++] = new shagieva::Regular(shagieva::point_t{ x1, y1 }, shagieva::point_t{ x2, y2 },
-          shagieva::point_t{ x3, y3 });
-      }
-      catch(const std::invalid_argument & e)
-      {
-        figureIsWrong = true;
-      }
-    }
-
-    else
-    {
-      figureIsWrong = true;
+      invalidFigureEntered = true;
     }
   }
 
-  if (!scaleIsEntered)
+  if (!scaleEntered)
   {
     std::cerr << "Scale command is not entered.\n";
     for (size_t i = 0; i < shapeCount; ++i)
@@ -163,7 +122,7 @@ int main()
               << ((i == (shapeCount - 1)) ? "\n" : " ");
   }
 
-  if (figureIsWrong)
+  if (invalidFigureEntered)
   {
     std::cerr << "Invalid figure entered.\n";
   }
