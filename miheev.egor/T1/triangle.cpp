@@ -20,7 +20,8 @@ miheev::Triangle::Triangle(point_t p1, point_t p2, point_t p3)
 
 double miheev::Triangle::getArea() const
 {
-  return std::abs((points_[1].x - points_[0].x) * (points_[2].y - points_[0].y) - (points_[1].y - points_[0].y) * (points_[2].y - points_[0].y)) * 0.5;
+  return std::abs((points_[1].x - points_[0].x) * (points_[2].y - points_[0].y)
+  - (points_[1].y - points_[0].y) * (points_[2].y - points_[0].y)) * 0.5;
 }
 
 miheev::rectangle_t miheev::Triangle::getFrameRect() const
