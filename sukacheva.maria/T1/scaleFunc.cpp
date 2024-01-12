@@ -33,7 +33,6 @@ void sukacheva::getCoordinatesAfter(Shape* figures[], int index, point_t center,
     newFrameRect.pos.x = (newFrameRect.pos.x - center.x) * k + center.x;
     newFrameRect.pos.y = (newFrameRect.pos.y - center.y) * k + center.y;
     getCoordinates(newFrameRect);
-    delete figures[i];
   }
   std::cout << "\n";
 }

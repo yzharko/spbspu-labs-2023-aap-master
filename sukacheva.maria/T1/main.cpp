@@ -70,6 +70,7 @@ int main() {
         getCoordinatesBefore(figures, index);
         getScaledArea(figures, index, newArea, k);
         getCoordinatesAfter(figures, index, center, k);
+        deleteArray(figures, index);
         break;
       }
     }
