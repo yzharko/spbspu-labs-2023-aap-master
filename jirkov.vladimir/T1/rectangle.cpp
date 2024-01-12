@@ -14,8 +14,8 @@ rectangle_t Rectangle::getFrameRect() const
 {
   double width = topRight_.x - bottomLeft_.x;
   double height = topRight_.y - bottomLeft_.y;
-  double posX = (topRight_.x + bottomLeft_.x) / 2.0;
-  double posY = (topRight_.y + bottomLeft_.y) / 2.0;
+  double posX = (topRight_.x + bottomLeft_.x) * 0.5;
+  double posY = (topRight_.y + bottomLeft_.y) * 0.5;
   point_t pos = { posX, posY };
   return rectangle_t{ width, height, pos };
 }
@@ -39,8 +39,8 @@ void Rectangle::move(double moveX, double moveY)
 void Rectangle::scale(double k)
 {
   rectangle_t frame = getFrameRect();
-  double moveX = frame.width * (k - 1) / 2.0;
-  double moveY = frame.height * (k - 1) / 2.0;
+  double moveX = frame.width * (k - 1) * 0.5;
+  double moveY = frame.height * (k - 1) * 0.5;
   bottomLeft_.x -= moveX;
   bottomLeft_.y -= moveY;
   topRight_.x += moveX;

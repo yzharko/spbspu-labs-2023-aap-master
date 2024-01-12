@@ -14,7 +14,7 @@ double Concave::getArea() const
   double firstSqrt = sqrt(pow((firstPoint_.x - secondPoint_.x), 2) + pow((firstPoint_.y - secondPoint_.y), 2));
   double secondSqrt = sqrt(pow((secondPoint_.x - thirdPoint_.x), 2) + pow((secondPoint_.y - thirdPoint_.y), 2));
   double thirdSqrt = sqrt(pow((thirdPoint_.x - firstPoint_.x), 2) + pow((thirdPoint_.y - firstPoint_.y), 2));
-  double mediumSqrt = (firstSqrt + secondSqrt + thirdSqrt) / 2;
+  double mediumSqrt = (firstSqrt + secondSqrt + thirdSqrt) * 0.5;
   double firstSquare = sqrt(mediumSqrt * (mediumSqrt - firstSqrt) * (mediumSqrt - secondSqrt) * (mediumSqrt - thirdSqrt));
   double maxSide = firstSqrt >= secondSqrt ? firstSqrt : secondSqrt;
   maxSide = maxSide >= thirdSqrt ? maxSide : thirdSqrt;
@@ -25,7 +25,7 @@ double Concave::getArea() const
   double fourthSqrt = sqrt(pow((fourthPoint_.x - secondPoint_.x), 2) + pow((fourthPoint_.y - secondPoint_.y), 2));
   double fifthSqrt = sqrt(pow((secondPoint_.x - thirdPoint_.x), 2) + pow((secondPoint_.y - thirdPoint_.y), 2));
   double sixthSqrt = sqrt(pow((thirdPoint_.x - fourthPoint_.x), 2) + pow((thirdPoint_.y - fourthPoint_.y), 2));
-  double seventhSqrt = (fourthSqrt + fifthSqrt + sixthSqrt) / 2;
+  double seventhSqrt = (fourthSqrt + fifthSqrt + sixthSqrt) * 0.5;
   double secondSquare = sqrt(seventhSqrt * (seventhSqrt - fourthSqrt) * (seventhSqrt - fifthSqrt) * (seventhSqrt - sixthSqrt));
   maxSide = fourthSqrt >= fifthSqrt ? fourthSqrt : fifthSqrt;
   maxSide = maxSide >= sixthSqrt ? maxSide : sixthSqrt;
@@ -65,8 +65,8 @@ rectangle_t Concave::getFrameRect() const
   minY = minY <= thirdPoint_.y ? minY : thirdPoint_.y;
   double width = maxX - minX;
   double height = maxY - minY;
-  double posX = (maxX + minX) / 2;
-  double posY = (maxY + minY) / 2;
+  double posX = (maxX + minX) * 0.5;
+  double posY = (maxY + minY) * 0.5;
   point_t pos = { posX, posY };
   return rectangle_t{ width, height, pos };
 }
