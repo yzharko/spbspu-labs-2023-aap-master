@@ -65,7 +65,7 @@ int main()
       }
       else
       {
-        figureArray[count] = new Concave({FirstA, FirstB}, {SecondA, SecondB}, {ThirdA, ThirdB}, {FourthA, FourthB});
+        figureArray[count] = new Concave({ FirstA, FirstB }, { SecondA, SecondB }, { ThirdA, ThirdB }, { FourthA, FourthB });
         try
         {
           figureArray[count]->getArea();
@@ -73,7 +73,7 @@ int main()
         catch (const std::logic_error& e)
         {
           wrongInput = true;
-          delete[] figureArray[count];
+          delete figureArray[count];
           count--;
         }
         count++;
