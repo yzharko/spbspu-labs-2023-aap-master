@@ -72,3 +72,13 @@ void shagieva::printFramePoints(const shagieva::Shape * const * const shapes, co
               << ((i == (shapeCount - 1)) ? "\n" : " ");
   }
 }
+
+void shagieva::printTotalArea(const shagieva::Shape * const * const shapes, const size_t & shapeCount)
+{
+  double totalArea = 0;
+  for (size_t i = 0; i < shapeCount; ++i)
+  {
+    totalArea += shapes[i]->getArea();
+  }
+  std::cout << totalArea << " ";
+}

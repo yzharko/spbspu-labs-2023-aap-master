@@ -9,6 +9,7 @@ namespace shagieva
 {
   void parseFigure(std::string figureType, std::istream & input, Shape ** shapes, size_t & shapeCount);
   void printFramePoints(const Shape * const * const shapes, const size_t & shapeCount);
+  void printTotalArea(const Shape * const * const shapes, const size_t & shapeCount);
 }
 
 #endif

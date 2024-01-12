@@ -57,19 +57,13 @@ int main()
     return 1;
   }
 
-  double scaleCenterX, scaleCenterY, scaleFactor;
-  std::cin >> scaleCenterX >> scaleCenterY >> scaleFactor;
-
   std::cout << std::fixed << std::setprecision(1);
 
-  double totalAreaBeforeScaling = 0;
-  for (size_t i = 0; i < shapeCount; ++i)
-  {
-    totalAreaBeforeScaling += shapes[i]->getArea();
-  }
-  std::cout << totalAreaBeforeScaling << " ";
-
+  shagieva::printTotalArea(shapes, shapeCount);
   shagieva::printFramePoints(shapes, shapeCount);
+
+  double scaleCenterX, scaleCenterY, scaleFactor;
+  std::cin >> scaleCenterX >> scaleCenterY >> scaleFactor;
 
   for (size_t i = 0; i < shapeCount; ++i)
   {
@@ -91,13 +85,7 @@ int main()
     shapes[i]->move(dx, dy);
   }
 
-  double totalAreaAfterScaling = 0.0;
-  for (size_t i = 0; i < shapeCount; ++i)
-  {
-    totalAreaAfterScaling += shapes[i]->getArea();
-  }
-  std::cout << totalAreaAfterScaling << " ";
-
+  shagieva::printTotalArea(shapes, shapeCount);
   shagieva::printFramePoints(shapes, shapeCount);
 
   if (invalidFigureEntered)
