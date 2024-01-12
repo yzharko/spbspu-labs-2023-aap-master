@@ -115,7 +115,7 @@ int main()
       break;
     }
   }
-  if (checkScale = true)
+  if (checkScale == true)
   {
     std::cerr << "cannot scale\n";
     return 1;
