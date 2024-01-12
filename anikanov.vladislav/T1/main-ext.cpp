@@ -1,6 +1,7 @@
 #include "main-ext.hpp"
 
 #include <iostream>
+#include <cstring>
 #include "rectangle.hpp"
 #include "square.hpp"
 #include "complexquad.hpp"
