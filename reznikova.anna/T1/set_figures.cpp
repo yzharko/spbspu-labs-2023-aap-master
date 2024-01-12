@@ -30,7 +30,7 @@ reznikova::Shape * reznikova::setRectangle(std::istream & in, bool & ifNoErrors)
 reznikova::Shape * reznikova::setRing(std::istream & in, bool & ifNoErrors)
 {
   double x, y, big_rad, small_rad;
-  std::cin >> x >> y >> big_rad >> small_rad;
+  in >> x >> y >> big_rad >> small_rad;
   point_t center{x, y};
   Shape * ring = nullptr;
   try
@@ -48,7 +48,7 @@ reznikova::Shape * reznikova::setRing(std::istream & in, bool & ifNoErrors)
 reznikova::Shape * reznikova::setRegular(std::istream & in, bool & ifNoErrors)
 {
   double x0, y0, x1, y1, x2, y2;
-  std::cin >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
+  in >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
   point_t center{x0, y0};
   point_t pointA{x1, y1};
   point_t pointB{x2, y2};
