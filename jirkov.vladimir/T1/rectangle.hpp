@@ -14,6 +14,7 @@ namespace jirkov
     virtual void move(double moveX, double moveY);
     virtual void scale(double k);
   private:
+    rectangle_t rectangle;
     point_t bottomLeft_;
     point_t topRight_;
   };
