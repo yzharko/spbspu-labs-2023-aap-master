@@ -8,11 +8,11 @@ namespace gorbunova
   {
   public:
     Rectangle(point_t pointOne, point_t pointTwo);
-    double getArea() const;
-    rectangle_t getFrameRect() const;
-    void move(point_t center);
-    void move(double xMove, double yMove);
-    void scale(point_t posNew, double z);
+    virtual double getArea() const;
+    virtual rectangle_t getFrameRect() const;
+    virtual void move(point_t center);
+    virtual void move(double xMove, double yMove);
+    virtual void scale(double k);
   private:
     point_t pointOne_;
     point_t pointTwo_;
