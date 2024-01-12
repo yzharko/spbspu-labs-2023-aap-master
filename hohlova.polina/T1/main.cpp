@@ -96,7 +96,7 @@ int main()
       {
         std::cerr << "no figures\n";
         return 1;
-      {
+      }
       double areaSum = 0;
       for (size_t i = 0; i < figuresCount; i++)
       {
@@ -137,6 +137,13 @@ int main()
       break;
     }
   }
+  if (figuresCount > 0)
+  {
+    for (size_t i = 0; i < figuresCount; i++)
+    {
+      delete[] figures[i];
+    }
+  }
   if (checkScale == true)
   {
     std::cerr << "cannot scale\n";
@@ -147,4 +154,3 @@ int main()
     std::cerr << "problems with input\n";
   }
 }
-
