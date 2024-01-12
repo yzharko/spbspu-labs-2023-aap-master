@@ -51,7 +51,7 @@ int main()
         if (!std::cin)
         {
           isCorrectlyDescribe = false;
-          continue;
+          break;
         }
         if (nPointsPolygon == sizePolygon)
         {
@@ -67,7 +67,7 @@ int main()
         if(std::cin.peek() == '\n')
         {
           geometricShapes[count++] = new Polygon(nPointsPolygon, points);
-          continue;
+          break;
         }
       }
     }
@@ -114,7 +114,7 @@ int main()
       {
         totalAreaAfter += geometricShapes[i]->getArea();
       }
-      std::cout << std::fixed << std::setprecision(1) << totalAreaBefore << " ";
+      std::cout << std::fixed << std::setprecision(1) << totalAreaAfter << " ";
       for (size_t i = 0; i < count; i++)
       {
         rectangle_t frame = geometricShapes[i]->getFrameRect();

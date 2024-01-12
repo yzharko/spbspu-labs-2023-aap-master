@@ -7,10 +7,10 @@ kovshikov::Polygon::Polygon(size_t num, point_t * points):
   num_(num),
   points_(points)
 {};
-kovshikov::Polygon::~Polygon()
+/*kovshikov::Polygon::~Polygon()
 {
   delete[] points_;
-}
+}*/
 double kovshikov::Polygon::getArea()
 {
   double area = 0;
