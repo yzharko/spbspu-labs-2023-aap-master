@@ -118,8 +118,13 @@ int main()
         std::cout << "\n";
         for (size_t l = 0; l < count; l++)
         {
+          rectangle_t begin = figureArray[l]->getFrameRect();
           figureArray[l]->move({ 0 - posx, 0 - posy });
+          rectangle_t end = figureArray[l]->getFrameRect();
+          double moveX = fabs(begin.pos.x - end.pos.x) * k;
+          double moveY = fabs(begin.pos.y - end.pos.y) * k;
           figureArray[l]->scale(k);
+          figureArray[l]->move({ moveX, moveY });
         }
         double sumAreaAfter = 0;
         for (size_t i = 0; i < count; i++)
