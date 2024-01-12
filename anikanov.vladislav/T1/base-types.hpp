@@ -8,7 +8,7 @@ namespace anikanov {
     double x;
     double y;
 
-    point_t() : x(0), y(0)
+    explicit point_t(double x = 0, double y = 0) : x(x), y(y)
     {}
 
     point_t(const point_t &other) = default;
