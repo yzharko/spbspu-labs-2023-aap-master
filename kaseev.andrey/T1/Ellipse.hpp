@@ -13,8 +13,9 @@ namespace kaseev {
     virtual void move(point_t center);
     virtual void scale(double k, point_t pos);
   private:
-    point_t lPoint;
-    point_t rPoint;
+    point_t center;
+    double verticalRad;
+    double gorisontRad;
   };
 }
 #endif

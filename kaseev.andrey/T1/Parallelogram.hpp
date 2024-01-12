@@ -18,8 +18,9 @@ namespace kaseev {
     virtual void scale(double k, point_t pos);
 
   private:
-    point_t lPoint;
-    point_t rPoint;
+    point_t A;
+    point_t B;
+    point_t C;
   };
 }
 #endif
