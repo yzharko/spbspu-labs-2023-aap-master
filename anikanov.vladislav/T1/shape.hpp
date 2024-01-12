@@ -2,6 +2,7 @@
 #define SHAPE_HPP
 
 #include "base-types.hpp"
+#include "base-types-ff.hpp"
 
 namespace anikanov {
 
