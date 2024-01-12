@@ -2,7 +2,7 @@
 #include "base-types.hpp"
 #include <iostream>
 
-sukacheva::Circle::Circle(point_t center, double radius) :
+sukacheva::Circle::Circle(const point_t& center, const double& radius) :
   center_(center),
   radius_(radius)
 {
@@ -12,7 +12,8 @@ sukacheva::Circle::Circle(point_t center, double radius) :
 }
 
 sukacheva::rectangle_t sukacheva::Circle::getFrameRect() const {
-  return rectangle_t(2 * radius_, 2 * radius_, center_);
+  rectangle_t frameRect = { 2 * radius_, 2 * radius_, center_ };
+  return frameRect;
 }
 
 double sukacheva::Circle::getArea() const {
@@ -20,16 +21,16 @@ double sukacheva::Circle::getArea() const {
   return (piNumber * radius_ * radius_);
 }
 
-void sukacheva::Circle::move(double x, double y) {
+void sukacheva::Circle::move(const double& x, const double& y) {
   center_.x += x;
   center_.y += y;
 }
 
-void sukacheva::Circle::move(point_t center) {
+void sukacheva::Circle::move(const point_t& center) {
   center_ = center;
 }
 
-void sukacheva::Circle::newScale(point_t scaleCenter, double k) {
+void sukacheva::Circle::newScale(const point_t& scaleCenter, const double& k) {
   double xSide = center_.x - scaleCenter.x;
   double ySide = center_.y - scaleCenter.y;
   center_.x = scaleCenter.x + xSide * k;
@@ -37,6 +38,6 @@ void sukacheva::Circle::newScale(point_t scaleCenter, double k) {
   radius_ = radius_ * k;
 }
 
-void sukacheva::Circle::scale(double k) {
+void sukacheva::Circle::scale(const double& k) {
   radius_ = radius_ * k;
 }

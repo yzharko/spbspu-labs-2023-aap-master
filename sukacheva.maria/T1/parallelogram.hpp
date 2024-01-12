@@ -8,13 +8,13 @@ namespace sukacheva
   class Parallelogram : public Shape
   {
   public:
-    Parallelogram(point_t A, point_t B, point_t C);
+    Parallelogram(const point_t& A, const point_t& B, const point_t& C);
     double getArea() const;
     rectangle_t getFrameRect() const;
-    void move(double x, double y);
-    void move(point_t center);
-    void scale(double k);
-    void newScale(point_t center, double k);
+    void move(const double& x, const double& y);
+    void move(const point_t& center);
+    void newScale(const point_t& center, const double& k);
+    void scale(const double& k);
   private:
     point_t A_;
     point_t B_;

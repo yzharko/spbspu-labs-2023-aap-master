@@ -4,7 +4,7 @@
 #include <cmath>
 #include "equalityOfPoints.hpp"
 
-sukacheva::Parallelogram::Parallelogram(point_t A, point_t B, point_t C) :
+sukacheva::Parallelogram::Parallelogram(const point_t& A, const point_t& B, const point_t& C):
   A_(A),
   B_(B),
   C_(C)
@@ -32,18 +32,19 @@ sukacheva::rectangle_t sukacheva::Parallelogram::getFrameRect() const
     - std::min(std::min(A_.y, B_.y), C_.y));
   double width = std::abs(std::max(std::max(A_.x, B_.x), C_.x) -
     std::min(std::min(A_.x, B_.x), C_.x));
-  point_t cos(((std::max(std::max(A_.x, B_.x), C_.x) + std::min(std::min(A_.x, B_.x), C_.x)) * 0.5),
-    ((std::max(std::max(A_.y, B_.y), C_.y) + std::min(std::min(A_.y, B_.y), C_.y)) * 0.5));
-  return rectangle_t(width, height, cos);
+  point_t cos = { ((std::max(std::max(A_.x, B_.x), C_.x) + std::min(std::min(A_.x, B_.x), C_.x)) * 0.5),
+    ((std::max(std::max(A_.y, B_.y), C_.y) + std::min(std::min(A_.y, B_.y), C_.y)) * 0.5) };
+  rectangle_t frameRect = { width, height, cos };
+  return frameRect;
 }
 
-void sukacheva::Parallelogram::move(double x, double y) {
-  A_ = point_t(A_.x + x, A_.y + y);
-  B_ = point_t(B_.x + x, B_.y + y);
-  C_ = point_t(C_.x + x, C_.y + y);
+void sukacheva::Parallelogram::move(const double& x, const double& y) {
+  point_t A_ = { A_.x + x, A_.y + y };
+  point_t B_ = { B_.x + x, B_.y + y };
+  point_t C_ = { C_.x + x, C_.y + y };
 }
 
-void sukacheva::Parallelogram::move(point_t center) {
+void sukacheva::Parallelogram::move(const point_t& center) {
   double newX = center.x;
   double newY = center.y;
   double oldX = (A_.x + B_.x) / 2;
@@ -53,16 +54,16 @@ void sukacheva::Parallelogram::move(point_t center) {
   move(dX, dY);
 }
 
-void sukacheva::Parallelogram::scale(double k)
+void sukacheva::Parallelogram::scale(const double& k)
 {
   double centerX = (A_.x + B_.x) / 2;
   double centerY = (A_.y + C_.y) / 2;
-  A_ = point_t((centerX + (A_.x - centerX) * k), (centerY + (A_.y - centerY) * k));
-  B_ = point_t((centerX + (B_.x - centerX) * k), (centerY + (B_.y - centerY) * k));
-  C_ = point_t((centerX + (C_.x - centerX) * k), (centerY + (C_.y - centerY) * k));
+  point_t A_ = { (centerX + (A_.x - centerX) * k), (centerY + (A_.y - centerY) * k) };
+  point_t B_ = { (centerX + (B_.x - centerX) * k), (centerY + (B_.y - centerY) * k) };
+  point_t C_ = { (centerX + (C_.x - centerX) * k), (centerY + (C_.y - centerY) * k) };
 }
 
-void sukacheva::Parallelogram::newScale(point_t center, double k)
+void sukacheva::Parallelogram::newScale(const point_t& center, const double& k)
 {
   double xSideA = A_.x - center.x;
   double ySideA = A_.y - center.y;

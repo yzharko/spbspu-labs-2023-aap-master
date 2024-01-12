@@ -8,13 +8,13 @@ namespace sukacheva
   class Circle : public Shape
   {
   public:
-    Circle(point_t center, double radius);
+    Circle(const point_t& center, const double& radius);
     double getArea() const;
     rectangle_t getFrameRect() const;
-    void move(double x, double y);
-    void move(point_t center);
-    void newScale(point_t center, double k);
-    void scale(double k);
+    void move(const double& x, const double& y);
+    void move(const point_t& center);
+    void newScale(const point_t& center, const double& k);
+    void scale(const double& k);
   private:
     point_t center_;
     double radius_;
