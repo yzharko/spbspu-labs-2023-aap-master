@@ -6,9 +6,8 @@
 
 namespace miheev
 {
-  void printRect(rectangle_t rect);
-  void printCurrentState(double sumArea, rectangle_t* rectangle_t, size_t rectsAmount);
-  void printPoint(double x, double y);
+  void printCurrentState(double sumArea, rectangle_t* rects, size_t rectsAmount);
+  bool validateTriangle(point_t p1, point_t p2, point_t p3);
 }
 
 #endif

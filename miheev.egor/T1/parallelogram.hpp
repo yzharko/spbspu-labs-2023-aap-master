@@ -18,9 +18,9 @@ namespace miheev
     void scale(double) override;
 
   private:
-    point_t* points_[4];
+    point_t* points_;
     point_t center_;
-  }
+  };
 }
 
 #endif

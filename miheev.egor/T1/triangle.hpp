@@ -8,7 +8,7 @@ namespace miheev
   class Triangle: public Shape
   {
   public:
-    Triangle(point_t* points[3]);
+    Triangle(point_t p1, point_t p2, point_t p3);
 
     double getArea() const override;
     rectangle_t getFrameRect() const override;
@@ -17,7 +17,7 @@ namespace miheev
     void scale(double) override;
 
   private:
-    point_t* points_[3];
+    point_t* points_;
     point_t center_;
   };
 };

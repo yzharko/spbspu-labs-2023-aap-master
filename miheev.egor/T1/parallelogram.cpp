@@ -1,9 +1,9 @@
 #include "parallelogram.hpp"
 #include <cmath>
 
-miheev::Parallelogram::Parallelogram(point_t p1, point_t p2, point_t p3):
-  center(center)
+miheev::Parallelogram::Parallelogram(point_t p1, point_t p2, point_t p3)
 {
+  points_ = new point_t[4];
   points_[0] = p1;
   points_[1] = p2;
   points_[2] = p3;
@@ -14,15 +14,15 @@ miheev::Parallelogram::Parallelogram(point_t p1, point_t p2, point_t p3):
 
 double miheev::Parallelogram::getArea() const
 {
-  return abs((points_[1].x - points[0].x) * (points_[3].y - points[0].y) - (points_[1].y - points_[0].y) * (points_[3].x - points_[0].x))
+  return abs((points_[1].x - points_[0].x) * (points_[3].y - points_[0].y) - (points_[1].y - points_[0].y) * (points_[3].x - points_[0].x));
 }
 
 miheev::rectangle_t miheev::Parallelogram::getFrameRect() const
 {
-  double top = points[0].y;
-  double bottom = points[0].y;
-  double left = points[0].x;
-  double right = points[0].x;
+  double top = points_[0].y;
+  double bottom = points_[0].y;
+  double left = points_[0].x;
+  double right = points_[0].x;
   for (size_t i = 0; i < 4; i++)
   {
     point_t cur = points_[i];
@@ -40,7 +40,7 @@ miheev::rectangle_t miheev::Parallelogram::getFrameRect() const
     }
     if (cur.x < left)
     {
-      left = cur.x
+      left = cur.x;
     }
   }
 
@@ -61,8 +61,8 @@ void miheev::Parallelogram::move(double dx, double dy)
 
 void miheev::Parallelogram::move(point_t p)
 {
-  dx = p.x - center_.x;
-  dy = p.y - center_.y;
+  double dx = p.x - center_.x;
+  double dy = p.y - center_.y;
   move(dx, dy);
 }
 
@@ -74,22 +74,4 @@ void miheev::Parallelogram::scale(double k)
     double dy = points_[i].y - center_.y;
     points_[i].move(dx * k, dy * k);
   }
-}
-
-point_t* getPoints() const
-{
-  return points_;
-}
-
-void miheev::Parallelogram::operator==(Parallelogram p)
-{
-  point_t* pPoints = p.getPoints();
-  for (size_t i = 0; i < 4; i++)
-  {
-    if (pPoints[i] != points_[i])
-    {
-      return 0;
-    }
-  }
-  return 1;
 }

@@ -20,6 +20,7 @@ namespace miheev
     double height;
     point_t pos;
 
+    rectangle_t();
     rectangle_t(point_t pos, double width, double height);
   };
 }
