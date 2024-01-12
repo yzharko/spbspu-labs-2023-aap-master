@@ -102,7 +102,7 @@ int main()
       std::cout << "\n";
       for (size_t i = 0; i < count; i++)
       {
-        geometricShapes[i]->move(posX, posY);
+        geometricShapes[i]->move({posX, posY});
         geometricShapes[i]->scale(multiplier);
       }
       if (isCorrectlyDescribe == false)
