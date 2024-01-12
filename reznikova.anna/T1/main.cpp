@@ -45,6 +45,7 @@ int main()
         std::cerr << e.what();
         return 1;
       }
+      freeArray(figures, stored);
       break;
     }
     if (ifNoErrors == 0)
@@ -54,8 +55,6 @@ int main()
       stored -= 1;
     }
   }
-
-  freeArray(figures, stored);
   if (scale_command == 0)
   {
     std::cerr << "no scale command\n";
