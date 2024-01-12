@@ -74,7 +74,7 @@ int main()
         catch (const std::logic_error& e)
         {
           wrIn = true;
-          delete[] geometricFigures[countFig];
+          delete geometricFigures[countFig];
           countFig--;
         }
         countFig++;
@@ -89,6 +89,10 @@ int main()
       if (!std::cin || coefficient < 0)
       {
         std::cerr << "Wrong scale parameters\n";
+        for (size_t i = 0; i < countFig; i++)
+        {
+          delete geometricFigures[i];
+        }
         return 1;
       }
       else
@@ -149,7 +153,7 @@ int main()
   {
     std::cerr << "Wrong input\n";
   }
-  if(countFig > 0)
+  if(countFig > 0 || scale == false)
   {
     for (size_t i = 0; i < countFig; i++)
     {
