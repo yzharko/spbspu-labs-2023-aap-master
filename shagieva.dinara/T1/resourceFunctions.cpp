@@ -1,4 +1,4 @@
-#include "increaseData.hpp"
+#include "resourceFunctions.hpp"
 
 void shagieva::increaseData(shagieva::Shape ** shapes, size_t & capacity, const size_t & shapeCount)
 {
@@ -11,4 +11,13 @@ void shagieva::increaseData(shagieva::Shape ** shapes, size_t & capacity, const 
   }
   delete[] shapes;
   shapes = newShapes;
+}
+
+void shagieva::deleteData(shagieva::Shape ** shapes, const size_t & shapeCount)
+{
+  for (size_t i = 0; i < shapeCount; ++i)
+    {
+      delete shapes[i];
+    }
+  delete[] shapes;
 }

@@ -3,10 +3,8 @@
 #include <iomanip>
 #include <cmath>
 #include <stdexcept>
-#include "increaseData.hpp"
-#include "parseFigure.hpp"
-#include "deleteData.hpp"
-#include "printFramePoints.hpp"
+#include "resourceFunctions.hpp"
+#include "dataFunctions.hpp"
 #include "rectangle.hpp"
 #include "complexquad.hpp"
 #include "regular.hpp"
