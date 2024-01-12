@@ -1,11 +1,17 @@
 #include "rectangle.hpp"
+#include <stdexcept>
 
 using namespace shagieva;
 
 Rectangle::Rectangle(const point_t point1, const point_t point2):
   pointA(point1),
   pointC(point2)
-{}
+{
+  if (pointA.x > pointC.x && pointA.y > pointC.y)
+  {
+    throw std::invalid_argument("Rectangle is incorrect");
+  }
+}
 
 double Rectangle::getArea() const
 {

@@ -11,13 +11,26 @@ Regular::Regular(const point_t point1, const point_t point2, const point_t point
   points[1] = point2;
   points[2] = point3;
 
-  double angle = getCenterAngle();
-  numberOfSides = 180 / angle;
+  double a = std::pow(points[1].x - points[0].x, 2) + std::pow(points[1].y - points[0].y, 2);
+  double b = std::pow(points[2].x - points[1].x, 2) + std::pow(points[2].y - points[1].y, 2);
+  double c = std::pow(points[2].x - points[0].x, 2) + std::pow(points[2].y - points[0].y, 2);
 
-  if (std::abs(std::round(numberOfSides) - numberOfSides) > 0.01)
+  if (c != (a + b))
   {
-    throw std::invalid_argument("Regular does not exist");
+    throw std::invalid_argument("Triangle is incorrect");
   }
+  else
+  {
+    double angle = getCenterAngle();
+    numberOfSides = 180 / angle;
+    bool regularIsWrong = (std::abs(std::round(numberOfSides) - numberOfSides) > 0.01);
+
+    if (regularIsWrong)
+    {
+      throw std::invalid_argument("Regular does not exist");
+    }
+  }
+
   numberOfSides = std::round(numberOfSides);
 }
 

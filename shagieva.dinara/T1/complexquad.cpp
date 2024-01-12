@@ -12,6 +12,23 @@ Complexquad::Complexquad(const point_t point1, const point_t point2,
   points[1] = point2;
   points[2] = point3;
   points[3] = point4;
+
+  double x1 = points[0].x;
+  double y1 = points[0].y;
+  double x2 = points[1].x;
+  double y2 = points[1].y;
+  double x3 = points[2].x;
+  double y3 = points[2].y;
+  double x4 = points[3].x;
+  double y4 = points[3].y;
+
+  if ( ((x3 - x1) / (x2 - x3)) == ((y3 - y1) / (y2 - y3))
+    || ((x4 - x1) / (x2 - x4)) == ((y4 - y1) / (y2 - y4))
+    || ((x1 - x3) / (x4 - x1)) == ((y1 - y3) / (y4 - y1))
+    || ((x2 - x3) / (x4 - x2)) == ((y2 - y3) / (y4 - y2)) )
+  {
+    throw std::invalid_argument("Complexquad does not exist");
+  }
 }
 
 double Complexquad::getArea() const
