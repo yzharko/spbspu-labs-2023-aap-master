@@ -8,7 +8,7 @@ void reznikova::scaleFigures(Shape ** figures, int & stored, std::istream & in)
 {
   double x, y, n;
   in >> x >> y >> n;
-  
+
   if (n <= 0)
   {
     freeArray(figures, stored);
@@ -19,9 +19,9 @@ void reznikova::scaleFigures(Shape ** figures, int & stored, std::istream & in)
     freeArray(figures, stored);
     throw std::runtime_error("nothing to scale\n");
   }
-  
+
   outputSum(figures, stored);
-  
+
   for (int i = 0; i < stored; i++)
   {
     rectangle_t frame_rect = figures[i]->getFrameRect();
@@ -29,9 +29,9 @@ void reznikova::scaleFigures(Shape ** figures, int & stored, std::istream & in)
     figures[i]->scale(n);
   }
   std::cout << "\n";
-  
+
   outputSum(figures, stored);
-  
+
   for (int i = 0; i < stored; i++)
   {
     rectangle_t frame_rect = figures[i]->getFrameRect();
