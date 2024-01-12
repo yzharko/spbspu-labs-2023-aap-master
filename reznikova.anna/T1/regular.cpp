@@ -64,8 +64,11 @@ void reznikova::Regular::move(const point_t& new_center)
 
 void reznikova::Regular::scale(const double n)
 {
-  pointA_.x *= n;
-  pointA_.y *= n;
-  pointB_.x *= n;
-  pointB_.y *= n;
+  pointA_.x = center_.x + (pointA_.x - center_.x) * n;
+  pointA_.y = center_.x + (pointA_.y - center_.y) * n;
+  pointB_.x = center_.x + (pointB_.x - center_.x) * n;
+  pointB_.y = center_.x + (pointB_.y - center_.y) * n;
+  inscribed_rad *= n;
+  circum_rad *= n;
 }
+
