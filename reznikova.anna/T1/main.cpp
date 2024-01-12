@@ -23,15 +23,18 @@ int main()
     std::cin >> name;
     if (name == "RING")
     {
-      figures[stored++] = setRing(std::cin, ifNoErrors);
+      figures[stored] = setRing(std::cin, ifNoErrors);
+      stored++;
     }
     else if (name == "REGULAR")
     {
-      figures[stored++] = setRegular(std::cin, ifNoErrors);
+      figures[stored] = setRegular(std::cin, ifNoErrors);
+      stored++;
     }
     else if (name == "RECTANGLE")
     {
-      figures[stored++] = setRectangle(std::cin, ifNoErrors);
+      figures[stored] = setRectangle(std::cin, ifNoErrors);
+      stored++;
     }
     else if (name == "SCALE")
     {
