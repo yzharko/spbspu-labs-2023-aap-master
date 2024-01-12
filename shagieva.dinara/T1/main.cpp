@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <cmath>
 #include <stdexcept>
+#include "increaseData.hpp"
 #include "rectangle.hpp"
 #include "complexquad.hpp"
 #include "regular.hpp"
@@ -19,15 +20,7 @@ int main()
   {
     if (shapeCount == capacity)
     {
-      capacity *= 2;
-      shagieva::Shape ** newShapes = new shagieva::Shape * [capacity];
-      for (size_t i = 0; i < shapeCount; ++i)
-      {
-        newShapes[i] = shapes[i];
-        delete[] shapes[i];
-      }
-      delete[] shapes;
-      shapes = newShapes;
+      shagieva::increaseData(shapes, capacity, shapeCount);
     }
 
     std::string figureType;
