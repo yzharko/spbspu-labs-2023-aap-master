@@ -39,3 +39,28 @@ void khoroshkin::deleteFigures(khoroshkin::Shape ** allFigures, size_t figuresCo
   }
   delete[] allFigures;
 }
+
+void khoroshkin::printResult(std::istream & input, khoroshkin::Shape ** allFigures, size_t figuresCounter)
+{
+  double summOfFigures = 0;
+  for (size_t i = 0; i < figuresCounter; ++i)
+  {
+    summOfFigures += allFigures[i]->getArea();
+  }
+  std::cout << summOfFigures << " ";
+  for (size_t i = 0; i < figuresCounter; ++i)
+  {
+    std::cout << allFigures[i]->getFrameRect().pos.x - allFigures[i]->getFrameRect().width / 2 << " ";
+    std::cout << allFigures[i]->getFrameRect().pos.y - allFigures[i]->getFrameRect().height / 2 << " ";
+    std::cout << allFigures[i]->getFrameRect().pos.x + allFigures[i]->getFrameRect().width / 2 << " ";
+    if (i == figuresCounter - 1)
+    {
+      std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2;
+    }
+    else
+    {
+      std::cout << allFigures[i]->getFrameRect().pos.y + allFigures[i]->getFrameRect().height / 2 << " ";
+    }
+  }
+  std::cout << "\n";
+}
