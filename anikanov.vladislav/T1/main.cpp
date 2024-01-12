@@ -1,10 +1,10 @@
 #include <cstring>
-#include "base-types.cpp"
+#include "base-types.hpp"
 #include "base-types-ff.hpp"
-#include "rectangle.cpp"
-#include "square.cpp"
-#include "complexquad.cpp"
-#include "compositeShape.cpp"
+#include "rectangle.hpp"
+#include "square.hpp"
+#include "complexquad.hpp"
+#include "compositeShape.hpp"
 
 using namespace anikanov;
 
