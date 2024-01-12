@@ -23,7 +23,7 @@ rectangle_t Rectangle::getFrameRect() const
   return rectangle_t{ width, height, pos };
 }
 
-void Rectangle::move(point_t destination)
+void Rectangle::move(const point_t& destination)
 {
   rectangle_t frame = getFrameRect();
   double moveX = destination.x - frame.pos.x;

@@ -85,7 +85,7 @@ rectangle_t Concave::getFrameRect() const
   return rectangle_t{ width, height, pos };
 }
 
-void Concave::move(point_t destination)
+void Concave::move(const point_t& destination)
 {
   double moveX = destination.x - fourthPoint_.x;
   double moveY = destination.y - fourthPoint_.y;

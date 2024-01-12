@@ -50,7 +50,7 @@ rectangle_t Triangle::getFrameRect() const
   return rectangle_t{ width, height, pos };
 }
 
-void Triangle::move(point_t destination)
+void Triangle::move(const point_t& destination)
 {
   double moveX = destination.x - (firstPoint_.x + secondPoint_.x + thirdPoint_.x) / 3;
   double moveY = destination.y - (firstPoint_.y + secondPoint_.y + thirdPoint_.y) / 3;
@@ -72,7 +72,7 @@ void Triangle::scale(double coefficient)
   point_t pos;
   pos.x = (firstPoint_.x + secondPoint_.x + thirdPoint_.x) / 3;
   pos.y = (firstPoint_.y + secondPoint_.y + thirdPoint_.y) / 3;
-  firstPoint_.x += (firstPoint_.x - pos.x) * (coefficient -1);
+  firstPoint_.x += (firstPoint_.x - pos.x) * (coefficient - 1);
   firstPoint_.y += (firstPoint_.y - pos.y) * (coefficient - 1);
   secondPoint_.x += (secondPoint_.x - pos.x) * (coefficient - 1);
   secondPoint_.y += (secondPoint_.y - pos.y) * (coefficient - 1);

@@ -7,7 +7,7 @@ namespace doroshenko
   class Shape
   {
   public:
-    virtual ~Shape() {}
+    virtual ~Shape() = default;
     virtual double getArea() const = 0;
     virtual rectangle_t getFrameRect() const = 0;
     virtual void move(point_t destination) = 0;

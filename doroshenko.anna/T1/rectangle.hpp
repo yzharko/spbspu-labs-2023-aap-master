@@ -10,7 +10,7 @@ namespace doroshenko
     Rectangle(point_t lowerLeft, point_t upperRight);
     virtual double getArea() const;
     virtual rectangle_t getFrameRect() const;
-    virtual void move(point_t destination);
+    virtual void move(const point_t& destination);
     virtual void move(double moveX, double moveY);
     virtual void scale(double coefficient);
   private:
