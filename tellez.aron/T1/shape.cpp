@@ -1,9 +1,10 @@
 #include "shape.h"
-void tellez::Shape::scale(double k)
+#include <stdexcept>
+void Shape::scaleWithVerify(double ds)
 {
-  if (k <= 0)
+  if (ds <= 0.0)
   {
-    throw std::logic_error("Coefficient below zero");
+    throw std::logic_error("bad scale size");
   }
-  unsafeScale(k);
+  scaleWithoutVerify(ds);
 }
