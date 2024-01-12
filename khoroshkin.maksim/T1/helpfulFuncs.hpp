@@ -11,6 +11,7 @@ namespace khoroshkin
   Shape ** expandArray(Shape ** array, size_t currSize, size_t newSize);
   void deleteFigures(Shape ** allFigures, size_t figuresCounter);
   void printResult(Shape ** allFigures, size_t figuresCounter);
+  void makeScale(Shape ** allFigures, size_t figuresCounter, double x, double y, double scale);
 }
 
 #endif
