@@ -122,10 +122,10 @@ int main()
           rectangle_t begin = figureArray[l]->getFrameRect();
           figureArray[l]->move({ posx, posy });
           rectangle_t end = figureArray[l]->getFrameRect();
-          double moveX = fabs(begin.pos.x - end.pos.x) * k;
-          double moveY = fabs(begin.pos.y - end.pos.y) * k;
+          double moveX = fabs(end.pos.x - begin.pos.x) * k;
+          double moveY = fabs(end.pos.y - begin.pos.y) * k;
           figureArray[l]->scale(k);
-          figureArray[l]->move({ moveX, moveY });
+          figureArray[l]->move( moveX, moveY );
         }
         double sumAreaAfter = 0;
         for (size_t i = 0; i < count; i++)
