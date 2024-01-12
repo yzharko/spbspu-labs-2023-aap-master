@@ -1,4 +1,5 @@
 #include "complexquad.hpp"
+#include <iostream>
 #include <cmath>
 #include <limits>
 
