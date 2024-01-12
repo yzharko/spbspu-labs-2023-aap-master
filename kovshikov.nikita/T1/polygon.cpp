@@ -3,7 +3,7 @@
 #include "triangle.hpp"
 #include <functional>
 
-kovshikov::Polygon::Polygon(size_t num, point_t * points): // заменить все статические массивы на динамические(их шесть)
+kovshikov::Polygon::Polygon(size_t num, point_t * points):
   num_(num),
   points_(points)
 {};
