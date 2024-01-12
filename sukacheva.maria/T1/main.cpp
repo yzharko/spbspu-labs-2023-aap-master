@@ -2,11 +2,6 @@
 #include <string>
 #include <iomanip>
 #include "scaleFunc.hpp"
-#include "base-types.hpp"
-#include "shape.hpp"
-#include "circle.hpp"
-#include "parallelogram.hpp"
-#include "rectangle.hpp"
 
 int main() {
   using namespace sukacheva;
@@ -23,11 +18,7 @@ int main() {
       std::cin >> x1 >> y1 >> x2 >> y2;
       try
       {
-        point_t point1 = { x1, y1 };
-        point_t point2 = { x2, y2 };
-        Shape* rectangle = new Rectangle(point2, point1);
-        figures[index] = rectangle;
-        index += 1;
+        getRectangle(figures, x1, y1, x2, y2, index);
       }
       catch (const std::logic_error& e)
       {
@@ -40,10 +31,7 @@ int main() {
       std::cin >> x >> y >> radius;
       try
       {
-        point_t point1 = { x, y };
-        Shape* circle = new Circle(point1, radius);
-        figures[index] = circle;
-        index += 1;
+        getCircle(figures, x, y, radius, index);
       }
       catch (const std::logic_error& e)
       {
@@ -56,12 +44,7 @@ int main() {
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
       try
       {
-        point_t point1 = { x1, y1 };
-        point_t point2 = { x2, y2 };
-        point_t point3 = { x3, y3 };
-        Shape* parallelogram = new Parallelogram(point1, point2, point3);
-        figures[index] = parallelogram;
-        index += 1;
+        getParallelogram(figures, x1, y1, x2, y2, x3, y3, index);
       }
       catch (const std::logic_error& e)
       {
