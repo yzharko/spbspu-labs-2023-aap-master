@@ -73,7 +73,7 @@ sukacheva::rectangle_t sukacheva::Parallelogram::getFrameRect() const
     - std::min(std::min(A_.y, B_.y), C_.y));
   double width = std::abs(std::max(std::max(A_.x, B_.x), C_.x) -
     std::min(std::min(A_.x, B_.x), C_.x));
-  point_t cos(((std::max(std::max(A_.x, B_.x), C_.x) - std::min(std::min(A_.x, B_.x), C_.x)) * 0.5),
+  point_t cos(((std::max(std::max(A_.x, B_.x), C_.x) + std::min(std::min(A_.x, B_.x), C_.x)) * 0.5),
     ((std::max(std::max(A_.y, B_.y), C_.y) + std::min(std::min(A_.y, B_.y), C_.y)) * 0.5));
   return rectangle_t(width, height, cos);
 }
