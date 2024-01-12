@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include "increaseData.hpp"
 #include "parseFigure.hpp"
+#include "deleteData.hpp"
 #include "rectangle.hpp"
 #include "complexquad.hpp"
 #include "regular.hpp"
@@ -53,11 +54,7 @@ int main()
   if (!scaleEntered)
   {
     std::cerr << "Scale command is not entered.\n";
-    for (size_t i = 0; i < shapeCount; ++i)
-    {
-      delete shapes[i];
-    }
-    delete[] shapes;
+    deleteData(shapes, shapeCount);
     return 1;
   }
 
@@ -67,11 +64,7 @@ int main()
   if (scaleFactor <= 0.0)
   {
     std::cerr << "Invalid scale factor entered.\n";
-    for (size_t i = 0; i < shapeCount; ++i)
-    {
-      delete shapes[i];
-    }
-    delete[] shapes;
+    deleteData(shapes, shapeCount);
     return 1;
   }
 
@@ -127,11 +120,7 @@ int main()
     std::cerr << "Invalid figure entered.\n";
   }
 
-  for (size_t i = 0; i < shapeCount; ++i)
-  {
-    delete shapes[i];
-  }
-  delete[] shapes;
+  deleteData(shapes, shapeCount);
 
   return 0;
 }
