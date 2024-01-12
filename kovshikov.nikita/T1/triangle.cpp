@@ -7,7 +7,7 @@ kovshikov::Triangle::Triangle(point_t vertexA, point_t vertexB, point_t vertexC)
   vertexC_(vertexC)
 {};
 
-double kovshikov::Triangle::getArea()
+double kovshikov::Triangle::getArea() const
 {
   double sideAb = sqrt(pow(vertexA_.x - vertexB_.x, 2) + pow(vertexA_.y - vertexB_.y, 2));
   double sideBc = sqrt(pow(vertexB_.x - vertexC_.x, 2) + pow(vertexB_.y - vertexC_.y, 2));
@@ -15,7 +15,7 @@ double kovshikov::Triangle::getArea()
   double p = (sideAb + sideBc + sideCa) / 2;
   return sqrt(p * (p - sideAb) * (p - sideBc) * (p - sideCa));
 }
-rectangle_t kovshikov::Triangle::getFrameRect()
+rectangle_t kovshikov::Triangle::getFrameRect() const
 {
   double minX = std::min({vertexA_.x, vertexB_.x, vertexC_.x});
   double minY = std::min({vertexA_.y, vertexB_.y, vertexC_.y});
@@ -26,7 +26,7 @@ rectangle_t kovshikov::Triangle::getFrameRect()
   Rectangle rectangle(lowerLeft, upperRight);
   return rectangle.getFrameRect();
 }
-void kovshikov::Triangle::move(point_t newPos)
+void kovshikov::Triangle::move(const &point_t newPos)
 {
   point_t pos = getPos();
   double xPlus = newPos.x - pos.x;

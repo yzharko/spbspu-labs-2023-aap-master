@@ -4,19 +4,19 @@ kovshikov::Rectangle::Rectangle(point_t lowerLeft, point_t upperRight):
   lowerLeft_(lowerLeft),
   upperRight_(upperRight)
 {};
-double kovshikov::Rectangle::getArea()
+double kovshikov::Rectangle::getArea() const
 {
   rectangle_t rectangle = getFrameRect();
   return rectangle.width * rectangle.height;
 }
-rectangle_t kovshikov::Rectangle::getFrameRect()
+rectangle_t kovshikov::Rectangle::getFrameRect() const
 {
   double width = upperRight_.x - lowerLeft_.x;
   double height = upperRight_.y - lowerLeft_.y;
   point_t pos = {lowerLeft_.x + 0.5 * width, lowerLeft_.y + 0.5 * height};
   return rectangle_t{ width, height, pos };
 }
-void kovshikov::Rectangle::move(point_t newPos)
+void kovshikov::Rectangle::move(const &point_t newPos)
 {
   rectangle_t rectangle = getFrameRect();
   double xPlus = newPos.x - rectangle.pos.x;

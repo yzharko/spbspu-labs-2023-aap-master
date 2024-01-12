@@ -11,7 +11,7 @@ kovshikov::Polygon::~Polygon()
 {
   delete[] points_;
 }
-double kovshikov::Polygon::getArea()
+double kovshikov::Polygon::getArea() const
 {
   double area = 0;
   double minX = points_[0].x;
@@ -100,7 +100,7 @@ double kovshikov::Polygon::getArea()
   delete[] upper;
   return area;
 }
-rectangle_t kovshikov::Polygon::getFrameRect()
+rectangle_t kovshikov::Polygon::getFrameRect() const
 {
   double * arrayX = new double[num_];
   double * arrayY = new double[num_];
@@ -123,7 +123,7 @@ rectangle_t kovshikov::Polygon::getFrameRect()
   delete[] arrayY;
   return rectangle.getFrameRect();
 }
-void kovshikov::Polygon::move(point_t newPos)
+void kovshikov::Polygon::move(const &point_t newPos)
 {
   point_t pos = getPos();
   double xPlus = newPos.x - pos.x;

@@ -11,9 +11,9 @@ namespace kovshikov
   public:
     Polygon(size_t num, point_t * points);
     virtual ~Polygon(); // нужны ли еще какие то специальные методы?
-    virtual double getArea();
-    virtual rectangle_t getFrameRect();
-    virtual void move(point_t newPos);
+    virtual double getArea() const;
+    virtual rectangle_t getFrameRect() const;
+    virtual void move(const &point_t newPos);
     virtual void move(double xPlus, double yPlus);
     virtual void scale(double multiplier);
     point_t getPos();
