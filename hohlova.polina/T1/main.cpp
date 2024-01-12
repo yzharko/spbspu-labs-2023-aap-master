@@ -77,6 +77,28 @@ int main()
       }
       figuresCount++;
     }
+    else if (figure == "SCALE")
+    {
+      double xp, yp, k;
+      std::cin >> xp >> yp >> k;
+      if (!std::cin || k < 0)
+      {
+        std::cerr << "cannot scale\n";
+        for (size_t i = 0; i < figuresCount; i++)
+        {
+          delete[] figures[i];
+        }
+        return 1;
+      }
+      else if (figuresCount == 0)
+      {
+        std::cerr << "no figures\n";
+        return 1;
+      }
+    }
+    return 0;
+  }
+}
     return 0;
   }
 }
