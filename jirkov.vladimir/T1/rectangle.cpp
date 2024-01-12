@@ -5,13 +5,13 @@ Rectangle::Rectangle(point_t bottomLeft, point_t topRight) :
   topRight_(topRight)
 {}
 
-double Rectangle::getArea()
+double Rectangle::getArea() const
 {
   jirkov::rectangle_t frame = getFrameRect();
   return frame.width_ * frame.height_;
 }
 
-jirkov::rectangle_t Rectangle::getFrameRect()
+jirkov::rectangle_t Rectangle::getFrameRect() const
 {
   double width = topRight_.x_ - bottomLeft_.x_;
   double height = topRight_.y_ - bottomLeft_.y_;

@@ -9,20 +9,19 @@ Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, po
   fourthPoint_(fourthPoint)
 {}
 
-double Concave::getArea()
+double Concave::getArea() const
 {
   double firstSqrt = sqrt(pow((firstPoint_.x_ - secondPoint_.x_), 2) + pow((firstPoint_.y_ - secondPoint_.y_), 2));
   double secondSqrt = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
   double thirdSqrt = sqrt(pow((thirdPoint_.x_ - firstPoint_.x_), 2) + pow((thirdPoint_.y_ - firstPoint_.y_), 2));
+  double mediumSqrt = (firstSqrt + secondSqrt + thirdSqrt) / 2;
+  double firstSquare = sqrt(mediumSqrt * (mediumSqrt - firstSqrt) * (mediumSqrt - secondSqrt) * (mediumSqrt - thirdSqrt));
   double maxSide = firstSqrt >= secondSqrt ? firstSqrt : secondSqrt;
   maxSide = maxSide >= thirdSqrt ? maxSide : thirdSqrt;
-
   if (maxSide >= firstSqrt + secondSqrt + thirdSqrt - maxSide)
   {
     throw std::logic_error("Triangle error\n");
   }
-  double mediumSqrt = (firstSqrt + secondSqrt + thirdSqrt) / 2;
-  double firstSquare = sqrt(mediumSqrt * (mediumSqrt - firstSqrt) * (mediumSqrt - secondSqrt) * (mediumSqrt - thirdSqrt));
   double fourthSqrt = sqrt(pow((fourthPoint_.x_ - secondPoint_.x_), 2) + pow((fourthPoint_.y_ - secondPoint_.y_), 2));
   double fifthSqrt = sqrt(pow((secondPoint_.x_ - thirdPoint_.x_), 2) + pow((secondPoint_.y_ - thirdPoint_.y_), 2));
   double sixthSqrt = sqrt(pow((thirdPoint_.x_ - fourthPoint_.x_), 2) + pow((thirdPoint_.y_ - fourthPoint_.y_), 2));
@@ -54,7 +53,7 @@ double Concave::getArea()
   }
   return firstSquare - secondSquare;
 }
-rectangle_t Concave::getFrameRect()
+rectangle_t Concave::getFrameRect() const
 {
   double maxX = firstPoint_.x_ >= secondPoint_.x_ ? firstPoint_.x_ : secondPoint_.x_;
   maxX = maxX >= thirdPoint_.x_ ? maxX : thirdPoint_.x_;

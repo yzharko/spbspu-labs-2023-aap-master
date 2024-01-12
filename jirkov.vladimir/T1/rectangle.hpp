@@ -8,8 +8,8 @@ namespace jirkov
   {
   public:
     Rectangle(point_t bottomLeft, point_t topRight);
-    virtual double getArea();
-    virtual rectangle_t getFrameRect();
+    virtual double getArea() const;
+    virtual rectangle_t getFrameRect() const;
     virtual void move(point_t destination);
     virtual void move(double moveX, double moveY);
     virtual void scale(double k);
