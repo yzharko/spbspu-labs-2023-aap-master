@@ -4,6 +4,7 @@
 #include "diamond.hpp"
 #include "concave.hpp"
 #include <iomanip>
+#include <cmath>
 
 int main()
 {
