@@ -95,6 +95,11 @@ int main()
       }
       else
       {
+        if (count == 0)
+        {
+          std::cerr << "Scale is nothing";
+          return 1;
+        }
         double sumAreaBefore = 0;
         for (size_t i = 0; i < count; i++)
         {
