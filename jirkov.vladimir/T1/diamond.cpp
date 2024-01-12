@@ -1,6 +1,7 @@
 #include "diamond.hpp"
 #include <cmath>
-jirkov::Diamond::Diamond(point_t topPoint, point_t rightPoint, point_t centerPoint) :
+using namespace jirkov;
+Diamond::Diamond(point_t topPoint, point_t rightPoint, point_t centerPoint) :
     topPoint_(topPoint),
     rightPoint_(rightPoint),
     centerPoint_(centerPoint),
@@ -8,20 +9,20 @@ jirkov::Diamond::Diamond(point_t topPoint, point_t rightPoint, point_t centerPoi
     secondSide_(std::abs(rightPoint.y - centerPoint.y))
 {}
 
-double jirkov::Diamond::getArea() const
+double Diamond::getArea() const
 {
     return (2 * firstSide_ * secondSide_);
 }
 
-jirkov::rectangle_t jirkov::Diamond::getFrameRect() const
+rectangle_t jirkov::Diamond::getFrameRect() const
 {
-    jirkov::point_t pos = centerPoint_;
+    point_t pos = centerPoint_;
     double height = firstSide_ * 2;
     double width = secondSide_ * 2;
-    return jirkov::rectangle_t{ width, height, pos };
+    return rectangle_t{ width, height, pos };
 }
 
-void jirkov::Diamond::move(point_t destination)
+void Diamond::move(point_t destination)
 {
     double dx = centerPoint_.x - destination.x;
     double dy = centerPoint_.y - destination.y;
@@ -32,7 +33,7 @@ void jirkov::Diamond::move(point_t destination)
     topPoint_.y += dy;
 }
 
-void jirkov::Diamond::move(double moveX, double moveY)
+void Diamond::move(double moveX, double moveY)
 {
     centerPoint_.x += moveX;
     centerPoint_.y += moveY;
@@ -42,7 +43,7 @@ void jirkov::Diamond::move(double moveX, double moveY)
     topPoint_.y += moveY;
 }
 
-void jirkov::Diamond::scale(double k)
+void Diamond::scale(double k)
 {
     rightPoint_.x *= k;
     topPoint_.x *= k;
