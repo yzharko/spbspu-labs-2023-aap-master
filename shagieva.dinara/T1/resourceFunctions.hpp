@@ -5,8 +5,8 @@
 
 namespace shagieva
 {
-  void increaseData(Shape ** shapes, size_t & capacity, const size_t & shapeCount);
-  void deleteData(Shape ** shapes, const size_t & shapeCount);
+  void increaseResource(Shape ** shapes, size_t & capacity, const size_t & shapeCount);
+  void clearResource(Shape ** shapes, const size_t & shapeCount);
 }
 
 #endif

@@ -1,6 +1,6 @@
 #include "resourceFunctions.hpp"
 
-void shagieva::increaseData(shagieva::Shape ** shapes, size_t & capacity, const size_t & shapeCount)
+void shagieva::increaseResource(shagieva::Shape ** shapes, size_t & capacity, const size_t & shapeCount)
 {
   capacity *= 2;
   shagieva::Shape ** newShapes = new shagieva::Shape * [capacity];
@@ -13,7 +13,7 @@ void shagieva::increaseData(shagieva::Shape ** shapes, size_t & capacity, const 
   shapes = newShapes;
 }
 
-void shagieva::deleteData(shagieva::Shape ** shapes, const size_t & shapeCount)
+void shagieva::clearResource(shagieva::Shape ** shapes, const size_t & shapeCount)
 {
   for (size_t i = 0; i < shapeCount; ++i)
     {

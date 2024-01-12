@@ -21,7 +21,7 @@ int main()
   {
     if (shapeCount == capacity)
     {
-      shagieva::increaseData(shapes, capacity, shapeCount);
+      shagieva::increaseResource(shapes, capacity, shapeCount);
     }
 
     std::string figureType;
@@ -53,19 +53,12 @@ int main()
   if (!scaleEntered)
   {
     std::cerr << "Scale command is not entered.\n";
-    deleteData(shapes, shapeCount);
+    shagieva::clearResource(shapes, shapeCount);
     return 1;
   }
 
   double scaleCenterX, scaleCenterY, scaleFactor;
   std::cin >> scaleCenterX >> scaleCenterY >> scaleFactor;
-
-  if (scaleFactor <= 0.0)
-  {
-    std::cerr << "Invalid scale factor entered.\n";
-    deleteData(shapes, shapeCount);
-    return 1;
-  }
 
   std::cout << std::fixed << std::setprecision(1);
 
@@ -83,7 +76,16 @@ int main()
     shagieva::rectangle_t frameBeforeMoving = shapes[i]->getFrameRect();
     shapes[i]->move({ scaleCenterX, scaleCenterY });
     shagieva::rectangle_t frameAfterMoving = shapes[i]->getFrameRect();
-    shapes[i]->scale(scaleFactor);
+    try
+    {
+      shapes[i]->scale(scaleFactor);
+    }
+    catch(std::invalid_argument & e)
+    {
+      std::cerr << "Invalid scale factor entered.\n";
+      shagieva::clearResource(shapes, shapeCount);
+      return 1;
+    }
     double dx = (frameBeforeMoving.pos.x - frameAfterMoving.pos.x) * scaleFactor;
     double dy = (frameBeforeMoving.pos.y - frameAfterMoving.pos.y) * scaleFactor;
     shapes[i]->move(dx, dy);
@@ -103,7 +105,7 @@ int main()
     std::cerr << "Invalid figure entered.\n";
   }
 
-  deleteData(shapes, shapeCount);
+  shagieva::clearResource(shapes, shapeCount);
 
   return 0;
 }

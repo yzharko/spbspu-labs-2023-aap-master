@@ -12,11 +12,11 @@ namespace shagieva
     virtual rectangle_t getFrameRect() const;
     virtual void move(const double & dx, const double & dy);
     virtual void move(const point_t & newCenter);
-    virtual void scale(const double scaleFactor);
 
   private:
     point_t pointA;
     point_t pointC;
+    virtual void doScale(const double scaleFactor);
   };
 }
 

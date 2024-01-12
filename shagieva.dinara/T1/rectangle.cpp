@@ -43,7 +43,7 @@ void Rectangle::move(const point_t & newCenter)
   move(dx, dy);
 }
 
-void Rectangle::scale(const double scaleFactor)
+void Rectangle::doScale(const double scaleFactor)
 {
   point_t center = { (pointA.x + pointC.x) / 2, (pointA.y + pointC.y) / 2 };
   pointA.x = (pointA.x - center.x) * scaleFactor + center.x;
