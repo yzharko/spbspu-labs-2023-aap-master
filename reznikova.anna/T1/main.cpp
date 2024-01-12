@@ -59,7 +59,7 @@ int main()
 
   if (scale_command == 0)
   {
-    freeArray(figures, stored);
+    freeArray(figures, stored+1);
     std::cerr << "no scale command\n";
     return 1;
   }
