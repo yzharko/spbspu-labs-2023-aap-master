@@ -22,7 +22,7 @@ rectangle_t jirkov::Diamond::getFrameRect() const
     return rectangle_t{ width, height, pos };
 }
 
-void Diamond::move(point_t destination)
+void Diamond::move(const point_t & destination)
 {
     double dx = centerPoint_.x - destination.x;
     double dy = centerPoint_.y - destination.y;

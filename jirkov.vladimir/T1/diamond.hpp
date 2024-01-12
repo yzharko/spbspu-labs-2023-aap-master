@@ -10,7 +10,7 @@ namespace jirkov
     Diamond(point_t topPoint, point_t rightPoint, point_t centerPoint);
     virtual double getArea() const;
     virtual rectangle_t getFrameRect() const;
-    virtual void move(point_t destination);
+    virtual void move(const point_t & destination);
     virtual void move(double moveX, double moveY);
     virtual void scale(double k);
   private:
