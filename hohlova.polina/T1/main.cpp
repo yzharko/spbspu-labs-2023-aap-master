@@ -9,7 +9,8 @@ int main()
   using namespace hohlova;
   std::string figure = "";
   size_t figuresCount = 0;
-  Shape** figures = new Shape * [100] {};
+  Shape* figures[1000] = { 0 };
+  bool checkInput = false;
   while (!std::cin.eof())
   {
     std::cin >> figure;
@@ -17,6 +18,10 @@ int main()
     {
       double lx, ly, rx, ry;
       std::cin >> lx >> ly >> rx >> ry;
+      if (!std::cin || lx > rx || ly > ry)
+      {
+        checkInput = true;
+      }
       try
       {
         point_t lpos = { lx, ly };
@@ -34,9 +39,9 @@ int main()
     {
       double x, y, side;
       std::cin >> x >> y >> side;
-      if (!std::cin)
+      if (!std::cin || side <= 0)
       {
-        std::cerr << "cannot read an input\n";
+        checkInput = true;
       }
       figures[figuresCount] = new Square({ x, y }, side);
       try
@@ -57,7 +62,7 @@ int main()
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
       if (!std::cin)
       {
-        std::cerr << "cannot read an input\n";
+        checkInput = true;
       }
       figures[figuresCount] = new Triangle({ x1, y1 }, { x2, y2 }, { x3, y3 });
       try
@@ -71,11 +76,6 @@ int main()
         figuresCount--;
       }
       figuresCount++;
-    }
-    else if (figure == "\0")
-    {
-      std::cerr << "no figure\n";
-      return 1;
     }
     return 0;
   }
