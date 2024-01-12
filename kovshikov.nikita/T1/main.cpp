@@ -24,8 +24,7 @@ int main()
          isCorrectlyDescribe = false;
          continue;
        }
-       *geometricShapes[count++] = Rectangle({lowerLeftX, lowerLeftY}, {upperRightX, upperRightY});
-       std::cout << count;
+       geometricShapes[count++] = new Rectangle({lowerLeftX, lowerLeftY}, {upperRightX, upperRightY});
     }
     else if (shape == "TRIANGLE") // в классе треугольник проверить существует ли он
     {
@@ -36,8 +35,7 @@ int main()
         isCorrectlyDescribe = false;
         continue;
       }
-      *geometricShapes[count++] = Triangle({vertexAX, vertexAY}, {vertexBX, vertexBY}, {vertexCX, vertexCY});
-      std::cout << count;
+      geometricShapes[count++] = new Triangle({vertexAX, vertexAY}, {vertexBX, vertexBY}, {vertexCX, vertexCY});
     }
     else if (shape == "POLYGON")
     {
@@ -68,16 +66,13 @@ int main()
         }
         if(std::cin.peek() == '\n')
         {
-          *geometricShapes[count++] = Polygon(nPointsPolygon, points);
-          std::cout << count;
+          geometricShapes[count++] = new Polygon(nPointsPolygon, points);
           continue;
         }
       }
     }
     else if (shape == "SCALE")
     {
-      std::cout << "ura";
-      std::cout << count; /////////////////
       double posX, posY, multiplier;
       std::cin >> posX >> posY >> multiplier;
       if (!std::cin || multiplier < 0)
@@ -143,6 +138,10 @@ int main()
       std::cerr << "no scaling parameters were given";
       return 1;
     }
+  }
+  for (size_t i; i < count; i++)
+  {
+    delete[] geometricShapes[i];
   }
   return 0;
 }
