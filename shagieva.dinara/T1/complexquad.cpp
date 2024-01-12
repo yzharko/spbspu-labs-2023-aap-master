@@ -63,7 +63,7 @@ void Complexquad::move(const point_t & newCenter)
   move(dx, dy);
 }
 
-void Complexquad::scale(const double & scaleFactor)
+void Complexquad::scale(const double scaleFactor)
 {
   point_t center = getCenter();
   for (int i = 0; i < 4; ++i)

@@ -85,7 +85,7 @@ void Regular::move(const point_t & newCenter)
   move(dx, dy);
 }
 
-void Regular::scale(const double & scaleFactor)
+void Regular::scale(const double scaleFactor)
 {
   for (int i = 1; i < 3; ++i)
   {
