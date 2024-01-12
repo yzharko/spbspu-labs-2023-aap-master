@@ -8,13 +8,13 @@ namespace kovshikov
   class Rectangle: public Shape
   {
   public:
-    override ~Rectangle() = default;
+    ~Rectangle() = default override;
     Rectangle(point_t lowerLeft, point_t upperRight);
-    override double getArea() const;  //const
-    override rectangle_t getFrameRect() const;  // const
-    override void move(const point_t &newPos); //&const
-    override void move(double xPlus, double yPlus);
-    override void scale(double multiplier);
+    double getArea() const override;  //const
+    rectangle_t getFrameRect() const override;  // const
+    void move(const point_t &newPos) override; //&const
+    void move(double xPlus, double yPlus) override;
+    void scale(double multiplier) override;
   private:
     point_t lowerLeft_;
     point_t upperRight_;
