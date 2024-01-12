@@ -132,7 +132,7 @@ void kovshikov::Polygon::move(point_t newPos)
 }
 void kovshikov::Polygon::move(double xPlus, double yPlus)
 {
-  for(size_t i; i < num_; i++)
+  for(size_t i = 0; i < num_; i++)
   {
     points_[i].x += xPlus;
     points_[i].y += yPlus;
