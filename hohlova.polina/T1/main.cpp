@@ -32,7 +32,7 @@ int main()
       }
       catch (const std::exception& ex)
       {
-        std::cerr << ex.what();
+        checkInput = true;
       }
     }
     else if (figure == "SQUARE")
@@ -71,7 +71,7 @@ int main()
       }
       catch (const std::exception& ex)
       {
-        std::cerr << ex.what();
+        checkInput = true;
         delete[] figures[figuresCount];
         figuresCount--;
       }
