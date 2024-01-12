@@ -13,9 +13,9 @@ namespace kovshikov
     virtual ~Polygon(); // нужны ли еще какие то специальные методы?
     override double getArea() const;
     override rectangle_t getFrameRect() const;
-    virtual void move(const point_t &newPos);
-    virtual void move(double xPlus, double yPlus);
-    virtual void scale(double multiplier);
+    override void move(const point_t &newPos);
+    override void move(double xPlus, double yPlus);
+    override void scale(double multiplier);
     point_t getPos();
   private:
     size_t num_;

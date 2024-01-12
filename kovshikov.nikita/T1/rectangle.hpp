@@ -12,9 +12,9 @@ namespace kovshikov
     Rectangle(point_t lowerLeft, point_t upperRight);
     override double getArea() const;  //const
     override rectangle_t getFrameRect() const;  // const
-    virtual void move(const point_t &newPos); //&const
-    virtual void move(double xPlus, double yPlus);
-    virtual void scale(double multiplier);
+    override void move(const point_t &newPos); //&const
+    override void move(double xPlus, double yPlus);
+    override void scale(double multiplier);
   private:
     point_t lowerLeft_;
     point_t upperRight_;
