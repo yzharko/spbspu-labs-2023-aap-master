@@ -16,8 +16,7 @@ rectangle_t Rectangle::getFrameRect() const
 
 double Rectangle::getArea() const
 {
-  rectangle_t frameRect = getFrameRect();
-  return (frameRect.width * frameRect.height);
+  return ((urCorner.x - llCorner.x) * (urCorner.y - llCorner.y));
 }
 
 void Rectangle::move(point_t newCenter)
