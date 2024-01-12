@@ -7,6 +7,7 @@ namespace kovshikov
   class Shape
   {
   public:
+    virtual ~Shape() = 0; //
     virtual double getArea() = 0;
     virtual rectangle_t getFrameRect() = 0;
     virtual void move(point_t newPos) = 0;
