@@ -1,5 +1,9 @@
 #include "helpfulFuncs.hpp"
 #include <algorithm>
+#include "base-types.hpp"
+#include "rectangle.hpp"
+#include "circle.hpp"
+#include "complexquad.hpp"
 
 bool khoroshkin::isRectangleCorrect(double x1, double y1, double x2, double y2)
 {
