@@ -3,6 +3,7 @@
 #include <cctype>
 #include <iomanip>
 #include <cmath>
+#include <algorithm>
 #include "base-types.hpp"
 #include "shape.hpp"
 #include "rectangle.hpp"
