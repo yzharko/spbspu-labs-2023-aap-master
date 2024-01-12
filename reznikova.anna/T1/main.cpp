@@ -43,7 +43,6 @@ int main()
       catch (const std::runtime_error &e)
       {
         std::cerr << e.what();
-        freeArray(figures, stored);
         return 1;
       }
       freeArray(figures, stored);
