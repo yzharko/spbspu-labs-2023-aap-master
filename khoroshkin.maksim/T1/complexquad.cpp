@@ -6,12 +6,12 @@ using namespace khoroshkin;
 Complexquad::Complexquad(point_t first, point_t second, point_t third,point_t fourth):
  pointA(first), pointB(second), pointC(third), pointD(fourth)
 {
-  double k1 = (pointB.y - pointA.y) / (pointB.x - pointA.x);
-  double b1 = pointA.y - k1 * pointA.x;
-  double k2 = (pointD.y - pointC.y) / (pointD.x - pointC.x);
-  double b2 = pointC.y - k2 * pointC.x;
-  cPoint.x = (b2 - b1) / (k1 - k2);
-  cPoint.y = k1 * cPoint.x + b1;
+  double angleCoeffAB = (pointB.y - pointA.y) / (pointB.x - pointA.x);
+  double yIntercectionAB = pointA.y - angleCoeffAB * pointA.x;
+  double angleCoeffCD = (pointD.y - pointC.y) / (pointD.x - pointC.x);
+  double yIntercectionCD = pointC.y - angleCoeffCD * pointC.x;
+  centerPoint.x = (yIntercectionCD - yIntercectionAB) / (angleCoeffAB - angleCoeffCD);
+  centerPoint.y = angleCoeffAB * centerPoint.x + yIntercectionAB;
 }
 
 double Complexquad::getArea() const
@@ -36,8 +36,8 @@ rectangle_t Complexquad::getFrameRect() const
 
 void Complexquad::move(const point_t & newPoint)
 {
-  double dx = newPoint.x - cPoint.x;
-  double dy = newPoint.y - cPoint.y;
+  double dx = newPoint.x - centerPoint.x;
+  double dy = newPoint.y - centerPoint.y;
   move(dx,dy);
 }
 
@@ -47,17 +47,17 @@ void Complexquad::move(double dx, double dy)
   pointB = {pointB.x + dx, pointB.y + dy};
   pointC = {pointC.x + dx, pointC.y + dy};
   pointD = {pointD.x + dx, pointD.y + dy};
-  cPoint = {cPoint.x + dx, cPoint.y + dy};
+  centerPoint = {centerPoint.x + dx, centerPoint.y + dy};
 }
 
 void Complexquad::scale(double k)
 {
-  pointA.x = cPoint.x + k * (pointA.x - cPoint.x);
-  pointA.y = cPoint.y + k * (pointA.y - cPoint.y);
-  pointB.x = cPoint.x + k * (pointB.x - cPoint.x);
-  pointB.y = cPoint.y + k * (pointB.y - cPoint.y);
-  pointC.x = cPoint.x + k * (pointC.x - cPoint.x);
-  pointC.y = cPoint.y + k * (pointC.y - cPoint.y);
-  pointD.x = cPoint.x + k * (pointD.x - cPoint.x);
-  pointD.y = cPoint.y + k * (pointD.y - cPoint.y);
+  pointA.x = centerPoint.x + k * (pointA.x - centerPoint.x);
+  pointA.y = centerPoint.y + k * (pointA.y - centerPoint.y);
+  pointB.x = centerPoint.x + k * (pointB.x - centerPoint.x);
+  pointB.y = centerPoint.y + k * (pointB.y - centerPoint.y);
+  pointC.x = centerPoint.x + k * (pointC.x - centerPoint.x);
+  pointC.y = centerPoint.y + k * (pointC.y - centerPoint.y);
+  pointD.x = centerPoint.x + k * (pointD.x - centerPoint.x);
+  pointD.y = centerPoint.y + k * (pointD.y - centerPoint.y);
 }

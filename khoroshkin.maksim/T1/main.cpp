@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <cctype>
-#include <algorithm>
 #include <iomanip>
 #include <cmath>
 #include "base-types.hpp"
@@ -9,22 +8,7 @@
 #include "rectangle.hpp"
 #include "circle.hpp"
 #include "complexquad.hpp"
-
-
-bool isRectangleCorrect(double x1, double y1, double x2, double y2)
-{
-  return x1 < x2 && y1 < y2;
-}
-
-bool isComplexquad(double x1,double y1,double x2,double y2,double x3,double y3,double x4,double y4)
-{
-  int quadrantA = (x1 > 0) ? ((y1 >= 0) ? 1 : 4) : ((y1 > 0) ? 2 : 3);
-  int quadrantB = (x2 > 0) ? ((y2 >= 0) ? 1 : 4) : ((y2 > 0) ? 2 : 3);
-  int quadrantC = (x3 > 0) ? ((y3 >= 0) ? 1 : 4) : ((y3 > 0) ? 2 : 3);
-  int quadrantD = (x4 > 0) ? ((y4 >= 0) ? 1 : 4) : ((y4 > 0) ? 2 : 3);
-
-  return (quadrantA != quadrantB && quadrantB != quadrantC && quadrantC != quadrantD && quadrantD != quadrantA);
-}
+#include "helpfulFuncs.hpp"
 
 int main()
 {
@@ -38,15 +22,7 @@ int main()
   {
     if (figuresCounter == initialSize)
     {
-      initialSize += initialSize;
-      Shape ** tempStorage = new Shape * [initialSize];
-      std::copy(allFigures, allFigures + figuresCounter, tempStorage);
-      for (size_t i = 0; i < figuresCounter; ++i)
-      {
-        delete allFigures[i];
-      }
-      delete[] allFigures;
-      allFigures = tempStorage;
+      allFigures = expandArray(allFigures, figuresCounter, initialSize);
     }
 
     if (type == "RECTANGLE")
