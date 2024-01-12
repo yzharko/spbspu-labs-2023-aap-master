@@ -117,7 +117,6 @@ void CompositeShape::move(point_t point)
   }
 }
 
-
 void CompositeShape::move(const double x, const double y)
 {
   for (size_t i = 0; i < shapes; ++i) {
@@ -130,7 +129,7 @@ void CompositeShape::scale(std::ostream &out, point_t center, double k)
   if (k < 0) {
     throw std::logic_error("Invalid coeff scale");
   }
-  if (shapes == 0){
+  if (shapes == 0) {
     throw std::logic_error("No correct figures");
   }
   out << std::fixed << std::setprecision(1);
@@ -143,7 +142,7 @@ void CompositeShape::scale(std::ostream &out, point_t center, double k)
   delete[] points;
   for (size_t i = 0; i < shapes; ++i) {
     point_t cPoint = shapeptrs[i]->getCPoint();
-    shapeptrs[i]->move(point_t{k * getDX(cPoint, center), k * getDY(cPoint, center)});
+    shapeptrs[i]->move(point_t{center.x + k * getDX(cPoint, center), center.y + k * getDY(cPoint, center)});
     shapeptrs[i]->scale(k);
   }
   out << getArea();

@@ -28,10 +28,8 @@ void Rectangle::scale(const double k)
   if (k < 0) {
     throw std::logic_error("Invalid scale argument");
   }
-  width *= 2;
-  height *= 2;
-  cPoint.x += (k - 1) * getDX(cPoint, point_t{0, 0});
-  cPoint.y += (k - 1) * getDY(cPoint, point_t{0, 0});
+  width *= k;
+  height *= k;
 }
 
 namespace anikanov {
