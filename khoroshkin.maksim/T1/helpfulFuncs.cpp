@@ -30,3 +30,12 @@ khoroshkin::Shape ** khoroshkin::expandArray(Shape ** array, size_t currSize, si
   return array;
 
 }
+
+void khoroshkin::deleteFigures(khoroshkin::Shape ** allFigures, size_t figuresCounter)
+{
+  for (size_t i = 0; i < figuresCounter; ++i)
+  {
+    delete allFigures[i];
+  }
+  delete[] allFigures;
+}

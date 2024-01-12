@@ -69,11 +69,7 @@ int main()
       if (figuresCounter == 0)
       {
         std::cerr << "Error: nothing to scale";
-        for (size_t i = 0; i < figuresCounter; ++i)
-        {
-          delete allFigures[i];
-        }
-        delete[] allFigures;
+        deleteFigures(allFigures, figuresCounter);
         return 1;
       }
       if (std::cin >> x >> y >> scale && scale > 0)
@@ -136,11 +132,7 @@ int main()
       else
       {
         std::cerr << "Error: wrong scale input\n";
-        for (size_t i = 0; i < figuresCounter; ++i)
-        {
-          delete allFigures[i];
-        }
-        delete[] allFigures;
+        deleteFigures(allFigures, figuresCounter);
         return 1;
       }
     }
@@ -154,11 +146,7 @@ int main()
       continue;
     }
   }
-  for (size_t i = 0; i < figuresCounter; ++i)
-  {
-    delete allFigures[i];
-  }
-  delete[] allFigures;
+  deleteFigures(allFigures, figuresCounter);
   if (!scaleCommandWas)
   {
     std::cerr << "Error: missing scale command";
