@@ -11,11 +11,12 @@ reznikova::Regular::Regular(point_t center, point_t point1, point_t point2):
   double side2 = pow((pow((center_.x-point2_.x), 2) + pow((center_.y-point2_.y), 2)), 0.5);
   r = (side1 < side2 ? side1 : side2);
   R = (side1 > side2 ? side1 : side2);
-  if ((M_PI / (acos(r/R)) - floor(M_PI / (acos(r/R)) + 0.5)) == 0)
+  num_sides = M_PI / (acos(r/R));
+  double eps = 0.00000000001;
+  if (fabs(num_sides - floor(num_sides + 0.5)) > eps)
   {
     throw std::runtime_error("wrong parameters\n");
   }
-  num_sides = M_PI / (acos(r/R));
 }
 
 double reznikova::Regular::getArea() const
