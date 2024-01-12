@@ -48,7 +48,7 @@ int main()
         catch (const std::logic_error& e)
         {
           wrongInput = true;
-          delete[] figureArray[count];
+          delete figureArray[count];
           count--;
         }
         count++;
@@ -87,6 +87,10 @@ int main()
       if (!std::cin || k < 0)
       {
         std::cerr << "Scale error\n";
+        for (size_t i = 0; i < count; i++)
+        {
+          delete figureArray[i];
+        }
         return 1;
       }
       else
@@ -133,6 +137,14 @@ int main()
       }
     }
   }
+  if(count > 0)
+  {
+    for (size_t i = 0; i < count; i++)
+    {
+      delete figureArray[i];
+    }
+  }
+
   if (std::cin.eof() && scale == false)
   {
     std::cerr << "Geometry error\n";
@@ -141,12 +153,5 @@ int main()
   if (wrongInput == true)
   {
     std::cerr << "Wrong input\n";
-  }
-  if(count > 0)
-  {
-    for (size_t i = 0; i < count; i++)
-    {
-      delete figureArray[i];
-    }
   }
 }
