@@ -109,10 +109,10 @@ int main()
         for (size_t j = 0; j < count; j++)
         {
           rectangle_t frame = figureArray[j]->getFrameRect();
-          LeftA = frame.pos_.x_ - 0.5 * frame.width_;
-          LeftB = frame.pos_.y_ - 0.5 * frame.height_;
-          RightA = frame.pos_.x_ + 0.5 * frame.width_;
-          RightB = frame.pos_.y_ + 0.5 * frame.height_;
+          LeftA = frame.pos.x - 0.5 * frame.width;
+          LeftB = frame.pos.y - 0.5 * frame.height;
+          RightA = frame.pos.x + 0.5 * frame.width;
+          RightB = frame.pos.y + 0.5 * frame.height;
           std::cout << std::fixed << std::setprecision(1) << ' ' << LeftA << ' ' << LeftB << ' ' << RightA << ' ' << RightB;
         }
         std::cout << "\n";
@@ -130,10 +130,10 @@ int main()
         for (size_t j = 0; j < count; j++)
         {
           rectangle_t frame = figureArray[j]->getFrameRect();
-          LeftA = frame.pos_.x_ - 0.5 * frame.width_;
-          LeftB = frame.pos_.y_ - 0.5 * frame.height_;
-          RightA = frame.pos_.x_ + 0.5 * frame.width_;
-          RightB = frame.pos_.y_ + 0.5 * frame.height_;
+          LeftA = frame.pos.x - 0.5 * frame.width;
+          LeftB = frame.pos.y - 0.5 * frame.height;
+          RightA = frame.pos.x + 0.5 * frame.width;
+          RightB = frame.pos.y + 0.5 * frame.height;
           std::cout << std::fixed << std::setprecision(1) << ' ' << LeftA << ' ' << LeftB << ' ' << RightA << ' ' << RightB;
         }
         std::cout << "\n";
