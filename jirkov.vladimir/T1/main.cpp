@@ -1,6 +1,7 @@
 #include <iostream>
 #include "shape.hpp"
 #include "rectangle.hpp"
+#include "diamond.hpp"
 #include "concave.hpp"
 #include <iomanip>
 
@@ -28,7 +29,20 @@ int main()
         countFig++;
       }
     }
-
+    else if (figure == "DIAMOND")
+    {
+      double xA, yA, xC, yC;
+      std::cin >> xA >> yA >> xC >> yC;
+      if (!std::cin)
+      {
+        wrIn = true;
+      }
+      else
+      {
+        geometricFigures[countFig] = new Diamond({xA, yA}, {xC, yC});
+        countFig++;
+      }
+    }
     else if (figure == "CONCAVE")
     {
       double xFir, yFir, xSec, ySec, xThi, yThi, xFou, yFou;
