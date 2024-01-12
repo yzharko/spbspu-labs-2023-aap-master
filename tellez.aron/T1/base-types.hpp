@@ -1,6 +1,7 @@
 #ifndef T1_BASE_TYPES_H
 #define T1_BASE_TYPES_H
 #include <cmath>
+
 struct point_t
 {
   double x;

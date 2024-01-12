@@ -1,4 +1,4 @@
-#include "shape.h"
+#include "shape.hpp"
 #include <stdexcept>
 void Shape::scaleWithVerify(double ds)
 {

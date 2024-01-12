@@ -1,4 +1,4 @@
-#include "ring.h"
+#include "ring.hpp"
 #include <stdexcept>
 
 Ring::Ring(point_t center, double outerRadius, double innerRadius) :
@@ -32,16 +32,6 @@ void Ring::move(point_t position)
 {
   center_ = position;
 }
-
-/*void Ring::scale(double factor)
-{
-  if (factor < 0.0)
-  {
-    throw std::logic_error("bad scale size");
-  }
-  outerRadius_ *= factor;
-  innerRadius_ *= factor;
-}*/
 
 Shape* Ring::clone() const
 {

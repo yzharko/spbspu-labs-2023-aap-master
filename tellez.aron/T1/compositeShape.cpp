@@ -1,7 +1,7 @@
-#include "compositeShape.h"
+#include "compositeShape.hpp"
 #include <limits>
 #include <stdexcept>
-#include "isoscale.h"
+#include "isoscale.hpp"
 
 CompositeShape::~CompositeShape()
 {

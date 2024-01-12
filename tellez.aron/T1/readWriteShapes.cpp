@@ -1,9 +1,9 @@
-#include "readWriteShapes.h"
+#include "readWriteShapes.hpp"
 #include <istream>
 #include <iomanip>
-#include "rectangle.h"
-#include "ellipse.h"
-#include "ring.h"
+#include "rectangle.hpp"
+#include "ellipse.hpp"
+#include "ring.hpp"
 
 Shape * createRectangle(std::istream & input)
 {

@@ -1,7 +1,8 @@
 #ifndef T1_ELLIPSE_H
 #define T1_ELLIPSE_H
-#include "base-types.h"
-#include "shape.h"
+#include "base-types.hpp"
+#include "shape.hpp"
+
 class Ellipse: public Shape
 {
   public:

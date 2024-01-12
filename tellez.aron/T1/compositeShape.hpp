@@ -1,7 +1,7 @@
 #ifndef T1_COMPOSITESHAPE_H
 #define T1_COMPOSITESHAPE_H
 #include <cstddef>
-#include "shape.h"
+#include "shape.hpp"
   class CompositeShape
   {
     public:

@@ -1,7 +1,7 @@
 #ifndef T1_RING_H
 #define T1_RING_H
-#include "shape.h"
-#include "base-types.h"
+#include "shape.hpp"
+#include "base-types.hpp"
 
 class Ring : public Shape
 {

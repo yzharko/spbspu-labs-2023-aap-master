@@ -1,6 +1,7 @@
 #ifndef T1_SHAPE_H
 #define T1_SHAPE_H
-#include "base-types.h"
+#include "base-types.hpp"
+
 class Shape
 {
   public:

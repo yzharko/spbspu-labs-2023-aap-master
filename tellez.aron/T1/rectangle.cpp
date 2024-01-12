@@ -1,4 +1,4 @@
-#include "rectangle.h"
+#include "rectangle.hpp"
 #include <stdexcept>
 
 double Rectangle::getArea() const

@@ -1,6 +1,6 @@
-#include "isoscale.h"
+#include "isoscale.hpp"
 #include <stdexcept>
-#include "base-types.h"
+#include "base-types.hpp"
 
 void isoScaleWithVerify(Shape * shape, scale_t scale)
 {

@@ -1,7 +1,7 @@
 #ifndef T1_RECTANGLE_H
 #define T1_RECTANGLE_H
-#include "base-types.h"
-#include "shape.h"
+#include "base-types.hpp"
+#include "shape.hpp"
 class Rectangle: public Shape
 {
   public:

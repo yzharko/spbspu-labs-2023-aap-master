@@ -1,7 +1,7 @@
 #include <iostream>
-#include "base-types.h"
-#include "readWriteShapes.h"
-#include "compositeShape.h"
+#include "base-types.hpp"
+#include "readWriteShapes.hpp"
+#include "compositeShape.hpp"
 
 int main()
 {

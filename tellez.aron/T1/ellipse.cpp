@@ -1,6 +1,6 @@
-#include "ellipse.h"
+#include "ellipse.hpp"
 #include <stdexcept>
-#include "base-types.h"
+#include "base-types.hpp"
 
 double Ellipse::getArea() const
 {
