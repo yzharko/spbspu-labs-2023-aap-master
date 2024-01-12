@@ -37,6 +37,6 @@ namespace miheev
     bool condition1 = A.distTo(B) + A.distTo(C) < B.distTo(C);
     bool condition2 = A.distTo(B) + B.distTo(C) < A.distTo(C);
     bool condition3 = B.distTo(C) + A.distTo(C) < A.distTo(B);
-    return condition1 && condition1 && condition3;
+    return condition1 && condition2 && condition3;
   }
 }
