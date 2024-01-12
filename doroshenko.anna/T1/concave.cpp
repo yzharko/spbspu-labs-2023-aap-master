@@ -11,7 +11,7 @@ Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, po
   fourthPoint_(fourthPoint)
 {}
 
-double Concave::getArea()
+double Concave::getArea() const
 {
   double aF = sqrt(pow((firstPoint_.x - secondPoint_.x), 2) + pow((firstPoint_.y - secondPoint_.y), 2));
   double bF = sqrt(pow((secondPoint_.x - thirdPoint_.x), 2) + pow((secondPoint_.y - thirdPoint_.y), 2));
@@ -63,7 +63,7 @@ double Concave::getArea()
   return firstArea - secondArea;
 }
 
-rectangle_t Concave::getFrameRect()
+rectangle_t Concave::getFrameRect() const
 {
   double maxX = firstPoint_.x >= secondPoint_.x ? firstPoint_.x : secondPoint_.x;
   maxX = maxX >= thirdPoint_.x ? maxX : thirdPoint_.x;

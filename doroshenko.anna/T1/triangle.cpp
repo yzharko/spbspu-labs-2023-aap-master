@@ -10,7 +10,7 @@ Triangle::Triangle(point_t firstPoint, point_t secondPoint, point_t thirdPoint) 
   thirdPoint_(thirdPoint)
 {}
 
-double Triangle::getArea()
+double Triangle::getArea() const
 {
   double a = sqrt(pow((firstPoint_.x - secondPoint_.x), 2) + pow((firstPoint_.y - secondPoint_.y), 2));
   double b = sqrt(pow((secondPoint_.x - thirdPoint_.x), 2) + pow((secondPoint_.y - thirdPoint_.y), 2));
@@ -28,7 +28,7 @@ double Triangle::getArea()
   return sqrt(p * (p - a) * (p - b) * (p - c));
 }
 
-rectangle_t Triangle::getFrameRect()
+rectangle_t Triangle::getFrameRect() const
 {
   double maxX = firstPoint_.x >= secondPoint_.x ? firstPoint_.x : secondPoint_.x;
   maxX = maxX >= thirdPoint_.x ? maxX : thirdPoint_.x;

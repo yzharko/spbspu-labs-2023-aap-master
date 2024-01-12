@@ -7,13 +7,13 @@ Rectangle::Rectangle(point_t lowerLeft, point_t upperRight) :
   upperRight_(upperRight)
 {}
 
-double Rectangle::getArea()
+double Rectangle::getArea() const
 {
   rectangle_t frame = getFrameRect();
   return frame.width * frame.height;
 }
 
-rectangle_t Rectangle::getFrameRect()
+rectangle_t Rectangle::getFrameRect() const
 {
   double width = upperRight_.x - lowerLeft_.x;
   double height = upperRight_.y - lowerLeft_.y;
