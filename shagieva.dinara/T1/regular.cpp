@@ -24,13 +24,28 @@ double Regular::getArea() const
 
 rectangle_t Regular::getFrameRect() const
 {
-  int numberOfSides = getNumberOfSides();
-  double regularAngle = (numberOfSides - 2) * 180 / numberOfSides;
-  double externalAngle = 180 - regularAngle;
-  double regularSide = getLength(points[1], points[2]) * 2;
-  double extraWidth = regularSide * std::cos(externalAngle * 3.14 / 180);
-  double extraHeight = regularSide * std::sin(externalAngle * 3.14 / 180);
-  return { extraWidth * 2 + regularSide, extraHeight + extraWidth , points[0] };
+  double width = 0;
+  if (std::fabs(points[1].x - points[0].x) > std::fabs(points[2].x - points[0].x))
+  {
+    width = 2 * std::fabs(points[1].x - points[0].x);
+  }
+  else
+  {
+    width = 2 * std::fabs(points[2].x - points[0].x);
+  }
+
+  double height = 0;
+  if (std::fabs(points[1].y - points[0].y) > std::fabs(points[2].y - points[0].y))
+  {
+    height = 2 * std::fabs(points[1].y - points[0].y);
+  }
+  else
+  {
+    height = 2 * std::fabs(points[2].y - points[0].y);
+  }
+
+  double rectSide = (width > height ? width : height);
+  return { rectSide, rectSide, points[0] };
 }
 
 void Regular::move(const double dx, const double dy)
@@ -86,3 +101,4 @@ int Regular::getNumberOfSides() const
 
   return static_cast<int>(round(numberOfSides));
 }
+
