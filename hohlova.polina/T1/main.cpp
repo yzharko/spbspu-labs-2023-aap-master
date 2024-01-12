@@ -95,6 +95,19 @@ int main()
         std::cerr << "no figures\n";
         return 1;
       }
+      double areaSum = 0;
+      for (size_t i = 0; i < figuresCount; i++)
+      {
+        areaSum += figures[i]->getArea();
+      }
+      std::cout << std::fixed << std::setprecision(1) << areaSum;
+      for (size_t i = 0; i < figuresCount; i++)
+      {
+        rectangle_t frameOfRect = figures[i]->getFrameRect();
+        std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos_.x_ << ' ' << frameOfRect.pos_.y_;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos_.x_ << ' ' << frameOfRect.pos_.y_;
+      }
+      std::cout << "\n";
     }
   }
   if (checkInput == true)
