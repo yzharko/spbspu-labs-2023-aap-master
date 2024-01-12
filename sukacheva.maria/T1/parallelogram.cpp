@@ -18,8 +18,8 @@ sukacheva::Parallelogram::Parallelogram(point_t A, point_t B, point_t C) :
 
 double sukacheva::Parallelogram::getArea() const
 {
-  double height = std::abs(std::max({ A_.y, B_.y, C_.y })
-    - std::min({ A_.y, B_.y, C_.y }));
+  double height = std::abs(std::max(std::max(A_.y, B_.y), C_.y) -
+    std::min(std::min(A_.y, B_.y), C_.y));
   double lenght = A_.y == B_.y ? std::abs(A_.x - B_.x) : B_.y == C_.y ?
     std::abs(C_.x - B_.x) : std::abs(A_.x - C_.x);
   return height * lenght;
@@ -69,9 +69,11 @@ void sukacheva::Parallelogram::newScale(point_t center, double k)
 
 sukacheva::rectangle_t sukacheva::Parallelogram::getFrameRect() const
 {
-  double height = std::abs(std::max({ A_.y, B_.y, C_.y }) - std::min({ A_.y, B_.y, C_.y }));
-  double width = std::abs(std::max({ A_.x, B_.x, C_.x }) - std::min({ A_.x, B_.x, C_.x }));
-  point_t cos(((std::max({ A_.x, B_.x, C_.x }) + std::min({ A_.x, B_.x, C_.x })) * 0.5),
-    ((std::max({ A_.y, B_.y, C_.y }) + std::min({ A_.y, B_.y, C_.y })) * 0.5));
+  double height = std::abs(std::max(std::max(A_.y, B_.y), C_.y)
+    - std::min(std::min(A_.y, B_.y), C_.y));
+  double width = std::abs(std::max(std::max(A_.x, B_.x), C_.x) -
+    std::min(std::min(A_.x, B_.x), C_.x));
+  point_t cos(((std::max(std::max(A_.x, B_.x), C_.x) - std::min(std::min(A_.x, B_.x), C_.x)) * 0.5),
+    ((std::max(std::max(A_.y, B_.y), C_.y) + std::min(std::min(A_.y, B_.y), C_.y)) * 0.5));
   return rectangle_t(width, height, cos);
 }
