@@ -1,20 +1,20 @@
+#include <iostream>
 #include "rectangle.hpp"
 #include " base-types.hpp"
-#include <iostream>
 
-Rectangle::Rectangle(point_t lPoint, point_t rPoint):
+kaseev::Rectangle::Rectangle(point_t lPoint, point_t rPoint):
     lPoint(lPoint),
     rPoint(rPoint)
 {}
 
-double Rectangle::getArea()
+double kaseev::Rectangle::getArea()
 {
   double width = std::abs(rPoint.x - lPoint.x);
   double height = std::abs(rPoint.y - lPoint.y);
   return width * height;
 }
 
-rectangle_t Rectangle::getFrameRect()
+rectangle_t kaseev::Rectangle::getFrameRect()
 {
   double width = std::abs(rPoint.x - lPoint.x);
   double height = std::abs(rPoint.y - lPoint.y);
@@ -22,7 +22,7 @@ rectangle_t Rectangle::getFrameRect()
   return rectangle_t{ width, height, pos};
 }
 
-void Rectangle::move(double nx, double ny)
+void kaseev::Rectangle::move(double nx, double ny)
 {
   lPoint.x += nx;
   lPoint.y += ny;
@@ -30,14 +30,14 @@ void Rectangle::move(double nx, double ny)
   rPoint.y += ny;
 }
 
-void Rectangle::move(point_t center)
+void kaseev::Rectangle::move(point_t center)
 {
   double width = std::abs(rPoint.x - lPoint.x);
   double height = std::abs(rPoint.y - lPoint.y);
   rectangle_t New = {width, height, center};
 }
 
-void Rectangle::scale(double k, point_t pos)
+void kaseev::Rectangle::scale(double k, point_t pos)
 {
   lPoint.x *= k;
   lPoint.y *= k;

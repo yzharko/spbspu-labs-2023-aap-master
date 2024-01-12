@@ -10,5 +10,4 @@ class shape
   virtual void move(point_t center) = 0;
   virtual void scale(double k) = 0;
 };
-
 #endif

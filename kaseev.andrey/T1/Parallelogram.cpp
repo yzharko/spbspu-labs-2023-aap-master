@@ -1,5 +1,3 @@
-//
-// Created by МВидео on 12.01.2024.
-//
-
+#include <iostream>
 #include "Parallelogram.hpp"
+#include " base-types.hpp"

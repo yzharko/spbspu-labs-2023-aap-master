@@ -1,5 +1,9 @@
-//
-// Created by МВидео on 12.01.2024.
-//
-
+#include <iostream>
 #include "Ellipse.hpp"
+#include " base-types.hpp"
+
+kaseev::Ellipce::Ellipce(point_t center, double verticalRad, double gorisontRad):
+    center(center),
+    verticalRad(verticalRad),
+    gorisontRad(gorisontRad)
+{}
