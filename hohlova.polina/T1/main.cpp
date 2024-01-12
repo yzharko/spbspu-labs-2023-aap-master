@@ -96,7 +96,10 @@ int main()
         return 1;
       }
     }
-    return 0;
+  }
+  if (checkInput == true)
+  {
+    std::cerr << "problems with input\n";
   }
 }
 
