@@ -107,7 +107,7 @@ int main()
         rectangle_t frameOfRect = figures[i]->getFrameRect();
         std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos_.x_ << ' ' << frameOfRect.pos_.y_;
         std::cout << std::fixed << std::setprecision(1) << ' ' << frameOfRect.pos_.x_ << ' ' << frameOfRect.pos_.y_;
-        delete figures[i];
+        delete[] figures[i];
 }
       std::cout << "\n";
       break;
