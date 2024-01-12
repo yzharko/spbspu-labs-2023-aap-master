@@ -59,9 +59,9 @@ namespace anikanov {
 double Rectangle::getDX(point_t fp, point_t sp)
 {
   return fp.x - sp.x;
-};
+}
 
 double Rectangle::getDY(point_t fp, point_t sp)
 {
   return fp.y - sp.y;
-};
+}
