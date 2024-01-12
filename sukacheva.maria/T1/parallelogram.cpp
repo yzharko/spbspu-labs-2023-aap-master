@@ -2,6 +2,7 @@
 #include "base-types.hpp"
 #include <iostream>
 #include <cmath>
+#include "equalityOfPoints.hpp"
 
 sukacheva::Parallelogram::Parallelogram(point_t A, point_t B, point_t C) :
   A_(A),
@@ -9,7 +10,7 @@ sukacheva::Parallelogram::Parallelogram(point_t A, point_t B, point_t C) :
   C_(C)
 {
 
-  if ((A_.x == B_.x == C_.x && A_.y == B_.y == C_.y)
+  if ((sukacheva::arePointsEqual(A_, B_) && sukacheva::arePointsEqual(C_, B_))
     || !(A_.y == B_.y || B_.y == C_.y))
   {
     throw std::logic_error("wrong parameters\n");

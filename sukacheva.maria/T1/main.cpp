@@ -83,8 +83,6 @@ int main() {
         return 2;
       }
       else {
-        double x1, y1, x2, y2 = 0;
-        double x3, y3, x4, y4 = 0;
         point_t center{ x, y };
         double firstArea = 0;
         double newArea = 0;
