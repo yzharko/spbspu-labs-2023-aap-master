@@ -15,10 +15,10 @@ namespace reznikova
     ~Regular() override = default;
     double getArea() const override;
     rectangle_t getFrameRect() const override;
-    void move(double dx, double dy) override;
-    void move(point_t new_center) override;
-    void scale(double n) override;
-    void newscale(point_t center, double n) override;
+    void move(const double dx, const double dy) override;
+    void move(const point_t new_center) override;
+    void scale(const double n) override;
+    void newscale(const point_t center, const double n) override;
   private:
     point_t center_;
     point_t point1_;

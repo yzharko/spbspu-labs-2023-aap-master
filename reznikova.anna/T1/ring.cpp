@@ -29,25 +29,25 @@ reznikova::rectangle_t reznikova::Ring::getFrameRect() const
   return rectangle;
 }
 
-void reznikova::Ring::move(double dx, double dy)
+void reznikova::Ring::move(const double dx, const double dy)
 {
   center_.x += dx;
   center_.y += dy;
 }
 
-void reznikova::Ring::move(point_t new_center)
+void reznikova::Ring::move(const point_t new_center)
 {
   center_.x = new_center.x;
   center_.y = new_center.y;
 }
 
-void reznikova::Ring::scale(double n)
+void reznikova::Ring::scale(const double n)
 {
   r1_ *= n;
   r2_ *= n;
 }
 
-void reznikova::Ring::newscale(point_t scale_center, double n)
+void reznikova::Ring::newscale(const point_t scale_center, const double n)
 {
   r1_ *= n;
   r2_ *= n;

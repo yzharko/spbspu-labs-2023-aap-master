@@ -30,7 +30,7 @@ reznikova::rectangle_t reznikova::Rectangle::getFrameRect() const
   return rectangle;
 }
 
-void reznikova::Rectangle::move(double dx, double dy)
+void reznikova::Rectangle::move(const double dx, const double dy)
 {
   leftpoint_.x += dx;
   rightpoint_.x += dx;
@@ -38,7 +38,7 @@ void reznikova::Rectangle::move(double dx, double dy)
   rightpoint_.y += dy;
 }
 
-void reznikova::Rectangle::move(point_t new_center)
+void reznikova::Rectangle::move(const point_t new_center)
 {
   double new_x0 = new_center.x;
   double new_y0 = new_center.y;
@@ -49,7 +49,7 @@ void reznikova::Rectangle::move(point_t new_center)
   move(dx, dy);
 }
 
-void reznikova::Rectangle::scale(double n)
+void reznikova::Rectangle::scale(const double n)
 {
   double width = std::abs(rightpoint_.x - leftpoint_.x);
   double height = std::abs(rightpoint_.y - leftpoint_.y);
@@ -59,7 +59,7 @@ void reznikova::Rectangle::scale(double n)
   rightpoint_.y += height/2*(n-1);
 }
 
-void reznikova::Rectangle::newscale(point_t scale_center, double n)
+void reznikova::Rectangle::newscale(const point_t scale_center, const double n)
 {
   double lp_dx = leftpoint_.x - scale_center.x;
   double lp_dy = leftpoint_.y - scale_center.y;

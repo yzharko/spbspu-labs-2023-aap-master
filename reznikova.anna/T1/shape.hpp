@@ -11,10 +11,10 @@ namespace reznikova
     virtual ~Shape() = default;
     virtual double getArea() const = 0;
     virtual rectangle_t getFrameRect() const = 0;
-    virtual void move(double dx, double dy) = 0;
-    virtual void move(point_t new_center) = 0;
-    virtual void scale(double n) = 0;
-    virtual void newscale(point_t scale_center, double n) = 0;
+    virtual void move(const double dx, const double dy) = 0;
+    virtual void move(const point_t new_center) = 0;
+    virtual void scale(const double n) = 0;
+    virtual void newscale(const point_t scale_center, const double n) = 0;
   };
 }
 
