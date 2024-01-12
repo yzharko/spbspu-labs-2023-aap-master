@@ -1,28 +1,22 @@
 #include <iostream>
-#include <string>
-#include <sstream>
 #include <iomanip>
 #include "shape.hpp"
 #include "parallelogram.hpp"
 #include "rectangle.hpp"
 #include "concave.hpp"
+#include "shapeProcessing.hpp"
 
 int main()
 {
-  redko::Shape** shapes = new redko::Shape * [1000] {};
-  redko::point_t* points = nullptr;
+  redko::Shape ** shapes = new redko::Shape * [1000] {};
+  redko::point_t * points = nullptr;
   int shapesCounter = 0;
-  std::string shape, type = "";
-  bool some_descr_is_wrong = false;
-  bool shapes_are_scaled = false;
-  double x, y;
-  std::stringstream shapeStream("");
+  std::string type = "";
+  bool someDescrIsWrong = false;
+  bool shapesAreScaled = false;
 
-  while (!std::cin.eof())
+  while (std::cin >> type)
   {
-    std::getline(std::cin, shape);
-    shapeStream << shape;
-    shapeStream >> type;
     if (type == "SCALE")
     {
       if (shapesCounter == 0)
@@ -31,8 +25,8 @@ int main()
         delete[] shapes;
         return 1;
       }
-      double coefficient;
-      if (!(shapeStream >> x >> y >> coefficient) || coefficient <= 0)
+      double x, y, coefficient;
+      if (!(std::cin >> x >> y >> coefficient) || coefficient <= 0)
       {
         std::cerr << "wrong scale parameters\n";
         for (int i = 0; i < shapesCounter; i++)
@@ -84,7 +78,7 @@ int main()
         std::cout << ' ' << scaledFrameXY[i];
       }
       std::cout << '\n';
-      if (some_descr_is_wrong)
+      if (someDescrIsWrong)
       {
         std::cerr << "errors in the description of supported shapes\n";
       }
@@ -97,87 +91,51 @@ int main()
       delete[] scaledFrameXY;
       return 0;
     }
-    points = new redko::point_t[4] {};
-    int i = 0;
-    bool descr_is_wrong = false;
+
+    if (!redko::isTypeCorrect(type))
+    {
+      continue;
+    }
 
     if (type == "RECTANGLE")
     {
-      while (shapeStream >> x)
-      {
-        if (i > 1 || !(shapeStream >> y))
-        {
-          some_descr_is_wrong = true;
-          descr_is_wrong = true;
-          break;
-        }
-        points[i++] = { x, y };
-      }
-      if (points[0].x > points[1].x || points[0].y > points[1].y)
-      {
-        some_descr_is_wrong = true;
-      }
-      else if (!descr_is_wrong && i == 2)
+      points = redko::getRectanglePoints();
+      if (redko::isRectangleCorrect(points))
       {
         shapes[shapesCounter++] = new redko::Rectangle(points[0], points[1]);
+      }
+      else
+      {
+        someDescrIsWrong = true;
       }
     }
     else if (type == "PARALLELOGRAM")
     {
-      while (shapeStream >> x)
-      {
-        if (i > 2 || !(shapeStream >> y))
-        {
-          some_descr_is_wrong = true;
-          descr_is_wrong = true;
-          break;
-        }
-        points[i++] = { x, y };
-      }
-      if (points[0].y != points[1].y && points[2].y != points[0].y)
-      {
-        some_descr_is_wrong = true;
-      }
-      else if (!descr_is_wrong && i == 3)
+      points = redko::getParallelogramPoints();
+      if (redko::isParallelogramCorrect(points))
       {
         shapes[shapesCounter++] = new redko::Parallelogram(points[0], points[1], points[2]);
+      }
+      else
+      {
+        someDescrIsWrong = true;
       }
     }
     else if (type == "CONCAVE")
     {
-      while (shapeStream >> x)
-      {
-        if (i > 3 || !(shapeStream >> y))
-        {
-          some_descr_is_wrong = true;
-          descr_is_wrong = true;
-          break;
-        }
-        points[i++] = { x, y };
-      }
-      double firstTriangle = points[0].x * (points[1].y - points[3].y) + points[1].x * (points[3].y - points[0].y);
-      firstTriangle = std::abs((firstTriangle + points[3].x * (points[0].y - points[1].y)) / 2.0);
-      double secondTriangle = points[0].x * (points[3].y - points[2].y) + points[3].x * (points[2].y - points[0].y);
-      secondTriangle = std::abs((secondTriangle + points[2].x * (points[0].y - points[3].y)) / 2.0);
-      double thirdTriangle = points[3].x * (points[1].y - points[2].y) + points[1].x * (points[2].y - points[3].y);
-      thirdTriangle = std::abs((thirdTriangle + points[2].x * (points[3].y - points[1].y)) / 2.0);
-      double fourthTriangle = points[0].x * (points[1].y - points[2].y) + points[1].x * (points[2].y - points[0].y);
-      fourthTriangle = std::abs((fourthTriangle + points[2].x * (points[0].y - points[1].y)) / 2.0);
-      double sumOfTriangles = firstTriangle + secondTriangle + thirdTriangle;
-      if (firstTriangle * secondTriangle * thirdTriangle * fourthTriangle == 0 || sumOfTriangles != fourthTriangle)
-      {
-        some_descr_is_wrong = true;
-      }
-      else if (!descr_is_wrong && i == 4)
+      points = redko::getConcavePoints();
+      if (redko::isConcaveCorrect(points))
       {
         shapes[shapesCounter++] = new redko::Concave(points[0], points[1], points[2], points[3]);
       }
+      else
+      {
+        someDescrIsWrong = true;
+      }
     }
     delete[] points;
-    shapeStream.str(std::string());
-    shapeStream.clear();
   }
-  if (!shapes_are_scaled)
+  if (!shapesAreScaled)
   {
     std::cerr << "shapes was not scaled\n";
     for (int i = 0; i < shapesCounter; i++)
