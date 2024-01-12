@@ -1,6 +1,7 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
 #include "shape.hpp"
+
 namespace jirkov
 {
   class Rectangle : public Shape
@@ -17,4 +18,5 @@ namespace jirkov
     point_t topRight_;
   };
 }
+
 #endif

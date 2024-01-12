@@ -1,6 +1,7 @@
 #ifndef SHAPE_HPP
 #define SHAPE_HPP
 #include "base-types.hpp"
+
 namespace jirkov
 {
   class Shape
@@ -14,4 +15,5 @@ namespace jirkov
     virtual void scale(double k) = 0;
   };
 }
+
 #endif

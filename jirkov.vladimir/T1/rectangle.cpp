@@ -32,7 +32,10 @@ void Rectangle::move(double moveX, double moveY)
 {
   bottomLeft_.x += moveX;
   bottomLeft_.y += moveY;
+  topRight_.x += moveX;
+  topRight_.y += moveY;
 }
+
 void Rectangle::scale(double k)
 {
   rectangle_t frame = getFrameRect();

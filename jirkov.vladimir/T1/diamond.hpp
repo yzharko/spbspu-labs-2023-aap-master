@@ -1,6 +1,7 @@
 #ifndef DIAMOND_HPP
 #define DIAMOND_HPP
 #include "shape.hpp"
+
 namespace jirkov
 {
   class Diamond : public Shape
@@ -20,4 +21,5 @@ namespace jirkov
     double secondSide_;
   };
 }
+
 #endif

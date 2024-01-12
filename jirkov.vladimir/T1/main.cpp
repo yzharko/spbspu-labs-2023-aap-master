@@ -14,7 +14,7 @@ int main()
   bool wrongInput = false;
   std::string geometryFigure = "";
   bool scale = false;
-  while (std::cin >> geometryFigure && !std::cin.eof())
+  while (std::cin>>geometryFigure && !std::cin.eof())
   {
     if (geometryFigure == "RECTANGLE")
     {
@@ -30,6 +30,7 @@ int main()
         count++;
       }
     }
+
     else if (geometryFigure == "DIAMOND")
     {
       double firstTop, secondTop, firstMedium, secondMedium, firstUnder, secondUnder;
@@ -40,7 +41,7 @@ int main()
       }
       else
       {
-        figureArray[count] = new Diamond({ firstTop, secondTop }, { firstMedium, secondMedium }, { firstUnder, secondUnder });
+        figureArray[count] = new Diamond({firstTop, secondTop}, {firstMedium, secondMedium}, {firstUnder, secondUnder});
         try
         {
           figureArray[count]->getArea();
@@ -54,6 +55,7 @@ int main()
         count++;
       }
     }
+
     else if (geometryFigure == "CONCAVE")
     {
       double FirstA, FirstB, SecondA, SecondB, ThirdA, ThirdB, FourthA, FourthB;
@@ -123,7 +125,7 @@ int main()
           double moveX = fabs(end.pos.x - begin.pos.x) * k;
           double moveY = fabs(end.pos.y - begin.pos.y) * k;
           figureArray[l]->scale(k);
-          figureArray[l]->move(moveX, moveY);
+          figureArray[l]->move( moveX, moveY );
         }
         double sumAreaAfter = 0;
         for (size_t i = 0; i < count; i++)
@@ -146,7 +148,7 @@ int main()
       }
     }
   }
-  if (count > 0)
+  if(count > 0)
   {
     for (size_t i = 0; i < count; i++)
     {

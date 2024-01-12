@@ -82,7 +82,14 @@ void Concave::move(double moveX, double moveY)
 {
   firstPoint_.x += moveX;
   firstPoint_.y += moveY;
+  secondPoint_.x += moveX;
+  secondPoint_.y += moveY;
+  thirdPoint_.x += moveX;
+  thirdPoint_.y += moveY;
+  fourthPoint_.x += moveX;
+  fourthPoint_.y += moveY;
 }
+
 void Concave::scale(double k)
 {
   point_t pos;

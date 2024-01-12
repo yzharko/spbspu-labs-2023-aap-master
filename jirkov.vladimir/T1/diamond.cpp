@@ -8,6 +8,7 @@ Diamond::Diamond(point_t topPoint, point_t rightPoint, point_t centerPoint) :
     firstSide_(std::abs(topPoint.y - centerPoint.y)),
     secondSide_(std::abs(rightPoint.y - centerPoint.y))
 {}
+
 double Diamond::getArea() const
 {
     return (2 * firstSide_ * secondSide_);
@@ -41,6 +42,7 @@ void Diamond::move(double moveX, double moveY)
     rightPoint_.y += moveY;
     topPoint_.y += moveY;
 }
+
 void Diamond::scale(double k)
 {
     rightPoint_.x *= k;

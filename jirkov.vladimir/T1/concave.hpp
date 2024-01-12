@@ -1,6 +1,7 @@
 #ifndef CONCAVE_HPP
 #define CONCAVE_HPP
 #include "shape.hpp"
+
 namespace jirkov
 {
   class Concave : public Shape
@@ -19,4 +20,5 @@ namespace jirkov
     point_t fourthPoint_;
   };
 }
+
 #endif
