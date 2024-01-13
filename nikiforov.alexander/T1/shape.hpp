@@ -4,7 +4,7 @@
 
 namespace nikiforov
 {
-  class shape
+  class Shape
   {
     virtual double getArea() const = 0;
     virtual rectangle_t getFrameRect() const = 0;

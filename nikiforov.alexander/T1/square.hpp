@@ -4,7 +4,7 @@
 
 namespace nikiforov
 {
-  class Square : public shape
+  class Square : public Shape
   {
   public:
     Square(point_t firstPoint, double length);

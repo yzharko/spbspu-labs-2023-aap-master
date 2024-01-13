@@ -4,7 +4,7 @@
 
 namespace nikiforov
 {
-  class Rectangle : public shape
+  class Rectangle : public Shape
   {
   public:
     Rectangle(point_t firstPoint, point_t secondPoint);

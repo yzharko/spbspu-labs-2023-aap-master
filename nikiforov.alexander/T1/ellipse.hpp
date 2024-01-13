@@ -4,7 +4,7 @@
 
 namespace nikiforov
 {
-  class Ellipse : public shape
+  class Ellipse : public Shape
   {
   public:
     Ellipse(point_t firstPoint, double firstRad, double secondRad);
