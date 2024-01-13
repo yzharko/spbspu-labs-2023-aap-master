@@ -128,7 +128,6 @@ int main()
         for (size_t i = 0; i < counter; i++)
         {
           delete figuers[i];
-          std::cout << "penis\n";
         }
         delete[] figuers;
         return 1;
