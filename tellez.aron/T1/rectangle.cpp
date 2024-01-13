@@ -1,6 +1,8 @@
 #include "rectangle.hpp"
 #include <stdexcept>
 
+using namespace tellez;
+
 double Rectangle::getArea() const
 {
   return rect_.width * rect_.height;

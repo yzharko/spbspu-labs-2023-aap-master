@@ -3,6 +3,8 @@
 #include <stdexcept>
 #include "isoscale.hpp"
 
+using namespace tellez;
+
 CompositeShape::~CompositeShape()
 {
   freeMemory(shapes, size_);

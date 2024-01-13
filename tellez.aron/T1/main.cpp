@@ -3,6 +3,8 @@
 #include "readWriteShapes.hpp"
 #include "compositeShape.hpp"
 
+using namespace tellez;
+
 int main()
 {
   const size_t basicCapacity = 10;

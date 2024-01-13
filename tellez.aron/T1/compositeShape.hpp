@@ -2,6 +2,8 @@
 #define T1_COMPOSITESHAPE_H
 #include <cstddef>
 #include "shape.hpp"
+namespace tellez
+{
   class CompositeShape
   {
     public:
@@ -34,4 +36,5 @@
       size_t size_;
       void freeMemory(Shape ** shp, size_t size) const;
   };
+}
 #endif

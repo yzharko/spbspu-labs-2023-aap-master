@@ -2,7 +2,9 @@
 #include <stdexcept>
 #include "base-types.hpp"
 
-void isoScaleWithVerify(Shape * shape, scale_t scale)
+using namespace tellez;
+
+void tellez::isoScaleWithVerify(Shape * shape, scale_t scale)
 {
   if (scale.ds <= 0)
   {
@@ -21,7 +23,7 @@ point_t resizePoint(const point_t & point, const scale_t & scale)
   return {diffPoint(point, scale.pos).x * scale.ds, diffPoint(point, scale.pos).y * scale.ds};
 }
 
-void isoScaleWithoutVerify(Shape * shape, scale_t scale)
+void tellez::isoScaleWithoutVerify(Shape * shape, scale_t scale)
 {
   point_t pos = shape->getFrameRect().pos;
   shape->move(scale.pos);

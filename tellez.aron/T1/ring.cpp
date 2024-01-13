@@ -1,6 +1,8 @@
 #include "ring.hpp"
 #include <stdexcept>
 
+using namespace tellez;
+
 Ring::Ring(point_t center, double outerRadius, double innerRadius) :
   center_(center),
   outerRadius_(outerRadius),

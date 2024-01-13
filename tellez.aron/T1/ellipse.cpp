@@ -2,6 +2,8 @@
 #include <stdexcept>
 #include "base-types.hpp"
 
+using namespace tellez;
+
 double Ellipse::getArea() const
 {
   return r1 * r2 * PI;
