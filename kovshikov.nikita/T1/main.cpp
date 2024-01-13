@@ -32,9 +32,9 @@ int main()
     {
       double vertexAX, vertexAY, vertexBX, vertexBY, vertexCX, vertexCY;
       std::cin >> vertexAX >> vertexAY >> vertexBX >> vertexBY >> vertexCX >> vertexCY;
-      bool isAEquallyB = vertexA_.x == vertexB_.x && vertexA_.y == vertexB_.y;
-      bool isAEquallyC = vertexA_.x == vertexC_.x && vertexA_.y == vertexC_.y;
-      bool isCEquallyB = vertexC_.x == vertexB_.x && vertexC_.y == vertexB_.y;
+      bool isAEquallyB = vertexAX == vertexBX && vertexAY == vertexBY;
+      bool isAEquallyC = vertexAX == vertexCX && vertexAY == vertexCY;
+      bool isCEquallyB = vertexCX == vertexBX && vertexCY == vertexBY;
       if(!std::cin || isAEquallyB || isAEquallyC || isCEquallyB)
       {
         isCorrectlyDescribe = false;
