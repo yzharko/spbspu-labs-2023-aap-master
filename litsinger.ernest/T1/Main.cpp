@@ -1,8 +1,8 @@
 #include<iostream>
 #include"BaseTypes.hpp"
 #include "Rectangle.hpp"
+#include"Square.hpp"
 #include "Ring.hpp"
-
 int main()
 {
   Rectangle test1(2, 2, base_types::point_t{ 0,0 });
@@ -20,6 +20,14 @@ int main()
   test2.move({ -3, 14 });
   test2.move(3, 3);
   test2.scale(2);
+  std::cout << "\n";
+  Square test3(6, 9, 3);
+  std::cout << test3.getArea() << " ";
+  rectangle_t frameRect3 = test3.getFrameRect();
+  std::cout << frameRect3.width << " " << frameRect3.height << " " << frameRect3.pos.x << " " << frameRect3.pos.y;
+  test3.move({ -2, 4 });
+  test3.move(6, 6);
+  test3.scale(5);
   std::cout << "\n";
   return 0;
 }

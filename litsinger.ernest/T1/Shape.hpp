@@ -1,3 +1,5 @@
+#ifndef SHAPE_HPP
+#define SHAPE_HPP
 #include"BaseTypes.hpp"
 class Shape {
 public:
@@ -7,3 +9,4 @@ public:
   virtual void move(const base_types::point_t& point) = 0;
   virtual void scale(double k) = 0;
 };
+#endif
