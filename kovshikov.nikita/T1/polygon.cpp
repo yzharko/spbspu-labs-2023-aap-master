@@ -83,15 +83,18 @@ double kovshikov::Polygon::getArea() const
   {
     for(size_t i = 1; i < read; i++)
     {
-      Triangle triangle(start, upper[i], upper[i - 1]);
-      area += triangle.getArea();
+      Triangle * triangleUpper = new Triangle(start, upper[i], upper[i - 1]);
+      area += triangleUpper->getArea();
+      delete triangleUpper;
     }
-    Triangle triangle(start, upper[read - 1], lower[0]);
-    area += triangle.getArea();
+    Triangle * triangleMiddle = new Triangle(start, upper[read - 1], lower[0]);
+    area += triangleMiddle->getArea();
+    delete triangleMiddle;
     for(size_t i = 1; i < count; i++)
     {
-      Triangle triangle(start, lower[i - 1], lower[i]);
-      area += triangle.getArea();
+      Triangle * triangleLower = new Triangle(start, lower[i - 1], lower[i]);
+      area += triangleLower->getArea();
+      delete triangleLower;
     }
   }
   delete[] lowerX;
@@ -118,10 +121,12 @@ rectangle_t kovshikov::Polygon::getFrameRect() const
   double maxY = *std::max_element(arrayY, arrayY + num_);
   point_t lowerLeft = {minX, minY};
   point_t upperRight = {maxX, maxY};
-  Rectangle rectangle(lowerLeft, upperRight);
+  Rectangle * rectangle = Rectangle(lowerLeft, upperRight);
   delete[] arrayX;
   delete[] arrayY;
-  return rectangle.getFrameRect();
+  rectangle_t frame = rectangle->getFrameRect();
+  delete rectangle;
+  return frame;
 }
 void kovshikov::Polygon::move(const point_t &newPos)
 {

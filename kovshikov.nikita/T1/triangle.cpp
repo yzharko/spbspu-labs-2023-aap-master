@@ -23,8 +23,10 @@ rectangle_t kovshikov::Triangle::getFrameRect() const
   double maxY = std::max({vertexA_.y, vertexB_.y, vertexC_.y});
   point_t lowerLeft = {minX, minY};
   point_t upperRight = {maxX, maxY};
-  kovshikov::Rectangle rectangle(lowerLeft, upperRight);
-  return rectangle.getFrameRect();
+  Rectangle * rectangle = new Rectangle(lowerLeft, upperRight);
+  rectangle_t frame = rectangle->getFrameRect();
+  delete rectangle;
+  return frame;
 }
 void kovshikov::Triangle::move(const point_t &newPos)
 {
