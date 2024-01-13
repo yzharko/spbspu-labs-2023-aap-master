@@ -1,5 +1,5 @@
 #include"Rectangle.hpp"
-Rectangle::Rectangle(double weight, double height, const point_t& pos) :Rectangle(rectangle_t{ weight,height,pos }) {}
+Rectangle::Rectangle(double weight, double height, const point_t& pos)
 double Rectangle::getArea() const {
   return framework.height * framework.width;
 }
