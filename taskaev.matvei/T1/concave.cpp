@@ -52,7 +52,7 @@ void taskaev::Concave::move(double x, double y)
   p4.Y += y;
 }
 
-void taskaev::Concave::move(point_t newCenter)
+void taskaev::Concave::move(const point_t& newCenter)
 {
   move(newCenter.X - p4.X, newCenter.Y - p4.Y);
 }
