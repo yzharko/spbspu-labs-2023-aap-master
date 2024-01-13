@@ -109,6 +109,7 @@ int main()
       else
       {
         std::cerr << "Can't scale\n";
+        freeShapes(shapes, figsNow);
         return 2;
       }
     }
