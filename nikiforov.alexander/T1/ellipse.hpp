@@ -15,14 +15,13 @@ namespace nikiforov
     virtual void scale(double ratio);
     point_t lPoint;
     point_t rPoint;
+  private:
     point_t center;
     point_t movePoint;
     double firstRad;
     double secondRad;
     double width_rect;
     double height_rect;
-  private:
-
   };
 }
 

@@ -7,10 +7,10 @@ Ellipse::Ellipse(point_t firstPoint, double firstRad, double secondRad) :
   firstRad(firstRad),
   secondRad(secondRad)
 {
-  rPoint = { center.x + firstRad, center.y + secondRad };
-  lPoint = { center.x - firstRad, center.y - secondRad };
-  width_rect = firstRad * 2;
-  height_rect = secondRad * 2;
+  rPoint = { center.x + secondRad, center.y + firstRad };
+  lPoint = { center.x - secondRad, center.y - firstRad };
+  height_rect = firstRad * 2;
+  width_rect = secondRad * 2;
 }
 
 double Ellipse::getArea() const
