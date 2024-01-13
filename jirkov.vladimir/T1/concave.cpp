@@ -31,7 +31,7 @@ double Concave::getArea() const
   double sixthSqrt = sqrt(pow((thirdPoint_.x - fourthPoint_.x), 2) + pow((thirdPoint_.y - fourthPoint_.y), 2));
 
   double secondSemiPerimeter = (fourthSqrt + fifthSqrt + sixthSqrt) * 0.5;
-  double num = secondSemiPerimeter * (secondSemiPerimeter - fourthSqrt
+  double num = secondSemiPerimeter * (secondSemiPerimeter - fourthSqrt);
   double secondSquare = sqrt(num * (secondSemiPerimeter - fifthSqrt) * (secondSemiPerimeter - sixthSqrt));
 
   maxSide = std::max({fourthSqrt, fifthSqrt, sixthSqrt});
