@@ -35,7 +35,7 @@ void Regular::move(const point_t& dest)
   p_b_ = { p_b_.x + shift_x, p_b_.y + shift_y };
   p_c_ = { p_c_.x + shift_x, p_c_.y + shift_y };
 }
-void Regular::move(const double& x,const double& y)
+void Regular::move(double x, double y)
 {
   pos_ = { pos_.x + x, pos_.y + y };
   p_b_ = { p_b_.x + x, p_b_.y + y };

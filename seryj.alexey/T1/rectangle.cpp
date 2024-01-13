@@ -30,7 +30,7 @@ void Rectangle::move(const point_t& dest)
   left_point_ = { left_point_.x + shift_x, left_point_.y + shift_y };
   right_point_ = { right_point_.x + shift_x, right_point_.y + shift_y };
 }
-void Rectangle::move(const double&x, const double& y)
+void Rectangle::move(double x, double y)
 {
   pos_ = { pos_.x + x, pos_.y + y };
   left_point_ = { left_point_.x + x, left_point_.y + y };
