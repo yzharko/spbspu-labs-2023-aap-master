@@ -33,7 +33,7 @@ int main()
         {
           sequence.push_back(nameFigure);
         }
-        else 
+        else
         {
           errInd = true;
         }
