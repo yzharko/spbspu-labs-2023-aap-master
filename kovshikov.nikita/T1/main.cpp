@@ -78,6 +78,10 @@ int main()
       if (!std::cin || multiplier < 0)
       {
         std::cerr << "The coefficient must be greater than zero!";
+        for (size_t i = 0; i < count; i++)
+        {
+          delete geometricShapes[i];
+        }
         return 1;
       }
       double totalAreaBefore = 0;
