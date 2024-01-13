@@ -98,20 +98,20 @@ int main()
           {
             if (sequence[i] == "RECTANGLE")
             {
-              double* ArrElem = new double[countArrPrimalPoints += 4];
+              double* ArrElemPrimal = new double[countArrPrimalPoints += 4];
               for (size_t i = 0; i < countArrPrimalPoints; i++)
               {
-                ArrElem[i] = arrPrimalPoints[i];
+                ArrElemPrimal[i] = arrPrimalPoints[i];
               }
               delete[] arrPrimalPoints;
-              arrPrimalPoints = ArrElem;
-              double* ArrElem = new double[countArrAfterPoints += 4];
+              arrPrimalPoints = ArrElemPrimal;
+              double* ArrElemAfter = new double[countArrAfterPoints += 4];
               for (size_t i = 0; i < countArrAfterPoints; i++)
               {
-                ArrElem[i] = arrAfterPoints[i];
+                ArrElemAfter[i] = arrAfterPoints[i];
               }
               delete[] arrAfterPoints;
-              arrAfterPoints = ArrElem;
+              arrAfterPoints = ArrElemAfter;
 
               primalLeftPoint = { arrRP[countRP++] ,arrRP[countRP++] };
               primalRightPoint = { arrRP[countRP++] ,arrRP[countRP++] };
