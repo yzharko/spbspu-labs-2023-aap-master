@@ -26,7 +26,7 @@ int main()
       if (countRP != 4)
       {
         double* ArrElem = new double[countRP] {};
-        for (size_t i = 0; i < countRP; i++)
+        for (size_t i = 0; i < countRP - 4; i++)
         {
           ArrElem[i] = arrRP[i];
         }
@@ -105,7 +105,7 @@ int main()
               if (countArrPrimalPoints != 4)
               {
                 double* ArrElemPrimal = new double[countArrPrimalPoints] {};
-                for (size_t i = 0; i < countArrPrimalPoints; i++)
+                for (size_t i = 0; i < countArrPrimalPoints - 4; i++)
                 {
                   ArrElemPrimal[i] = arrPrimalPoints[i];
                 }
@@ -115,7 +115,7 @@ int main()
               if (countArrAfterPoints != 4)
               {
                 double* ArrElemAfter = new double[countArrAfterPoints] {};
-                for (size_t i = 0; i < countArrAfterPoints; i++)
+                for (size_t i = 0; i < countArrAfterPoints - 4; i++)
                 {
                   ArrElemAfter[i] = arrAfterPoints[i];
                 }
