@@ -25,7 +25,13 @@ int main()
     {
       if (countRP != 4)
       {
-        nikiforov::AddFourElem(arrRP, countRP);
+        double* ArrElem = new double[countRP] {};
+        for (size_t i = 0; i < countRP; i++)
+        {
+          ArrElem[i] = arrRP[i];
+        }
+        delete[] arrRP;
+        arrRP = ArrElem;
       }
 
       if (std::cin >> arrRP[countRP - 4] >> arrRP[countRP - 3] >> arrRP[countRP - 2] >> arrRP[countRP - 1])
@@ -40,15 +46,10 @@ int main()
     }
     else if (nameFigure == "SQUARE")
     {
-      if (countRP != 4)
-      {
-        nikiforov::AddThreeElem(arrSP, countSP);
-      }
-
+      nikiforov::AddThreeElem(arrSP, countSP);
       if (std::cin >> arrSP[countSP - 3] >> arrSP[countSP - 2] >> arrSP[countSP - 1])
       {
         sequence.push_back(nameFigure);
-        countRP += 3;
       }
       else
       {
@@ -57,15 +58,10 @@ int main()
     }
     else if (nameFigure == "ELLIPSE")
     {
-      if (countRP != 4)
-      {
-        nikiforov::AddFourElem(arrEP, countEP);
-      }
-
+      nikiforov::AddFourElem(arrEP, countEP);
       if (std::cin >> arrEP[countEP - 4] >> arrEP[countEP - 3] >> arrEP[countEP - 2] >> arrEP[countEP - 1])
       {
         sequence.push_back(nameFigure);
-        countRP += 4;
       }
       else
       {
@@ -108,11 +104,23 @@ int main()
             {
               if (countArrPrimalPoints != 4)
               {
-                nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
+                double* ArrElemPrimal = new double[countArrPrimalPoints] {};
+                for (size_t i = 0; i < countArrPrimalPoints; i++)
+                {
+                  ArrElemPrimal[i] = arrPrimalPoints[i];
+                }
+                delete[] arrPrimalPoints;
+                arrPrimalPoints = ArrElemPrimal;
               }
               if (countArrAfterPoints != 4)
               {
-                nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
+                double* ArrElemAfter = new double[countArrAfterPoints] {};
+                for (size_t i = 0; i < countArrAfterPoints; i++)
+                {
+                  ArrElemAfter[i] = arrAfterPoints[i];
+                }
+                delete[] arrAfterPoints;
+                arrAfterPoints = ArrElemAfter;
               }
               primalLeftPoint = { arrRP[countRP++] ,arrRP[countRP++] };
               primalRightPoint = { arrRP[countRP++] ,arrRP[countRP++] };
@@ -137,6 +145,7 @@ int main()
               arrAfterPoints[countArrAfterPoints - 3] = newLeftPoint.y;
               arrAfterPoints[countArrAfterPoints - 2] = newRightPoint.x;
               arrAfterPoints[countArrAfterPoints - 1] = newRightPoint.y;
+
               countArrAfterPoints += 4;
               countArrPrimalPoints += 4;
             }
