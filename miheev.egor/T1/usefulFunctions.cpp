@@ -34,9 +34,9 @@ namespace miheev
 
   bool validateTriangle(point_t A, point_t B, point_t C)
   {
-    bool condition1 = A.distTo(B) + A.distTo(C) < B.distTo(C);
-    bool condition2 = A.distTo(B) + B.distTo(C) < A.distTo(C);
-    bool condition3 = B.distTo(C) + A.distTo(C) < A.distTo(B);
+    bool condition1 = A.distTo(B) + A.distTo(C) > B.distTo(C);
+    bool condition2 = A.distTo(B) + B.distTo(C) > A.distTo(C);
+    bool condition3 = B.distTo(C) + A.distTo(C) > A.distTo(B);
     return condition1 && condition2 && condition3;
   }
 }
