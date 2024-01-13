@@ -1,7 +1,7 @@
 #include "Square.hpp"
 Square::Square(double x, double y, double sideSize) :leftDown{ x,y } {
   if (sideSize <= 0) {
-	throw std::invalid_argument("incorrect size of square");
+    throw std::invalid_argument("incorrect size of square");
   }
   this->sideSize = sideSize;
 }
