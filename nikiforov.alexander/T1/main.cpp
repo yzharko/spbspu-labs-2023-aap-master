@@ -8,12 +8,10 @@
 
 int main()
 {
-  std::string nameFigure;
+  std::string nameFigure = "";
   double* arrRP = new double[0];
   double* arrSP = new double[0];
   double* arrEP = new double[0];
-  double* arrPrimalPoints = new double[0];
-  double* arrAfterPoints = new double[0];
 
   size_t countRP = 0;
   size_t countSP = 0;
@@ -85,6 +83,8 @@ int main()
       {
         if ((std::cin >> x_c >> y_c >> k) && (k > 0))
         {
+          double* arrPrimalPoints = new double[0];
+          double* arrAfterPoints = new double[0];
           nikiforov::point_t sCen = { x_c , y_c };
           countRP = 0;
 
@@ -223,6 +223,12 @@ int main()
       }
       break;
     }
+  }
+  if (nameFigure == "")
+  {
+    delete[] arrRP;
+    delete[] arrSP;
+    delete[] arrEP;
   }
   return 0;
 }
