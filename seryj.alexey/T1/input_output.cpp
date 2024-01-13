@@ -11,12 +11,12 @@ void seryj::writeAnswer(std::ostream& out, CompositeShape& cs)
   std::vector<rectangle_t> rec_vec = cs.getFrameRect();
   double area = cs.getArea();
   writeDouble(out, area, ' ');
-  for (size_t i = 0; i < cs.shapes; i++)
+  for (size_t i = 0; i < cs.shapes_amount; i++)
   {
     writeDouble(out, rec_vec[i].pos.x - rec_vec[i].width / 2, ' ');
     writeDouble(out, rec_vec[i].pos.y - rec_vec[i].height / 2, ' ');
     writeDouble(out, rec_vec[i].pos.x + rec_vec[i].width / 2, ' ');
-    writeDouble(out, rec_vec[i].pos.y + rec_vec[i].height / 2, i == cs.shapes - 1 ? '\n' : ' ');
+    writeDouble(out, rec_vec[i].pos.y + rec_vec[i].height / 2, i == cs.shapes_amount - 1 ? '\n' : ' ');
   }
 }
 std::vector<std::string> seryj::readText(std::istream& inp)

@@ -11,8 +11,8 @@ namespace seryj {
     ~CompositeShape();
     void operator+=(Shape*);
     void operator-=(Shape*);
-    std::vector<Shape*> shapeptrs;
-    size_t shapes;
+    std::vector<Shape*> shape_vector;
+    size_t shapes_amount;
     size_t capacity;
     double getArea()const;
     std::vector<rectangle_t> getFrameRect()const;

@@ -1,103 +1,104 @@
 #include "composite_shape.hpp"
 #include <exception>
+#include <cmath>
 #include <iostream>
 using namespace seryj;
 CompositeShape::CompositeShape()
 {
-  this->shapes = 0;
-  this->capacity = this->shapeptrs.max_size();
+  this->shapes_amount = 0;
+  this->capacity = this->shape_vector.max_size();
 }
 CompositeShape::CompositeShape(std::vector<Shape*> v)
 {
-  shapes = v.size();
+  shapes_amount = v.size();
   capacity = v.max_size();
-  for (size_t i = 0; i < shapes; i++)
+  for (size_t i = 0; i < shapes_amount; i++)
   {
-    shapeptrs.push_back(v[i]);
+    shape_vector.push_back(v[i]);
   }
 }
 CompositeShape::CompositeShape(const CompositeShape& cs)
 {
-  this->shapes = cs.shapes;
+  this->shapes_amount = cs.shapes_amount;
   this->capacity = cs.capacity;
-  for (size_t i = 0; i < this->shapes; i++)
+  for (size_t i = 0; i < this->shapes_amount; i++)
   {
-    this->shapeptrs[i] = cs.shapeptrs[i];
+    this->shape_vector[i] = cs.shape_vector[i];
   }
 }
 CompositeShape::~CompositeShape()
 {
-  for (size_t i = 0; i < this->shapes; i++)
+  for (size_t i = 0; i < this->shapes_amount; i++)
   {
-    delete this->shapeptrs[i];
+    delete this->shape_vector[i];
   }
-  this->shapeptrs.clear();
+  this->shape_vector.clear();
 }
 void CompositeShape::operator+=(Shape* s)
 {
-  if (shapes < capacity)
+  if (shapes_amount < capacity)
   {
-    this->shapeptrs.push_back(s);
-    shapes = shapeptrs.size();
+    this->shape_vector.push_back(s);
+    shapes_amount = shape_vector.size();
   }
 }
 void CompositeShape::operator-=(Shape* s)
 {
   std::vector<Shape*>::iterator iter;
-  for (size_t i = 0; i < this->shapes; i++)
+  for (size_t i = 0; i < this->shapes_amount; i++)
   {
-    if (this->shapeptrs[i] == s)
+    if (this->shape_vector[i] == s)
     {
-      delete this->shapeptrs[i];
-      iter = this->shapeptrs.begin() + i;
+      delete this->shape_vector[i];
+      iter = this->shape_vector.begin() + i;
       break;
     }
   }
-  this->shapeptrs.erase(iter);
+  this->shape_vector.erase(iter);
 }
 
 double CompositeShape::getArea()const
 {
   double area = 0;
-  for (size_t i = 0; i < this->shapes; i++)
+  for (size_t i = 0; i < this->shapes_amount; i++)
   {
-    area += shapeptrs[i]->getArea();
+    area += shape_vector[i]->getArea();
   }
   return area;
 }
 std::vector<rectangle_t> CompositeShape::getFrameRect()const
 {
   std::vector<rectangle_t> rec_vec;
-  for (size_t i = 0; i < this->shapes; i++)
+  for (size_t i = 0; i < this->shapes_amount; i++)
   {
-    rec_vec.push_back(this->shapeptrs[i]->getFrameRect());
+    rec_vec.push_back(this->shape_vector[i]->getFrameRect());
   }
   return rec_vec;
 }
 void CompositeShape::move(std::vector<point_t> v)
 {
-  for (size_t i = 0; i < std::min(this->shapes, v.size()); i++)
+  for (size_t i = 0; i < std::min(this->shapes_amount, v.size()); i++)
   {
-    this->shapeptrs[i]->move(v[i]);
+    this->shape_vector[i]->move(v[i]);
   }
 }
 void CompositeShape::move(double x, double y)
 {
-  for (size_t i = 0; i < this->shapes; i++)
+  for (size_t i = 0; i < this->shapes_amount; i++)
   {
-    this->shapeptrs[i]->move(x, y);
+    this->shape_vector[i]->move(x, y);
   }
 }
 void CompositeShape::scale(point_t p, double k)
 {
   if (k < 0)
     throw std::invalid_argument("Negative scale is no \n");
-  if (this->shapes == 0)
+  if (this->shapes_amount == 0)
     throw std::invalid_argument("Nothing to scale\n");
-  for (size_t i = 0; i < this->shapes; i++)
+  for (size_t i = 0; i < this->shapes_amount; i++)
   {
-    point_t shape_pos = this->shapeptrs[i]->getFrameRect().pos;
-    this->shapeptrs[i]->move({ p.x + k * (shape_pos.x - p.x), p.y + k * (shape_pos.y - p.y) });
-    this->shapeptrs[i]->scale(k);
+    point_t shape_pos = this->shape_vector[i]->getFrameRect().pos;
+    this->shape_vector[i]->move({ p.x + k * (shape_pos.x - p.x), p.y + k * (shape_pos.y - p.y) });
+    this->shape_vector[i]->scale(k);
   }
 }
