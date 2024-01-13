@@ -20,12 +20,8 @@ double Concave::getArea() const
   double x4 = fourthPoint_.x;
   double y4 = fourthPoint_.y;
 
-  double firstArea = (x1 * (y2 - y3)) + (x2 * (y3 - y1)) + (x3 * (y1 - y2));
-  firstArea = std::abs(firstArea / 2.0);
-
-  double secondArea = (x4 * (y2 - y3)) + (x2 * (y3 - y4)) + (x3 * (y4 - y2));
-  secondArea = std::abs(secondArea / 2.0);
-
+  double firstArea = (x1 * (y2 - y3)) + (x2 * (y3 - y1)) + (x3 * (y1 - y2)) / 2.0;
+  double secondArea = (x4 * (y2 - y3)) + (x2 * (y3 - y4)) + (x3 * (y4 - y2)) / 2;
   return std::abs(firstArea - secondArea);
 }
 rectangle_t Concave::getFrameRect() const
