@@ -261,6 +261,7 @@ int main()
   delete[] arrEP;
   if (errInd) {
     std::cerr << "Error: One or more errors in the description of the figure!\n";
+    return 0;
   }
   if (!errIndScale) {
     std::cerr << "Error: There is no scale parameter!\n";
