@@ -19,7 +19,7 @@ reznikova::Shape * reznikova::setRectangle(std::istream & in, bool & ifNoErrors)
   Shape * rectangle = nullptr;
   try
   {
-    rectangle = new Rectangle(leftpoint, rightpoint);
+    rectangle = new Rectangle(rect);
   }
   catch (const std::runtime_error &e)
   {
