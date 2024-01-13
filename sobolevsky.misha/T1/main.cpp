@@ -21,7 +21,7 @@ int main()
     sobolevsky::Shape * shapeptrs;
   };
 
-  sobolevsky::Shape ** figuers = new sobolevsky::Shape * [10];
+  sobolevsky::Shape ** figuers = new sobolevsky::Shape * [228];
   size_t counter = 0;
 
   std::string figureType;
@@ -37,6 +37,12 @@ int main()
       else
       {
         std::cerr << "ты накосячил с прямоугольником\n";
+        for (size_t i = 0; i < counter; i++)
+        {
+          delete[] figuers[i];
+        }
+        delete[] figuers;
+        return 1;
       }
     }
     else if (figureType == "DIAMOND")
@@ -49,6 +55,12 @@ int main()
       else
       {
         std::cerr << "ты накосячил с ромбом\n";
+        for (size_t i = 0; i < counter; i++)
+        {
+          delete[] figuers[i];
+        }
+        delete[] figuers;
+        return 1;
       }
     }
     else if (figureType == "PARALLELOGRAM")
@@ -61,6 +73,12 @@ int main()
       else
       {
         std::cerr << "ты накосячил с параллелограммом\n";
+        for (size_t i = 0; i < counter; i++)
+        {
+          delete[] figuers[i];
+        }
+        delete[] figuers;
+        return 1;
       }
     }
     else if (figureType == "SCALE")
@@ -69,6 +87,11 @@ int main()
       if (counter == 0)
       {
         std::cerr << "no bitches\n";
+        for (size_t i = 0; i < counter; i++)
+        {
+          delete[] figuers[i];
+        }
+        delete[] figuers;
         return 1;
       }
       else if (std::cin >> xx >> yy >> n)
@@ -125,14 +148,29 @@ int main()
       else
       {
         std::cerr << "ты чето не то написал\n";
+        for (size_t i = 0; i < counter; i++)
+        {
+          delete[] figuers[i];
+        }
+        delete[] figuers;
         return 1;
       }
     }
     else
     {
       std::cerr << "ну ты чето не то ввел\n";
+      for (size_t i = 0; i < counter; i++)
+        {
+          delete[] figuers[i];
+        }
+        delete[] figuers;
       return 1;
     }
   }
+  for (size_t i = 0; i < counter; i++)
+  {
+    delete[] figuers[i];
+  }
+  delete[] figuers;
   return 0;
 }
