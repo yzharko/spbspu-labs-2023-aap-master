@@ -28,6 +28,10 @@ namespace miheev
     for (size_t i = 0; i < rectsAmount; i++)
     {
       printRect(rects[i]);
+      if (i != rectsAmount - 1)
+      {
+        std::cout << ' ';
+      }
     }
     std::cout << '\n';
   }
