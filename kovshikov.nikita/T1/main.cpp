@@ -13,6 +13,7 @@ int main()
   Shape * geometricShapes[1000] = {nullptr}; // массив указателей на shape?
   bool isCorrectlyDescribe = true;
   bool isScale = false;
+  bool isAtLeastOneFigure = false;
   while (std::cin >> shape)   // учесть ошибку из-за прерывания программы
   {
     if (shape == "RECTANGLE")
@@ -25,6 +26,7 @@ int main()
          continue;
        }
        geometricShapes[count++] = new Rectangle({lowerLeftX, lowerLeftY}, {upperRightX, upperRightY});
+       isAtLeastOneFigure = true;
     }
     else if (shape == "TRIANGLE") // в классе треугольник проверить существует ли он
     {
@@ -36,6 +38,7 @@ int main()
         continue;
       }
       geometricShapes[count++] = new Triangle({vertexAX, vertexAY}, {vertexBX, vertexBY}, {vertexCX, vertexCY});
+      isAtLeastOneFigure = true;
     }
     else if (shape == "POLYGON")
     {
@@ -67,12 +70,18 @@ int main()
         if(std::cin.peek() == '\n')
         {
           geometricShapes[count++] = new Polygon(nPointsPolygon, points);
+          isAtLeastOneFigure = true;
           break;
         }
       }
     }
     else if (shape == "SCALE")
     {
+      if(isAtLeastOneFigure == false)
+      {
+        std:cerr << "Nothing to scale";
+        return 1;
+      }
       double posX, posY, multiplier;
       std::cin >> posX >> posY >> multiplier;
       if (!std::cin || multiplier < 0)
