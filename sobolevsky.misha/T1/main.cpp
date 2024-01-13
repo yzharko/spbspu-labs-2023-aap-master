@@ -22,7 +22,7 @@ int main()
   sobolevsky::Shape ** figuers = new sobolevsky::Shape * [228];
   size_t counter = 0;
 
-  std::string figureType; 
+  std::string figureType;
   while (std::cin >> figureType)
   {
     if (figureType == "RECTANGLE")
