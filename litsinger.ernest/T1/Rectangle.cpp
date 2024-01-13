@@ -1,16 +1,22 @@
 #include"Rectangle.hpp"
+Rectangle::Rectangle(const rectangle_t& framework) {
+  if (framework.height <= 0 || framework.width <= 0) {
+    throw std::exception("Wrong width or high");
+  }
+  this->framework = framework;
+}
 Rectangle::Rectangle(double weight, double height, const point_t& pos) :Rectangle(rectangle_t{ weight,height,pos }) {}
 double Rectangle::getArea() const {
   return framework.height * framework.width;
 }
-base_types::rectangle_t Rectangle::getFrameRect() const {
+rectangle_t Rectangle::getFrameRect() const {
   return framework;
 }
 void Rectangle::move(double x, double y) {
   framework.pos.x += x;
   framework.pos.y += y;
 }
-void Rectangle::move(const base_types::point_t& point) {
+void Rectangle::move(const point_t& point) {
   this->framework.pos = point;
 }
 void Rectangle::scale(double k) {
