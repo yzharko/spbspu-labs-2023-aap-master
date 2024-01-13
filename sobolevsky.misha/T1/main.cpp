@@ -25,6 +25,7 @@ int main()
   size_t counter = 0;
 
   std::string figureType;
+  bool flag = false;
   while (std::cin >> figureType)
   {
     if (figureType == "RECTANGLE")
@@ -36,7 +37,7 @@ int main()
       }
       else
       {
-        std::cerr << "ты накосячил с прямоугольником\n";
+        flag = true;
       }
     }
     else if (figureType == "DIAMOND")
@@ -48,7 +49,7 @@ int main()
       }
       else
       {
-        std::cerr << "ты накосячил с ромбом\n";
+        flag = true;
       }
     }
     else if (figureType == "PARALLELOGRAM")
@@ -60,7 +61,7 @@ int main()
       }
       else
       {
-        std::cerr << "ты накосячил с параллелограммом\n";
+        flag = true;
       }
     }
     else if (figureType == "SCALE")
@@ -120,9 +121,14 @@ int main()
           std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2)) << " ";
         }
         std::cout << "\n";
+        if (flag)
+        {
+          std::cerr << "накосячил с фигурой ты\n";
+        }
         for (size_t i = 0; i < counter; i++)
         {
           delete figuers[i];
+          std::cout << "penis\n";
         }
         delete[] figuers;
         return 1;
