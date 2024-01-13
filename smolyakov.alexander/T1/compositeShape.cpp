@@ -7,7 +7,7 @@
 #include "shape.hpp"
 
 smolyakov::CompositeShape::CompositeShape(size_t defaultCapacity)
-  : capacity(defaultCapacity), shapes(0)
+  : shapes(0), capacity(defaultCapacity)
 {
   shapeptrs = new Shape*[capacity]{0};
 }
