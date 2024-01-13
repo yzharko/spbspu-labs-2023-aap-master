@@ -212,9 +212,6 @@ int main()
           delete[] arrPrimalPoints;
           delete[] arrAfterPoints;
         }
-        delete[] arrRP;
-        delete[] arrSP;
-        delete[] arrEP;
       }
       else
       {
@@ -224,7 +221,6 @@ int main()
         delete[] arrEP;
         return 1;
       }
-      break;
     }
   }
   delete[] arrRP;
