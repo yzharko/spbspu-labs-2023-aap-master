@@ -4,10 +4,10 @@
 
 namespace zheleznyakov
 {
-  class Rectangle : public zheleznyakov::Shape
+  class Rectangle : public Shape
   {
   public:
-    Rectangle(const point_t leftBottomPoint, const point_t rightTopPoint);
+    Rectangle(point_t leftBottomPoint, point_t rightTopPoint);
     virtual double getArea() override;
     virtual rectangle_t getFrameRect() override;
     virtual void move(double x, double y) override;
