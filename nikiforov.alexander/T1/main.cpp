@@ -18,7 +18,7 @@ int main()
   size_t countRP = 0;
   size_t countSP = 0;
   size_t countEP = 0;
-  bool errInd = false;
+
   std::vector<std::string> sequence;
 
   while (std::cin >> nameFigure)
@@ -32,7 +32,7 @@ int main()
       }
       else
       {
-        errInd = true;
+
       }
     }
     else if (nameFigure == "SQUARE")
@@ -44,7 +44,7 @@ int main()
       }
       else
       {
-        errInd = true;
+
       }
     }
     else if (nameFigure == "ELLIPSE")
@@ -56,7 +56,7 @@ int main()
       }
       else
       {
-        errInd = true;
+
       }
     }
     else if (nameFigure == "SCALE")
