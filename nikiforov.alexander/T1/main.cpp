@@ -209,23 +209,18 @@ int main()
             }
           }
           std::cout << '\n';
+          delete[] arrRP;
+          delete[] arrSP;
+          delete[] arrEP;
+          delete[] arrPrimalPoints;
+          delete[] arrAfterPoints;
         }
       }
       else
       {
         std::cerr << "Error: There is no descriptions of the supported figures!\n";
-        delete[] arrRP;
-        delete[] arrSP;
-        delete[] arrEP;
-        delete[] arrPrimalPoints;
-        delete[] arrAfterPoints;
         return 1;
       }
-      delete[] arrRP;
-      delete[] arrSP;
-      delete[] arrEP;
-      delete[] arrPrimalPoints;
-      delete[] arrAfterPoints;
       break;
     }
   }
