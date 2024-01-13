@@ -5,8 +5,8 @@ namespace sobolevsky
   Rectangle::Rectangle(Point_t leftDownPoint, Point_t rightUpPoint)
   {
     Point_t center;
-    center.x = (leftDownPoint.x - rightUpPoint.x) / 2;
-    center.y = (leftDownPoint.y - rightUpPoint.y) / 2;
+    center.x = (leftDownPoint.x + rightUpPoint.x) / 2;
+    center.y = (leftDownPoint.y + rightUpPoint.y) / 2;
     rectangle.pos = center;
     rectangle.width = rightUpPoint.x - leftDownPoint.x;
     rectangle.height = rightUpPoint.y - leftDownPoint.y;

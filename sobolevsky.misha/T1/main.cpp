@@ -67,7 +67,7 @@ int main()
       double x, y, n;
       if (counter == 0)
       {
-        std::cerr << "no figuers\n";
+        std::cerr << "no bitches\n";
         return 1;
       }
       else if (std::cin >> x >> y >> n)
@@ -75,7 +75,11 @@ int main()
         std::cout << std::fixed << std::setprecision(1);
         for (size_t i = 0; i < counter; i++)
         {
-          std::cout << figuers[i]->getFrameRect().width * figuers[i]->getFrameRect().height << " ";
+          std::cout << ((figuers[i]->getFrameRect().width) * (figuers[i]->getFrameRect().height)) << " ";
+          std::cout << ((figuers[i]->getFrameRect().pos.x) - ((figuers[i]->getFrameRect().width) / 2)) << " ";
+          std::cout << ((figuers[i]->getFrameRect().pos.y) - ((figuers[i]->getFrameRect().height) / 2)) << " ";
+          std::cout << ((figuers[i]->getFrameRect().pos.x) + ((figuers[i]->getFrameRect().width) / 2)) << " ";
+          std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2)) << " ";
         }
         std::cout << "\n";
         return 1;
