@@ -13,7 +13,6 @@ int main()
   int shapesCounter = 0;
   std::string type = "";
   bool someDescrIsWrong = false;
-  bool shapesAreScaled = false;
 
   while (std::cin >> type)
   {
@@ -29,11 +28,7 @@ int main()
       if (!(std::cin >> x >> y >> coefficient) || coefficient <= 0)
       {
         std::cerr << "wrong scale parameters\n";
-        for (int i = 0; i < shapesCounter; i++)
-        {
-          delete shapes[i];
-        }
-        delete[] shapes;
+        redko::deleteShapes(shapes, shapesCounter);
         return 1;
       }
 
@@ -68,11 +63,7 @@ int main()
       {
         std::cerr << "errors in the description of supported shapes\n";
       }
-      for (int i = 0; i < shapesCounter; i++)
-      {
-        delete shapes[i];
-      }
-      delete[] shapes;
+      redko::deleteShapes(shapes, shapesCounter);
       delete[] frameXY;
       delete[] scaledFrameXY;
       return 0;
@@ -121,14 +112,7 @@ int main()
     }
     delete[] points;
   }
-  if (!shapesAreScaled)
-  {
-    std::cerr << "shapes was not scaled\n";
-    for (int i = 0; i < shapesCounter; i++)
-    {
-      delete shapes[i];
-    }
-    delete[] shapes;
-    return 1;
-  }
+  std::cerr << "shapes was not scaled\n";
+  redko::deleteShapes(shapes, shapesCounter);
+  return 1;
 }

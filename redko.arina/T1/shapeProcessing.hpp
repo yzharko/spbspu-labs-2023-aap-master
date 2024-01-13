@@ -18,6 +18,8 @@ namespace redko
   double countAreas(redko::Shape ** shapeArr, int shapeNum);
   double * getFrameCorners(Shape ** shapeArr, int shapeNum);
   void printFrameCorners(double * frameCorners, int shapeNum);
+
+  void deleteShapes(Shape ** shapeArr, int shapeNum);
 }
 
 #endif
