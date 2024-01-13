@@ -26,8 +26,8 @@ int main()
       }
       else
       {
-        double width = fabs(firstRight - secondRight);
-        double height = fabs(firstLeft - firstRight);
+        double width = fabs(firstLeft - firstRight);
+        double height = fabs(secondLeft - secondRight);
         point_t pos = {(firstLeft + firstRight) / 2.0 ,(secondLeft + secondRight) / 2.0};
         rectangle_t rect = {width, height, pos };
         figureArray[count] = new Rectangle(rect);

@@ -7,7 +7,7 @@ namespace jirkov
   class Rectangle : public Shape
   {
   public:
-    Rectangle(const rectangle_t& rect);
+    Rectangle(rectangle_t rect);
     virtual double getArea() const;
     virtual rectangle_t getFrameRect() const;
     virtual void move(const point_t & destination);

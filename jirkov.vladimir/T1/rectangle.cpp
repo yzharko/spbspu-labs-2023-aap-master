@@ -1,7 +1,7 @@
 #include "rectangle.hpp"
 using namespace jirkov;
 
-Rectangle::Rectangle(const rectangle_t& rect) :
+Rectangle::Rectangle(rectangle_t rect) :
   rectangle_(rect)
 {}
 
