@@ -1,10 +1,16 @@
 #include <iostream>
+#include <stdexcept>
 #include "ellipse.hpp"
 #include "baseTypes.hpp"
 
 taskaev::Ellipse::Ellipse(point_t center, double verticalRad, double gorisontRad):
   center_(center), verticalRad_(verticalRad), gorisontRad_(gorisontRad)
-{}
+{
+  if(verticalRad <= 0 || gorisontRad <= 0)
+  {
+    throw std::logic_error("Error, not ellipse");
+  }
+}
 
 double taskaev::Ellipse::getArea()
 {
@@ -25,7 +31,7 @@ void taskaev::Ellipse::move(double x, double y)
   center_.Y = center_.Y + y;
 }
 
-void taskaev::Ellipse::move(point_t newCenter)
+void taskaev::Ellipse::move(const point_t& newCenter)
 {
   center_ = newCenter;
 }

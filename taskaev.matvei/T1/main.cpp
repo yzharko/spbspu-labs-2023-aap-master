@@ -4,32 +4,71 @@
 #include "concave.hpp"
 #include "rectangle.hpp"
 #include "baseTypes.hpp"
-using namespace taskaev;
 
 int main()
 {
-  Shape * rectangle = new Rectangle({ 1.0, 1.0 }, { 3.0, 4.0 });
-  rectangle->getArea();
-  rectangle->getFrameRect();
-  rectangle->move({ 0.0, 0.0 });
-  rectangle->move(2.0, 3.0);
-  rectangle->scale(2.0);
-  delete[] rectangle;
-
-  Shape * ellipse = new Ellipse({ 0.0, 0.0 },  10.0, 20.0 );
-  ellipse->getArea();
-  ellipse->getFrameRect();
-  ellipse->move({ 0.0, 0.0 });
-  ellipse->move(2.0, 3.0);
-  ellipse->scale(2.0);
-  delete[] ellipse;
-
-  Shape * concave = new Concave({ 0.0, 5.0 }, { 0.0, 0.0 }, { 10.0, -1.0 }, { 1.0, 1.0 });
-  concave->getArea();
-  concave->getFrameRect();
-  concave->move({ 0.0, 0.0 });
-  concave->move(2.0, 3.0);
-  concave->scale(2.0);
-  delete[] concave;
+  std::string figur = "";
+  Shape* figurs[1000]{};
+  int ind = 0;
+  while (!std::cin.eof())
+  {
+    std::cin >> figur;
+    if (figur == "RECTANGLE")
+    {
+      double x1;
+      double y1;
+      double x2;
+      double y2;
+      std::cin >> x1 >> y1 >> x2 >> y2;
+      try
+      {
+        Shape* rectangle = new taskaev::Rectangle({ x1,y1 }, { x2,y2 });
+        figurs[ind++] = rectangle;
+      }
+      catch (const std::logic_error& e)
+      {
+        std::cerr << e.what();
+      }
+    }
+    else if (figur == "ELLIPSE")
+    {
+      double x;
+      double y;
+      double radVer;
+      double radGor;
+      std::cin >> x >> y >> radVer >> radGor;
+      try
+      {
+        Shape* ellipse = new taskaev::Ellipse({ x, y }, radVer, radGor);
+	figurs[ind++] = ellipse;
+      }
+      catch (const std::logic_error& e)
+      {
+	std::cerr << e.what();
+      }
+    }
+    else if (figur == "CONCAVE")
+    {
+      double x1;
+      double y1;
+      double x2;
+      double y2;
+      double x3;
+      double y3;
+      double x4;
+      double y4;
+      std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
+      try
+      {
+        Shape* concave = new taskaev::Concave({x1, x2}, {x2, y2}, {x3, y3}, {x4, y4});
+        figurs[ind++] = concave;
+      }
+      catch (const std::logic_error& e)
+      {
+        std::cerr << e.what();
+      }
+    }
+  }
   return 0;
 }
+
