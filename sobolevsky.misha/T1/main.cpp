@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <iomanip>
 #include <stdio.h>
 #include <string.h>
 #include "base-types.hpp"
@@ -31,7 +32,6 @@ int main()
       if ((std::cin >> x1 >> y1 >> x2 >> y2) && (x1 < x2) && (y1 < y2))
       {
         figuers[counter++] = new sobolevsky::Rectangle({x1, y1}, {x2, y2});
-        std::cout << "rect\n";
       }
       else
       {
@@ -44,7 +44,6 @@ int main()
       if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3)
       {
         figuers[counter++] = new sobolevsky::Diamond({x1, y1}, {x2, y2}, {x3, y3});
-        std::cout << "diam\n";
       }
       else
       {
@@ -57,7 +56,6 @@ int main()
       if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3)
       {
         figuers[counter++] = new sobolevsky::Parallelogram({x1, y1}, {x2, y2}, {x3, y3});
-        std::cout << "param\n";
       }
       else
       {
@@ -66,7 +64,26 @@ int main()
     }
     else if (figureType == "SCALE")
     {
-      std::cout << "scale\n";
+      double x, y, n;
+      if (counter == 0)
+      {
+        std::cerr << "no figuers\n";
+        return 1;
+      }
+      else if (std::cin >> x >> y >> n)
+      {
+        std::cout << std::fixed << std::setprecision(1);
+        for (size_t i = 0; i < counter; i++)
+        {
+          std::cout << figuers[i]->getFrameRect().width * figuers[i]->getFrameRect().height << " ";
+        }
+      }
+      else
+      {
+        std::cerr << "ты чето не то написал\n";
+        return 1;
+      }
     }
   }
+  return 0;
 }
