@@ -11,11 +11,58 @@ Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, po
 {}
 double Concave::getArea() const
 {
-  double bigTriangle = firstPoint_.x * (secondPoint_.y - thirdPoint_.y) + secondPoint_.x * (thirdPoint_.y - firstPoint_.y);
-  bigTriangle = std::abs((bigTriangle + thirdPoint_.x * (firstPoint_.y - secondPoint_.y)) / 2.0);
-  double smallTriangle = fourthPoint_.x * (secondPoint_.y - thirdPoint_.y) + secondPoint_.x * (thirdPoint_.y - fourthPoint_.y);
-  smallTriangle = std::abs((smallTriangle + thirdPoint_.x * (fourthPoint_.y - secondPoint_.y)) / 2.0);
-  return bigTriangle - smallTriangle;
+  double firstSqrt = sqrt(pow((firstPoint_.x - secondPoint_.x), 2) + pow((firstPoint_.y - secondPoint_.y), 2));
+  double secondSqrt = sqrt(pow((secondPoint_.x - thirdPoint_.x), 2) + pow((secondPoint_.y - thirdPoint_.y), 2));
+  double thirdSqrt = sqrt(pow((thirdPoint_.x - firstPoint_.x), 2) + pow((thirdPoint_.y - firstPoint_.y), 2));
+
+  double semiPerimeter = (firstSqrt + secondSqrt + thirdSqrt) * 0.5;
+
+  double firstSquare = sqrt(semiPerimeter * (semiPerimeter - firstSqrt) * (semiPerimeter - secondSqrt) * (semiPerimeter - thirdSqrt));
+
+  double maxSide = std::max({firstSqrt, secondSqrt, thirdSqrt});
+
+  if (maxSide >= firstSqrt + secondSqrt + thirdSqrt - maxSide)
+  {
+    throw std::logic_error("Triangle error\n");
+  }
+
+  double fourthSqrt = sqrt(pow((fourthPoint_.x - secondPoint_.x), 2) + pow((fourthPoint_.y - secondPoint_.y), 2));
+  double fifthSqrt = sqrt(pow((secondPoint_.x - thirdPoint_.x), 2) + pow((secondPoint_.y - thirdPoint_.y), 2));
+  double sixthSqrt = sqrt(pow((thirdPoint_.x - fourthPoint_.x), 2) + pow((thirdPoint_.y - fourthPoint_.y), 2));
+
+  double secondSemiPerimeter = (fourthSqrt + fifthSqrt + sixthSqrt) * 0.5;
+
+  double secondSquare = sqrt(secondSemiPerimeter * (secondSemiPerimeter - fourthSqrt) * (secondSemiPerimeter - fifthSqrt) * (secondSemiPerimeter - sixthSqrt));
+
+  maxSide = std::max({fourthSqrt, fifthSqrt, sixthSqrt});
+
+  if (maxSide >= fourthSqrt + fifthSqrt + sixthSqrt - maxSide)
+  {
+    throw std::logic_error("Triangle error\n");
+  }
+
+  double eighthSqrt = sqrt(pow((firstPoint_.x - secondPoint_.x), 2) + pow((firstPoint_.y - secondPoint_.y), 2));
+  double ninthSqrt = sqrt(pow((secondPoint_.x - fourthPoint_.x), 2) + pow((secondPoint_.y - fourthPoint_.y), 2));
+  double tenthSqrt = sqrt(pow((fourthPoint_.x - firstPoint_.x), 2) + pow((fourthPoint_.y - firstPoint_.y), 2));
+
+  maxSide = std::max({eighthSqrt, ninthSqrt, tenthSqrt});
+
+  if (maxSide >= eighthSqrt + ninthSqrt + tenthSqrt - maxSide)
+  {
+    throw std::logic_error("Triangle error\n");
+  }
+
+  eighthSqrt = sqrt(pow((firstPoint_.x - thirdPoint_.x), 2) + pow((firstPoint_.y - thirdPoint_.y), 2));
+  ninthSqrt = sqrt(pow((thirdPoint_.x - fourthPoint_.x), 2) + pow((thirdPoint_.y - fourthPoint_.y), 2));
+  tenthSqrt = sqrt(pow((fourthPoint_.x - firstPoint_.x), 2) + pow((fourthPoint_.y - firstPoint_.y), 2));
+
+  maxSide = std::max({eighthSqrt, ninthSqrt, tenthSqrt});
+
+  if (maxSide >= eighthSqrt + ninthSqrt + tenthSqrt - maxSide)
+  {
+    throw std::logic_error("Triangle error\n");
+  }
+  return firstSquare - secondSquare;
 }
 rectangle_t Concave::getFrameRect() const
 {
