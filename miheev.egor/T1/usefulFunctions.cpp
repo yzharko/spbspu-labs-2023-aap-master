@@ -24,7 +24,7 @@ namespace miheev
 
   void printCurrentState(double sumArea, rectangle_t* rects, size_t rectsAmount)
   {
-    std::cout << '\t' << std::fixed << std::setprecision(1) <<  sumArea << " ";
+    std::cout << std::fixed << std::setprecision(1) <<  sumArea << " ";
     for (size_t i = 0; i < rectsAmount; i++)
     {
       printRect(rects[i]);

@@ -75,7 +75,7 @@ int main()
     if (figName == "SCALE")
     {
       double x0 = 0, y0 = 0, k = 0, sumAreaBefore = 0, sumAreaAfter = 0;
-      if (std::cin >> x0 >> y0 >> k)
+      if (std::cin >> x0 >> y0 >> k && k >= 0 && figsNow > 0)
       {
         rectangle_t* rectsBefore = new rectangle_t[figsNow];
         size_t indexBefore = 0;
@@ -105,6 +105,11 @@ int main()
         delete[] rectsAfter;
         freeShapes(shapes, figsNow);
         return 0;
+      }
+      else
+      {
+        std::cerr << "Can't scale\n";
+        return 2;
       }
     }
   }
