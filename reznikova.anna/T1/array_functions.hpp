@@ -5,8 +5,8 @@
 
 namespace reznikova
 {
-  void freeArray(Shape ** figures, int & stored);
-  void outputSum(Shape ** figures, int & stored);
+  void freeArray(Shape ** figures, int stored);
+  void outputSum(Shape ** figures, int stored);
   void outputFrame(rectangle_t frame_rect);
 }
 
