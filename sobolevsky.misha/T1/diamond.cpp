@@ -12,17 +12,18 @@ namespace sobolevsky
     secondDiagonal = std::abs(rightPoint2.y - centerPoint2.y);
   }
 
-  double Diamond::getArea()
+  double Diamond::getArea() const
   {
     return (2 * firstDiagonal * secondDiagonal);
   }
 
-  Rectangle_t Diamond::getFrameRect()
+  Rectangle_t Diamond::getFrameRect() const
   {
-    rectangle.pos = centerPoint;
-    rectangle.height = firstDiagonal * 2;
-    rectangle.width = secondDiagonal * 2;
-    return rectangle;
+    Rectangle_t test;
+    test.pos = centerPoint;
+    test.height = firstDiagonal * 2;
+    test.width = secondDiagonal * 2;
+    return test;
   }
 
   void Diamond::move(Point_t newCenter)

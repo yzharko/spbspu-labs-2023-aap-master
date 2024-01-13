@@ -50,7 +50,7 @@ int main()
         std::cerr << "Wrong diamond\n";
       }
     }
-    else if (figureType == "DIAMOND")
+    else if (figureType == "PARALLELOGRAM")
     {
       double x1, x2, x3, y1, y2, y3;
       if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3)
@@ -77,12 +77,19 @@ int main()
         {
           std::cout << figuers[i]->getFrameRect().width * figuers[i]->getFrameRect().height << " ";
         }
+        std::cout << "\n";
+        return 1;
       }
       else
       {
         std::cerr << "ты чето не то написал\n";
         return 1;
       }
+    }
+    else
+    {
+      std::cerr << "ну ты чето не то ввел\n";
+      return 1;
     }
   }
   return 0;

@@ -12,12 +12,12 @@ namespace sobolevsky
     rectangle.height = rightUpPoint.y - leftDownPoint.y;
   }
 
-  double Rectangle::getArea()
+  double Rectangle::getArea() const
   {
     return rectangle.width * rectangle.height;
   }
 
-  Rectangle_t Rectangle::getFrameRect()
+  Rectangle_t Rectangle::getFrameRect() const
   {
     return rectangle;
   }

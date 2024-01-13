@@ -11,17 +11,18 @@ namespace sobolevsky
     centerPoint.y = (Point2.y + Point3.y) / 2;
   }
 
-  double Parallelogram::getArea()
+  double Parallelogram::getArea() const
   {
     return ((Point2.x - Point1.x) * (Point1.y - Point3.y));
   }
 
-  Rectangle_t Parallelogram::getFrameRect()
+  Rectangle_t Parallelogram::getFrameRect() const
   {
-    rectangle.pos = centerPoint;
-    rectangle.height = (Point1.y - Point3.y);
-    rectangle.width = (Point2.x - Point1.x);
-    return rectangle;
+    Rectangle_t test;
+    test.pos = centerPoint;
+    test.height = (Point1.y - Point3.y);
+    test.width = (Point2.x - Point1.x);
+    return test;
   }
 
   void Parallelogram::move(double moveX, double moveY)

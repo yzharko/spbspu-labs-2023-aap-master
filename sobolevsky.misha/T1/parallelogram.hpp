@@ -8,11 +8,11 @@ namespace sobolevsky
   {
   public:
     Parallelogram(Point_t Point1_1, Point_t Point2_1, Point_t Point3_1);
-    double getArea();
-    Rectangle_t getFrameRect();
-    void move(Point_t newCenter);
-    void move(double moveX, double moveY);
-    void scale(double n);
+    double getArea() const override;
+    Rectangle_t getFrameRect() const override;
+    void move(Point_t newCenter) override;
+    void move(double moveX, double moveY) override;
+    void scale(double n) override;
   private:
     Rectangle_t rectangle;
     Point_t Point1;
