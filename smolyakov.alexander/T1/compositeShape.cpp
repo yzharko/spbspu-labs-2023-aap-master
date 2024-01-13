@@ -13,7 +13,7 @@ smolyakov::CompositeShape::CompositeShape(size_t defaultCapacity)
 }
 
 smolyakov::CompositeShape::CompositeShape(const CompositeShape& source)
-  : capacity(source.capacity), shapes(source.shapes)
+  : shapes(source.shapes), capacity(source.capacity)
 {
   shapeptrs = new Shape*[capacity];
   for (std::size_t i = 0; i < shapes; i++)
@@ -23,7 +23,7 @@ smolyakov::CompositeShape::CompositeShape(const CompositeShape& source)
 }
 
 smolyakov::CompositeShape::CompositeShape(CompositeShape&& source)
-  : capacity(source.capacity), shapes(source.shapes), shapeptrs(source.shapeptrs)
+  : shapes(source.shapes), capacity(source.capacity), shapeptrs(source.shapeptrs)
 {
   source.capacity = 0;
   source.shapes = 0;
