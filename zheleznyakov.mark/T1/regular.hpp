@@ -1,5 +1,5 @@
-#ifndef DIAMOND_HPP
-#define DIAMOND_HPP
+#ifndef REGULAR_HPP
+#define REGULAR_HPP
 #include "shape.hpp"
 
 namespace zheleznyakov

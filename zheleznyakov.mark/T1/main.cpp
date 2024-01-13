@@ -4,6 +4,7 @@
 #include "base-types.hpp"
 #include "rectangle.hpp"
 #include "diamond.hpp"
+#include "regular.hpp"
 #include "validation.hpp"
 
 int main()
@@ -49,6 +50,19 @@ int main()
       else
       {
         std::cerr << "Error: cannot read DIAMOND\n";
+      }
+    }
+    else if (currentFigureName == "REGULAR")
+    {
+      double x1 = 0, y1 = 0, x2 = 0, y2 = 0, x3 = 0, y3 = 0;
+      if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 &&
+          checkIsRighrTriangle(point_t{x1, y1}, point_t{x2, y2}, point_t{x3, y3}))
+      {
+        shapes[currentShapeIndex++] = new Regular(point_t{x1, y1}, point_t{x2, y2}, point_t{x3, y3});
+      }
+      else
+      {
+        std::cerr << "Error: cannot read REGULAR\n";
       }
     }
   }
