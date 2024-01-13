@@ -36,7 +36,7 @@ int main()
       }
       else
       {
-        std::cerr << "Wrong rectanglr\n";
+        std::cerr << "ты накосячил с прямоугольником\n";
       }
     }
     else if (figureType == "DIAMOND")
@@ -48,7 +48,7 @@ int main()
       }
       else
       {
-        std::cerr << "Wrong diamond\n";
+        std::cerr << "ты накосячил с ромбом\n";
       }
     }
     else if (figureType == "PARALLELOGRAM")
@@ -60,7 +60,7 @@ int main()
       }
       else
       {
-        std::cerr << "Wrong parallelogram\n";
+        std::cerr << "ты накосячил с параллелограммом\n";
       }
     }
     else if (figureType == "SCALE")
@@ -115,7 +115,7 @@ int main()
           std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2));
         }
         std::cout << "\n";
-        delete figuers;
+        delete[] figuers;
         return 1;
       }
       else
