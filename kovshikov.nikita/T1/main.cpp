@@ -107,10 +107,21 @@ int main()
       std::cout << "\n";
       for (size_t i = 0; i < count; i++)
       {
-        double newPosX = 0 - posX;
+        /*double newPosX = 0 - posX;
         double newPosY = 0 - posY;
         geometricShapes[i]->move({newPosX, newPosY});
+        geometricShapes[i]->scale(multiplier);*/
+        rectangle_t BeforeFrame = geometricShapes[i]->getFrameRect();
+        double BeforelowerLeftX = BeforeFrame.pos.x - 0.5 * BeforeFrame.width;
+        double BeforelowerLeftY = BeforeFrame.pos.y - 0.5 * BeforeFrame.height;
+        geometricShapes[i]->move({posX, posY});
+        rectangle_t AfterFrame = geometricShapes[i]->getFrameRect();
+        double AfterlowerLeftX = AfterFrame.pos.x - 0.5 * AfterFrame.width;
+        double AfterlowerLeftY = AfterFrame.pos.y - 0.5 * AfterFrame.height;
         geometricShapes[i]->scale(multiplier);
+        double changeX = AfterlowerLeftX - BeforelowerLeftX;
+        double changeY = AfterlowerLeftY - BeforelowerLeftY;
+        geometricShapes[i]->move(changeX, changeY);
       }
       if (isCorrectlyDescribe == false)
       {
