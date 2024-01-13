@@ -3,11 +3,11 @@
 
 using namespace shagieva;
 
-Rectangle::Rectangle(const point_t & point1, const point_t & point2):
-  pointA(point1),
-  pointC(point2)
+Rectangle::Rectangle(const point_t & bottomLeftPoint, const point_t & topRightPoint):
+  pointA(bottomLeftPoint),
+  pointC(topRightPoint)
 {
-  if (pointA.x > pointC.x && pointA.y > pointC.y)
+  if (pointA.x >= pointC.x && pointA.y >= pointC.y)
   {
     throw std::invalid_argument("Rectangle is incorrect");
   }

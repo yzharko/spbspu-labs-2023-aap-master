@@ -5,11 +5,11 @@
 
 using namespace shagieva;
 
-Regular::Regular(const point_t & point1, const point_t & point2, const point_t & point3)
+Regular::Regular(const point_t & centerPoint, const point_t & smallRadiusPoint, const point_t & bigRadiusPoint)
 {
-  points[0] = point1;
-  points[1] = point2;
-  points[2] = point3;
+  points[0] = centerPoint;
+  points[1] = smallRadiusPoint;
+  points[2] = bigRadiusPoint;
 
   double a = std::pow(points[1].x - points[0].x, 2) + std::pow(points[1].y - points[0].y, 2);
   double b = std::pow(points[2].x - points[1].x, 2) + std::pow(points[2].y - points[1].y, 2);
@@ -113,4 +113,3 @@ double Regular::getCenterAngle() const
 
   return centerAngle;
 }
-

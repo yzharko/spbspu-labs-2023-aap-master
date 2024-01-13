@@ -5,6 +5,7 @@
 #include "base-types.hpp"
 #include <stdexcept>
 #include <iostream>
+#include <iomanip>
 
 void shagieva::parseFigure(std::string figureType, std::istream & input, shagieva::Shape ** shapes, size_t & shapeCount)
 {
@@ -65,7 +66,8 @@ void shagieva::printFramePoints(const shagieva::Shape * const * const shapes, co
   for (size_t i = 0; i < shapeCount; ++i)
   {
     shagieva::rectangle_t frame = shapes[i]->getFrameRect();
-    std::cout << frame.pos.x - frame.width / 2 << " "
+    std::cout << std::fixed << std::setprecision(1)
+              << frame.pos.x - frame.width / 2 << " "
               << frame.pos.y - frame.height / 2 << " "
               << frame.pos.x + frame.width / 2 << " "
               << frame.pos.y + frame.height / 2
@@ -80,5 +82,5 @@ void shagieva::printTotalArea(const shagieva::Shape * const * const shapes, cons
   {
     totalArea += shapes[i]->getArea();
   }
-  std::cout << totalArea << " ";
+  std::cout << std::fixed << std::setprecision(1) << totalArea << " ";
 }

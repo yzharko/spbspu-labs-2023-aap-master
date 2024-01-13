@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <iomanip>
 #include <cmath>
 #include <stdexcept>
 #include "resourceFunctions.hpp"
@@ -56,8 +55,6 @@ int main()
     shagieva::clearResource(shapes, shapeCount);
     return 1;
   }
-
-  std::cout << std::fixed << std::setprecision(1);
 
   shagieva::printTotalArea(shapes, shapeCount);
   shagieva::printFramePoints(shapes, shapeCount);
