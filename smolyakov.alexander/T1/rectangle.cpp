@@ -7,7 +7,7 @@ smolyakov::Rectangle::Rectangle(point_t bottomLeft, point_t upperRight)
   height_ = upperRight.y - bottomLeft.y;
   double centerX = (bottomLeft.x + upperRight.x) / 2.0;
   double centerY = (bottomLeft.y + upperRight.y) / 2.0;
-  center_ = {centerX, centerY}; 
+  center_ = {centerX, centerY};
 }
 
 smolyakov::point_t smolyakov::Rectangle::getScaleCenter() const
