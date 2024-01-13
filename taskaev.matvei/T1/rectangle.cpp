@@ -6,7 +6,7 @@
 taskaev::Rectangle::Rectangle(point_t leftpoint, point_t rightpoint) :
   leftPoint_(leftpoint), rightPoint_(rightpoint)
 {
-  if((leftpoint_.X > rightPoint_.X) || (leftPoint_.Y > rightPoint_.Y))
+  if((leftPoint_.X > rightPoint_.X) || (leftPoint_.Y > rightPoint_.Y))
   {
     throw std::logic_error("Error, not rectangle");
   }

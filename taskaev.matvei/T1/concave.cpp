@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <stdexcept>
 #include "concave.hpp"
 #include "baseTypes.hpp"

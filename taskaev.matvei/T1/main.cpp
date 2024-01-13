@@ -47,7 +47,7 @@ int main()
       }
       catch (const std::logic_error& e)
       {
-        std::cer << e.what();
+        std::cerr << e.what();
       }
     }
     else if (figur == "CONCAVE")
@@ -57,7 +57,6 @@ int main()
       double x2;
       double y2;
       double x3;
-      double y3;
       double y3;
       double x4;
       double y4;
