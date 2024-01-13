@@ -13,9 +13,9 @@ int main()
   double* arrSP = new double[3] {};
   double* arrEP = new double[4] {};
 
-  size_t countRP = 0;
-  size_t countSP = 0;
-  size_t countEP = 0;
+  size_t countRP = 4;
+  size_t countSP = 3;
+  size_t countEP = 4;
 
   std::vector<std::string> sequence;
 
@@ -25,6 +25,7 @@ int main()
     {
       if (countRP != 4)
       {
+        countRP += 4;
         double* ArrElem = new double[countRP] {};
         for (size_t i = 0; i < countRP; i++)
         {
@@ -73,9 +74,9 @@ int main()
       double x_c = 0.0;
       double y_c = 0.0;
       double k = 0.0;
-      countRP = 0;
-      countSP = 0;
-      countEP = 0;
+      countRP = 4;
+      countSP = 3;
+      countEP = 4;
 
       double AreaSum = 0.0;
       double newAreaSum = 0.0;
@@ -86,8 +87,8 @@ int main()
       nikiforov::point_t newRightPoint = { 0, 0 };
       nikiforov::point_t movePoints = { 0, 0 };
 
-      size_t countArrPrimalPoints = 0;
-      size_t countArrAfterPoints = 0;
+      size_t countArrPrimalPoints = 4;
+      size_t countArrAfterPoints = 4;
 
       if (sequence.size() > 0)
       {
