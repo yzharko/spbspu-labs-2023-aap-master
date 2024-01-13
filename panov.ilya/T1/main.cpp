@@ -6,6 +6,16 @@
 void ShapeInfo(Shape& s);
 int main() {
   double x1 = 0.0, y1 = 0.0, r = 0.0;
+  double t1 = 0.0, t2 = 0.0, t3 = 0.0, t4 = 0.0;
+  std::cout << "Enter the coords for rectangle:\n";
+  std::cout << "Center coords: ";
+  std::cin >> t1 >> t2;
+  if (!std::cin) {
+    std::cerr << "Incorrect input!Try again…";
+    exit(-1);
+  }
+  std::cout << "width and height:";
+  std::cin >> t3 >> t4;
   std::cout << "Enter the coordinates of the center and the radius of the circle : \n";
   std::cout << "Center: ";
   std::cin >> x1 >> y1;
@@ -22,7 +32,6 @@ int main() {
   Point center(x1, y1);
   Circle circle(center, r);
   double x2 = 0.0, y2 = 0.0, x3 = 0.0, y3 = 0.0, x4 = 0.0, y4 = 0.0;
-  double t1 = 0.0, t2 = 0.0, t3 = 0.0, t4 = 0.0;
   std::cout << "Enter the coords for diagonal interception of diamond, diagonals:\n";
   std::cout << "Coords: ";
   std::cin >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
@@ -30,15 +39,6 @@ int main() {
     std::cerr << "Incorrect input!Try again…";
     exit(-1);
   }
-  std::cout << "Enter the coords for rectangle:\n";
-  std::cout << "Center coords: ";
-  std::cin >> t1 >> t2;
-  if (!std::cin) {
-    std::cerr << "Incorrect input!Try again…";
-    exit(-1);
-  }
-  std::cout << "width and height:";
-  std::cin >> t3 >> t4;
   Point center2(t1, t2);
   Point pos1(x2, y2);
   Point pos2(x3, y3);
@@ -47,15 +47,18 @@ int main() {
   FrameRectangle framerectangle(center2, t3, t4);
   circle.getName();
   diamond.getName();
+  framerectangle.show();
   circle.show();
   diamond.show();
-  framerectangle.show();
   std::cout << "Scale 2\n";
+  framerectangle.scale(2);
   circle.scale(2);
   diamond.scale(2);
-  framerectangle.scale(2);
+  framerectangle.show();
   circle.show();
   diamond.show();
+  std::cout << "\n" << "move rectangle  \n";
+  framerectangle.move(1, 1);
   framerectangle.show();
   std::cout << "\n" << "move circle \n";
   circle.move(1, 1);
@@ -63,9 +66,6 @@ int main() {
   std::cout << "\n" << "move diamond  \n";
   diamond.move(1, 1);
   diamond.show();
-  std::cout << "\n" << "move rectangle  \n";
-  framerectangle.move(1, 1);
-  framerectangle.show();
   return 0;
 }
 void ShapeInfo(Shape& s) {
