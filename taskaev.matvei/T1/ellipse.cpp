@@ -14,7 +14,7 @@ taskaev::Ellipse::Ellipse(point_t center, double verticalRad, double gorisontRad
 
 double taskaev::Ellipse::getArea()
 {
-  return 3.14 * verticalRad_ * gorisontRad_;
+  return PI * verticalRad_ * gorisontRad_;
 }
 
 rectangle_t taskaev::Ellipse::getFrameRect()
@@ -22,7 +22,7 @@ rectangle_t taskaev::Ellipse::getFrameRect()
   double width = verticalRad_ * 2;
   double height = gorisontRad_ * 2;
   point_t pos = center_;
-  return rectangle_t(width, height, pos);
+  return rectangle_t{ width, height, pos };
 }
 
 void taskaev::Ellipse::move(double x, double y)

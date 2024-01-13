@@ -19,6 +19,7 @@ namespace taskaev
     point_t center_;
     double verticalRad_;
     double gorisontRad_;
+    const double PI = 3.14;
   };
 }
 #endif

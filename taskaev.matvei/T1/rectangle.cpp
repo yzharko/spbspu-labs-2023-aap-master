@@ -21,14 +21,14 @@ rectangle_t taskaev::Rectangle::getFrameRect()
 {
   double width = std::abs(rightPoint_.X - leftPoint_.X);
   double height = std::abs(rightPoint_.Y - leftPoint_.Y);
-  point_t pos(((rightPoint_.X + leftPoint_.X) / 2), ((rightPoint_.Y + leftPoint_.Y)));
-  return rectangle_t(width, height, pos);
+  point_t pos = { (leftPoint_.X + width / 2), (leftPoint_.Y + height / 2) };
+  return rectangle_t{ width, height, pos };
  }
 
 void taskaev::Rectangle::move(double x, double y)
 {
-  rightPoint_ = point_t(rightPoint_.X + x, rightPoint_.Y + y);
-  leftPoint_ = point_t(leftPoint_.X + x, leftPoint_.Y + y);
+  rightPoint_ = point_t{ rightPoint_.X + x, rightPoint_.Y + y };
+  leftPoint_ = point_t{ leftPoint_.X + x, leftPoint_.Y + y };
 }
 
 void taskaev::Rectangle::move(const point_t& newCenter)

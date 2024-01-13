@@ -36,7 +36,7 @@ rectangle_t taskaev::Concave::getFrameRect()
   double lowerY = (p1.Y < ((p2.Y < p3.Y) ? p2.Y : p3.Y)) ? p1.Y : ((p2.Y < p3.Y) ? p2.Y : p3.Y);
   double rightX = (p1.X > ((p2.X > p3.X) ? p2.X : p3.X)) ? p1.X : ((p2.X > p3.X) ? p2.X : p3.X);
   double upperY = (p1.Y > ((p2.Y > p3.Y) ? p2.Y : p3.Y)) ? p1.Y : ((p2.Y > p3.Y) ? p2.Y : p3.Y);
-  return rectangle_t(rightX - leftX, upperY - lowerY, { (leftX + rightX) * 0.5, (upperY + lowerY) * 0.5 });
+  return rectangle_t{ rightX - leftX, upperY - lowerY, (leftX + rightX) * 0.5, (upperY + lowerY) * 0.5 };
 }
 
 void taskaev::Concave::move(double x, double y)
