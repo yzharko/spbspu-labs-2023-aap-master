@@ -29,7 +29,7 @@ int main()
     if (std::cin.eof())
     {
       freeShapes(shapes, figsNow);
-      return 0;
+      return 1;
     }
 
     if (figsNow >= shapesSize)
