@@ -14,7 +14,7 @@ namespace tellez
       rectangle_t getFrameRect() const override;
       void move(double dx, double dy) override;
       void move(point_t position) override;
-      void scaleWithoutVerify(double ds) override;
+      void scale(double ds) override;
       Shape * clone() const override;
     protected:
       rectangle_t rect_;

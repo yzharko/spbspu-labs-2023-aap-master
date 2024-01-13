@@ -24,7 +24,7 @@ void Rectangle::move(point_t position)
   rect_.pos = position;
 }
 
-void Rectangle::scaleWithoutVerify(double ds)
+void Rectangle::scale(double ds)
 {
   rect_.width = rect_.width * ds;
   rect_.height = rect_.height * ds;

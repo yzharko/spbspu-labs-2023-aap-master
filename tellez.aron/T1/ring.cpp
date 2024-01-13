@@ -40,7 +40,7 @@ Shape* Ring::clone() const
   return new Ring(center_, outerRadius_, innerRadius_);
 }
 
-void Ring::scaleWithoutVerify(double ds)
+void Ring::scale(double ds)
 {
   outerRadius_ *= ds;
   innerRadius_ *= ds;

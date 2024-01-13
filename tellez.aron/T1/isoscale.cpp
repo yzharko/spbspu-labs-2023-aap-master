@@ -27,6 +27,6 @@ void tellez::isoScaleWithoutVerify(Shape * shape, scale_t scale)
 {
   point_t pos = shape->getFrameRect().pos;
   shape->move(scale.pos);
-  shape->scaleWithoutVerify(scale.ds);
+  shape->scale(scale.ds);
   shape->move(resizePoint(pos, scale).x, resizePoint(pos, scale).y);
 }

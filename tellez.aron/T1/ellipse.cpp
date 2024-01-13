@@ -25,7 +25,7 @@ void Ellipse::move(point_t position)
   rect_.pos = position;
 }
 
-void Ellipse::scaleWithoutVerify(double ds)
+void Ellipse::scale(double ds)
 {
   r1 = r1 * ds;
   r2 = r2 * ds;
