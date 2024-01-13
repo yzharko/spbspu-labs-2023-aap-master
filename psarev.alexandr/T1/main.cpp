@@ -46,21 +46,24 @@ int main()
 
         for (size_t i = 0; i < queue.size(); i++) {
           if (queue[i] == 'r') {
-            psarev::Rectangle rect({ rectData[rC++], rectData[rC++]}, { rectData[rC++], rectData[rC++] });
+            psarev::Rectangle rect({ rectData[rC + 1], rectData[rC + 2]}, { rectData[rC + 3], rectData[rC + 4] });
+            rC += 4;
             psarev::rectangle_t rectFrame = rect.getFrameRect();
             psarev::fillData(startFrames, rectFrame, startAreaSum);
             psarev::modify(scaleCenter, coef, rect, rectFrame);
             psarev::fillData(newFrames, rectFrame, newAreaSum);
           }
           else if (queue[i] == 'i') {
-            psarev::Ring ring({ ringData[iC++], ringData[iC++] }, ringData[iC++], ringData[iC++] );
+            psarev::Ring ring({ ringData[iC + 1], ringData[iC + 2] }, ringData[iC + 3], ringData[iC + 4] );
+            iC += 4;
             psarev::rectangle_t ringFrame = ring.getFrameRect();
             psarev::fillData(startFrames, ringFrame, startAreaSum);
             psarev::modify(scaleCenter, coef, ring, ringFrame);
             psarev::fillData(newFrames, ringFrame, newAreaSum);
           }
           else if (queue[i] == 't') {
-            psarev::Triangle tri({ triData[tC++], triData[tC++] }, { triData[tC++], triData[tC++] }, { triData[tC++], triData[tC++] });
+            psarev::Triangle tri({ triData[tC + 1], triData[tC + 2] }, { triData[tC + 3], triData[tC + 4] }, { triData[tC + 5], triData[tC + 6] });
+            tC += 6;
             psarev::rectangle_t triFrame = tri.getFrameRect();
             psarev::fillData(startFrames, triFrame, startAreaSum);
             psarev::modify(scaleCenter, coef, tri, triFrame);
