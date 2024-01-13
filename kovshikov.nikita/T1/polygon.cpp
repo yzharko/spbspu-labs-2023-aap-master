@@ -83,18 +83,24 @@ double kovshikov::Polygon::getArea() const
   {
     for(size_t i = 1; i < read; i++)
     {
-      Shape * triangleUpper = new Triangle(start, upper[i], upper[i - 1]);
+      /*Shape * triangleUpper = new Triangle(start, upper[i], upper[i - 1]);
       area += triangleUpper->getArea();
-      delete triangleUpper;
+      delete triangleUpper;*/
+      const Triangle triangleUpper(start, upper[i], upper[i - 1]);
+      area += triangleUpper.getArea();
     }
-    Shape * triangleMiddle = new Triangle(start, upper[read - 1], lower[0]);
+    /*Shape * triangleMiddle = new Triangle(start, upper[read - 1], lower[0]);
     area += triangleMiddle->getArea();
-    delete triangleMiddle;
+    delete triangleMiddle;*/
+    const Triangle triangleMiddle(start, upper[read - 1], lower[0]);
+    area += triangleMiddle.getArea();
     for(size_t i = 1; i < count; i++)
     {
-      Shape * triangleLower = new Triangle(start, lower[i - 1], lower[i]);
+      /*Shape * triangleLower = new Triangle(start, lower[i - 1], lower[i]);
       area += triangleLower->getArea();
-      delete triangleLower;
+      delete triangleLower;*/
+      const Triangle triangleLower(start, lower[i - 1], lower[i]);
+      area += triangleLower.getArea();
     }
   }
   delete[] lowerX;
@@ -121,12 +127,13 @@ rectangle_t kovshikov::Polygon::getFrameRect() const
   double maxY = *std::max_element(arrayY, arrayY + num_);
   point_t lowerLeft = {minX, minY};
   point_t upperRight = {maxX, maxY};
-  Shape * rectangle = Rectangle(lowerLeft, upperRight);
+  /*Shape * rectangle = Rectangle(lowerLeft, upperRight);*/
   delete[] arrayX;
   delete[] arrayY;
-  rectangle_t frame = rectangle->getFrameRect();
-  delete rectangle;
-  return frame;
+  /*rectangle_t frame = rectangle->getFrameRect();
+  delete rectangle;*/
+  const Rectangle rectangle(lowerLeft, upperRight);
+  return rectangle.getFrameRect();
 }
 void kovshikov::Polygon::move(const point_t &newPos)
 {
