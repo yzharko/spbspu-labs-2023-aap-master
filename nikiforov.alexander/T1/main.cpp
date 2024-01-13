@@ -23,7 +23,8 @@ int main()
   {
     if (nameFigure == "RECTANGLE")
     {
-      double* ArrElem = new double[countRP += 4];
+      countRP += 4;
+      double* ArrElem = new double[countRP];
       for (size_t i = 0; i < countRP; i++)
       {
         ArrElem[i] = arrRP[i];
@@ -98,14 +99,16 @@ int main()
           {
             if (sequence[i] == "RECTANGLE")
             {
-              double* ArrElemPrimal = new double[countArrPrimalPoints += 4];
+              countArrPrimalPoints += 4;
+              double* ArrElemPrimal = new double[countArrPrimalPoints];
               for (size_t i = 0; i < countArrPrimalPoints; i++)
               {
                 ArrElemPrimal[i] = arrPrimalPoints[i];
               }
               delete[] arrPrimalPoints;
               arrPrimalPoints = ArrElemPrimal;
-              double* ArrElemAfter = new double[countArrAfterPoints += 4];
+              countArrAfterPoints += 4;
+              double* ArrElemAfter = new double[countArrAfterPoints];
               for (size_t i = 0; i < countArrAfterPoints; i++)
               {
                 ArrElemAfter[i] = arrAfterPoints[i];
