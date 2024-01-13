@@ -22,7 +22,7 @@ double smolyakov::Regular::getArea() const
 
 smolyakov::rectangle_t smolyakov::Regular::getFrameRect() const
 {
-  return rectangle_t{center_, outerRadius_, outerRadius_};
+  return rectangle_t{center_, outerRadius_ * 2.0, outerRadius_ * 2.0};
 }
 
 void smolyakov::Regular::moveTo(point_t shift)

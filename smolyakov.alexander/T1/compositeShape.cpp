@@ -9,7 +9,7 @@
 smolyakov::CompositeShape::CompositeShape(size_t defaultCapacity)
   : capacity(defaultCapacity), shapes(0)
 {
-  shapeptrs = new Shape*[capacity];
+  shapeptrs = new Shape*[capacity]{0};
 }
 
 smolyakov::CompositeShape::CompositeShape(const CompositeShape& source)
@@ -37,18 +37,13 @@ smolyakov::CompositeShape::~CompositeShape()
 
 void smolyakov::CompositeShape::addShape(Shape& shape)
 {
-  if (++shapes >= capacity)
+  if (shapes == capacity)
   {
-    shapes--;
     throw std::logic_error("Maximum shapes limit is reached.");
   }
 
-  size_t insertAt = 0;
-  while (shapeptrs[insertAt] != nullptr)
-  {
-    insertAt++;
-  }
-  shapeptrs[insertAt] = &shape;
+  shapeptrs[shapes] = &shape;
+  shapes++;
 }
 
 void smolyakov::CompositeShape::removeShape(Shape& shape)
@@ -82,7 +77,7 @@ void smolyakov::CompositeShape::removeShape(Shape& shape)
 double smolyakov::CompositeShape::getArea() const
 {
   double area = 0;
-  for (size_t i = 0; (i < capacity) || (shapeptrs[i] != nullptr); i++)
+  for (size_t i = 0; i < shapes; i++)
   {
     area += shapeptrs[i]->getArea();
   }
@@ -95,36 +90,29 @@ smolyakov::rectangle_t smolyakov::CompositeShape::getFrameRect() const
   double minValue = std::numeric_limits<double>().min();
   point_t min = {maxValue, maxValue};
   point_t max = {minValue, minValue}; 
-  for (size_t i = 0; (i < capacity) || (shapeptrs[i] != nullptr); i++)
+  for (size_t i = 0; i < shapes; i++)
   {
     rectangle_t shapeFrame = shapeptrs[i]->getFrameRect();
     min.x = std::min(min.x, shapeFrame.pos.x - shapeFrame.width / 2.0);
     min.y = std::min(min.y, shapeFrame.pos.y - shapeFrame.height / 2.0);
-    max.x = std::max(max.x, shapeFrame.pos.x - shapeFrame.width / 2.0);
-    max.y = std::max(max.y, shapeFrame.pos.y - shapeFrame.height / 2.0);
+    max.x = std::max(max.x, shapeFrame.pos.x + shapeFrame.width / 2.0);
+    max.y = std::max(max.y, shapeFrame.pos.y + shapeFrame.height / 2.0);
   }
   point_t pos = {(max.x - min.x) / 2.0, (max.y - min.y) / 2.0};
   return rectangle_t{pos, max.x - min.x, max.y - min.y};
 }
 
-void smolyakov::CompositeShape::moveBy(double x, double y)
+void smolyakov::CompositeShape::moveBy(smolyakov::point_t shift)
 {
-  size_t checkedShapes = 0;
-  size_t i = 0;
-  while ((i < capacity) && (checkedShapes < shapes))
+  for (size_t i = 0; i < shapes; i++)
   {
-    if (shapeptrs[i] != nullptr)
-    {
-      checkedShapes++;
-      shapeptrs[i]->moveBy(point_t{x, y});
-    }
-    i++;
+    shapeptrs[i]->moveBy(shift);
   }
 }
 
 void smolyakov::CompositeShape::scale(point_t pivot, double factor)
 {
-  for (size_t i = 0; (i < capacity) || (shapeptrs[i] != nullptr); i++)
+  for (size_t i = 0; i < shapes; i++)
   {
     shapeptrs[i]->scale(factor);
     point_t scaleCenter = shapeptrs[i]->getScaleCenter();

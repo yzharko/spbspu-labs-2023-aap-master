@@ -20,7 +20,7 @@ namespace smolyakov
     void removeShape(Shape& shape);
     double getArea() const;
     rectangle_t getFrameRect() const;
-    void moveBy(double x, double y);
+    void moveBy(point_t shift);
     void scale(point_t pivot, double factor);
   private:
     void doForAllShapes(void (Shape::* Action)());
