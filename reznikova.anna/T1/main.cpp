@@ -23,29 +23,28 @@ int main()
     std::cin >> name;
     if (name == "RING")
     {
-      figures[stored++] = setRing(std::cin, ifNoErrors);
+      figures[stored++] = setRing(ifNoErrors);
     }
     else if (name == "REGULAR")
     {
-      figures[stored++] = setRegular(std::cin, ifNoErrors);
+      figures[stored++] = setRegular(ifNoErrors);
     }
     else if (name == "RECTANGLE")
     {
-      figures[stored++] = setRectangle(std::cin, ifNoErrors);
+      figures[stored++] = setRectangle(ifNoErrors);
     }
     else if (name == "SCALE")
     {
       scale_command = 1;
       try
       {
-        scaleFigures(figures, stored, std::cin);
+        scaleFigures(figures, stored);
       }
       catch (const std::runtime_error &e)
       {
         std::cerr << e.what();
         return 1;
       }
-      freeArray(figures, stored);
       break;
     }
     if (ifNoErrors == 0)

@@ -4,10 +4,10 @@
 #include "array_functions.hpp"
 
 
-void reznikova::scaleFigures(Shape ** figures, const int stored, std::istream & in)
+void reznikova::scaleFigures(Shape ** figures, const int stored)
 {
   double x, y, n;
-  in >> x >> y >> n;
+  std::cin >> x >> y >> n;
 
   if (n <= 0)
   {

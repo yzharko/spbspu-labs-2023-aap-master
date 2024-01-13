@@ -6,7 +6,7 @@
 reznikova::Rectangle::Rectangle(rectangle_t rect):
 rectangle_(rect)
 {
-  if ((rectangle_.width <= 0) || (rectangle_.height <= 0))
+  if ((rect.width <= 0) || (rect.height <= 0))
   {
     throw std::runtime_error("wrong parameters\n");
   }

@@ -8,10 +8,10 @@
 #include "ring.hpp"
 #include "regular.hpp"
 
-reznikova::Shape * reznikova::setRectangle(std::istream & in, bool & ifNoErrors)
+reznikova::Shape * reznikova::setRectangle(bool & ifNoErrors)
 {
   double lx, ly, rx, ry;
-  in >> lx >> ly >> rx >> ry;
+  std::cin >> lx >> ly >> rx >> ry;
   double width = rx - lx;
   double height = ry-ly;
   point_t pos = {lx + (rx - lx)/2, ly + (ry - ly)/2};
@@ -29,10 +29,10 @@ reznikova::Shape * reznikova::setRectangle(std::istream & in, bool & ifNoErrors)
   return rectangle;
 }
 
-reznikova::Shape * reznikova::setRing(std::istream & in, bool & ifNoErrors)
+reznikova::Shape * reznikova::setRing(bool & ifNoErrors)
 {
   double x, y, big_rad, small_rad;
-  in >> x >> y >> big_rad >> small_rad;
+  std::cin >> x >> y >> big_rad >> small_rad;
   point_t center{x, y};
   Shape * ring = nullptr;
   try
@@ -47,10 +47,10 @@ reznikova::Shape * reznikova::setRing(std::istream & in, bool & ifNoErrors)
   return ring;
 }
 
-reznikova::Shape * reznikova::setRegular(std::istream & in, bool & ifNoErrors)
+reznikova::Shape * reznikova::setRegular(bool & ifNoErrors)
 {
   double x0, y0, x1, y1, x2, y2;
-  in >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
+  std::cin >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
   point_t center{x0, y0};
   point_t pointA{x1, y1};
   point_t pointB{x2, y2};

@@ -5,9 +5,9 @@
 
 namespace reznikova
 {
-  Shape * setRectangle(std::istream & in, bool & ifNoErrors);
-  Shape * setRing(std::istream & in, bool & ifNoErrors);
-  Shape * setRegular(std::istream & in, bool & ifNoErrors);
+  Shape * setRectangle(bool & ifNoErrors);
+  Shape * setRing(bool & ifNoErrors);
+  Shape * setRegular(bool & ifNoErrors);
 }
 
 #endif
