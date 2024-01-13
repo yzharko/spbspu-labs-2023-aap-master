@@ -35,3 +35,9 @@ sadofeva::Rectangle::Recnagle(Point_t point1, Point_t point2):
     throw std::logic_error("not size");
   }
 }
+
+void sadofeva::Rectangle::scale(double k)
+{
+  rectangle_.width *= k;
+  rectangle_.height *= k;
+}

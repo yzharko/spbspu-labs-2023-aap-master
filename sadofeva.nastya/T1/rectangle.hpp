@@ -15,6 +15,7 @@ namespace sadofeva
     void move(double _x, double _y) override;
     explicit Rectangle(Rectangle_t rectangle);
     Rectangle_t rectangle_;
+    void scale(double k) override;
   };
 }
 #endif

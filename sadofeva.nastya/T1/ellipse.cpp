@@ -33,3 +33,11 @@ sadofeva::Ellipse::Ellipse(Point_t point, double r_1, double r_2):
     throw std::logic_error("not size ellipse");
   }
 }
+
+void sadofeva::Ellipse::scale(double k)
+{
+  r1 *= k;
+  r2 *= k;
+  rectangle_t.width = r1 * 2.0;
+  rectangle_t.height = r2 * 2.0;
+}
