@@ -46,28 +46,34 @@ int main()
 
         for (size_t i = 0; i < queue.size(); i++) {
           if (queue[i] == 'r') {
-            psarev::Rectangle rect({ rectData[rC], rectData[rC + 1]}, { rectData[rC + 2], rectData[rC + 3] });
+            psarev::Rectangle rect({ rectData[rC], rectData[rC + 1] }, { rectData[rC + 2], rectData[rC + 3] });
             rC += 4;
             psarev::rectangle_t rectFrame = rect.getFrameRect();
-            psarev::fillData(startFrames, rectFrame, startAreaSum);
+            startAreaSum += rect.getArea();
+            psarev::fillData(startFrames, rectFrame);
             psarev::modify(scaleCenter, coef, rect, rectFrame);
-            psarev::fillData(newFrames, rectFrame, newAreaSum);
+            newAreaSum += rect.getArea();
+            psarev::fillData(newFrames, rectFrame);
           }
           else if (queue[i] == 'i') {
-            psarev::Ring ring({ ringData[iC], ringData[iC + 1] }, ringData[iC + 2], ringData[iC + 3] );
+            psarev::Ring ring({ ringData[iC], ringData[iC + 1] }, ringData[iC + 2], ringData[iC + 3]);
             iC += 4;
             psarev::rectangle_t ringFrame = ring.getFrameRect();
-            psarev::fillData(startFrames, ringFrame, startAreaSum);
+            startAreaSum += ring.getArea();
+            psarev::fillData(startFrames, ringFrame);
             psarev::modify(scaleCenter, coef, ring, ringFrame);
-            psarev::fillData(newFrames, ringFrame, newAreaSum);
+            newAreaSum += ring.getArea();
+            psarev::fillData(newFrames, ringFrame);
           }
           else if (queue[i] == 't') {
             psarev::Triangle tri({ triData[tC], triData[tC + 1] }, { triData[tC + 2], triData[tC + 3] }, { triData[tC + 4], triData[tC + 5] });
             tC += 6;
             psarev::rectangle_t triFrame = tri.getFrameRect();
-            psarev::fillData(startFrames, triFrame, startAreaSum);
+            startAreaSum += tri.getArea();
+            psarev::fillData(startFrames, triFrame);
             psarev::modify(scaleCenter, coef, tri, triFrame);
-            psarev::fillData(newFrames, triFrame, newAreaSum);
+            newAreaSum += tri.getArea();
+            psarev::fillData(newFrames, triFrame);
           }
         }
         std::cout << std::fixed << std::setprecision(1);

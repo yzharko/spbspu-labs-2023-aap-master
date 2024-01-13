@@ -91,9 +91,8 @@ bool psarev::triDataRework(std::istream& input, std::vector<double>& data, std::
   return result;
 }
 
-void psarev::fillData(std::vector<double>& framesData, rectangle_t& frame, double& areaSum)
+void psarev::fillData(std::vector<double>& framesData, rectangle_t& frame)
 {
-  areaSum += frame.width * frame.height;
   framesData.push_back(frame.pos.x - (frame.width / 2));
   framesData.push_back(frame.pos.y - (frame.height / 2));
   framesData.push_back(frame.pos.x + (frame.width / 2));
