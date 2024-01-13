@@ -3,6 +3,7 @@
 #include "shape.hpp"
 #include <cstddef>
 #include <algorithm>
+#include <stdexcept>
 
 namespace kovshikov
 {
