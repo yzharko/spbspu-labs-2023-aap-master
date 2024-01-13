@@ -16,7 +16,6 @@ miheev::Rectangle::Rectangle(miheev::point_t bottomLeft, miheev::point_t topRigh
 
 miheev::Rectangle::~Rectangle()
 {
-  std::cout << "disruption\n";
   delete[] points_;
 }
 
