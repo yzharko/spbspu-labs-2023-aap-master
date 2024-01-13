@@ -43,6 +43,16 @@ int main()
 
       geometricShapes[count++] = new Triangle({vertexAX, vertexAY}, {vertexBX, vertexBY}, {vertexCX, vertexCY});
       isAtLeastOneFigure = true;
+      try
+      {
+        geometricShapes[count - 1]->getArea();
+      }
+      catch(const std::logic_error& e)
+      {
+        isCorrectlyDescribe = false;
+        count -= 1;
+        delete geometricShapes[count];
+      }
     }
     else if (shape == "POLYGON")
     {

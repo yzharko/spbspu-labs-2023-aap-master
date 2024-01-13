@@ -1,5 +1,6 @@
 #include "triangle.hpp"
 #include "rectangle.hpp"
+#include <stdexcept>
 
 using namespace kovshikov;
 kovshikov::Triangle::Triangle(point_t vertexA, point_t vertexB, point_t vertexC):
@@ -13,6 +14,10 @@ double kovshikov::Triangle::getArea() const
   double sideAb = sqrt(pow(vertexA_.x - vertexB_.x, 2) + pow(vertexA_.y - vertexB_.y, 2));
   double sideBc = sqrt(pow(vertexB_.x - vertexC_.x, 2) + pow(vertexB_.y - vertexC_.y, 2));
   double sideCa = sqrt(pow(vertexC_.x - vertexA_.x, 2) + pow(vertexC_.y - vertexA_.y, 2));
+  if (sideAb >= sideBc + sideCa && sideBc >= sideAb + sideCa && sideCa >= sideAb + sideBc )
+  {
+    throw std::logic_error("WRONG TRIANGLE!!!");
+  }
   double p = (sideAb + sideBc + sideCa) / 2;
   return sqrt(p * (p - sideAb) * (p - sideBc) * (p - sideCa));
 }
