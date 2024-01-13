@@ -8,7 +8,11 @@ Triangle::Triangle(point_t firPoint, point_t secPoint, point_t thirPoint) :
 
 double Triangle::getArea() const
 {
-  return (0.5 * abs((secCorner.x - firCorner.x) * (thirCorner.y - firCorner.y) - (thirCorner.x - firCorner.x) * (secCorner.y - firCorner.y)));
+  double firSide = sqrt(pow((firCorner.x - secCorner.x), 2) + pow((firCorner.y - secCorner.y), 2));
+  double secSide = sqrt(pow((secCorner.x - thirCorner.x), 2) + pow((secCorner.y - thirCorner.y), 2));
+  double thirSide = sqrt(pow((thirCorner.x - firCorner.x), 2) + pow((thirCorner.y - firCorner.y), 2));
+  double halfP = 0.5 * (firSide + secSide + thirSide);
+  return (sqrt(halfP * (halfP - firSide) * (halfP - secSide) * (halfP - thirSide)));
 }
 
 rectangle_t Triangle::getFrameRect() const
@@ -26,10 +30,10 @@ rectangle_t Triangle::getFrameRect() const
   double minY = 0;
   minY = fmin(firCorner.y, secCorner.y);
   minY = fmin(minY, thirCorner.y);
-  double width = abs(maxX - minX);
-  double height = abs(maxY - minY);
+  double width = maxX - minX;
+  double height = maxY - minY;
 
-  return { width, height, { (maxX - minX) * 0.5, (maxY - minY) * 0.5 } };
+  return { width, height, { (maxX + minX) * 0.5, (maxY + minY) * 0.5 } };
 }
 
 void Triangle::move(point_t newCenter)
@@ -48,7 +52,13 @@ void Triangle::move(double xCh, double yCh)
 
 void Triangle::scale(double coef)
 {
-  firCorner = { firCorner.x * coef, firCorner.y * coef };
-  secCorner = { secCorner.x * coef, secCorner.y * coef };
-  thirCorner = { thirCorner.x * coef, thirCorner.y * coef };
+  double xMid, yMid;
+  xMid = (firCorner.x + secCorner.x + thirCorner.x) / 3;
+  yMid = (firCorner.y + secCorner.y + thirCorner.y) / 3;
+  firCorner.x += (firCorner.x - xMid) * (coef - 1);
+  firCorner.y += (firCorner.y - yMid) * (coef - 1);
+  secCorner.x += (secCorner.x - xMid) * (coef - 1);
+  secCorner.y += (secCorner.y - yMid) * (coef - 1);
+  thirCorner.x += (thirCorner.x - xMid) * (coef - 1);
+  thirCorner.y += (thirCorner.y - yMid) * (coef - 1);
 }
