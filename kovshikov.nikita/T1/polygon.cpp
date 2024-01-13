@@ -14,6 +14,10 @@ kovshikov::Polygon::~Polygon()
 }
 double kovshikov::Polygon::getArea() const
 {
+  if (num_ < 3)
+  {
+    throw std::logic_error("There is no polygon.There are too few dots");
+  }
   for(size_t i = 0; i < num_; i++)
   {
     for(size_t j = 0; j < num_; j++)
