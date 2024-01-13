@@ -9,9 +9,9 @@
 int main()
 {
   std::string nameFigure = "";
-  double* arrRP = new double[0];
-  double* arrSP = new double[0];
-  double* arrEP = new double[0];
+  double* arrRP = new double[1];
+  double* arrSP = new double[1];
+  double* arrEP = new double[1];
 
   size_t countRP = 0;
   size_t countSP = 0;
