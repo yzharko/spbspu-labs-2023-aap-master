@@ -26,7 +26,7 @@ double Concave::getArea() const {
   double secondArea = (x4 * (y2 - y3)) + (x2 * (y3 - y4)) + (x3 * (y4 - y2));
   secondArea = std::abs(secondArea / 2.0);
 
-  return std::abs(firstArea - secondArea);
+  return firstArea - secondArea;
 }
 rectangle_t Concave::getFrameRect() const
 {
@@ -36,8 +36,8 @@ rectangle_t Concave::getFrameRect() const
   double minY = std::min({ firstPoint_.y, secondPoint_.y, thirdPoint_.y });
   double width = maxX - minX;
   double height = maxY - minY;
-  double posX = (maxX + minX) * 0.5;
-  double posY = (maxY + minY) * 0.5;
+  double posX = (minX + width) * 0.5;
+  double posY = (minY + height) * 0.5;
   point_t pos = { posX, posY };
   return rectangle_t{ width, height, pos };
 }
