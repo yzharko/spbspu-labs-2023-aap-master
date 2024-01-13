@@ -1,6 +1,7 @@
 #include "concave.hpp"
 #include <cmath>
 #include <stdexcept>
+#include <algorithm>
 using namespace jirkov;
 Concave::Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, point_t fourthPoint) :
   firstPoint_(firstPoint),
