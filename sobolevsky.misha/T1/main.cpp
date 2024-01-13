@@ -26,7 +26,6 @@ int main()
   size_t counter = 0;
 
   std::string figureType;
-  bool flag = false;
   while (std::cin >> figureType)
   {
     if (counter == arraySize)
