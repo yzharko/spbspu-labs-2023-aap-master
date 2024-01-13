@@ -9,9 +9,9 @@ public:
   Square(point_t pos, double side);
   virtual double getArea()const;
   virtual rectangle_t getFrameRect()const;
-  virtual void move(point_t);
-  virtual void move(double x, double y);
-  virtual void scale(double k);
+  virtual void move(const point_t&);
+  virtual void move(const double& x, const double& y);
+  virtual void scale(const double&);
 private:
   point_t point_ = { 0,0 };
   double side_ = 0;

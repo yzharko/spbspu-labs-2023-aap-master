@@ -9,16 +9,14 @@ Regular::Regular(point_t a, point_t b, point_t c)
 {
   p_b_ = b;
   p_c_ = c;
-  double side_ab = sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2));
-  double side_ac = sqrt(pow(a.x - c.x, 2) + pow(a.y - c.y, 2));
-  double side_bc = sqrt(pow(b.x - c.x, 2) + pow(b.y - c.y, 2));
+  pos_ = a;
+  double side_ab = sqrt(pow(pos_.x - p_b_.x, 2) + pow(pos_.y - p_b_.y, 2));
+  double side_ac = sqrt(pow(pos_.x - p_c_.x, 2) + pow(pos_.y - p_c_.y, 2));
+  double side_bc = sqrt(pow(p_b_.x - p_c_.x, 2) + pow(p_b_.y - p_c_.y, 2));
   hypotenuse_ = fmax(side_ab, side_ac);
   n_ = M_PI / cos(fmin(side_ab, side_ac) / hypotenuse_);
-  pos_ = a;
   if (round(side_bc * 100) != round(hypotenuse_ * sin(M_PI / n_) * 100))
     throw std::logic_error("Cant build a regular\n");
-  if (round(n_ * 1000) != round(round(n_)*1000))
-    throw std::logic_error("Wrong regular coordinates\n");
 }
 double Regular::getArea()const
 {
@@ -29,16 +27,21 @@ rectangle_t Regular::getFrameRect()const
   double rec_side = fmax(fmax(abs(p_b_.x - pos_.x), abs(p_c_.x - pos_.x)), fmax(abs(p_b_.y - pos_.y), abs(p_c_.y - pos_.y)));
   return rectangle_t{rec_side * 2, rec_side * 2, pos_ };
 }
-void Regular::move(point_t to_go)
+void Regular::move(const point_t& dest)
 {
-  pos_ = to_go;
+  double shift_x = dest.x - pos_.x;
+  double shift_y = dest.y - pos_.y;
+  pos_ = dest;
+  p_b_ = { p_b_.x + shift_x, p_b_.y + shift_y };
+  p_c_ = { p_c_.x + shift_x, p_c_.y + shift_y };
 }
-void Regular::move(double x, double y)
+void Regular::move(const double& x,const double& y)
 {
-  pos_.x += x;
-  pos_.y += y;
+  pos_ = { pos_.x + x, pos_.y + y };
+  p_b_ = { p_b_.x + x, p_b_.y + y };
+  p_c_ = { p_c_.x + x, p_c_.y + y };
 }
-void Regular::scale(double k)
+void Regular::scale(const double& k)
 {
   hypotenuse_ *= k;
   p_b_.x *= k;

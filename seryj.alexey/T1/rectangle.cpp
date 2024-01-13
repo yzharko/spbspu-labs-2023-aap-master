@@ -22,13 +22,13 @@ rectangle_t Rectangle::getFrameRect()const
 {
   return rectangle_t{ width_, height_, pos_ };
 }
-void Rectangle::move(point_t p)
+void Rectangle::move(const point_t& dest)
 {
-  pos_ = p;
-  left_point_.x = p.x + left_point_.x;
-  right_point_.x = p.x + right_point_.x;
+  pos_ = dest;
+  left_point_.x = dest.x + left_point_.x;
+  right_point_.x = dest.x + right_point_.x;
 }
-void Rectangle::move(double x, double y)
+void Rectangle::move(const double& x, const double& y)
 {
   pos_.x += x;
   pos_.y += y;
@@ -37,7 +37,7 @@ void Rectangle::move(double x, double y)
   right_point_.x += x;
   right_point_.y += y;
 }
-void Rectangle::scale(double k)
+void Rectangle::scale(const double& k)
 {
   k = abs(k);
   height_ *= k;
