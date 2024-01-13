@@ -25,7 +25,7 @@ int main()
     {
       if (countRP != 4)
       {
-        double* ArrElem = new double[countRP];
+        double* ArrElem = new double[countRP] {};
         for (size_t i = 0; i < countRP; i++)
         {
           ArrElem[i] = arrRP[i];
@@ -33,7 +33,7 @@ int main()
         delete[] arrRP;
         arrRP = ArrElem;
       }
-      
+
       if (std::cin >> arrRP[countRP - 4] >> arrRP[countRP - 3] >> arrRP[countRP - 2] >> arrRP[countRP - 1])
       {
         sequence.push_back(nameFigure);
@@ -105,7 +105,7 @@ int main()
               if (countArrPrimalPoints != 4)
               {
                 countArrPrimalPoints += 4;
-                double* ArrElemPrimal = new double[countArrPrimalPoints];
+                double* ArrElemPrimal = new double[countArrPrimalPoints] {};
                 for (size_t i = 0; i < countArrPrimalPoints; i++)
                 {
                   ArrElemPrimal[i] = arrPrimalPoints[i];
@@ -116,7 +116,7 @@ int main()
               if (countArrAfterPoints != 4)
               {
                 countArrAfterPoints += 4;
-                double* ArrElemAfter = new double[countArrAfterPoints];
+                double* ArrElemAfter = new double[countArrAfterPoints] {};
                 for (size_t i = 0; i < countArrAfterPoints; i++)
                 {
                   ArrElemAfter[i] = arrAfterPoints[i];
