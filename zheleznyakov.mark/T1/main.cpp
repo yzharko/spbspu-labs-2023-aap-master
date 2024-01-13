@@ -4,6 +4,7 @@
 #include "base-types.hpp"
 #include "rectangle.hpp"
 #include "diamond.hpp"
+#include "validation.hpp"
 
 int main()
 {

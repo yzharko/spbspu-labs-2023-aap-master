@@ -16,6 +16,5 @@ namespace zheleznyakov
   private:
     zheleznyakov::rectangle_t rectangle;
   };
-  bool checkIsRectangleCoords(double x1, double y1, double x2, double y2);
 };
 #endif
