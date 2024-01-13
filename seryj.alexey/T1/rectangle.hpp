@@ -12,7 +12,7 @@ namespace seryj {
     virtual rectangle_t getFrameRect()const;
     virtual void move(const point_t&);
     virtual void move(const double& x, const double& y);
-    virtual void scale(const double& k);
+    virtual void scale(double k);
   private:
     point_t left_point_ = { 0, 0 };
     point_t right_point_ = { 0,0 };

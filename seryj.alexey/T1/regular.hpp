@@ -10,7 +10,7 @@ namespace seryj {
     virtual rectangle_t getFrameRect()const;
     virtual void move(const point_t&);
     virtual void move(const double& x,const double& y);
-    virtual void scale(const double& k);
+    virtual void scale(double k);
   private:
     int n_ = 0;
     double hypotenuse_ = 0;

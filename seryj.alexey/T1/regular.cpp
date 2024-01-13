@@ -35,7 +35,7 @@ void Regular::move(const double& x,const double& y)
 {
   pos_ = { pos_.x + x, pos_.y + y };
 }
-void Regular::scale(const double& k)
+void Regular::scale(double k)
 {
   hypotenuse_ *= k;
   p_b_.x *= k;

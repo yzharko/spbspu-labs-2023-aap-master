@@ -27,7 +27,7 @@ void Square::move(const double& x, const double& y)
   point_.x += x;
   point_.y += y;
 }
-void Square::scale(const double& k)
+void Square::scale(double k)
 {
   double old_side = side_;
   side_ *= k;

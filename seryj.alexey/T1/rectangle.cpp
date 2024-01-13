@@ -36,7 +36,7 @@ void Rectangle::move(const double& x, const double& y)
   left_point_ = { left_point_.x + x, left_point_.y + y };
   right_point_ = { right_point_.x + x, right_point_.y + y };
 }
-void Rectangle::scale(const double& k)
+void Rectangle::scale(double k)
 {
   height_ *= k;
   width_ *= k;
