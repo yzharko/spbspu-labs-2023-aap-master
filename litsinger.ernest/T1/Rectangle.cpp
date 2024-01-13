@@ -15,7 +15,7 @@ void Rectangle::move(const base_types::point_t& point) {
 }
 void Rectangle::scale(double k) {
   if (k <= 0) {
-	throw std::invalid_argument("incorrect k");
+    throw std::invalid_argument("incorrect k");
   }
   framework.height *= k;
   framework.width *= k;
