@@ -52,7 +52,6 @@ int main()
         isCorrectlyDescribe = false;
         count -= 1;
         delete geometricShapes[count];
-        continue;
       }
     }
     else if (shape == "POLYGON")
@@ -89,7 +88,7 @@ int main()
           try
           {
             geometricShapes[count - 1]->getArea();
-          }
+           }
           catch(const std::logic_error& e)
           {
             isCorrectlyDescribe = false;
