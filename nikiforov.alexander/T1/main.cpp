@@ -212,10 +212,16 @@ int main()
           delete[] arrPrimalPoints;
           delete[] arrAfterPoints;
         }
+        delete[] arrRP;
+        delete[] arrSP;
+        delete[] arrEP;
       }
       else
       {
         std::cerr << "Error: There is no descriptions of the supported figures!\n";
+        delete[] arrRP;
+        delete[] arrSP;
+        delete[] arrEP;
         return 1;
       }
       break;
