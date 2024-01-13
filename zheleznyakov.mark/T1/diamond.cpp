@@ -1,3 +1,4 @@
+#include <cmath>
 #include "diamond.hpp"
 
 zheleznyakov::Diamond::Diamond(point_t p1, point_t p2, point_t p3)
