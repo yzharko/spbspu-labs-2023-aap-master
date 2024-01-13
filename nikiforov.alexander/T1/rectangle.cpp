@@ -20,14 +20,14 @@ rectangle_t nikiforov::Rectangle::getFrameRect() const
   return rectangle_t{ width_rect, height_rect, center };
 }
 
-void nikiforov::Rectangle::move(double x_m, double y_m) 
+void nikiforov::Rectangle::move(double x_m, double y_m)
 {
   lPoint = { lPoint.x + x_m, lPoint.y + y_m };
   rPoint = { rPoint.x + x_m, rPoint.y + y_m };
   center = { center.x + x_m, center.y + y_m };
 }
 
-void nikiforov::Rectangle::move(point_t newCenter) 
+void nikiforov::Rectangle::move(point_t newCenter)
 {
   movePoint = { (newCenter.x - center.x), (newCenter.y - center.y) };
   lPoint = { lPoint.x + movePoint.x, lPoint.y + movePoint.y };

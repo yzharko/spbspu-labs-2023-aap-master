@@ -61,7 +61,7 @@ int main()
     }
     else if (nameFigure == "SCALE")
     {
-      
+
       double x_c = 0.0;
       double y_c = 0.0;
       double k = 0.0;
@@ -71,7 +71,7 @@ int main()
 
       double AreaSum = 0.0;
       double newAreaSum = 0.0;
-      
+
       point_t primalLeftPoint = { 0, 0 };
       point_t primalRightPoint = { 0, 0 };
       point_t newLeftPoint = { 0, 0 };
@@ -128,7 +128,6 @@ int main()
               primalLeftPoint = { arrSP[countSP++] ,arrSP[countSP++] };
               double lenth = arrSP[countSP++];
 
-              
               nikiforov::Square Sq({ primalLeftPoint.x, primalLeftPoint.y }, lenth);
 
               primalRightPoint = { Sq.rPoint.x, Sq.rPoint.y };
@@ -162,7 +161,6 @@ int main()
               double width = arrEP[countEP++];
               double height = arrEP[countEP++];
 
-              
               nikiforov::Ellipse Ell({ centerEll.x, centerEll.y }, width, height);
 
               primalLeftPoint = { Ell.lPoint.x ,Ell.lPoint.y };

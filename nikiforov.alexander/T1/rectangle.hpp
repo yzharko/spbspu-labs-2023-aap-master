@@ -20,7 +20,7 @@ namespace nikiforov
     double width_rect;
     double height_rect;
   private:
-  
+
   };
 }
 
