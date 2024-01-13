@@ -74,9 +74,9 @@ int main()
       double x_c = 0.0;
       double y_c = 0.0;
       double k = 0.0;
-      countRP = 4;
-      countSP = 3;
-      countEP = 4;
+      countRP = 0;
+      countSP = 0;
+      countEP = 0;
 
       double AreaSum = 0.0;
       double newAreaSum = 0.0;
