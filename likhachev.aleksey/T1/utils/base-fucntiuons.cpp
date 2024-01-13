@@ -8,6 +8,7 @@ double likhachev::strtod(const std::string& str)
   double divisor = 1.0;
   bool isNegative = false;
   bool hasDecimal = false;
+  int size = str.size();
 
   int i = 0;
   if (str[0] == '-') {
@@ -15,22 +16,22 @@ double likhachev::strtod(const std::string& str)
     i = 1;
   }
 
-  for (; i < str.size(); ++i) {
+  for (; i < size; ++i) {
     if (str[i] == '.') {
       hasDecimal = true;
       break;
     }
     int digit = chartonum(str[i]);
-    if (str[i] != 0 && digit == 0) {
+    if (str[i] != '0' && digit == 0) {
       throw std::logic_error("The passed string is not a double!");
     }
     integerPart = integerPart * 10 + digit;
   }
 
   if (hasDecimal) {
-    for (++i; i < str.size(); ++i) {
+    for (++i; i < size; ++i) {
       int digit = chartonum(str[i]);
-      if (str[i] != 0 && digit == 0) {
+      if (str[i] != '0' && digit == 0) {
         throw std::logic_error("The passed string is not a double!");
       }
       decimalPart = decimalPart * 10 + digit;
