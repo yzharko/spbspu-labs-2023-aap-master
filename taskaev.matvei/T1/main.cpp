@@ -10,8 +10,6 @@ int main()
 {
   using namespace taskaev;
   std::string figur = "";
-  Shape* figurs[1000]{};
-  int ind = 0;
   while (!std::cin.eof())
   {
     std::cin >> figur;
@@ -25,7 +23,6 @@ int main()
       try
       {
         Shape* rectangle = new taskaev::Rectangle({x1, y1}, {x2, y2});
-        figurs[ind++] = rectangle;
       }
       catch (const std::logic_error& e)
       {
@@ -43,7 +40,6 @@ int main()
       try
       {
         Shape* ellipse = new taskaev::Ellipse({x, y}, radVer, radGor);
-        figurs[ind++] = ellipse;
       }
       catch (const std::logic_error& e)
       {
@@ -64,7 +60,6 @@ int main()
       try
       {
         Shape* concave = new taskaev::Concave({x1, y1}, {x2, y2}, {x3, y3}, {x4, y4});
-        figurs[ind++] = concave;
       }
       catch (const std::logic_error& e)
       {
