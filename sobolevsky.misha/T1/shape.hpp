@@ -12,7 +12,7 @@ namespace sobolevsky
     virtual void move(Point_t point) = 0;
     virtual void move(double xDist, double yDist) = 0;
     virtual void scale(double n) = 0;
-    
+
     virtual ~Shape() = default;
   };
 }
