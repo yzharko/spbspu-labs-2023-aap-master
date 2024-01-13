@@ -72,11 +72,11 @@ int main()
       double AreaSum = 0.0;
       double newAreaSum = 0.0;
 
-      point_t primalLeftPoint = { 0, 0 };
-      point_t primalRightPoint = { 0, 0 };
-      point_t newLeftPoint = { 0, 0 };
-      point_t newRightPoint = { 0, 0 };
-      point_t movePoints = { 0, 0 };
+      nikiforov::point_t primalLeftPoint = { 0, 0 };
+      nikiforov::point_t primalRightPoint = { 0, 0 };
+      nikiforov::point_t newLeftPoint = { 0, 0 };
+      nikiforov::point_t newRightPoint = { 0, 0 };
+      nikiforov::point_t movePoints = { 0, 0 };
 
       size_t countArrPrimalPoints = 0;
       size_t countArrAfterPoints = 0;
@@ -85,7 +85,7 @@ int main()
       {
         if ((std::cin >> x_c >> y_c >> k) && (k > 0))
         {
-          point_t sCen = { x_c , y_c };
+          nikiforov::point_t sCen = { x_c , y_c };
           countRP = 0;
 
           for (size_t i = 0; i < sequence.size(); i++)
@@ -98,7 +98,7 @@ int main()
               primalLeftPoint = { arrRP[countRP++] ,arrRP[countRP++] };
               primalRightPoint = { arrRP[countRP++] ,arrRP[countRP++] };
               nikiforov::Rectangle Rect({ primalLeftPoint.x, primalLeftPoint.y }, { primalRightPoint.x, primalRightPoint.y });
-              rectangle_t frame = Rect.getFrameRect();
+              nikiforov::rectangle_t frame = Rect.getFrameRect();
 
               AreaSum += Rect.getArea();
               Rect.scale(k);
@@ -131,7 +131,7 @@ int main()
               nikiforov::Square Sq({ primalLeftPoint.x, primalLeftPoint.y }, lenth);
 
               primalRightPoint = { Sq.rPoint.x, Sq.rPoint.y };
-              rectangle_t frame = Sq.getFrameRect();
+              nikiforov::rectangle_t frame = Sq.getFrameRect();
 
               AreaSum += Sq.getArea();
               Sq.scale(k);
@@ -157,7 +157,7 @@ int main()
               arrPrimalPoints = nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
               arrAfterPoints = nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
 
-              point_t centerEll = { arrEP[countEP++] ,arrEP[countEP++] };
+              nikiforov::point_t centerEll = { arrEP[countEP++] ,arrEP[countEP++] };
               double width = arrEP[countEP++];
               double height = arrEP[countEP++];
 
@@ -165,7 +165,7 @@ int main()
 
               primalLeftPoint = { Ell.lPoint.x ,Ell.lPoint.y };
               primalRightPoint = { Ell.rPoint.x ,Ell.rPoint.y };
-              rectangle_t frame = Ell.getFrameRect();
+              nikiforov::rectangle_t frame = Ell.getFrameRect();
 
               AreaSum += Ell.getArea();
               Ell.scale(k);
