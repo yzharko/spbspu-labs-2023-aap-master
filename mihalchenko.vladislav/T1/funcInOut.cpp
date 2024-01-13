@@ -9,10 +9,10 @@
 
 using namespace mihalchenko;
 
-bool mihalchenko::isPoligon()
-{
-  return true;
-}
+//bool mihalchenko::isPoligon(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4)
+//{
+//  return true;
+//}
 
 Shape **mihalchenko::resizeArrayOfShapes(Shape **arrayGeomShapes, size_t sizeOfArrShapes)
 {
@@ -53,7 +53,7 @@ size_t mihalchenko::recordingArrayOfShapes(mihalchenko::Shape **arrayGeomShapes,
     }
     else
     {
-      std::cerr << "Error: wrong rectangle input\n";
+      std::cerr << "Error: an incorrect RECTANGLE has been detectedt\n";
     }
     break;
   }
@@ -72,15 +72,19 @@ size_t mihalchenko::recordingArrayOfShapes(mihalchenko::Shape **arrayGeomShapes,
   }
   case 3:
   {
-    double x1, y1, x2, y2, x3, y3, x4, y4;
-    /*if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4 && mihalchenko::isPoligon())
+    /*double x1, y1, x2, y2, x3, y3, x4, y4;
+    if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4 && mihalchenko::isPoligon(x1, y1, x2, y2, x3, y3, x4, y4))
     {
-      arrayGeomShapes[shapeCounter++] = new mihalchenko::Poligon();
+      arrayGeomShapes[shapeCounter++] = new mihalchenko::Poligon(point_t{x1, y1},
+                                                                 point_t{x2, y2}, point_t{x3, y3}, point_t{x4, y4});
     }
     else
     {
       std::cerr << "Error: an incorrect POLYGON has been detected\n";
     }*/
+
+
+
     break;
   }
   // case 4:
@@ -162,3 +166,46 @@ size_t mihalchenko::processingAndOut(mihalchenko::Shape **arrayGeomShapes, size_
     return 1;
   }
 }
+
+// ---------------------------------------------------------------------------------------------------------------------------
+point_t * mihalchenko::dinResize(point_t *points, size_t counterOfPoints, size_t sizeArrayOfPoints, const size_t addArrayOfPoints)
+{
+  point_t *newArray = new point_t[sizeArrayOfPoints + addArrayOfPoints];
+  for (size_t i = 0; i < counterOfPoints; i++)
+  {
+    newArray[i] = points[i];
+  }
+  delete[] points;
+  points = newArray;
+  /*newArray = nullptr;
+  sizeArrayOfPoints += addArrayOfPoints;
+  if (points != nullptr)
+  {
+    delete[] points;
+  }*/
+  return points;
+}
+
+/*void mihalchenko::sortingShell(double * arr, size_t num)
+{
+  /*for (double range = num / 2; range > 0; range /= 2)
+  {
+    for (size_t i = range; i < num; i += 1)
+    {
+      double temp = arr[i];
+      size_t j;
+      for (j = i; (j >= range) && (arr[j - range] > temp); j -= range)
+      {
+        arr[j] = arr[j - range];
+      }
+      arr[j] = temp;
+    }
+  }
+}*/
+
+void mihalchenko::savePoligon(size_t count, point_t *points)
+{
+  //counterOfPoints_ = count;
+  //arrayOfPoints_ = points;
+}
+// ---------------------------------------------------------------------------------------------------------------------------

@@ -37,12 +37,47 @@ int main()
     {
       shapeCounter = mihalchenko::recordingArrayOfShapes(arrayGeomShapes, shapeCounter, 2);
     }
-    else if (nameShape == "POLYGON")
+    else if (nameShape == "POLIGON")
     {
-      // std::cout << "POLYGON shapeCounter=" << shapeCounter << std::endl;
-      shapeCounter = mihalchenko::recordingArrayOfShapes(arrayGeomShapes, shapeCounter, 3);
-      // std::cout << "POLYGON shapeCounter=" << shapeCounter << std::endl;
+      // ----------------------------------------------------------------------------------------------------------------------
+      size_t sizeArrayOfPoints = 3;
+      const int addArrayOfPoints = 10;
+      point_t *arrayOfPoints = new point_t[sizeArrayOfPoints];
+      double x, y;
+      size_t counterOfPoints = 0;
+
+      while (std::cin >> x >> y)
+      {
+        if (counterOfPoints < sizeArrayOfPoints)
+        {
+          arrayOfPoints[counterOfPoints].x_ = x;
+          arrayOfPoints[counterOfPoints].y_ = y;
+          counterOfPoints++;
+        }
+        else
+        {
+          try
+          {
+            arrayOfPoints = mihalchenko::dinResize(arrayOfPoints, counterOfPoints, sizeArrayOfPoints, addArrayOfPoints);
+            sizeArrayOfPoints += addArrayOfPoints;
+            arrayOfPoints[counterOfPoints].x_ = x;
+            arrayOfPoints[counterOfPoints].y_ = y;
+            counterOfPoints++;
+          }
+          catch (const std::exception &e)
+          {
+            std::cerr << "Error: an incorrect POLIGON has been detected\n";
+          }
+        }
+        if (std::cin.peek() == '\n') // поменять потом такую структуру
+        {
+          arrayGeomShapes[shapeCounter++] = new Poligon(counterOfPoints, arrayOfPoints);
+          // shapeCounter = mihalchenko::recordingArrayOfShapes(arrayGeomShapes, shapeCounter, 2);
+          break;
+        }
+      }
     }
+    // ---------------------------------------------------------------------------------------------------------------------------
     else if (nameShape == "SCALE")
     {
       scaleFound = true;
@@ -70,7 +105,7 @@ int main()
     }
     if (std::cin.eof() && scaleFound == false)
     {
-      std::cerr << "Error: the final word scale was not found";
+      std::cerr << "Error: the final word scale was not found"; //
       return 1;
     }
   }
