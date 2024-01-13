@@ -37,12 +37,6 @@ int main()
       else
       {
         std::cerr << "ты накосячил с прямоугольником\n";
-        for (size_t i = 0; i < counter; i++)
-        {
-          delete figuers[i];
-        }
-        delete[] figuers;
-        return 1;
       }
     }
     else if (figureType == "DIAMOND")
@@ -55,12 +49,6 @@ int main()
       else
       {
         std::cerr << "ты накосячил с ромбом\n";
-        for (size_t i = 0; i < counter; i++)
-        {
-          delete figuers[i];
-        }
-        delete[] figuers;
-        return 1;
       }
     }
     else if (figureType == "PARALLELOGRAM")
@@ -73,12 +61,6 @@ int main()
       else
       {
         std::cerr << "ты накосячил с параллелограммом\n";
-        for (size_t i = 0; i < counter; i++)
-        {
-          delete figuers[i];
-        }
-        delete[] figuers;
-        return 1;
       }
     }
     else if (figureType == "SCALE")
@@ -138,16 +120,6 @@ int main()
           std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2)) << " ";
         }
         std::cout << "\n";
-        for (size_t i = 0; i < counter; i++)
-        {
-          delete figuers[i];
-        }
-        delete[] figuers;
-        return 1;
-      }
-      else
-      {
-        std::cerr << "ты чето не то написал\n";
         for (size_t i = 0; i < counter; i++)
         {
           delete figuers[i];
