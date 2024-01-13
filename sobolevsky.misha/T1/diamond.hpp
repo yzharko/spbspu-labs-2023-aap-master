@@ -6,6 +6,7 @@ namespace sobolevsky
 {
   class Diamond : public Shape
   {
+  public:
     Diamond(Point_t upPoint2, Point_t rightPoint2, Point_t centerPoint2);
     double getArea();
     Rectangle_t getFrameRect();

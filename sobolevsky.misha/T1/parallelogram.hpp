@@ -6,6 +6,7 @@ namespace sobolevsky
 {
   class Parallelogram : public Shape
   {
+  public:
     Parallelogram(Point_t Point1_1, Point_t Point2_1, Point_t Point3_1);
     double getArea();
     Rectangle_t getFrameRect();
