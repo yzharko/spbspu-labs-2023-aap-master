@@ -51,7 +51,7 @@ int main()
       }
       else
       {
-        flag = true;
+        std::cerr << "ERROR ERROR\n";
       }
     }
     else if (figureType == "DIAMOND")
@@ -63,7 +63,7 @@ int main()
       }
       else
       {
-        flag = true;
+        std::cerr << "ERROR ERROR\n";
       }
     }
     else if (figureType == "PARALLELOGRAM")
@@ -75,7 +75,7 @@ int main()
       }
       else
       {
-        flag = true;
+        std::cerr << "ERROR ERROR\n";
       }
     }
     else if (figureType == "SCALE")
@@ -135,10 +135,6 @@ int main()
           std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2)) << " ";
         }
         std::cout << "\n";
-        if (flag)
-        {
-          std::cerr << "накосячил с фигурой ты\n";
-        }
         for (size_t i = 0; i < counter; i++)
         {
           delete figuers[i];
