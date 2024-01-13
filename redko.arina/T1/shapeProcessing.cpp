@@ -67,3 +67,35 @@ redko::point_t * redko::getConcavePoints()
   }
   return dest;
 }
+
+double redko::countAreas(redko::Shape ** shapeArr, int shapeNum)
+{
+  double areasSum = 0;
+  for (int i = 0; i < shapeNum; i++)
+  {
+    areasSum += shapeArr[i]->getArea();
+  }
+  return areasSum;
+}
+
+double * redko::getFrameCorners(redko::Shape ** shapeArr, int shapeNum)
+{
+  double * frameCorners = new double[shapeNum * 4];
+  for (int i = 0; i < shapeNum; i++)
+  {
+    redko::rectangle_t frame = shapeArr[i]->getFrameRect();
+    frameCorners[4 * i] = frame.pos.x - frame.width / 2.0;
+    frameCorners[4 * i + 1] = frame.pos.y - frame.height / 2.0;
+    frameCorners[4 * i + 2] = frame.pos.x + frame.width / 2.0;
+    frameCorners[4 * i + 3] = frame.pos.y + frame.height / 2.0;
+  }
+  return frameCorners;
+}
+
+void redko::printFrameCorners(double * frameCorners, int shapeNum)
+{
+  for (int i = 0; i < shapeNum * 4; i++)
+  {
+    std::cout << ' ' << frameCorners[i];
+  }
+}

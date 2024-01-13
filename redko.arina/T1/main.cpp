@@ -36,48 +36,34 @@ int main()
         delete[] shapes;
         return 1;
       }
-      double areasSum = 0;
-      double scaledAreasSum = 0;
+
+      double areasSum = redko::countAreas(shapes, shapesCounter);
+      double * frameXY = redko::getFrameCorners(shapes, shapesCounter);
+
       double distanceX = 0;
       double distanceY = 0;
       redko::rectangle_t frame = {};
       redko::rectangle_t movedFrame = {};
-      double* frameXY = new double[shapesCounter * 4];
-      double* scaledFrameXY = new double[shapesCounter * 4];
       for (int i = 0; i < shapesCounter; i++)
       {
-        areasSum += shapes[i]->getArea();
         frame = shapes[i]->getFrameRect();
-        frameXY[4 * i] = frame.pos.x - frame.width / 2.0;
-        frameXY[4 * i + 1] = frame.pos.y - frame.height / 2.0;
-        frameXY[4 * i + 2] = frame.pos.x + frame.width / 2.0;
-        frameXY[4 * i + 3] = frame.pos.y + frame.height / 2.0;
-
         shapes[i]->move({ x, y });
         movedFrame = shapes[i]->getFrameRect();
         distanceX = (frame.pos.x - movedFrame.pos.x) * coefficient;
         distanceY = (frame.pos.y - movedFrame.pos.y) * coefficient;
         shapes[i]->scale(coefficient);
         shapes[i]->move(distanceX, distanceY);
+      }
 
-        scaledAreasSum += shapes[i]->getArea();
-        frame = shapes[i]->getFrameRect();
-        scaledFrameXY[4 * i] = frame.pos.x - frame.width / 2.0;
-        scaledFrameXY[4 * i + 1] = frame.pos.y - frame.height / 2.0;
-        scaledFrameXY[4 * i + 2] = frame.pos.x + frame.width / 2.0;
-        scaledFrameXY[4 * i + 3] = frame.pos.y + frame.height / 2.0;
-      }
+      double scaledAreasSum = redko::countAreas(shapes, shapesCounter);
+      double * scaledFrameXY = redko::getFrameCorners(shapes, shapesCounter);
+
       std::cout << std::fixed << std::setprecision(1) << areasSum;
-      for (int i = 0; i < shapesCounter * 4; i++)
-      {
-        std::cout << ' ' << frameXY[i];
-      }
+      redko::printFrameCorners(frameXY, shapesCounter);
       std::cout << '\n' << scaledAreasSum;
-      for (int i = 0; i < shapesCounter * 4; i++)
-      {
-        std::cout << ' ' << scaledFrameXY[i];
-      }
+      redko::printFrameCorners(scaledFrameXY, shapesCounter);
       std::cout << '\n';
+
       if (someDescrIsWrong)
       {
         std::cerr << "errors in the description of supported shapes\n";
