@@ -52,6 +52,7 @@ int main()
         isCorrectlyDescribe = false;
         count -= 1;
         delete geometricShapes[count];
+        continue;
       }
     }
     else if (shape == "POLYGON")
