@@ -14,11 +14,11 @@ kovshikov::Polygon::~Polygon()
 }
 double kovshikov::Polygon::getArea() const
 {
-  for(size_t i; i < num_; i++)
+  for(size_t i = 0; i < num_; i++)
   {
-    for(size_t j; j < num_; j++)
+    for(size_t j = 0; j < num_; j++)
     {
-      if(i != j && points_[i].x == points_[j].x && points_[i].y == points[j]_.y)
+      if(i != j && points_[i].x == points_[j].x && points_[i].y == points_[j].y)
       {
         throw std::logic_error("There is no polygon.The points match");
       }
