@@ -63,20 +63,12 @@ void Concave::move(double moveX, double moveY)
 
 void Concave::scale(double k)
 {
+  double scalingFactor = k - 1;
   point_t pos = fourthPoint_;
-
-  double dx = (firstPoint_.x - pos.x) * (k - 1);
-  double dy = (firstPoint_.y - pos.y) * (k - 1);
-  firstPoint_.x += dx;
-  firstPoint_.y += dy;
-
-  dx = (secondPoint_.x - pos.x) * (k - 1);
-  dy = (secondPoint_.y - pos.y) * (k - 1);
-  secondPoint_.x += dx;
-  secondPoint_.y += dy;
-
-  dx = (thirdPoint_.x - pos.x) * (k - 1);
-  dy = (thirdPoint_.y - pos.y) * (k - 1);
-  thirdPoint_.x += dx;
-  thirdPoint_.y += dy;
+  firstPoint_.x += (firstPoint_.x - pos.x) * scalingFactor;
+  firstPoint_.y += (firstPoint_.y - pos.y) * scalingFactor;
+  secondPoint_.x += (secondPoint_.x - pos.x) * scalingFactor;
+  secondPoint_.y += (secondPoint_.y - pos.y) * scalingFactor;
+  thirdPoint_.x += (thirdPoint_.x - pos.x) * scalingFactor;
+  thirdPoint_.y += (thirdPoint_.y - pos.y) * scalingFactor;
 }
