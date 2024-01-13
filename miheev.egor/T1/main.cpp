@@ -1,8 +1,9 @@
 #include <cmath>
 #include <iostream>
 #include <string>
+#include "figuresValidating.hpp"
 #include "rectangle.hpp"
-#include "usefulFunctions.hpp"
+#include "printFunctions.hpp"
 #include "triangle.hpp"
 #include "parallelogram.hpp"
 
