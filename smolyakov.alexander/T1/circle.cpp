@@ -20,14 +20,14 @@ smolyakov::rectangle_t smolyakov::Circle::getFrameRect() const
   return rectangle_t{center_, doubleRadius, doubleRadius};
 }
 
-void smolyakov::Circle::moveTo(double x, double y)
+void smolyakov::Circle::moveTo(point_t shift)
 {
-  center_ = point_t{x, y};
+  center_ = point_t{shift.x, shift.y};
 }
 
-void smolyakov::Circle::moveBy(double x, double y)
+void smolyakov::Circle::moveBy(point_t shift)
 {
-  center_ = point_t{center_.x + x, center_.y + y};
+  center_ = point_t{center_.x + shift.x, center_.y + shift.y};
 }
 
 void smolyakov::Circle::scale(double factor)

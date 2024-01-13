@@ -11,12 +11,15 @@ namespace smolyakov
     Regular(point_t center, point_t secondPoint, point_t thirdPoint);
     double getArea() const override;
     rectangle_t getFrameRect() const override;
-    void moveTo(double x, double y) override;
-    void moveBy(double x, double y) override;
+    void moveTo(point_t shift) override;
+    void moveBy(point_t shift) override;
     void scale(double factor) override;
   private:
-    point_t points_[3];
-    bool isValidRegular() const;
+    point_t center_;
+    double innerRadius_;
+    double outerRadius_;
+    int sides_;
+    void calculateParameters(point_t, point_t, point_t);
   };
 }
 

@@ -9,8 +9,8 @@ namespace smolyakov
   public:
     virtual double getArea() const = 0;
     virtual rectangle_t getFrameRect() const = 0;
-    virtual void moveTo(double x, double y) = 0;
-    virtual void moveBy(double x, double y) = 0;
+    virtual void moveTo(point_t shift) = 0;
+    virtual void moveBy(point_t shift) = 0;
     virtual void scale(double factor) = 0;
   };
 }

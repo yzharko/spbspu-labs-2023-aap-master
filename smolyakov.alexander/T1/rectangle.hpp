@@ -11,8 +11,8 @@ namespace smolyakov
     Rectangle(point_t bottomLeft, point_t upperRight);
     double getArea() const override;
     rectangle_t getFrameRect() const override;
-    void moveTo(double x, double y) override;
-    void moveBy(double x, double y) override;
+    void moveTo(point_t shift) override;
+    void moveBy(point_t shift) override;
     void scale(double factor) override;
   private:
     point_t center_;
