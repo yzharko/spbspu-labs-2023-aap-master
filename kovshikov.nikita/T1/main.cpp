@@ -79,7 +79,7 @@ int main()
     {
       if(isAtLeastOneFigure == false)
       {
-        std:cerr << "Nothing to scale";
+        std::cerr << "Nothing to scale";
         return 1;
       }
       double posX, posY, multiplier;
