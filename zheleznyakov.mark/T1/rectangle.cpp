@@ -1,9 +1,9 @@
 #include "base-types.hpp"
 #include "rectangle.hpp"
 
-zheleznyakov::Rectangle::Rectangle(const point_t leftTopPoint, const point_t rightBottomPoint){
-  double rectangleWidth = rightBottomPoint.x - leftTopPoint.x;
-  double rectangleHeight = rightBottomPoint.y - leftTopPoint.y;
+zheleznyakov::Rectangle::Rectangle(const point_t leftBottomPoint, const point_t rightTopPoint){
+  double rectangleWidth = rightTopPoint.x - leftBottomPoint.x;
+  double rectangleHeight = rightTopPoint.y - leftBottomPoint.y;
   zheleznyakov::point_t currentRectangleCenter;
   currentRectangleCenter.x = (rectangleWidth) / 2;
   currentRectangleCenter.y = (rectangleHeight) / 2;
@@ -39,4 +39,9 @@ void zheleznyakov::Rectangle::scale(double k){
   rectangle.height *= k;
   rectangle.pos.x *= k;
   rectangle.pos.y *= k;
+};
+
+bool zheleznyakov::checkIsRectangleCoords(double x1, double y1, double x2, double y2)
+{
+  return x1 < x2 && y1 < y2;
 };
