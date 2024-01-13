@@ -55,5 +55,6 @@ double FrameRectangle::getHeight() {
 void FrameRectangle::show() {
   std::cout << std::fixed;
   std::cout.precision(1);
-  std::cout << "RECTANGLE " << getLeftCorner().getX() << " " << getLeftCorner().getY() << " " << getRightCorner().getX() << " " << getRightCorner().getY() << "\n";
+  std::cout << "RECTANGLE " << getLeftCorner().getX() << " " << getLeftCorner().getY();
+  std::cout << " " << getRightCorner().getX() << " " << getRightCorner().getY() << "\n";
 }

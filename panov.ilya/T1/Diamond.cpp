@@ -57,5 +57,6 @@ std::string Diamond::getName() const {
 void Diamond::show() {
   std::cout << std::fixed;
   std::cout.precision(1);
-  std::cout << "DIAMOND " << one.getX() << " " << one.getY() << " " << two.getX() << " " << two.getY() << " " << three.getX() << " " << three.getY() << "\n";
+  std::cout << "DIAMOND " << one.getX() << " " << one.getY() << " " << two.getX() << " " << two.getY();
+  std::cout << " " << three.getX() << " " << three.getY() << "\n";
 }
