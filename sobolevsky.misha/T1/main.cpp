@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <stdio.h>
 #include <string.h>
+#include <cmath>
 #include "base-types.hpp"
 #include "shape.hpp"
 #include "rectangle.hpp"
@@ -64,29 +65,54 @@ int main()
     }
     else if (figureType == "SCALE")
     {
-      double x, y, n;
+      double xx, yy, n;
       if (counter == 0)
       {
         std::cerr << "no bitches\n";
         return 1;
       }
-      else if (std::cin >> x >> y >> n)
+      else if (std::cin >> xx >> yy >> n)
       {
         std::cout << std::fixed << std::setprecision(1);
+
+        size_t sumArea = 0;
         for (size_t i = 0; i < counter; i++)
         {
-          std::cout << ((figuers[i]->getFrameRect().width) * (figuers[i]->getFrameRect().height)) << " ";
+          sumArea += figuers[i]->getArea();
+        }
+        std::cout << sumArea << " ";
+        for (size_t i = 0; i < counter; i++)
+        {
           std::cout << ((figuers[i]->getFrameRect().pos.x) - ((figuers[i]->getFrameRect().width) / 2)) << " ";
           std::cout << ((figuers[i]->getFrameRect().pos.y) - ((figuers[i]->getFrameRect().height) / 2)) << " ";
           std::cout << ((figuers[i]->getFrameRect().pos.x) + ((figuers[i]->getFrameRect().width) / 2)) << " ";
           std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2)) << " ";
+        }
+        std::cout << "\n";
+
+        for (size_t i = 0; i < counter; i++)
+        {
+          sobolevsky::Point_t oldCenter = figuers[i]->getFrameRect().pos;
+          figuers[i]->move({xx, yy});
+          sobolevsky::Point_t newCenter;
+          newCenter.x = fabs(oldCenter.x - xx) * n;
+          newCenter.y = fabs(oldCenter.y - yy) * n;
           figuers[i]->scale(n);
-          std::cout << "\n";
-          std::cout << ((figuers[i]->getFrameRect().width) * (figuers[i]->getFrameRect().height)) << " ";
+          figuers[i]->move(newCenter.x, newCenter.y);
+        }
+
+        sumArea = 0;
+        for (size_t i = 0; i < counter; i++)
+        {
+          sumArea += figuers[i]->getArea();
+        }
+        std::cout << sumArea << " ";
+        for (size_t i = 0; i < counter; i++)
+        {
           std::cout << ((figuers[i]->getFrameRect().pos.x) - ((figuers[i]->getFrameRect().width) / 2)) << " ";
           std::cout << ((figuers[i]->getFrameRect().pos.y) - ((figuers[i]->getFrameRect().height) / 2)) << " ";
           std::cout << ((figuers[i]->getFrameRect().pos.x) + ((figuers[i]->getFrameRect().width) / 2)) << " ";
-          std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2)) << " ";
+          std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2));
         }
         std::cout << "\n";
         return 1;
