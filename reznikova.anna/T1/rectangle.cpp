@@ -1,6 +1,5 @@
 #include "rectangle.hpp"
 #include <iostream>
-#include <exception>
 #include "base-types.hpp"
 
 reznikova::Rectangle::Rectangle(rectangle_t rect):

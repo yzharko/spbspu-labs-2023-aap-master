@@ -4,11 +4,11 @@
 #include "array_functions.hpp"
 
 
-void reznikova::scaleFigures(Shape ** figures, const int stored)
+void reznikova::scaleFigures(Shape ** figures, const int stored, std::istream & in)
 {
   double x, y, n;
-  std::cin >> x >> y >> n;
-
+  in >> x >> y >> n;
+  
   if (n <= 0)
   {
     freeArray(figures, stored);
@@ -18,9 +18,9 @@ void reznikova::scaleFigures(Shape ** figures, const int stored)
   {
     throw std::runtime_error("nothing to scale\n");
   }
-
+  
   outputSum(figures, stored);
-
+  
   for (int i = 0; i < stored; i++)
   {
     rectangle_t frame_rect = figures[i]->getFrameRect();
@@ -28,9 +28,9 @@ void reznikova::scaleFigures(Shape ** figures, const int stored)
     figures[i]->scale(n);
   }
   std::cout << "\n";
-
+  
   outputSum(figures, stored);
-
+  
   for (int i = 0; i < stored; i++)
   {
     rectangle_t frame_rect = figures[i]->getFrameRect();

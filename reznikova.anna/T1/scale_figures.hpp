@@ -5,7 +5,7 @@
 
 namespace reznikova
 {
-  void scaleFigures(Shape ** figures, const int stored);
+  void scaleFigures(Shape ** figures, const int stored, std::istream & in);
 }
 
 #endif
