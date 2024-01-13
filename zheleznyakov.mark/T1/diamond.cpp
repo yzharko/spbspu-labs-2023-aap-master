@@ -84,8 +84,10 @@ void zheleznyakov::Diamond::move(zheleznyakov::point_t point)
   {
     double diffX = point.x - points_[i].x;
     double diffY = point.y - points_[i].y;
-    points_[i].x += diffX;
-    points_[i].y += diffY;
+    point_t newPoint;
+    newPoint.x = points_[i].x + diffX;
+    newPoint.y = points_[i].y + diffY;
+    points_[i] = newPoint;
   }
 };
 
@@ -93,36 +95,46 @@ void zheleznyakov::Diamond::move(double x, double y)
 {
   for (int i = 0; i <= 2; i++)
   {
-    points_[i].x += x;
-    points_[i].y += y;
+    point_t newPoint;
+    newPoint.x = points_[i].x + x;
+    newPoint.y = points_[i].y + y;
+    points_[i] = newPoint;
   }
 };
 
 void zheleznyakov::Diamond::scale(double k)
 {
+  point_t newP1;
+  point_t newP2;
   if ((points_[0].x == points_[1].y && points_[0].y == points_[2].x) ||
       (points_[0].y == points_[1].x && points_[0].x == points_[2].y))
   {
-    points_[1].x *= k;
-    points_[1].y *= k;
-    points_[2].x *= k;
-    points_[2].y *= k;
+    newP1.x = points_[1].x * k;
+    newP1.y = points_[1].y * k;
+    newP2.x = points_[2].x * k;
+    newP2.y = points_[2].y * k;
+    points_[1] = newP1;
+    points_[2] = newP2;
   }
   else if ((points_[1].x == points_[0].y && points_[1].y == points_[2].x) ||
            (points_[1].y == points_[0].x && points_[1].x == points_[2].y))
   {
-    points_[0].x *= k;
-    points_[0].y *= k;
-    points_[2].x *= k;
-    points_[2].y *= k;
+    newP1.x = points_[0].x * k;
+    newP1.y = points_[0].y * k;
+    newP2.x = points_[2].x * k;
+    newP2.y = points_[2].y * k;
+    points_[0] = newP1;
+    points_[2] = newP2;
   }
   else if ((points_[2].x == points_[0].y && points_[2].y == points_[1].x) ||
            (points_[2].y == points_[0].x && points_[2].x == points_[1].y))
   {
-    points_[0].x *= k;
-    points_[0].y *= k;
-    points_[1].x *= k;
-    points_[1].y *= k;
+    newP1.x = points_[0].x * k;
+    newP1.y = points_[0].y * k;
+    newP2.x = points_[1].x * k;
+    newP2.y = points_[1].y * k;
+    points_[0] = newP1;
+    points_[1] = newP2;
   }
 };
 
