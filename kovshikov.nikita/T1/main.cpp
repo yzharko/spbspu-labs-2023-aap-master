@@ -32,11 +32,15 @@ int main()
     {
       double vertexAX, vertexAY, vertexBX, vertexBY, vertexCX, vertexCY;
       std::cin >> vertexAX >> vertexAY >> vertexBX >> vertexBY >> vertexCX >> vertexCY;
-      if(!std::cin)
+      bool isAEquallyB = vertexA_.x == vertexB_.x && vertexA_.y == vertexB_.y;
+      bool isAEquallyC = vertexA_.x == vertexC_.x && vertexA_.y == vertexC_.y;
+      bool isCEquallyB = vertexC_.x == vertexB_.x && vertexC_.y == vertexB_.y;
+      if(!std::cin || isAEquallyB || isAEquallyC || isCEquallyB)
       {
         isCorrectlyDescribe = false;
         continue;
       }
+
       geometricShapes[count++] = new Triangle({vertexAX, vertexAY}, {vertexBX, vertexBY}, {vertexCX, vertexCY});
       isAtLeastOneFigure = true;
     }
