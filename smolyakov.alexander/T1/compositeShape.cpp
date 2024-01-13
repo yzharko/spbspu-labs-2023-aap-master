@@ -48,9 +48,8 @@ void smolyakov::CompositeShape::addShape(Shape& shape)
 
 void smolyakov::CompositeShape::removeShape(Shape& shape)
 {
-  if (--shapes < 0)
+  if (shapes == 0)
   {
-    shapes++;
     throw std::logic_error("No shapes are present.");
   }
   bool flag = true;
@@ -72,6 +71,7 @@ void smolyakov::CompositeShape::removeShape(Shape& shape)
   {
     throw std::logic_error("The provided shape could not be found.");
   }
+  shapes--;
 }
 
 double smolyakov::CompositeShape::getArea() const
