@@ -1,7 +1,7 @@
 #include "addSizeParam.hpp"
 #include <string>
 
-double* nikiforov::AddFourElem(double* arr, size_t& countElem)
+double* nikiforov::AddFourElem(double*& arr, size_t& countElem)
 {
   double* ArrElem = new double[countElem += 4];
   if (countElem != 4)
@@ -15,7 +15,7 @@ double* nikiforov::AddFourElem(double* arr, size_t& countElem)
   return ArrElem;
 }
 
-double* nikiforov::AddThreeElem(double* arr, size_t& countElem)
+double* nikiforov::AddThreeElem(double*& arr, size_t& countElem)
 {
   double* ArrElem = new double[countElem += 3];
   if (countElem != 3)
