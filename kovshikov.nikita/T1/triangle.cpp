@@ -23,7 +23,7 @@ rectangle_t kovshikov::Triangle::getFrameRect() const
   double maxY = std::max({vertexA_.y, vertexB_.y, vertexC_.y});
   point_t lowerLeft = {minX, minY};
   point_t upperRight = {maxX, maxY};
-  Rectangle * rectangle = new Rectangle(lowerLeft, upperRight);
+  Shape * rectangle = new Rectangle(lowerLeft, upperRight);
   rectangle_t frame = rectangle->getFrameRect();
   delete rectangle;
   return frame;
