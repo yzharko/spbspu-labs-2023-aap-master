@@ -21,7 +21,7 @@ int main()
     sobolevsky::Shape * shapeptrs;
   };
 
-  sobolevsky::Shape ** figuers = new sobolevsky::Shape * [228];
+  sobolevsky::Shape ** figuers = new sobolevsky::Shape * [10];
   size_t counter = 0;
 
   std::string figureType;
