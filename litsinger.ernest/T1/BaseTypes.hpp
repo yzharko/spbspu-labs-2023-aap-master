@@ -3,7 +3,7 @@
 #include<iostream>
 namespace base_types {
   struct point_t {
-	double x;
+    double x;
     double y;
   };
   struct rectangle_t {
