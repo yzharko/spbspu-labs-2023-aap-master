@@ -98,9 +98,9 @@ int main()
 
         for (size_t i = 0; i < counter; i++)
         {
-          sobolevsky::Point_t oldCenter = figuers[i]->getFrameRect().pos;
+          sobolevsky::point_t oldCenter = figuers[i]->getFrameRect().pos;
           figuers[i]->move({xx, yy});
-          sobolevsky::Point_t newCenter;
+          sobolevsky::point_t newCenter;
           newCenter.x = fabs(oldCenter.x - xx) * n;
           newCenter.y = fabs(oldCenter.y - yy) * n;
           figuers[i]->scale(n);

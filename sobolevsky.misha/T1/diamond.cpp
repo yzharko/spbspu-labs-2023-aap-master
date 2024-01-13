@@ -3,7 +3,7 @@
 
 namespace sobolevsky
 {
-  Diamond::Diamond(Point_t upPoint2, Point_t rightPoint2, Point_t centerPoint2)
+  Diamond::Diamond(point_t upPoint2, point_t rightPoint2, point_t centerPoint2)
   {
     upPoint = upPoint2;
     rightPoint = rightPoint2;
@@ -17,16 +17,16 @@ namespace sobolevsky
     return (2 * firstDiagonal * secondDiagonal);
   }
 
-  Rectangle_t Diamond::getFrameRect() const
+  rectangle_t Diamond::getFrameRect() const
   {
-    Rectangle_t test;
+    rectangle_t test;
     test.pos = centerPoint;
     test.height = firstDiagonal * 2;
     test.width = secondDiagonal * 2;
     return test;
   }
 
-  void Diamond::move(Point_t newCenter)
+  void Diamond::move(point_t newCenter)
   {
     double dx = centerPoint.x - newCenter.x;
     double dy = centerPoint.y - newCenter.y;

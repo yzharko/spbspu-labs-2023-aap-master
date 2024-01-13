@@ -2,7 +2,7 @@
 
 namespace sobolevsky
 {
-  Parallelogram::Parallelogram(Point_t Point1_1, Point_t Point2_1, Point_t Point3_1)
+  Parallelogram::Parallelogram(point_t Point1_1, point_t Point2_1, point_t Point3_1)
   {
     Point1 = Point1_1;
     Point2 = Point2_1;
@@ -16,9 +16,9 @@ namespace sobolevsky
     return ((Point2.x - Point1.x) * (Point1.y - Point3.y));
   }
 
-  Rectangle_t Parallelogram::getFrameRect() const
+  rectangle_t Parallelogram::getFrameRect() const
   {
-    Rectangle_t test;
+    rectangle_t test;
     test.pos = centerPoint;
     test.height = (Point1.y - Point3.y);
     test.width = (Point2.x - Point1.x);
@@ -37,7 +37,7 @@ namespace sobolevsky
     centerPoint.y += moveY;
   }
 
-  void Parallelogram::move(Point_t newCenter)
+  void Parallelogram::move(point_t newCenter)
   {
     double moveX = centerPoint.x - newCenter.x;
     double moveY = centerPoint.y - newCenter.y;

@@ -2,9 +2,9 @@
 
 namespace sobolevsky
 {
-  Rectangle::Rectangle(Point_t leftDownPoint, Point_t rightUpPoint)
+  Rectangle::Rectangle(point_t leftDownPoint, point_t rightUpPoint)
   {
-    Point_t center;
+    point_t center;
     center.x = (leftDownPoint.x + rightUpPoint.x) / 2;
     center.y = (leftDownPoint.y + rightUpPoint.y) / 2;
     rectangle.pos = center;
@@ -17,12 +17,12 @@ namespace sobolevsky
     return rectangle.width * rectangle.height;
   }
 
-  Rectangle_t Rectangle::getFrameRect() const
+  rectangle_t Rectangle::getFrameRect() const
   {
     return rectangle;
   }
 
-  void Rectangle::move(Point_t newCenter)
+  void Rectangle::move(point_t newCenter)
   {
     rectangle.pos = newCenter;
   }

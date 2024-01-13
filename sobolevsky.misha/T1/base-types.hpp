@@ -3,17 +3,17 @@
 
 namespace sobolevsky
 {
-  struct Point_t
+  struct point_t
   {
     double x;
     double y;
   };
 
-  struct Rectangle_t
+  struct rectangle_t
   {
     double width;
     double height;
-    Point_t pos;
+    point_t pos;
   };
 }
 
