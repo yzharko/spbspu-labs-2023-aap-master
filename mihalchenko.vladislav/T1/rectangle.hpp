@@ -7,18 +7,17 @@ namespace mihalchenko
   class Rectangle : public Shape
   {
   public:
-    Rectangle(const point_t &pos1, const point_t &pos2);
-    virtual double getArea() const override;
-    virtual rectangle_t getFrameRect() const override;
-
-    virtual void move(const point_t &point) override;
-    virtual void move(const double dx, const double dy) override;
-    virtual double scale(double koef) override;
+    Rectangle(point_t pos1, point_t pos2);
+    double getArea() const override;
+    rectangle_t getFrameRect() const override;
+    void move(const point_t &point) override;
+    void move(const double deltaX, const double deltaY) override;
+    void scale(double scaleKoef) override;
 
   private:
-    point_t pos_;
-    double width_;
-    double height_;
+    point_t pos1_;
+    point_t pos2_;
+    rectangle_t rectangle_;
   };
 }
 #endif

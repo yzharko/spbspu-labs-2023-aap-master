@@ -1,20 +1,35 @@
 #include "poligon.hpp"
-#include <cstring>
-#include "shape.hpp"
+#include <cmath>
 
-mihalchenko::Poligon::Poligon()
+using namespace mihalchenko;
+
+Poligon::Poligon()
 {
+
 }
 
-mihalchenko::Poligon::Poligon(float x1, float y1, float x2, float y2, float x3, float y3)
+double mihalchenko::Poligon::getArea() const
 {
+  return {rectangle_.width_ * rectangle_.height_};
 }
 
-mihalchenko::Poligon::~Poligon()
+rectangle_t mihalchenko::Poligon::getFrameRect() const
 {
+  return {0, 0, {0, 0}};
 }
 
-float mihalchenko::Poligon::getArea(float width, float height)
+void Poligon::move(const point_t &point)
 {
-  return width * height;
+  rectangle_.pos_ = point;
+}
+
+void Poligon::move(const double deltaX, const double deltaY)
+{
+
+}
+
+void Poligon::scale(double scaleKoef)
+{
+  rectangle_.height_ = scaleKoef * rectangle_.height_;
+  rectangle_.width_ = scaleKoef * rectangle_.width_;
 }

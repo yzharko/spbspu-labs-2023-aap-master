@@ -1,21 +1,23 @@
 #ifndef SQUARE_HPP
 #define SQUARE_HPP
-#include <cstring>
 #include "shape.hpp"
 
 namespace mihalchenko
 {
-  class Square
+  class Square : public Shape
   {
   public:
-    float x_ = 7;
-    float y_ = 7;
-    float width_ = 10;
+    Square(point_t pos1, double width);
+    double getArea() const override;
+    rectangle_t getFrameRect() const override;
+    void move(const point_t &point) override;
+    void move(const double deltaX, const double deltaY) override;
+    void scale(double scaleKoef) override;
 
-    Square();
-    Square(float x, float y, float width);
-    ~Square();
-    float getArea(float x, float y, float width);
+  private:
+    point_t pos1_; // левый нижний угол
+    double width_;
+    rectangle_t rectangle_;
   };
 }
 #endif

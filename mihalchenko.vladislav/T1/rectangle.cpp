@@ -1,45 +1,48 @@
 #include "rectangle.hpp"
-#include <iostream>
 #include <cmath>
 
-mihalchenko::Rectangle::Rectangle(const point_t &pos1, const point_t &pos2) : pos_((pos2.x_ - pos1.x_) / 2, (pos2.y_ - pos1.y_) / 2),
-                                                                              width_(std::abs(pos2.x_ - pos1.x_)),
-                                                                              height_(std::abs(pos2.y_ - pos1.y_))
+using namespace mihalchenko;
+
+Rectangle::Rectangle(point_t pos1, point_t pos2) : pos1_(pos1), pos2_(pos2)
 {
-  if (width_ < 0.0 || height_ < 0.0)
-  {
-    throw std::invalid_argument("Invalid width or height");
-  }
-  else
-  {
-    std::cout << pos_.x_ << "; " << width_ << "; " << height_ << std::endl;
-  }
+  rectangle_.width_ = fabs(pos2_.x_ - pos1_.x_);
+  rectangle_.height_ = fabs(pos2_.y_ - pos1_.y_);
+  rectangle_.pos_.x_ = (pos2_.x_ + pos1_.x_) / 2;
+  rectangle_.pos_.y_ = (pos2_.y_ + pos1_.y_) / 2;
 }
 
 double mihalchenko::Rectangle::getArea() const
 {
-  return {width_ * height_};
+  return {rectangle_.width_ * rectangle_.height_};
 }
 
 rectangle_t mihalchenko::Rectangle::getFrameRect() const
 {
-  return rectangle_t(pos_, width_, height_);
+  return {fabs(pos2_.x_ - pos1_.x_), fabs(pos2_.y_ - pos1_.y_), {(pos2_.x_ + pos1_.x_) / 2, (pos2_.y_ + pos1_.y_) / 2}};
 }
 
-void mihalchenko::Rectangle::move(const point_t &point)
+void Rectangle::move(const point_t &point)
 {
-  pos_ = point;
+  pos1_ = {pos1_.x_ + (point.x_ - rectangle_.pos_.x_), pos1_.y_ + (point.y_ - rectangle_.pos_.y_)};
+  pos2_ = {pos2_.x_ + (point.x_ - rectangle_.pos_.x_), pos2_.y_ + (point.y_ - rectangle_.pos_.y_)};
+  rectangle_.pos_ = point;
 }
 
-void mihalchenko::Rectangle::move(const double dx, const double dy)
+void Rectangle::move(const double deltaX, const double deltaY)
 {
-  pos_.x_ += dx;
-  pos_.y_ += dy;
+  pos1_ = {pos1_.x_ + deltaX, pos1_.y_ + deltaY};
+  pos2_ = {pos2_.x_ + deltaX, pos2_.y_ + deltaY};
+  rectangle_.pos_ = {rectangle_.pos_.x_ + deltaX, rectangle_.pos_.y_ + deltaY};
 }
 
-double mihalchenko::Rectangle::scale(double koef)
+void Rectangle::scale(double scaleKoef)
 {
-  width_ = width_ * koef;
-  height_ = height_ * koef;
-  return {width_ * height_};
+  double deltaX = (1 - scaleKoef) * rectangle_.width_ / 2;
+  double deltaY = (1 - scaleKoef) * rectangle_.height_ / 2;
+  pos1_ = {pos1_.x_ + deltaX, pos1_.y_  + deltaY};
+  deltaX = (scaleKoef-1) * rectangle_.width_ / 2;
+  deltaY = (scaleKoef-1) * rectangle_.height_ / 2;
+  pos2_ = {pos2_.x_ + deltaX, pos2_.y_  + deltaY};
+  rectangle_.height_ = scaleKoef * rectangle_.height_;
+  rectangle_.width_ = scaleKoef * rectangle_.width_;
 }

@@ -1,26 +1,25 @@
 #ifndef POLIGON_HPP
 #define POLIGON_HPP
-#include <cstring>
 #include "shape.hpp"
 
 namespace mihalchenko
 {
-  class Poligon
+  class Poligon : public Shape
   {
   public:
-    float x1_ = 7;
-    float y1_ = 7;
-    float x2_ = 10;
-    float y2_ = 20;
-    float x3_ = 10;
-    float y3_ = 20;
-    float width_ = 10;
-    float height_ = 20;
-
     Poligon();
-    Poligon(float x1, float y1, float x2, float y2, float x3, float y3);
-    ~Poligon();
-    float getArea(float width, float height);
+    double getArea() const override;
+    rectangle_t getFrameRect() const override;
+    void move(const point_t &point) override;
+    void move(const double deltaX, const double deltaY) override;
+    void scale(double scaleKoef) override;
+
+  private:
+    point_t pos1_;
+    point_t pos2_;
+    point_t pos3_;
+    point_t pos4_;
+    rectangle_t rectangle_;
   };
 }
 #endif
