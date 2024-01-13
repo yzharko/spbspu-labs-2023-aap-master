@@ -71,6 +71,16 @@ int main()
         {
           geometricShapes[count++] = new Polygon(nPointsPolygon, points);
           isAtLeastOneFigure = true;
+          try
+          {
+            geometricShapes[count - 1]->getArea();
+          }
+          catch(const std::logic_error& e)
+          {
+            isCorrectlyDescribe = false;
+            count -= 1;
+            delete geometricShapes[count];
+          }
           break;
         }
       }
