@@ -156,16 +156,6 @@ int main()
         return 1;
       }
     }
-    else
-    {
-      std::cerr << "ну ты чето не то ввел\n";
-      for (size_t i = 0; i < counter; i++)
-      {
-        delete figuers[i];
-      }
-      delete[] figuers;
-      return 1;
-    }
   }
   for (size_t i = 0; i < counter; i++)
   {
