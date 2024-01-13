@@ -32,5 +32,5 @@ double Square::getSideSize() const {
   return sideSize;
 }
 std::ostream& operator<<(std::ostream& os, const Square& rectangle){
-  return os << "Square:\n side size = " << rectangle.getSideSize() << '\n' << "left down point: " << rectangle.getLeftDown();
+  return os << rectangle.getSideSize() <<  rectangle.getLeftDown();
 }
