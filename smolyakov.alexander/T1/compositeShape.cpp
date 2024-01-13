@@ -63,7 +63,7 @@ void smolyakov::CompositeShape::removeShape(Shape& shape)
       shapeptrs[i] = nullptr;
       for (size_t j = ++i; j < capacity; j++)
       {
-	shapeptrs[j-1] = shapeptrs[j];
+        shapeptrs[j-1] = shapeptrs[j];
       }
     }
     i++;
