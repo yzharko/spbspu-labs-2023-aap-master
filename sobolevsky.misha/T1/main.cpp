@@ -135,7 +135,7 @@ int main()
           std::cout << ((figuers[i]->getFrameRect().pos.x) - ((figuers[i]->getFrameRect().width) / 2)) << " ";
           std::cout << ((figuers[i]->getFrameRect().pos.y) - ((figuers[i]->getFrameRect().height) / 2)) << " ";
           std::cout << ((figuers[i]->getFrameRect().pos.x) + ((figuers[i]->getFrameRect().width) / 2)) << " ";
-          std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2));
+          std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2)) << " ";
         }
         std::cout << "\n";
         for (size_t i = 0; i < counter; i++)
