@@ -17,6 +17,9 @@ int main()
   size_t countSP = 0;
   size_t countEP = 0;
 
+  bool errInd = false;
+  bool errIndScale = false;
+
   std::vector<std::string> sequence;
 
   while (std::cin >> nameFigure)
@@ -26,11 +29,18 @@ int main()
       nikiforov::AddFourElem(arrRP, countRP);
       if (std::cin >> arrRP[countRP - 4] >> arrRP[countRP - 3] >> arrRP[countRP - 2] >> arrRP[countRP - 1])
       {
-        sequence.push_back(nameFigure);
+        if ((arrRP[countRP - 4] < arrRP[countRP - 2]) && (arrRP[countRP - 3] < arrRP[countRP - 1]))
+        {
+          sequence.push_back(nameFigure);
+        }
+        else 
+        {
+          errInd = true;
+        }
       }
       else
       {
-
+        errInd = true;
       }
     }
     else if (nameFigure == "SQUARE")
@@ -38,11 +48,18 @@ int main()
       nikiforov::AddThreeElem(arrSP, countSP);
       if (std::cin >> arrSP[countSP - 3] >> arrSP[countSP - 2] >> arrSP[countSP - 1])
       {
-        sequence.push_back(nameFigure);
+        if (arrSP[countSP - 1] > 0)
+        {
+          sequence.push_back(nameFigure);
+        }
+        else
+        {
+          errInd = true;
+        }
       }
       else
       {
-
+        errInd = true;
       }
     }
     else if (nameFigure == "ELLIPSE")
@@ -50,15 +67,23 @@ int main()
       nikiforov::AddFourElem(arrEP, countEP);
       if (std::cin >> arrEP[countEP - 4] >> arrEP[countEP - 3] >> arrEP[countEP - 2] >> arrEP[countEP - 1])
       {
-        sequence.push_back(nameFigure);
+        if (arrEP[countEP - 2] > 0 && arrEP[countEP - 1] > 0)
+        {
+          sequence.push_back(nameFigure);
+        }
+        else
+        {
+          errInd = true;
+        }
       }
       else
       {
-
+        errInd = true;
       }
     }
     else if (nameFigure == "SCALE")
     {
+      errIndScale = true;
 
       double x_c = 0.0;
       double y_c = 0.0;
@@ -212,6 +237,11 @@ int main()
           delete[] arrPrimalPoints;
           delete[] arrAfterPoints;
         }
+        else
+        {
+          std::cerr << "Error: The scale parameter is incorrect!\n";
+          return 1;
+        }
       }
       else
       {
@@ -226,5 +256,11 @@ int main()
   delete[] arrRP;
   delete[] arrSP;
   delete[] arrEP;
+  if (errInd) {
+    std::cerr << "Error: Оne or more errors in the description of the figure!\n";
+  }
+  if (!errIndScale) {
+    std::cerr << "Error: There is no scale parameter!\n";
+  }
   return 0;
 }
