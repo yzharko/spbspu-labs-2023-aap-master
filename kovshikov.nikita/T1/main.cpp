@@ -151,11 +151,15 @@ int main()
       isScale = true;
       break;
     }
-    else if (std::cin.eof() && isScale == false)
+  }
+  if (std::cin.eof() && isScale == false)
+  {
+    std::cerr << "no scaling parameters were given";
+    for (size_t i = 0; i < count; i++)
     {
-      std::cerr << "no scaling parameters were given";
-      return 1;
+      delete geometricShapes[i];
     }
+    return 1;
   }
   for (size_t i = 0; i < count; i++)
   {
