@@ -1,11 +1,12 @@
 #include "ellipse.hpp"
-#include <cmath>
 
 nikiforov::Ellipse::Ellipse(point_t firstPoint, double firstRad, double secondRad) :
   center(firstPoint),
   firstRad(firstRad),
   secondRad(secondRad)
 {
+  rPoint = { center.x + firstRad, center.y + secondRad };
+  lPoint = { center.x - firstRad, center.y - secondRad };
   width_rect = firstRad * 2;
   height_rect = secondRad * 2;
 }
@@ -22,11 +23,16 @@ rectangle_t nikiforov::Ellipse::getFrameRect() const
 
 void nikiforov::Ellipse::move(double x_m, double y_m)
 {
+  lPoint = { lPoint.x + x_m, lPoint.y + y_m };
+  rPoint = { rPoint.x + x_m, rPoint.y + y_m };
   center = { center.x + x_m, center.y + y_m };
 }
 
 void nikiforov::Ellipse::move(point_t newCenter)
 {
+  movePoint = { (newCenter.x - center.x), (newCenter.y - center.y) };
+  lPoint = { lPoint.x + movePoint.x, lPoint.y + movePoint.y };
+  rPoint = { rPoint.x + movePoint.x, rPoint.y + movePoint.y };
   center = newCenter;
 }
 
@@ -36,11 +42,7 @@ void nikiforov::Ellipse::scale(double ratio)
   secondRad *= ratio;
   width_rect *= ratio;
   height_rect *= ratio;
-}
-
-void nikiforov::Ellipse::point(Ellipse Rect)
-{
-  std::cout << "center (" << Rect.center.x << ", " << Rect.center.y << ")" << '\n';
-  std::cout << "width -- " << width_rect << '\n';
-  std::cout << "height -- " << height_rect << '\n' << '\n';
+  movePoint = { (width_rect / 2), (height_rect / 2) };
+  lPoint = { center.x - movePoint.x, center.y - movePoint.y };
+  rPoint = { center.x + movePoint.x, center.y + movePoint.y };
 }

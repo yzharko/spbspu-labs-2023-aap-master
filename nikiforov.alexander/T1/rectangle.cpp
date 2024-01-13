@@ -43,13 +43,3 @@ void nikiforov::Rectangle::scale(double ratio)
   lPoint = { center.x - movePoint.x, center.y - movePoint.y };
   rPoint = { center.x + movePoint.x, center.y + movePoint.y };
 }
-
-void nikiforov::Rectangle::point(Rectangle Rect)
-{
-  std::cout << "lPoint (" << Rect.lPoint.x << ", " << Rect.lPoint.y << ")" << '\n';
-  std::cout << "rPoint (" << Rect.rPoint.x << ", " << Rect.rPoint.y << ")" << '\n';
-  std::cout << "center (" << Rect.center.x << ", " << Rect.center.y << ")" << '\n';
-  std::cout << "width -- " << width_rect << '\n';
-  std::cout << "height -- " << height_rect << '\n' << '\n';
-}
-

@@ -40,12 +40,3 @@ void nikiforov::Square::scale(double ratio)
   lPoint = { center.x - movePoint.x, center.y - movePoint.y };
   rPoint = { center.x + movePoint.x, center.y + movePoint.y };
 }
-
-void nikiforov::Square::point(Square Rect)
-{
-  std::cout << "lPoint (" << Rect.lPoint.x << ", " << Rect.lPoint.y << ")" << '\n';
-  std::cout << "rPoint (" << Rect.rPoint.x << ", " << Rect.rPoint.y << ")" << '\n';
-  std::cout << "center (" << Rect.center.x << ", " << Rect.center.y << ")" << '\n';
-  std::cout << "width -- " << length << '\n';
-  std::cout << "height -- " << length << '\n' << '\n';
-}

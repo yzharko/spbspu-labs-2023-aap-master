@@ -13,7 +13,8 @@ namespace nikiforov
     virtual void move(double x_m, double y_m);
     virtual void move(point_t center);
     virtual void scale(double ratio);
-    virtual void point(Ellipse A);
+    point_t lPoint;
+    point_t rPoint;
     point_t center;
     point_t movePoint;
     double firstRad;
