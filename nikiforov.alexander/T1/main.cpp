@@ -23,7 +23,7 @@ int main()
   {
     if (nameFigure == "RECTANGLE")
     {
-      arrRP = nikiforov::AddFourElem(arrRP, countRP);
+      nikiforov::AddFourElem(arrRP, countRP);
       if (std::cin >> arrRP[countRP - 4] >> arrRP[countRP - 3] >> arrRP[countRP - 2] >> arrRP[countRP - 1])
       {
         sequence.push_back(nameFigure);
@@ -35,7 +35,7 @@ int main()
     }
     else if (nameFigure == "SQUARE")
     {
-      arrSP = nikiforov::AddThreeElem(arrSP, countSP);
+      nikiforov::AddThreeElem(arrSP, countSP);
       if (std::cin >> arrSP[countSP - 3] >> arrSP[countSP - 2] >> arrSP[countSP - 1])
       {
         sequence.push_back(nameFigure);
@@ -47,7 +47,7 @@ int main()
     }
     else if (nameFigure == "ELLIPSE")
     {
-      arrEP = nikiforov::AddFourElem(arrEP, countEP);
+      nikiforov::AddFourElem(arrEP, countEP);
       if (std::cin >> arrEP[countEP - 4] >> arrEP[countEP - 3] >> arrEP[countEP - 2] >> arrEP[countEP - 1])
       {
         sequence.push_back(nameFigure);
@@ -92,8 +92,8 @@ int main()
           {
             if (sequence[i] == "RECTANGLE")
             {
-              arrPrimalPoints = nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
-              arrAfterPoints = nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
+              nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
+              nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
 
               primalLeftPoint = { arrRP[countRP++] ,arrRP[countRP++] };
               primalRightPoint = { arrRP[countRP++] ,arrRP[countRP++] };
@@ -122,8 +122,8 @@ int main()
             }
             else if (sequence[i] == "SQUARE") {
 
-              arrPrimalPoints = nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
-              arrAfterPoints = nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
+              nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
+              nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
 
               primalLeftPoint = { arrSP[countSP++] ,arrSP[countSP++] };
               double lenth = arrSP[countSP++];
@@ -154,8 +154,8 @@ int main()
             }
             else if (sequence[i] == "ELLIPSE") {
 
-              arrPrimalPoints = nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
-              arrAfterPoints = nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
+              nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
+              nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
 
               nikiforov::point_t centerEll = { arrEP[countEP++] ,arrEP[countEP++] };
               double width = arrEP[countEP++];
@@ -209,9 +209,6 @@ int main()
             }
           }
           std::cout << '\n';
-          delete[] arrRP;
-          delete[] arrSP;
-          delete[] arrEP;
           delete[] arrPrimalPoints;
           delete[] arrAfterPoints;
         }
@@ -224,11 +221,8 @@ int main()
       break;
     }
   }
-  if (nameFigure == "")
-  {
-    delete[] arrRP;
-    delete[] arrSP;
-    delete[] arrEP;
-  }
+  delete[] arrRP;
+  delete[] arrSP;
+  delete[] arrEP;
   return 0;
 }
