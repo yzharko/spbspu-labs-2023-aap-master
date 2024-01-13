@@ -9,33 +9,28 @@ Diamond::Diamond(Point one, Point two, Point three) :
   two(two),
   three(three)
 {}
-
 double Diamond::getArea()
 {
   return 2 * (two.getY() - three.getY()) * (three.getX() - one.getX());
 }
-
 FrameRectangle Diamond::getFrameRectangle()
 {
   double width = 2 * (three.getX() - one.getX());
   double height = 2 * (two.getY() - three.getY());
-  FrameRectangle frameRect(three, width , height);
+  FrameRectangle frameRect(three, width, height);
   return frameRect;
 }
-
 void Diamond::move(double dX, double dY)
 {
   two = Point(two.getX() + dX, two.getY() + dY);
   three = Point(three.getX() + dX, three.getY() + dY);
   one = Point(one.getX() + dX, one.getY() + dY);
 }
-
 void Diamond::move(Point dPos)
 {
   Point delta = { three.getX() - dPos.getX(), three.getY() - dPos.getY() };
   Diamond::move(delta.getX(), delta.getY());
 }
-
 void Diamond::scale(double k)
 {
   Point center(0, 0);
@@ -53,7 +48,7 @@ void Diamond::scale(double k)
   two.setX(newB.getX() + three.getX());
   two.setY(newB.getY() + three.getY());
 }
-Shape* Diamond::clone(){
+Shape* Diamond::clone() {
   return new Diamond(*this);
 }
 std::string Diamond::getName() const {
@@ -62,5 +57,5 @@ std::string Diamond::getName() const {
 void Diamond::show() {
   std::cout << std::fixed;
   std::cout.precision(1);
-  std::cout << "DIAMOND " << one.getX() << " " << one.getY()<< " " << two.getX() << " " << two.getY()<< " " << three.getX() << " " << three.getY() << "\n";
+  std::cout << "DIAMOND " << one.getX() << " " << one.getY() << " " << two.getX() << " " << two.getY() << " " << three.getX() << " " << three.getY() << "\n";
 }
