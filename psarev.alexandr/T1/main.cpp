@@ -1,4 +1,3 @@
-#include <sstream>
 #include <iomanip>
 #include "rectangle.hpp"
 #include "ring.hpp"
@@ -20,10 +19,10 @@ int main()
       errMark = psarev::rectDataRework(std::cin, rectData, queue);
     }
     else if (keyWord == "RING") {
-      errMark = psarev::ringDataRework(std::cin, rectData, queue);
+      errMark = psarev::ringDataRework(std::cin, ringData, queue);
     }
     else if (keyWord == "TRIANGLE") {
-      errMark = psarev::triDataRework(std::cin, rectData, queue);
+      errMark = psarev::triDataRework(std::cin, triData, queue);
     }
     else if (keyWord == "SCALE") {
       if (queue.size() == 0) {
@@ -41,29 +40,31 @@ int main()
         double newAreaSum = 0.0;
         std::vector<double> startFrames;
         std::vector<double> newFrames;
-        int rCtr = 0;
+        int rC = 0;
+        int iC = 0;
+        int tC = 0;
 
         for (size_t i = 0; i < queue.size(); i++) {
           if (queue[i] == 'r') {
-            psarev::Rectangle rect({ rectData[rCtr++], rectData[rCtr++]}, { rectData[rCtr++], rectData[rCtr++] });
+            psarev::Rectangle rect({ rectData[rC++], rectData[rC++]}, { rectData[rC++], rectData[rC++] });
             psarev::rectangle_t rectFrame = rect.getFrameRect();
-            startAreaSum += rectFrame.width * rectFrame.height;
-            startFrames.push_back(rectFrame.pos.x - (rectFrame.width / 2));
-            startFrames.push_back(rectFrame.pos.y - (rectFrame.height / 2));
-            startFrames.push_back(rectFrame.pos.x + (rectFrame.width / 2));
-            startFrames.push_back(rectFrame.pos.y + (rectFrame.height / 2));
-            rect.move({ scaleCenter.x, scaleCenter.y });
-            psarev::point_t newPos;
-            newPos.x = fabs(rectFrame.pos.x - scaleCenter.x) * coef;
-            newPos.y = fabs(rectFrame.pos.y - scaleCenter.y) * coef;
-            rect.scale(coef);
-            rect.move(newPos.x, newPos.y);
-            rectFrame = rect.getFrameRect();
-            newAreaSum += rectFrame.width * rectFrame.height;
-            newFrames.push_back(rectFrame.pos.x - (rectFrame.width / 2));
-            newFrames.push_back(rectFrame.pos.y - (rectFrame.height / 2));
-            newFrames.push_back(rectFrame.pos.x + (rectFrame.width / 2));
-            newFrames.push_back(rectFrame.pos.y + (rectFrame.height / 2));
+            psarev::fillData(startFrames, rectFrame, startAreaSum);
+            psarev::modify(scaleCenter, coef, rect, rectFrame);
+            psarev::fillData(newFrames, rectFrame, newAreaSum);
+          }
+          else if (queue[i] == 'i') {
+            psarev::Ring ring({ ringData[iC++], ringData[iC++] }, ringData[iC++], ringData[iC++] );
+            psarev::rectangle_t ringFrame = ring.getFrameRect();
+            psarev::fillData(startFrames, ringFrame, startAreaSum);
+            psarev::modify(scaleCenter, coef, ring, ringFrame);
+            psarev::fillData(newFrames, ringFrame, newAreaSum);
+          }
+          else if (queue[i] == 't') {
+            psarev::Triangle tri({ triData[tC++], triData[tC++] }, { triData[tC++], triData[tC++] }, { triData[tC++], triData[tC++] });
+            psarev::rectangle_t triFrame = tri.getFrameRect();
+            psarev::fillData(startFrames, triFrame, startAreaSum);
+            psarev::modify(scaleCenter, coef, tri, triFrame);
+            psarev::fillData(newFrames, triFrame, newAreaSum);
           }
         }
         std::cout << std::fixed << std::setprecision(1);

@@ -1,6 +1,8 @@
 #include "funcsDepot.hpp"
 #include <cmath>
 
+using namespace psarev;
+
 bool psarev::rectDataRework(std::istream& input, std::vector<double>& data, std::vector<char>& queue)
 {
   double coo = 0.0;
@@ -87,4 +89,24 @@ bool psarev::triDataRework(std::istream& input, std::vector<double>& data, std::
     result = true;
   }
   return result;
+}
+
+void psarev::fillData(std::vector<double>& framesData, rectangle_t& frame, double& areaSum)
+{
+  areaSum += frame.width * frame.height;
+  framesData.push_back(frame.pos.x - (frame.width / 2));
+  framesData.push_back(frame.pos.y - (frame.height / 2));
+  framesData.push_back(frame.pos.x + (frame.width / 2));
+  framesData.push_back(frame.pos.y + (frame.height / 2));
+}
+
+void psarev::modify(point_t& scaleCenter, double& coef, Shape& figure, rectangle_t& frame)
+{
+  figure.move({ scaleCenter.x, scaleCenter.y });
+  point_t newPos;
+  newPos.x = fabs(frame.pos.x - scaleCenter.x) * coef;
+  newPos.y = fabs(frame.pos.y - scaleCenter.y) * coef;
+  figure.scale(coef);
+  figure.move(newPos.x, newPos.y);
+  frame = figure.getFrameRect();
 }
