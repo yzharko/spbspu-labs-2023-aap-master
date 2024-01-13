@@ -39,7 +39,6 @@ void Rectangle::move(const double& x, const double& y)
 }
 void Rectangle::scale(const double& k)
 {
-  k = abs(k);
   height_ *= k;
   width_ *= k;
   left_point_.x -= pos_.x * (k - 1);
