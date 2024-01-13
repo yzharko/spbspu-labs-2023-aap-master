@@ -1,6 +1,5 @@
 #include "rectangle.hpp"
 #include <cmath>
-#include <iostream>
 
 miheev::Rectangle::Rectangle(miheev::point_t bottomLeft, miheev::point_t topRight)
 {
@@ -53,6 +52,6 @@ void miheev::Rectangle::scale(double k)
     double dy = (points_[i].y - center_.y) * (k - 1);
     points_[i].move(dx, dy * k);
   }
-  width_*= k; //cheating a lil bit
+  width_*= k;
   height_*=k;
 }

@@ -1,5 +1,4 @@
 #include "triangle.hpp"
-#include <iostream>
 #include <cstddef>
 #include <cmath>
 
@@ -35,12 +34,6 @@ double miheev::Triangle::getArea() const
 
 miheev::rectangle_t miheev::Triangle::getFrameRect() const
 {
-  // std::cout << "getting rect\n";
-  // for (size_t i = 0; i < 3; i++)
-  // {
-  //   std::cout << points_[i].x << ' ' << points_[i].y << '\n';
-  // }
-  // std::cout << '\n';
   double top = points_[0].y;
   double bottom = points_[0].y;
   double left = points_[0].x;

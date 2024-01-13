@@ -1,8 +1,8 @@
 #ifndef FUNCTIONS_HPP
 #define FUNCTIONS_HPP
 
+#include <cstddef>
 #include "base-types.hpp"
-#include <string>
 
 namespace miheev
 {
