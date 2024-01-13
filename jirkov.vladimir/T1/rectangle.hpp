@@ -7,7 +7,7 @@ namespace jirkov
   class Rectangle : public Shape
   {
   public:
-    Rectangle(double width, double height, const point_t& center);
+    Rectangle(point_t bottomLeft, point_t topRight);
     virtual double getArea() const;
     virtual rectangle_t getFrameRect() const;
     virtual void move(const point_t & destination);
@@ -15,9 +15,8 @@ namespace jirkov
     virtual void scale(double k);
   private:
     rectangle_t rectangle;
-    double width_;
-    double height_;
-    point_t center_;
+    point_t bottomLeft_;
+    point_t topRight_;
   };
 }
 

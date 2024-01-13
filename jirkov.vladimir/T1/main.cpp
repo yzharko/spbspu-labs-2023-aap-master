@@ -18,15 +18,15 @@ int main()
   {
     if (geometryFigure == "RECTANGLE")
     {
-      double width, height, firstRight, secondRight;
-      std::cin >> width >> height >> firstRight >> secondRight;
-      if (!std::cin || firstRight > secondRight)
+      double firstLeft, secondLeft, firstRight, secondRight;
+      std::cin >> firstLeft >> secondLeft >> firstRight >> secondRight;
+      if (!std::cin || firstLeft > firstRight || secondLeft > secondRight)
       {
         wrongInput = true;
       }
       else
       {
-        figureArray[count] = new Rectangle(width, height, { firstRight, secondRight });
+        figureArray[count] = new Rectangle({ firstLeft, secondLeft }, { firstRight, secondRight });
         count++;
       }
     }

@@ -1,47 +1,48 @@
 #include "rectangle.hpp"
-
 using namespace jirkov;
-
-Rectangle::Rectangle(double width, double height, const point_t& center) :
-  width_(width),
-  height_(height),
-  center_(center)
+Rectangle::Rectangle(point_t bottomLeft, point_t topRight) :
+  bottomLeft_(bottomLeft),
+  topRight_(topRight)
 {}
 
 double Rectangle::getArea() const
 {
-  return width_ * height_;
+  rectangle_t frame = getFrameRect();
+  return frame.width * frame.height;
 }
-
 rectangle_t Rectangle::getFrameRect() const
 {
-  double width = width_;
-  double height = height_;
-  double centerX = center_.x;
-  double centerY = center_.y;
-  point_t center = { centerX, centerY };
-  return rectangle_t{ width, height, center };
+  double width = topRight_.x - bottomLeft_.x;
+  double height = topRight_.y - bottomLeft_.y;
+  double posX = (topRight_.x + bottomLeft_.x) * 0.5;
+  double posY = (topRight_.y + bottomLeft_.y) * 0.5;
+  point_t pos = { posX, posY };
+  return rectangle_t{ width, height, pos };
 }
 
-void Rectangle::move(const point_t& destination)
+void Rectangle::move(const point_t & destination)
 {
-  double moveX = destination.x - center_.x;
-  double moveY = destination.y - center_.y;
+  rectangle_t frame = getFrameRect();
+  double moveX = destination.x - frame.pos.x;
+  double moveY = destination.y - frame.pos.y;
   move(moveX, moveY);
 }
 
 void Rectangle::move(double moveX, double moveY)
 {
-  center_.x += moveX;
-  center_.y += moveY;
+  bottomLeft_.x += moveX;
+  bottomLeft_.y += moveY;
+  topRight_.x += moveX;
+  topRight_.y += moveY;
 }
 
 void Rectangle::scale(double k)
 {
-  double moveX = width_ * (k - 1) / 2;
-  double moveY = height_ * (k - 1) / 2;
-  center_.x -= moveX;
-  center_.y -= moveY;
-  width_ *= k;
-  height_ *= k;
+  rectangle_t frame = getFrameRect();
+  double moveX = frame.width * (k - 1) * 0.5;
+  double moveY = frame.height * (k - 1) * 0.5;
+  bottomLeft_.x -= moveX;
+  bottomLeft_.y -= moveY;
+  topRight_.x += moveX;
+  topRight_.y += moveY;
 }
