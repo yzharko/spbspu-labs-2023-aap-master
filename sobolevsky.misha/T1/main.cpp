@@ -21,13 +21,27 @@ int main()
     sobolevsky::Shape * shapeptrs;
   };
 
-  sobolevsky::Shape ** figuers = new sobolevsky::Shape * [10];
+  size_t arraySize = 10;
+  sobolevsky::Shape ** figuers = new sobolevsky::Shape * [arraySize];
   size_t counter = 0;
 
   std::string figureType;
   bool flag = false;
   while (std::cin >> figureType)
   {
+    if (counter = arraySize)
+    {
+      arraySize += 10;
+      sobolevsky::Shape ** newArray = new sobolevsky::Shape * [arraySize];
+      std::copy(figuers, figuers + arraySize - 10, newArray);
+      for (size_t i = 0; i < (arraySize - 10); i++)
+      {
+        delete figuers[i];
+      }
+      delete[] figuers;
+      figuers = newArray;
+    }
+
     if (figureType == "RECTANGLE")
     {
       double x1, x2, y1, y2;
