@@ -1,4 +1,5 @@
 #include "triangle.hpp"
+#include <iostream>
 #include <cstddef>
 #include <cmath>
 
@@ -25,12 +26,21 @@ miheev::Triangle::~Triangle()
 
 double miheev::Triangle::getArea() const
 {
-  return std::abs((points_[1].x - points_[0].x) * (points_[2].y - points_[0].y)
-  - (points_[1].y - points_[0].y) * (points_[2].y - points_[0].y)) * 0.5;
+  double ax = points_[1].x - points_[0].x;
+  double ay = points_[1].y - points_[0].y;
+  double bx = points_[2].x - points_[0].x;
+  double by = points_[2].y - points_[0].y;
+  return std::abs(ax*by - ay * bx) * 0.5;
 }
 
 miheev::rectangle_t miheev::Triangle::getFrameRect() const
 {
+  // std::cout << "getting rect\n";
+  // for (size_t i = 0; i < 3; i++)
+  // {
+  //   std::cout << points_[i].x << ' ' << points_[i].y << '\n';
+  // }
+  // std::cout << '\n';
   double top = points_[0].y;
   double bottom = points_[0].y;
   double left = points_[0].x;
@@ -55,10 +65,9 @@ miheev::rectangle_t miheev::Triangle::getFrameRect() const
       left = cur.x;
     }
   }
-
   double width = right - left;
   double height = top - bottom;
-  return rectangle_t(center_, width, height);
+  return rectangle_t({left + width/2, bottom + height/2}, width, height);
 }
 
 void miheev::Triangle::move(double dx, double dy)
@@ -81,8 +90,8 @@ void miheev::Triangle::scale(double k)
 {
   for (size_t i = 0; i < 3; i++)
   {
-    double dx = points_[i].x - center_.x;
-    double dy = points_[i].y - center_.y;
-    points_[i].move(dx * k, dy * k);
+    double dx = (points_[i].x - center_.x) * (k - 1);
+    double dy = (points_[i].y - center_.y) * (k - 1);
+    points_[i].move(dx, dy);
   }
 }

@@ -49,9 +49,9 @@ void miheev::Rectangle::scale(double k)
 {
   for (size_t i = 0; i < 4; i++)
   {
-    double dx = points_[i].x - center_.x;
-    double dy = points_[i].y - center_.y;
-    points_[i].move(dx * k, dy * k);
+    double dx = (points_[i].x - center_.x) * (k - 1);
+    double dy = (points_[i].y - center_.y) * (k - 1);
+    points_[i].move(dx, dy * k);
   }
   width_*= k; //cheating a lil bit
   height_*=k;

@@ -90,12 +90,19 @@ int main()
           rectangle_t rectBefore = shape->getFrameRect();
           rectsBefore[indexBefore++] = rectBefore;
 
-          shape->move(scaleCenter);
-          rectangle_t rectAfter = shape->getFrameRect();
-          double dx = rectBefore.pos.x - rectAfter.pos.x;
-          double dy = rectBefore.pos.y - rectAfter.pos.y;
-          shape->move(dx, dy);
+          double destX = scaleCenter.x + (rectBefore.pos.x - scaleCenter.x) * k;
+          double destY = scaleCenter.x + (rectBefore.pos.y - scaleCenter.y) * k;
+          // std::cout << destX << '\n';
+          // std::cout << destY << '\n';
+
           shape->scale(k);
+
+          rectangle_t rectAfter = shape->getFrameRect();
+          double dx = destX - rectAfter.pos.x;
+          double dy = destY - rectAfter.pos.y;
+          // std::cout << "dx = " << dx << " dy = " << dy << '\n';
+          shape->move(dx, dy);
+
           rectsAfter[indexAfter++] = shape->getFrameRect();
           sumAreaAfter += shape->getArea();
         }

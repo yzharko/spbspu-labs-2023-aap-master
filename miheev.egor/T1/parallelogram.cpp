@@ -19,7 +19,11 @@ miheev::Parallelogram::~Parallelogram()
 
 double miheev::Parallelogram::getArea() const
 {
-  return abs((points_[1].x - points_[0].x) * (points_[3].y - points_[0].y) - (points_[1].y - points_[0].y) * (points_[3].x - points_[0].x));
+  double ax = points_[1].x - points_[0].x;
+  double ay = points_[1].y - points_[0].y;
+  double bx = points_[3].x - points_[0].x;
+  double by = points_[3].y - points_[0].y;
+  return std::abs(ax * by - ay * bx);
 }
 
 miheev::rectangle_t miheev::Parallelogram::getFrameRect() const
@@ -75,8 +79,8 @@ void miheev::Parallelogram::scale(double k)
 {
   for (size_t i = 0; i < 4; i++)
   {
-    double dx = points_[i].x - center_.x;
-    double dy = points_[i].y - center_.y;
-    points_[i].move(dx * k, dy * k);
+    double dx = (points_[i].x - center_.x) * (k - 1);
+    double dy = (points_[i].y - center_.y) * (k - 1);
+    points_[i].move(dx, dy);
   }
 }

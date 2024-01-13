@@ -17,7 +17,7 @@ namespace miheev
 
   void printRect(rectangle_t rect)
   {
-    printPoint(rect.pos.x - rect.width/2, rect.pos.y - rect.width/2);
+    printPoint(rect.pos.x - rect.width/2, rect.pos.y - rect.height/2);
     std::cout << " ";
     printPoint(rect.pos.x + rect.width/2, rect.pos.y + rect.height/2);
   }
