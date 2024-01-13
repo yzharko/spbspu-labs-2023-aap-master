@@ -1,5 +1,6 @@
 #ifndef REGULAR_HPP
 #define REGULAR_HPP
+#include <cmath>
 #include "shape.hpp"
 
 namespace zheleznyakov
