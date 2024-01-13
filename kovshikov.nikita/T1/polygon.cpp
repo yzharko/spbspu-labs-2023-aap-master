@@ -39,9 +39,9 @@ double kovshikov::Polygon::getArea() const
       start = points_[i];
     }
   }
-  point_t * upper = new point_t[num_];
+  point_t upper[num_] = {};
   size_t read = 0;
-  point_t * lower = new point_t[num_];
+  point_t lower[num_] = {};
   size_t count = 0;
   for(size_t i = 0; i < num_; i++)
   {
@@ -54,7 +54,7 @@ double kovshikov::Polygon::getArea() const
       lower[count++] = points_[i];
     }
   }
-  double * upperX = new double[read];
+  double upperX[read] = {};
   for(size_t i = 0; i < read; i++)
   {
     upperX[i] = upper[i].x;
@@ -77,7 +77,7 @@ double kovshikov::Polygon::getArea() const
       }
     }
   }
-  double * lowerX = new double[count];
+  double lowerX[count] = {};
   for(size_t i = 0; i < count; i++)
   {
     lowerX[i] = lower[i].x;
@@ -118,10 +118,6 @@ double kovshikov::Polygon::getArea() const
       area += triangleLower.getArea();
     }
   }
-  delete[] lowerX;
-  delete[] upperX;
-  delete[] lower;
-  delete[] upper;
   return area;
 }
 rectangle_t kovshikov::Polygon::getFrameRect() const
