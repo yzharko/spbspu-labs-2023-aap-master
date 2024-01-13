@@ -4,10 +4,10 @@
 #include "base-types.hpp"
 
 reznikova::Rectangle::Rectangle(point_t leftpoint, point_t rightpoint):
-rectangle_({std::abs(leftpoint.x - rightpoint.x), std::abs(leftpoint.y-rightpoint.y),
+rectangle_({(rightpoint.x - leftpoint.x), (rightpoint.y-leftpoint.y),
   {leftpoint.x + (rightpoint.x - leftpoint.x)/2, leftpoint.y + (rightpoint.y - leftpoint.y)/2} })
 {
-  if ((leftpoint.x > rightpoint.x) || (leftpoint.y > rightpoint.y))
+  if ((rectangle_.width <= 0) || (rectangle_.height <= 0))
   {
     throw std::runtime_error("wrong parameters\n");
   }
