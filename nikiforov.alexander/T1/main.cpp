@@ -9,9 +9,9 @@
 int main()
 {
   std::string nameFigure = "";
-  double* arrRP = new double[0];
-  double* arrSP = new double[0];
-  double* arrEP = new double[0];
+  double* arrRP = new double[4] {};
+  double* arrSP = new double[3] {};
+  double* arrEP = new double[4] {};
 
   size_t countRP = 0;
   size_t countSP = 0;
@@ -23,14 +23,17 @@ int main()
   {
     if (nameFigure == "RECTANGLE")
     {
-      countRP += 4;
-      double* ArrElem = new double[countRP];
-      for (size_t i = 0; i < countRP; i++)
+      if (countRP != 4)
       {
-        ArrElem[i] = arrRP[i];
+        double* ArrElem = new double[countRP];
+        for (size_t i = 0; i < countRP; i++)
+        {
+          ArrElem[i] = arrRP[i];
+        }
+        delete[] arrRP;
+        arrRP = ArrElem;
       }
-      delete[] arrRP;
-      arrRP = ArrElem;
+      
       if (std::cin >> arrRP[countRP - 4] >> arrRP[countRP - 3] >> arrRP[countRP - 2] >> arrRP[countRP - 1])
       {
         sequence.push_back(nameFigure);
@@ -90,8 +93,8 @@ int main()
       {
         if ((std::cin >> x_c >> y_c >> k) && (k > 0))
         {
-          double* arrPrimalPoints = new double[0];
-          double* arrAfterPoints = new double[0];
+          double* arrPrimalPoints = new double[4] {};
+          double* arrAfterPoints = new double[4] {};
           nikiforov::point_t sCen = { x_c , y_c };
           countRP = 0;
 
@@ -99,23 +102,28 @@ int main()
           {
             if (sequence[i] == "RECTANGLE")
             {
-              countArrPrimalPoints += 4;
-              double* ArrElemPrimal = new double[countArrPrimalPoints];
-              for (size_t i = 0; i < countArrPrimalPoints; i++)
+              if (countArrPrimalPoints != 4)
               {
-                ArrElemPrimal[i] = arrPrimalPoints[i];
+                countArrPrimalPoints += 4;
+                double* ArrElemPrimal = new double[countArrPrimalPoints];
+                for (size_t i = 0; i < countArrPrimalPoints; i++)
+                {
+                  ArrElemPrimal[i] = arrPrimalPoints[i];
+                }
+                delete[] arrPrimalPoints;
+                arrPrimalPoints = ArrElemPrimal;
               }
-              delete[] arrPrimalPoints;
-              arrPrimalPoints = ArrElemPrimal;
-              countArrAfterPoints += 4;
-              double* ArrElemAfter = new double[countArrAfterPoints];
-              for (size_t i = 0; i < countArrAfterPoints; i++)
+              if (countArrAfterPoints != 4)
               {
-                ArrElemAfter[i] = arrAfterPoints[i];
+                countArrAfterPoints += 4;
+                double* ArrElemAfter = new double[countArrAfterPoints];
+                for (size_t i = 0; i < countArrAfterPoints; i++)
+                {
+                  ArrElemAfter[i] = arrAfterPoints[i];
+                }
+                delete[] arrAfterPoints;
+                arrAfterPoints = ArrElemAfter;
               }
-              delete[] arrAfterPoints;
-              arrAfterPoints = ArrElemAfter;
-
               primalLeftPoint = { arrRP[countRP++] ,arrRP[countRP++] };
               primalRightPoint = { arrRP[countRP++] ,arrRP[countRP++] };
               nikiforov::Rectangle Rect({ primalLeftPoint.x, primalLeftPoint.y }, { primalRightPoint.x, primalRightPoint.y });
