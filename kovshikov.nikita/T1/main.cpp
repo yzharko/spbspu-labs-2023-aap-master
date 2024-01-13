@@ -119,8 +119,8 @@ int main()
         double AfterlowerLeftX = AfterFrame.pos.x - 0.5 * AfterFrame.width;
         double AfterlowerLeftY = AfterFrame.pos.y - 0.5 * AfterFrame.height;
         geometricShapes[i]->scale(multiplier);
-        double changeX = AfterlowerLeftX - BeforelowerLeftX;
-        double changeY = AfterlowerLeftY - BeforelowerLeftY;
+        double changeX = (BeforelowerLeftX - AfterlowerLeftX) * multiplier;
+        double changeY = (BeforelowerLeftY - AfterlowerLeftY) * multiplier;
         geometricShapes[i]->move(changeX, changeY);
       }
       if (isCorrectlyDescribe == false)
