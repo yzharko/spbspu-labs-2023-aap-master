@@ -6,7 +6,7 @@
 #include "ellipse.hpp"
 #include "addSizeParam.hpp"
 
-int main() 
+int main()
 {
   std::string nameFigure;
   double* arrRP = new double[0];
@@ -30,7 +30,7 @@ int main()
       {
         sequence.push_back(nameFigure);
       }
-      else 
+      else
       {
         errInd = true;
       }

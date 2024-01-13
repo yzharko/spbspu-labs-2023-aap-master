@@ -2,7 +2,7 @@
 #define RECTANGLE_HPP
 #include "shape.hpp"
 
-namespace nikiforov 
+namespace nikiforov
 {
   class Rectangle : public shape
   {
