@@ -15,7 +15,7 @@ bool psarev::rectDataRework(std::istream& input, std::vector<double>& data, std:
       break;
     }
   }
-  if ((iter == 4) && (data[iter - 4] < data[iter - 2]) && (data[iter - 3] < data[iter - 1])) {
+  if ((iter == 4) && (data[data.size() - 4] < data[data.size() - 2]) && (data[data.size() - 3] < data[data.size() - 1])) {
     queue.push_back('r');
   } else {
     for (size_t i = 0; i < iter; i++) {
@@ -40,7 +40,7 @@ bool psarev::ringDataRework(std::istream& input, std::vector<double>& data, std:
       break;
     }
   }
-  if ((iter == 4) && (data[iter - 1] > 0) && (data[iter - 2] > data[iter - 1])) {
+  if ((iter == 4) && (data[data.size() - 1] > 0) && (data[data.size() - 2] > data[data.size() - 1])) {
     queue.push_back('i');
   } else {
     for (size_t i = 0; i < iter; i++) {
@@ -67,9 +67,9 @@ bool psarev::triDataRework(std::istream& input, std::vector<double>& data, std::
     }
   }
   if (iter == 6) {
-    double firEdge = (sqrt(pow(data[iter - 4] - data[iter - 6], 2) + pow(data[iter - 3] - data[iter - 5], 2)));
-    double secEdge = (sqrt(pow(data[iter - 2] - data[iter - 4], 2) + pow(data[iter - 1] - data[iter - 3], 2)));
-    double thirEdge = (sqrt(pow(data[iter - 2] - data[iter - 6], 2) + pow(data[iter - 1] - data[iter - 5], 2)));
+    double firEdge = (sqrt(pow(data[data.size() - 4] - data[data.size() - 6], 2) + pow(data[data.size() - 3] - data[data.size() - 5], 2)));
+    double secEdge = (sqrt(pow(data[data.size() - 2] - data[data.size() - 4], 2) + pow(data[data.size() - 1] - data[data.size() - 3], 2)));
+    double thirEdge = (sqrt(pow(data[data.size() - 2] - data[data.size() - 6], 2) + pow(data[data.size() - 1] - data[data.size() - 5], 2)));
     bool result = 0;
     result = (firEdge + secEdge > thirEdge) && (firEdge + thirEdge > secEdge) && (secEdge + secEdge > firEdge);
     if (result) {

@@ -37,7 +37,7 @@ int main()
       if ((std::cin >> scaleCenter.x >> scaleCenter.y >> coef) && (coef > 0)) {
         scaleMark = true;
 
-        double prevAreaSum = 0.0;
+        double startAreaSum = 0.0;
         double newAreaSum = 0.0;
         std::vector<double> startFrames;
         std::vector<double> newFrames;
@@ -47,7 +47,7 @@ int main()
           if (queue[i] == 'r') {
             psarev::Rectangle rect({ rectData[rCtr++], rectData[rCtr++]}, { rectData[rCtr++], rectData[rCtr++] });
             psarev::rectangle_t rectFrame = rect.getFrameRect();
-            prevAreaSum += rectFrame.width * rectFrame.height;
+            startAreaSum += rectFrame.width * rectFrame.height;
             startFrames.push_back(rectFrame.pos.x - (rectFrame.width / 2));
             startFrames.push_back(rectFrame.pos.y - (rectFrame.height / 2));
             startFrames.push_back(rectFrame.pos.x + (rectFrame.width / 2));
@@ -67,7 +67,7 @@ int main()
           }
         }
         std::cout << std::fixed << std::setprecision(1);
-        std::cout << prevAreaSum << ' ';
+        std::cout << startAreaSum << ' ';
         for (size_t i = 0; i < startFrames.size(); i++) {
           if (startFrames.size() - i == 1) {
             std::cout << startFrames[i];
