@@ -89,7 +89,7 @@ smolyakov::rectangle_t smolyakov::CompositeShape::getFrameRect() const
   double maxValue = std::numeric_limits<double>().max();
   double minValue = std::numeric_limits<double>().min();
   point_t min = {maxValue, maxValue};
-  point_t max = {minValue, minValue}; 
+  point_t max = {minValue, minValue};
   for (size_t i = 0; i < shapes; i++)
   {
     rectangle_t shapeFrame = shapeptrs[i]->getFrameRect();
