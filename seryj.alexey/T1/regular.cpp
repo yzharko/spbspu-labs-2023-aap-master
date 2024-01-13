@@ -41,7 +41,7 @@ void Regular::move(const double& x,const double& y)
   p_b_ = { p_b_.x + x, p_b_.y + y };
   p_c_ = { p_c_.x + x, p_c_.y + y };
 }
-void Regular::scale(const double& k)
+void Regular::scale(double k)
 {
   hypotenuse_ *= k;
   p_b_.x *= k;

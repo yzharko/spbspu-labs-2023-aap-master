@@ -24,25 +24,24 @@ rectangle_t Rectangle::getFrameRect()const
 }
 void Rectangle::move(const point_t& dest)
 {
+  double shift_x = dest.x - pos_.x;
+  double shift_y = dest.y - pos_.y;
   pos_ = dest;
-  left_point_.x = dest.x + left_point_.x;
-  right_point_.x = dest.x + right_point_.x;
+  left_point_ = { left_point_.x + shift_x, left_point_.y + shift_y };
+  right_point_ = { right_point_.x + shift_x, right_point_.y + shift_y };
 }
-void Rectangle::move(const double& x, const double& y)
+void Rectangle::move(const double&x, const double& y)
 {
-  pos_.x += x;
-  pos_.y += y;
-  left_point_.x += x;
-  left_point_.y += y;
-  right_point_.x += x;
-  right_point_.y += y;
+  pos_ = { pos_.x + x, pos_.y + y };
+  left_point_ = { left_point_.x + x, left_point_.y + y };
+  right_point_ = { right_point_.x + x, right_point_.y + y };
 }
-void Rectangle::scale(const double& k)
+void Rectangle::scale(double k)
 {
   height_ *= k;
   width_ *= k;
-  left_point_.x -= pos_.x * (k - 1);
-  left_point_.y -= pos_.y * (k - 1);
-  right_point_.x += pos_.x * (k - 1);
-  right_point_.y += pos_.y * (k - 1);
+  left_point_.x *= k;
+  left_point_.y *= k;
+  right_point_.x *= k;
+  right_point_.y *= k;
 }
