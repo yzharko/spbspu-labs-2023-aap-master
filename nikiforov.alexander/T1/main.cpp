@@ -1,4 +1,3 @@
-#include <iostream>
 #include <iomanip>
 #include <string>
 #include <vector>
@@ -10,15 +9,15 @@
 int main() 
 {
   std::string nameFigure;
-  double* RectParam = new double[0];
-  double* SqParam = new double[0];
-  double* ElParam = new double[0];
+  double* arrRP = new double[0];
+  double* arrSP = new double[0];
+  double* arrEP = new double[0];
   double* arrPrimalPoints = new double[0];
   double* arrAfterPoints = new double[0];
 
-  size_t countRectParam = 0;
-  size_t countSqParam = 0;
-  size_t countElParam = 0;
+  size_t countRP = 0;
+  size_t countSP = 0;
+  size_t countEP = 0;
   bool errInd = false;
   std::vector<std::string> sequence;
 
@@ -26,8 +25,8 @@ int main()
   {
     if (nameFigure == "RECTANGLE")
     {
-      RectParam = nikiforov::AddFourElem(RectParam, countRectParam);
-      if (std::cin >> RectParam[countRectParam - 4] >> RectParam[countRectParam - 3] >> RectParam[countRectParam - 2] >> RectParam[countRectParam - 1])
+      arrRP = nikiforov::AddFourElem(arrRP, countRP);
+      if (std::cin >> arrRP[countRP - 4] >> arrRP[countRP - 3] >> arrRP[countRP - 2] >> arrRP[countRP - 1])
       {
         sequence.push_back(nameFigure);
       }
@@ -38,8 +37,8 @@ int main()
     }
     else if (nameFigure == "SQUARE")
     {
-      SqParam = nikiforov::AddThreeElem(SqParam, countSqParam);
-      if (std::cin >> SqParam[countSqParam - 3] >> SqParam[countSqParam - 2] >> SqParam[countSqParam - 1])
+      arrSP = nikiforov::AddThreeElem(arrSP, countSP);
+      if (std::cin >> arrSP[countSP - 3] >> arrSP[countSP - 2] >> arrSP[countSP - 1])
       {
         sequence.push_back(nameFigure);
       }
@@ -50,8 +49,8 @@ int main()
     }
     else if (nameFigure == "ELLIPSE")
     {
-      ElParam = nikiforov::AddFourElem(ElParam, countElParam);
-      if (std::cin >> ElParam[countElParam - 4] >> ElParam[countElParam - 3] >> ElParam[countElParam - 2] >> ElParam[countElParam - 1])
+      arrEP = nikiforov::AddFourElem(arrEP, countEP);
+      if (std::cin >> arrEP[countEP - 4] >> arrEP[countEP - 3] >> arrEP[countEP - 2] >> arrEP[countEP - 1])
       {
         sequence.push_back(nameFigure);
       }
@@ -66,9 +65,9 @@ int main()
       double x_c = 0.0;
       double y_c = 0.0;
       double k = 0.0;
-      countRectParam = 0;
-      countSqParam = 0;
-      countElParam = 0;
+      countRP = 0;
+      countSP = 0;
+      countEP = 0;
 
       double AreaSum = 0.0;
       double newAreaSum = 0.0;
@@ -86,8 +85,8 @@ int main()
       {
         if ((std::cin >> x_c >> y_c >> k) && (k > 0))
         {
-          point_t scaleCenter = { x_c , y_c };
-          countRectParam = 0;
+          point_t sCen = { x_c , y_c };
+          countRP = 0;
 
           for (size_t i = 0; i < sequence.size(); i++)
           {
@@ -96,15 +95,15 @@ int main()
               arrPrimalPoints = nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
               arrAfterPoints = nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
               
-              primalLeftPoint = { RectParam[countRectParam++] ,RectParam[countRectParam++] };
-              primalRightPoint = { RectParam[countRectParam++] ,RectParam[countRectParam++] };
+              primalLeftPoint = { arrRP[countRP++] ,arrRP[countRP++] };
+              primalRightPoint = { arrRP[countRP++] ,arrRP[countRP++] };
               nikiforov::Rectangle Rect({ primalLeftPoint.x, primalLeftPoint.y }, { primalRightPoint.x, primalRightPoint.y });
-              rectangle_t rectFrame = Rect.getFrameRect();
+              rectangle_t frame = Rect.getFrameRect();
 
               AreaSum += Rect.getArea();
               Rect.scale(k);
 
-              movePoints = { ((rectFrame.pos.x - scaleCenter.x) * k) - (rectFrame.pos.x - scaleCenter.x),(rectFrame.pos.y - scaleCenter.y) * k - (rectFrame.pos.y - scaleCenter.y) };
+              movePoints = { ((frame.pos.x - sCen.x) * k) - (frame.pos.x - sCen.x),(frame.pos.y - sCen.y) * k - (frame.pos.y - sCen.y) };
               newLeftPoint = { Rect.lPoint.x + movePoints.x, Rect.lPoint.y + movePoints.y };
               newRightPoint = { Rect.rPoint.x + movePoints.x, Rect.rPoint.y + movePoints.y };
 
@@ -126,19 +125,19 @@ int main()
               arrPrimalPoints = nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
               arrAfterPoints = nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
 
-              primalLeftPoint = { SqParam[countSqParam++] ,SqParam[countSqParam++] };
-              double lenth = SqParam[countSqParam++];
+              primalLeftPoint = { arrSP[countSP++] ,arrSP[countSP++] };
+              double lenth = arrSP[countSP++];
 
               
               nikiforov::Square Sq({ primalLeftPoint.x, primalLeftPoint.y }, lenth);
 
               primalRightPoint = { Sq.rPoint.x, Sq.rPoint.y };
-              rectangle_t rectFrame = Sq.getFrameRect();
+              rectangle_t frame = Sq.getFrameRect();
 
               AreaSum += Sq.getArea();
               Sq.scale(k);
 
-              movePoints = { ((rectFrame.pos.x - scaleCenter.x) * k) - (rectFrame.pos.x - scaleCenter.x),(rectFrame.pos.y - scaleCenter.y) * k - (rectFrame.pos.y - scaleCenter.y) };
+              movePoints = { ((frame.pos.x - sCen.x) * k) - (frame.pos.x - sCen.x),(frame.pos.y - sCen.y) * k - (frame.pos.y - sCen.y) };
               newLeftPoint = { Sq.lPoint.x + movePoints.x, Sq.lPoint.y + movePoints.y };
               newRightPoint = { Sq.rPoint.x + movePoints.x, Sq.rPoint.y + movePoints.y };
 
@@ -159,21 +158,21 @@ int main()
               arrPrimalPoints = nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
               arrAfterPoints = nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
 
-              point_t centerEll = { ElParam[countElParam++] ,ElParam[countElParam++] };
-              double width = ElParam[countElParam++];
-              double height = ElParam[countElParam++];
+              point_t centerEll = { arrEP[countEP++] ,arrEP[countEP++] };
+              double width = arrEP[countEP++];
+              double height = arrEP[countEP++];
 
               
               nikiforov::Ellipse Ell({ centerEll.x, centerEll.y }, width, height);
 
               primalLeftPoint = { Ell.lPoint.x ,Ell.lPoint.y };
               primalRightPoint = { Ell.rPoint.x ,Ell.rPoint.y };
-              rectangle_t rectFrame = Ell.getFrameRect();
+              rectangle_t frame = Ell.getFrameRect();
 
               AreaSum += Ell.getArea();
               Ell.scale(k);
 
-              movePoints = { ((rectFrame.pos.x - scaleCenter.x) * k) - (rectFrame.pos.x - scaleCenter.x),(rectFrame.pos.y - scaleCenter.y) * k - (rectFrame.pos.y - scaleCenter.y) };
+              movePoints = { ((frame.pos.x - sCen.x) * k) - (frame.pos.x - sCen.x),(frame.pos.y - sCen.y) * k - (frame.pos.y - sCen.y) };
               newLeftPoint = { Ell.lPoint.x + movePoints.x, Ell.lPoint.y + movePoints.y };
               newRightPoint = { Ell.rPoint.x + movePoints.x, Ell.rPoint.y + movePoints.y };
 
@@ -217,16 +216,16 @@ int main()
       else
       {
         std::cerr << "Error: There is no descriptions of the supported figures!\n";
-        delete[] RectParam;
-        delete[] SqParam;
-        delete[] ElParam;
+        delete[] arrRP;
+        delete[] arrSP;
+        delete[] arrEP;
         delete[] arrPrimalPoints;
         delete[] arrAfterPoints;
         return 1;
       }
-      delete[] RectParam;
-      delete[] SqParam;
-      delete[] ElParam;
+      delete[] arrRP;
+      delete[] arrSP;
+      delete[] arrEP;
       delete[] arrPrimalPoints;
       delete[] arrAfterPoints;
       break;
