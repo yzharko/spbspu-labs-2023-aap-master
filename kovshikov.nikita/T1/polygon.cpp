@@ -1,4 +1,4 @@
-#include "polygon.hpp"
+ #include "polygon.hpp"
 #include "rectangle.hpp"
 #include "triangle.hpp"
 #include <functional>
@@ -86,20 +86,20 @@ double kovshikov::Polygon::getArea() const
       /*Shape * triangleUpper = new Triangle(start, upper[i], upper[i - 1]);
       area += triangleUpper->getArea();
       delete triangleUpper;*/
-      const Triangle triangleUpper(start, upper[i], upper[i - 1]);
+      Triangle triangleUpper(start, upper[i], upper[i - 1]);
       area += triangleUpper.getArea();
     }
     /*Shape * triangleMiddle = new Triangle(start, upper[read - 1], lower[0]);
     area += triangleMiddle->getArea();
     delete triangleMiddle;*/
-    const Triangle triangleMiddle(start, upper[read - 1], lower[0]);
+    Triangle triangleMiddle(start, upper[read - 1], lower[0]);
     area += triangleMiddle.getArea();
     for(size_t i = 1; i < count; i++)
     {
       /*Shape * triangleLower = new Triangle(start, lower[i - 1], lower[i]);
       area += triangleLower->getArea();
       delete triangleLower;*/
-      const Triangle triangleLower(start, lower[i - 1], lower[i]);
+      Triangle triangleLower(start, lower[i - 1], lower[i]);
       area += triangleLower.getArea();
     }
   }
@@ -132,7 +132,7 @@ rectangle_t kovshikov::Polygon::getFrameRect() const
   delete[] arrayY;
   /*rectangle_t frame = rectangle->getFrameRect();
   delete rectangle;*/
-  const Rectangle rectangle(lowerLeft, upperRight);
+  Rectangle rectangle(lowerLeft, upperRight);
   return rectangle.getFrameRect();
 }
 void kovshikov::Polygon::move(const point_t &newPos)

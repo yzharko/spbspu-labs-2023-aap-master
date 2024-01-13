@@ -8,9 +8,9 @@ namespace kovshikov
   {
   public:
     virtual ~Shape() = default; //
-    virtual double getArea() = 0;
-    virtual rectangle_t getFrameRect() = 0;
-    virtual void move(point_t newPos) = 0;
+    virtual double getArea() const = 0;
+    virtual rectangle_t getFrameRect() const = 0; // const = 0;
+    virtual void move(const point_t &newPos) = 0;
     virtual void move(double xPlus, double yPlus) = 0;
     virtual void scale(double multiplier) = 0;
   };

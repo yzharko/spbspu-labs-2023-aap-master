@@ -27,7 +27,7 @@ rectangle_t kovshikov::Triangle::getFrameRect() const
   rectangle_t frame = rectangle->getFrameRect();
   delete rectangle;
   return frame;*/
-  const Rectangle rectangle(lowerLeft, upperRight);
+  Rectangle rectangle(lowerLeft, upperRight);
   return rectangle.getFrameRect();
 }
 void kovshikov::Triangle::move(const point_t &newPos)
