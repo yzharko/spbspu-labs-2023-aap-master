@@ -25,5 +25,6 @@ public:
   virtual void scale(double k);
   virtual Shape* clone();
   virtual std::string getName() const;
+  void show();
 };
 #endif

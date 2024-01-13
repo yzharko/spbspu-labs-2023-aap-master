@@ -2,6 +2,7 @@
 #define SHAPE_H
 #include "FrameRectangle.h"
 #include <string>
+
 template <typename T>
 void FigInfo(T figure);
 class Shape

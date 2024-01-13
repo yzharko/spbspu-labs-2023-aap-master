@@ -11,6 +11,25 @@ FrameRectangle::FrameRectangle(Point& pos, double width, double height) {
   width_ = width;
   height_ = height;
 }
+void FrameRectangle::scale(double k) {
+  if (k > 0) {
+    width_ *= k;
+    height_ *= k;
+  }
+  else {
+    std::cout << "The coefficient cannot be less than or equal to zero!";
+    exit(-1);
+  }
+}
+void FrameRectangle::move(double xdist, double ydist) {
+  if (xdist != 0 || ydist != 0) {
+    pos_.setX(pos_.getX() + xdist);
+    pos_.setY(pos_.getY() + xdist);
+  }
+  else {
+    std::cout << "Both distances are zero!\n";
+  }
+}
 FrameRectangle::~FrameRectangle() {}
 Point FrameRectangle::getLeftCorner() {
   Point corner;
@@ -32,4 +51,9 @@ double FrameRectangle::getWidth() {
 }
 double FrameRectangle::getHeight() {
   return height_;
+}
+void FrameRectangle::show() {
+  std::cout << std::fixed;
+  std::cout.precision(1);
+  std::cout << "RECTANGLE " << getLeftCorner().getX() << " " << getLeftCorner().getY() << " " << getRightCorner().getX() << " " << getRightCorner().getY() << "\n";
 }

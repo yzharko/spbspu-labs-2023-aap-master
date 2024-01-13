@@ -21,46 +21,51 @@ int main() {
   }
   Point center(x1, y1);
   Circle circle(center, r);
-  double x2 = 0.0, y2 = 0.0, d1 = 0, d2 = 0;
+  double x2 = 0.0, y2 = 0.0, x3 = 0.0, y3 = 0.0, x4 = 0.0, y4 = 0.0;
+  double t1 = 0.0, t2 = 0.0, t3 = 0.0, t4 = 0.0;
   std::cout << "Enter the coords for diagonal interception of diamond, diagonals:\n";
   std::cout << "Coords: ";
-  std::cin >> x2 >> y2;
+  std::cin >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
   if (!std::cin) {
     std::cerr << "Incorrect input!Try again…";
     exit(-1);
   }
-  std::cout << "Diagonal 1: ";
-  std::cin >> d1;
-  if (!std::cin || d1 <= 0) {
+  std::cout << "Enter the coords for rectangle:\n";
+  std::cout << "Center coords: ";
+  std::cin >> t1 >> t2;
+  if (!std::cin) {
     std::cerr << "Incorrect input!Try again…";
     exit(-1);
   }
-  std::cout << "Diagonal 2: ";
-  std::cin >> d2;
-  if (!std::cin || d2 == 0) {
-    std::cerr << "Incorrect input!Try again…";
-    exit(-1);
-  }
-  Point pos(x2, y2);
-  Diamond diamond(pos, d1, d2);
+  std::cout << "width and height:";
+  std::cin >> t3 >> t4;
+  Point center2(t1, t2);
+  Point pos1(x2, y2);
+  Point pos2(x3, y3);
+  Point pos3(x4, y4);
+  Diamond diamond(pos1, pos2, pos3);
+  FrameRectangle framerectangle(center2, t3, t4);
   circle.getName();
   diamond.getName();
-  ShapeInfo(circle);
-  ShapeInfo(diamond);
+  circle.show();
+  diamond.show();
+  framerectangle.show();
   std::cout << "Scale 2\n";
   circle.scale(2);
   diamond.scale(2);
-  ShapeInfo(circle);
-  ShapeInfo(diamond);
+  framerectangle.scale(2);
+  circle.show();
+  diamond.show();
+  framerectangle.show();
   std::cout << "\n" << "move circle \n";
   circle.move(1, 1);
-  ShapeInfo(circle);
-  ShapeInfo(diamond);
+  circle.show();
   std::cout << "\n" << "move diamond  \n";
   diamond.move(1, 1);
-  ShapeInfo(circle);
-  ShapeInfo(diamond);
-  std::cout << "\n";
+  diamond.show();
+  std::cout << "\n" << "move rectangle  \n";
+  framerectangle.move(1, 1);
+  framerectangle.show();
   return 0;
 }
 void ShapeInfo(Shape& s) {

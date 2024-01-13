@@ -25,5 +25,7 @@ public:
 private:
   double x_;
   double y_;
+  double y;
+  double x;
 };
 #endif

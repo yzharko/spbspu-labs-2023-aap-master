@@ -94,3 +94,8 @@ Shape* Circle::clone() {
 std::string Circle::getName() const {
   return "CIRCLE";
 }
+void Circle::show() {
+  std::cout << std::fixed;
+  std::cout.precision(1);
+  std::cout << "CIRCLE " << center_.getX() << " " << center_.getY() << " " << rad_ << "\n";
+}

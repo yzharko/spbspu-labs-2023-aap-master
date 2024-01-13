@@ -17,5 +17,8 @@ public:
   Point getLeftCorner();
   Point getRightCorner();
   Point getCenter();
+  void show();
+  void scale(double k);
+  void move(double xdist, double ydist);
 };
 #endif
