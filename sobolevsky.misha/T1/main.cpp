@@ -29,7 +29,7 @@ int main()
   bool flag = false;
   while (std::cin >> figureType)
   {
-    if (counter = arraySize)
+    if (counter == arraySize)
     {
       arraySize += 10;
       sobolevsky::Shape ** newArray = new sobolevsky::Shape * [arraySize];
