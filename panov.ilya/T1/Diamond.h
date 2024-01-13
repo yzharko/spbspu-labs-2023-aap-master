@@ -1,5 +1,7 @@
 #ifndef DIAMOND_H
 #define DIAMOND_H
+#include "Shape.h"
+#include "Point.h"
 
 class Diamond : public Shape
 {
