@@ -22,11 +22,12 @@ int main()
       std::cin >> x1 >> y1 >> x2 >> y2;
       try
       {
-        Shape* rectangle = new taskaev::Rectangle({x1, y1}, {x2, y2});
+        Shape* rectangle = new Rectangle({x1, y1}, {x2, y2});
       }
       catch (const std::logic_error& e)
       {
         std::cerr << e.what();
+        delete[] rectangle;
         return 1;
       }
     }
@@ -39,11 +40,13 @@ int main()
       std::cin >> x >> y >> radVer >> radGor;
       try
       {
-        Shape* ellipse = new taskaev::Ellipse({x, y}, radVer, radGor);
+        Shape* ellipse = new Ellipse({x, y}, radVer, radGor);
       }
       catch (const std::logic_error& e)
       {
         std::cerr << e.what();
+        delete[] ellipse;
+        return 1;
       }
     }
     else if (figur == "CONCAVE")
@@ -59,11 +62,13 @@ int main()
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
       try
       {
-        Shape* concave = new taskaev::Concave({x1, y1}, {x2, y2}, {x3, y3}, {x4, y4});
+        Shape* concave = new Concave({x1, y1}, {x2, y2}, {x3, y3}, {x4, y4});
       }
       catch (const std::logic_error& e)
       {
         std::cerr << e.what();
+        delete[] concave;
+        return 1;
       }
     }
   }
