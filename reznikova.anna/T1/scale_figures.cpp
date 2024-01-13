@@ -4,7 +4,7 @@
 #include "array_functions.hpp"
 
 
-void reznikova::scaleFigures(Shape ** figures, int stored, std::istream & in)
+void reznikova::scaleFigures(Shape ** figures, const int stored, std::istream & in)
 {
   double x, y, n;
   in >> x >> y >> n;

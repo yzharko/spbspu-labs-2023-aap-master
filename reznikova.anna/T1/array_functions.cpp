@@ -3,7 +3,7 @@
 #include <iostream>
 #include "shape.hpp"
 
-void reznikova::freeArray(Shape ** figures, int stored)
+void reznikova::freeArray(Shape ** figures, const int stored)
 {
   for (int i = 0; i < stored; i++)
   {
@@ -11,7 +11,7 @@ void reznikova::freeArray(Shape ** figures, int stored)
   }
 }
 
-void reznikova::outputSum(Shape ** figures, int stored)
+void reznikova::outputSum(Shape ** figures, const int stored)
 {
   double sum_area = 0;
   for (int i = 0; i < stored; i++)
