@@ -94,7 +94,7 @@ int main()
             {
               arrPrimalPoints = nikiforov::AddFourElem(arrPrimalPoints, countArrPrimalPoints);
               arrAfterPoints = nikiforov::AddFourElem(arrAfterPoints, countArrAfterPoints);
-              
+
               primalLeftPoint = { arrRP[countRP++] ,arrRP[countRP++] };
               primalRightPoint = { arrRP[countRP++] ,arrRP[countRP++] };
               nikiforov::Rectangle Rect({ primalLeftPoint.x, primalLeftPoint.y }, { primalRightPoint.x, primalRightPoint.y });
