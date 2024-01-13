@@ -1,6 +1,5 @@
 #include "regular.hpp"
 #include <cmath>
-#include <stdexcept>
 
 using namespace shagieva;
 

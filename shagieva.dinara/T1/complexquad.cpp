@@ -1,7 +1,6 @@
 #include "complexquad.hpp"
 #include <cmath>
 #include <algorithm>
-#include <stdexcept>
 
 using namespace shagieva;
 
