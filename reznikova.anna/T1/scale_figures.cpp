@@ -16,7 +16,6 @@ void reznikova::scaleFigures(Shape ** figures, const int stored, std::istream & 
   }
   if (stored == 0)
   {
-    freeArray(figures, stored);
     throw std::runtime_error("nothing to scale\n");
   }
 
