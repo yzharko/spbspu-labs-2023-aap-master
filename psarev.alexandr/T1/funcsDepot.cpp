@@ -72,11 +72,11 @@ bool psarev::triDataRework(std::istream& input, std::vector<double>& data, std::
     double firSide = (sqrt(pow(data[data.size() - 4] - data[data.size() - 6], 2) + pow(data[data.size() - 3] - data[data.size() - 5], 2)));
     double secSide = (sqrt(pow(data[data.size() - 2] - data[data.size() - 4], 2) + pow(data[data.size() - 1] - data[data.size() - 3], 2)));
     double thirSide = (sqrt(pow(data[data.size() - 2] - data[data.size() - 6], 2) + pow(data[data.size() - 1] - data[data.size() - 5], 2)));
-    bool result = 0;
+    bool rightTri = 0;
     double maxSide = fmax(firSide, secSide);
     maxSide = fmax(maxSide, thirSide);
-    result = (maxSide < (firSide + secSide + thirSide - maxSide));
-    if (result) {
+    rightTri = (maxSide < (firSide + secSide + thirSide - maxSide));
+    if (rightTri) {
       queue.push_back('t');
     } else {
       for (size_t i = 0; i < iter; i++) {
