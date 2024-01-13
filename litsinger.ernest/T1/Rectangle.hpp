@@ -6,7 +6,6 @@
 using namespace base_types;
 class Rectangle :public Shape {
 public:
-  Rectangle(const rectangle_t& framework);
   Rectangle(double weight, double height, const point_t& pos);
   virtual double getArea() const override;
   virtual base_types::rectangle_t getFrameRect() const override;
