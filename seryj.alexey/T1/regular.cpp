@@ -29,19 +29,13 @@ rectangle_t Regular::getFrameRect()const
 }
 void Regular::move(const point_t& dest)
 {
-  double shift_x = dest.x - pos_.x;
-  double shift_y = dest.y - pos_.y;
   pos_ = dest;
-  p_b_ = { p_b_.x + shift_x, p_b_.y + shift_y };
-  p_c_ = { p_c_.x + shift_x, p_c_.y + shift_y };
 }
-void Regular::move(double x, double y)
+void Regular::move(const double& x,const double& y)
 {
   pos_ = { pos_.x + x, pos_.y + y };
-  p_b_ = { p_b_.x + x, p_b_.y + y };
-  p_c_ = { p_c_.x + x, p_c_.y + y };
 }
-void Regular::scale(double k)
+void Regular::scale(const double& k)
 {
   hypotenuse_ *= k;
   p_b_.x *= k;

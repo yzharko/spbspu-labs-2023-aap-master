@@ -22,12 +22,12 @@ void Square::move(const point_t& dest)
   point_.x = dest.x - side_ / 2;
   point_.y = dest.y - side_ / 2;
 }
-void Square::move(double x, double y)
+void Square::move(const double& x, const double& y)
 {
   point_.x += x;
   point_.y += y;
 }
-void Square::scale(double k)
+void Square::scale(const double& k)
 {
   double old_side = side_;
   side_ *= k;
