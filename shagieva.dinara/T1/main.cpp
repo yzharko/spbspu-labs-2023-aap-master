@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <cmath>
 #include <stdexcept>
 #include "resourceFunctions.hpp"
 #include "dataFunctions.hpp"

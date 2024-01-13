@@ -1,11 +1,10 @@
 #include "dataFunctions.hpp"
+#include <stdexcept>
+#include <iomanip>
 #include "rectangle.hpp"
 #include "complexquad.hpp"
 #include "regular.hpp"
 #include "base-types.hpp"
-#include <stdexcept>
-#include <iostream>
-#include <iomanip>
 
 void shagieva::parseFigure(std::string figureType, std::istream & input, shagieva::Shape ** shapes, size_t & shapeCount)
 {
@@ -19,7 +18,7 @@ void shagieva::parseFigure(std::string figureType, std::istream & input, shagiev
     }
     catch(const std::invalid_argument & e)
     {
-      throw std::invalid_argument("Invalid figure entered");
+      throw std::invalid_argument("Rectangle is incorrect");
     }
   }
 
@@ -36,7 +35,7 @@ void shagieva::parseFigure(std::string figureType, std::istream & input, shagiev
     }
     catch(const std::invalid_argument & e)
     {
-      throw std::invalid_argument("Invalid figure entered");
+      throw std::invalid_argument("Complexquad is incorrect");
     }
   }
 
@@ -51,7 +50,7 @@ void shagieva::parseFigure(std::string figureType, std::istream & input, shagiev
     }
     catch(const std::invalid_argument & e)
     {
-      throw std::invalid_argument("Invalid figure entered");
+      throw std::invalid_argument("Regular is incorrect");
     }
   }
 
@@ -59,6 +58,16 @@ void shagieva::parseFigure(std::string figureType, std::istream & input, shagiev
   {
     throw std::invalid_argument("Invalid figure entered");
   }
+}
+
+void shagieva::printTotalArea(const shagieva::Shape * const * const shapes, const size_t & shapeCount)
+{
+  double totalArea = 0;
+  for (size_t i = 0; i < shapeCount; ++i)
+  {
+    totalArea += shapes[i]->getArea();
+  }
+  std::cout << std::fixed << std::setprecision(1) << totalArea << " ";
 }
 
 void shagieva::printFramePoints(const shagieva::Shape * const * const shapes, const size_t & shapeCount)
@@ -73,14 +82,4 @@ void shagieva::printFramePoints(const shagieva::Shape * const * const shapes, co
               << frame.pos.y + frame.height / 2
               << ((i == (shapeCount - 1)) ? "\n" : " ");
   }
-}
-
-void shagieva::printTotalArea(const shagieva::Shape * const * const shapes, const size_t & shapeCount)
-{
-  double totalArea = 0;
-  for (size_t i = 0; i < shapeCount; ++i)
-  {
-    totalArea += shapes[i]->getArea();
-  }
-  std::cout << std::fixed << std::setprecision(1) << totalArea << " ";
 }

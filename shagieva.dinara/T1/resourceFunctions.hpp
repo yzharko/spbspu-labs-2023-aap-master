@@ -1,7 +1,7 @@
 #ifndef RESOURCE_FUNCTIONS_HPP
 #define RESOURCE_FUNCTIONS_HPP
-#include "shape.hpp"
 #include <cstddef>
+#include "shape.hpp"
 
 namespace shagieva
 {
