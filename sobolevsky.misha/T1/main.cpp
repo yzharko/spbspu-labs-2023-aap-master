@@ -95,7 +95,7 @@ int main()
       {
         std::cout << std::fixed << std::setprecision(1);
 
-        size_t sumArea = 0;
+        double sumArea = 0;
         for (size_t i = 0; i < counter; i++)
         {
           sumArea += figuers[i]->getArea();
