@@ -77,7 +77,8 @@ int main()
       std::cin >> posX >> posY >> multiplier;
       if (!std::cin || multiplier < 0)
       {
-        continue;
+        std::cerr << "The coefficient must be greater than zero!";
+        return 1;
       }
       double totalAreaBefore = 0;
       for (size_t i = 0; i < count; i++)
