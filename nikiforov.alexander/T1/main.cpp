@@ -240,6 +240,9 @@ int main()
         else
         {
           std::cerr << "Error: The scale parameter is incorrect!\n";
+          delete[] arrRP;
+          delete[] arrSP;
+          delete[] arrEP;
           return 1;
         }
       }
@@ -257,10 +260,11 @@ int main()
   delete[] arrSP;
   delete[] arrEP;
   if (errInd) {
-    std::cerr << "Error: Оne or more errors in the description of the figure!\n";
+    std::cerr << "Error: One or more errors in the description of the figure!\n";
   }
   if (!errIndScale) {
     std::cerr << "Error: There is no scale parameter!\n";
+    return 1;
   }
   return 0;
 }
