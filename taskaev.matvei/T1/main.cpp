@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "ellipse.hpp"
 #include "Shape.hpp"
 #include "concave.hpp"
@@ -7,6 +8,7 @@
 
 int main()
 {
+  using namespace taskaev;
   std::string figur = "";
   Shape* figurs[1000]{};
   int ind = 0;
@@ -22,12 +24,13 @@ int main()
       std::cin >> x1 >> y1 >> x2 >> y2;
       try
       {
-        Shape* rectangle = new taskaev::Rectangle({ x1,y1 }, { x2,y2 });
+        Shape* rectangle = new taskaev::Rectangle({x1, y1}, {x2, y2});
         figurs[ind++] = rectangle;
       }
       catch (const std::logic_error& e)
       {
         std::cerr << e.what();
+        return 1;
       }
     }
     else if (figur == "ELLIPSE")
@@ -39,12 +42,12 @@ int main()
       std::cin >> x >> y >> radVer >> radGor;
       try
       {
-        Shape* ellipse = new taskaev::Ellipse({ x, y }, radVer, radGor);
-	figurs[ind++] = ellipse;
+        Shape* ellipse = new taskaev::Ellipse({x, y}, radVer, radGor);
+        figurs[ind++] = ellipse;
       }
       catch (const std::logic_error& e)
       {
-	std::cerr << e.what();
+        std::cer << e.what();
       }
     }
     else if (figur == "CONCAVE")
@@ -55,12 +58,13 @@ int main()
       double y2;
       double x3;
       double y3;
+      double y3;
       double x4;
       double y4;
       std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
       try
       {
-        Shape* concave = new taskaev::Concave({x1, x2}, {x2, y2}, {x3, y3}, {x4, y4});
+        Shape* concave = new taskaev::Concave({x1, y1}, {x2, y2}, {x3, y3}, {x4, y4});
         figurs[ind++] = concave;
       }
       catch (const std::logic_error& e)
@@ -71,4 +75,3 @@ int main()
   }
   return 0;
 }
-
