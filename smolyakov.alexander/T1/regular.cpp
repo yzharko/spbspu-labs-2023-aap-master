@@ -5,7 +5,13 @@
 
 smolyakov::Regular::Regular(point_t center, point_t secondPoint, point_t thirdPoint)
 {
+  center_ = center;
   calculateParameters(center, secondPoint, thirdPoint);
+}
+
+smolyakov::point_t smolyakov::Regular::getScaleCenter() const
+{
+  return center_;
 }
 
 double smolyakov::Regular::getArea() const

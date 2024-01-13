@@ -9,6 +9,7 @@ namespace smolyakov
   {
   public:
     Regular(point_t center, point_t secondPoint, point_t thirdPoint);
+    point_t getScaleCenter() const override;
     double getArea() const override;
     rectangle_t getFrameRect() const override;
     void moveTo(point_t shift) override;

@@ -5,9 +5,14 @@ smolyakov::Rectangle::Rectangle(point_t bottomLeft, point_t upperRight)
 {
   width_ = upperRight.x - bottomLeft.x;
   height_ = upperRight.y - bottomLeft.y;
-  double centerX = (bottomLeft.x + upperRight.x) / 2;
-  double centerY = (bottomLeft.y + upperRight.y) / 2;
-  center_ = {centerY, centerY}; 
+  double centerX = (bottomLeft.x + upperRight.x) / 2.0;
+  double centerY = (bottomLeft.y + upperRight.y) / 2.0;
+  center_ = {centerX, centerY}; 
+}
+
+smolyakov::point_t smolyakov::Rectangle::getScaleCenter() const
+{
+  return center_;
 }
 
 double smolyakov::Rectangle::getArea() const

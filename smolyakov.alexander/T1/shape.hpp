@@ -7,6 +7,7 @@ namespace smolyakov
   class Shape
   {
   public:
+    virtual point_t getScaleCenter() const = 0;
     virtual double getArea() const = 0;
     virtual rectangle_t getFrameRect() const = 0;
     virtual void moveTo(point_t shift) = 0;

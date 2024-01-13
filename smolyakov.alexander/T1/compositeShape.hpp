@@ -8,6 +8,7 @@ namespace smolyakov
 {
   struct CompositeShape
   {
+  public:
     std::size_t shapes;
     std::size_t capacity;
     Shape** shapeptrs;
@@ -20,7 +21,9 @@ namespace smolyakov
     double getArea() const;
     rectangle_t getFrameRect() const;
     void moveBy(double x, double y);
-    void scale(double factor);
+    void scale(point_t pivot, double factor);
+  private:
+    void doForAllShapes(void (Shape::* Action)());
   };
 }
 

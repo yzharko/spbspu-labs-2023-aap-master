@@ -9,6 +9,7 @@ namespace smolyakov
   {
   public:
     Rectangle(point_t bottomLeft, point_t upperRight);
+    point_t getScaleCenter() const override;
     double getArea() const override;
     rectangle_t getFrameRect() const override;
     void moveTo(point_t shift) override;
