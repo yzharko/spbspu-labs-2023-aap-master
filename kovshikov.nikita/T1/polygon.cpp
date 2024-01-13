@@ -3,6 +3,7 @@
 #include "triangle.hpp"
 #include <functional>
 
+using namespace kovshikov;
 kovshikov::Polygon::Polygon(size_t num, point_t * points):
   num_(num),
   points_(points)

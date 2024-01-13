@@ -1,6 +1,7 @@
 #include "triangle.hpp"
 #include "rectangle.hpp"
 
+using namespace kovshikov;
 kovshikov::Triangle::Triangle(point_t vertexA, point_t vertexB, point_t vertexC):
   vertexA_(vertexA),
   vertexB_(vertexB),

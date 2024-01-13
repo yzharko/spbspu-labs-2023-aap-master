@@ -1,5 +1,6 @@
 #include "rectangle.hpp"
 
+using namespace kovshikov;
 kovshikov::Rectangle::Rectangle(point_t lowerLeft, point_t upperRight):
   lowerLeft_(lowerLeft),
   upperRight_(upperRight)
