@@ -20,10 +20,10 @@ double zheleznyakov::Regular::getArea()
 zheleznyakov::rectangle_t zheleznyakov::Regular::getFrameRect()
 {
   zheleznyakov::rectangle_t rect;
-  double xMin = std::min({points_[0].x, points_[1].x, points_[2].x});
-  double xMax = std::max({points_[0].x, points_[1].x, points_[2].x});
-  double yMin = std::min({points_[0].y, points_[1].y, points_[2].y});
-  double yMax = std::max({points_[0].y, points_[1].y, points_[2].y});
+  double xMin = std::min(std::min(points_[0].x, points_[1].x), points_[2].x);
+  double xMax = std::max(std::min(points_[0].x, points_[1].x), points_[2].x);
+  double yMin = std::min(std::min(points_[0].y, points_[1].y), points_[2].y);
+  double yMax = std::max(std::min(points_[0].y, points_[1].y), points_[2].y);
   rect.width = std::abs(xMax - xMin);
   rect.width = std::abs(yMax - yMin);
   rect.pos.x = xMin;
