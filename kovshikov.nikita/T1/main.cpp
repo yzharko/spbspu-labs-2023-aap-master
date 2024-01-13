@@ -47,7 +47,7 @@ int main()
       {
         geometricShapes[count - 1]->getArea();
       }
-      catch(const std::logic_error& e)
+      catch(const std::logic_error& en)
       {
         isCorrectlyDescribe = false;
         count -= 1;
