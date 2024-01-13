@@ -25,20 +25,28 @@ zheleznyakov::rectangle_t zheleznyakov::Rectangle::getFrameRect()
 
 void zheleznyakov::Rectangle::move(double x, double y)
 {
-  rectangle.pos.x += x;
-  rectangle.pos.y += y;
+  rectangle_t newRectangle;
+  newRectangle.pos.x = rectangle.pos.x + x;
+  newRectangle.pos.y = rectangle.pos.y + y;
+  rectangle = newRectangle;
 };
 
 void zheleznyakov::Rectangle::move(zheleznyakov::point_t destinationPoint)
 {
-  rectangle.pos.x = destinationPoint.x;
-  rectangle.pos.y = destinationPoint.y;
+  rectangle_t newRectangle;
+  newRectangle.width = rectangle.width;
+  newRectangle.height = rectangle.height;
+  newRectangle.pos.x = destinationPoint.x;
+  newRectangle.pos.y = destinationPoint.y;
+  rectangle = newRectangle;
 };
 
 void zheleznyakov::Rectangle::scale(double k)
 {
-  rectangle.width *= k;
-  rectangle.height *= k;
-  rectangle.pos.x *= k;
-  rectangle.pos.y *= k;
+  rectangle_t newRectangle;
+  newRectangle.width = rectangle.width * k;
+  newRectangle.height = rectangle.height * k;
+  newRectangle.pos.x = rectangle.pos.x * k;
+  newRectangle.pos.y = rectangle.pos.y * k;
+  rectangle = newRectangle;
 };
