@@ -7,6 +7,7 @@ int main()
 {
   size_t shapeCount = 0;
   likhachev::Shape *shapes[1000];
+  bool haveErrors = false;
 
   std::string shapeName = "";
   while (std::cin >> shapeName && shapeName != "SCALE") {
@@ -46,7 +47,9 @@ int main()
                                                         {shapeParams[2], shapeParams[3]});
         }
         shapeCount++;
-      } catch(std::logic_error const& e) {}
+      } catch(std::logic_error const& e) {
+        haveErrors = true;
+      }
       delete[] shapeParams;
     }
   }
@@ -95,6 +98,10 @@ int main()
 
   for (size_t i = 0; i < shapeCount; i++) {
     delete shapes[i];
+  }
+
+  if (haveErrors) {
+    std::cerr << "There is an error in the description of the supported shapes";
   }
 
   return 0;
