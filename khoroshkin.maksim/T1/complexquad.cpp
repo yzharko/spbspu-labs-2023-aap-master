@@ -1,6 +1,7 @@
 #include "complexquad.hpp"
 #include <cmath>
 #include <algorithm>
+#include <stdexcept>
 
 using namespace khoroshkin;
 Complexquad::Complexquad(point_t first, point_t second, point_t third,point_t fourth):
