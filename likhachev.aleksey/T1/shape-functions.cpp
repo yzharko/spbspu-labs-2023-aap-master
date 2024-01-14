@@ -1,4 +1,5 @@
 #include "shape-functions.hpp"
+#include "base-types.hpp"
 #include <iostream>
 
 void likhachev::coutShapesData(likhachev::Shape **shapes, size_t shapeCount)

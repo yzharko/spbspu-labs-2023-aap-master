@@ -1,4 +1,5 @@
 #include "base-fucntiuons.hpp"
+#include <iostream>
 
 double likhachev::strtod(const std::string& str)
 {
