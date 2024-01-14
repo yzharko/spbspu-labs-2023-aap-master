@@ -6,7 +6,7 @@ Square::Square(float x, float y, float width) :
   width_{width},
   height_{width}
 {
-  Point_t pos_ = { width_ / 2, height_ / 2 };
+  this->pos_ = { width_ / 2, height_ / 2 };
 }
 
 float Square::getArea()

@@ -4,9 +4,9 @@ Rectangle::Rectangle(float x1, float y1, float x2, float y2) :
   pointLl{ x1, y1 },
   pointUr{ x2, y2 }
 {
-  float width_ = abs(pointUr.y - pointLl.y);
-  float height_ = abs(pointUr.x - pointLl.x);
-  Point_t pos_ = { width_ / 2, height_ / 2 };
+  width_ = abs(pointUr.y - pointLl.y);
+  height_ = abs(pointUr.x - pointLl.x);
+  this->pos_ = { width_ / 2, height_ / 2 };
 }
 
 float Rectangle::getArea()
