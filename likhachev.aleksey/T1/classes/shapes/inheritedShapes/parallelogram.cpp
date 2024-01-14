@@ -60,9 +60,9 @@ void likhachev::Parallelogram::scale(double multiplier)
     pointD_.x += offset.x * xMultiplier;
     pointB_.x -= offset.x * xMultiplier;
 
-    pointA_.y += offset.y * xMultiplier;
-    pointB_.y += offset.y * xMultiplier;
-    pointD_.y -= offset.y * xMultiplier;
+    pointA_.y += offset.y * yMultiplier;
+    pointB_.y += offset.y * yMultiplier;
+    pointD_.y -= offset.y * yMultiplier;
 
   } else {
     int xMultiplier = 1;
@@ -78,9 +78,9 @@ void likhachev::Parallelogram::scale(double multiplier)
     pointB_.x += offset.x * xMultiplier;
     pointD_.x -= offset.x * xMultiplier;
 
-    pointA_.y += offset.y * xMultiplier;
-    pointD_.y += offset.y * xMultiplier;
-    pointB_.y -= offset.y * xMultiplier;
+    pointA_.y += offset.y * yMultiplier;
+    pointD_.y += offset.y * yMultiplier;
+    pointB_.y -= offset.y * yMultiplier;
   }
 }
 
