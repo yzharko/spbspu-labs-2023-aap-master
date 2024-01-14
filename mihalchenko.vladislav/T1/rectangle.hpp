@@ -17,6 +17,8 @@ namespace mihalchenko
   private:
     point_t pos1_;
     point_t pos2_;
+    point_t pointCentre_;
+    double width_;
     rectangle_t rectangle_;
   };
 }

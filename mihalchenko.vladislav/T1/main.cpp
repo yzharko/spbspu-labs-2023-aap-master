@@ -7,11 +7,11 @@
 #include "poligon.hpp"
 #include "funcInOut.hpp"
 
+#include <iomanip>
+
 int main()
 {
   using namespace mihalchenko;
-
-  // Rectangle rect({5.1,7.5}, {2.5, 3.5});
 
   bool scaleFound = false;
   size_t sizeOfArrShapes = 10;
@@ -37,47 +37,10 @@ int main()
     {
       shapeCounter = mihalchenko::recordingArrayOfShapes(arrayGeomShapes, shapeCounter, 2);
     }
-    else if (nameShape == "POLIGON")
+    else if (nameShape == "POLYGON")
     {
-      // ----------------------------------------------------------------------------------------------------------------------
-      size_t sizeArrayOfPoints = 3;
-      const int addArrayOfPoints = 10;
-      point_t *arrayOfPoints = new point_t[sizeArrayOfPoints];
-      double x, y;
-      size_t counterOfPoints = 0;
-
-      while (std::cin >> x >> y)
-      {
-        if (counterOfPoints < sizeArrayOfPoints)
-        {
-          arrayOfPoints[counterOfPoints].x_ = x;
-          arrayOfPoints[counterOfPoints].y_ = y;
-          counterOfPoints++;
-        }
-        else
-        {
-          try
-          {
-            arrayOfPoints = mihalchenko::dinResize(arrayOfPoints, counterOfPoints, sizeArrayOfPoints, addArrayOfPoints);
-            sizeArrayOfPoints += addArrayOfPoints;
-            arrayOfPoints[counterOfPoints].x_ = x;
-            arrayOfPoints[counterOfPoints].y_ = y;
-            counterOfPoints++;
-          }
-          catch (const std::exception &e)
-          {
-            std::cerr << "Error: an incorrect POLIGON has been detected\n";
-          }
-        }
-        if (std::cin.peek() == '\n') // поменять потом такую структуру
-        {
-          arrayGeomShapes[shapeCounter++] = new Poligon(counterOfPoints, arrayOfPoints);
-          // shapeCounter = mihalchenko::recordingArrayOfShapes(arrayGeomShapes, shapeCounter, 2);
-          break;
-        }
-      }
+      shapeCounter = mihalchenko::recordingArrayOfShapes(arrayGeomShapes, shapeCounter, 3);
     }
-    // ---------------------------------------------------------------------------------------------------------------------------
     else if (nameShape == "SCALE")
     {
       scaleFound = true;

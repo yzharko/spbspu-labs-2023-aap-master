@@ -12,7 +12,6 @@ namespace mihalchenko
     ~Poligon();
     double getArea() const override;
     rectangle_t getFrameRect() const override;
-    // void move(const point_t point) override;
     void move(const mihalchenko::point_t &point);
     void move(const double dx, const double dy) override;
     void scale(double koef) override;
@@ -21,6 +20,11 @@ namespace mihalchenko
     size_t counterOfPoints_ = 0;
     point_t *arrayOfPoints_ = nullptr;
     rectangle_t rectangle_;
+    point_t pos1_;
+    point_t pos2_;
+    point_t pointCentre_;
+    double width_;
+    double height_;
   };
 }
 #endif

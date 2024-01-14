@@ -9,6 +9,11 @@ Square::Square(point_t pos1, double width) : pos1_(pos1), width_(width)
   rectangle_.height_ = width;
   rectangle_.pos_.x_ = pos1.x_ + width / 2;
   rectangle_.pos_.y_ = pos1.y_ + width / 2;
+
+  pos2_.x_ = pos1_.x_ + width;
+  pos2_.y_ = pos1_.y_ + width;
+  pointCentre_.x_ = pos1.x_ + width / 2;
+  pointCentre_.y_ = pos1.y_ + width / 2;
 }
 
 double mihalchenko::Square::getArea() const
