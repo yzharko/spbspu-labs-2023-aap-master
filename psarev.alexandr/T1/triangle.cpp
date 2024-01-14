@@ -36,7 +36,7 @@ rectangle_t Triangle::getFrameRect() const
   return { width, height, { (maxX + minX) * 0.5, (maxY + minY) * 0.5 } };
 }
 
-void Triangle::move(point_t newCenter)
+void Triangle::move(const point_t newCenter)
 {
   double xCh = newCenter.x - ((firCorner.x + secCorner.x + thirCorner.x) / 3);
   double yCh = newCenter.y - ((firCorner.y + secCorner.y + thirCorner.y) / 3);

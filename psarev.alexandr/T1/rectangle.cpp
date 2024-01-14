@@ -19,7 +19,7 @@ double Rectangle::getArea() const
   return ((urCorner.x - llCorner.x) * (urCorner.y - llCorner.y));
 }
 
-void Rectangle::move(point_t newCenter)
+void Rectangle::move(const point_t newCenter)
 {
   double centerXCh = newCenter.x - center.x;
   double centerYCh = newCenter.y - center.y;

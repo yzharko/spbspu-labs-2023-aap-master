@@ -17,7 +17,7 @@ rectangle_t Ring::getFrameRect() const
   return { exterRad * 2, exterRad * 2, center };
 }
 
-void Ring::move(point_t newCenter)
+void Ring::move(const point_t newCenter)
 {
   center = newCenter;
 }

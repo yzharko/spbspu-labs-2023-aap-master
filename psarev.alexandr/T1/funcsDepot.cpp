@@ -1,107 +1,126 @@
 #include "funcsDepot.hpp"
 #include <cmath>
+#include <iostream>
 
 using namespace psarev;
 
-bool psarev::rectDataRework(std::istream& input, std::vector<double>& data, std::vector<char>& queue)
+double* psarev::increaseArr(double* arr, size_t& arrSize)
 {
-  double coo = 0.0;
-  size_t iter = 0;
-  bool result = false;
-  for (size_t i = 0; i < 4; i++) {
-    if (input >> coo) {
-      data.push_back(coo);
-      iter++;
-    } else {
-      result = true;
-      break;
-    }
+  double* newArr = new double [arrSize * 2];
+  for (size_t i = 0; i < arrSize; i++) {
+    newArr[i] = arr[i];
   }
-  if ((iter == 4) && (data[data.size() - 4] < data[data.size() - 2]) && (data[data.size() - 3] < data[data.size() - 1])) {
-    queue.push_back('r');
-  } else {
-    for (size_t i = 0; i < iter; i++) {
-      data.pop_back();
-    }
-    result = true;
-  }
-  return result;
+  arrSize *= 2;
+  delete[] arr;
+  arr = newArr;
+  return arr;
 }
 
-bool psarev::ringDataRework(std::istream& input, std::vector<double>& data, std::vector<char>& queue)
+bool psarev::addRectData(double* data, size_t& dataSize, double* queue, size_t& order)
 {
-  double coo = 0.0;
-  size_t iter = 0;
-  bool result = false;
-  for (size_t i = 0; i < 4; i++) {
-    if (input >> coo) {
-      data.push_back(coo);
-      iter++;
+  double llCornerX, llCornerY, urCornerX, urCornerY;
+  if (std::cin >> llCornerX >> llCornerY >> urCornerX >> urCornerY) {
+    if ((llCornerX < urCornerX) && (llCornerY < urCornerY)) {
+      queue[order] = 1;
+      order += 1;
+      int fl = 0;
+      for (size_t i = 0; i < order; i++) {
+        if (queue[i] == 1) {
+          fl += 1;
+        }
+      }
+      if (fl > 1) {
+        data = psarev::increaseArr(data, dataSize);
+      }
+      data[dataSize - 4] = llCornerX;
+      data[dataSize - 3] = llCornerY;
+      data[dataSize - 2] = urCornerX;
+      data[dataSize - 1] = urCornerY;
+      return false;
     } else {
-      result = true;
-      break;
+      return true;
     }
-  }
-  if ((iter == 4) && (data[data.size() - 1] > 0) && (data[data.size() - 2] > data[data.size() - 1])) {
-    queue.push_back('i');
   } else {
-    for (size_t i = 0; i < iter; i++) {
-      data.pop_back();
-    }
-    result = true;
+    return true;
   }
-  return result;
 }
 
-bool psarev::triDataRework(std::istream& input, std::vector<double>& data, std::vector<char>& queue)
+bool psarev::addRingData(double* data, size_t& dataSize, double* queue, size_t& order)
 {
-  double coo = 0.0;
-  size_t iter = 0;
-  bool result = false;
-  for (size_t i = 0; i < 6; i++) {
-    if (input >> coo) {
-      data.push_back(coo);
-      iter++;
+  double centerX, centerY, extRad, inRad;
+  if (std::cin >> centerX >> centerY >> extRad >> inRad) {
+    if ((extRad > inRad) && (inRad > 0)) {
+      queue[order] = 2;
+      order += 1;
+      int fl = 0;
+      for (size_t i = 0; i < order; i++) {
+        if (queue[i] == 2) {
+          fl += 1;
+        }
+      }
+      if (fl > 1) {
+        data = psarev::increaseArr(data, dataSize);
+      }
+      data[dataSize - 4] = centerX;
+      data[dataSize - 3] = centerY;
+      data[dataSize - 2] = extRad;
+      data[dataSize - 1] = inRad;
+      return false;
+    } else {
+      return true;
     }
-    else {
-      result = true;
-      break;
-    }
+  } else {
+    return true;
   }
-  if (iter == 6) {
-    double firSide = (sqrt(pow(data[data.size() - 4] - data[data.size() - 6], 2) + pow(data[data.size() - 3] - data[data.size() - 5], 2)));
-    double secSide = (sqrt(pow(data[data.size() - 2] - data[data.size() - 4], 2) + pow(data[data.size() - 1] - data[data.size() - 3], 2)));
-    double thirSide = (sqrt(pow(data[data.size() - 2] - data[data.size() - 6], 2) + pow(data[data.size() - 1] - data[data.size() - 5], 2)));
+}
+
+bool psarev::addTriData(double* data, size_t& dataSize, double* queue, size_t& order)
+{
+  double firCornerX, firCornerY, secCornerX, secCornerY, thiCornerX, thiCornerY;
+  if (std::cin >> firCornerX >> firCornerY >> secCornerX >> secCornerY >> thiCornerX >> thiCornerY) {
+    double firSide = (sqrt(pow(secCornerX - firCornerX, 2) + pow(secCornerY - firCornerY, 2)));
+    double secSide = (sqrt(pow(thiCornerX - secCornerX, 2) + pow(thiCornerY - secCornerY, 2)));
+    double thirSide = (sqrt(pow(thiCornerX - firCornerX, 2) + pow(thiCornerY - firCornerY, 2)));
     bool rightTri = 0;
     double maxSide = fmax(firSide, secSide);
     maxSide = fmax(maxSide, thirSide);
     rightTri = (maxSide < (firSide + secSide + thirSide - maxSide));
     if (rightTri) {
-      queue.push_back('t');
-    } else {
-      for (size_t i = 0; i < iter; i++) {
-        data.pop_back();
+      queue[order] = 3;
+      order += 1;
+      int fl = 0;
+      for (size_t i = 0; i < order; i++) {
+        if (queue[i] == 3) {
+          fl += 1;
+        }
       }
-      result = true;
+      if (fl > 1) {
+        data = psarev::increaseArr(data, dataSize);
+      }
+      data[dataSize - 6] = firCornerX;
+      data[dataSize - 5] = firCornerY;
+      data[dataSize - 4] = secCornerX;
+      data[dataSize - 3] = secCornerY;
+      data[dataSize - 2] = thiCornerX;
+      data[dataSize - 1] = thiCornerY;
+      return false;
+    } else {
+      return true;
     }
   } else {
-    for (size_t i = 0; i < iter; i++) {
-      data.pop_back();
-    }
-    result = true;
+    return true;
   }
-  return result;
 }
 
-void psarev::fillData(std::vector<double>& framesData, rectangle_t& frame)
+void psarev::fillData(double* framesData, rectangle_t& frame, const size_t& order)
 {
-  framesData.push_back(frame.pos.x - (frame.width / 2));
-  framesData.push_back(frame.pos.y - (frame.height / 2));
-  framesData.push_back(frame.pos.x + (frame.width / 2));
-  framesData.push_back(frame.pos.y + (frame.height / 2));
+  framesData[order - 4] = frame.pos.x - (frame.width / 2);
+  framesData[order - 3] = frame.pos.y - (frame.height / 2);
+  framesData[order - 2] = frame.pos.x + (frame.width / 2);
+  framesData[order - 1] = frame.pos.y + (frame.height / 2);
 }
 
-void psarev::modify(point_t& scaleCenter, double& coef, Shape& figure, rectangle_t& frame)
+void psarev::modify(point_t& scaleCenter, const double& coef, Shape& figure, rectangle_t& frame)
 {
   figure.move({ scaleCenter.x, scaleCenter.y });
   rectangle_t newFrame = figure.getFrameRect();
