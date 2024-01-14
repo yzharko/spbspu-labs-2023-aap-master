@@ -151,8 +151,8 @@ int main()
       //  double AfterlowerLeftX = AfterFrame.pos.x - 0.5 * AfterFrame.width;
        // double AfterlowerLeftY = AfterFrame.pos.y - 0.5 * AfterFrame.height;
         geometricShapes[i]->scale(multiplier);
-        double changeX = (BeforFrame.pos.x - AfterFrame.pos.x) * multiplier;
-        double changeY = (BeforFrame.pos.y - AfterFrame.pos.y) * multiplier;
+        double changeX = fabs((BeforeFrame.pos.x - AfterFrame.pos.x)) * multiplier;
+        double changeY = fabs((BeforeFrame.pos.y - AfterFrame.pos.y)) * multiplier;
         geometricShapes[i]->move(changeX, changeY);
       }
       if (isCorrectlyDescribe == false)
