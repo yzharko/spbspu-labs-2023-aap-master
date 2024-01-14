@@ -26,8 +26,18 @@ int main()
   size_t counter = 0;
 
   std::string figureType;
-  while (std::cin >> figureType)
+  while (std::cin)
   {
+    std::cin >> figureType;
+    if (std::cin.eof())
+    {
+      for (size_t i = 0; i < counter; i++)
+      {
+        delete figuers[i];
+      }
+      delete[] figuers;
+      return 1;
+    }
     if (counter == arraySize)
     {
       arraySize += 10;
@@ -134,6 +144,16 @@ int main()
           std::cout << ((figuers[i]->getFrameRect().pos.y) + ((figuers[i]->getFrameRect().height) / 2)) << " ";
         }
         std::cout << "\n";
+        for (size_t i = 0; i < counter; i++)
+        {
+          delete figuers[i];
+        }
+        delete[] figuers;
+        return 1;
+      }
+      else
+      {
+        std::cerr << "AAAAAAAAAAA\n";
         for (size_t i = 0; i < counter; i++)
         {
           delete figuers[i];
