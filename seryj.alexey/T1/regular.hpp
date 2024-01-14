@@ -12,7 +12,7 @@ namespace seryj {
     virtual void move(const double& x,const double& y);
     virtual void scale(double k);
   private:
-    int n_ = 0;
+    int amount_of_sides_ = 0;
     double hypotenuse_ = 0;
     point_t pos_ = { 0,0 };
     point_t point_b_ = { 0,0 };

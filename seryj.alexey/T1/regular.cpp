@@ -12,15 +12,15 @@ Regular::Regular(point_t a, point_t b, point_t c)
   double side_ac = sqrt(pow(pos_.x - point_c_.x, 2) + pow(pos_.y - point_c_.y, 2));
   double side_bc = sqrt(pow(point_b_.x - point_c_.x, 2) + pow(point_b_.y - point_c_.y, 2));
   hypotenuse_ = fmax(side_ab, side_ac);
-  n_ = M_PI / cos(fmin(side_ab, side_ac) / hypotenuse_);
-  if (round(side_bc * 100) != round(hypotenuse_ * sin(M_PI / n_) * 100))
+  amount_of_sides_ = M_PI / cos(fmin(side_ab, side_ac) / hypotenuse_);
+  if (round(side_bc * 100) != round(hypotenuse_ * sin(M_PI / amount_of_sides_) * 100))
   {
     throw std::logic_error("Cant build a regular\n");
   }
 }
 double Regular::getArea()const
 {
-  return pow(hypotenuse_, 2) * n_ * sin(2 * M_PI / n_) / 2;
+  return pow(hypotenuse_, 2) * amount_of_sides_ * sin(2 * M_PI / amount_of_sides_) / 2;
 }
 rectangle_t Regular::getFrameRect()const
 {
@@ -38,8 +38,6 @@ void Regular::move(const double& x,const double& y)
 void Regular::scale(double k)
 {
   hypotenuse_ *= k;
-  point_b_.x *= k;
-  point_b_.y *= k;
-  point_c_.x *= k;
-  point_c_.y *= k;
+  point_b_ = { (point_b_.x - pos_.x) * k, (point_b_.y - pos_.y) * k };
+  point_c_ = { (point_c_.x - pos_.x) * k, (point_c_.y - pos_.y) * k };
 }
