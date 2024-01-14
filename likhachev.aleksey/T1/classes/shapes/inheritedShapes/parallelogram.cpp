@@ -1,7 +1,7 @@
 #include "parallelogram.hpp"
 #include <iostream>
 
-likhachev::Parallelogram::Parallelogram(likhachev::Point_t pointA, likhachev::Point_t pointB, likhachev::Point_t pointD):
+likhachev::Parallelogram::Parallelogram(likhachev::point_t pointA, likhachev::point_t pointB, likhachev::point_t pointD):
   pointA_(pointA),
   pointB_(pointB),
   pointD_(pointD)
@@ -12,9 +12,9 @@ likhachev::Parallelogram::Parallelogram(likhachev::Point_t pointA, likhachev::Po
 }
 
 likhachev::Parallelogram::Parallelogram(double pointAX, double pointAY, double pointBX, double pointBY, double pointDX, double pointDY):
-  pointA_(likhachev::Point_t(pointAX, pointAY)),
-  pointB_(likhachev::Point_t(pointBX, pointBY)),
-  pointD_(likhachev::Point_t(pointDX, pointDY))
+  pointA_(likhachev::point_t(pointAX, pointAY)),
+  pointB_(likhachev::point_t(pointBX, pointBY)),
+  pointD_(likhachev::point_t(pointDX, pointDY))
 {
   if (pointA_ == pointB_ || pointB_ == pointD_ || pointD_ == pointA_) {
     throw std::logic_error("The parameters are not logically incorrect\n");
@@ -26,24 +26,24 @@ double likhachev::Parallelogram::getArea() const
   return getWidth() * getHeight();
 }
 
-likhachev::Rectangle_t likhachev::Parallelogram::getFrameRect() const
+likhachev::rectangle_t likhachev::Parallelogram::getFrameRect() const
 {
   double fullWidth = getWidth() + getSubWidth();
   double height = getHeight();
-  likhachev::Point_t pos((pointB_.x + pointD_.x) / 2, (pointB_.y + pointD_.y) / 2);
+  likhachev::point_t pos((pointB_.x + pointD_.x) / 2, (pointB_.y + pointD_.y) / 2);
 
-  return Rectangle_t(fullWidth, height, pos);
+  return rectangle_t(fullWidth, height, pos);
 }
 
-void likhachev::Parallelogram::move(likhachev::Point_t offset)
+void likhachev::Parallelogram::move(likhachev::point_t offset)
 {
-  likhachev::Point_t pos((pointB_.x + pointD_.x) / 2, (pointB_.y + pointD_.y) / 2);
+  likhachev::point_t pos((pointB_.x + pointD_.x) / 2, (pointB_.y + pointD_.y) / 2);
   move(offset.x - pos.x, offset.y - pos.y);
 }
 
 void likhachev::Parallelogram::move(double offsetX, double offsetY)
 {
-  likhachev::Point_t offset(offsetX, offsetY);
+  likhachev::point_t offset(offsetX, offsetY);
   pointA_ += offset;
   pointB_ += offset;
   pointD_ += offset;
@@ -53,7 +53,7 @@ void likhachev::Parallelogram::scale(double multiplier)
 {
   double width = getWidth();
   double height = getHeight();
-  likhachev::Point_t offset(((multiplier * width) - width) / 2, ((multiplier * height) - height) / 2);
+  likhachev::point_t offset(((multiplier * width) - width) / 2, ((multiplier * height) - height) / 2);
 
   if (pointA_.y == pointB_.y) {
     int xMultiplier = 1;
@@ -95,7 +95,7 @@ void likhachev::Parallelogram::scale(double multiplier)
 
 double likhachev::Parallelogram::getWidth() const
 {
-  likhachev::Point_t widthPoint(0, 0);
+  likhachev::point_t widthPoint(0, 0);
   if (pointA_.y == pointB_.y) {
     widthPoint = pointB_;
   } else {
@@ -112,15 +112,15 @@ double likhachev::Parallelogram::getWidth() const
   return width;
 }
 
-likhachev::Point_t likhachev::Parallelogram::getPos() const
+likhachev::point_t likhachev::Parallelogram::getPos() const
 {
-  likhachev::Point_t pos((pointB_.x + pointD_.x) / 2, (pointB_.y + pointD_.y) / 2);
+  likhachev::point_t pos((pointB_.x + pointD_.x) / 2, (pointB_.y + pointD_.y) / 2);
   return pos;
 }
 
 double likhachev::Parallelogram::getSubWidth() const
 {
-  likhachev::Point_t subWidthPoint(0, 0);
+  likhachev::point_t subWidthPoint(0, 0);
   if (pointA_.y == pointB_.y) {
     subWidthPoint = pointD_;
   } else {

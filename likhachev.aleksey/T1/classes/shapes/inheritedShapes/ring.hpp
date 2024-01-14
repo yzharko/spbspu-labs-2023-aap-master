@@ -7,20 +7,20 @@ namespace likhachev
 {
   class Ring: public Shape {
     public:
-      Ring(likhachev::Point_t pos, double outerRad, double innerRad);
+      Ring(likhachev::point_t pos, double outerRad, double innerRad);
       Ring(double posX, double posY, double outerRad, double innerRad);
       virtual double getArea() const;
-      virtual likhachev::Rectangle_t getFrameRect() const;
-      virtual void move(likhachev::Point_t offset);
+      virtual likhachev::rectangle_t getFrameRect() const;
+      virtual void move(likhachev::point_t offset);
       virtual void move(double offsetX, double offsetY);
       virtual void scale(double multiplier);
-      virtual likhachev::Point_t getPos() const;
+      virtual likhachev::point_t getPos() const;
       double getOuterRad() const;
       double getInnerRad() const;
     private:
       double outerRad_;
       double innerRad_;
-      likhachev::Point_t pos_;
+      likhachev::point_t pos_;
   };
 }
 #endif

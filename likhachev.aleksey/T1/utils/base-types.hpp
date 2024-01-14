@@ -3,33 +3,33 @@
 
 namespace likhachev
 {
-  struct Point_t {
+  struct point_t {
     public:
       double x;
       double y;
-      Point_t(double newX, double newY);
+      point_t(double newX, double newY);
       void operator()(double newNumber);
-      Point_t operator+(const Point_t& rhs);
-      bool operator==(const Point_t& rhs);
-      Point_t operator-(const Point_t& rhs);
-      Point_t& operator+=(const Point_t& rhs);
-      Point_t& operator-=(const Point_t& rhs);
+      point_t operator+(const point_t& rhs);
+      bool operator==(const point_t& rhs);
+      point_t operator-(const point_t& rhs);
+      point_t& operator+=(const point_t& rhs);
+      point_t& operator-=(const point_t& rhs);
   };
 
-  struct Rectangle_t {
+  struct rectangle_t {
     public:
-      Rectangle_t(double width, double height, likhachev::Point_t pos);
+      rectangle_t(double width, double height, likhachev::point_t pos);
       double getArea() const;
       double getWidth() const;
       double getHeight() const;
-      likhachev::Point_t getPos() const;
+      likhachev::point_t getPos() const;
       void setWidth(double width);
       void setHeight(double height);
-      void setPos(likhachev::Point_t pos);
+      void setPos(likhachev::point_t pos);
     private:
       double width_;
       double height_;
-      likhachev::Point_t pos_;
+      likhachev::point_t pos_;
   };
 }
 #endif
