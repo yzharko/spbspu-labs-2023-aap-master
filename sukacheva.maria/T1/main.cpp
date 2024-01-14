@@ -8,7 +8,6 @@ int main() {
   int ifScale = 0;
   std::string nameOfFigure = "";
   Shape* figures[1000]{};
-  Shape* scaledFigures[1000]{};
   int index = 0;
   while (!std::cin.eof())
   {
@@ -20,7 +19,7 @@ int main() {
       std::cin >> leftPoint.x >> leftPoint.y >> rightPoint.x >> rightPoint.y;
       try
       {
-        getRectangle(figures, scaledFigures, rightPoint, leftPoint, index);
+        getRectangle(figures, rightPoint, leftPoint, index);
       }
       catch (const std::logic_error& e)
       {
@@ -34,7 +33,7 @@ int main() {
       std::cin >> center.x >> center.y >> radius;
       try
       {
-        getCircle(figures, scaledFigures, center, radius, index);
+        getCircle(figures, center, radius, index);
       }
       catch (const std::logic_error& e)
       {
@@ -50,7 +49,7 @@ int main() {
         >> cPoint.x >> cPoint.y;
       try
       {
-        getParallelogram(figures, scaledFigures, aPoint, bPoint, cPoint, index);
+        getParallelogram(figures, aPoint, bPoint, cPoint, index);
       }
       catch (const std::logic_error& e)
       {
@@ -72,31 +71,27 @@ int main() {
       else {
         try
         {
-          scaleCheck(scaledFigures, index, k);
+          double firstArea = 0;
+          double newArea = 0;
+          getFirstArea(figures, index, firstArea);
+          getCoordinatesBefore(figures, index);
+          getScaledArea(figures, index, newArea, k);
+          getCoordinatesAfter(figures, index, center, k);
+          deleteArray(figures, index);
+          break;
         }
         catch (const std::logic_error& e)
         {
-          std::cerr << "Incorrect scaling factor\n";
+          std::cerr << e.what();
           deleteArray(figures, index);
-          deleteArray(scaledFigures, index);
           return 1;
         }
-        double firstArea = 0;
-        double newArea = 0;
-        getFirstArea(figures, index, firstArea);
-        getCoordinatesBefore(figures, index);
-        getScaledArea(figures, index, newArea, k);
-        getCoordinatesAfter(figures, index, center, k);
-        deleteArray(figures, index);
-        deleteArray(scaledFigures, index);
-        break;
       }
     }
   }
   if (ifScale == 0)
   {
     deleteArray(figures, index);
-    deleteArray(scaledFigures, index);
     std::cerr << "No scale command";
     return 2;
   }

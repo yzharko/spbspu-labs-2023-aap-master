@@ -31,12 +31,7 @@ void sukacheva::Rectangle::move(const point_t& center) {
   rectangle.pos = center;
 }
 
-void sukacheva::Rectangle::scale(double k) {
-  if (k <= 0) {
-    throw std::logic_error("Incorrect scaling factor\n");
-  }
-  else {
-    rectangle.width = rectangle.width * k;
-    rectangle.height = rectangle.height * k;
-  }
+void sukacheva::Rectangle::scaling(double k) {
+  rectangle.width = rectangle.width * k;
+  rectangle.height = rectangle.height * k;
 }

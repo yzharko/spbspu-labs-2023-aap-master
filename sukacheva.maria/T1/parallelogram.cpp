@@ -54,18 +54,13 @@ void sukacheva::Parallelogram::move(const point_t& center) {
   move(dX, dY);
 }
 
-void sukacheva::Parallelogram::scale(double k)
+void sukacheva::Parallelogram::scaling(double k)
 {
-  if (k <= 0) {
-    throw std::logic_error("Incorrect scaling factor\n");
-  }
-  else {
-    double centerX = (std::max(std::max(A_.x, B_.x), C_.x) +
-      std::min(std::min(A_.x, B_.x), C_.x)) * 0.5;
-    double centerY = (std::max(std::max(A_.y, B_.y), C_.y)
-      + std::min(std::min(A_.y, B_.y), C_.y)) * 0.5;
-    A_ = { (centerX + (A_.x - centerX) * k), (centerY + (A_.y - centerY) * k) };
-    B_ = { (centerX + (B_.x - centerX) * k), (centerY + (B_.y - centerY) * k) };
-    C_ = { (centerX + (C_.x - centerX) * k), (centerY + (C_.y - centerY) * k) };
-  }
+  double centerX = (std::max(std::max(A_.x, B_.x), C_.x) +
+    std::min(std::min(A_.x, B_.x), C_.x)) * 0.5;
+  double centerY = (std::max(std::max(A_.y, B_.y), C_.y)
+    + std::min(std::min(A_.y, B_.y), C_.y)) * 0.5;
+  A_ = { (centerX + (A_.x - centerX) * k), (centerY + (A_.y - centerY) * k) };
+  B_ = { (centerX + (B_.x - centerX) * k), (centerY + (B_.y - centerY) * k) };
+  C_ = { (centerX + (C_.x - centerX) * k), (centerY + (C_.y - centerY) * k) };
 }
