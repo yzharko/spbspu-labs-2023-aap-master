@@ -7,8 +7,8 @@ namespace likhachev
 {
   class Parallelogram: public Shape {
     public:
-      Parallelogram(likhachev::point_t pointA, likhachev::point_t pointB, likhachev::point_t pointD);
-      Parallelogram(double pointAX, double pointAY, double pointBX, double pointBY, double pointDX, double pointDY);
+      Parallelogram(likhachev::point_t pointB, likhachev::point_t pointA, likhachev::point_t pointD);
+      Parallelogram(double pointBX, double pointBY, double pointAX, double pointAY, double pointDX, double pointDY);
       virtual double getArea() const;
       virtual likhachev::rectangle_t getFrameRect() const;
       virtual void move(likhachev::point_t offset);

@@ -1,7 +1,7 @@
 #include "parallelogram.hpp"
 #include <iostream>
 
-likhachev::Parallelogram::Parallelogram(likhachev::point_t pointA, likhachev::point_t pointB, likhachev::point_t pointD):
+likhachev::Parallelogram::Parallelogram(likhachev::point_t pointB, likhachev::point_t pointA, likhachev::point_t pointD):
   pointA_(pointA),
   pointB_(pointB),
   pointD_(pointD)
@@ -11,7 +11,7 @@ likhachev::Parallelogram::Parallelogram(likhachev::point_t pointA, likhachev::po
   }
 }
 
-likhachev::Parallelogram::Parallelogram(double pointAX, double pointAY, double pointBX, double pointBY, double pointDX, double pointDY):
+likhachev::Parallelogram::Parallelogram(double pointBX, double pointBY, double pointAX, double pointAY, double pointDX, double pointDY):
   pointA_(likhachev::point_t(pointAX, pointAY)),
   pointB_(likhachev::point_t(pointBX, pointBY)),
   pointD_(likhachev::point_t(pointDX, pointDY))
