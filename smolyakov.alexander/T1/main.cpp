@@ -77,7 +77,7 @@ int main()
   {
     std::cerr << "An invalid shape was entered.\n";
   }
-  
+
   for (size_t i = 0; i < shapeCount; i++)
   {
     delete shapes[i];
