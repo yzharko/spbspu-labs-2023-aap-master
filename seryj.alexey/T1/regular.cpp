@@ -38,6 +38,8 @@ void Regular::move(const double& x,const double& y)
 void Regular::scale(double k)
 {
   hypotenuse_ *= k;
-  point_b_ = { (point_b_.x - pos_.x) * k, (point_b_.y - pos_.y) * k };
-  point_c_ = { (point_c_.x - pos_.x) * k, (point_c_.y - pos_.y) * k };
+  point_b_.x *= k;
+  point_c_.x *= k;
+  point_b_.y *= k;
+  point_c_.y *= k;
 }
