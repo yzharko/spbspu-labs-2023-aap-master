@@ -83,7 +83,7 @@ void likhachev::rectangle_t::setHeight(double height)
   height_ = height;
 }
 
-void likhachev::rectangle_t::setPos(point_t pos)
+void likhachev::rectangle_t::setPos(likhachev::point_t pos)
 {
   pos_ = pos;
 }

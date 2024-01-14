@@ -22,14 +22,14 @@ namespace likhachev
       double getArea() const;
       double getWidth() const;
       double getHeight() const;
-      point_t getPos() const;
+      likhachev::point_t getPos() const;
       void setWidth(double width);
       void setHeight(double height);
-      void setPos(point_t pos);
+      void setPos(likhachev::point_t pos);
     private:
       double width_;
       double height_;
-      point_t pos_;
+      likhachev::point_t pos_;
   };
 }
 #endif
