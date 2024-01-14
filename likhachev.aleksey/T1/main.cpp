@@ -5,9 +5,6 @@
 
 int main()
 {
-  std::cout << "Hi"; // Lavran TODO: Удалить (Талисман :>)
-
-
   size_t shapeCount = 0;
   likhachev::Shape *shapes[1000];
 
