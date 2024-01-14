@@ -60,6 +60,11 @@ void likhachev::Parallelogram::move(double offsetX, double offsetY)
 void likhachev::Parallelogram::scale(double multiplier)
 {
   likhachev::point_t pos = getPos();
+  if (multiplier < 1) {
+    multiplier = (1 - multiplier) * -1;
+  } else {
+    multiplier -= 1;
+  }
 
   int xMultiplier = 1;
   int yMultiplier = 1;
@@ -80,13 +85,13 @@ void likhachev::Parallelogram::scale(double multiplier)
     }
   }
 
-  pointA_.x += (pos.x - pointA_.x) * xMultiplier;
-  pointB_.x += (pos.x - pointB_.x) * xMultiplier;
-  pointD_.x += (pos.x - pointD_.x) * xMultiplier;
+  pointA_.x += (pos.x - pointA_.x) * multiplier * xMultiplier;
+  pointB_.x += (pos.x - pointB_.x) * multiplier * xMultiplier;
+  pointD_.x += (pos.x - pointD_.x) * multiplier * xMultiplier;
 
-  pointA_.y += (pos.y - pointA_.y) * yMultiplier;
-  pointB_.y += (pos.y - pointB_.y) * yMultiplier;
-  pointD_.y += (pos.y - pointD_.y) * yMultiplier;
+  pointA_.y += (pos.y - pointA_.y) * multiplier * yMultiplier;
+  pointB_.y += (pos.y - pointB_.y) * multiplier * yMultiplier;
+  pointD_.y += (pos.y - pointD_.y) * multiplier * yMultiplier;
 }
 
 double likhachev::Parallelogram::getWidth() const
