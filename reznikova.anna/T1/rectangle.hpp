@@ -8,7 +8,7 @@ namespace reznikova
   class Rectangle : public Shape
   {
   public:
-    Rectangle(const rectangle_t& rect);
+    Rectangle(point_t leftpoint, point_t rightpoint);
     ~Rectangle() override = default;
     double getArea() const override;
     rectangle_t getFrameRect() const override;
@@ -16,7 +16,8 @@ namespace reznikova
     void move(const point_t& new_center) override;
     void scale(const double n) override;
   private:
-    rectangle_t rectangle_;
+    point_t leftpoint_;
+    point_t rightpoint_;
   };
 }
 

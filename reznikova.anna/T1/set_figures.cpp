@@ -12,14 +12,12 @@ reznikova::Shape * reznikova::setRectangle(std::istream & in, bool & ifNoErrors)
 {
   double lx, ly, rx, ry;
   in >> lx >> ly >> rx >> ry;
-  double width = rx - lx;
-  double height = ry-ly;
-  point_t pos = {lx + (rx - lx)/2, ly + (ry - ly)/2};
-  rectangle_t rect = {width, height, pos};
+  point_t leftpoint{lx, ly};
+  point_t rightpoint{rx, ry};
   Shape * rectangle = nullptr;
   try
   {
-    rectangle = new Rectangle(rect);
+    rectangle = new Rectangle(leftpoint, rightpoint);
   }
   catch (const std::runtime_error &e)
   {
