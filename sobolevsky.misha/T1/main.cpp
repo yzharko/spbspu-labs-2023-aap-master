@@ -126,10 +126,10 @@ int main()
         double sumArea = 0;
         for (size_t i = 0; i < counter; i++)
         {
-          size_t area = figuers[i]->getArea();
-          if (area == -4)
+          double area = figuers[i]->getArea();
+          if (area == -4.0)
           {
-            area = 4;
+            area = 4.0;
           }
           sumArea += area;
         }
