@@ -54,5 +54,9 @@ int main()
       shapeCount++;
     }
   }
+
+  if (shapeCount) {
+    std::cout << shapes[0]->getArea();
+  }
   return 1;
 }
