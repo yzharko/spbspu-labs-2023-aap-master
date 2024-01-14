@@ -70,7 +70,7 @@ likhachev::point_t likhachev::Rectangle::getPos() const
 {
   likhachev::point_t pos;
   pos.x = (upperRight_.x + lowerLeft_.x) / 2;
-  pos.y = (upperRight_.y + lowerLeft_.y) / 22;
+  pos.y = (upperRight_.y + lowerLeft_.y) / 2;
   return pos;
 }
 
