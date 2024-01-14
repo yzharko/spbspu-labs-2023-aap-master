@@ -15,7 +15,8 @@ int main()
   std::string shapeName = "";
   double *shapeParams = nullptr;
   while (std::cin >> shapeName) {
-    if (shapeName == "PARALLELOGRAM" || shapeName == "RING" || shapeName == "RECTANGLE") { // Lavran TODO: Присутствуют повтоерия. Попробовать заменить.
+    if (shapeName == "PARALLELOGRAM" || shapeName == "RING" || shapeName == "RECTANGLE") { 
+      // Lavran TODO: Присутствуют повтоерия. Попробовать заменить.
       int paramsCount = 0;
       if (shapeName == "PARALLELOGRAM") {
         paramsCount = 6;
