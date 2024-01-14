@@ -188,6 +188,10 @@ int main()
         return 1;
       }
     }
+    else
+    {
+      std::cerr << "not my variant";
+    }
   }
   for (size_t i = 0; i < counter; i++)
   {
