@@ -2,7 +2,7 @@
 
 using namespace ponomarev;
 
-Rectangle::Rectangle(const point_t lowerLeft, const point_t upperRight):
+Rectangle::Rectangle(const point_t & lowerLeft, const point_t & upperRight):
   lowerLeft(lowerLeft),
   upperRight(upperRight)
 {
@@ -12,17 +12,17 @@ Rectangle::Rectangle(const point_t lowerLeft, const point_t upperRight):
   }
 }
 
-double Rectangle::getArea()
+double Rectangle::getArea() const
 {
   rectangle_t frame = getFrameRect();
   return frame.width * frame.height;
 }
 
-rectangle_t Rectangle::getFrameRect()
+rectangle_t Rectangle::getFrameRect() const
 {
   double width = upperRight.x - lowerLeft.x;
   double height = upperRight.y - lowerLeft.y;
-  point_t center = { 0.5 * (upperRight.x - lowerLeft.x), 0.5 * (upperRight.y - lowerLeft.y) };
+  point_t center = { 0.5 * (upperRight.x + lowerLeft.x), 0.5 * (upperRight.y + lowerLeft.y) };
   return { width, height, center };
 }
 
@@ -42,7 +42,7 @@ void Rectangle::move(const double & offsetX, const double & offsetY)
   upperRight.y += offsetY;
 }
 
-void Rectangle::scale(double k)
+void Rectangle::scaling(double k)
 {
   point_t center = { 0.5 * (upperRight.x - lowerLeft.x), 0.5 * (upperRight.y - lowerLeft.y) };
   lowerLeft.x = (lowerLeft.x - center.x) * k + center.x;

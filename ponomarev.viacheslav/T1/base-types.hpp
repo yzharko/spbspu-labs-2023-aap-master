@@ -13,7 +13,7 @@ namespace ponomarev
   {
     double width;
     double height;
-    point_t pos;
+    point_t center;
   };
 }
 #endif
