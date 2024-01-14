@@ -2,6 +2,7 @@
 #define FUNCS_DEPOT_HPP
 #include "shape.hpp"
 #include "base-types.hpp"
+#include <cstddef>
 
 namespace psarev
 {
