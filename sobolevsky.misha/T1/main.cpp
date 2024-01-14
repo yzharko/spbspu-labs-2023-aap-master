@@ -12,6 +12,13 @@
 #include "diamond.hpp"
 #include "parallelogram.hpp"
 
+bool isParallelogramCorrect(sobolevsky::point_t point1, sobolevsky::point_t point2, sobolevsky::point_t point3)
+{
+  double baseFigure = point1.x * (point3.y - point1.y) + point1.x * (point2.y - point3.y);
+  baseFigure = abs((baseFigure + point3.x * (point1.y - point2.y)) / 2.0);
+  return (point2.y == point3.y || point1.y == point2.y) && (baseFigure != 0);
+}
+
 int main()
 {
   struct CompositeShape
@@ -78,7 +85,7 @@ int main()
     else if (figureType == "PARALLELOGRAM")
     {
       double x1, x2, x3, y1, y2, y3;
-      if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3)
+      if ((std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3) && isParallelogramCorrect({x1, y1}, {x2, y2}, {x3, y3}))
       {
         figuers[counter++] = new sobolevsky::Parallelogram({x1, y1}, {x2, y2}, {x3, y3});
       }

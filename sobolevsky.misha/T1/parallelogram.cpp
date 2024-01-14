@@ -1,4 +1,5 @@
 #include "parallelogram.hpp"
+#include <cmath>
 
 namespace sobolevsky
 {
@@ -13,7 +14,14 @@ namespace sobolevsky
 
   double Parallelogram::getArea() const
   {
-    return ((Point2.x - Point1.x) * (Point1.y - Point3.y));
+    if (Point1.y == Point2.y)
+    {
+      return (abs(Point1.x - Point2.x) * (Point1.y - Point3.y));
+    }
+    else
+    {
+      return (abs(Point2.x - Point3.x) * (Point1.y - Point3.y));
+    }
   }
 
   rectangle_t Parallelogram::getFrameRect() const
