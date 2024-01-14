@@ -5,7 +5,7 @@ likhachev::Ring::Ring(Point_t pos, double outerRad, double innerRad):
   innerRad_(innerRad),
   pos_(pos)
 {
-  if (outerRad_ <= 0 || innerRad_ <= 0 || outerRad_ >= innerRad_) {
+  if (outerRad_ <= 0 || innerRad_ <= 0 || outerRad_ <= innerRad_) {
     throw std::logic_error("The parameters are not logically incorrect\n");
   }
 }
