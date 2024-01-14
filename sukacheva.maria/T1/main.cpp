@@ -8,6 +8,7 @@ int main() {
   int ifScale = 0;
   std::string nameOfFigure = "";
   Shape* figures[1000]{};
+  Shape* scaledFigures[1000]{};
   int index = 0;
   while (!std::cin.eof())
   {
@@ -62,13 +63,24 @@ int main() {
       double k = 0;
       point_t center = { 0, 0 };
       std::cin >> center.x >> center.y >> k;
-      if ( k <= 0 || index == 0)
+      if ( index == 0)
       {
-        std::cerr << "Incorrect input of figures";
+        std::cerr << "The figures were not entered\n";
         deleteArray(figures, index);
         return 2;
       }
       else {
+        try
+        {
+          scaleCheck(figures, scaledFigures, index, k);
+        }
+        catch (const std::logic_error& e)
+        {
+          std::cerr << "Incorrect scaling factor\n";
+          deleteArray(figures, index);
+          deleteArray(scaledFigures, index);
+          return 1;
+        }
         double firstArea = 0;
         double newArea = 0;
         getFirstArea(figures, index, firstArea);

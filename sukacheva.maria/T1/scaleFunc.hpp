@@ -13,6 +13,7 @@ namespace sukacheva {
   void deleteArray(Shape* figures[], int index);
   void getFirstArea(Shape* figures[], int index, double& firstArea);
   void getScaledArea(Shape* figures[], int index, double& scaledArea, double k);
+  void scaleCheck(Shape* figures[], Shape* scaledFigures[], int index, double k);
 }
 
 #endif

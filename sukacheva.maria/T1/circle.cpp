@@ -31,5 +31,10 @@ void sukacheva::Circle::move(const point_t& center) {
 }
 
 void sukacheva::Circle::scale(double k) {
-  radius_ = radius_ * k;
+  if (k <= 0) {
+    throw std::logic_error("Incorrect scaling factor\n");
+  }
+  else {
+    radius_ = radius_ * k;
+  }
 }
