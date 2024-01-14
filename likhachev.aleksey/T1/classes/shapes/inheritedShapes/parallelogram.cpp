@@ -103,6 +103,12 @@ double likhachev::Parallelogram::getWidth() const
   return width;
 }
 
+likhachev::Point_t likhachev::Parallelogram::getPos() const
+{
+  Point_t pos((pointB_.x + pointD_.x) / 2, (pointB_.y + pointD_.y) / 2);
+  return pos;
+}
+
 double likhachev::Parallelogram::getSubWidth() const
 {
   Point_t subWidthPoint(0, 0);

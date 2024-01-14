@@ -12,6 +12,7 @@ namespace likhachev
       virtual void move(Point_t offset) = 0;
       virtual void move(double offsetX, double offsetY) = 0;
       virtual void scale(double multiplier) = 0;
+      virtual likhachev::Point_t getPos() const = 0;
   };
 }
 #endif

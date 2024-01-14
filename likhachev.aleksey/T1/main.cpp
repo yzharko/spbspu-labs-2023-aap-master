@@ -1,9 +1,6 @@
 #include <iostream>
 #include "classes/shapes/shapes.hpp"
-#include "utils/base-types.hpp"
-#include "utils/base-types.cpp"
-#include "utils/base-fucntiuons.hpp"
-#include "utils/base-fucntiuons.cpp"
+#include "utils/utils.hpp"
 
 int main()
 {
@@ -14,7 +11,7 @@ int main()
   likhachev::Shape *shapes[1000];
 
   std::string shapeName = "";
-  while (std::cin >> shapeName) {
+  while (std::cin >> shapeName && shapeName != "SCALE") {
      double *shapeParams = nullptr;
     if (shapeName == "PARALLELOGRAM" || shapeName == "RING" || shapeName == "RECTANGLE") {
       // Lavran TODO: Присутствуют повтоерия. Попробовать заменить.
@@ -54,13 +51,22 @@ int main()
     }
   }
 
-  if (shapeCount) {
-    std::cout << shapes[0]->getArea();
-    for (size_t i = 0; i < shapeCount; i++) {
-      delete shapes[i];
-    }
-  }
+  likhachev::coutShapesData(shapes, shapeCount);
 
+  likhachev::Point_t scalePoint(0, 0);
+  double scaleMulti = 0;
+  std::cin >> scalePoint.x >> scalePoint.y >> scaleMulti;
+  for (size_t i = 0; i < shapeCount; i++) {
+    likhachev::Point_t newPos((shapes[i]->getPos().x - scalePoint.x) * scaleMulti + scalePoint.x, (shapes[i]->getPos().y - scalePoint.y) * scaleMulti + scalePoint.y);
+    shapes[i]->scale(scaleMulti);
+    shapes[i]->move(newPos);
+  } 
+
+  likhachev::coutShapesData(shapes, shapeCount);
+
+  for (size_t i = 0; i < shapeCount; i++) {
+    delete shapes[i];
+  }
 
   return 1;
 }

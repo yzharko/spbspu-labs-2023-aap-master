@@ -19,14 +19,14 @@ likhachev::Rectangle_t likhachev::Rectangle::getFrameRect() const
 {
   double width = getWidth();
   double height = getHeight();
-  Point_t pos((upperRight_.x + lowerLeft_.x) / 2, (upperRight_.y + lowerLeft_.y) / 2);
+  Point_t pos = getPos();
 
   return Rectangle_t(width, height, pos);
 }
 
 void likhachev::Rectangle::move(Point_t offset)
 {
-  Point_t pos((upperRight_.x + lowerLeft_.x) / 2, (upperRight_.y + lowerLeft_.y) / 2);
+  Point_t pos = getPos();
   move(offset.x - pos.x, offset.y - pos.y);
 }
 
@@ -45,6 +45,12 @@ void likhachev::Rectangle::scale(double multiplier)
 
   upperRight_ += offset;
   lowerLeft_ -= offset;
+}
+
+likhachev::Point_t likhachev::Rectangle::getPos() const
+{
+  Point_t pos((upperRight_.x + lowerLeft_.x) / 2, (upperRight_.y + lowerLeft_.y) / 2);
+  return pos;
 }
 
 double likhachev::Rectangle::getWidth() const

@@ -47,6 +47,11 @@ void likhachev::Ring::scale(double multiplier)
   innerRad_ *= multiplier;
 }
 
+likhachev::Point_t likhachev::Ring::getPos() const
+{
+  return pos_;
+}
+
 double likhachev::Ring::getOuterRad() const
 {
   return outerRad_;
