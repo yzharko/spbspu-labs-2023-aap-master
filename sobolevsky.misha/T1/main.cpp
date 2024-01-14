@@ -85,7 +85,7 @@ int main()
     else if (figureType == "PARALLELOGRAM")
     {
       double x1, x2, x3, y1, y2, y3;
-      if ((std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3) && isParallelogramCorrect({x1, y1}, {x2, y2}, {x3, y3}))
+      if ((std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3))
       {
         figuers[counter++] = new sobolevsky::Parallelogram({x1, y1}, {x2, y2}, {x3, y3});
       }
