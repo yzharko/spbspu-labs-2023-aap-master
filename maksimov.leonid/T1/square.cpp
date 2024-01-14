@@ -1,6 +1,5 @@
 #include "square.hpp"
 
-
 Square::Square(float x, float y, float width) :
   pointLl{ x, y },
   pointUr{ x + width, x + width },
