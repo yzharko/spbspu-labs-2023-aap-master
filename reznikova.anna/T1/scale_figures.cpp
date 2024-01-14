@@ -2,12 +2,14 @@
 #include <iostream>
 #include "shape.hpp"
 #include "array_functions.hpp"
+#include "string_process.hpp"
 
 
-void reznikova::scaleFigures(Shape ** figures, const int stored, std::istream & in)
+void reznikova::scaleFigures(Shape ** figures, const int stored, std::string& line)
 {
-  double x, y, n;
-  in >> x >> y >> n;
+  point_t center = getPointFromString(line);
+  double n = getNextValue(line);
+
   if (n <= 0)
   {
     freeArray(figures, stored);
@@ -33,8 +35,8 @@ void reznikova::scaleFigures(Shape ** figures, const int stored, std::istream & 
   for (int i = 0; i < stored; i++)
   {
     rectangle_t frame_rect = figures[i]->getFrameRect();
-    frame_rect.pos.x += frame_rect.pos.x - x;
-    frame_rect.pos.y += frame_rect.pos.y - y;
+    frame_rect.pos.x += frame_rect.pos.x - center.x;
+    frame_rect.pos.y += frame_rect.pos.y - center.y;
     outputFrame(frame_rect);
   }
   std::cout << "\n";

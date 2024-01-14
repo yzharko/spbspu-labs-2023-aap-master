@@ -7,13 +7,12 @@
 #include "rectangle.hpp"
 #include "ring.hpp"
 #include "regular.hpp"
+#include "string_process.hpp"
 
-reznikova::Shape * reznikova::setRectangle(std::istream & in, bool & ifNoErrors)
+reznikova::Shape * reznikova::setRectangle(std::string& line, bool & ifNoErrors)
 {
-  double lx, ly, rx, ry;
-  in >> lx >> ly >> rx >> ry;
-  point_t leftpoint{lx, ly};
-  point_t rightpoint{rx, ry};
+  point_t leftpoint = getPointFromString(line);
+  point_t rightpoint = getPointFromString(line);
   Shape * rectangle = nullptr;
   try
   {
@@ -27,11 +26,11 @@ reznikova::Shape * reznikova::setRectangle(std::istream & in, bool & ifNoErrors)
   return rectangle;
 }
 
-reznikova::Shape * reznikova::setRing(std::istream & in, bool & ifNoErrors)
+reznikova::Shape * reznikova::setRing(std::string& line, bool & ifNoErrors)
 {
-  double x, y, big_rad, small_rad;
-  in >> x >> y >> big_rad >> small_rad;
-  point_t center{x, y};
+  point_t center = getPointFromString(line);
+  double big_rad = getNextValue(line);
+  double small_rad = getNextValue(line);
   Shape * ring = nullptr;
   try
   {
@@ -45,13 +44,11 @@ reznikova::Shape * reznikova::setRing(std::istream & in, bool & ifNoErrors)
   return ring;
 }
 
-reznikova::Shape * reznikova::setRegular(std::istream & in, bool & ifNoErrors)
+reznikova::Shape * reznikova::setRegular(std::string& line, bool & ifNoErrors)
 {
-  double x0, y0, x1, y1, x2, y2;
-  in >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
-  point_t center{x0, y0};
-  point_t pointA{x1, y1};
-  point_t pointB{x2, y2};
+  point_t center = getPointFromString(line);
+  point_t pointA = getPointFromString(line);
+  point_t pointB = getPointFromString(line);
   Shape * regular = nullptr;
   try
   {

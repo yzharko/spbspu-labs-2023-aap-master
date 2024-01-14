@@ -8,12 +8,14 @@
 #include "set_figures.hpp"
 #include "array_functions.hpp"
 #include "scale_figures.hpp"
+#include "string_process.hpp"
 
 int main()
 {
   using namespace reznikova;
   int scale_command = 0;
   Shape * figures[1000] = {0};
+  std::string line = "";
   std::string name = "";
   int stored = 0;
   bool ifNoErrors = 1;
@@ -21,24 +23,25 @@ int main()
   while (!std::cin.eof())
   {
     std::cin >> name;
+    getline(std::cin, line);
     if (name == "RING")
     {
-      figures[stored++] = setRing(std::cin, ifNoErrors);
+      figures[stored++] = setRing(line, ifNoErrors);
     }
     else if (name == "REGULAR")
     {
-      figures[stored++] = setRegular(std::cin, ifNoErrors);
+      figures[stored++] = setRegular(line, ifNoErrors);
     }
     else if (name == "RECTANGLE")
     {
-      figures[stored++] = setRectangle(std::cin, ifNoErrors);
+      figures[stored++] = setRectangle(line, ifNoErrors);
     }
     else if (name == "SCALE")
     {
       scale_command = 1;
       try
       {
-        scaleFigures(figures, stored, std::cin);
+        scaleFigures(figures, stored, line);
       }
       catch (const std::runtime_error &e)
       {
