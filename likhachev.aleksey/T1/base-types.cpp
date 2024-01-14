@@ -41,49 +41,49 @@ likhachev::point_t& likhachev::point_t::operator-=(const point_t& rhs)
   return *this;
 }
 
-likhachev::rectangle_t::rectangle_t(double width, double height, likhachev::point_t pos):
-  width_(width),
-  height_(height),
-  pos_(pos)
+likhachev::rectangle_t::rectangle_t(double newWidth, double newHeight, likhachev::point_t newPos):
+  width(newWidth),
+  height(newHeight),
+  pos(newPos)
 {}
 
 double likhachev::rectangle_t::getArea() const
 {
-  return width_ * height_;
+  return width * height;
 }
 
 double likhachev::rectangle_t::getWidth() const
 {
-  return width_;
+  return width;
 }
 
 double likhachev::rectangle_t::getHeight() const
 {
-  return height_;
+  return height;
 }
 
 likhachev::point_t likhachev::rectangle_t::getPos() const
 {
-  return pos_;
+  return pos;
 }
 
-void likhachev::rectangle_t::setWidth(double width)
+void likhachev::rectangle_t::setWidth(double newWidth)
 {
   if (width <= 0) {
     throw std::logic_error("Error: the width of the figure cannot be non-positive\n");
   }
-  width_ = width;
+  width = newWidth;
 }
 
-void likhachev::rectangle_t::setHeight(double height)
+void likhachev::rectangle_t::setHeight(double newHeight)
 {
   if (height <= 0) {
     throw std::logic_error("Error: the height of the figure cannot be non-positive\n");
   }
-  height_ = height;
+  height = newHeight;
 }
 
-void likhachev::rectangle_t::setPos(likhachev::point_t pos)
+void likhachev::rectangle_t::setPos(likhachev::point_t newPos)
 {
-  pos_ = pos;
+  pos = newPos;
 }

@@ -5,8 +5,7 @@ namespace likhachev
 {
   struct point_t {
     public:
-      double x;
-      double y;
+      double x, y;
       point_t(double newX, double newY);
       void operator()(double newNumber);
       point_t operator+(const point_t& rhs);
@@ -27,9 +26,8 @@ namespace likhachev
       void setHeight(double height);
       void setPos(likhachev::point_t pos);
     private:
-      double width_;
-      double height_;
-      likhachev::point_t pos_;
+      double width, height;
+      point_t pos;
   };
 }
 #endif
