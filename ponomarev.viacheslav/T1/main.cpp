@@ -50,6 +50,35 @@ int main()
 
   ponomarev::outpResult(figures, countOfFigures);
 
+  double scaleX, scaleY, k;
+  std::cin >> scaleX >> scaleY >> k;
+
+  for (size_t i = 0; i < countOfFigures; i++)
+  {
+    ponomarev::rectangle_t frameBeforeMove = figures[i]->getFrameRect();
+    figures[i]->move({ scaleX, scaleY });
+    ponomarev::rectangle_t frameAfterMove = figures[i]->getFrameRect();
+    try
+    {
+      figures[i]->scale(k);
+    }
+    catch(std::invalid_argument & e)
+    {
+      std::cerr << "Wrong input scale coefficient\n";
+      for (size_t i = 0; i < countOfFigures; i++)
+      {
+        delete figures[i];
+      }
+      delete[] figures;
+      return 1;
+    }
+    double offsetX = (frameBeforeMove.center.x - frameAfterMove.center.x) * k;
+    double offsetY = (frameBeforeMove.center.y - frameAfterMove.center.y) * k;
+    figures[i]->move(offsetX, offsetY);
+  }
+
+  ponomarev::outpResult(figures, countOfFigures);
+
   if (isWrongFigureEnter)
   {
     std::cerr << "Wrong figure input.\n";

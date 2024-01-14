@@ -44,7 +44,7 @@ void Rectangle::move(const double & offsetX, const double & offsetY)
 
 void Rectangle::scaling(double k)
 {
-  point_t center = { 0.5 * (upperRight.x - lowerLeft.x), 0.5 * (upperRight.y - lowerLeft.y) };
+  point_t center = { 0.5 * (upperRight.x + lowerLeft.x), 0.5 * (upperRight.y + lowerLeft.y) };
   lowerLeft.x = (lowerLeft.x - center.x) * k + center.x;
   lowerLeft.y = (lowerLeft.y - center.y) * k + center.y;
   upperRight.x = (upperRight.x - center.x) * k + center.x;
