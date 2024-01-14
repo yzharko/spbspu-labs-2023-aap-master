@@ -37,28 +37,15 @@ void ponomarev::inpFigure(std::string nameOfFigure, std::istream & input, ponoma
   }
   else if (nameOfFigure == "POLYGON")
   {
-    size_t incremOfEl = 10;
-    size_t limitOfMem = 10;
-    point_t * points = new point_t[incremOfEl];
+    point_t * points = new point_t[4];
     double x, y;
     size_t countOfPoints = 0;
-    while (input >> x >> y)
+    while (countOfPoints != 4)
     {
-      if (countOfPoints == limitOfMem)
-      {
-        point_t * enlargedArr = new point_t[countOfPoints + incremOfEl];
-        for (size_t i = 0; i < countOfPoints; i++)
-        {
-          enlargedArr[i] = points[i];
-        }
-        limitOfMem += incremOfEl;
-        delete[] points;
-        points = enlargedArr;
-      }
+      input >> x >> y;
       points[countOfPoints].x = x;
       points[countOfPoints].y = y;
       countOfPoints += 1;
-      std::cout << x << y << "\n";
     }
     try
     {
