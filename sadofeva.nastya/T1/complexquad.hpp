@@ -15,7 +15,7 @@ namespace sadofeva
     void scale(double k) override;
   private:
     Point_t _p1, _p2, _p3, _p4;
-  }
-};
+  };
+}
 
 #endif

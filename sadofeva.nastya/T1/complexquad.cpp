@@ -1,6 +1,6 @@
 #include <algorithm>
 #include "complexquad.hpp"
-#include "helpfunctions.hpp"
+#include "helpfunct.hpp"
 
 sadofeva::Complexquad::Complexquad(Point_t& point1, Point_t& point2, Point_t& point3, Point_t& point4)
 {

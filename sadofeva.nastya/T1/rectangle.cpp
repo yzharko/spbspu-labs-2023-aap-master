@@ -1,6 +1,6 @@
 #include <stdexcept>
-#include "base-tapes.h"
-#include "rectangle.h"
+#include "base-tapes.hpp"
+#include "rectangle.hpp"
 
 sadofeva::Rectangle::Rectangle(Rectangle_t rectangle):
   rectangle_(rectangle)

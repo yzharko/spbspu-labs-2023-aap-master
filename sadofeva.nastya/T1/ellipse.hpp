@@ -11,12 +11,12 @@ namespace sadofeva
     double getArea() const override;
     Rectangle_t getFrameRect() const override;
     void move(double _x, double _y) override;
-    void move( Point_t point) override;
+    void move(Point_t point) override;
     void scale(double k);
   private:
     double r1,r2;
-    Rectangle_t rectangle;
-  }
+    Rectangle_t rectangle_t;
+  };
 }
 
 #endif
