@@ -9,10 +9,13 @@ likhachev::Rectangle::Rectangle(point_t lowerLeft, point_t upperRight):
   }
 }
 
-likhachev::Rectangle::Rectangle(double lowerLeftX, double lowerLeftY, double upperRightX, double upperRightY):
-  lowerLeft_(likhachev::point_t(lowerLeftX, lowerLeftY)),
-  upperRight_(likhachev::point_t(upperRightX, upperRightY))
+likhachev::Rectangle::Rectangle(double lowerLeftX, double lowerLeftY, double upperRightX, double upperRightY)
 {
+  lowerLeft_.x = lowerLeftX;
+  lowerLeft_.y = lowerLeftY;
+  upperRight_.x = upperRightX;
+  upperRight_.y = upperRightY;
+
   if (lowerLeft_.x >= upperRight_.x || lowerLeft_.y >= upperRight_.y) {
     throw std::logic_error("The parameters are not logically incorrect\n");
   }
@@ -28,8 +31,12 @@ likhachev::rectangle_t likhachev::Rectangle::getFrameRect() const
   double width = getWidth();
   double height = getHeight();
   likhachev::point_t pos = getPos();
+  likhachev::rectangle_t result;
+  result.width = width;
+  result.height = height;
+  result.pos = pos;
 
-  return rectangle_t(width, height, pos);
+  return result;
 }
 
 void likhachev::Rectangle::move(const point_t& offset)
@@ -40,7 +47,9 @@ void likhachev::Rectangle::move(const point_t& offset)
 
 void likhachev::Rectangle::move(double offsetX, double offsetY)
 {
-  likhachev::point_t offset(offsetX, offsetY);
+  likhachev::point_t offset;
+  offset.x = offsetX;
+  offset.y = offsetY;
   upperRight_ += offset;
   lowerLeft_ += offset;
 }
@@ -49,7 +58,9 @@ void likhachev::Rectangle::scale(double multiplier)
 {
   double width = getWidth();
   double height = getHeight();
-  likhachev::point_t offset(((multiplier * width) - width) / 2, ((multiplier * height) - height) / 2);
+  likhachev::point_t offset;
+  offset.x = ((multiplier * width) - width) / 2;
+  offset.y = ((multiplier * height) - height) / 2;
 
   upperRight_ += offset;
   lowerLeft_ -= offset;
@@ -57,7 +68,9 @@ void likhachev::Rectangle::scale(double multiplier)
 
 likhachev::point_t likhachev::Rectangle::getPos() const
 {
-  likhachev::point_t pos((upperRight_.x + lowerLeft_.x) / 2, (upperRight_.y + lowerLeft_.y) / 2);
+  likhachev::point_t pos;
+  pos.x = (upperRight_.x + lowerLeft_.x) / 2;
+  pos.y = (upperRight_.y + lowerLeft_.y) / 22;
   return pos;
 }
 

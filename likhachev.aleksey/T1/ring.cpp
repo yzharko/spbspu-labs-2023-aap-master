@@ -12,9 +12,11 @@ likhachev::Ring::Ring(point_t pos, double outerRad, double innerRad):
 
 likhachev::Ring::Ring(double posX, double posY, double outerRad, double innerRad):
   outerRad_(outerRad),
-  innerRad_(innerRad),
-  pos_(likhachev::point_t(posX, posY))
+  innerRad_(innerRad)
 {
+  pos_.x = posX;
+  pos_.y = posY;
+
   if (outerRad_ <= 0 || innerRad_ <= 0) {
     throw std::logic_error("The parameters are not logically incorrect\n");
   }
@@ -34,8 +36,12 @@ likhachev::rectangle_t likhachev::Ring::getFrameRect() const
   double width = outerRad_ * 2;
   double height = outerRad_ * 2;
   likhachev::point_t pos(pos_);
+  likhachev::rectangle_t result;
+  result.width = width;
+  result.height = height;
+  result.pos = pos;
 
-  return rectangle_t(width, height, pos);
+  return result;
 }
 
 void likhachev::Ring::move(const point_t& offset)
@@ -45,7 +51,9 @@ void likhachev::Ring::move(const point_t& offset)
 
 void likhachev::Ring::move(double offsetX, double offsetY)
 {
-   likhachev::point_t offset(offsetX, offsetY);
+  likhachev::point_t offset;
+  offset.x = offsetX;
+  offset.y = offsetY;
    pos_ += offset;
 }
 
