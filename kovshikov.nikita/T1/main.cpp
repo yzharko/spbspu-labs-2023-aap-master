@@ -144,15 +144,15 @@ int main()
         geometricShapes[i]->move({newPosX, newPosY});
         geometricShapes[i]->scale(multiplier);*/
         rectangle_t BeforeFrame = geometricShapes[i]->getFrameRect();
-        double BeforelowerLeftX = BeforeFrame.pos.x - 0.5 * BeforeFrame.width;
-        double BeforelowerLeftY = BeforeFrame.pos.y - 0.5 * BeforeFrame.height;
+       // double BeforelowerLeftX = BeforeFrame.pos.x - 0.5 * BeforeFrame.width;
+       // double BeforelowerLeftY = BeforeFrame.pos.y - 0.5 * BeforeFrame.height;
         geometricShapes[i]->move({posX, posY});
         rectangle_t AfterFrame = geometricShapes[i]->getFrameRect();
-        double AfterlowerLeftX = AfterFrame.pos.x - 0.5 * AfterFrame.width;
-        double AfterlowerLeftY = AfterFrame.pos.y - 0.5 * AfterFrame.height;
+      //  double AfterlowerLeftX = AfterFrame.pos.x - 0.5 * AfterFrame.width;
+       // double AfterlowerLeftY = AfterFrame.pos.y - 0.5 * AfterFrame.height;
         geometricShapes[i]->scale(multiplier);
-        double changeX = (BeforelowerLeftX - AfterlowerLeftX) * multiplier;
-        double changeY = (BeforelowerLeftY - AfterlowerLeftY) * multiplier;
+        double changeX = (BeforFrame.pos.x - AfterFrame.pos.x) * multiplier;
+        double changeY = (BeforFrame.pos.y - AfterFrame.pos.y) * multiplier;
         geometricShapes[i]->move(changeX, changeY);
       }
       if (isCorrectlyDescribe == false)
