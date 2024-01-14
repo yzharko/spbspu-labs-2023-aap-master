@@ -2,8 +2,6 @@
 #include <cmath>
 #include <iostream>
 
-using namespace psarev;
-
 double* psarev::increaseArr(double* arr, size_t& arrSize)
 {
   double* newArr = new double [arrSize * 2];
