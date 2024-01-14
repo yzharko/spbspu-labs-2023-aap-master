@@ -1,4 +1,5 @@
 #include "regular.hpp"
+#include <stdexcept>
 #include <cmath>
 
 using namespace shagieva;

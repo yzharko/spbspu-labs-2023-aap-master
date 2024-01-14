@@ -1,4 +1,5 @@
 #include "rectangle.hpp"
+#include <stdexcept>
 
 using namespace shagieva;
 

@@ -1,4 +1,5 @@
 #include "complexquad.hpp"
+#include <stdexcept>
 #include <cmath>
 #include <algorithm>
 
