@@ -49,6 +49,22 @@ int main()
     }
   }
 
+  if (shapeCount == 0) {
+    std::cerr << "There is nothing to scale" << "\n";
+    for (size_t i = 0; i < shapeCount; i++) {
+      delete shapes[i];
+    }
+    return 1;
+  }
+
+  if (shapeName != "SCALE") {
+    std::cerr << "The scale command is missing" << "\n";
+    for (size_t i = 0; i < shapeCount; i++) {
+      delete shapes[i];
+    }
+    return 1;
+  }
+
   std::cout << std::fixed << std::setprecision(1);
   likhachev::coutShapesData(shapes, shapeCount);
   std::cout << "\n";
