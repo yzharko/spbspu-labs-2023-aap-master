@@ -89,8 +89,8 @@ int main()
 
   for (size_t i = 0; i < shapeCount; i++) {
     likhachev::point_t newPos;
-    newPos.x = (shapes[i]->getPos().x - scalePoint.x) * scaleMulti + scalePoint.x;
-    newPos.y = (shapes[i]->getPos().y - scalePoint.y) * scaleMulti + scalePoint.y;
+    newPos.x = (shapes[i]->getFrameRect().pos.x - scalePoint.x) * scaleMulti + scalePoint.x;
+    newPos.y = (shapes[i]->getFrameRect().pos.y - scalePoint.y) * scaleMulti + scalePoint.y;
     shapes[i]->scale(scaleMulti);
     shapes[i]->move(newPos);
   }

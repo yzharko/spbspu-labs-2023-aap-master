@@ -10,18 +10,6 @@ likhachev::Ring::Ring(point_t pos, double outerRad, double innerRad):
   }
 }
 
-likhachev::Ring::Ring(double posX, double posY, double outerRad, double innerRad):
-  outerRad_(outerRad),
-  innerRad_(innerRad)
-{
-  pos_.x = posX;
-  pos_.y = posY;
-
-  if (outerRad_ <= 0 || innerRad_ <= 0) {
-    throw std::logic_error("The parameters are not logically incorrect\n");
-  }
-}
-
 double likhachev::Ring::getArea() const
 {
   const double PI = 3.141592653589793;

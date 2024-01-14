@@ -9,18 +9,6 @@ likhachev::Rectangle::Rectangle(point_t lowerLeft, point_t upperRight):
   }
 }
 
-likhachev::Rectangle::Rectangle(double lowerLeftX, double lowerLeftY, double upperRightX, double upperRightY)
-{
-  lowerLeft_.x = lowerLeftX;
-  lowerLeft_.y = lowerLeftY;
-  upperRight_.x = upperRightX;
-  upperRight_.y = upperRightY;
-
-  if (lowerLeft_.x >= upperRight_.x || lowerLeft_.y >= upperRight_.y) {
-    throw std::logic_error("The parameters are not logically incorrect\n");
-  }
-}
-
 double likhachev::Rectangle::getArea() const
 {
   return getWidth() * getHeight();

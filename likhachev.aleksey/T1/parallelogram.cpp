@@ -18,28 +18,6 @@ likhachev::Parallelogram::Parallelogram(point_t pointB, point_t pointA, point_t 
   }
 }
 
-likhachev::Parallelogram::Parallelogram(double pointBX, double pointBY, double pointAX, double pointAY, double pointDX, double pointDY)
-{
-  pointB_.x = pointBX;
-  pointB_.y = pointBY;
-  pointA_.x = pointAX;
-  pointA_.y = pointAY;
-  pointD_.x = pointDX;
-  pointD_.y = pointDY;
-
-  if (pointA_ == pointB_ || pointB_ == pointD_ || pointD_ == pointA_) {
-    throw std::logic_error("The parameters are not logically incorrect\n");
-  }
-
-  if (!(pointA_.y == pointB_.y || pointA_.y == pointD_.y)){
-    throw std::logic_error("The parameters are not logically incorrect\n");
-  }
-
-  if ((pointD_.x - pointA_.x) / (pointB_.x - pointA_.x) == (pointD_.y - pointA_.y) / (pointB_.y - pointA_.y)){
-    throw std::logic_error("The parameters are not logically incorrect\n");
-  }
-}
-
 double likhachev::Parallelogram::getArea() const
 {
   return getWidth() * getHeight();

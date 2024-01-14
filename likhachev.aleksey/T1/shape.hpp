@@ -12,7 +12,6 @@ namespace likhachev
     virtual void move(const point_t& offset) = 0;
     virtual void move(double offsetX, double offsetY) = 0;
     virtual void scale(double multiplier) = 0;
-    virtual point_t getPos() const = 0;
   };
 }
 #endif
