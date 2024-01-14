@@ -45,7 +45,7 @@ Poligon::Poligon(size_t count, point_t *points) : counterOfPoints_(count),
   for (size_t i = 0; i < counterOfPoints_; i++)
   {
     double xm = 0.0, ym = 0.0;
-    for (int i = 0; i < counterOfPoints_; i++)
+    for (size_t i = 0; i < counterOfPoints_; i++)
     {
       xm += arrayOfPoints_[i].x_;
       ym += arrayOfPoints_[i].y_;
@@ -99,7 +99,7 @@ rectangle_t mihalchenko::Poligon::getFrameRect() const
 
 void mihalchenko::Poligon::move(const point_t &point)
 {
-  for (int i = 0; i < counterOfPoints_; i++)
+  for (size_t i = 0; i < counterOfPoints_; i++)
   {
     arrayOfPoints_[i].x_ = arrayOfPoints_[i].x_ + (point.x_ - pos1_.x_);
     arrayOfPoints_[i].y_ = arrayOfPoints_[i].y_ + (point.x_ - pos1_.x_);
@@ -110,7 +110,7 @@ void mihalchenko::Poligon::move(const point_t &point)
 
 void mihalchenko::Poligon::move(const double deltaX, const double deltaY)
 {
-  for (int i = 0; i < counterOfPoints_; i++)
+  for (size_t i = 0; i < counterOfPoints_; i++)
   {
     arrayOfPoints_[i].x_ = arrayOfPoints_[i].x_ + deltaX;
     arrayOfPoints_[i].y_ = arrayOfPoints_[i].y_ + deltaY;
@@ -122,7 +122,7 @@ void mihalchenko::Poligon::move(const double deltaX, const double deltaY)
 
 void mihalchenko::Poligon::scale(double scaleKoef)
 {
-  for (int i = 0; i < counterOfPoints_; i++)
+  for (size_t i = 0; i < counterOfPoints_; i++)
   {
     arrayOfPoints_[i].x_ = arrayOfPoints_[i].x_ - (pos1_.x_ - arrayOfPoints_[i].x_) * scaleKoef;
     arrayOfPoints_[i].y_ = arrayOfPoints_[i].y_ - (pos1_.x_ - arrayOfPoints_[i].x_) * scaleKoef;

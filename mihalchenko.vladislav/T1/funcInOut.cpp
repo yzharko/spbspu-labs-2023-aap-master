@@ -41,7 +41,7 @@ size_t mihalchenko::recordingArrayOfShapes(mihalchenko::Shape **arrayGeomShapes,
   {
   case 1:
   {
-    double x1, y1, x2, y2, width;
+    double x1, y1, x2, y2;
     if (std::cin >> x1 >> y1 >> x2 >> y2 && (x1 < x2 && y1 < y2))
     {
       arrayGeomShapes[shapeCounter++] = new mihalchenko::Rectangle(point_t{x1, y1}, point_t{x2, y2});

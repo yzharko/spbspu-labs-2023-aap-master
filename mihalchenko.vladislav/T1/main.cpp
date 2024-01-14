@@ -19,10 +19,8 @@ int main()
   size_t shapeCounter = 0;
   size_t resultScale = 0;
   std::string nameShape;
-  size_t tempShapeCounter = 0;
   while ((std::cin >> nameShape) && (scaleFound == false))
   {
-    tempShapeCounter = shapeCounter;
     if (shapeCounter == sizeOfArrShapes)
     {
       arrayGeomShapes = mihalchenko::resizeArrayOfShapes(arrayGeomShapes, sizeOfArrShapes);
