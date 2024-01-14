@@ -64,6 +64,7 @@ int main()
   }
 
   likhachev::coutShapesData(shapes, shapeCount);
+  std::cout << "\n";
 
   for (size_t i = 0; i < shapeCount; i++) {
     delete shapes[i];
