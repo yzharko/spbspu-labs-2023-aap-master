@@ -1,10 +1,10 @@
+#include <stdexcept>
+#include <cmath>
+#include <sstream>
 #include "input_output.hpp"
 #include "square.hpp"
 #include "rectangle.hpp"
 #include "regular.hpp"
-#include <stdexcept>
-#include <cmath>
-#include <sstream>
 using namespace seryj;
 void seryj::writeAnswer(std::ostream& out, CompositeShape& cs)
 {

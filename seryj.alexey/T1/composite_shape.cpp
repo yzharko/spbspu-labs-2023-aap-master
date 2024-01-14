@@ -5,12 +5,10 @@ using namespace seryj;
 CompositeShape::CompositeShape()
 {
   this->shapes_amount = 0;
-  this->capacity = this->shape_vector.max_size();
 }
 CompositeShape::CompositeShape(std::vector<Shape*> v)
 {
   shapes_amount = v.size();
-  capacity = v.max_size();
   for (size_t i = 0; i < shapes_amount; i++)
   {
     shape_vector.push_back(v[i]);
@@ -76,7 +74,7 @@ std::vector<rectangle_t> CompositeShape::getFrameRect()const
 }
 void CompositeShape::move(std::vector<point_t> v)
 {
-  for (size_t i = 0; i < std::min(this->shapes_amount, v.size()); i++)
+  for (size_t i = 0; i < std::min(this->shapes_amount, v.end()); i++)
   {
     this->shape_vector[i]->move(v[i]);
   }

@@ -7,7 +7,7 @@ namespace seryj {
   {
   public:
     Rectangle() {};
-    Rectangle(point_t lp, point_t rp);
+    Rectangle(point_t lp, point_t r);
     virtual double getArea()const;
     virtual rectangle_t getFrameRect()const;
     virtual void move(const point_t&);
