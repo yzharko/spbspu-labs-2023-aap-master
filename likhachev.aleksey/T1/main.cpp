@@ -55,7 +55,7 @@ int main()
   }
 
   for (int i = 0; i < shapeCount; i++) {
-    delete shapes[i];
+    delete[] shapes[i];
   }
   return 1;
 }
