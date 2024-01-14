@@ -3,12 +3,20 @@
 likhachev::Rectangle::Rectangle(Point_t lowerLeft, Point_t upperRight):
   lowerLeft_(lowerLeft),
   upperRight_(upperRight)
-{}
+{
+  if (lowerLeft_.x >= upperRight_.x || lowerLeft_.y >= upperRight_.y) {
+    throw std::logic_error("The parameters are not logically incorrect\n");
+  }
+}
 
 likhachev::Rectangle::Rectangle(double lowerLeftX, double lowerLeftY, double upperRightX, double upperRightY):
   lowerLeft_(Point_t(lowerLeftX, lowerLeftY)),
   upperRight_(Point_t(upperRightX, upperRightY))
-{}
+{
+  if (lowerLeft_.x >= upperRight_.x || lowerLeft_.y >= upperRight_.y) {
+    throw std::logic_error("The parameters are not logically incorrect\n");
+  }
+}
 
 double likhachev::Rectangle::getArea() const
 {

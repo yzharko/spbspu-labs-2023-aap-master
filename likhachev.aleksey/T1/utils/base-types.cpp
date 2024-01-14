@@ -20,6 +20,15 @@ likhachev::Point_t likhachev::Point_t::operator-(const Point_t& rhs)
   return *this;
 }
 
+bool likhachev::Point_t::operator==(const Point_t& rhs) 
+{
+  if (x == rhs.x && y == rhs.y) {
+    return true;
+  }
+
+  return false;
+}
+
 likhachev::Point_t& likhachev::Point_t::operator+=(const Point_t& rhs)
 {
   *this = *this + rhs;

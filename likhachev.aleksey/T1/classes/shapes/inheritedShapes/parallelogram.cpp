@@ -4,13 +4,21 @@ likhachev::Parallelogram::Parallelogram(Point_t pointA, Point_t pointB, Point_t 
   pointA_(pointA),
   pointB_(pointB),
   pointD_(pointD)
-{}
+{
+  if (pointA_ == pointB_ || pointB_ == pointD_ || pointD_ == pointA_) {
+    throw std::logic_error("The parameters are not logically incorrect\n");
+  }
+}
 
 likhachev::Parallelogram::Parallelogram(double pointAX, double pointAY, double pointBX, double pointBY, double pointDX, double pointDY):
   pointA_(Point_t(pointAX, pointAY)),
   pointB_(Point_t(pointBX, pointBY)),
   pointD_(Point_t(pointDX, pointDY))
-{}
+{
+  if (pointA_ == pointB_ || pointB_ == pointD_ || pointD_ == pointA_) {
+    throw std::logic_error("The parameters are not logically incorrect\n");
+  }
+}
 
 double likhachev::Parallelogram::getArea() const
 {

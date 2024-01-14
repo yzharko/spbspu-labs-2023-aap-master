@@ -10,6 +10,7 @@ namespace likhachev
       Point_t(double newX, double newY);
       void operator()(double newNumber);
       Point_t operator+(const Point_t& rhs);
+      bool operator==(const Point_t& rhs);
       Point_t operator-(const Point_t& rhs);
       Point_t& operator+=(const Point_t& rhs);
       Point_t& operator-=(const Point_t& rhs);
