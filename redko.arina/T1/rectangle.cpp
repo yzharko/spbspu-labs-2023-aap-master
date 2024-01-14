@@ -41,7 +41,7 @@ void Rectangle::move(double xDist, double yDist)
   secondPoint_.y += yDist;
 }
 
-void Rectangle::scale(double coefficient)
+void Rectangle::doScale(double coefficient)
 {
   rectangle_t frame = getFrameRect();
   firstPoint_.x = frame.pos.x + (firstPoint_.x - frame.pos.x) * coefficient;

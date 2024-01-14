@@ -31,12 +31,7 @@ int main()
         return 1;
       }
       double x, y, coefficient;
-      if (!(std::cin >> x >> y >> coefficient) || coefficient <= 0)
-      {
-        std::cerr << "wrong scale parameters\n";
-        redko::deleteShapes(shapes, shapesCounter);
-        return 1;
-      }
+      std::cin >> x >> y >> coefficient;
 
       double areasSum = redko::countAreas(shapes, shapesCounter);
       double * frameXY = redko::getFrameCorners(shapes, shapesCounter);
@@ -52,7 +47,17 @@ int main()
         movedFrame = shapes[i]->getFrameRect();
         distanceX = (frame.pos.x - movedFrame.pos.x) * coefficient;
         distanceY = (frame.pos.y - movedFrame.pos.y) * coefficient;
-        shapes[i]->scale(coefficient);
+        try
+        {
+          shapes[i]->scale(coefficient);
+        }
+        catch(const std::logic_error & e)
+        {
+          std::cerr << e.what();
+          redko::deleteShapes(shapes, shapesCounter);
+          delete[] frameXY;
+          return 1;
+        }
         shapes[i]->move(distanceX, distanceY);
       }
 

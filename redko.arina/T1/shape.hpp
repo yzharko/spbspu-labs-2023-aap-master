@@ -12,7 +12,9 @@ namespace redko
     virtual rectangle_t getFrameRect() const = 0;
     virtual void move(const point_t & dest) = 0;
     virtual void move(double xDist, double yDist) = 0;
-    virtual void scale(double coefficient) = 0;
+    void scale(double coefficient);
+  private:
+    virtual void doScale(double coefficient) = 0;
   };
 }
 

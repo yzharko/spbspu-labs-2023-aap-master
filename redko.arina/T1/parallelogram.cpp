@@ -86,7 +86,7 @@ void Parallelogram::move(double xDist, double yDist)
   thirdPoint_.y += yDist;
 }
 
-void Parallelogram::scale(double coefficient)
+void Parallelogram::doScale(double coefficient)
 {
   rectangle_t frame = getFrameRect();
   firstPoint_.x = frame.pos.x + (firstPoint_.x - frame.pos.x) * coefficient;

@@ -58,7 +58,7 @@ void Concave::move(double xDist, double yDist)
   fourthPoint_.y += yDist;
 }
 
-void Concave::scale(double coefficient)
+void Concave::doScale(double coefficient)
 {
   firstPoint_.x = fourthPoint_.x + (firstPoint_.x - fourthPoint_.x) * coefficient;
   firstPoint_.y = fourthPoint_.y + (firstPoint_.y - fourthPoint_.y) * coefficient;
