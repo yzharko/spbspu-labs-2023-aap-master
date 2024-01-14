@@ -1,7 +1,7 @@
 #ifndef TRIANGLE_HPP
 #define TRIANGLE_HPP
-#include "shape.hpp"
 #include <cmath>
+#include "shape.hpp"
 
 namespace psarev
 {

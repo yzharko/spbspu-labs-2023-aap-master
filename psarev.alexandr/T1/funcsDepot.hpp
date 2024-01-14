@@ -1,9 +1,6 @@
 #ifndef FUNCS_DEPOT_HPP
 #define FUNCS_DEPOT_HPP
-#include "base-types.hpp"
-#include "rectangle.hpp"
 #include <vector>
-#include <iostream>
 
 namespace psarev
 {
