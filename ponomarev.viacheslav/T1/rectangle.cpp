@@ -1,47 +1,52 @@
 #include "rectangle.hpp"
 
-ponomarev::Rectangle::Rectangle(point_t lowerLeft, point_t upperRight) :
+using namespace ponomarev;
+
+Rectangle::Rectangle(const point_t lowerLeft, const point_t upperRight):
   lowerLeft(lowerLeft),
   upperRight(upperRight)
-{}
+{
+  if (lowerLeft.x >= upperRight.x || lowerLeft.y >= upperRight.y)
+  {
+    throw std::invalid_argument("Rectangle is incorrect");
+  }
+}
 
-double ponomarev::Rectangle::getArea()
+double Rectangle::getArea()
 {
   rectangle_t frame = getFrameRect();
   return frame.width * frame.height;
 }
 
-rectangle_t ponomarev::Rectangle::getFrameRect()
+rectangle_t Rectangle::getFrameRect()
 {
   double width = upperRight.x - lowerLeft.x;
   double height = upperRight.y - lowerLeft.y;
-  point_t pos = { 0.5 * (upperRight.x - lowerLeft.x), 0.5 * (upperRight.y - lowerLeft.y) };
-  return rectangle_t{ width, height, pos };
+  point_t center = { 0.5 * (upperRight.x - lowerLeft.x), 0.5 * (upperRight.y - lowerLeft.y) };
+  return { width, height, center };
 }
 
-void ponomarev::Rectangle::move(point_t toThePoint)
+void Rectangle::move(const point_t newCenter)
 {
   rectangle_t frame = getFrameRect();
-  double aX = destination.x - frame.pos.x;
-  double aY = destination.y - frame.pos.y;
-  lowerLeft.x += aX;
-  lowerLeft.y += aY;
-  upperRight.x += aX;
-  upperRight.y += aY;
+  double offsetX = newCenter.x - frame.center.x;
+  double offsetY = newCenter.y - frame.center.y;
+  move(offsetX, offsetY);
 }
 
-void ponomarev::Rectangle::move(double aX, double aY)
+void Rectangle::move(const double offsetX, const double offsetY)
 {
-  lowerLeft.x += aX;
-  lowerLeft.y += aY;
-  upperRight.x += aX;
-  upperRight.y += aY;
+  lowerLeft.x += offsetX;
+  lowerLeft.y += offsetY;
+  upperRight.x += offsetX;
+  upperRight.y += offsetY;
 }
 
-void ponomarev::Rectangle::scale(point_t pos, double k)
+void Rectangle::scale(double k)
 {
-  lowerLeft.x *= k;
-  lowerLeft.y *= k;
-  upperRight.x *= k;
-  upperRight.y *= k;
+  point_t center = { 0.5 * (upperRight.x - lowerLeft.x), 0.5 * (upperRight.y - lowerLeft.y) };
+  lowerLeft.x = (lowerLeft.x - center.x) * k + center.x;
+  lowerLeft.y = (lowerLeft.y - center.y) * k + center.y;
+  upperRight.x = (upperRight.x - center.x) * k + center.x;
+  upperRight.y = (upperRight.y - center.y) * k + center.y;
 }

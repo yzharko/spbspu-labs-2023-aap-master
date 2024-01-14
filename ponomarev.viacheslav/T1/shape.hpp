@@ -7,11 +7,12 @@ namespace ponomarev
   class Shape
   {
   public:
+    virtual ~Shape() = default;
     virtual double getArea() = 0;
     virtual rectangle_t getFrameRect() = 0;
-    virtual void move(point_t toThePoint) = 0;
-    virtual void move(double aX, double aY) = 0;
-    virtual void scale(point_t pos, double k) = 0;
+    virtual void move(point_t newCenter) = 0;
+    virtual void move(double offsetX, double offsetY) = 0;
+    virtual void scale(double k) = 0;
   };
 }
 
