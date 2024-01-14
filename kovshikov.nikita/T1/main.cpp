@@ -138,10 +138,10 @@ int main()
         double changeX = (BeforeFrame.pos.x - AfterFrame.pos.x) * multiplier;
         double changeY = (BeforeFrame.pos.y - AfterFrame.pos.y) * multiplier;
         geometricShapes[i]->move(changeX, changeY);
-      }
-      if (i != count - 1)
-        {
-          std::cout << " ";
+        if (i != count - 1)
+          {
+            std::cout << " ";
+          }
         }
       }
       std::cout << "\n";
