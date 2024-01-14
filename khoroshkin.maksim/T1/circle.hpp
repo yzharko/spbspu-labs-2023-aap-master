@@ -12,8 +12,8 @@ namespace khoroshkin
     rectangle_t getFrameRect() const override;
     void move(const point_t & newPoint) override;
     void move(double dx, double dy) override;
-    void scale(double k) override;
   private:
+    void doScale(double k) override;
     point_t Point;
     double radius;
     const double PI = 3.14;

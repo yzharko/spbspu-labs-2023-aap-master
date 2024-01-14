@@ -40,18 +40,11 @@ void Rectangle::move(double dx, double dy)
   rectangle.pos = {rectangle.pos.x + dx, rectangle.pos.y + dy};
 }
 
-void Rectangle::scale(double k)
+void Rectangle::doScale(double k)
 {
-  if (k <= 0)
-  {
-    throw std::invalid_argument("Error: scale factor must be >0\n");
-  }
-  else
-  {
-    leftPoint = {rectangle.pos.x + k * (leftPoint.x - rectangle.pos.x), rectangle.pos.y + k * (leftPoint.y - rectangle.pos.y)};
-    rightPoint = {rectangle.pos.x + k * (rightPoint.x - rectangle.pos.x), rectangle.pos.y + k * (rightPoint.y - rectangle.pos.y)};
+  leftPoint = {rectangle.pos.x + k * (leftPoint.x - rectangle.pos.x), rectangle.pos.y + k * (leftPoint.y - rectangle.pos.y)};
+  rightPoint = {rectangle.pos.x + k * (rightPoint.x - rectangle.pos.x), rectangle.pos.y + k * (rightPoint.y - rectangle.pos.y)};
 
-    rectangle.height *= k;
-    rectangle.width *= k;
-  }
+  rectangle.height *= k;
+  rectangle.width *= k;
 }

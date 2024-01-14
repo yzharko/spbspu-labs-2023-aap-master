@@ -31,14 +31,7 @@ void Circle::move(double dx, double dy)
   Point.y += dy;
 }
 
-void Circle::scale(double k)
+void Circle::doScale(double k)
 {
-  if (k <= 0)
-  {
-    throw std::invalid_argument("Error: scale factor must be >0\n");
-  }
-  else
-  {
-    radius *= k;
-  }
+  radius *= k;
 }

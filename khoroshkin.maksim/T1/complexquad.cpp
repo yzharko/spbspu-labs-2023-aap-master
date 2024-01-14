@@ -51,21 +51,14 @@ void Complexquad::move(double dx, double dy)
   centerPoint = {centerPoint.x + dx, centerPoint.y + dy};
 }
 
-void Complexquad::scale(double k)
+void Complexquad::doScale(double k)
 {
-  if (k <= 0)
-  {
-    throw std::invalid_argument("Error: scale factor must be >0\n");
-  }
-  else
-  {
-    pointA.x = centerPoint.x + k * (pointA.x - centerPoint.x);
-    pointA.y = centerPoint.y + k * (pointA.y - centerPoint.y);
-    pointB.x = centerPoint.x + k * (pointB.x - centerPoint.x);
-    pointB.y = centerPoint.y + k * (pointB.y - centerPoint.y);
-    pointC.x = centerPoint.x + k * (pointC.x - centerPoint.x);
-    pointC.y = centerPoint.y + k * (pointC.y - centerPoint.y);
-    pointD.x = centerPoint.x + k * (pointD.x - centerPoint.x);
-    pointD.y = centerPoint.y + k * (pointD.y - centerPoint.y);
-  }
+  pointA.x = centerPoint.x + k * (pointA.x - centerPoint.x);
+  pointA.y = centerPoint.y + k * (pointA.y - centerPoint.y);
+  pointB.x = centerPoint.x + k * (pointB.x - centerPoint.x);
+  pointB.y = centerPoint.y + k * (pointB.y - centerPoint.y);
+  pointC.x = centerPoint.x + k * (pointC.x - centerPoint.x);
+  pointC.y = centerPoint.y + k * (pointC.y - centerPoint.y);
+  pointD.x = centerPoint.x + k * (pointD.x - centerPoint.x);
+  pointD.y = centerPoint.y + k * (pointD.y - centerPoint.y);
 }
