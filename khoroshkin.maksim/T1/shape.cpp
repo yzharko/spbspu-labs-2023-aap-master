@@ -1,7 +1,7 @@
 #include "shape.hpp"
 
 void khoroshkin::Shape::scale(double k)
-{  
+{
   if (k > 0)
   {
     doScale(k);
