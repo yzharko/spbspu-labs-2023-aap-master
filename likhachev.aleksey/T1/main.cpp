@@ -21,9 +21,7 @@ int main()
           for (int i = 0; i < paramsCount; i++) {
             std::cin >> shapeParams[i];
           }
-          shapes[shapeCount] = new likhachev::Parallelogram({shapeParams[0], shapeParams[1]},
-                                                            {shapeParams[2], shapeParams[3]},
-                                                            {shapeParams[4], shapeParams[5]});
+          shapes[shapeCount] = new likhachev::Parallelogram({shapeParams[0], shapeParams[1]}, {shapeParams[2], shapeParams[3]}, {shapeParams[4], shapeParams[5]});
         }
 
         if (shapeName == "RING") {
@@ -32,8 +30,7 @@ int main()
           for (int i = 0; i < paramsCount; i++) {
             std::cin >> shapeParams[i];
           }
-          shapes[shapeCount] = new likhachev::Ring({shapeParams[0], shapeParams[1]},
-                                                    shapeParams[2], shapeParams[3]);
+          shapes[shapeCount] = new likhachev::Ring({shapeParams[0], shapeParams[1]}, shapeParams[2], shapeParams[3]);
         }
 
         if (shapeName == "RECTANGLE") {
@@ -42,8 +39,7 @@ int main()
           for (int i = 0; i < paramsCount; i++) {
             std::cin >> shapeParams[i];
           }
-          shapes[shapeCount] = new likhachev::Rectangle({shapeParams[0], shapeParams[1]},
-                                                        {shapeParams[2], shapeParams[3]});
+          shapes[shapeCount] = new likhachev::Rectangle({shapeParams[0], shapeParams[1]}, {shapeParams[2], shapeParams[3]});
         }
         shapeCount++;
       } catch(std::logic_error const& e) {
