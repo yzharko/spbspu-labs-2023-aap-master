@@ -40,7 +40,6 @@ void sukacheva::getCoordinatesAfter(Shape* figures[], int index, point_t center,
 void sukacheva::getRectangle(Shape* figures[], point_t rightPoint, point_t leftPoint, int& index)
 {
   Shape* rectangle = new sukacheva::Rectangle(rightPoint, leftPoint);
-  Shape* rectangleCheck = new sukacheva::Rectangle(rightPoint, leftPoint);
   figures[index] = rectangle;
   index += 1;
 }
@@ -48,7 +47,6 @@ void sukacheva::getRectangle(Shape* figures[], point_t rightPoint, point_t leftP
 void sukacheva::getCircle(Shape* figures[], point_t center, double radius, int& index)
 {
   Shape* circle = new Circle(center, radius);
-  Shape* circleCheck = new Circle(center, radius);
   figures[index] = circle;
   index += 1;
 }
@@ -56,7 +54,6 @@ void sukacheva::getCircle(Shape* figures[], point_t center, double radius, int& 
 void sukacheva::getParallelogram(Shape* figures[], point_t aPoint, point_t bPoint, point_t cPoint, int& index)
 {
   Shape* parallelogram = new Parallelogram(aPoint, bPoint, cPoint);
-  Shape* parallelogramCheck = new Parallelogram(aPoint, bPoint, cPoint);
   figures[index] = parallelogram;
   index += 1;
 }
