@@ -4,6 +4,6 @@
 
 namespace likhachev
 {
-  void coutShapesData(const Shape **shapes , size_t count);
+  void coutShapesData(Shape **shapes , size_t count);
 }
 #endif
