@@ -1,5 +1,4 @@
 #include "shapeProcessing.hpp"
-#include <iostream>
 
 bool redko::isTypeCorrect(std::string type)
 {

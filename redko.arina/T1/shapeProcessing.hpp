@@ -1,5 +1,6 @@
 #ifndef SHAPEPROCESSING_HPP
 #define SHAPEPROCESSING_HPP
+#include <iostream>
 #include <string>
 #include "base-types.hpp"
 #include "shape.hpp"
