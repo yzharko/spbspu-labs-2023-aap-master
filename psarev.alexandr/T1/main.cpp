@@ -1,5 +1,4 @@
 #include <iomanip>
-#include <iostream>
 #include "rectangle.hpp"
 #include "ring.hpp"
 #include "triangle.hpp"

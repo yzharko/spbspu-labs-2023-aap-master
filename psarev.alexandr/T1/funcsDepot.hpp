@@ -1,6 +1,9 @@
 #ifndef FUNCS_DEPOT_HPP
 #define FUNCS_DEPOT_HPP
+#include "shape.hpp"
+#include "base-types.hpp"
 #include <vector>
+#include <iostream>
 
 namespace psarev
 {
