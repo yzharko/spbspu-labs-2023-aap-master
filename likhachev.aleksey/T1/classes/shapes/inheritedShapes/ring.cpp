@@ -23,8 +23,8 @@ likhachev::Ring::Ring(double posX, double posY, double outerRad, double innerRad
 double likhachev::Ring::getArea() const
 {
   const double PI = 3.141592653589793;
-  double outerArea = PI * outerRad_;
-  double innerArea = PI * innerRad_;
+  double outerArea = PI * outerRad_ * outerRad_;
+  double innerArea = PI * innerRad_ * innerRad_;
 
   return outerArea - innerArea;
 }
