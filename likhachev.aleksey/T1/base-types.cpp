@@ -3,8 +3,8 @@
 likhachev::point_t likhachev::operator+(const point_t& firstRhs, const point_t& secondRhs)
 {
   likhachev::point_t result;
-  result.x = firstRhs.x - secondRhs.x;
-  result.y = firstRhs.y - secondRhs.y;
+  result.x = firstRhs.x + secondRhs.x;
+  result.y = firstRhs.y + secondRhs.y;
   return result;
 }
 
