@@ -37,24 +37,30 @@ void sukacheva::getCoordinatesAfter(Shape* figures[], int index, point_t center,
   std::cout << "\n";
 }
 
-void sukacheva::getRectangle(Shape* figures[], point_t rightPoint, point_t leftPoint, int& index)
+void sukacheva::getRectangle(Shape* figures[], Shape* scaledFigures[], point_t rightPoint, point_t leftPoint, int& index)
 {
   Shape* rectangle = new sukacheva::Rectangle(rightPoint, leftPoint);
+  Shape* rectangleCheck = new sukacheva::Rectangle(rightPoint, leftPoint);
   figures[index] = rectangle;
+  scaledFigures[index] = rectangleCheck;
   index += 1;
 }
 
-void sukacheva::getCircle(Shape* figures[], point_t center, double radius, int& index)
+void sukacheva::getCircle(Shape* figures[], Shape* scaledFigures[], point_t center, double radius, int& index)
 {
   Shape* circle = new Circle(center, radius);
+  Shape* circleCheck = new Circle(center, radius);
   figures[index] = circle;
+  scaledFigures[index] = circleCheck;
   index += 1;
 }
 
-void sukacheva::getParallelogram(Shape* figures[], point_t aPoint, point_t bPoint, point_t cPoint, int& index)
+void sukacheva::getParallelogram(Shape* figures[], Shape* scaledFigures[], point_t aPoint, point_t bPoint, point_t cPoint, int& index)
 {
   Shape* parallelogram = new Parallelogram(aPoint, bPoint, cPoint);
+  Shape* parallelogramCheck = new Parallelogram(aPoint, bPoint, cPoint);
   figures[index] = parallelogram;
+  scaledFigures[index] = parallelogramCheck;
   index += 1;
 }
 
@@ -88,7 +94,6 @@ void sukacheva::getScaledArea(Shape* figures[], int index, double& scaledArea, d
 void sukacheva::scaleCheck(Shape* figures[], Shape* scaledFigures[], int index, double k)
 {
   for (int i = 0; i < index; i++) {
-    scaledFigures[i] = figures[i];
     scaledFigures[i]->scale(k);
   }
 }
