@@ -1,6 +1,6 @@
 #include "square.hpp"
 
-Square::Square(float x, float y, float width) :
+Square::Square(double x, double y, double width) :
   pointLl{ x, y },
   pointUr{ x + width, x + width },
   width_{width},
@@ -9,7 +9,7 @@ Square::Square(float x, float y, float width) :
   this->pos_ = { width_ / 2, height_ / 2 };
 }
 
-float Square::getArea()
+double Square::getArea()
 {
   return width_ * height_;
 }
@@ -19,7 +19,7 @@ Rectangle_t Square::getFrameRect()
   return { width_, height_, pos_ };
 }
 
-void Square::move(const char axis, float n)
+void Square::move(const char axis, double n)
 {
   if (axis == 'x')
   {
@@ -35,14 +35,14 @@ void Square::move(const char axis, float n)
   }
 }
 
-void Square::move(float x, float y)
+void Square::move(double x, double y)
 {
   pointLl = { x - width_, y - height_ };
   pointUr = { x + width_, y + height_ };
   pos_ = { x, y };
 }
 
-void Square::scale(float k)
+void Square::scale(double k)
 {
   width_ *= k;
   height_ *= k;

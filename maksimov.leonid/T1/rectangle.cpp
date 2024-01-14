@@ -1,15 +1,15 @@
 #include "rectangle.hpp"
 
-Rectangle::Rectangle(float x1, float y1, float x2, float y2) :
+Rectangle::Rectangle(double x1, double y1, double x2, double y2) :
   pointLl{ x1, y1 },
   pointUr{ x2, y2 }
 {
-  width_ = abs(pointUr.y - pointLl.y);
-  height_ = abs(pointUr.x - pointLl.x);
-  this->pos_ = { width_ / 2, height_ / 2 };
+  width_ = abs(pointUr.x) + abs(pointLl.x);
+  height_ = abs(pointUr.y) + abs(pointLl.y);
+  this->pos_ = { (abs(pointUr.x) - abs(pointLl.x)) / 2, (abs(pointUr.y) - abs(pointLl.y)) / 2 };
 }
 
-float Rectangle::getArea()
+double Rectangle::getArea()
 {
   return width_ * height_;
 }
@@ -19,7 +19,7 @@ Rectangle_t Rectangle::getFrameRect()
   return { width_, height_, pos_ };
 }
 
-void Rectangle::move(const char axis, float n)
+void Rectangle::move(const char axis, double n)
 {
   if (axis == 'x')
   {
@@ -35,14 +35,14 @@ void Rectangle::move(const char axis, float n)
   }
 }
 
-void Rectangle::move(float x, float y)
+void Rectangle::move(double x, double y)
 {
   pointLl = { x -  width_, y - height_ };
   pointUr = { x + width_, y + height_ };
   pos_ = { x, y };
 }
 
-void Rectangle::scale(float k)
+void Rectangle::scale(double k)
 {
   width_ *= k;
   height_ *= k;
