@@ -47,17 +47,20 @@ int main()
         deleteFigures(allFigures, figuresCounter);
         return 1;
       }
-      if (std::cin >> x >> y >> scale && scale > 0)
+      try
       {
-        std::cout << std::fixed << std::setprecision(1);
-        printResult(allFigures, figuresCounter);
-        makeScale(allFigures, figuresCounter, x, y, scale);
-        printResult(allFigures, figuresCounter);
-        scaleCommandWas = true;
+        if (std::cin >> x >> y >> scale)
+        {
+          std::cout << std::fixed << std::setprecision(1);
+          printResult(allFigures, figuresCounter);
+          makeScale(allFigures, figuresCounter, x, y, scale);
+          printResult(allFigures, figuresCounter);
+          scaleCommandWas = true;
+        }
       }
-      else
+      catch (const std::invalid_argument & e)
       {
-        std::cerr << "Error: wrong scale input\n";
+        std::cerr << e.what();
         deleteFigures(allFigures, figuresCounter);
         return 1;
       }

@@ -1,5 +1,6 @@
 #include "rectangle.hpp"
 #include <cmath>
+#include <stdexcept>
 
 using namespace khoroshkin;
 Rectangle::Rectangle(point_t newLeftPoint, point_t newRightPoint) :
@@ -41,9 +42,16 @@ void Rectangle::move(double dx, double dy)
 
 void Rectangle::scale(double k)
 {
-  leftPoint = {rectangle.pos.x + k * (leftPoint.x - rectangle.pos.x), rectangle.pos.y + k * (leftPoint.y - rectangle.pos.y)};
-  rightPoint = {rectangle.pos.x + k * (rightPoint.x - rectangle.pos.x), rectangle.pos.y + k * (rightPoint.y - rectangle.pos.y)};
+  if (k <= 0)
+  {
+    throw std::invalid_argument("Error: scale factor must be >0\n");
+  }
+  else
+  {
+    leftPoint = {rectangle.pos.x + k * (leftPoint.x - rectangle.pos.x), rectangle.pos.y + k * (leftPoint.y - rectangle.pos.y)};
+    rightPoint = {rectangle.pos.x + k * (rightPoint.x - rectangle.pos.x), rectangle.pos.y + k * (rightPoint.y - rectangle.pos.y)};
 
-  rectangle.height *= k;
-  rectangle.width *= k;
+    rectangle.height *= k;
+    rectangle.width *= k;
+  }
 }

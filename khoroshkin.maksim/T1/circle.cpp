@@ -1,5 +1,6 @@
 #include "circle.hpp"
 #include <cmath>
+#include <stdexcept>
 
 using namespace khoroshkin;
 Circle::Circle(point_t centerPoint, double r) :
@@ -32,5 +33,12 @@ void Circle::move(double dx, double dy)
 
 void Circle::scale(double k)
 {
-  radius *= k;
+  if (k <= 0)
+  {
+    throw std::invalid_argument("Error: scale factor must be >0\n");
+  }
+  else
+  {
+    radius *= k;
+  }
 }
