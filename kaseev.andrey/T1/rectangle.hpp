@@ -11,7 +11,7 @@ namespace kaseev {
     virtual rectangle_t getFrameRect();
     virtual void move(double nx, double ny);
     virtual void move(point_t center);
-    virtual void scale(double k, point_t pos);
+    virtual void scale(double k);
   private:
     point_t lPoint;
     point_t rPoint;

@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Ellipse.hpp"
 #include " base-types.hpp"
 

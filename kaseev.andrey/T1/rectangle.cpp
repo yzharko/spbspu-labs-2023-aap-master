@@ -37,7 +37,7 @@ void kaseev::Rectangle::move(point_t center)
   rectangle_t New = {width, height, center};
 }
 
-void kaseev::Rectangle::scale(double k, point_t pos)
+void kaseev::Rectangle::scale(double k)
 {
   lPoint.x *= k;
   lPoint.y *= k;
