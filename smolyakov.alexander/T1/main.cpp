@@ -79,5 +79,6 @@ int main()
     std::cerr << "An invalid shape was entered.\n";
   }
 
+  delete[] shapes;
   return 0;
 }
