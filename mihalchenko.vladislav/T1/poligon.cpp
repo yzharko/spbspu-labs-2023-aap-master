@@ -57,7 +57,9 @@ Poligon::Poligon(size_t count, point_t *points) : counterOfPoints_(count),
     yc = 0.0;
     for (i = 0; i < counterOfPoints_; i++)
     {
-      double s1 = square(xm, ym, arrayOfPoints_[i].x_, arrayOfPoints_[i].y_, arrayOfPoints_[(i + 1) % counterOfPoints_].x_, arrayOfPoints_[(i + 1) % counterOfPoints_].y_);
+      double t1 = arrayOfPoints_[(i + 1) % counterOfPoints_].x_;
+      double t2 = arrayOfPoints_[(i + 1) % counterOfPoints_].y_;
+      double s1 = square(xm, ym, arrayOfPoints_[i].x_, arrayOfPoints_[i].y_, t1, t2);
       xc += s1 * (xm + arrayOfPoints_[i].x_ + arrayOfPoints_[(i + 1) % counterOfPoints_].x_) / 3;
       yc += s1 * (ym + arrayOfPoints_[i].y_ + arrayOfPoints_[(i + 1) % counterOfPoints_].y_) / 3;
       s += s1;
