@@ -91,9 +91,13 @@ void CompositeShape::move(double x, double y)
 void CompositeShape::scale(point_t p, double k)
 {
   if (k < 0)
+  {
     throw std::invalid_argument("Negative scale is no\n");
+  }
   if (this->shapes_amount == 0)
+  {
     throw std::invalid_argument("Nothing to scale\n");
+  }
   for (size_t i = 0; i < this->shapes_amount; i++)
   {
     point_t shape_pos = this->shape_vector[i]->getFrameRect().pos;

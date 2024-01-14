@@ -14,7 +14,9 @@ Regular::Regular(point_t a, point_t b, point_t c)
   hypotenuse_ = fmax(side_ab, side_ac);
   n_ = M_PI / cos(fmin(side_ab, side_ac) / hypotenuse_);
   if (round(side_bc * 100) != round(hypotenuse_ * sin(M_PI / n_) * 100))
+  {
     throw std::logic_error("Cant build a regular\n");
+  }
 }
 double Regular::getArea()const
 {

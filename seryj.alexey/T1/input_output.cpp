@@ -2,7 +2,7 @@
 #include "square.hpp"
 #include "rectangle.hpp"
 #include "regular.hpp"
-#include <iostream>
+#include <stdexcept>
 #include <cmath>
 #include <sstream>
 using namespace seryj;
@@ -40,9 +40,13 @@ std::vector<std::string> seryj::readText(std::istream& inp)
     }
   }
   if (scale_args == 0)
+  {
     throw std::invalid_argument("No scale command\n");
+  }
   if (scale_args < 3)
+  {
     throw std::invalid_argument("Not enough scale arguments\n");
+  }
   return text;
 }
 void seryj::textToCompositeShape(std::vector<std::string> inp, CompositeShape& cs)
@@ -78,7 +82,9 @@ do
     seryj::skipShape(inp);
 } while (shape_name != "SCALE");
 if (error.length() > 0)
+{
   throw std::logic_error(error);
+}
 }
 void seryj::skipShape(std::vector<std::string>& v)
 {

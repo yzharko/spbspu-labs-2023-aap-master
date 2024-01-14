@@ -5,7 +5,9 @@ using namespace seryj;
 Rectangle::Rectangle(point_t lp, point_t rp)
 {
   if (lp.x > rp.x || lp.y > rp.y)
+  {
     throw std::logic_error("Rectangle coordinats are wrong\n");
+  }
   left_point_ = lp;
   right_point_ = rp;
   pos_.x = (left_point_.x + right_point_.x) / 2;
