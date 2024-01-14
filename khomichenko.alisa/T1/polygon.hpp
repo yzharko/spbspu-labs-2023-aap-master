@@ -2,22 +2,23 @@
 #define POLYGON_HPP
 #include "base-types.hpp"
 #include "shape.hpp"
+#include <iostream>
 
 namespace khomichenko
 {
-  class Polygon : public Shape
+  class Polygon: public Shape
   {
     public:
-      //Polygon ();
+      Polygon(size_t num, point_t * points);
       double getArea();
       rectangle_t getFrameRect();
       void move (point_t dPos);
       void move (double dX, double dY);
-      void scale (point_t pos, double k);
-    private:
-      point_t first;
-      point_t second;
-      point_t third;
+      void scale (double k);
+
+     size_t num_;
+     point_t * points_;
+
   };
 }
 
