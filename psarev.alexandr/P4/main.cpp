@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
     return 2;
   }
 
-  psarev::isTriMatrix(matrix, rows, cols) == 1 ? output << "true\n": output << "false\n";
+  psarev::isTriMatrix(matrix, rows, cols) == 1 ? output << "true\n" : output << "false\n";
   if (taskNum == 2) {
     delete[] matrix;
   }
