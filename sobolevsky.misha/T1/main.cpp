@@ -12,13 +12,6 @@
 #include "diamond.hpp"
 #include "parallelogram.hpp"
 
-bool isParallelogramCorrect(sobolevsky::point_t point1, sobolevsky::point_t point2, sobolevsky::point_t point3)
-{
-  double baseFigure = point1.x * (point3.y - point1.y) + point1.x * (point2.y - point3.y);
-  baseFigure = abs((baseFigure + point3.x * (point1.y - point2.y)) / 2.0);
-  return (point2.y == point3.y || point1.y == point2.y) && (baseFigure != 0);
-}
-
 int main()
 {
   struct CompositeShape
