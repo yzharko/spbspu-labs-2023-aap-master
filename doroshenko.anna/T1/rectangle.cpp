@@ -1,4 +1,5 @@
 #include "rectangle.hpp"
+#include <iostream>
 
 using namespace doroshenko;
 
@@ -41,6 +42,10 @@ void Rectangle::move(double moveX, double moveY)
 
 void Rectangle::scale(double coefficient)
 {
+  if (coefficient <= 0)
+  {
+    throw std::logic_error("Wrong scale parameters\n");
+  }
   rectangle_t frame = getFrameRect();
   double moveX = frame.width * (coefficient - 1) * 0.5;
   double moveY = frame.height * (coefficient - 1) * 0.5;

@@ -69,6 +69,10 @@ void Triangle::move(double moveX, double moveY)
 
 void Triangle::scale(double coefficient)
 {
+  if (coefficient <= 0)
+  {
+    throw std::logic_error("Wrong scale parameters\n");
+  }
   point_t pos;
   pos.x = (firstPoint_.x + secondPoint_.x + thirdPoint_.x) / 3;
   pos.y = (firstPoint_.y + secondPoint_.y + thirdPoint_.y) / 3;

@@ -85,68 +85,68 @@ int main()
     {
       double posx, posy, coefficient;
       double xL, yL, xR, yR;
-      std::cin >> posx >> posy >> coefficient;
-      if (!std::cin || coefficient < 0)
+      try
       {
-        std::cerr << "Wrong scale parameters\n";
+        std::cin >> posx >> posy >> coefficient;
+      }
+      catch(const std::logic_error& e)
+      {
+        std::cerr << e.what();
         for (size_t i = 0; i < countFig; i++)
         {
           delete geometricFigures[i];
         }
         return 1;
       }
-      else
+      if (countFig == 0)
       {
-        if (countFig == 0)
-        {
-          std::cerr << "There is nothing to scale";
-          return 1;
-        }
-        double sumAreaBefore = 0;
-        for (size_t i = 0; i < countFig; i++)
-        {
-          sumAreaBefore += geometricFigures[i]->getArea();
-        }
-        std::cout << std::fixed << std::setprecision(1) << sumAreaBefore;
-        for (size_t j = 0; j < countFig; j++)
-        {
-          rectangle_t frame = geometricFigures[j]->getFrameRect();
-          xL = frame.pos.x - 0.5 * frame.width;
-          yL = frame.pos.y - 0.5 * frame.height;
-          xR = frame.pos.x + 0.5 * frame.width;
-          yR = frame.pos.y + 0.5 * frame.height;
-          std::cout << std::fixed << std::setprecision(1) << ' ' << xL << ' ' << yL << ' ' << xR << ' ' << yR;
-        }
-        std::cout << "\n";
-        for (size_t k = 0; k < countFig; k++)
-        {
-          rectangle_t frameBefore = geometricFigures[k]->getFrameRect();
-          geometricFigures[k]->move({posx, posy});
-          rectangle_t frameAfter = geometricFigures[k]->getFrameRect();
-          double moveX = fabs(frameAfter.pos.x - frameBefore.pos.x)*coefficient;
-          double moveY = fabs(frameAfter.pos.y - frameBefore.pos.y)*coefficient;
-          geometricFigures[k]->scale(coefficient);
-          geometricFigures[k]->move(moveX, moveY);
-        }
-        double sumAreaAfter = 0;
-        for (size_t i = 0; i < countFig; i++)
-        {
-          sumAreaAfter += geometricFigures[i]->getArea();
-        }
-        std::cout << std::fixed << std::setprecision(1) << sumAreaAfter;
-        for (size_t j = 0; j < countFig; j++)
-        {
-          rectangle_t frame = geometricFigures[j]->getFrameRect();
-          xL = frame.pos.x - 0.5 * frame.width;
-          yL = frame.pos.y - 0.5 * frame.height;
-          xR = frame.pos.x + 0.5 * frame.width;
-          yR = frame.pos.y + 0.5 * frame.height;
-          std::cout << std::fixed << std::setprecision(1) << ' ' << xL << ' ' << yL << ' ' << xR << ' ' << yR;
-        }
-        std::cout << "\n";
-        scale = true;
-        break;
+        std::cerr << "There is nothing to scale";
+        return 1;
       }
+      double sumAreaBefore = 0;
+      for (size_t i = 0; i < countFig; i++)
+      {
+        sumAreaBefore += geometricFigures[i]->getArea();
+      }
+      std::cout << std::fixed << std::setprecision(1) << sumAreaBefore;
+      for (size_t j = 0; j < countFig; j++)
+      {
+        rectangle_t frame = geometricFigures[j]->getFrameRect();
+        xL = frame.pos.x - 0.5 * frame.width;
+        yL = frame.pos.y - 0.5 * frame.height;
+        xR = frame.pos.x + 0.5 * frame.width;
+        yR = frame.pos.y + 0.5 * frame.height;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << xL << ' ' << yL << ' ' << xR << ' ' << yR;
+      }
+      std::cout << "\n";
+      for (size_t k = 0; k < countFig; k++)
+      {
+        rectangle_t frameBefore = geometricFigures[k]->getFrameRect();
+        geometricFigures[k]->move({posx, posy});
+        rectangle_t frameAfter = geometricFigures[k]->getFrameRect();
+        double moveX = fabs(frameAfter.pos.x - frameBefore.pos.x)*coefficient;
+        double moveY = fabs(frameAfter.pos.y - frameBefore.pos.y)*coefficient;
+        geometricFigures[k]->scale(coefficient);
+        geometricFigures[k]->move(moveX, moveY);
+      }
+      double sumAreaAfter = 0;
+      for (size_t i = 0; i < countFig; i++)
+      {
+        sumAreaAfter += geometricFigures[i]->getArea();
+      }
+      std::cout << std::fixed << std::setprecision(1) << sumAreaAfter;
+      for (size_t j = 0; j < countFig; j++)
+      {
+        rectangle_t frame = geometricFigures[j]->getFrameRect();
+        xL = frame.pos.x - 0.5 * frame.width;
+        yL = frame.pos.y - 0.5 * frame.height;
+        xR = frame.pos.x + 0.5 * frame.width;
+        yR = frame.pos.y + 0.5 * frame.height;
+        std::cout << std::fixed << std::setprecision(1) << ' ' << xL << ' ' << yL << ' ' << xR << ' ' << yR;
+      }
+      std::cout << "\n";
+      scale = true;
+      break;
     }
   }
   if(countFig > 0)

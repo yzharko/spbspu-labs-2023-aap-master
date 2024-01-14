@@ -106,6 +106,10 @@ void Concave::move(double moveX, double moveY)
 
 void Concave::scale(double coefficient)
 {
+  if (coefficient <= 0)
+  {
+    throw std::logic_error("Wrong scale parameters\n");
+  }
   point_t pos;
   pos.x = fourthPoint_.x;
   pos.y = fourthPoint_.y;
