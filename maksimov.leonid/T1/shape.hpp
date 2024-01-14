@@ -5,11 +5,11 @@
 class Shape
 {
 public:
-  virtual double getArea() = 0;
+  virtual float getArea() = 0;
   virtual Rectangle_t getFrameRect() = 0;
-  virtual void move(const char, double) = 0;
-  virtual void move(double, double) = 0;
-  virtual void scale(double) = 0;
+  virtual void move(const char, float) = 0;
+  virtual void move(float, float) = 0;
+  virtual void scale(float) = 0;
 };
 
 #endif

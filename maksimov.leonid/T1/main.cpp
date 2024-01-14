@@ -13,26 +13,26 @@ int main()
   {
     if (figure == "RECTANGLE")
     {
-      double x1, y1, x2, y2;
+      float x1, y1, x2, y2;
       std::cin >> x1 >> y1 >> x2 >> y2;
       geometricFigures[count++] = new Rectangle(x1, y1, x2, y2);
       figure = "";
     }
     if (figure == "SQUARE")
     {
-      double x1, y1, width;
+      float x1, y1, width;
       std::cin >> x1 >> y1 >> width;
       geometricFigures[count++] = new Square(x1, y1, width);
       figure = "";
     }
     if (figure == "SCALE")
     {
-      double posX, posY, k;
+      float posX, posY, k;
       std::cin >> posX >> posY >> k;
       std::cout << std::fixed << std::setprecision(1);
       for (size_t i = 0; i < count; i++)
       {
-        std::cout << double(geometricFigures[i]->getArea()) << ' '
+        std::cout << float(geometricFigures[i]->getArea()) << ' '
         << geometricFigures[i]->getFrameRect().pos.x - (geometricFigures[i]->getFrameRect().width / 2) << ' '
         << geometricFigures[i]->getFrameRect().pos.y - (geometricFigures[i]->getFrameRect().height / 2) << ' '
         << geometricFigures[i]->getFrameRect().pos.x + (geometricFigures[i]->getFrameRect().width / 2) << ' '

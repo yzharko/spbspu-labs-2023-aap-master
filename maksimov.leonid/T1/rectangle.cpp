@@ -1,6 +1,6 @@
 #include "rectangle.hpp"
 
-Rectangle::Rectangle(double x1, double y1, double x2, double y2) :
+Rectangle::Rectangle(float x1, float y1, float x2, float y2) :
   pointLl{ x1, y1 },
   pointUr{ x2, y2 }
 {
@@ -9,7 +9,7 @@ Rectangle::Rectangle(double x1, double y1, double x2, double y2) :
   this->pos_ = { (abs(pointUr.x) - abs(pointLl.x)) / 2, (abs(pointUr.y) - abs(pointLl.y)) / 2 };
 }
 
-double Rectangle::getArea()
+float Rectangle::getArea()
 {
   return width_ * height_;
 }
@@ -19,7 +19,7 @@ Rectangle_t Rectangle::getFrameRect()
   return { width_, height_, pos_ };
 }
 
-void Rectangle::move(const char axis, double n)
+void Rectangle::move(const char axis, float n)
 {
   if (axis == 'x')
   {
@@ -35,14 +35,14 @@ void Rectangle::move(const char axis, double n)
   }
 }
 
-void Rectangle::move(double x, double y)
+void Rectangle::move(float x, float y)
 {
   pointLl = { x -  width_, y - height_ };
   pointUr = { x + width_, y + height_ };
   pos_ = { x, y };
 }
 
-void Rectangle::scale(double k)
+void Rectangle::scale(float k)
 {
   width_ *= k;
   height_ *= k;
