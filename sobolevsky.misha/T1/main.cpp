@@ -190,18 +190,7 @@ int main()
     }
     else
     {
-      bool flag = false;
-      for (size_t i = 0; i < figureType.length(); i++)
-      {
-        if (isdigit(figureType[i]))
-        {
-          flag = true;
-        }
-      }
-      if (!flag)
-      {
-        std::cerr << "not my variant\n";
-      }
+      continue;
     }
   }
   for (size_t i = 0; i < counter; i++)
