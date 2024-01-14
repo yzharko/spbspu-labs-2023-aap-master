@@ -14,11 +14,11 @@ int main()
   likhachev::Shape *shapes[1000];
 
   std::string shapeName = "";
-  double *shapeParams;
   while (std::cin >> shapeName) {
     if (shapeName == "PARALLELOGRAM" || shapeName == "RING" || shapeName == "RECTANGLE") {
       // Lavran TODO: Присутствуют повтоерия. Попробовать заменить.
       int paramsCount = 0;
+      double *shapeParams = nullptr;
       if (shapeName == "PARALLELOGRAM") {
         paramsCount = 6;
         shapeParams = new double[paramsCount];
@@ -28,7 +28,6 @@ int main()
         shapes[shapeCount] = new likhachev::Parallelogram({shapeParams[0], shapeParams[1]},
                                                           {shapeParams[2], shapeParams[3]},
                                                           {shapeParams[4], shapeParams[5]});
-        delete[] shapeParams;
       }
 
       if (shapeName == "RING") {
@@ -39,7 +38,6 @@ int main()
         }
         shapes[shapeCount] = new likhachev::Ring({shapeParams[0], shapeParams[1]},
                                                   shapeParams[2], shapeParams[3]);
-        delete[] shapeParams;
       }
 
       if (shapeName == "RECTANGLE") {
@@ -50,8 +48,8 @@ int main()
         }
         shapes[shapeCount] = new likhachev::Rectangle({shapeParams[0], shapeParams[1]},
                                                       {shapeParams[2], shapeParams[3]});\
-        delete[] shapeParams;
       }
+      delete[] shapeParams;
       shapeCount++;
     }
   }
