@@ -92,7 +92,6 @@ int main()
             isCorrectlyDescribe = false;
             count -= 1;
             delete geometricShapes[count];
-            std:: cout << "error";
           }
           break;
         }
@@ -151,8 +150,9 @@ int main()
       //  double AfterlowerLeftX = AfterFrame.pos.x - 0.5 * AfterFrame.width;
        // double AfterlowerLeftY = AfterFrame.pos.y - 0.5 * AfterFrame.height;
         geometricShapes[i]->scale(multiplier);
-        double changeX = fabs((BeforeFrame.pos.x - AfterFrame.pos.x)) * multiplier;
-        double changeY = fabs((BeforeFrame.pos.y - AfterFrame.pos.y)) * multiplier;
+        double changeX = fabs((AfterFrame.pos.x - BeforeFrame.pos.x)) * multiplier;
+        double changeY = fabs((AfterFrame.pos.y - BeforeFrame.pos.y)) * multiplier;
+        geometricShapes[i]->scale(multiplier);
         geometricShapes[i]->move(changeX, changeY);
       }
       if (isCorrectlyDescribe == false)
