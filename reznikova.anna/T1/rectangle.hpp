@@ -16,7 +16,7 @@ namespace reznikova
     void move(const point_t& new_center) override;
     void scale(const double n) override;
   private:
-    rectangle_t rectangle_;
+    rectangle_t rect_;
   };
 }
 
