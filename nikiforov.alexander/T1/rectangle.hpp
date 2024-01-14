@@ -7,7 +7,6 @@ namespace nikiforov
   class Rectangle : public Shape
   {
   public:
-    ~Rectangle() = default;
     Rectangle(point_t firstPoint, point_t secondPoint);
     virtual double getArea() const;
     virtual rectangle_t getFrameRect() const;

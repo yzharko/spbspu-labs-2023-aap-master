@@ -7,7 +7,6 @@ namespace nikiforov
   class Square : public Shape
   {
   public:
-    ~Square() = default;
     Square(point_t firstPoint, double length);
     virtual double getArea() const;
     virtual rectangle_t getFrameRect() const;
