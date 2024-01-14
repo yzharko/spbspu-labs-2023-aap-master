@@ -15,7 +15,7 @@ int main()
   using namespace smolyakov;
 
   bool isScaleCommandEntered = false;
-  bool isInvalidFigureEntered = false;
+  bool isInvalidShapeEntered = false;
   size_t shapeCount = 0;
   Shape** shapes = new Shape*[1];
 
@@ -72,6 +72,11 @@ int main()
 
   std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << ' ';
   printCompositeShapeParameters(std::cout, compositeShape);
+
+  if (isInvalidShapeEntered)
+  {
+    std::cerr << "An invalid shape was entered.\n";
+  }
 
   return 0;
 }
