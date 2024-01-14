@@ -3,7 +3,7 @@
 
 using namespace redko;
 
-Parallelogram::Parallelogram(const point_t & firstPoint, const point_t & secondPoint, const point_t & thirdPoint) :
+Parallelogram::Parallelogram(const point_t & firstPoint, const point_t & secondPoint, const point_t & thirdPoint):
   firstPoint_(firstPoint),
   secondPoint_(secondPoint),
   thirdPoint_(thirdPoint)

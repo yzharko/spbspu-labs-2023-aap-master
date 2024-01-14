@@ -9,7 +9,6 @@
 int main()
 {
   int arrSize = 10;
-  const int add = 10;
   redko::Shape ** shapes = new redko::Shape * [arrSize] {};
   redko::point_t * points = nullptr;
   int shapesCounter = 0;
@@ -20,14 +19,7 @@ int main()
   {
     if (shapesCounter == arrSize)
     {
-      arrSize += add;
-      redko::Shape ** newShapes = new redko::Shape * [arrSize];
-      for (int i = 0; i < shapesCounter; i++)
-      {
-        newShapes[i] = shapes[i];
-      }
-      delete[] shapes;
-      shapes = newShapes;
+      shapes = redko::expandShapes(shapes, shapesCounter, arrSize);
     }
 
     if (type == "SCALE")

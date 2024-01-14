@@ -20,6 +20,7 @@ namespace redko
   void printFrameCorners(double * frameCorners, int shapeNum);
 
   void deleteShapes(Shape ** shapeArr, int shapeNum);
+  Shape ** expandShapes(Shape ** shapeArr, int shapeNum, int & arrSize);
 }
 
 #endif
