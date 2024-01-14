@@ -90,16 +90,6 @@ int main()
     else if (figureType == "SCALE")
     {
       double xx, yy, n;
-      if (n <= 0)
-      {
-        std::cerr << "scale shoulde be >0\n";
-        for (size_t i = 0; i < counter; i++)
-        {
-          delete figuers[i];
-        }
-        delete[] figuers;
-        return 1;
-      }
 
       if (counter == 0)
       {
@@ -113,6 +103,17 @@ int main()
       }
       else if (std::cin >> xx >> yy >> n)
       {
+        if (n <= 0)
+        {
+          std::cerr << "scale shoulde be >0\n";
+          for (size_t i = 0; i < counter; i++)
+          {
+            delete figuers[i];
+          }
+          delete[] figuers;
+          return 1;
+        }
+
         std::cout << std::fixed << std::setprecision(1);
 
         double sumArea = 0;
