@@ -58,10 +58,3 @@ void ponomarev::inpFigure(std::string nameOfFigure, std::istream & input, ponoma
   }
 }
 
-
-
-
-
-
-
-

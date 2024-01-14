@@ -4,7 +4,7 @@
 
 int main()
 {
-  ponomarev::Shape ** figures = new ponomarev::Shape * [3];
+  ponomarev::Shape ** figures = new ponomarev::Shape * [10];
   size_t countOfFigures = 0;
   bool isWrongFigureEnter = 0;
   bool isInputScale = 0;
