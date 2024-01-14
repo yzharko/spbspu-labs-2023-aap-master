@@ -90,6 +90,16 @@ int main()
     else if (figureType == "SCALE")
     {
       double xx, yy, n;
+      if (n < 0.0)
+      {
+        std::cerr << "scale shoulde be >0\n";
+        for (size_t i = 0; i < counter; i++)
+        {
+          delete figuers[i];
+        }
+        delete[] figuers;
+        return 1;
+      }
       if (counter == 0)
       {
         std::cerr << "no bitches\n";
