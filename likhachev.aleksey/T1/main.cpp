@@ -12,13 +12,13 @@ int main()
 
   size_t shapeCount = 0;
   likhachev::Shape *shapes[1000];
+  double shapeParams[10] {0};
 
   std::string shapeName = "";
   while (std::cin >> shapeName) {
     if (shapeName == "PARALLELOGRAM" || shapeName == "RING" || shapeName == "RECTANGLE") {
       // Lavran TODO: Присутствуют повтоерия. Попробовать заменить.
       int paramsCount = 0;
-      double shapeParams[6] {0.0};
       if (shapeName == "PARALLELOGRAM") {
         paramsCount = 6;
         for (int i = 0; i < paramsCount; i++) {
