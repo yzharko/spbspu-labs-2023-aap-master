@@ -1,6 +1,7 @@
 #ifndef SHAPE_FUNCTIONS_HPP
 #define SHAPE_FUNCTIONS_HPP
 #include "shape.hpp"
+#include <iostream>
 
 namespace likhachev
 {
