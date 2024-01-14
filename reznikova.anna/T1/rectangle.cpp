@@ -3,9 +3,9 @@
 #include "base-types.hpp"
 
 reznikova::Rectangle::Rectangle(const rectangle_t& rect):
-  rect_(rect)
+  rectangle_(rect)
 {
-  if (!rect_.width || !rect_.height)
+  if (!rectangle_.width || !rectangle_.height)
   {
     throw std::logic_error("Bad rectangle!");
   }
