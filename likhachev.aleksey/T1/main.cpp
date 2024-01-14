@@ -52,6 +52,7 @@ int main()
   }
 
   likhachev::coutShapesData(shapes, shapeCount);
+  std::cout << "\n";
 
   likhachev::Point_t scalePoint(0, 0);
   double scaleMulti = 0;
