@@ -7,13 +7,13 @@ namespace sobolevsky
     Point1 = Point1_1;
     Point2 = Point2_1;
     Point3 = Point3_1;
-    centerPoint.x = (Point2.x + Point1.x) / 2;
-    centerPoint.y = (Point2.y + Point1.y) / 2;
+    centerPoint.x = (Point2.x + Point3.x) / 2;
+    centerPoint.y = (Point2.y + Point3.y) / 2;
   }
 
   double Parallelogram::getArea() const
   {
-    return ((Point2.x - Point1.x) * (Point3.y - Point1.y));
+    return ((Point2.x - Point1.x) * (Point1.y - Point3.y));
   }
 
   rectangle_t Parallelogram::getFrameRect() const
