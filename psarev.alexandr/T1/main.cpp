@@ -47,7 +47,7 @@ int main()
       double coef = 0.0;
       try
       {
-        if (std::cin >> scaleCenter.x >> scaleCenter.y >> coef) {
+        if ((std::cin >> scaleCenter.x >> scaleCenter.y >> coef) && (coef > 0)) {
           scaleMark = true;
 
           double startAreaSum = 0.0;
@@ -122,7 +122,6 @@ int main()
         delete[] queue;
         return 1;
       }
-      
     }
   }
   delete[] rectData;
