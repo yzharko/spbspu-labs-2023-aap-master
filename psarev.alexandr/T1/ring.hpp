@@ -10,7 +10,7 @@ namespace psarev
     Ring(point_t point, double firRad, double secRad);
     double getArea() const override;
     rectangle_t getFrameRect() const override;
-    void move(point_t newCenter) override;
+    void move(const point_t newCenter) override;
     void move(double xCh, double yCh) override;
     void scale(double coef) override;
   private:
