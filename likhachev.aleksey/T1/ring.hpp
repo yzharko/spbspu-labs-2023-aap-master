@@ -1,7 +1,7 @@
 #ifndef RING_HPP
 #define RING_HPP
-#include "../shape.hpp"
-#include "../shapesCommon.hpp"
+#include "shape.hpp"
+#include "base-types.hpp"
 
 namespace likhachev
 {

@@ -1,7 +1,7 @@
 #ifndef PARALLELOGRAM_HPP
 #define PARALLELOGRAM_HPP
-#include "../shape.hpp"
-#include "../shapesCommon.hpp"
+#include "shape.hpp"
+#include "base-types.hpp"
 
 namespace likhachev
 {

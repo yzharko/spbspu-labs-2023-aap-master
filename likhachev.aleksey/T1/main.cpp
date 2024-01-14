@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
-#include "classes/shapes/shapes.hpp"
-#include "utils/utils.hpp"
+#include "shapes.hpp"
+#include "utils.hpp"
 
 int main()
 {
