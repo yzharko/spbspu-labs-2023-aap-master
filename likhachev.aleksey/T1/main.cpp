@@ -18,10 +18,9 @@ int main()
     if (shapeName == "PARALLELOGRAM" || shapeName == "RING" || shapeName == "RECTANGLE") {
       // Lavran TODO: Присутствуют повтоерия. Попробовать заменить.
       int paramsCount = 0;
-      double *shapeParams = nullptr;
+      double shapeParams[6] {0.0};
       if (shapeName == "PARALLELOGRAM") {
         paramsCount = 6;
-        shapeParams = new double[paramsCount];
         for (int i = 0; i < paramsCount; i++) {
           std::cin >> shapeParams[i];
         }
@@ -32,7 +31,6 @@ int main()
 
       if (shapeName == "RING") {
         paramsCount = 4;
-        shapeParams = new double[paramsCount];
         for (int i = 0; i < paramsCount; i++) {
           std::cin >> shapeParams[i];
         }
@@ -42,14 +40,12 @@ int main()
 
       if (shapeName == "RECTANGLE") {
         paramsCount = 4;
-        shapeParams = new double[paramsCount];
         for (int i = 0; i < paramsCount; i++) {
           std::cin >> shapeParams[i];
         }
         shapes[shapeCount] = new likhachev::Rectangle({shapeParams[0], shapeParams[1]},
                                                       {shapeParams[2], shapeParams[3]});\
       }
-      delete[] shapeParams;
       shapeCount++;
     }
   }
