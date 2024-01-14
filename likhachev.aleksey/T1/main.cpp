@@ -52,10 +52,11 @@ int main()
 
   if (shapeCount) {
     std::cout << shapes[0]->getArea();
+    for (int i = 0; i < shapeCount; i++) {
+      delete[] shapes[i];
+    }
   }
 
-  for (int i = 0; i < shapeCount; i++) {
-    delete[] shapes[i];
-  }
+  
   return 1;
 }
