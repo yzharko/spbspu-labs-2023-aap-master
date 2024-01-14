@@ -29,7 +29,7 @@ namespace likhachev
     private:
       double width_;
       double height_;
-      Point_t pos_;
+      likhachev::Point_t pos_;
   };
 }
 #endif
