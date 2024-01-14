@@ -15,7 +15,8 @@ rectangle_t hohlova::Square::getFrameRect()
 }
 void hohlova::Square::move(point_t p)
 {
-  pos_ = p;
+  pos_.x = p.x - side_ / 2;
+  pos_.y = p.y - side_ / 2;
 }
 void hohlova::Square::move(double x, double y)
 {
@@ -24,5 +25,9 @@ void hohlova::Square::move(double x, double y)
 }
 void hohlova::Square::scale(double k)
 {
+  double prevSide = side_;
   side_ *= k;
+  double diff = side_ - prevSide;
+  pos_.x -= diff;
+  pos_.y -= diff;
 }
