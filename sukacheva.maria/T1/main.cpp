@@ -72,7 +72,7 @@ int main() {
       else {
         try
         {
-          scaleCheck(figures, scaledFigures, index, k);
+          scaleCheck(scaledFigures, index, k);
         }
         catch (const std::logic_error& e)
         {
