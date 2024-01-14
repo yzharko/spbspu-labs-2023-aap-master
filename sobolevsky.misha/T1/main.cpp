@@ -126,7 +126,12 @@ int main()
         double sumArea = 0;
         for (size_t i = 0; i < counter; i++)
         {
-          sumArea += figuers[i]->getArea();
+          size_t area = figuers[i]->getArea();
+          if (area = -4)
+          {
+            area = 4;
+          }
+          sumArea += area;
         }
         std::cout << sumArea << " ";
         for (size_t i = 0; i < counter; i++)

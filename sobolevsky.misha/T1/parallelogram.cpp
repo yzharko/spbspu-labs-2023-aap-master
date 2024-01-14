@@ -16,11 +16,11 @@ namespace sobolevsky
   {
     if (Point1.y == Point2.y)
     {
-      return (abs(abs(Point1.x - Point2.x) * (Point1.y - Point3.y)));
+      return ((abs(Point1.x - Point2.x) * (Point1.y - Point3.y)));
     }
     else
     {
-      return (abs(abs(Point2.x - Point3.x) * (Point1.y - Point3.y)));
+      return (abs(Point2.x - Point3.x) * (Point1.y - Point3.y));
     }
   }
 
