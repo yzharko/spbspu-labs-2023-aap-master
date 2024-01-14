@@ -9,6 +9,14 @@ likhachev::Parallelogram::Parallelogram(likhachev::point_t pointB, likhachev::po
   if (pointA_ == pointB_ || pointB_ == pointD_ || pointD_ == pointA_) {
     throw std::logic_error("The parameters are not logically incorrect\n");
   }
+
+  if (!(pointA_.y == pointB_.y || pointA_.y == pointD_.y)){
+    throw std::logic_error("The parameters are not logically incorrect\n");
+  }
+
+  if ((pointD_.x - pointA_.x) / (pointB_.x - pointA_.x) == (pointD_.y - pointA_.y) / (pointB_.y - pointA_.y)){
+    throw std::logic_error("The parameters are not logically incorrect\n");
+  }
 }
 
 likhachev::Parallelogram::Parallelogram(double pointBX, double pointBY, double pointAX, double pointAY, double pointDX, double pointDY):
