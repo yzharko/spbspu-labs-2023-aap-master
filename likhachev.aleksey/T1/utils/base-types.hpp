@@ -18,14 +18,14 @@ namespace likhachev
 
   struct Rectangle_t {
     public:
-      Rectangle_t(double width, double height, Point_t pos);
+      Rectangle_t(double width, double height, likhachev::Point_t pos);
       double getArea() const;
       double getWidth() const;
       double getHeight() const;
       likhachev::Point_t getPos() const;
       void setWidth(double width);
       void setHeight(double height);
-      void setPos(Point_t pos);
+      void setPos(likhachev::Point_t pos);
     private:
       double width_;
       double height_;

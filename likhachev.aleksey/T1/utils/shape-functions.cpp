@@ -1,7 +1,7 @@
 #include "shape-functions.hpp"
 #include <iostream>
 
-void likhachev::coutShapesData(Shape **shapes, size_t shapeCount)
+void likhachev::coutShapesData(likhachev::Shape **shapes, size_t shapeCount)
 {
   double areaSum = 0.0;
   for (size_t i = 0; i < shapeCount; i++) {

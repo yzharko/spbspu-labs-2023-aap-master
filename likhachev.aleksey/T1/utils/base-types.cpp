@@ -41,7 +41,7 @@ likhachev::Point_t& likhachev::Point_t::operator-=(const Point_t& rhs)
   return *this;
 }
 
-likhachev::Rectangle_t::Rectangle_t(double width, double height, Point_t pos):
+likhachev::Rectangle_t::Rectangle_t(double width, double height, likhachev::Point_t pos):
   width_(width),
   height_(height),
   pos_(pos)
