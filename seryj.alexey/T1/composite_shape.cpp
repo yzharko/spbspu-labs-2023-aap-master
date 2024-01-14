@@ -1,7 +1,6 @@
 #include "composite_shape.hpp"
-#include <exception>
+#include <stdexcept>
 #include <cmath>
-#include <iostream>
 using namespace seryj;
 CompositeShape::CompositeShape()
 {

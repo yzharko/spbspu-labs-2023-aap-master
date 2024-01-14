@@ -1,7 +1,6 @@
 #include "rectangle.hpp"
 #include <cmath>
-#include <iostream>
-#include <exception>
+#include <stdexcept>
 using namespace seryj;
 Rectangle::Rectangle(point_t lp, point_t rp)
 {

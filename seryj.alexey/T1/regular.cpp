@@ -1,9 +1,7 @@
 #include "regular.hpp"
 #define _USE_MATH_DEFINES
 #include <cmath>
-#include <exception>
-#include <iostream>
-#include <iomanip>
+#include <stdexcept>
 using namespace seryj;
 Regular::Regular(point_t a, point_t b, point_t c)
 {
