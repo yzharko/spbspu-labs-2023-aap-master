@@ -16,7 +16,7 @@ double kovshikov::Triangle::getArea() const
   double sideCa = sqrt(pow(vertexC_.x - vertexA_.x, 2) + pow(vertexC_.y - vertexA_.y, 2));
   if (sideAb >= sideBc + sideCa || sideBc >= sideAb + sideCa || sideCa >= sideAb + sideBc )
   {
-    throw std::logic_error("WRONG TRIANGLE!!!");
+    return 0.0;
   }
   double p = (sideAb + sideBc + sideCa) / 2;
   return sqrt(p * (p - sideAb) * (p - sideBc) * (p - sideCa));

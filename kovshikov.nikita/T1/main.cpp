@@ -43,11 +43,8 @@ int main()
 
       geometricShapes[count++] = new Triangle({vertexAX, vertexAY}, {vertexBX, vertexBY}, {vertexCX, vertexCY});
       isAtLeastOneFigure = true;
-      try
-      {
-        geometricShapes[count - 1]->getArea();
-      }
-      catch(const std::logic_error& en)
+      double check = geometricShapes[count - 1]->getArea();
+      if(check == 0.0)
       {
         isCorrectlyDescribe = false;
         count -= 1;
@@ -91,9 +88,11 @@ int main()
            }
           catch(const std::logic_error& e)
           {
+            std::cerr << e.what();
             isCorrectlyDescribe = false;
             count -= 1;
             delete geometricShapes[count];
+            std:: cout << "error";
           }
           break;
         }
