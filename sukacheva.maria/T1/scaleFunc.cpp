@@ -91,7 +91,7 @@ void sukacheva::getScaledArea(Shape* figures[], int index, double& scaledArea, d
   std::cout << std::fixed << std::setprecision(1) << scaledArea;
 }
 
-void sukacheva::scaleCheck(Shape* figures[], Shape* scaledFigures[], int index, double k)
+void sukacheva::scaleCheck(Shape* scaledFigures[], int index, double k)
 {
   for (int i = 0; i < index; i++) {
     scaledFigures[i]->scale(k);
