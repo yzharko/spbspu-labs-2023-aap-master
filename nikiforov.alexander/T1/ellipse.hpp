@@ -7,6 +7,7 @@ namespace nikiforov
   class Ellipse : public Shape
   {
   public:
+    ~Ellipse() = default;
     Ellipse(point_t firstPoint, double firstRad, double secondRad);
     virtual double getArea() const;
     virtual rectangle_t getFrameRect() const;
