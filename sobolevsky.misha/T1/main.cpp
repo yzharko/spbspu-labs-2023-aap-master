@@ -190,7 +190,8 @@ int main()
     }
     else
     {
-      std::cerr << "not my variant";
+      std::cerr << "not my variant\n";
+      continue;
     }
   }
   for (size_t i = 0; i < counter; i++)
