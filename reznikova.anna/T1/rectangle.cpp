@@ -2,12 +2,12 @@
 #include <iostream>
 #include "base-types.hpp"
 
-reznikova::Rectangle::Rectangle(rectangle_t rect):
-rectangle_(rect)
+reznikova::Rectangle::Rectangle(const rectangle_t& rect):
+  rect_(rect)
 {
-  if ((rect.width <= 0) || (rect.height <= 0))
+  if (!rect_.width || !rect_.height)
   {
-    throw std::runtime_error("wrong parameters\n");
+    throw std::logic_error("Bad rectangle!");
   }
 }
 
