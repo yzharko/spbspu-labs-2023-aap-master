@@ -8,7 +8,9 @@
 
 int main()
 {
-  redko::Shape ** shapes = new redko::Shape * [1000] {};
+  int arrSize = 10;
+  const int add = 10;
+  redko::Shape ** shapes = new redko::Shape * [arrSize] {};
   redko::point_t * points = nullptr;
   int shapesCounter = 0;
   std::string type = "";
@@ -16,6 +18,18 @@ int main()
 
   while (std::cin >> type)
   {
+    if (shapesCounter == arrSize)
+    {
+      arrSize += add;
+      redko::Shape ** newShapes = new redko::Shape * [arrSize];
+      for (int i = 0; i < shapesCounter; i++)
+      {
+        newShapes[i] = shapes[i];
+      }
+      delete[] shapes;
+      shapes = newShapes;
+    }
+
     if (type == "SCALE")
     {
       if (shapesCounter == 0)
@@ -53,11 +67,11 @@ int main()
       double scaledAreasSum = redko::countAreas(shapes, shapesCounter);
       double * scaledFrameXY = redko::getFrameCorners(shapes, shapesCounter);
 
-      std::cout << std::fixed << std::setprecision(1) << areasSum;
+      std::cout << std::fixed << std::setprecision(1);
+      std::cout << areasSum;
       redko::printFrameCorners(frameXY, shapesCounter);
-      std::cout << '\n' << scaledAreasSum;
+      std::cout << scaledAreasSum;
       redko::printFrameCorners(scaledFrameXY, shapesCounter);
-      std::cout << '\n';
 
       if (someDescrIsWrong)
       {

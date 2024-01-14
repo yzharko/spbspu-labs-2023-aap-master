@@ -98,6 +98,7 @@ void redko::printFrameCorners(double * frameCorners, int shapeNum)
   {
     std::cout << ' ' << frameCorners[i];
   }
+  std::cout << '\n';
 }
 
 void redko::deleteShapes(redko::Shape ** shapeArr, int shapeNum)
