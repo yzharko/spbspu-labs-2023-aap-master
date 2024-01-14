@@ -3,7 +3,6 @@
 #include "rectangle.hpp"
 #include "square.hpp"
 #include "base-types.hpp"
-#include "main.h"
 using namespace maksimov;
 
 int main()
