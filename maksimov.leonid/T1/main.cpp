@@ -32,11 +32,17 @@ int main()
       std::cout << std::fixed << std::setprecision(1);
       for (size_t i = 0; i < count; i++)
       {
-        std::cout << double(geometricFigures[i]->getArea()) << ' ' << geometricFigures[i]->getFrameRect().pos.x - (geometricFigures[i]->getFrameRect().width / 2) << ' ' << geometricFigures[i]->getFrameRect().pos.y - (geometricFigures[i]->getFrameRect().height / 2) << ' '
-        << geometricFigures[i]->getFrameRect().pos.x + (geometricFigures[i]->getFrameRect().width / 2) << ' ' << geometricFigures[i]->getFrameRect().pos.y + (geometricFigures[i]->getFrameRect().height / 2) << '\n';
+        std::cout << double(geometricFigures[i]->getArea()) << ' '
+        << geometricFigures[i]->getFrameRect().pos.x - (geometricFigures[i]->getFrameRect().width / 2) << ' '
+        << geometricFigures[i]->getFrameRect().pos.y - (geometricFigures[i]->getFrameRect().height / 2) << ' '
+        << geometricFigures[i]->getFrameRect().pos.x + (geometricFigures[i]->getFrameRect().width / 2) << ' '
+        << geometricFigures[i]->getFrameRect().pos.y + (geometricFigures[i]->getFrameRect().height / 2) << '\n';
         geometricFigures[i]->scale(k);
-        std::cout << geometricFigures[i]->getArea() << ' ' << geometricFigures[i]->getFrameRect().pos.x - (geometricFigures[i]->getFrameRect().width / 2) << ' ' << geometricFigures[i]->getFrameRect().pos.y - (geometricFigures[i]->getFrameRect().height / 2) << ' '
-        << geometricFigures[i]->getFrameRect().pos.x + (geometricFigures[i]->getFrameRect().width / 2) << ' ' << geometricFigures[i]->getFrameRect().pos.y + (geometricFigures[i]->getFrameRect().height / 2) << '\n';
+        std::cout << geometricFigures[i]->getArea() << ' '
+        << geometricFigures[i]->getFrameRect().pos.x - (geometricFigures[i]->getFrameRect().width / 2) << ' '
+        << geometricFigures[i]->getFrameRect().pos.y - (geometricFigures[i]->getFrameRect().height / 2) << ' '
+        << geometricFigures[i]->getFrameRect().pos.x + (geometricFigures[i]->getFrameRect().width / 2) << ' '
+        << geometricFigures[i]->getFrameRect().pos.y + (geometricFigures[i]->getFrameRect().height / 2) << '\n';
       }
     }
   }
