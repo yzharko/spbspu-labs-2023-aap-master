@@ -36,9 +36,8 @@ void khomichenko::Rectangle::move(point_t newPos)
   khomichenko::Rectangle::move(delta.x, delta.y);
 }
 
-void khomichenko::Rectangle::scale(double k)
+void khomichenko::Rectangle::scale(point_t pos, double k)
 {
-  point_t pos = { 0.5 * (rightTop.x + leftBottom.x), 0.5 * (rightTop.y + leftBottom.y)};
   point_t changed = {0.5 * (rightTop.x - leftBottom.x),0.5 * (rightTop.y - leftBottom.y)};
   point_t newCoordinates = {changed.x * k, changed.y * k};
   rightTop.x = pos.x + newCoordinates.x;

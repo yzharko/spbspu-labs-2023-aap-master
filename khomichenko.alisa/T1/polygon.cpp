@@ -164,18 +164,8 @@ void khomichenko::Polygon::move(point_t dPos)
   khomichenko::Polygon::move(dPos.x - pos.x, dPos.y - pos.y);
 }
 
-void khomichenko::Polygon::scale(double k)
+void khomichenko::Polygon::scale(point_t pos, double k)
 {
-  double x = 0;
-  double y = 0;
-  for (size_t i = 0; i < num_; i++)
-  {
-    x += points_[i].x;
-    y += points_[i].y;
-  }
-  x = x/num_;
-  y = y/num_;
-  point_t pos = {x, y};
   double dX = 0;
   double dY = 0;
   for (size_t i = 0; i < num_; i++)

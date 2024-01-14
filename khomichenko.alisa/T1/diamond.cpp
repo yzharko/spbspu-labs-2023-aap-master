@@ -42,3 +42,4 @@ void khomichenko::Diamond::scale(double k)
   first.x = third.x - widht;
   second.y = third.y + height;
 }
+
