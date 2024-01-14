@@ -39,6 +39,7 @@ int main()
         for (size_t i = 0; i < shapeCount; i++)
         {
           newShapes[i] = shapes[i];
+	  delete shapes[i];
         }
         delete[] shapes;
         shapes = newShapes;
