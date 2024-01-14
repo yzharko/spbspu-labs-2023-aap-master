@@ -37,9 +37,9 @@ void sukacheva::getCoordinatesAfter(Shape* figures[], int index, point_t center,
   std::cout << "\n";
 }
 
-void sukacheva::getRectangle(Shape* figures[], point_t leftPoint, point_t rightPoint, int& index)
+void sukacheva::getRectangle(Shape* figures[], point_t rightPoint, point_t leftPoint, int& index)
 {
-  Shape* rectangle = new sukacheva::Rectangle(leftPoint, rightPoint);
+  Shape* rectangle = new sukacheva::Rectangle(rightPoint, leftPoint);
   figures[index] = rectangle;
   index += 1;
 }

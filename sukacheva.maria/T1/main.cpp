@@ -19,7 +19,7 @@ int main() {
       std::cin >> leftPoint.x >> leftPoint.y >> rightPoint.x >> rightPoint.y;
       try
       {
-        getRectangle(figures, leftPoint, rightPoint, index);
+        getRectangle(figures, rightPoint, leftPoint, index);
       }
       catch (const std::logic_error& e)
       {
