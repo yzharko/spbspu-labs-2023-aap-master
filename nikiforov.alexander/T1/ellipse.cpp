@@ -15,7 +15,7 @@ Ellipse::Ellipse(point_t firstPoint, double firstRad, double secondRad) :
 
 double Ellipse::getArea() const
 {
-  return 3.14 * firstRad * secondRad;
+  return 3.1415926535 * firstRad * secondRad;
 }
 
 rectangle_t Ellipse::getFrameRect() const
