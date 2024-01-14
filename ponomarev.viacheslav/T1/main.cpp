@@ -82,7 +82,7 @@ int main()
   if (isWrongFigureEnter)
   {
     std::cerr << "Wrong figure input.\n";
-    return 1;
+    return 0;
   }
 
   for (size_t i = 0; i < countOfFigures; i++)
