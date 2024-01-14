@@ -72,8 +72,8 @@ int main()
       delete[] figures;
       return 1;
     }
-    double offsetX = (frameBeforeMove.center.x - frameAfterMove.center.x) * k;
-    double offsetY = (frameBeforeMove.center.y - frameAfterMove.center.y) * k;
+    double offsetX = (frameBeforeMove.pos.x - frameAfterMove.pos.x) * k;
+    double offsetY = (frameBeforeMove.pos.y - frameAfterMove.pos.y) * k;
     figures[i]->move(offsetX, offsetY);
   }
 

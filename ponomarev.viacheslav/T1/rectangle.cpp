@@ -29,8 +29,8 @@ rectangle_t Rectangle::getFrameRect() const
 void Rectangle::move(const point_t & newCenter)
 {
   rectangle_t frame = getFrameRect();
-  double offsetX = newCenter.x - frame.center.x;
-  double offsetY = newCenter.y - frame.center.y;
+  double offsetX = newCenter.x - frame.pos.x;
+  double offsetY = newCenter.y - frame.pos.y;
   move(offsetX, offsetY);
 }
 
