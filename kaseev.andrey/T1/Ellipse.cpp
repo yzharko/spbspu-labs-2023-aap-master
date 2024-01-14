@@ -1,5 +1,4 @@
 #include "Ellipse.hpp"
-#include " base-types.hpp"
 
 kaseev::Ellipce::Ellipce(point_t center, double vertRad, double gorRad):
     center(center),

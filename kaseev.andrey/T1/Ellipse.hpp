@@ -3,7 +3,8 @@
 #include "shape.hpp"
 #include " base-types.hpp"
 
-namespace kaseev {
+namespace kaseev
+{
   class Ellipce : public shape {
   public:
     Ellipce(point_t center, double vertRad, double gorRad);

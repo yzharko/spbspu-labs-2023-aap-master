@@ -1,20 +1,19 @@
 #include <iostream>
 #include "rectangle.hpp"
-#include " base-types.hpp"
 
 kaseev::Rectangle::Rectangle(point_t lPoint, point_t rPoint):
     lPoint(lPoint),
     rPoint(rPoint)
 {}
 
-double kaseev::Rectangle::getArea()
+double kaseev::Rectangle::getArea() const
 {
   double width = std::abs(rPoint.x - lPoint.x);
   double height = std::abs(rPoint.y - lPoint.y);
   return width * height;
 }
 
-rectangle_t kaseev::Rectangle::getFrameRect()
+rectangle_t kaseev::Rectangle::getFrameRect() const
 {
   double width = std::abs(rPoint.x - lPoint.x);
   double height = std::abs(rPoint.y - lPoint.y);

@@ -1,6 +1,5 @@
 #include <cmath>
 #include "Parallelogram.hpp"
-#include " base-types.hpp"
 
 kaseev::Parallelogram::Parallelogram(point_t A, point_t B, point_t C):
 A(A),
@@ -30,7 +29,8 @@ rectangle_t kaseev::Parallelogram::getFrameRect() const
 {
   double height = std::abs(std::max(std::max(A.y, B.y), C.y) - std::min(std::min(A.y, B.y), C.y));
   double width = std::abs(std::max(std::max(A.x, B.x), C.x) - std::min(std::min(A.x, B.x), C.x));
-  point_t cos = { ((std::max(std::max(A.x, B.x), C.x) + std::min(std::min(A.x, B.x), C.x)) * 0.5),((std::max(std::max(A.y, B.y), C.y) + std::min(std::min(A.y, B.y), C.y)) * 0.5) };
+  point_t cos = { ((std::max(std::max(A.x, B.x), C.x) + std::min(std::min(A.x, B.x), C.x)) * 0.5),
+                  ((std::max(std::max(A.y, B.y), C.y) + std::min(std::min(A.y, B.y), C.y)) * 0.5) };
   rectangle_t frameRect = { width, height, cos };
   return frameRect;
 }
@@ -53,7 +53,10 @@ void kaseev::Parallelogram::scale(double k)
 {
   double CenterY = (std::max(std::max(A.y, B.y), C.y) + std::min(std::min(A.y, B.y), C.y)) * 0.5;
   double CenterX = (std::max(std::max(A.x, B.x), C.x) + std::min(std::min(A.x, B.x), C.x)) * 0.5;
-  A = { (CenterX + (A.x - CenterX) * k), (CenterY + (A.y - CenterY) * k) };
-  B = { (CenterX + (B.x - CenterX) * k), (CenterY + (B.y - CenterY) * k) };
-  C = { (CenterX + (C.x - CenterX) * k), (CenterY + (C.y - CenterY) * k) };
+  A = { (CenterX + (A.x - CenterX) * k),
+        (CenterY + (A.y - CenterY) * k) };
+  B = { (CenterX + (B.x - CenterX) * k),
+        (CenterY + (B.y - CenterY) * k) };
+  C = { (CenterX + (C.x - CenterX) * k),
+        (CenterY + (C.y - CenterY) * k) };
 }

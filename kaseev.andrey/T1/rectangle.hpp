@@ -3,15 +3,16 @@
 #include "shape.hpp"
 #include " base-types.hpp"
 
-namespace kaseev {
+namespace kaseev
+{
   class Rectangle : public shape {
   public:
     Rectangle(point_t lPoint, point_t rPoint);
-    virtual double getArea();
-    virtual rectangle_t getFrameRect();
-    virtual void move(double nx, double ny);
-    virtual void move(point_t center);
-    virtual void scale(double k);
+    double getArea() const;
+    rectangle_t getFrameRect() const;
+    void move(double nx, double ny);
+    void move(point_t center);
+    void scale(double k);
   private:
     point_t lPoint;
     point_t rPoint;
