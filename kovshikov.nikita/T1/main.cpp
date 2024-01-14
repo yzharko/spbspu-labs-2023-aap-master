@@ -123,21 +123,13 @@ int main()
       std::cout << std::fixed << std::setprecision(1) << totalAreaBefore << " ";
       for (size_t i = 0; i < count; i++)
       {
-        /*double newPosX = 0 - posX;
-        double newPosY = 0 - posY;
-        geometricShapes[i]->move({newPosX, newPosY});
-        geometricShapes[i]->scale(multiplier);*/
-        rectangle_t BeforeFrame = geometricShapes[i]->getFrameRect();
-       // double BeforelowerLeftX = BeforeFrame.pos.x - 0.5 * BeforeFrame.width;
-       // double BeforelowerLeftY = BeforeFrame.pos.y - 0.5 * BeforeFrame.height;
-        geometricShapes[i]->move({posX, posY});
-        rectangle_t AfterFrame = geometricShapes[i]->getFrameRect();
-      //  double AfterlowerLeftX = AfterFrame.pos.x - 0.5 * AfterFrame.width;
-       // double AfterlowerLeftY = AfterFrame.pos.y - 0.5 * AfterFrame.height;
-        geometricShapes[i]->scale(multiplier);
-        double changeX = (BeforeFrame.pos.x - AfterFrame.pos.x) * multiplier;
-        double changeY = (BeforeFrame.pos.y - AfterFrame.pos.y) * multiplier;
-        geometricShapes[i]->move(changeX, changeY);
+        rectangle_t frame = geometricShapes[i]->getFrameRect();
+        double lowerLeftX = frame.pos.x - 0.5 * frame.width;
+        double lowerLeftY = frame.pos.y - 0.5 * frame.height;
+        double upperRightX = frame.pos.x + 0.5 * frame.width;
+        double upperRightY = frame.pos.y + 0.5 * frame.height;
+        std::cout << std::fixed << std::setprecision(1) << lowerLeftX << " " << lowerLeftY << " ";
+        std::cout << std::fixed << std::setprecision(1) << upperRightX << " " << upperRightY;
         if (i != count - 1)
           {
             std::cout << " ";
