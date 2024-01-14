@@ -14,11 +14,12 @@ int main() {
     std::cin >> nameOfFigure;
     if (nameOfFigure == "RECTANGLE")
     {
-      double x1, y1, x2, y2 = 0;
-      std::cin >> x1 >> y1 >> x2 >> y2;
+      point_t leftPoint = { 0, 0 };
+      point_t rightPoint = { 0, 0 };
+      std::cin >> leftPoint.x >> leftPoint.y >> rightPoint.x >> rightPoint.y;
       try
       {
-        getRectangle(figures, x1, y1, x2, y2, index);
+        getRectangle(figures, leftPoint, rightPoint, index);
       }
       catch (const std::logic_error& e)
       {
@@ -27,11 +28,12 @@ int main() {
     }
     else if (nameOfFigure == "CIRCLE")
     {
-      double x, y, radius = 0;
-      std::cin >> x >> y >> radius;
+      double radius = 0;
+      point_t center = { 0, 0 };
+      std::cin >> center.x >> center.y >> radius;
       try
       {
-        getCircle(figures, x, y, radius, index);
+        getCircle(figures, center, radius, index);
       }
       catch (const std::logic_error& e)
       {
@@ -40,11 +42,14 @@ int main() {
     }
     else if (nameOfFigure == "PARALLELOGRAM")
     {
-      double x1, y1, x2, y2, x3, y3 = 0;
-      std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+      point_t aPoint = { 0, 0 };
+      point_t bPoint = { 0, 0 };
+      point_t cPoint = { 0, 0 };
+      std::cin >> aPoint.x >> aPoint.y >> bPoint.x >> bPoint.y
+        >> cPoint.x >> cPoint.y;
       try
       {
-        getParallelogram(figures, x1, y1, x2, y2, x3, y3, index);
+        getParallelogram(figures, aPoint, bPoint, cPoint, index);
       }
       catch (const std::logic_error& e)
       {
@@ -54,8 +59,9 @@ int main() {
     else if (nameOfFigure == "SCALE")
     {
       ifScale = 1;
-      double x, y, k = 0;
-      std::cin >> x >> y >> k;
+      double k = 0;
+      point_t center = { 0, 0 };
+      std::cin >> center.x >> center.y >> k;
       if ( k <= 0 || index == 0)
       {
         std::cerr << "Incorrect input of figures";
@@ -63,7 +69,6 @@ int main() {
         return 2;
       }
       else {
-        point_t center{ x, y };
         double firstArea = 0;
         double newArea = 0;
         getFirstArea(figures, index, firstArea);

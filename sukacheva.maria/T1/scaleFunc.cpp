@@ -37,29 +37,23 @@ void sukacheva::getCoordinatesAfter(Shape* figures[], int index, point_t center,
   std::cout << "\n";
 }
 
-void sukacheva::getRectangle(Shape* figures[], double x1, double y1, double x2, double y2, int& index)
+void sukacheva::getRectangle(Shape* figures[], point_t leftPoint, point_t rightPoint, int& index)
 {
-  point_t point1 = { x1, y1 };
-  point_t point2 = { x2, y2 };
-  Shape* rectangle = new sukacheva::Rectangle(point2, point1);
+  Shape* rectangle = new sukacheva::Rectangle(leftPoint, rightPoint);
   figures[index] = rectangle;
   index += 1;
 }
 
-void sukacheva::getCircle(Shape* figures[], double x, double y, double radius, int& index)
+void sukacheva::getCircle(Shape* figures[], point_t center, double radius, int& index)
 {
-  point_t point1 = { x, y };
-  Shape* circle = new Circle(point1, radius);
+  Shape* circle = new Circle(center, radius);
   figures[index] = circle;
   index += 1;
 }
 
-void sukacheva::getParallelogram(Shape* figures[], double x1, double y1, double x2, double y2, double x3, double y3, int& index)
+void sukacheva::getParallelogram(Shape* figures[], point_t aPoint, point_t bPoint, point_t cPoint, int& index)
 {
-  point_t point1 = { x1, y1 };
-  point_t point2 = { x2, y2 };
-  point_t point3 = { x3, y3 };
-  Shape* parallelogram = new Parallelogram(point1, point2, point3);
+  Shape* parallelogram = new Parallelogram(aPoint, bPoint, cPoint);
   figures[index] = parallelogram;
   index += 1;
 }
