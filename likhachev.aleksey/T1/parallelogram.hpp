@@ -1,5 +1,6 @@
 #ifndef PARALLELOGRAM_HPP
 #define PARALLELOGRAM_HPP
+#include <iostream>
 #include "shape.hpp"
 #include "base-types.hpp"
 

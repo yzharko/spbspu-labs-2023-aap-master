@@ -1,5 +1,4 @@
 #include "rectangle.hpp"
-#include <iostream>
 
 likhachev::Rectangle::Rectangle(likhachev::point_t lowerLeft, likhachev::point_t upperRight):
   lowerLeft_(lowerLeft),

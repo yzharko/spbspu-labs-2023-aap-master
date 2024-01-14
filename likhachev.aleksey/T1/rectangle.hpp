@@ -1,5 +1,6 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
+#include <iostream>
 #include "shape.hpp"
 #include "base-types.hpp"
 

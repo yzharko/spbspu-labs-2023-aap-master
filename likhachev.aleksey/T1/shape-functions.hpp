@@ -1,7 +1,8 @@
 #ifndef SHAPE_FUNCTIONS_HPP
 #define SHAPE_FUNCTIONS_HPP
-#include "shape.hpp"
 #include <iostream>
+#include "shape.hpp"
+#include "base-types.hpp"
 
 namespace likhachev
 {

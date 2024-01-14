@@ -1,5 +1,4 @@
 #include "base-types.hpp"
-#include <iostream>
 
 likhachev::point_t::point_t(double newX, double newY):
   x(newX),
