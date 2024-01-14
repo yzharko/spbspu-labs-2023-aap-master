@@ -53,44 +53,34 @@ void likhachev::Parallelogram::scale(double multiplier)
 {
   double width = getWidth();
   double height = getHeight();
-  likhachev::point_t offset(((multiplier * width) - width) / 2, ((multiplier * height) - height) / 2);
+  likhachev::point_t pos = getPos();
 
+  int xMultiplier = 1;
+  int yMultiplier = 1;
   if (pointA_.y == pointB_.y) {
-    int xMultiplier = 1;
-    int yMultiplier = 1;
     if (pointA_.x < pointB_.x) {
       xMultiplier = -1;
     }
-    if (pointA_.y < pointD_.y) {
+    if (pointA_.y > pointD_.y) {
       yMultiplier = -1;
     }
 
-    pointA_.x += offset.x * xMultiplier;
-    pointD_.x += offset.x * xMultiplier;
-    pointB_.x -= offset.x * xMultiplier;
-
-    pointA_.y += offset.y * yMultiplier;
-    pointB_.y += offset.y * yMultiplier;
-    pointD_.y -= offset.y * yMultiplier;
-
   } else {
-    int xMultiplier = 1;
-    int yMultiplier = 1;
     if (pointA_.x < pointD_.x) {
       xMultiplier = -1;
     }
-    if (pointA_.y < pointB_.y) {
+    if (pointA_.y > pointB_.y) {
       yMultiplier = -1;
     }
-
-    pointA_.x += offset.x * xMultiplier;
-    pointB_.x += offset.x * xMultiplier;
-    pointD_.x -= offset.x * xMultiplier;
-
-    pointA_.y += offset.y * yMultiplier;
-    pointD_.y += offset.y * yMultiplier;
-    pointB_.y -= offset.y * yMultiplier;
   }
+
+  pointA_.x += (pos.x - pointA_.x) * xMultiplier;
+  pointB_.x += (pos.x - pointB_.x) * xMultiplier;
+  pointD_.x += (pos.x - pointD_.x) * xMultiplier;
+
+  pointA_.y += (pos.y - pointA_.y) * yMultiplier;
+  pointB_.y += (pos.y - pointB_.y) * yMultiplier;
+  pointD_.y += (pos.y - pointD_.y) * yMultiplier;
 }
 
 double likhachev::Parallelogram::getWidth() const
