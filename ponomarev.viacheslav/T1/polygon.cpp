@@ -1,4 +1,5 @@
 #include "polygon.hpp"
+#include <cmath>
 
 using namespace ponomarev;
 
@@ -22,11 +23,7 @@ double Polygon::getArea() const
   float square = 0;
   for (size_t i = 1; i < (countPoints - 1); i++)
   {
-    square += points[i].x * (points[i+1].y - points[i-1].y);
-  }
-  if (square * 0.5 == -8.0)
-  {
-    square = 15;
+    square += abs(points[i].x * (points[i+1].y - points[i-1].y));
   }
   return square * 0.5;
 }
