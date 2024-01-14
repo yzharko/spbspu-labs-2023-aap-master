@@ -51,7 +51,6 @@ int main()
       }
 
       delete[] shapeParams;
-      shapeParams = nullptr;
       shapeCount++;
     }
   }
