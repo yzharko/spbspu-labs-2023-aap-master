@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "classes/shapes/shapes.hpp"
 #include "utils/utils.hpp"
 
@@ -51,6 +52,7 @@ int main()
     }
   }
 
+  std::cout << std::fixed << std::setprecision(1);
   likhachev::coutShapesData(shapes, shapeCount);
   std::cout << "\n";
 
@@ -70,5 +72,5 @@ int main()
     delete shapes[i];
   }
 
-  return 1;
+  return 0;
 }
