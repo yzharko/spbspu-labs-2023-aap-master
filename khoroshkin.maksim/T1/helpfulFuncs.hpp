@@ -10,7 +10,7 @@ namespace khoroshkin
   void implementCircle(Shape ** allFigures, size_t & figuresCounter);
   void implementComplexquad(Shape ** allFigures, size_t & figuresCounter);
   bool isRectangleCorrect(double x1, double y1, double x2, double y2);
-  bool isComplexquad(double x1,double y1,double x2,double y2,double x3,double y3,double x4,double y4);
+  bool isComplexquad(point_t pointA, point_t pointB, point_t pointC, point_t pointD);
   Shape ** expandArray(Shape ** array, size_t currSize, size_t newSize);
   void deleteFigures(Shape ** allFigures, size_t figuresCounter);
   void printResult(Shape ** allFigures, size_t figuresCounter);

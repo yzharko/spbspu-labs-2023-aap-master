@@ -35,7 +35,7 @@ void khoroshkin::implementCircle(khoroshkin::Shape ** allFigures, size_t & figur
 void khoroshkin::implementComplexquad(khoroshkin::Shape ** allFigures, size_t & figuresCounter)
 {
   double x1, y1, x2, y2, x3, y3, x4, y4;
-  if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4 && isComplexquad(x1,y1,x2,y2,x3,y3,x4,y4))
+  if (std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4 && isComplexquad({x1,y1}, {x2,y2}, {x3,y3}, {x4,y4}))
   {
     allFigures[figuresCounter++] = new khoroshkin::Complexquad(point_t{x1, y1},\
     point_t{x2, y2}, point_t{x3, y3}, point_t{x4, y4});
@@ -51,12 +51,12 @@ bool khoroshkin::isRectangleCorrect(double x1, double y1, double x2, double y2)
   return x1 < x2 && y1 < y2;
 }
 
-bool khoroshkin::isComplexquad(double x1,double y1,double x2,double y2,double x3,double y3,double x4,double y4)
+bool khoroshkin::isComplexquad(point_t pointA, point_t pointB, point_t pointC, point_t pointD)
 {
-  int quaterA = (x1 > 0) ? ((y1 >= 0) ? 1 : 4) : ((y1 > 0) ? 2 : 3);
-  int quaterB = (x2 > 0) ? ((y2 >= 0) ? 1 : 4) : ((y2 > 0) ? 2 : 3);
-  int quaterC = (x3 > 0) ? ((y3 >= 0) ? 1 : 4) : ((y3 > 0) ? 2 : 3);
-  int quaterD = (x4 > 0) ? ((y4 >= 0) ? 1 : 4) : ((y4 > 0) ? 2 : 3);
+  int quaterA = (pointA.x > 0) ? ((pointA.y >= 0) ? 1 : 4) : ((pointA.y > 0) ? 2 : 3);
+  int quaterB = (pointB.x > 0) ? ((pointB.y >= 0) ? 1 : 4) : ((pointB.y > 0) ? 2 : 3);
+  int quaterC = (pointC.x > 0) ? ((pointC.y >= 0) ? 1 : 4) : ((pointC.y > 0) ? 2 : 3);
+  int quaterD = (pointD.x > 0) ? ((pointD.y >= 0) ? 1 : 4) : ((pointD.y > 0) ? 2 : 3);
 
   return (quaterA != quaterB && quaterB != quaterC && quaterC != quaterD && quaterD != quaterA);
 }
