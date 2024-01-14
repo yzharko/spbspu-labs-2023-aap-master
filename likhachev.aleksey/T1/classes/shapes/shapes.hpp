@@ -6,4 +6,8 @@
 #include "inheritedShapes/rectangle.hpp"
 #include "inheritedShapes/ring.hpp"
 
+#include "inheritedShapes/parallelogram.cpp"
+#include "inheritedShapes/rectangle.cpp"
+#include "inheritedShapes/ring.cpp"
+
 #endif
