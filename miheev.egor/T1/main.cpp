@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "figuresValidating.hpp"
+#include "geometricalMethods.hpp"
 #include "rectangle.hpp"
 #include "printFunctions.hpp"
 #include "triangle.hpp"
@@ -52,7 +53,7 @@ int main()
       double x1 = 0, y1 = 0, x2 = 0, y2 = 0;
       if(std::cin >> x1 >> y1 >> x2 >> y2 && x2 > x1 && y2 > y1)
       {
-        shapes[figsNow++] = new Rectangle(point_t(x1, y1), point_t(x2, y2));
+        shapes[figsNow++] = new Rectangle({x1, y1}, {x2, y2});
       }
       else
       {
@@ -96,7 +97,7 @@ int main()
 
         for (size_t i = 0; i < figsNow; i++)
         {
-          point_t scaleCenter(x0, y0);
+          point_t scaleCenter{x0, y0};
           Shape* shape = shapes[i];
           sumAreaBefore += shape->getArea();
           rectangle_t rectBefore = shape->getFrameRect();

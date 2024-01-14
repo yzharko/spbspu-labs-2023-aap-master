@@ -1,14 +1,15 @@
 #include "rectangle.hpp"
 #include <cmath>
+#include "geometricalMethods.hpp"
 
 miheev::Rectangle::Rectangle(miheev::point_t bottomLeft, miheev::point_t topRight)
 {
   points_ = new point_t[4];
-  points_[0] = point_t(bottomLeft.x, bottomLeft.y);
-  points_[1] = point_t(bottomLeft.x, topRight.y);
-  points_[2] = point_t(topRight.x, topRight.y);
-  points_[3] = point_t(topRight.x, bottomLeft.y);
-  center_ = bottomLeft.findMiddle(topRight);
+  points_[0] = point_t{bottomLeft.x, bottomLeft.y};
+  points_[1] = point_t{bottomLeft.x, topRight.y};
+  points_[2] = point_t{topRight.x, topRight.y};
+  points_[3] = point_t{topRight.x, bottomLeft.y};
+  center_ = point_t{(bottomLeft.x + topRight.x)/2, (bottomLeft.y + topRight.y)/2};
   width_ = topRight.x - bottomLeft.x;
   height_ = topRight.y - bottomLeft.y;
 }
@@ -25,16 +26,16 @@ double miheev::Rectangle::getArea() const
 
 miheev::rectangle_t miheev::Rectangle::getFrameRect() const
 {
-  return rectangle_t(center_, width_, height_);
+  return rectangle_t{center_, width_, height_};
 }
 
 void miheev::Rectangle::move(double dx, double dy)
 {
   for(size_t i = 0; i < 4; i++)
   {
-    points_[i].move(dx, dy);
+    movePoint(points_[i], dx, dy);
   }
-  center_.move(dx, dy);
+  movePoint(center_, dx, dy);
 }
 
 void miheev::Rectangle::move(point_t p)
@@ -50,7 +51,7 @@ void miheev::Rectangle::scale(double k)
   {
     double dx = (points_[i].x - center_.x) * (k - 1);
     double dy = (points_[i].y - center_.y) * (k - 1);
-    points_[i].move(dx, dy * k);
+    movePoint(points_[i], dx, dy * k);
   }
   width_*= k;
   height_*=k;

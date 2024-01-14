@@ -1,6 +1,7 @@
 #include "triangle.hpp"
 #include <cstddef>
 #include <cmath>
+#include "geometricalMethods.hpp"
 
 miheev::Triangle::Triangle(point_t p1, point_t p2, point_t p3)
 {
@@ -15,7 +16,7 @@ miheev::Triangle::Triangle(point_t p1, point_t p2, point_t p3)
     sumX += points_[i].x;
     sumY += points_[i].y;
   }
-  center_ = point_t(sumX/3, sumY/3);
+  center_ = point_t{sumX/3, sumY/3};
 }
 
 miheev::Triangle::~Triangle()
@@ -60,7 +61,7 @@ miheev::rectangle_t miheev::Triangle::getFrameRect() const
   }
   double width = right - left;
   double height = top - bottom;
-  return rectangle_t({left + width/2, bottom + height/2}, width, height);
+  return rectangle_t{{left + width/2, bottom + height/2}, width, height};
 }
 
 void miheev::Triangle::move(double dx, double dy)
@@ -85,6 +86,6 @@ void miheev::Triangle::scale(double k)
   {
     double dx = (points_[i].x - center_.x) * (k - 1);
     double dy = (points_[i].y - center_.y) * (k - 1);
-    points_[i].move(dx, dy);
+    movePoint(points_[i], dx, dy);
   }
 }

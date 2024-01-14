@@ -1,10 +1,11 @@
 #include "figuresValidating.hpp"
+#include "geometricalMethods.hpp"
 
 bool miheev::validateTriangle(point_t A, point_t B, point_t C)
 {
-  bool condition1 = A.distTo(B) + A.distTo(C) > B.distTo(C);
-  bool condition2 = B.distTo(C) + A.distTo(B)> A.distTo(C);
-  bool condition3 = A.distTo(C) + B.distTo(C)> A.distTo(B);
+  bool condition1 = findDist(A, B) + findDist(A, C) > findDist(B, C);
+  bool condition2 = findDist(B, C) + findDist(A, B)> findDist(A, C);
+  bool condition3 = findDist(A, C) + findDist(B, C)> findDist(A, B);
   return condition1 && condition2 && condition3;
 }
 

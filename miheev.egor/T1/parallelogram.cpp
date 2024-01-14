@@ -1,5 +1,6 @@
 #include "parallelogram.hpp"
 #include <cmath>
+#include "geometricalMethods.hpp"
 
 miheev::Parallelogram::Parallelogram(point_t p1, point_t p2, point_t p3)
 {
@@ -9,7 +10,7 @@ miheev::Parallelogram::Parallelogram(point_t p1, point_t p2, point_t p3)
   points_[2] = p3;
   double dx = p2.x - p1.x;
   double dy = p2.y - p1.y;
-  points_[3] = point_t(p3.x - dx, p3.y - dy);
+  points_[3] = point_t{p3.x - dx, p3.y - dy};
 }
 
 miheev::Parallelogram::~Parallelogram()
@@ -55,8 +56,8 @@ miheev::rectangle_t miheev::Parallelogram::getFrameRect() const
 
   double width = right - left;
   double height = top - bottom;
-  point_t center(left + width/2, bottom + height/2);
-  return rectangle_t(center, width, height);
+  point_t center{left + width/2, bottom + height/2};
+  return rectangle_t{center, width, height};
 }
 
 void miheev::Parallelogram::move(double dx, double dy)
@@ -81,6 +82,6 @@ void miheev::Parallelogram::scale(double k)
   {
     double dx = (points_[i].x - center_.x) * (k - 1);
     double dy = (points_[i].y - center_.y) * (k - 1);
-    points_[i].move(dx, dy);
+    movePoint(points_[i], dx, dy);
   }
 }
