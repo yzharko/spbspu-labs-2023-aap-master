@@ -60,11 +60,25 @@ int main()
 
   for (size_t i = 0; i < countOfFigures; i++)
   {
-    lowerX = frame.pos.x - frame.width * 0.5;
-    lowerY = frame.pos.y - frame.height * 0.5;
-    upperX = frame.pos.x + frame.width * 0.5;
-    upperY = frame.pos.y + frame.height * 0.5;
     ponomarev::rectangle_t frame = figures[i]->getFrameRect();
+    double lowerX = frame.pos.x - frame.width * 0.5;
+    double lowerY = frame.pos.y - frame.height * 0.5;
+    double upperX = frame.pos.x + frame.width * 0.5;
+    double upperY = frame.pos.y + frame.height * 0.5;
     std::cout << std::fixed << std::setprecision(1) << lowerX << " " << lowerY << " " << upperX << " " << upperY;
   }
+
+  if (isWrongFigureEnter)
+  {
+    std::cerr << "Wrong figure input";
+    return 1;
+  }
+
+  for (size_t i = 0; i < countOfFigures; i++)
+  {
+    delete figures[i];
+  }
+  delete[] figures;
+
+  return 0;
 }

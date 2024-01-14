@@ -1,6 +1,7 @@
 #ifndef SHAPE_HPP
 #define SHAPE_HPP
 #include "base-types.hpp"
+#include <stdexcept>
 
 namespace ponomarev
 {
@@ -10,9 +11,9 @@ namespace ponomarev
     virtual ~Shape() = default;
     virtual double getArea() = 0;
     virtual rectangle_t getFrameRect() = 0;
-    virtual void move(point_t newCenter) = 0;
-    virtual void move(double offsetX, double offsetY) = 0;
-    virtual void scale(double k) = 0;
+    virtual void move(const point_t & newCenter) = 0;
+    virtual void move(const double & offsetX, const double & offsetY) = 0;
+    virtual void scale(const double k) = 0;
   };
 }
 

@@ -8,7 +8,7 @@ Rectangle::Rectangle(const point_t lowerLeft, const point_t upperRight):
 {
   if (lowerLeft.x >= upperRight.x || lowerLeft.y >= upperRight.y)
   {
-    throw std::invalid_argument("Rectangle is incorrect");
+    throw std::invalid_argument("Rectangle is wrong");
   }
 }
 
@@ -26,7 +26,7 @@ rectangle_t Rectangle::getFrameRect()
   return { width, height, center };
 }
 
-void Rectangle::move(const point_t newCenter)
+void Rectangle::move(const point_t & newCenter)
 {
   rectangle_t frame = getFrameRect();
   double offsetX = newCenter.x - frame.center.x;
@@ -34,7 +34,7 @@ void Rectangle::move(const point_t newCenter)
   move(offsetX, offsetY);
 }
 
-void Rectangle::move(const double offsetX, const double offsetY)
+void Rectangle::move(const double & offsetX, const double & offsetY)
 {
   lowerLeft.x += offsetX;
   lowerLeft.y += offsetY;
