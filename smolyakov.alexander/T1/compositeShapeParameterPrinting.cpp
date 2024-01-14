@@ -8,10 +8,10 @@ void smolyakov::printCompositeShapeParameters(std::ostream &stream, const Compos
   for (size_t i = 0; i < compositeShape.shapes; i++)
   {
     rectangle_t frame = compositeShape.shapeptrs[i]->getFrameRect();
-    std::cout << std::setprecision(1) << frame.pos.x - frame.width / 2.0 << ' '
+    stream << std::setprecision(1) << frame.pos.x - frame.width / 2.0 << ' '
       << frame.pos.y - frame.height / 2.0 << ' '
       << frame.pos.x + frame.width / 2.0 << ' '
       << frame.pos.y + frame.height / 2.0;
-    std::cout << (i + 1 == compositeShape.shapes ? '\n' : ' ');
+    stream << (i + 1 == compositeShape.shapes ? '\n' : ' ');
   }
 }
