@@ -7,13 +7,13 @@ namespace redko
   class Rectangle : public Shape
   {
   public:
-    Rectangle(point_t firstPoint, point_t secondPoint);
+    Rectangle(const point_t & firstPoint, const point_t & secondPoint);
     double getArea() const;
     rectangle_t getFrameRect() const;
-    void move(point_t dest);
+    void move(const point_t & dest);
     void move(double xDist, double yDist);
     void scale(double coefficient);
-  protected:
+  private:
     point_t firstPoint_;
     point_t secondPoint_;
   };

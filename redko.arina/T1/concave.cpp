@@ -1,14 +1,16 @@
 #include "concave.hpp"
 #include <algorithm>
 
-redko::Concave::Concave(redko::point_t firstPoint, redko::point_t secondPoint, redko::point_t thirdPoint, redko::point_t fourthPoint) :
+using namespace redko;
+
+Concave::Concave(const point_t & firstPoint, const point_t & secondPoint, const point_t & thirdPoint, const point_t & fourthPoint):
   firstPoint_(firstPoint),
   secondPoint_(secondPoint),
   thirdPoint_(thirdPoint),
   fourthPoint_(fourthPoint)
 {}
 
-double redko::Concave::getArea() const
+double Concave::getArea() const
 {
   double bigTriangle = firstPoint_.x * (secondPoint_.y - thirdPoint_.y) + secondPoint_.x * (thirdPoint_.y - firstPoint_.y);
   bigTriangle = std::abs((bigTriangle + thirdPoint_.x * (firstPoint_.y - secondPoint_.y)) / 2.0);
@@ -17,7 +19,7 @@ double redko::Concave::getArea() const
   return bigTriangle - smallTriangle;
 }
 
-redko::rectangle_t redko::Concave::getFrameRect() const
+rectangle_t Concave::getFrameRect() const
 {
   double maxX = std::max(std::max(firstPoint_.x, secondPoint_.x), thirdPoint_.x);
   double minX = std::min(std::min(firstPoint_.x, secondPoint_.x), thirdPoint_.x);
@@ -30,7 +32,7 @@ redko::rectangle_t redko::Concave::getFrameRect() const
   return { width, height, { x, y } };
 }
 
-void redko::Concave::move(redko::point_t dest)
+void Concave::move(const point_t & dest)
 {
   double xDist = dest.x - fourthPoint_.x;
   double yDist = dest.y - fourthPoint_.y;
@@ -44,7 +46,7 @@ void redko::Concave::move(redko::point_t dest)
   fourthPoint_.y += yDist;
 }
 
-void redko::Concave::move(double xDist, double yDist)
+void Concave::move(double xDist, double yDist)
 {
   firstPoint_.x += xDist;
   firstPoint_.y += yDist;
@@ -56,7 +58,7 @@ void redko::Concave::move(double xDist, double yDist)
   fourthPoint_.y += yDist;
 }
 
-void redko::Concave::scale(double coefficient)
+void Concave::scale(double coefficient)
 {
   firstPoint_.x = fourthPoint_.x + (firstPoint_.x - fourthPoint_.x) * coefficient;
   firstPoint_.y = fourthPoint_.y + (firstPoint_.y - fourthPoint_.y) * coefficient;

@@ -1,15 +1,17 @@
 #include "parallelogram.hpp"
 #include <cmath>
 
-redko::Parallelogram::Parallelogram(redko::point_t firstPoint, redko::point_t secondPoint, redko::point_t thirdPoint) :
+using namespace redko;
+
+Parallelogram::Parallelogram(const point_t & firstPoint, const point_t & secondPoint, const point_t & thirdPoint) :
   firstPoint_(firstPoint),
   secondPoint_(secondPoint),
   thirdPoint_(thirdPoint)
 {}
 
-double redko::Parallelogram::getArea() const
+double Parallelogram::getArea() const
 {
-  redko::rectangle_t frame = getFrameRect();
+  rectangle_t frame = getFrameRect();
   if (firstPoint_.y == secondPoint_.y)
   {
     return (std::abs(firstPoint_.x - secondPoint_.x) * frame.height);
@@ -20,7 +22,7 @@ double redko::Parallelogram::getArea() const
   }
 }
 
-redko::rectangle_t redko::Parallelogram::getFrameRect() const
+rectangle_t Parallelogram::getFrameRect() const
 {
   double width = abs(secondPoint_.x - firstPoint_.x) + abs(secondPoint_.x - thirdPoint_.x);
 
@@ -61,9 +63,9 @@ redko::rectangle_t redko::Parallelogram::getFrameRect() const
   return { width, height, { x, y } };
 }
 
-void redko::Parallelogram::move(redko::point_t dest)
+void Parallelogram::move(const point_t & dest)
 {
-  redko::rectangle_t frame = getFrameRect();
+  rectangle_t frame = getFrameRect();
   double xDist = dest.x - frame.pos.x;
   double yDist = dest.y - frame.pos.y;
   firstPoint_.x += xDist;
@@ -74,7 +76,7 @@ void redko::Parallelogram::move(redko::point_t dest)
   thirdPoint_.y += yDist;
 }
 
-void redko::Parallelogram::move(double xDist, double yDist)
+void Parallelogram::move(double xDist, double yDist)
 {
   firstPoint_.x += xDist;
   firstPoint_.y += yDist;
@@ -84,9 +86,9 @@ void redko::Parallelogram::move(double xDist, double yDist)
   thirdPoint_.y += yDist;
 }
 
-void redko::Parallelogram::scale(double coefficient)
+void Parallelogram::scale(double coefficient)
 {
-  redko::rectangle_t frame = getFrameRect();
+  rectangle_t frame = getFrameRect();
   firstPoint_.x = frame.pos.x + (firstPoint_.x - frame.pos.x) * coefficient;
   firstPoint_.y = frame.pos.y + (firstPoint_.y - frame.pos.y) * coefficient;
   secondPoint_.x = frame.pos.x + (secondPoint_.x - frame.pos.x) * coefficient;

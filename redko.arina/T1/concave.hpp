@@ -7,13 +7,13 @@ namespace redko
   class Concave : public Shape
   {
   public:
-    Concave(point_t firstPoint, point_t secondPoint, point_t thirdPoint, point_t fourthPoint);
+    Concave(const point_t & firstPoint, const point_t & secondPoint, const point_t & thirdPoint, const point_t & fourthPoint);
     double getArea() const;
     rectangle_t getFrameRect() const;
-    void move(point_t dest);
+    void move(const point_t & dest);
     void move(double xDist, double yDist);
     void scale(double coefficient);
-  protected:
+  private:
     point_t firstPoint_;
     point_t secondPoint_;
     point_t thirdPoint_;
