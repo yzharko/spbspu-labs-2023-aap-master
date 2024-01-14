@@ -129,4 +129,6 @@ void mihalchenko::Poligon::scale(double scaleKoef)
   }
   rectangle_.height_ = rectangle_.height_ * scaleKoef;
   rectangle_.width_ = rectangle_.width_ * scaleKoef;
+  width_ = width_ * scaleKoef;
+  height_ = height_ * scaleKoef;
 }
