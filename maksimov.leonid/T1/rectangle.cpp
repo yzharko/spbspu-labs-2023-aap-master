@@ -1,7 +1,7 @@
 #include "rectangle.hpp"
 
 Rectangle::Rectangle(float x1, float y1, float x2, float y2) :
-  pointLl{ x1, y1 },
+  pointLl{ x1, y2 },
   pointUr{ x2, x2 }
 {
   float width_ = abs(pointUr.y - pointLl.y);

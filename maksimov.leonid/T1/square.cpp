@@ -8,14 +8,17 @@ Square::Square(float x, float y, float width) :
 {
   Point_t pos_{ width_ / 2, height_ / 2 };
 }
+
 float Square::getArea()
 {
   return width_ * height_;
 }
+
 Rectangle_t Square::getFrameRect()
 {
   return { width_, height_, pos_ };
 }
+
 void Square::move(const char axis, float n)
 {
   if (axis == 'x')
@@ -31,12 +34,14 @@ void Square::move(const char axis, float n)
     pos_.y += n;
   }
 }
+
 void Square::move(float x, float y)
 {
   pointLl = { x - width_, y - height_ };
   pointUr = { x + width_, y + height_ };
   pos_ = { x, y };
 }
+
 void Square::scale(float k)
 {
   width_ *= k;

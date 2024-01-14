@@ -12,11 +12,11 @@ public:
   virtual void move(float, float) override;
   virtual void scale(float) override;
 private:
-  Point_t pointLl;
-  Point_t pointUr;
-  float width_;
-  float height_;
-  Point_t pos_;
+  Point_t pointLl = {};
+  Point_t pointUr = {};
+  float width_ = 0;
+  float height_ = 0;
+  Point_t pos_ = {};
 };
 
 #endif
