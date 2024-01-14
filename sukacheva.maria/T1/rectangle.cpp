@@ -1,5 +1,4 @@
 #include "rectangle.hpp"
-#include "base-types.hpp"
 #include <iostream>
 
 sukacheva::Rectangle::Rectangle(point_t rightPoint, point_t leftPoint):
