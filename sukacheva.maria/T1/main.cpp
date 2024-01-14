@@ -88,6 +88,7 @@ int main() {
         getScaledArea(figures, index, newArea, k);
         getCoordinatesAfter(figures, index, center, k);
         deleteArray(figures, index);
+        deleteArray(scaledFigures, index);
         break;
       }
     }
@@ -95,6 +96,7 @@ int main() {
   if (ifScale == 0)
   {
     deleteArray(figures, index);
+    deleteArray(scaledFigures, index);
     std::cerr << "No scale command";
     return 2;
   }
