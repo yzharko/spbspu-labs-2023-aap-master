@@ -1,13 +1,13 @@
 #ifndef BASE_TYPES_HPP
 #define BASE_TYPES_HPP
 
-struct Point_t
+struct point_t
 {
   float x;
   float y;
 };
 
-struct Rectangle_t
+struct rectangle_t
 {
   float width;
   float height;
