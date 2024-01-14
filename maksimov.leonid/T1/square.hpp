@@ -1,22 +1,23 @@
 #ifndef SQUARE_HPP
 #define SQUARE_HPP
 #include "shape.hpp"
+using namespace maksimov;
 
 class Square : public Shape
 {
 public:
-  Square(float, float, float);
-  virtual float getArea() override;
-  virtual Rectangle_t getFrameRect() override;
-  virtual void move(const char, float) override;
-  virtual void move(float, float) override;
-  virtual void scale(float) override;
+  Square(double, double, double);
+  virtual double getArea() const;
+  virtual rectangle_t getFrameRect() const;
+  virtual void move(const double&, const double&) override;
+  virtual void move(const point_t&) override;
+  virtual void scale(double) override;
 private:
-  Point_t pointLl = { 0, 0 };
-  Point_t pointUr = { 0, 0 };
-  float width_ = 0;
-  float height_ = 0;
-  Point_t pos_ = { 0, 0 };
+  point_t pointLl = { 0, 0 };
+  point_t pointUr = { 0, 0 };
+  double width_ = 0;
+  double height_ = 0;
+  point_t pos_ = { 0, 0 };
 };
 
 #endif

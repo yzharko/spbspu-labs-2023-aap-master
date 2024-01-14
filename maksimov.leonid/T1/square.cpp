@@ -1,6 +1,7 @@
 #include "square.hpp"
 
-Square::Square(float x, float y, float width) :
+
+Square::Square(double x, double y, double width) :
   pointLl{ x, y },
   pointUr{ x + width, x + width },
   width_{width},
@@ -9,40 +10,40 @@ Square::Square(float x, float y, float width) :
   this->pos_ = { width_ / 2, height_ / 2 };
 }
 
-float Square::getArea()
+double Square::getArea() const
 {
   return width_ * height_;
 }
 
-Rectangle_t Square::getFrameRect()
+rectangle_t Square::getFrameRect() const
 {
   return { width_, height_, pos_ };
 }
 
-void Square::move(const char axis, float n)
+void Square::move(const double& dx, const double& dy)
 {
-  if (axis == 'x')
-  {
-    pointLl.x += n;
-    pointUr.x += n;
-    pos_.x += n;
-  }
-  else if (axis == 'y')
-  {
-    pointLl.y += n;
-    pointUr.y += n;
-    pos_.y += n;
-  }
+  pointLl.x += dx;
+  pointLl.y += dy;
+  pointUr.x += dx;
+  pointUr.y += dy;
+  pos_.x += dx;
+  pos_.y += dy;
 }
 
-void Square::move(float x, float y)
+void Square::move(const point_t& new_center)
 {
-  pointLl = { x - width_, y - height_ };
-  pointUr = { x + width_, y + height_ };
-  pos_ = { x, y };
+  double dx = pos_.x - new_center.x;
+  double dy = pos_.y - new_center.y;
+  pointLl.x += dx;
+  pointLl.y += dy;
+  pointUr.x += dx;
+  pointUr.y += dy;
+  pos_.x += dx;
+  pos_.y += dy;
+  pos_ = new_center;
 }
 
-void Square::scale(float k)
+void Square::scale(double k)
 {
   width_ *= k;
   height_ *= k;

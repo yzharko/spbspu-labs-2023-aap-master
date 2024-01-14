@@ -2,14 +2,17 @@
 #define SHAPE_HPP
 #include "base-types.hpp"
 
-class Shape
+namespace maksimov
 {
-public:
-  virtual float getArea() = 0;
-  virtual Rectangle_t getFrameRect() = 0;
-  virtual void move(const char, float) = 0;
-  virtual void move(float, float) = 0;
-  virtual void scale(float) = 0;
-};
+  class Shape
+  {
+  public:
+    virtual double getArea() const = 0;
+    virtual rectangle_t getFrameRect() const = 0;
+    virtual void move(const double& dx, const double& dy) = 0;
+    virtual void move(const point_t& new_center) = 0;
+    virtual void scale(const double n) = 0;
+  };
+}
 
 #endif

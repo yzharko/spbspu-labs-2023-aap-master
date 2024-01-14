@@ -3,22 +3,23 @@
 #include "shape.hpp"
 #include <cmath>
 #include <iostream>
+using namespace maksimov;
 
 class Rectangle : public Shape
 {
 public:
-  Rectangle(float, float, float, float);
-  virtual float getArea() override;
-  virtual Rectangle_t getFrameRect() override;
-  virtual void move(const char, float) override;
-  virtual void move(float, float) override;
-  virtual void scale(float) override;
+  Rectangle(double, double, double, double);
+  virtual double getArea() const;
+  virtual rectangle_t getFrameRect() const;
+  virtual void move(const double&, const double&) override;
+  virtual void move(const point_t& new_center) override;
+  virtual void scale(double) override;
 private:
-  Point_t pointLl = { 0, 0 };
-  Point_t pointUr = { 0, 0 };
-  float width_ = 0;
-  float height_ = 0;
-  Point_t pos_ = { 0, 0 };
+  point_t pointLl = { 0, 0 };
+  point_t pointUr = { 0, 0 };
+  double width_ = 0;
+  double height_ = 0;
+  point_t pos_ = { 0, 0 };
 };
 
 #endif

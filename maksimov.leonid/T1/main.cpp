@@ -3,6 +3,8 @@
 #include "rectangle.hpp"
 #include "square.hpp"
 #include "base-types.hpp"
+#include "main.h"
+using namespace maksimov;
 
 int main()
 {
@@ -13,26 +15,26 @@ int main()
   {
     if (figure == "RECTANGLE")
     {
-      float x1, y1, x2, y2;
+      double x1, y1, x2, y2;
       std::cin >> x1 >> y1 >> x2 >> y2;
       geometricFigures[count++] = new Rectangle(x1, y1, x2, y2);
       figure = "";
     }
     if (figure == "SQUARE")
     {
-      float x1, y1, width;
+      double x1, y1, width;
       std::cin >> x1 >> y1 >> width;
       geometricFigures[count++] = new Square(x1, y1, width);
       figure = "";
     }
     if (figure == "SCALE")
     {
-      float posX, posY, k;
+      double posX, posY, k;
       std::cin >> posX >> posY >> k;
       std::cout << std::fixed << std::setprecision(1);
       for (size_t i = 0; i < count; i++)
       {
-        std::cout << float(geometricFigures[i]->getArea()) << ' '
+        std::cout << double(geometricFigures[i]->getArea()) << ' '
         << geometricFigures[i]->getFrameRect().pos.x - (geometricFigures[i]->getFrameRect().width / 2) << ' '
         << geometricFigures[i]->getFrameRect().pos.y - (geometricFigures[i]->getFrameRect().height / 2) << ' '
         << geometricFigures[i]->getFrameRect().pos.x + (geometricFigures[i]->getFrameRect().width / 2) << ' '
