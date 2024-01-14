@@ -1,4 +1,5 @@
 #include "parallelogram.hpp"
+#include <iostream>
 
 likhachev::Parallelogram::Parallelogram(likhachev::Point_t pointA, likhachev::Point_t pointB, likhachev::Point_t pointD):
   pointA_(pointA),

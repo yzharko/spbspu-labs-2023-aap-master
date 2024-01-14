@@ -1,4 +1,5 @@
 #include "ring.hpp"
+#include <iostream>
 
 likhachev::Ring::Ring(likhachev::Point_t pos, double outerRad, double innerRad):
   outerRad_(outerRad),
