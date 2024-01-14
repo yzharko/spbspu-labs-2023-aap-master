@@ -46,7 +46,7 @@ int main()
     }
     catch (const std::invalid_argument& e)
     {
-      isInvalidFigureEntered = true;
+      isInvalidShapeEntered = true;
     }
   }
 
