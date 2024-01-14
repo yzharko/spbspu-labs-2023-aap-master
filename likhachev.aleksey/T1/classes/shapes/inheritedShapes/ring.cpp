@@ -1,15 +1,15 @@
 #include "ring.hpp"
 
 likhachev::Ring::Ring(Point_t pos, double outerRad, double innerRad):
-  pos_(pos),
   outerRad_(outerRad),
-  innerRad_(innerRad)
+  innerRad_(innerRad),
+  pos_(pos)
 {}
 
 likhachev::Ring::Ring(double posX, double posY, double outerRad, double innerRad):
-  pos_(Point_t(posX, posY)),
   outerRad_(outerRad),
-  innerRad_(innerRad)
+  innerRad_(innerRad),
+  pos_(Point_t(posX, posY))
 {}
 
 double likhachev::Ring::getArea() const
