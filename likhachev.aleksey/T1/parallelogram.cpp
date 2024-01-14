@@ -59,8 +59,6 @@ void likhachev::Parallelogram::move(double offsetX, double offsetY)
 
 void likhachev::Parallelogram::scale(double multiplier)
 {
-  double width = getWidth();
-  double height = getHeight();
   likhachev::point_t pos = getPos();
 
   int xMultiplier = 1;
