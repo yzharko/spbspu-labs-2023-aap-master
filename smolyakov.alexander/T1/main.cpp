@@ -17,7 +17,7 @@ int main()
   bool isScaleCommandEntered = false;
   bool isInvalidFigureEntered = false;
   size_t shapeCount = 0;
-  Shape** shapes = new Shape*[1]; 
+  Shape** shapes = new Shape*[1];
 
   while (std::cin)
   {
@@ -34,14 +34,14 @@ int main()
     {
       if (parseShape(std::cin, keyword, shapes, shapeCount))
       {
-	shapeCount++;
-	Shape** newShapes = new Shape*[shapeCount+1];
-	for (size_t i = 0; i < shapeCount; i++)
-	{
-	  newShapes[i] = shapes[i];
-	}
-	delete[] shapes;
-	shapes = newShapes;
+        shapeCount++;
+        Shape** newShapes = new Shape*[shapeCount+1];
+        for (size_t i = 0; i < shapeCount; i++)
+        {
+          newShapes[i] = shapes[i];
+        }
+        delete[] shapes;
+        shapes = newShapes;
       }
     }
     catch (const std::invalid_argument& e)
@@ -72,4 +72,6 @@ int main()
 
   std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << ' ';
   printCompositeShapeParameters(std::cout, compositeShape);
+
+  return 0;
 }
