@@ -8,8 +8,8 @@ namespace sobolevsky
     upPoint = upPoint2;
     rightPoint = rightPoint2;
     centerPoint = centerPoint2;
-    firstDiagonal = std::abs(upPoint2.y - centerPoint2.y);
-    secondDiagonal = std::abs(rightPoint2.y - centerPoint2.y);
+    firstDiagonal = std::abs(centerPoint.y - rightPoint.y);
+    secondDiagonal = std::abs(rightPoint.x - upPoint.y);
   }
 
   double Diamond::getArea() const
