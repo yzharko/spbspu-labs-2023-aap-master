@@ -12,7 +12,6 @@ int main()
   std::string shapeName = "";
   while (std::cin >> shapeName && shapeName != "SCALE") {
     if (shapeName == "PARALLELOGRAM" || shapeName == "RING" || shapeName == "RECTANGLE") {
-      // Lavran TODO: Присутствуют повтоерия. Попробовать заменить.
       double *shapeParams = nullptr;
       int paramsCount = 0;
       try {
