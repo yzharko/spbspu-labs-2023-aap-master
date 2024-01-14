@@ -6,7 +6,7 @@ Rectangle::Rectangle(float x1, float y1, float x2, float y2) :
 {
   float width_ = abs(pointUr.y - pointLl.y);
   float height_ = abs(pointUr.x - pointLl.x);
-  Point_t pos_{ width_ / 2, height_ / 2 };
+  Point_t pos_ = { width_ / 2, height_ / 2 };
 }
 
 float Rectangle::getArea()
