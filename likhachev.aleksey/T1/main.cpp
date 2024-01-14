@@ -57,10 +57,11 @@ int main()
   double scaleMulti = 0;
   std::cin >> scalePoint.x >> scalePoint.y >> scaleMulti;
   for (size_t i = 0; i < shapeCount; i++) {
-    likhachev::Point_t newPos((shapes[i]->getPos().x - scalePoint.x) * scaleMulti + scalePoint.x, (shapes[i]->getPos().y - scalePoint.y) * scaleMulti + scalePoint.y);
+    likhachev::Point_t newPos((shapes[i]->getPos().x - scalePoint.x) * scaleMulti + scalePoint.x,
+                              (shapes[i]->getPos().y - scalePoint.y) * scaleMulti + scalePoint.y);
     shapes[i]->scale(scaleMulti);
     shapes[i]->move(newPos);
-  } 
+  }
 
   likhachev::coutShapesData(shapes, shapeCount);
 
