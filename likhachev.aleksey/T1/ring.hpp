@@ -18,7 +18,7 @@ namespace likhachev
     double outerRad_;
     double innerRad_;
     point_t pos_;
-    
+
     point_t getPos() const;
     double getOuterRad() const;
     double getInnerRad() const;
