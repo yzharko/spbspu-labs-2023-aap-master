@@ -149,7 +149,7 @@ int main()
           delete figuers[i];
         }
         delete[] figuers;
-        return 1;
+        return 0;
       }
       else
       {
