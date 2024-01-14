@@ -1,6 +1,6 @@
 #include "rectangle.hpp"
 
-likhachev::Rectangle::Rectangle(likhachev::point_t lowerLeft, likhachev::point_t upperRight):
+likhachev::Rectangle::Rectangle(point_t lowerLeft, point_t upperRight):
   lowerLeft_(lowerLeft),
   upperRight_(upperRight)
 {
@@ -32,7 +32,7 @@ likhachev::rectangle_t likhachev::Rectangle::getFrameRect() const
   return rectangle_t(width, height, pos);
 }
 
-void likhachev::Rectangle::move(likhachev::point_t offset)
+void likhachev::Rectangle::move(const point_t& offset)
 {
   likhachev::point_t pos = getPos();
   move(offset.x - pos.x, offset.y - pos.y);

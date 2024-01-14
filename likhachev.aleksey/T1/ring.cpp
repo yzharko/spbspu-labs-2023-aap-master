@@ -1,6 +1,6 @@
 #include "ring.hpp"
 
-likhachev::Ring::Ring(likhachev::point_t pos, double outerRad, double innerRad):
+likhachev::Ring::Ring(point_t pos, double outerRad, double innerRad):
   outerRad_(outerRad),
   innerRad_(innerRad),
   pos_(pos)
@@ -38,7 +38,7 @@ likhachev::rectangle_t likhachev::Ring::getFrameRect() const
   return rectangle_t(width, height, pos);
 }
 
-void likhachev::Ring::move(likhachev::point_t offset)
+void likhachev::Ring::move(const point_t& offset)
 {
   move(offset.x - pos_.x, offset.y - pos_.y);
 }

@@ -8,19 +8,19 @@ namespace likhachev
 {
   class Rectangle: public Shape {
     public:
-      Rectangle(likhachev::point_t lowerLeft, likhachev::point_t upperRight);
+      Rectangle(point_t lowerLeft, point_t upperRight);
       Rectangle(double lowerLeftX, double lowerLeftY, double upperRightX, double upperRightY);
       virtual double getArea() const;
-      virtual likhachev::rectangle_t getFrameRect() const;
-      virtual void move(likhachev::point_t offset);
+      virtual rectangle_t getFrameRect() const;
+      virtual void move(const point_t& offset);
       virtual void move(double offsetX, double offsetY);
       virtual void scale(double multiplier);
-      virtual likhachev::point_t getPos() const;
+      virtual point_t getPos() const;
       double getWidth() const;
       double getHeight() const;
     private:
-      likhachev::point_t lowerLeft_;
-      likhachev::point_t upperRight_;
+      point_t lowerLeft_;
+      point_t upperRight_;
   };
 }
 #endif

@@ -1,6 +1,6 @@
 #include "parallelogram.hpp"
 
-likhachev::Parallelogram::Parallelogram(likhachev::point_t pointB, likhachev::point_t pointA, likhachev::point_t pointD):
+likhachev::Parallelogram::Parallelogram(point_t pointB, point_t pointA, point_t pointD):
   pointA_(pointA),
   pointB_(pointB),
   pointD_(pointD)
@@ -42,7 +42,7 @@ likhachev::rectangle_t likhachev::Parallelogram::getFrameRect() const
   return rectangle_t(fullWidth, height, pos);
 }
 
-void likhachev::Parallelogram::move(likhachev::point_t offset)
+void likhachev::Parallelogram::move(const point_t& offset)
 {
   likhachev::point_t pos((pointB_.x + pointD_.x) / 2, (pointB_.y + pointD_.y) / 2);
   move(offset.x - pos.x, offset.y - pos.y);
