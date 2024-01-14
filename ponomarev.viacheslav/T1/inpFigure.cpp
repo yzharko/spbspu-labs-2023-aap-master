@@ -4,6 +4,7 @@
 #include "base-types.hpp"
 #include <iomanip>
 #include "ellipse.hpp"
+#include "polygon.hpp"
 
 void ponomarev::inpFigure(std::string nameOfFigure, std::istream & input, ponomarev::Shape ** figures, size_t & countOfFigures)
 {
@@ -34,4 +35,46 @@ void ponomarev::inpFigure(std::string nameOfFigure, std::istream & input, ponoma
       throw std::invalid_argument("Ellipse is wrong");
     }
   }
+  else if (nameOfFigure == "POLYGON")
+  {
+    size_t incremOfEl = 10;
+    size_t limitOfMem = 10;
+    point_t * points = new point_t[incremOfEl];
+    double x, y;
+    size_t countOfPoints = 0;
+    while (input >> x >> y)
+    {
+      if (countOfPoints == limitOfMem)
+      {
+        point_t * enlargedArr = new point_t[countOfPoints + incremOfEl];
+        for (size_t i = 0; i < countOfPoints; i++)
+        {
+          enlargedArr[i] = points[i];
+        }
+        limitOfMem += incremOfEl;
+        delete[] points;
+        points = enlargedArr;
+      }
+      points[countOfPoints].x = x;
+      points[countOfPoints].y = y;
+      countOfPoints += 1;
+      std::cout << x << y << "\n";
+    }
+    try
+    {
+      figures[countOfFigures++] = new Polygon(countOfPoints, points);
+    }
+    catch(const std::invalid_argument & e)
+    {
+      throw std::invalid_argument("Polygon is wrong");
+    }
+  }
 }
+
+
+
+
+
+
+
+
