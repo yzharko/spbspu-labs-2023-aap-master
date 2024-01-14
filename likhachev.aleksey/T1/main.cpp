@@ -17,7 +17,7 @@ int main()
   while (std::cin >> shapeName) {
     if (shapeName == "PARALLELOGRAM" || shapeName == "RING" || shapeName == "RECTANGLE") { // Lavran TODO: Присутствуют повтоерия. Попробовать заменить.
       int paramsCount = 0;
-      if(shapeName == "PARALLELOGRAM") {
+      if (shapeName == "PARALLELOGRAM") {
         paramsCount = 6;
         shapeParams = new double[paramsCount];
         for (int i = 0; i < paramsCount; i++) {
