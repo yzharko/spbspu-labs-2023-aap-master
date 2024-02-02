@@ -1,29 +1,7 @@
 #include <iostream>
 #include <fstream>
-
-int readArray(int * matrix, int cols, int rows, std::ifstream & in)
-{
-  for (int i = 0; i < rows * cols; i++) {
-    in >> matrix[i];
-    if (!in) {
-      return 2;
-    }
-  }
-  return 0;
-}
-
-bool isLowerTriangularMatrix(int * matrix, int cols, int rows)
-{
-  bool isZero = true;
-  for (int i = 0; i < rows && isZero; i++) {
-    for (int j = 0; j < cols && isZero; j++) {
-      if (j < i) {
-        isZero = (isZero && matrix[i * rows + j] == 0);
-      }
-    }
-  }
-  return isZero;
-}
+#include "checkmatrix.hpp"
+#include "arrfuncs.hpp"
 
 int main(int argc, char ** argv)
 {
@@ -56,12 +34,12 @@ int main(int argc, char ** argv)
       std::cout << "Not a triangular matrix\n";
       return 0;
     }
-    int result = readArray(matrix, cols, rows, input);
+    int result = yartsev::readArray(matrix, cols, rows, input);
     if (result == 2) {
         std::cout << "Not a matrix\n";
         return 2;
     }
-    if (isLowerTriangularMatrix(matrix, cols, rows)) {
+    if (yartsev::isLowerTriangularMatrix(matrix, cols, rows)) {
         std::cout << "Is a triangular matrix\n";
     } else {
         std::cout << "Not a triangular matrix\n";
