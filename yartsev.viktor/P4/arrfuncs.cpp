@@ -1,13 +1,14 @@
 #include <fstream>
+#include <stdexcept>
+#include <iostream>
 #include "arrfuncs.hpp"
 
-int yartsev::readArray(int * matrix, int cols, int rows, std::ifstream & in)
+void yartsev::readArray(int * matrix, int cols, int rows, std::ifstream & in)
 {
   for (int i = 0; i < rows * cols; i++) {
     in >> matrix[i];
     if (!in) {
-      return 2;
+      throw std::logic_error("Wrong input");
     }
   }
-  return 0;
 }

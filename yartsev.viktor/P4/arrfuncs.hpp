@@ -3,7 +3,7 @@
 #include <fstream>
 
 namespace yartsev {
-  int readArray(int * matrix, int cols, int rows, std::ifstream & in);
+  void readArray(int * matrix, int cols, int rows, std::ifstream & in);
 }
 
 #endif
