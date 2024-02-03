@@ -43,12 +43,18 @@ int main(int argc, char ** argv)
     yartsev::readArray(matrix, cols, rows, input);
   } catch (const std::logic_error & e) {
     std::cerr << e.what() << "\n";
+    if (num == 2) {
+      delete [] matrix;
+    }
     return 2;
   }
   if (yartsev::isLowerTriangularMatrix(matrix, cols, rows)) {
     output << "Is lower triangular matrix\n";
   } else {
     output << "Not a lower triangular matrix\n";
+  }
+  if (num == 2) {
+    delete [] matrix;
   }
   return 0;
 }
