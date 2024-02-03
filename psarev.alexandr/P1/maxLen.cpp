@@ -9,8 +9,7 @@ psarev::maxLen::maxLen():
 
 void psarev::maxLen::operator()(int value)
 {
-  if (seqLen == 0 && value == 0)
-  {
+  if (seqLen == 0 && value == 0) {
     throw std::logic_error("Error: Not a sequence!\n");
   }
 
@@ -19,8 +18,7 @@ void psarev::maxLen::operator()(int value)
     if (seqLen > maxSeqLen) {
       maxSeqLen = seqLen;
     }
-  }
-  else {
+  } else {
     seqLen = 1;
   }
 

@@ -1,11 +1,13 @@
 #include <iostream>
 #include <stdexcept>
-#include "seqCounter.hpp"
+#include "minInSequence.hpp"
+#include "sequenceCounter.hpp"
 
 int main ()
 {
   int num = 0;
-  yartsev::SequenceCounter seqCounter;
+  yartsev::MinInSequenceCounter minCounter;
+  yartsev::MaxSequenceCounter maxSeqCounter;
   do {
     std::cin >> num;
     if (!std::cin) {
@@ -13,15 +15,15 @@ int main ()
       return 1;
     } else if (num != 0) {
       try {
-        seqCounter.updateMaxSequence(num);
-        seqCounter.updateMinCounter(num);
+        minCounter(num);
+        maxSeqCounter(num);
       } catch (const std::exception & e) {
         std::cerr << "Error: " << e.what() << "\n";
-        seqCounter();
+        std::cout << minCounter() << " " << maxSeqCounter() << "\n";
         return 2;
       }
     }
   } while (num != 0);
-  seqCounter();
+  std::cout << minCounter() << " " << maxSeqCounter() << "\n";
   return 0;
 }
