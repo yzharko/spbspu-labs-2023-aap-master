@@ -24,7 +24,6 @@ int main(int argc, char ** argv)
     std::cerr << "First parameter is not a number\n";
     return 1;
   }
-
   int rows = 0, cols = 0;
   std::ifstream input(argv[2]);
   std::ofstream output(argv[3]);
