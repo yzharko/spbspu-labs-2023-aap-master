@@ -29,6 +29,10 @@ int main(int argc, char ** argv)
   std::ifstream input(argv[2]);
   std::ofstream output(argv[3]);
   input >> rows >> cols;
+  if (!input) {
+    std::cerr << "Wrong input\n";
+    return 2;
+  }
   int a[10000] = {};
   int * matrix = nullptr;
   if (num == 1) {
@@ -43,9 +47,9 @@ int main(int argc, char ** argv)
     return 2;
   }
   if (yartsev::isLowerTriangularMatrix(matrix, cols, rows)) {
-    output << "Is triangular matrix\n";
+    output << "Is lower triangular matrix\n";
   } else {
-    output << "Not a triangular matrix\n";
+    output << "Not a lower triangular matrix\n";
   }
   return 0;
 }
