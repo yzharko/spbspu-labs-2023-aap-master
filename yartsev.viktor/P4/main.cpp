@@ -30,11 +30,6 @@ int main(int argc, char ** argv)
   input >> rows >> cols;
   if (num == 1) {
     int matrix[10000] = {};
-    
-    if (rows != cols) {
-      std::cout << "Not a triangular matrix\n";
-      return 0;
-    }
     try {
       yartsev::readArray(matrix, cols, rows, input);
     } catch (const std::logic_error & e) {
