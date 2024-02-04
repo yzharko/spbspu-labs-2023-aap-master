@@ -1,8 +1,7 @@
 #ifndef CHECKMATRIX_HPP
 #define CHECKMATRIX_HPP
 
-namespace yartsev
-{
+namespace yartsev {
   bool isLowerTriangularMatrix(int * matrix, int cols, int rows);
 }
 
