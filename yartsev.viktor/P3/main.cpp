@@ -2,7 +2,6 @@
 
 int main()
 {
-  namesapce yarstev {
-
-  }
+  char * str = new char [10000];
+  yartsev::readstring(char);
 }
