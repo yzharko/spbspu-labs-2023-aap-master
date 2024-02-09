@@ -4,7 +4,7 @@
 
 namespace susidko
 {
-  char * replaceUpLow(char * src, int add);
+  char * replaceUpLow(char * src);
   size_t countDiffLetters(char * src);
 }
 #endif

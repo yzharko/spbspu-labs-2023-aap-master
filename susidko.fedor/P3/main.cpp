@@ -17,7 +17,7 @@ int main()
     delete[] str;
     return 1;
   }
-  char * strResult = susidko::replaceUpLow(str, 30);
+  char * strResult = susidko::replaceUpLow(str);
   size_t countChars = susidko::countDiffLetters(str);
   if (!strResult)
   {

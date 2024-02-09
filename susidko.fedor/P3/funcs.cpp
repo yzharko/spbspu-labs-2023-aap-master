@@ -1,10 +1,12 @@
 #include "funcs.hpp"
 #include <iostream>
+#include <cstring>
 #include <cctype>
 #include <set>
 
-char * susidko::replaceUpLow(char * src, int add)
+char * susidko::replaceUpLow(char * src)
 {
+  int add = std::strlen(src);
   char * res = new char[add + 1];
   if (!res)
   {
