@@ -3,7 +3,7 @@
 
 char * susidko::getString(std::istream & in)
 {
-	int len = 0;
+  int len = 0;
   int add = 10;
   char * res = new char[add];
   char c = ' ';

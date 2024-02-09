@@ -5,7 +5,7 @@
 
 char * susidko::replaceUpLow(char * src, int add)
 {
-  char * res = new char[add+1];
+  char * res = new char[add + 1];
   if (!res)
   {
     return nullptr;
@@ -24,9 +24,9 @@ char * susidko::replaceUpLow(char * src, int add)
   return res;
 }
 
-int susidko::countDiffLetters(char * src)
+size_t susidko::countDiffLetters(char * src)
 {
-  std::set<char> letters;
+  std::set <char> letters;
   for (int i = 0; src[i] != '\0'; i++)
   {
     if (isalpha(src[i]))
