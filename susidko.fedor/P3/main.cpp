@@ -1,12 +1,10 @@
 #include <iostream>
-#include "exp.hpp"
 #include "funcs.hpp"
 #include "read.hpp"
 
 int main()
 {
-  int lenght = 0;
-  char * str = susidko::getString(std::cin, lenght);
+  char * str = susidko::getString(std::cin);
   if (!str)
   {
     std::cerr << "Error: can't allocate memory for input string\n";

@@ -1,9 +1,10 @@
-#include "read.hpp"
+#include "getString.hpp"
 #include <iostream>
 #include "exp.hpp"
 
-char * susidko::getString(std::istream & in, int & len)
+char * susidko::getString(std::istream & in)
 {
+	int len = 0
   int add = 10;
   char * res = new char[add];
   char c = ' ';
@@ -13,7 +14,17 @@ char * susidko::getString(std::istream & in, int & len)
     res[len++] = c;
     if (len >= add)
     {
-      res = expandString(res, len);
+      char * expandedStr = new char[len + add];
+      if (!expandedStr)
+      {
+        return nullptr;
+      }
+      for (int i = 0; i < len; i++)
+      {
+        expandedStr[i] = src[i];
+      }
+      delete[] src;
+      res = expandedStr;
       if (!res)
       {
         return nullptr;
