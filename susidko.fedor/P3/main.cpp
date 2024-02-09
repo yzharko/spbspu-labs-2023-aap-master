@@ -1,6 +1,6 @@
 #include <iostream>
 #include "funcs.hpp"
-#include "read.hpp"
+#include "getstring.hpp"
 
 int main()
 {
@@ -17,7 +17,7 @@ int main()
     delete[] str;
     return 1;
   }
-  char * strResult = susidko::replaceUpLow(str, lenght);
+  char * strResult = susidko::replaceUpLow(str, 30);
   int countChars = susidko::countDiffLetters(str);
   if (!strResult)
   {
