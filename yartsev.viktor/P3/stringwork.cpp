@@ -35,7 +35,7 @@ size_t yartsev::resizeString(char *& str, const size_t curr_size, const size_t a
     throw;
   }
   for (int i = 0; i < curr_size; i++) {
-    newstr[i] = str[i];
+    new_str[i] = str[i];
   }
   delete [] str;
   str = new_str;

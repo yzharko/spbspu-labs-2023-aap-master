@@ -1,5 +1,6 @@
 #include <iostream>
 #include "stringwork.hpp"
+#include "spaceremoval.hpp"
 
 int main()
 {
@@ -14,6 +15,9 @@ int main()
     std::cerr << e.what() << "\n";
     delete [] str;
   }
-  std::cout << str << "\n";
+  char * ans1 = yartsev::removeSpaces(str);
+  std::cout << ans1 << "\n";
   delete [] str;
+  delete [] ans1;
+  return 0;
 }
