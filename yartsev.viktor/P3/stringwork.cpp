@@ -1,5 +1,6 @@
 #include "stringwork.hpp"
 #include <iostream>
+#include <cstddef>
 
 void yartsev::readstring(char * str)
 {
