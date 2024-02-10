@@ -3,7 +3,6 @@
 
 int main()
 {
-  std::cout << "ProgStart\n";
   char * str = new char [10000];
   try {
     yartsev::readstring(str);
