@@ -26,8 +26,9 @@ void yartsev::readString(char * str)
   std::cin >> std::skipws;
 }
 
-size_t yartsev::resizeString(char *& str, const size_t curr_size, const size_t add_size)
+size_t yartsev::resizeString(char *& str, const size_t curr_size)
 {
+  const size_t add_size = 10000;
   char * new_str = nullptr;
   try {
     new_str = new char [curr_size + add_size]{};
