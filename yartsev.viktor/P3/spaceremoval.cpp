@@ -3,5 +3,5 @@
 
 char * yartsev::removeSpaces(const char * str) 
 {
-    
+  
 }
