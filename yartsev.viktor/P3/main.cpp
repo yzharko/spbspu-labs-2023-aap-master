@@ -11,7 +11,7 @@ int main()
   } catch (std::logic_error & e) {
     std::cerr << e.what() << "\n";
     delete [] str;
-    return 1;
+    return 2;
   } catch (std::bad_alloc & e) {
     std::cerr << e.what() << "\n";
     delete [] str;

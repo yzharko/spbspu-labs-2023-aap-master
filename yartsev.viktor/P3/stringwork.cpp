@@ -9,8 +9,8 @@ void yartsev::readString(char * str)
   char symbol = 0;
   std::cin >> std::noskipws;
   std::cin >> symbol;
-  if (symbol == '\n') {
-    throw std::logic_error("Wrong std::cin: empty string");
+  if ((!std::cin) || symbol == '\n') {
+    throw std::logic_error("Wrong input: empty string");
   }
   do {
     if (read == size - 1) {
