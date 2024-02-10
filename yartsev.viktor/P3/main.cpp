@@ -17,6 +17,7 @@ int main()
   }
   char * ans1 = yartsev::removeSpaces(str);
   std::cout << ans1 << "\n";
+  char uni_str[] = "abacaba";
   delete [] str;
   delete [] ans1;
   return 0;
