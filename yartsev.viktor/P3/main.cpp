@@ -11,14 +11,14 @@ int main()
   } catch (std::logic_error & e) {
     std::cerr << e.what() << "\n";
     delete [] str;
-    return 2;
+    return 1;
   } catch (std::bad_alloc & e) {
     std::cerr << e.what() << "\n";
     delete [] str;
     return 1;
   }
   char * ans1 = yartsev::removeSpaces(str);
-  char uni_str[] = "def_";
+  char uni_str[] = "abacaba";
   char * ans2 = yartsev::uniteTwoStrings(str, uni_str);
   std::cout << ans1 << "\n";
   std::cout << ans2 << "\n";
