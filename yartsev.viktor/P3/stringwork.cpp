@@ -24,7 +24,7 @@ void yartsev::readString(char * str)
   } while ((std::cin >> symbol) && (symbol != '\n'));
   str[read] = '\0';
   std::cin >> std::skipws;
-} 
+}
 
 size_t yartsev::resizeString(char *& str, const size_t curr_size, const size_t add_size)
 {

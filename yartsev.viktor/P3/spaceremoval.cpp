@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cctype>
 
-char * yartsev::removeSpaces(const char * str) 
+char * yartsev::removeSpaces(const char * str)
 {
   size_t str_length = strlen(str);
   size_t new_str_length = 0;
