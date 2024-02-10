@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstddef>
 
-void yartsev::readstring(char * str)
+void yartsev::readString(char * str)
 {
   size_t read = 0;
   size_t size = 10000;
@@ -26,11 +26,11 @@ void yartsev::readstring(char * str)
   std::cin >> std::skipws;
 } 
 
-size_t yartsev::resizestring(char *& str, const size_t cursize, const size_t addsize)
+size_t yartsev::resizeString(char *& str, const size_t cursize, const size_t addsize)
 {
   char * newstr = nullptr;
   try {
-    newstr = new char [cursize + addsize];
+    newstr = new char [cursize + addsize]{};
   } catch (std::bad_alloc & e) {
     throw;
   }

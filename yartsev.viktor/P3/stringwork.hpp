@@ -3,8 +3,8 @@
 #include <cstddef>
 
 namespace yartsev {
-  void readstring(char * str);
-  size_t resizestring(char *& str, const size_t cursize, const size_t addsize = 10000); 
+  void readString(char * str);
+  size_t resizeString(char *& str, const size_t cursize, const size_t addsize = 10000);
 }
 
 #endif

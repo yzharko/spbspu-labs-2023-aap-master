@@ -3,9 +3,9 @@
 
 int main()
 {
-  char * str = new char [10000];
+  char * str = new char [10000]{};
   try {
-    yartsev::readstring(str);
+    yartsev::readString(str);
   } catch (std::logic_error & e) {
     std::cerr << e.what() << "\n";
     delete [] str;

@@ -2,7 +2,7 @@
 #define SPACEREMOVAL_HPP
 
 namespace yartsev {
-  char * spaceremoval(char * str) const;
+  char * removeSpaces(const char * str);
 }
 
 #endif
