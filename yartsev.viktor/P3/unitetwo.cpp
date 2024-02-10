@@ -1,7 +1,7 @@
 #include "unitetwo.hpp"
 #include <cstring>
 
-char * yartsev::uniteTwoStrings(char * a, char * b)
+char * yartsev::uniteTwoStrings(const char * a, const char * b)
 {
   char * new_str = new char [strlen(a) + strlen(b) + 1]{};
   size_t new_str_length = 0;

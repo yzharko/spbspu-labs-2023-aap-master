@@ -14,7 +14,7 @@ char * yartsev::removeSpaces(const char * str)
       new_str[new_str_length++] = str[i];
     }
   }
-  if (isblank(new_str[new_str_length - 1])) {
+  if (new_str_length != 0 && isblank(new_str[new_str_length - 1])) {
     new_str_length--;
   }
   new_str[new_str_length] = '\0';

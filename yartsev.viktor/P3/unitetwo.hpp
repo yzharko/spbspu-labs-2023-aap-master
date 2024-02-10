@@ -2,7 +2,7 @@
 #define UNITETWO_HPP
 
 namespace yartsev {
-  char * uniteTwoStrings(char * a, char * b);
+  char * uniteTwoStrings(const char * a, const char * b);
 }
 
 #endif
