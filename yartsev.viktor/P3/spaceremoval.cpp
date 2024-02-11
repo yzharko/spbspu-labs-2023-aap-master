@@ -6,6 +6,7 @@ char * yartsev::removeSpaces(const char * str)
 {
   size_t str_length = strlen(str);
   size_t new_str_length = 0;
+  char * new_str = nullptr;
   try {
     char * new_str = new char [str_length + 1]{};
   } catch (std::bad_alloc & e) {
