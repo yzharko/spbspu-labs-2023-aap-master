@@ -9,11 +9,11 @@ namespace jasur
   {
     public:
       SequenceCounter();
-      void operator()(int number); 
-      int operator()() const; 
+      void operator()(int number);
+      int operator()() const;
     private:
-      int count_; 
-      int lastElement_; 
+      int count_;
+      int lastElement_;
   };
 }
 }
