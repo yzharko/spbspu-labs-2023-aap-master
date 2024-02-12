@@ -1,6 +1,6 @@
 #include <iostream>
-#include "funcs.hpp"
-#include "getstring.hpp"
+#include "replaceAndCount.hpp"
+#include "getString.hpp"
 
 int main()
 {
