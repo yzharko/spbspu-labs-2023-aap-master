@@ -1,5 +1,6 @@
 #include "upplow.hpp"
 #include <cctype>
+#include <cstddef>
 
 namespace toksen
 {

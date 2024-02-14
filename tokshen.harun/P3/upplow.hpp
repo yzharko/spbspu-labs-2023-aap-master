@@ -1,6 +1,7 @@
 #ifndef UPPLOW_H
 #define UPPLOW_H
 #include <cctype>
+#include <cstddef>
 
 namespace toksen
 {

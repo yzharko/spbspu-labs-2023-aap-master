@@ -1,6 +1,7 @@
 #ifndef LAT_WTO_HPP
 #define LAT_TWO_HPP
 #include <cctype>
+#include <cstddef>
 
 namespace toksen
 {

@@ -1,6 +1,7 @@
 #ifndef LAT_TWO_HPP
 #define LAT_TWO_HPP
 #include <cctype>
+#include <cstddef>
 #include "lat_two.hpp"
 
 namespace toksen
