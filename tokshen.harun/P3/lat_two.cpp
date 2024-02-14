@@ -7,15 +7,15 @@
 namespace toksen
 {
   bool contains(char* str, char c, size_t len) {
-    for (int i = 0; i < len; ++i) {
+    for (size_t i = 0; i < len; ++i) {
     if (str[i] == c) return true;
     }
     return false;
     }
 
     void sortString(char* str, size_t len) {
-      for (int i = 0; i < len - 1; ++i) {
-        for (int j = i + 1; j < len; ++j) {
+      for (size_t i = 0; i < len - 1; ++i) {
+        for (size_t j = i + 1; j < len; ++j) {
           if (str[i] > str[j]) {
           char temp = str[i];
           str[i] = str[j];

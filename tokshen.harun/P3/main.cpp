@@ -2,6 +2,7 @@
 #include "upplow.hpp"
 #include "lat_two.hpp"
 #include <cstddef>
+#include <cstring>
 
 int main() {
 
