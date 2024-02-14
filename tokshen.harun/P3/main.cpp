@@ -6,6 +6,7 @@
 #include <stdexcept>
 
 int main() {
+
   size_t length = 2000;
   char* str1 = new char[length + 1];
   char* str2 = new char[length + 1];
@@ -38,14 +39,9 @@ int main() {
       throw std::runtime_error("Input overflow or other error while reading second string.");
     }
 
-    inputLength = strlen(str2);
-
-    if (inputLength > length) {
-      throw std::runtime_error("Input length error for second string");
-    }
-
     char* mergeString = toksen::mergeLatinLetters(temp, str2);
     std::cout << mergeString;
+
     delete[] mergeString;
   }
 
@@ -54,13 +50,11 @@ int main() {
     delete[] temp;
     delete[] str1;
     delete[] str2;
-
     return 1;
   }
 
   delete[] temp;
   delete[] str1;
   delete[] str2;
-
   return 0;
 }
