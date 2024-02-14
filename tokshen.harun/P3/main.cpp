@@ -6,7 +6,7 @@
 
 int main() {
 
-  size_t length = 20;
+  size_t length = 2000;
   char* str1 = new char[length + 1];
   char* str2 = new char[length + 1];
   std::cout << "Enter 1st string: " << "\n";
