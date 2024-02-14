@@ -42,13 +42,13 @@ int main() {
     std::cout << mergeString;
     delete[] mergeString;
   }
-  
+
   catch (const std::exception& e) {
     std::cerr << e.what() << std::endl;
     delete[] temp;
     delete[] str1;
     delete[] str2;
-    
+
     return 1;
     }
 
