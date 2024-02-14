@@ -35,7 +35,13 @@ int main() {
     std::cin.getline(str2, length + 1);
 
     if (std::cin.fail()) {
-      throw std::runtime_error("Input overflow or other error while reading first string.");
+      throw std::runtime_error("Input overflow or other error while reading second string.");
+    }
+
+    inputLength = strlen(str2);
+
+    if (inputLength > length) {
+      throw std::runtime_error("Input length error for second string");
     }
 
     char* mergeString = toksen::mergeLatinLetters(temp, str2);
@@ -50,7 +56,7 @@ int main() {
     delete[] str2;
 
     return 1;
-    }
+  }
 
   delete[] temp;
   delete[] str1;
