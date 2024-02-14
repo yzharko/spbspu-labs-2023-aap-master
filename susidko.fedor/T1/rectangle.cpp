@@ -17,23 +17,20 @@ point_t Rectangle::getCenter()
   pos.y = (po1.y + height/2);
   return pos;
 }
-point_t Rectangle::getP1()
+/*point_t Rectangle::getP1()
 {
   return this->po1_;
 }
 point_t Rectangle::getP2()
 {
   return this->po2_;
-}
+}*/
 rectangle_t Rectangle::getFrameRect()
 {
   point_t po1 = this->po1_;
   point_t po2 = this->po2_;
   double wight = po2.x - po1.x;
   double height = po2.y - po1.y;
-  //point_t pos;
-  //pos.x = (po1.x + wight/2);
-  //pos.y = (po1.y + height/2);
   point_t pos = (*this).getCenter();
   rectangle_t frame_rect;
   frame_rect.wight = wight;
@@ -65,10 +62,6 @@ rectangle_t Rectangle::scale(double x, double y, double coef, rectangle_t frame)
   frame.height = coef * frame.height;
   frame.wight = coef * frame.wight;
   return frame;
-}
-void Rectangle::print()
-{
-  std::cout << this->po1_.x << ' ' << this->po1_.y << '\n';
 }
 
 

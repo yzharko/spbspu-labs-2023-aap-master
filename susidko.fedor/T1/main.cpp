@@ -3,6 +3,7 @@
 #include "base-types.hpp"
 #include "shape.hpp"
 #include "rectangle.hpp"
+#include "polygon.hpp"
 
 int main()
 {
