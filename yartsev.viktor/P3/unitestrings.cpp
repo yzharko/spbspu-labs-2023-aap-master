@@ -1,8 +1,8 @@
-#include "unitetwo.hpp"
+#include "unitestrings.hpp"
 #include <cstring>
 #include <new>
 
-char * yartsev::uniteTwoStrings(const char * a, const char * b)
+char * yartsev::uniteStrings(const char * a, const char * b)
 {
   char * new_str = nullptr;
   try {

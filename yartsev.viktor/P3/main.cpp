@@ -1,7 +1,7 @@
 #include <iostream>
 #include "stringwork.hpp"
 #include "spaceremoval.hpp"
-#include "unitetwo.hpp"
+#include "unitestrings.hpp"
 
 int main()
 {
@@ -13,15 +13,15 @@ int main()
     delete [] str;
     return 1;
   }
-  char * ans1 = yartsev::removeSpaces(str);
+  char * ans_spc_rmv = yartsev::removeSpaces(str);
   const char * uni_str = "abacaba";
-  char * ans2 = yartsev::uniteTwoStrings(str, uni_str);
-  if (ans1 != nullptr && ans2 != nullptr) {
-    std::cout << ans1 << "\n";
-    std::cout << ans2 << "\n";
+  char * ans_uni_two = yartsev::uniteStrings(str, uni_str);
+  if (ans_spc_rmv != nullptr && ans_uni_two != nullptr) {
+    std::cout << ans_spc_rmv << "\n";
+    std::cout << ans_uni_two << "\n";
   }
   delete [] str;
-  delete [] ans1;
-  delete [] ans2;
+  delete [] ans_spc_rmv;
+  delete [] ans_uni_two;
   return 0;
 }
