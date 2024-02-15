@@ -8,11 +8,7 @@ int main()
   char * str = new char [10000]{};
   try {
     yartsev::readString(str);
-  } catch (const std::logic_error & e) {
-    std::cerr << e.what() << "\n";
-    delete [] str;
-    return 2;
-  } catch (const std::bad_alloc & e) {
+  } catch (const std::exception & e) {
     std::cerr << e.what() << "\n";
     delete [] str;
     return 1;
