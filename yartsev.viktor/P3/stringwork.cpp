@@ -8,6 +8,9 @@ void yartsev::readString(char * str)
   size_t size = 10000;
   char symbol = 0;
   std::cin >> std::noskipws;
+  if (!(std::cin)) {
+    throw std::logic_error("No input");
+  }
   while ((std::cin >> symbol) && (symbol != '\n')) {
     if (read == size - 1) {
       try {
