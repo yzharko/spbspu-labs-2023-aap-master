@@ -3,9 +3,9 @@
 #include <cstddef>
 #include <cstring>
 
-size_t resizeString(char ** str)
+char * resizeString(const char * str)
 {
-  const size_t curr_size = strlen(*str);
+  const size_t curr_size = strlen(str);
   const size_t add_size = 10000;
   char * new_str = nullptr;
   try {
@@ -14,11 +14,9 @@ size_t resizeString(char ** str)
     throw;
   }
   for (size_t i = 0; i < curr_size; i++) {
-    new_str[i] = *str[i];
+    new_str[i] = str[i];
   }
-  delete [] *str;
-  *str = new_str;
-  return curr_size + add_size;
+  return new_str;
 }
 
 void yartsev::readString(char * str)
@@ -33,9 +31,11 @@ void yartsev::readString(char * str)
   }
   do {
     if (read == size - 1) {
+      str[read] = '\0';
       try {
-        str[read] = '\0';
-        size = resizeString(&str);
+        char * new_str = resizeString(str);
+        delete [] str;
+        str = new_str;
       } catch (const std::bad_alloc & e) {
         throw;
       }
