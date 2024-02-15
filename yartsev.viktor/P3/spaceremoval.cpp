@@ -10,7 +10,7 @@ char * yartsev::removeSpaces(const char * str)
   char * new_str = nullptr;
   try {
     new_str = new char [str_length + 1]{};
-  } catch (std::bad_alloc & e) {
+  } catch (const std::bad_alloc & e) {
     return nullptr;
   }
   for (size_t i = 0; i < str_length; i++) {
