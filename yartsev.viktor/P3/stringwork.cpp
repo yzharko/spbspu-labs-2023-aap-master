@@ -1,9 +1,11 @@
 #include "stringwork.hpp"
 #include <iostream>
 #include <cstddef>
+#include <cstring>
 
-size_t resizeString(char ** str, const size_t curr_size)
+size_t resizeString(char ** str)
 {
+  const size_t curr_size = strlen(*str);
   const size_t add_size = 10000;
   char * new_str = nullptr;
   try {
@@ -32,7 +34,8 @@ void yartsev::readString(char * str)
   do {
     if (read == size - 1) {
       try {
-        size = resizeString(&str, read);
+        str[read] = '\0';
+        size = resizeString(&str);
       } catch (const std::bad_alloc & e) {
         throw;
       }
