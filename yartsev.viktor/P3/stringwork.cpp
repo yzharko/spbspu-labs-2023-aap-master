@@ -15,7 +15,7 @@ void yartsev::readString(char * str)
   do {
     if (read == size - 1) {
       try {
-        size = yartsev::resizeString(str, read);
+        size = yartsev::resizeString(&str, read);
       } catch (const std::bad_alloc & e) {
         throw;
       }
@@ -26,7 +26,7 @@ void yartsev::readString(char * str)
   std::cin >> std::skipws;
 }
 
-size_t yartsev::resizeString(char *& str, const size_t curr_size)
+size_t yartsev::resizeString(char ** str, const size_t curr_size)
 {
   const size_t add_size = 10000;
   char * new_str = nullptr;
@@ -36,9 +36,9 @@ size_t yartsev::resizeString(char *& str, const size_t curr_size)
     throw;
   }
   for (size_t i = 0; i < curr_size; i++) {
-    new_str[i] = str[i];
+    new_str[i] = *str[i];
   }
-  delete [] str;
-  str = new_str;
+  delete [] *str;
+  *str = new_str;
   return curr_size + add_size;
 }

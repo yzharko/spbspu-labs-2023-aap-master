@@ -4,7 +4,7 @@
 
 namespace yartsev {
   void readString(char * str);
-  size_t resizeString(char *& str, const size_t curr_size);
+  size_t resizeString(char ** str, const size_t curr_size);
 }
 
 #endif
