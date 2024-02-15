@@ -14,7 +14,7 @@ int main()
     return 1;
   }
   char * ans1 = yartsev::removeSpaces(str);
-  char uni_str[] = "abacaba";
+  const char * uni_str = "abacaba";
   char * ans2 = yartsev::uniteTwoStrings(str, uni_str);
   if (ans1 != nullptr && ans2 != nullptr) {
     std::cout << ans1 << "\n";
