@@ -16,7 +16,7 @@ void yartsev::readString(char * str)
     if (read == size - 1) {
       try {
         size = yartsev::resizeString(str, read);
-      } catch (std::bad_alloc & e) {
+      } catch (const std::bad_alloc & e) {
         throw;
       }
     }
@@ -32,7 +32,7 @@ size_t yartsev::resizeString(char *& str, const size_t curr_size)
   char * new_str = nullptr;
   try {
     new_str = new char [curr_size + add_size]{};
-  } catch (std::bad_alloc & e) {
+  } catch (const std::bad_alloc & e) {
     throw;
   }
   for (size_t i = 0; i < curr_size; i++) {

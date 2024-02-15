@@ -7,7 +7,7 @@ char * yartsev::uniteTwoStrings(const char * a, const char * b)
   char * new_str = nullptr;
   try {
     new_str = new char [strlen(a) + strlen(b) + 1]{};
-  } catch (std::bad_alloc & e) {
+  } catch (const std::bad_alloc & e) {
     return nullptr;
   }
   size_t new_str_length = 0;
