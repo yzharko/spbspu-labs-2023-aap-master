@@ -8,10 +8,11 @@ void yartsev::readString(char * str)
   size_t size = 10000;
   char symbol = 0;
   std::cin >> std::noskipws;
-  if (!(std::cin)) {
-    throw std::logic_error("No input");
+  std::cin >> symbol;
+  if ((!std::cin) || symbol == '\n') {
+    throw std::logic_error("Wrong input: empty string");
   }
-  while ((std::cin >> symbol) && (symbol != '\n')) {
+  do {
     if (read == size - 1) {
       try {
         size = yartsev::resizeString(str, read);
@@ -20,7 +21,7 @@ void yartsev::readString(char * str)
       }
     }
     str[read++] = symbol;
-  }
+  } while ((std::cin >> symbol) && (symbol != '\n'));
   str[read] = '\0';
   std::cin >> std::skipws;
 }
