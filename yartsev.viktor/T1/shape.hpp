@@ -9,7 +9,7 @@ namespace yartsev {
       virtual yartsev::rectangle_t getFrameRect() = 0;
       virtual void move(const point_t & to) = 0;
       virtual void move(const double & dx, const double & dy) = 0;
-      virtual void scale() = 0;
+      virtual void scale(const double & scaling) = 0;
   };
 }
 

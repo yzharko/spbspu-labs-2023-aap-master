@@ -23,4 +23,10 @@ void yartsev::Rectangle::move(const double & dx, const double & dy)
   rectangle.pos_.y_ += dy;
 }
 
+void yartsev::Rectangle::scale(const double & scaling)
+{
+  rectangle.height_ *= scaling;
+  rectangle.width_ *= scaling;
+}
+
 #endif
