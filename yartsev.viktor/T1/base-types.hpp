@@ -6,10 +6,11 @@ namespace yartsev {
     double x_;
     double y_;
   };
+  
   struct rectangle_t {
     double width_;
     double height_;
-    double pos_;
+    point_t pos_;
   };
 }
 
