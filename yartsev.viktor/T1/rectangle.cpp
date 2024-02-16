@@ -17,4 +17,10 @@ void yartsev::Rectangle::move(const point_t & to)
   rectangle.pos_ = to;
 }
 
+void yartsev::Rectangle::move(const double & dx, const double & dy) 
+{
+  rectangle.pos_.x_ += dx;
+  rectangle.pos_.y_ += dy;
+}
+
 #endif
