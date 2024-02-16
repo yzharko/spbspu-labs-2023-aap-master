@@ -1,6 +1,14 @@
 #ifndef RECTANGLE_CPP
 #define RECTANGLE_CPP
 #include "rectangle.hpp"
+#include <cmath>
+
+yartsev::Rectangle::Rectangle(const point_t & bottomLeftPoint, const point_t & topRightPoint)
+{
+  rectangle.height_ = abs(bottomLeftPoint.y_ - topRightPoint.y_);
+  rectangle.width_ = abs(bottomLeftPoint.x_ - topRightPoint.x_);
+  rectangle.pos_ = {(bottomLeftPoint.x_ + topRightPoint.x_) / 2, (topRightPoint.y_ + topRightPoint.y_) / 2};
+};
 
 double yartsev::Rectangle::getArea() const
 {

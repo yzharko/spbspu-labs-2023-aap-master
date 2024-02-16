@@ -6,6 +6,7 @@
 namespace yartsev {
   class Rectangle : public yartsev::Shape {
     public:
+      Rectangle(const point_t & bottomLeftPoint, const point_t & topRightPoint);
       virtual double getArea() const override;
       virtual yartsev::rectangle_t getFrameRect() override;
       virtual void move(const point_t & to) override;
