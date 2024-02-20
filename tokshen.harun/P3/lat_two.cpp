@@ -6,22 +6,22 @@
 
 namespace toksen
 {
-  bool contains(char* str, char c, size_t len) 
+  bool contains(char* str, char c, size_t len)
   {
-    for (size_t i = 0; i < len; ++i) 
+    for (size_t i = 0; i < len; ++i)
     {
       if (str[i] == c) return true;
     }
     return false;
   }
 
-  void sortString(char* str, size_t len) 
+  void sortString(char* str, size_t len)
   {
-    for (size_t i = 0; i < len - 1; ++i) 
+    for (size_t i = 0; i < len - 1; ++i)
     {
       for (size_t j = i + 1; j < len; ++j)
       {
-        if (str[i] > str[j]) 
+        if (str[i] > str[j])
         {
         char temp = str[i];
         str[i] = str[j];
@@ -31,7 +31,7 @@ namespace toksen
     }
   }
 
-  char* mergeLatinLetters(char* str1, char* str2) 
+  char* mergeLatinLetters(char* str1, char* str2)
   {
     int len1 = 0, len2 = 0;
     while (str1[len1] != '\0') ++len1;
@@ -40,17 +40,17 @@ namespace toksen
     char* merged = new char[len1 + len2 + 1];
     int k = 0;
 
-    for (int i = 0; i < len1; ++i) 
+    for (int i = 0; i < len1; ++i)
     {
-      if (isalpha(str1[i]) && !contains(merged, str1[i], k)) 
+      if (isalpha(str1[i]) && !contains(merged, str1[i], k))
       {
         merged[k++] = str1[i];
       }
     }
 
-    for (int i = 0; i < len2; ++i) 
+    for (int i = 0; i < len2; ++i)
     {
-      if (isalpha(str2[i]) && !contains(merged, str2[i], k)) 
+      if (isalpha(str2[i]) && !contains(merged, str2[i], k))
       {
         merged[k++] = str2[i];
       }
