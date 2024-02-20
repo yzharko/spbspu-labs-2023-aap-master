@@ -2,16 +2,17 @@
 #include <iostream>
 
 int main() {
-    std::string input;
-    std::getline(std::cin, input);
+  std::string input;
+  std::getline(std::cin, input);
 
-    try {
-        std::string result = transformString(input);
-        std::cout << result << std::endl;
-        return 0;
+  try {
+    std::string result = transformString(input);
+    std::cout << result << "\n";
+    return 0;
     }
-    catch (const std::bad_alloc& e) {
-        std::cerr << "Error: Unable to allocate memory." << std::endl;
-        return 1;
+  catch (const std::bad_alloc& e)
+    {
+    std::cerr << "Error: Unable to allocate memory." << "\n";
+    return 1;
     }
 }
