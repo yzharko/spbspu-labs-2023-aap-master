@@ -1,8 +1,8 @@
 #include <iostream>
-#include "upplow.hpp"
-#include "lat_two.hpp"
 #include <cstring>
 #include <stdexcept>
+#include "upplow.hpp"
+#include "lat_two.hpp"
 
 int main()
 {
