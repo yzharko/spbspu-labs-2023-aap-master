@@ -63,7 +63,7 @@ namespace toksen
     center_.x += offsetX;
     center_.y += offsetY;
 
-    for (int i = 0; i < 3; ++i) 
+    for (int i = 0; i < 3; ++i)
     {
       points_[i].x += offsetX;
       points_[i].y += offsetY;

@@ -1,4 +1,4 @@
-#include <cmath> 
+#include <cmath>
 #include "Regular.hpp"
 
 namespace toksen
