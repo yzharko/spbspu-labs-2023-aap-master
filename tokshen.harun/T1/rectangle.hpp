@@ -10,14 +10,12 @@ namespace toksen
   {
   public:
     Rectangle(Point_t lowerLeftPoint, Point_t upperRightPoint);
-
-	~Rectangle() override {};
+    ~Rectangle() override {};
 	double getArea() const override;
 	Rectangle_t getFrameRect() const override;
 	void move(const Point_t& offset) override;
 	void move(double offsetX, double offsetY) override;
     void scale(double multiplier) override;
-
   private:
 	Point_t lowerLeftPoint_;
 	Point_t upperRightPoint_;
@@ -26,4 +24,5 @@ namespace toksen
 	double getHeight() const;
   };
 }
+
 #endif
