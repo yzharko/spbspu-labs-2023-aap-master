@@ -6,7 +6,7 @@ namespace yartsev {
   class Ellipse : yartsev::Shape {
     public:
       Ellipse();
-      Ellipse(point_t center, double radius);
+      Ellipse(point_t & center, double radiusX, double radiusY);
       virtual double getArea() const override;
       virtual yartsev::rectangle_t getFrameRect() override;
       virtual void move(const point_t & to) override;
