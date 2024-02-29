@@ -1,5 +1,6 @@
 #include "rectangle.hpp"
 #include <cmath>
+#include "base-types.hpp"
 
 yartsev::Rectangle::Rectangle(const point_t & bottomLeftPoint, const point_t & topRightPoint)
 {
