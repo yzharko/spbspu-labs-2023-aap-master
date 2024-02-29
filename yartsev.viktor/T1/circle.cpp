@@ -22,6 +22,7 @@ yartsev::rectangle_t yartsev::Circle::getFrameRect()
     yartsev::point_t bottomLeftPoint(center_.x_ - radius_, center_.y_ - radius_);
     yartsev::point_t topRightPoint(center_.x_ + radius_, center_.y_ + radius_);
     yartsev::rectangle_t rez(topRightPoint.x_ - bottomLeftPoint.x_, topRightPoint.y_ - bottomLeftPoint.y_, center_);
+    return rez;
 }
 
 void yartsev::Circle::move(const point_t & to) 

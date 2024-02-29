@@ -3,7 +3,7 @@
 #include "shape.hpp"
 
 namespace yartsev {
-  class Ellipse : yartsev::Shape {
+  class Ellipse : public yartsev::Shape {
     public:
       Ellipse();
       Ellipse(point_t & center, double radiusX, double radiusY);

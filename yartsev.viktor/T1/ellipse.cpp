@@ -1,4 +1,5 @@
 #include "ellipse.hpp"
+#include "base-types.hpp"
 
 yartsev::Ellipse::Ellipse() :
   center_(),
@@ -16,6 +17,11 @@ double yartsev::Ellipse::getArea() const
 {
   double PI = 3.1415926535;
   return PI * radiusX_ * radiusY_;
+}
+
+yartsev::rectangle_t yartsev::Ellipse::getFrameRect()
+{
+  
 }
 
 void yartsev::Ellipse::move(const point_t & to)
