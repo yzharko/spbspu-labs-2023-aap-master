@@ -13,7 +13,7 @@ namespace yartsev {
       virtual void move(const double & dx, const double & dy) override;
       virtual void scale(const double & scaling) override;
     private:
-      rectangle_t rectangle;
+      rectangle_t rectangle_;
   };
 }
 

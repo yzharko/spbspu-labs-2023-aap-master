@@ -1,17 +1,16 @@
 #include <iostream>
 #include "rectangle.hpp"
 #include "base-types.hpp"
+#include "shapesInput.hpp"
 
 int main()
 {
-  std::string str = "";
-  double x = 0, y = 0;
+  size_t shapesAmount = 0;
+  size_t shapesSize = 100;
+  yartsev::Shape ** shapes = new yartsev::Shape * [shapesSize];
+  std::string str;
   std::cin >> str;
-  std:: cin >> x >> y;
-  yartsev::point_t bottomLeftPoint{x, y};
-  std::cin >> x >> y;
-  yartsev::point_t topRightPoint{x, y};
-  std::cout << bottomLeftPoint.x_ << " " << bottomLeftPoint.y_ << "\n";
-  std::cout << topRightPoint.x_ << " " << topRightPoint.y_ << "\n";
+  inputFigure(str, &shapes[shapesAmount]);
+  std::cout << shapes[shapesAmount]->getArea();
   return 0;
 }

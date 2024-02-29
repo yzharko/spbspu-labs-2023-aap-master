@@ -5,36 +5,36 @@
 
 yartsev::Rectangle::Rectangle(const point_t & bottomLeftPoint, const point_t & topRightPoint)
 {
-  rectangle.height_ = abs(bottomLeftPoint.y_ - topRightPoint.y_);
-  rectangle.width_ = abs(bottomLeftPoint.x_ - topRightPoint.x_);
-  rectangle.pos_ = {(bottomLeftPoint.x_ + topRightPoint.x_) / 2, (topRightPoint.y_ + topRightPoint.y_) / 2};
+  rectangle_.height_ = abs(bottomLeftPoint.y_ - topRightPoint.y_);
+  rectangle_.width_ = abs(bottomLeftPoint.x_ - topRightPoint.x_);
+  rectangle_.pos_ = {(bottomLeftPoint.x_ + topRightPoint.x_) / 2, (topRightPoint.y_ + topRightPoint.y_) / 2};
 };
 
 double yartsev::Rectangle::getArea() const
 {
-  return rectangle.width_ * rectangle.height_;
+  return rectangle_.width_ * rectangle_.height_;
 }
 
 yartsev::rectangle_t yartsev::Rectangle::getFrameRect()
 {
-  return rectangle;
+  return rectangle_;
 }
 
 void yartsev::Rectangle::move(const point_t & to) 
 {
-  rectangle.pos_ = to;
+  rectangle_.pos_ = to;
 }
 
 void yartsev::Rectangle::move(const double & dx, const double & dy) 
 {
-  rectangle.pos_.x_ += dx;
-  rectangle.pos_.y_ += dy;
+  rectangle_.pos_.x_ += dx;
+  rectangle_.pos_.y_ += dy;
 }
 
 void yartsev::Rectangle::scale(const double & scaling)
 {
-  rectangle.height_ *= scaling;
-  rectangle.width_ *= scaling;
+  rectangle_.height_ *= scaling;
+  rectangle_.width_ *= scaling;
 }
 
 #endif
