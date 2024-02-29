@@ -10,6 +10,11 @@ yartsev::point_t::point_t(double x, double y):
   y_(y)
 {}
 
+double yartsev::rectangle_t::getArea()
+{
+  return width_ * height_;
+}
+
 yartsev::rectangle_t::rectangle_t():
   width_(0),
   height_(0),
