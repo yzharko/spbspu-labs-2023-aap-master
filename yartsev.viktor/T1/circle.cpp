@@ -1,6 +1,11 @@
 #include "circle.hpp"
 #include "base-types.hpp"
 
+yartsev::Circle::Circle() :
+  center_(),
+  radius_(0)
+{}
+
 yartsev::Circle::Circle(point_t center, double radius) :
   center_(center),
   radius_(radius)
