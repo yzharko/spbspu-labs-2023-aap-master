@@ -6,6 +6,7 @@
 namespace yartsev {
   class Circle : public yartsev::Shape {
     public:
+      Circle(point_t center, double radius);
       virtual double getArea() const override;
       virtual yartsev::rectangle_t getFrameRect() override;
       virtual void move(const point_t & to) override;

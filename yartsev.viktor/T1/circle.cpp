@@ -1,6 +1,11 @@
 #include "circle.hpp"
 #include "base-types.hpp"
 
+yartsev::Circle::Circle(point_t center, double radius) :
+  center_(center),
+  radius_(radius)
+{}
+
 double yartsev::Circle::getArea() const
 {
   double const PI = 3.14;
