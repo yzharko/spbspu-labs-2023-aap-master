@@ -10,14 +10,12 @@ namespace yartsev {
   };
   
   struct rectangle_t {
-    public:
-      double getArea();
-    private:
-      rectangle_t();
-      rectangle_t(double width, double height, point_t pos);
-      double width_;
-      double height_;
-      point_t pos_;
+    double getArea();
+    rectangle_t();
+    rectangle_t(double width, double height, point_t pos);
+    double width_;
+    double height_;
+    point_t pos_;
   };
 }
 
