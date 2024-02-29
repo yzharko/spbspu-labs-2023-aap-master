@@ -13,7 +13,7 @@ yartsev::Circle::Circle(point_t & center, double radius) :
 
 double yartsev::Circle::getArea() const
 {
-  double const PI = 3,1415926535;
+  double const PI = 3.1415926535;
   return PI * radius_ * radius_;
 }
 
