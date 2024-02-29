@@ -1,5 +1,3 @@
-#ifndef RECTANGLE_CPP
-#define RECTANGLE_CPP
 #include "rectangle.hpp"
 #include <cmath>
 
@@ -36,5 +34,3 @@ void yartsev::Rectangle::scale(const double & scaling)
   rectangle_.height_ *= scaling;
   rectangle_.width_ *= scaling;
 }
-
-#endif
