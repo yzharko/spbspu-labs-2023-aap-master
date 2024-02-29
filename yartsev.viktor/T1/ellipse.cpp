@@ -17,3 +17,14 @@ double yartsev::Ellipse::getArea() const
   double PI = 3.1415926535;
   return PI * radiusX_ * radiusY_;
 }
+
+void yartsev::Ellipse::move(const point_t & to)
+{
+  center_ = to;
+}
+
+void yartsev::Ellipse::move(const double & dx, const double & dy)
+{
+  center_.x_ += dx;
+  center_.y_ += dy;
+}
