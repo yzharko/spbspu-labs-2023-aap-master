@@ -28,3 +28,9 @@ void yartsev::Ellipse::move(const double & dx, const double & dy)
   center_.x_ += dx;
   center_.y_ += dy;
 }
+
+void yartsev::Ellipse::scale(const double & scaling)
+{
+  radiusX_ *= scaling;
+  radiusY_ *= scaling;
+}
