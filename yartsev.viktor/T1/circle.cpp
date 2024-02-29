@@ -6,7 +6,7 @@ yartsev::Circle::Circle() :
   radius_(0)
 {}
 
-yartsev::Circle::Circle(point_t center, double radius) :
+yartsev::Circle::Circle(point_t & center, double radius) :
   center_(center),
   radius_(radius)
 {}
