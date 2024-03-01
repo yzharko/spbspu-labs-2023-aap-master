@@ -10,9 +10,11 @@ int main()
   size_t shapesAmount = 0;
   yartsev::Shape * shapes[100]{};
   std::string str = "";
+  bool wasScale = false;
   while (!std::cin.eof()) {
     std::cin >> str;
     if (str == "SCALE") {
+      wasScale = true;
       double x, y, scaling;
       std::cin >> x >> y >> scaling;
       yartsev::point_t center(x, y);
@@ -38,6 +40,10 @@ int main()
     } else {
       inputFigure(str, &shapes[shapesAmount], &shapesAmount);
     }
+  }
+  if (!wasScale) {
+    std::cerr << "No SCALE was written\n";
+    return 1;
   }
   return 0;
 }

@@ -25,7 +25,7 @@ yartsev::rectangle_t yartsev::Circle::getFrameRect()
     return rez;
 }
 
-void yartsev::Circle::move(const point_t & to) 
+void yartsev::Circle::move(const point_t & to)
 {
   center_ = to;
 }

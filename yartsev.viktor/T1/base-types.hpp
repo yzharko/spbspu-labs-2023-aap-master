@@ -8,7 +8,7 @@ namespace yartsev {
     double x_;
     double y_;
   };
-  
+
   struct rectangle_t {
     double getArea();
     point_t getLowerPoint();

@@ -19,12 +19,12 @@ yartsev::rectangle_t yartsev::Rectangle::getFrameRect()
   return rectangle_;
 }
 
-void yartsev::Rectangle::move(const point_t & to) 
+void yartsev::Rectangle::move(const point_t & to)
 {
   rectangle_.pos_ = to;
 }
 
-void yartsev::Rectangle::move(const double & dx, const double & dy) 
+void yartsev::Rectangle::move(const double & dx, const double & dy)
 {
   rectangle_.pos_.x_ += dx;
   rectangle_.pos_.y_ += dy;
@@ -43,4 +43,3 @@ void yartsev::Rectangle::pointScale(point_t to, double scaling)
   rectangle_.pos_.x_ = to.x_ + (rectangle_.pos_.x_ - to.x_) * scaling;
   rectangle_.pos_.y_ = to.y_ + (rectangle_.pos_.y_ - to.y_) * scaling;
 }
-
