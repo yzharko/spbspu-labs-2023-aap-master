@@ -40,3 +40,10 @@ void yartsev::Circle::scale(const double & scaling)
 {
   radius_ *= scaling;
 }
+
+void yartsev::Circle::pointScale(point_t to, double scaling)
+{
+  radius_ *= scaling;
+  center_.x_ = to.x_ + (center_.x_ - to.x_) * scaling;
+  center_.y_ = to.y_ + (center_.y_ - to.y_) * scaling;
+}

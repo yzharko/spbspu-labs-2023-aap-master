@@ -13,6 +13,7 @@ namespace yartsev {
       virtual void move(const point_t & to) override;
       virtual void move(const double & dx, const double & dy) override;
       virtual void scale(const double & scaling) override;
+      virtual void pointScale(point_t to, double scaling) override;
     private:
       point_t center_;
       double radius_;

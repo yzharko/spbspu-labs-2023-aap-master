@@ -11,6 +11,8 @@ namespace yartsev {
   
   struct rectangle_t {
     double getArea();
+    point_t getLowerPoint();
+    point_t getTopPoint();
     rectangle_t();
     rectangle_t(double width, double height, point_t pos);
     double width_;

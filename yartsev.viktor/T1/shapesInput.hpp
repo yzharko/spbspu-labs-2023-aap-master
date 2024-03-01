@@ -3,6 +3,8 @@
 #include <iostream>
 #include "shape.hpp"
 
-void inputFigure(std::string name, yartsev::Shape ** shape);
+namespace yartsev {
+  void inputFigure(std::string name, yartsev::Shape ** shape, size_t * shapesAmount);
+}
 
 #endif

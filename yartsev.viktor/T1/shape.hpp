@@ -10,6 +10,7 @@ namespace yartsev {
       virtual void move(const point_t & to) = 0;
       virtual void move(const double & dx, const double & dy) = 0;
       virtual void scale(const double & scaling) = 0;
+      virtual void pointScale(point_t to, double scaling) = 0;
   };
 }
 

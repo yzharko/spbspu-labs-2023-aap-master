@@ -15,6 +15,18 @@ double yartsev::rectangle_t::getArea()
   return width_ * height_;
 }
 
+yartsev::point_t yartsev::rectangle_t::getLowerPoint()
+{
+  point_t rez(pos_.x_ - width_ / 2.0, pos_.y_ - height_ / 2.0);
+  return rez;
+}
+
+yartsev::point_t yartsev::rectangle_t::getTopPoint()
+{
+  point_t rez(pos_.x_ + width_ / 2.0, pos_.y_ + height_ / 2.0);
+  return rez;
+}
+
 yartsev::rectangle_t::rectangle_t():
   width_(0),
   height_(0),

@@ -21,7 +21,7 @@ double yartsev::Ellipse::getArea() const
 
 yartsev::rectangle_t yartsev::Ellipse::getFrameRect()
 {
-  
+  return rectangle_t(radiusX_ * 2, radiusY_ * 2, center_);
 }
 
 void yartsev::Ellipse::move(const point_t & to)
@@ -40,3 +40,12 @@ void yartsev::Ellipse::scale(const double & scaling)
   radiusX_ *= scaling;
   radiusY_ *= scaling;
 }
+
+void yartsev::Ellipse::pointScale(point_t to, double scaling)
+{
+  radiusX_ *= scaling;
+  radiusY_ *= scaling;
+  center_.x_ = to.x_ + (center_.x_ - to.x_) * scaling;
+  center_.y_ = to.y_ + (center_.y_ - to.y_) * scaling;
+}
+

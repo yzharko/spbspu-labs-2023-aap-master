@@ -6,7 +6,7 @@ yartsev::Rectangle::Rectangle(const point_t & bottomLeftPoint, const point_t & t
 {
   rectangle_.height_ = abs(bottomLeftPoint.y_ - topRightPoint.y_);
   rectangle_.width_ = abs(bottomLeftPoint.x_ - topRightPoint.x_);
-  rectangle_.pos_ = {(bottomLeftPoint.x_ + topRightPoint.x_) / 2, (topRightPoint.y_ + topRightPoint.y_) / 2};
+  rectangle_.pos_ = {(bottomLeftPoint.x_ + topRightPoint.x_) / 2, (bottomLeftPoint.y_ + topRightPoint.y_) / 2};
 };
 
 double yartsev::Rectangle::getArea() const
@@ -35,3 +35,12 @@ void yartsev::Rectangle::scale(const double & scaling)
   rectangle_.height_ *= scaling;
   rectangle_.width_ *= scaling;
 }
+
+void yartsev::Rectangle::pointScale(point_t to, double scaling)
+{
+  rectangle_.width_ *= scaling;
+  rectangle_.height_ *= scaling;
+  rectangle_.pos_.x_ = to.x_ + (rectangle_.pos_.x_ - to.x_) * scaling;
+  rectangle_.pos_.y_ = to.y_ + (rectangle_.pos_.y_ - to.y_) * scaling;
+}
+
