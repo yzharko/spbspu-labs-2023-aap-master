@@ -4,6 +4,8 @@
 #include "base-types.hpp"
 #include "shapesInput.hpp"
 #include "shapes-output.hpp"
+#include "circle.hpp"
+#include "ellipse.hpp"
 
 int main()
 {
@@ -39,7 +41,7 @@ int main()
       std::cout << "\n";
     } else {
       try {
-        inputFigure(str, &shapes[shapesAmount], &shapesAmount);
+        inputFigure(str, &shapes[shapesAmount], shapesAmount);
       } catch (const std::logic_error& e) {
         std::cerr << e.what();
       }

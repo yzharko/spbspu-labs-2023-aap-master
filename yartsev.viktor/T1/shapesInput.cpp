@@ -5,7 +5,7 @@
 #include "circle.hpp"
 #include "ellipse.hpp"
 
-void yartsev::inputFigure(std::string name, yartsev::Shape ** shape, size_t * shapesAmount)
+void yartsev::inputFigure(std::string name, yartsev::Shape ** shape, size_t & shapesAmount)
 {
   yartsev::Shape * ptr = nullptr;
   if (name == "RECTANGLE") {
@@ -13,6 +13,7 @@ void yartsev::inputFigure(std::string name, yartsev::Shape ** shape, size_t * sh
     std::cin >> bottomLeftX >> bottomLeftY >> topRightX >> topRightY;
     yartsev::point_t bottomLeft(bottomLeftX, bottomLeftY);
     yartsev::point_t topRight(topRightX, topRightY);
+    ptr = new yartsev::Rectangle(bottomLeft, topRight);
   } else if (name == "CIRCLE") {
     double x, y, radius;
     std::cin >> x >> y >> radius;
@@ -36,6 +37,6 @@ void yartsev::inputFigure(std::string name, yartsev::Shape ** shape, size_t * sh
   }
   *shape = ptr;
   if (ptr != nullptr) {
-    (*shapesAmount)++;
+    shapesAmount++;
   }
 }
