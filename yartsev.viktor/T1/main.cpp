@@ -38,7 +38,11 @@ int main()
       }
       std::cout << "\n";
     } else {
-      inputFigure(str, &shapes[shapesAmount], &shapesAmount);
+      try {
+        inputFigure(str, &shapes[shapesAmount], &shapesAmount);
+      } catch (const std::logic_error& e) {
+        std::cerr << e.what();
+      }
     }
   }
   if (!wasScale) {

@@ -1,4 +1,5 @@
 #include "circle.hpp"
+#include <stdexcept>
 #include "base-types.hpp"
 
 yartsev::Circle::Circle() :
@@ -9,7 +10,11 @@ yartsev::Circle::Circle() :
 yartsev::Circle::Circle(point_t & center, double radius) :
   center_(center),
   radius_(radius)
-{}
+{
+  if (radius < 0) {
+    throw std::logic_error("Radius is below zero\n");
+  }
+}
 
 double yartsev::Circle::getArea() const
 {

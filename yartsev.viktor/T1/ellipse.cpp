@@ -1,4 +1,5 @@
 #include "ellipse.hpp"
+#include <stdexcept>
 #include "base-types.hpp"
 
 yartsev::Ellipse::Ellipse() :
@@ -11,7 +12,11 @@ yartsev::Ellipse::Ellipse(point_t & center, double radiusX, double radiusY) :
   center_(center),
   radiusX_(radiusX),
   radiusY_(radiusY)
-{}
+{
+  if (radiusX < 0 || radiusY < 0) {
+    throw std::logic_error("Radius is below zero\n");
+  }
+}
 
 double yartsev::Ellipse::getArea() const
 {
