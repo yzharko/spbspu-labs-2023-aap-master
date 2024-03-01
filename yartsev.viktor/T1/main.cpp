@@ -19,21 +19,21 @@ int main()
       std::cin >> x >> y >> scaling;
       yartsev::point_t center(x, y);
       double area = 0;
-      for (int i = 0; i < shapesAmount; i++) {
+      for (size_t i = 0; i < shapesAmount; i++) {
         area += shapes[i]->getArea();
       }
       std::cout << std::fixed << std::setprecision(1) << area;
-      for (int i = 0; i < shapesAmount; i++) {
+      for (size_t i = 0; i < shapesAmount; i++) {
         yartsev::printFrameRect(shapes[i]);
       }
       std::cout << "\n";
       double newArea = 0;
-      for (int i = 0; i < shapesAmount; i++) {
+      for (size_t i = 0; i < shapesAmount; i++) {
         shapes[i]->pointScale(center, scaling);
         newArea += shapes[i]->getArea();
       }
       std::cout << std::fixed << std::setprecision(1) << newArea;
-      for (int i = 0; i < shapesAmount; i++) {
+      for (size_t i = 0; i < shapesAmount; i++) {
         yartsev::printFrameRect(shapes[i]);
       }
       std::cout << "\n";
