@@ -4,6 +4,7 @@
 #include "shape.hpp"
 #include "rectangle.hpp"
 #include "polygon.hpp"
+#include "parall.hpp"
 
 int main()
 {
@@ -18,6 +19,19 @@ int main()
       double a, b, c, d;
       std::cin >> a >> b >> c >> d;
       shapes[counter++] = new Rectangle{point_t {a, b}, point_t {c, d}};
+      //std::cout << counter;
+      //shapes[counter]->print();
+    }
+    else if (name == "POLYGON")
+    {
+      point_t points[10];
+      
+    }
+    else if (name == "PARALLELOGRAM")
+    {
+      double a, b, c, d, e, f;
+      std::cin >> a >> b >> c >> d >> e >> f;
+      shapes[counter++] = new Parallelogram{point_t {a, b}, point_t {c, d}, point_t {e, f}};
       //std::cout << counter;
       //shapes[counter]->print();
     }
