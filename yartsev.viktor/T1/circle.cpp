@@ -11,7 +11,7 @@ yartsev::Circle::Circle(point_t & center, double radius) :
   center_(center),
   radius_(radius)
 {
-  if (radius < 0) {
+  if (radius <= 0) {
     throw std::logic_error("Radius is below zero\n");
   }
 }
