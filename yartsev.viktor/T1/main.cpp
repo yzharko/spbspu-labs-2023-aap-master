@@ -20,6 +20,9 @@ int main()
       double x, y, scaling;
       std::cin >> x >> y >> scaling;
       if (scaling <= 0) {
+        for (size_t i = 0; i < shapesAmount; i++) {
+          delete shapes[i];
+        }
         std::cerr << "Scaling is below or equals zero\n";
         return 1;
       }
