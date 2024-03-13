@@ -47,7 +47,7 @@ int main()
       }
     }
   }
-  for (int i = 0; i < shapesAmount; i++) {
+  for (size_t i = 0; i < shapesAmount; i++) {
     delete shapes[i];
   }
   if (!wasScale) {
