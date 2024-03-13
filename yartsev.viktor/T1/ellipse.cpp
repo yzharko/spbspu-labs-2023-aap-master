@@ -13,8 +13,8 @@ yartsev::Ellipse::Ellipse(point_t & center, double radiusX, double radiusY) :
   radiusX_(radiusX),
   radiusY_(radiusY)
 {
-  if (radiusX < 0 || radiusY < 0) {
-    throw std::logic_error("Radius is below zero\n");
+  if (radiusX <= 0 || radiusY <= 0) {
+    throw std::logic_error("Radius is below or equals zero\n");
   }
 }
 
