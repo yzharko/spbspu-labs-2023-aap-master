@@ -19,6 +19,10 @@ int main()
       wasScale = true;
       double x, y, scaling;
       std::cin >> x >> y >> scaling;
+      if (scaling <= 0) {
+        std::cerr << "Scaling is below or equals zero\n";
+        return 1;
+      }
       yartsev::point_t center(x, y);
       double area = 0;
       for (size_t i = 0; i < shapesAmount; i++) {
