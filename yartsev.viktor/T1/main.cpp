@@ -19,6 +19,10 @@ int main()
       wasScale = true;
       double x, y, scaling;
       std::cin >> x >> y >> scaling;
+      if (shapesAmount == 0) {
+        std::cerr << "Nothing to scale\n";
+        return 1;
+      }
       if (scaling <= 0) {
         for (size_t i = 0; i < shapesAmount; i++) {
           delete shapes[i];
