@@ -48,7 +48,7 @@ int main()
     }
   }
   for (int i = 0; i < shapesAmount; i++) {
-    delete shapes[shapesAmount];
+    delete shapes[i];
   }
   if (!wasScale) {
     std::cerr << "No SCALE was written\n";
