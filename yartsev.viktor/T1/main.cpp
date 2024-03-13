@@ -39,6 +39,7 @@ int main()
         yartsev::printFrameRect(shapes[i]);
       }
       std::cout << "\n";
+      break;
     } else {
       try {
         inputFigure(str, &shapes[shapesAmount], shapesAmount);
