@@ -10,7 +10,7 @@ size_t rejepbayev::counterOfEqualPairs(char* values, int real_size)
     }
   return count;
 }
-char* seryj::readLine(size_t& real_size)
+char* rejepbayev::readLine(size_t& real_size)
 {
   size_t max_size = 10;
   char* line = new char[max_size];
