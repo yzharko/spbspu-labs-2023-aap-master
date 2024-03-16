@@ -1,40 +1,23 @@
 #include <iostream>
-#include "countEqualMinParticipants.hpp"
-#include "countLessThanPrevMoreThanNext.hpp"
-#include "countLargerThanPreviousSegments.hpp"
+#include "addSizeLine.hpp"
+#include "comparisonLine.hpp"
+#include "EQUAL_CHARS_FINDER.hpp"
+#include "findRplSym.hpp"
+#include "formingString.hpp"
+#include "readingString.hpp"
+#include "readLine.hpp"
 
-int main()
-{
-  int value = 0;
-  jasur::MinCounter minCounter;
-  jasur::LessMoreCounter lessMoreCounter;
-  jasur::LargerSegmentsCounter largerSegmentsCounter;
-  do
-  {
-    int prevValue = value;
-    std::cin >> value;
-    if (!std::cin)
-    {
-      std::cerr << "Not a valid input.. \n";
-      return 1;
-    }
-    else if (value != 0 && prevValue != 0)
-    {
-      try
-      {
-        minCounter.process(value);
-        lessMoreCounter.process(value);
-        largerSegmentsCounter(value);
-      }
-      catch (const std::exception &e)
-      {
-        std::cerr << "Error: " << e.what() << "\n";
-        return 2;
-      }
-    }
-  } while (value != 0);
-  std::cout << minCounter() << "\n";
-  std::cout << lessMoreCounter() << "\n";
-  std::cout << largerSegmentsCounter() << '\n';
-  return 0;
+using namespace rejepbayev::jasur;
+
+int main() {
+    std::cout << "Enter your string: ";
+    size_t userLen = 0;
+    char* userStr = readingString(std::cin, 10, 5);
+    const char* staticStr = "example static text";
+    size_t countMatches = resComparison(userStr, staticStr, strlen(userStr), strlen(staticStr));
+    std::cout << "Number of characters matching with '" << staticStr << "': " << countMatches << std::endl;
+    size_t equalPairsCount = counterOfEqualPairs(userStr, strlen(userStr));
+    std::cout << "Number of equal character pairs: " << equalPairsCount << std::endl;
+    delete[] userStr;
+    return 0;
 }
